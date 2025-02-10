@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="Controls\ProductDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\Loading\MainMenuLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\POS\POSUserControl\UC_Orders.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\POS\POSUserControl\UC_Pos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\POS\POSUserControl\UC_Products.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\POS\POS_MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\UserControl\UC_DashBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\UserControl\UC_Inventory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\UserControl\UC_Reservation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\UserControl\UC_Settings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
