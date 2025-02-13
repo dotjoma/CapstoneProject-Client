@@ -1,4 +1,5 @@
-﻿using client.Network;
+﻿using client.Controllers;
+using client.Network;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,8 @@ namespace client.Forms
 {
     public partial class Login : Form
     {
+        private readonly AuthController _authController;
+
         private Point dragOffset;
         private bool isDragging = false;
         private bool isPassHidden = true;
@@ -21,6 +24,7 @@ namespace client.Forms
         public Login()
         {
             InitializeComponent();
+            _authController = new AuthController();
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -79,37 +83,9 @@ namespace client.Forms
             Cursor = Cursors.Default;
         }
 
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            base.OnFormClosing(e);
-            DisconnectClient();
-        }
-
         private void btnCloseWindow_Click(object sender, EventArgs e)
         {
-            DisconnectClient();
             Application.Exit();
-        }
-
-        private void DisconnectClient()
-        {
-            try
-            {
-                // Send logout packet before disconnecting
-                if (Client.Instance.IsConnected)
-                {
-                    var packet = new Packet
-                    {
-                        Type = PacketType.Logout,
-                        Data = new Dictionary<string, string>()
-                    };
-                    Client.Instance.SendToServer(packet);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error during disconnect: {ex.Message}");
-            }
         }
 
         private void txtPassword_IconRightClick(object sender, EventArgs e)
@@ -132,6 +108,42 @@ namespace client.Forms
             this.Hide();
             Register regfrm = new Register();
             regfrm.Show();
+        }
+
+        private async void btnSignIn_Click(object sender, EventArgs e)
+        {
+            ToggleButton(false);
+            await Task.Delay(1);
+
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
+
+            try
+            {
+                bool response = await _authController.Login(username, password);
+
+                if (response)
+                {
+                    var mainMenu = new MainMenu();
+                    mainMenu.Show();
+                    this.Hide();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ToggleButton(true);
+            }
+        }
+
+        private void ToggleButton(Boolean tog)
+        {
+            btnSignIn.Enabled = tog;
+            string text = (tog) ? "Sign In" : "Sining In...";
+            btnSignIn.Text = text;
         }
     }
 }

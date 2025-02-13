@@ -166,6 +166,7 @@
             btnSignIn.Size = new Size(289, 43);
             btnSignIn.TabIndex = 3;
             btnSignIn.Text = "Sign In";
+            btnSignIn.Click += btnSignIn_Click;
             // 
             // pictureBox1
             // 

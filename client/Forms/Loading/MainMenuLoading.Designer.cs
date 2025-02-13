@@ -40,11 +40,11 @@
             // lblLoading
             // 
             lblLoading.AutoSize = true;
-            lblLoading.Font = new Font("Arial Rounded MT Bold", 20.25F);
+            lblLoading.Font = new Font("Microsoft Sans Serif", 20.25F);
             lblLoading.ForeColor = Color.White;
             lblLoading.Location = new Point(651, 364);
             lblLoading.Name = "lblLoading";
-            lblLoading.Size = new Size(143, 32);
+            lblLoading.Size = new Size(134, 31);
             lblLoading.TabIndex = 1;
             lblLoading.Text = "Loading...";
             // 
