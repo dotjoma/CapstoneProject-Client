@@ -1,5 +1,6 @@
 using client.Forms;
 using client.Network;
+using client.Services.Auth;
 using System.Diagnostics;
 
 namespace client
@@ -15,87 +16,14 @@ namespace client
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Handle application domain unhandled exceptions
-            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-
-            // Handle UI thread exceptions
-            Application.ThreadException += Application_ThreadException;
-
-            // Handle process exit
-            AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
-
-            // Handle console control events (like Ctrl+C)
-            Console.CancelKeyPress += Console_CancelKeyPress;
+            Application.ApplicationExit += new EventHandler(OnApplicationExit);
 
             Application.Run(new Login());
         }
 
-        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        private static void OnApplicationExit(object? sender, EventArgs e)
         {
-            try
-            {
-                DisconnectClient();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error during unhandled exception cleanup: {ex.Message}");
-            }
-        }
-
-        private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
-        {
-            try
-            {
-                DisconnectClient();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error during thread exception cleanup: {ex.Message}");
-            }
-        }
-
-        private static void CurrentDomain_ProcessExit(object? sender, EventArgs e)
-        {
-            try
-            {
-                DisconnectClient();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error during process exit cleanup: {ex.Message}");
-            }
-        }
-
-        private static void Console_CancelKeyPress(object? sender, ConsoleCancelEventArgs e)
-        {
-            try
-            {
-                DisconnectClient();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error during cancel key cleanup: {ex.Message}");
-            }
-        }
-
-        private static void DisconnectClient()
-        {
-            try
-            {
-                if (Client.Instance.IsConnected)
-                {
-                    var packet = new Packet
-                    {
-                        Type = PacketType.Logout,
-                        Data = new Dictionary<string, string>()
-                    };
-                    Client.Instance.SendToServer(packet);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error during disconnect: {ex.Message}");
-            }
+            CurrentUser.Clear();
         }
     }
 }

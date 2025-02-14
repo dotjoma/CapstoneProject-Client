@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Configuration;
 using client.Helpers;
+using client.Services.Auth;
 
 namespace client.Network
 {
@@ -61,7 +62,7 @@ namespace client.Network
 
                 // Create connection timeout
                 var result = tcpClient.BeginConnect(serverIp, serverPort, null, null);
-                var success = result.AsyncWaitHandle.WaitOne(TimeSpan.FromSeconds(5)); // 5 second timeout
+                var success = result.AsyncWaitHandle.WaitOne(TimeSpan.FromSeconds(5));
 
                 if (!success)
                 {
@@ -197,6 +198,35 @@ namespace client.Network
                             return null;
                         }
 
+                        if (Convert.ToInt32(response.Type) == 4 && response.Data["success"] == "true")
+                        {
+                            int userId = Convert.ToInt32(response.Data["userId"]);
+                            string username = response.Data["username"];
+                            string role = response.Data["role"];
+                            bool success = Convert.ToBoolean(response.Data["success"]);
+                            
+                            if (success)
+                            {
+                                try
+                                {
+                                    CurrentUser.SetCurrentUser(
+                                        userId: userId,
+                                        username: username,
+                                        role: role
+                                    );
+
+                                    Logger.Write("CURRENT USER", "Current user set successfully");
+                                }
+                                catch (Exception ex)
+                                {
+                                    Logger.Write("CURRENT USER", $"Error setting current user: {ex.Message}");
+                                    MessageBox.Show("Error setting current user, Please contact support", "Error",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                        }
+                        
+                        
                         return response;
                     }
                     else

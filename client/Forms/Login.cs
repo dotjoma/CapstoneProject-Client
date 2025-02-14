@@ -1,5 +1,7 @@
 ﻿using client.Controllers;
 using client.Network;
+using client.Services.Auth;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -124,6 +126,12 @@ namespace client.Forms
 
                 if (response)
                 {
+                    if (!Authenticated())
+                    {
+                        MessageBox.Show("You are not authenticated. Please log in again.", "Authentication Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     var mainMenu = new MainMenu();
                     mainMenu.Show();
                     this.Hide();
@@ -137,6 +145,12 @@ namespace client.Forms
             {
                 ToggleButton(true);
             }
+        }
+
+        private bool Authenticated()
+        {
+            var isAuth = CurrentUser.IsAuthenticated;
+            return isAuth;
         }
 
         private void ToggleButton(Boolean tog)
