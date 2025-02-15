@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="Controls\ProductDisplay.cs">
+    <Compile Update="Controls\Products\Display.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\Loading\MainMenuLoading.cs">
@@ -12,6 +12,15 @@
     </Compile>
     <Compile Update="Forms\MainMenu.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\POS\POSUserControl\FoodCategory\UC_Beverages.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\POS\POSUserControl\FoodCategory\UC_FastFood.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\POS\POSUserControl\FoodCategory\UC_MainCourse.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\POS\POSUserControl\UC_Orders.cs">
       <SubType>UserControl</SubType>

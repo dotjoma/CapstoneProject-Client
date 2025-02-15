@@ -149,15 +149,7 @@ namespace client.Network
         {
             try
             {
-                // Check connection and try to connect if needed
-                if (!IsConnected || networkStream == null)
-                {
-                    Logger.Write("TCP & NETWORKSTREAM", "No active connection, attempting to connect...");
-                    if (!Connect())
-                    {
-                        Logger.Write("TCP CLIENT", "Could not establish connection to server");
-                    }
-                }
+                if (!HasConnection()) return null;
 
                 if (networkStream == null)
                 {
@@ -198,34 +190,7 @@ namespace client.Network
                             return null;
                         }
 
-                        if (Convert.ToInt32(response.Type) == 4 && response.Data["success"] == "true")
-                        {
-                            int userId = Convert.ToInt32(response.Data["userId"]);
-                            string username = response.Data["username"];
-                            string role = response.Data["role"];
-                            bool success = Convert.ToBoolean(response.Data["success"]);
-                            
-                            if (success)
-                            {
-                                try
-                                {
-                                    CurrentUser.SetCurrentUser(
-                                        userId: userId,
-                                        username: username,
-                                        role: role
-                                    );
-
-                                    Logger.Write("CURRENT USER", "Current user set successfully");
-                                }
-                                catch (Exception ex)
-                                {
-                                    Logger.Write("CURRENT USER", $"Error setting current user: {ex.Message}");
-                                    MessageBox.Show("Error setting current user, Please contact support", "Error",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                            }
-                        }
-                        
+                        HandleLogin(response);
                         
                         return response;
                     }
@@ -251,6 +216,51 @@ namespace client.Network
             {
                 Disconnect();
             }
+        }
+
+        public void HandleLogin(Packet response)
+        {
+            if (Convert.ToInt32(response.Type) == 4 && response.Data["success"] == "true")
+            {
+                int userId = Convert.ToInt32(response.Data["userId"]);
+                string username = response.Data["username"];
+                string role = response.Data["role"];
+                bool success = Convert.ToBoolean(response.Data["success"]);
+
+                if (success)
+                {
+                    try
+                    {
+                        CurrentUser.SetCurrentUser(
+                            userId: userId,
+                            username: username,
+                            role: role
+                        );
+
+                        Logger.Write("CURRENT USER", "Current user set successfully");
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Write("CURRENT USER", $"Error setting current user: {ex.Message}");
+                        MessageBox.Show("Error setting current user, Please contact support", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        public bool HasConnection()
+        {
+            if (!IsConnected || networkStream == null)
+            {
+                Logger.Write("TCP & NETWORKSTREAM", "No active connection, attempting to connect...");
+                if (!Connect())
+                {
+                    Logger.Write("TCP CLIENT", "Could not establish connection to server");
+                }
+            }
+
+            return true;
         }
 
         private bool IsValidResponse(Packet response)

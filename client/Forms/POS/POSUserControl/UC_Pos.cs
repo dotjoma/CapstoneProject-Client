@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using client.Forms.POS.POSUserControl.FoodCategory;
 
 namespace client.Forms.POS.POSUserControl
 {
@@ -17,41 +18,57 @@ namespace client.Forms.POS.POSUserControl
         public UC_Pos()
         {
             InitializeComponent();
-            var products = new List<Product>
+        }
+
+        private void UC_Pos_Load(object sender, EventArgs e)
+        {
+            AddUserControl(new UC_Beverages());
+            ActiveButton(1);
+            timer1.Start();
+        }
+
+        private void AddUserControl(UserControl userControl)
+        {
+            userControl.Dock = DockStyle.Fill;
+            pnlContainer.Controls.Clear();
+            pnlContainer.Controls.Add(userControl);
+            userControl.BringToFront();
+        }
+
+        private void btnBeverages_Click(object sender, EventArgs e)
+        {
+            AddUserControl(new UC_Beverages());
+            ActiveButton(1);
+        }
+
+        private void btnMainCourse_Click(object sender, EventArgs e)
+        {
+            AddUserControl(new UC_MainCourse());
+            ActiveButton(2);
+        }
+
+        private void btnFastFood_Click(object sender, EventArgs e)
+        {
+            AddUserControl(new UC_FastFood());
+            ActiveButton(3);
+        }
+
+        private void ActiveButton(int btn)
+        {
+            var buttons = new[]
             {
-                new Product(1,"Product 1", "Description 1", 100, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(2,"Product 2", "Description 2", 150, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(3,"Product 3", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(4,"Product 4", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(5,"Product 5", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(6,"Product 6", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(7,"Product 7", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(8,"Product 8", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(9,"Product 9", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(10,"Product 10", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(11,"Product 11", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(12,"Product 12", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(13,"Product 13", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(14,"Product 14", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(15,"Product 15", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(16,"Product 16", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(17,"Product 17", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(18,"Product 18", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(19,"Product 19", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(20,"Product 20", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(21,"Product 21", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(22,"Product 22", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(23,"Product 23", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(24,"Product 24", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(25,"Product 25", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png")
+                (1, btnBeverages),
+                (2, btnMainCourse),
+                (3, btnFastFood)
             };
 
-            // Create and add ProductDisplay control
-            var productDisplay = new ProductDisplay(products)
-            {
-                Dock = DockStyle.Fill
-            };
-            pnlContainer.Controls.Add(productDisplay);
+            buttons.ToList().ForEach(b => b.Item2.Checked = b.Item1 == btn);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblDateTime.Text = $"{DateTime.Now.ToString("dddd")}, {DateTime.Now.ToString("hh:mm:ss tt").ToUpper()}";
+            lblDate.Text = DateTime.Now.ToString("MMM dd, yyyy");
         }
     }
 }

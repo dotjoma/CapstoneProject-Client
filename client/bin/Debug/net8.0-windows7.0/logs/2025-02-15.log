@@ -1,0 +1,44 @@
+2025-02-15 18:28:00 [ TCP & NETWORKSTREAM ] : No active connection, attempting to connect...
+2025-02-15 18:28:00 [ TCP CLIENT ] : Successfully connected to server
+2025-02-15 18:28:00 [ NETWORKSTREAM ] : Packet sent success.
+2025-02-15 18:28:00 [ JSON RESPONSE ] : Received response: {"Type":4,"Data":{"success":"false","message":"Invalid username or password"},"Success":false,"Message":"Invalid username or password"}
+2025-02-15 18:28:00 [ SERVER RESPONSE ] : Response validation successful
+2025-02-15 18:28:08 [ TCP & NETWORKSTREAM ] : No active connection, attempting to connect...
+2025-02-15 18:28:08 [ TCP CLIENT ] : Successfully connected to server
+2025-02-15 18:28:08 [ NETWORKSTREAM ] : Packet sent success.
+2025-02-15 18:28:08 [ JSON RESPONSE ] : Received response: {"Type":4,"Data":{"success":"true","message":"Login successful","userId":"1","username":"joma","role":"staff"},"Success":true,"Message":"Login successful"}
+2025-02-15 18:28:08 [ SERVER RESPONSE ] : Response validation successful
+2025-02-15 18:28:08 [ CURRENT USER ] : Current user set successfully
+2025-02-15 18:30:54 [ TCP & NETWORKSTREAM ] : No active connection, attempting to connect...
+2025-02-15 18:30:54 [ TCP CLIENT ] : Successfully connected to server
+2025-02-15 18:30:54 [ NETWORKSTREAM ] : Packet sent success.
+2025-02-15 18:30:54 [ JSON RESPONSE ] : Received response: {"Type":2,"Data":{"success":"false","message":"Username already exists"},"Success":false,"Message":"Username already exists"}
+2025-02-15 18:30:54 [ SERVER RESPONSE ] : Response validation successful
+2025-02-15 18:30:57 [ TCP & NETWORKSTREAM ] : No active connection, attempting to connect...
+2025-02-15 18:30:57 [ TCP CLIENT ] : Successfully connected to server
+2025-02-15 18:30:57 [ NETWORKSTREAM ] : Packet sent success.
+2025-02-15 18:30:57 [ JSON RESPONSE ] : Received response: {"Type":2,"Data":{"success":"false","message":"Username already exists"},"Success":false,"Message":"Username already exists"}
+2025-02-15 18:30:57 [ SERVER RESPONSE ] : Response validation successful
+2025-02-15 18:31:00 [ TCP & NETWORKSTREAM ] : No active connection, attempting to connect...
+2025-02-15 18:31:00 [ TCP CLIENT ] : Successfully connected to server
+2025-02-15 18:31:00 [ NETWORKSTREAM ] : Packet sent success.
+2025-02-15 18:31:00 [ JSON RESPONSE ] : Received response: {"Type":2,"Data":{"success":"true","message":"Registration successful"},"Success":true,"Message":"Registration successful"}
+2025-02-15 18:31:00 [ SERVER RESPONSE ] : Response validation successful
+2025-02-15 17:31:10 [ TCP & NETWORKSTREAM ] : No active connection, attempting to connect...
+2025-02-15 17:31:10 [ TCP CLIENT ] : Successfully connected to server
+2025-02-15 17:31:10 [ NETWORKSTREAM ] : Packet sent success.
+2025-02-15 17:31:10 [ JSON RESPONSE ] : Received response: {"Type":4,"Data":{"success":"true","message":"Login successful","userId":"3","username":"joma2","role":"staff"},"Success":true,"Message":"Login successful"}
+2025-02-15 17:31:10 [ SERVER RESPONSE ] : Response validation successful
+2025-02-15 17:31:10 [ CURRENT USER ] : Current user set successfully
+2025-02-15 17:32:37 [ TCP & NETWORKSTREAM ] : No active connection, attempting to connect...
+2025-02-15 17:32:37 [ TCP CLIENT ] : Successfully connected to server
+2025-02-15 17:32:37 [ NETWORKSTREAM ] : Packet sent success.
+2025-02-15 17:32:37 [ JSON RESPONSE ] : Received response: {"Type":4,"Data":{"success":"true","message":"Login successful","userId":"2","username":"joma1","role":"staff"},"Success":true,"Message":"Login successful"}
+2025-02-15 17:32:37 [ SERVER RESPONSE ] : Response validation successful
+2025-02-15 17:32:37 [ CURRENT USER ] : Current user set successfully
+2025-02-15 17:33:56 [ TCP & NETWORKSTREAM ] : No active connection, attempting to connect...
+2025-02-15 17:33:56 [ TCP CLIENT ] : Successfully connected to server
+2025-02-15 17:33:56 [ NETWORKSTREAM ] : Packet sent success.
+2025-02-15 17:33:56 [ JSON RESPONSE ] : Received response: {"Type":4,"Data":{"success":"true","message":"Login successful","userId":"1","username":"joma","role":"staff"},"Success":true,"Message":"Login successful"}
+2025-02-15 17:33:56 [ SERVER RESPONSE ] : Response validation successful
+2025-02-15 17:33:56 [ CURRENT USER ] : Current user set successfully

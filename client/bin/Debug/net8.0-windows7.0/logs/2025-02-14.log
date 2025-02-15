@@ -54,3 +54,9 @@
 2025-02-14 16:41:04 [ JSON RESPONSE ] : Received response: {"Type":4,"Data":{"success":"true","message":"Login successful","userId":"1","username":"joma","role":"staff"},"Success":true,"Message":"Login successful"}
 2025-02-14 16:41:04 [ SERVER RESPONSE ] : Response validation successful
 2025-02-14 16:41:04 [ CURRENT USER ] : Current user set successfully
+2025-02-14 21:23:04 [ TCP & NETWORKSTREAM ] : No active connection, attempting to connect...
+2025-02-14 21:23:04 [ TCP CLIENT ] : Successfully connected to server
+2025-02-14 21:23:04 [ NETWORKSTREAM ] : Packet sent success.
+2025-02-14 21:23:05 [ JSON RESPONSE ] : Received response: {"Type":4,"Data":{"success":"true","message":"Login successful","userId":"1","username":"joma","role":"staff"},"Success":true,"Message":"Login successful"}
+2025-02-14 21:23:05 [ SERVER RESPONSE ] : Response validation successful
+2025-02-14 21:23:05 [ CURRENT USER ] : Current user set successfully

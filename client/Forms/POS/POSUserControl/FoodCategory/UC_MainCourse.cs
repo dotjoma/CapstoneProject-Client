@@ -1,4 +1,5 @@
-﻿using client.Models;
+﻿using client.Controls.Products;
+using client.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,13 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using client.Controls.Manage;
 
-namespace client.Forms.POS.POSUserControl
+namespace client.Forms.POS.POSUserControl.FoodCategory
 {
-    public partial class UC_Products : UserControl
+    public partial class UC_MainCourse : UserControl
     {
-        public UC_Products()
+        public UC_MainCourse()
         {
             InitializeComponent();
 
@@ -33,22 +33,11 @@ namespace client.Forms.POS.POSUserControl
             };
 
             // Create and add ProductDisplay control
-            var manageProduct = new Manage(products)
+            var productDisplay = new Display(products)
             {
                 Dock = DockStyle.Fill
             };
-            pnlContainer.Controls.Add(manageProduct);
-        }
-
-        private void UC_Products_Load(object sender, EventArgs e)
-        {
-            timer1.Start();
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            lblDateTime.Text = $"{DateTime.Now.ToString("dddd")}, {DateTime.Now.ToString("hh:mm:ss tt").ToUpper()}";
-            lblDate.Text = DateTime.Now.ToString("MMM dd, yyyy");
+            pnlContainer.Controls.Add(productDisplay);
         }
     }
 }

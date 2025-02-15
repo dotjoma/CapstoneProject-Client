@@ -9,7 +9,6 @@ E:\Visual Studio 2022\Projects\CapstoneProject\client\client\bin\Debug\net8.0-wi
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\bin\Debug\net8.0-windows7.0\System.Management.dll
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net7.0\System.Management.dll
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.csproj.AssemblyReference.cache
-E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Controls.ProductDisplay.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.Loading.MainMenuLoading.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.Login.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.MainMenu.resources
@@ -35,3 +34,8 @@ E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-wi
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.pdb
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.genruntimeconfig.cache
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\ref\client.dll
+E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.POS.POSUserControl.FoodCategory.UC_Beverages.resources
+E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.POS.POSUserControl.FoodCategory.UC_FastFood.resources
+E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.POS.POSUserControl.FoodCategory.UC_MainCourse.resources
+E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Controls.Products.Display.resources
+E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Controls.Manage.Manage.resources

@@ -11,14 +11,14 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace client.Controls
+namespace client.Controls.Manage
 {
-    public class ProductDisplay : UserControl
+    public class Manage : UserControl
     {
         private readonly FlowLayoutPanel flowPanel;
         private readonly Guna2VScrollBar gunaScrollBar;
 
-        public ProductDisplay(List<Product> products)
+        public Manage(List<Product> products)
         {
             flowPanel = new FlowLayoutPanel
             {
@@ -122,7 +122,7 @@ namespace client.Controls
                 Tag = product
             };
             btnAddToCart.HoverState.FillColor = Color.FromArgb(73, 54, 40);
-            btnAddToCart.Click += (object? sender, EventArgs e) =>
+            btnAddToCart.Click += (sender, e) =>
             {
                 if (sender is Guna2Button clickedButton &&
                     clickedButton.Tag is Product selectedProduct)

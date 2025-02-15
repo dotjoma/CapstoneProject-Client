@@ -22,6 +22,8 @@ namespace client.Forms.POS
         private void POS_MainMenu_Load(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Maximized;
+            AddUserControl(new UC_Pos());
+            ActiveButton(1);
         }
 
         private void AddUserControl(UserControl userControl)
@@ -46,20 +48,20 @@ namespace client.Forms.POS
 
         private void btnPos_Click(object sender, EventArgs e)
         {
-            ActiveButton(1);
             AddUserControl(new UC_Pos());
+            ActiveButton(1);
         }
 
         private void btnOrders_Click(object sender, EventArgs e)
         {
-            ActiveButton(2);
             AddUserControl(new UC_Orders());
+            ActiveButton(2);
         }
 
         private void btnProducts_Click(object sender, EventArgs e)
         {
-            ActiveButton(3);
             AddUserControl(new UC_Products());
+            ActiveButton(3);
         }
     }
 }

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(POS_MainMenu));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -81,7 +80,7 @@
             btnProducts.Font = new Font("Segoe UI", 9F);
             btnProducts.ForeColor = Color.White;
             btnProducts.HoverState.FillColor = Color.Transparent;
-            btnProducts.Image = (Image)resources.GetObject("btnProducts.Image");
+            btnProducts.Image = Properties.Resources.Product;
             btnProducts.ImageSize = new Size(35, 35);
             btnProducts.Location = new Point(0, 130);
             btnProducts.Name = "btnProducts";
@@ -107,7 +106,7 @@
             btnOrders.Font = new Font("Segoe UI", 9F);
             btnOrders.ForeColor = Color.White;
             btnOrders.HoverState.FillColor = Color.Transparent;
-            btnOrders.Image = (Image)resources.GetObject("btnOrders.Image");
+            btnOrders.Image = Properties.Resources.List1;
             btnOrders.ImageSize = new Size(35, 35);
             btnOrders.Location = new Point(0, 65);
             btnOrders.Name = "btnOrders";
@@ -133,7 +132,7 @@
             btnPos.Font = new Font("Segoe UI", 9F);
             btnPos.ForeColor = Color.White;
             btnPos.HoverState.FillColor = Color.Transparent;
-            btnPos.Image = (Image)resources.GetObject("btnPos.Image");
+            btnPos.Image = Properties.Resources.Cash_Register;
             btnPos.ImageSize = new Size(35, 35);
             btnPos.Location = new Point(0, 0);
             btnPos.Name = "btnPos";
