@@ -158,14 +158,19 @@ namespace client.Network
                 }
 
                 // Send the packet
-                string jsonData = JsonConvert.SerializeObject(packet);
+                //string jsonData = JsonConvert.SerializeObject(packet);
+                //byte[] data = Encoding.UTF8.GetBytes(jsonData);
+                //await networkStream.WriteAsync(data, 0, data.Length); // v1
+
+                string jsonData = JsonConvert.SerializeObject(packet) + "\n";
                 byte[] data = Encoding.UTF8.GetBytes(jsonData);
-                await networkStream.WriteAsync(data, 0, data.Length);
+                await networkStream.WriteAsync(data, 0, data.Length); // v1
+
                 Logger.Write("NETWORKSTREAM", "Packet sent success.");
 
                 // Wait for response with timeout
                 using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
-                byte[] responseBuffer = new byte[4096];
+                byte[] responseBuffer = new byte[8192];
 
                 try
                 {

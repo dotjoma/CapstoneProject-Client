@@ -22,7 +22,7 @@ namespace client.Forms
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            //this.WindowState = FormWindowState.Maximized;
             UC_DashBoard uc = new UC_DashBoard();
             AddUserControl(uc);
         }

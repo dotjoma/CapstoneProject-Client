@@ -12,33 +12,18 @@ namespace client.Controllers
 {
     public class ProductController
     {
-        public async Task<bool> Create(string name, string description, string price, string image)
+        public async Task<bool> Create(string name, string image, string price, string description, string category)
         {
-            // Validation
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(price))
-            {
-                MessageBox.Show("Name and price are required fields", "Validation Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            if (!decimal.TryParse(price, out decimal priceValue))
-            {
-                MessageBox.Show("Price must be a valid number", "Validation Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            // Create product packet to send to the server.
             var createProductPacket = new Packet
             {
                 Type = PacketType.CreateProduct,
                 Data = new Dictionary<string, string>
                 {
-                    { "name", name.Trim() },
-                    { "description", description.Trim() ?? ""},
-                    { "price", price.Trim()},
-                    { "image", image ?? ""},
+                    { "name", name },
+                    { "image", image },
+                    { "price", price },
+                    { "description", description },
+                    { "category", category }
                 }
             };
 
@@ -57,14 +42,14 @@ namespace client.Controllers
             {
                 if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                 {
-                    MessageBox.Show("Registration successful! Please login.", "Success",
+                    MessageBox.Show("Product creation successful!", "Success",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     return true;
                 }
                 else
                 {
-                    string errorMessage = "Registration failed: ";
+                    string errorMessage = "Product creation failed: ";
 
                     if (response.Data.ContainsKey("message"))
                     {
@@ -75,7 +60,7 @@ namespace client.Controllers
                         errorMessage += "Unknown error occurred";
                     }
 
-                    MessageBox.Show(errorMessage, "Registration Failed",
+                    MessageBox.Show(errorMessage, "Product creation Failed",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     return false;

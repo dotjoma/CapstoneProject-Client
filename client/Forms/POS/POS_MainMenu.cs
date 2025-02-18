@@ -14,6 +14,9 @@ namespace client.Forms.POS
 {
     public partial class POS_MainMenu : Form
     {
+        private Point dragOffset;
+        private bool isDragging = false;
+
         public POS_MainMenu()
         {
             InitializeComponent();
@@ -21,7 +24,7 @@ namespace client.Forms.POS
 
         private void POS_MainMenu_Load(object sender, EventArgs e)
         {
-            WindowState = FormWindowState.Maximized;
+            //WindowState = FormWindowState.Maximized;
             AddUserControl(new UC_Pos());
             ActiveButton(1);
         }
@@ -62,6 +65,39 @@ namespace client.Forms.POS
         {
             AddUserControl(new UC_Products());
             ActiveButton(3);
+        }
+
+        private void btnCloseWindow_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void pnlHeader_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = true;
+                dragOffset = new Point(e.X, e.Y);
+            }
+        }
+
+        private void pnlHeader_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point newLocation = PointToScreen(new Point(e.X, e.Y));
+                Location = new Point(newLocation.X - dragOffset.X, newLocation.Y - dragOffset.Y);
+            }
+        }
+
+        private void pnlHeader_MouseUp(object sender, MouseEventArgs e)
+        {
+            isDragging = false;
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace client
 
             Application.ApplicationExit += new EventHandler(OnApplicationExit);
 
-            Application.Run(new Login());
+            Application.Run(new MainMenu());
         }
 
         private static void OnApplicationExit(object? sender, EventArgs e)
