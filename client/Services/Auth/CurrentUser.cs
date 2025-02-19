@@ -11,33 +11,25 @@ namespace client.Services.Auth
     {
         private static UserSession? _currentUser;
 
-        public static UserSession? Session
+        // Check if the user is logged in.
+        public static bool IsLoggedIn => Current != null;
+
+        // Check if the user is admin.
+        public static bool IsAdmin => _currentUser?.Role?.ToLower() == "admin";
+
+        // Get current user session.
+        public static UserSession? Current => _currentUser;
+
+        // Set current user.
+        public static void SetCurrentUser(UserSession user)
         {
-            get => _currentUser;
-            private set => _currentUser = value;
+            _currentUser = user;
         }
 
-        public static void SetCurrentUser(int userId, string username, string role)
-        {
-            Session = new UserSession
-            {
-                UserId = userId,
-                Username = username,
-                Role = role,
-                LoginTime = DateTime.Now
-            };
-        }
-
+        // Clear user session on logout.
         public static void Clear()
         {
-            Session = null;
-        }
-
-        public static bool IsAuthenticated => Session != null;
-
-        public static bool HasRole(string role)
-        {
-            return IsAuthenticated && Session!.Role.Equals(role, StringComparison.OrdinalIgnoreCase);
+            _currentUser = null;
         }
     }
 }
