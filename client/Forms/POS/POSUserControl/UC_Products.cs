@@ -15,12 +15,17 @@ using System.Drawing.Imaging;
 using client.Helpers;
 using Microsoft.VisualBasic;
 using System.Globalization;
+using client.Services;
+using static System.Windows.Forms.DataFormats;
+using client.Services.Auth;
 
 namespace client.Forms.POS.POSUserControl
 {
     public partial class UC_Products : UserControl
     {
         private readonly ProductController _productController;
+        private readonly CategoryController _categoryController;
+        private readonly SubCategoryController _subCategoryController;
         private string _productName = string.Empty;
         private int _selectedCategory = 0;
 
@@ -29,13 +34,27 @@ namespace client.Forms.POS.POSUserControl
             InitializeComponent();
             txtPrice.KeyPress += txtPrice_KeyPress;
             _productController = new ProductController();
+            _categoryController = new CategoryController();
+            _subCategoryController = new SubCategoryController();
+            cboCategory.SelectedIndexChanged += cboCategory_SelectedIndexChanged;
         }
 
-        private void UC_Products_Load(object sender, EventArgs e)
+        private async void UC_Products_Load(object sender, EventArgs e)
         {
             timer1.Start();
             AddUserControl(new UC_Beverages());
             ActiveButton(1);
+
+            bool response = await _categoryController.Get();
+            if (response)
+            {
+                GetCategory();
+            }
+        }
+
+        public void RefreshCategories()
+        {
+            GetCategory();
         }
 
         private void AddUserControl(UserControl userControl)
@@ -56,36 +75,6 @@ namespace client.Forms.POS.POSUserControl
             };
 
             buttons.ToList().ForEach(b => b.Item2.Checked = b.Item1 == btn);
-        }
-
-        private void CategorySelected(int categoryId)
-        {
-            _selectedCategory = categoryId;
-
-            switch (_selectedCategory)
-            {
-                case 1:
-                    _productName = "Beverages";
-                    break;
-                case 2:
-                    _productName = "MainCourse";
-                    break;
-                case 3:
-                    _productName = "FastFood";
-                    break;
-                default:
-                    _productName = string.Empty;
-                    break;
-            }
-
-            var buttons = new[]
-            {
-                (1, btnBeveragesCateg),
-                (2, btnMainCourseCateg),
-                (3, btnFastFoodCateg)
-            };
-
-            buttons.ToList().ForEach(b => b.Item2.Checked = b.Item1 == categoryId);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -168,24 +157,52 @@ namespace client.Forms.POS.POSUserControl
             await Task.Delay(1);
 
             string name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtName.Text.Trim().ToLower());
-            //string image = SaveImageAndGetPath(pbImage.Image); v.1
             string image = Convert.ToBase64String(GetPhoto());
             string price = txtPrice.Text.Trim();
             string description = txtName.Text.Trim();
-            string category = _productName;
 
             try
             {
-                if (!ValidateRequiredFields(name, price, description, category)) return;
+                if (!ValidateRequiredFields(name, price, description)) return;
+
+                if (CurrentCategory.Current == null)
+                {
+                    MessageBox.Show("Select a category.", "Validation Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    ToggleButton(true);
+                    return;
+                }
+
+                int categoryId = CurrentCategory.Current.Id; 
+                if (categoryId == 0)
+                {
+                    MessageBox.Show("Invalid category selected.", "Validation Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    ToggleButton(true);
+                    return;
+                }
+
+                string categoryName = CurrentCategory.Current.Name;
+                if (CurrentSubCategory.Current == null)
+                {
+                    MessageBox.Show("Select a subcategory.", "Validation Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    ToggleButton(true);
+                    return;
+                }
+
+                int subCategoryId = CurrentSubCategory.Current.catId;
+                string? subCategoryName = CurrentSubCategory.Current.scName;
 
                 // TODO:
                 // Create a logic for create and update.
 
-                bool response = await _productController.Create(name, image, price, description, category);
+                bool response = await _productController.Create(name, image, price, description, categoryName, subCategoryName);
 
                 if (response)
                 {
                     Logger.Write("RESPONSE", $"Received response: {response}");
+                    ResetForm();
                 }
                 else
                 {
@@ -199,11 +216,10 @@ namespace client.Forms.POS.POSUserControl
             finally
             {
                 ToggleButton(true);
-                ResetForm();
             }
         }
 
-        private bool ValidateRequiredFields(string name, string price, string description, string category)
+        private bool ValidateRequiredFields(string name, string price, string description)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -226,13 +242,6 @@ namespace client.Forms.POS.POSUserControl
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(category)) 
-            {
-                MessageBox.Show("Please select a category.", "Validation Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
             if (IsDefaultImage(pbImage.Image))
             {
                 MessageBox.Show("Please select an image.", "Validation Error",
@@ -248,21 +257,6 @@ namespace client.Forms.POS.POSUserControl
             btnSave.Enabled = tog;
             string text = (tog) ? "Save" : "Loading...";
             btnSave.Text = text;
-        }
-
-        private void btnBeveragesCateg_Click(object sender, EventArgs e)
-        {
-            CategorySelected(1);
-        }
-
-        private void btnMainCourseCateg_Click(object sender, EventArgs e)
-        {
-            CategorySelected(2);
-        }
-
-        private void btnFastFoodCateg_Click(object sender, EventArgs e)
-        {
-            CategorySelected(3);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -319,17 +313,18 @@ namespace client.Forms.POS.POSUserControl
             pbImage.Image = Properties.Resources.Add_Image;
             txtPrice.Text = string.Empty;
             rtbDescription.Clear();
-            _productName = string.Empty;
-            _selectedCategory = 0;
 
-            var buttons = new[]
+            if (cboCategory.Items.Count > 0)
             {
-                (1, btnBeveragesCateg),
-                (2, btnMainCourseCateg),
-                (3, btnFastFoodCateg)
-            };
+                cboCategory.SelectedIndex = 0;
+            }
 
-            buttons.ToList().ForEach(b => b.Item2.Checked = false);
+            if (cboSubCategory.Items.Count > 0)
+            {
+                cboSubCategory.SelectedIndex = 0;
+            }
+
+            _selectedCategory = 0;
         }
 
         private void txtPrice_KeyPress(object? sender, KeyPressEventArgs e)
@@ -371,6 +366,158 @@ namespace client.Forms.POS.POSUserControl
                 {
                     pbImage.Image = Image.FromFile(ofd.FileName);
                 }
+            }
+        }
+
+        private void UC_Products_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSave.PerformClick();
+            }
+        }
+
+        private void GetCategory()
+        {
+            cboCategory.Items.Clear();
+
+            cboCategory.Items.Add("Select Category");
+
+            var categories = CurrentCategory.AllCategories;
+            if (categories != null && categories.Count > 0)
+            {
+                foreach (var category in categories)
+                {
+                    cboCategory.Items.Add(category.Name);
+                }
+            }
+
+            cboCategory.Items.Add("+ Add Category");
+
+            cboCategory.SelectedIndex = 0;
+        }
+
+        private async void cboCategory_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            if (cboCategory.SelectedIndex == 0)
+            {
+                CurrentCategory.SetCurrentCategory(null);
+                return;
+            }
+
+            if (cboCategory.SelectedIndex == cboCategory.Items.Count - 1)
+            {
+                NewCategory newCategory = new NewCategory("Create Category", "Category", "Enter category name", this);
+                newCategory.ShowDialog();
+                cboCategory.SelectedIndex = 0;
+                return;
+            }
+
+            if (cboCategory.SelectedIndex > 0 &&
+                CurrentCategory.AllCategories != null &&
+                (cboCategory.SelectedIndex - 1) < CurrentCategory.AllCategories.Count)
+            {
+                try
+                {
+                    var selectedCategory = CurrentCategory.AllCategories[cboCategory.SelectedIndex - 1];
+                    if (selectedCategory != null && selectedCategory.Id > 0)
+                    {
+                        CurrentCategory.SetCurrentCategory(selectedCategory);
+                        bool subCategory = await _subCategoryController.Get(selectedCategory.Id);
+                        if (subCategory)
+                        {
+                            GetSubCategory();
+                        }
+                    }
+                    else
+                    {
+                        Logger.Write("CATEGORY", "Selected category is null or has invalid ID");
+                        MessageBox.Show("Invalid category selected", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        cboCategory.SelectedIndex = 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error selecting category: " + ex.Message, "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cboCategory.SelectedIndex = 0;
+                }
+            }
+            else
+            {
+                cboCategory.SelectedIndex = 0;
+            }
+        }
+
+        private void GetSubCategory()
+        {
+            cboSubCategory.Items.Clear();
+
+            cboSubCategory.Items.Add("Select SubCategory");
+
+            var subcategories = CurrentSubCategory.AllSubCategories;
+            if (subcategories != null && subcategories.Count > 0)
+            {
+                foreach (var subcategory in subcategories)
+                {
+                    if (subcategory != null && !string.IsNullOrEmpty(subcategory.scName))
+                    {
+                        cboSubCategory.Items.Add(subcategory.scName);
+                    }
+                    else
+                    {
+                        Logger.Write("SUBCATEGORY", "Skipped adding null or empty subcategory name");
+                    }
+                }
+            }
+
+            cboSubCategory.Items.Add("+ Add SubCategory");
+
+            cboSubCategory.SelectedIndex = 0;
+        }
+
+        private void cboSubCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboSubCategory.SelectedIndex == 0)
+            {
+                return;
+            }
+
+            if (cboSubCategory.SelectedIndex == cboSubCategory.Items.Count - 1)
+            {
+                if (CurrentCategory.Current?.Id == null)
+                {
+                    MessageBox.Show("Select category to add sub category", "No Category Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    NewCategory newCategory = new NewCategory("Create SubCategory", "SubCategory", "Enter subcategory name", this);
+                    newCategory.ShowDialog();
+                    cboSubCategory.SelectedIndex = 0;
+                }
+                return;
+            }
+
+            if (cboSubCategory.SelectedIndex > 0 &&
+                CurrentSubCategory.AllSubCategories != null && 
+                (cboSubCategory.SelectedIndex - 1) < CurrentSubCategory.AllSubCategories.Count)
+            {
+                try
+                {
+                    var selectedSubCategory = CurrentSubCategory.AllSubCategories[cboSubCategory.SelectedIndex - 1]; 
+                    CurrentSubCategory.SetCurrentSubCategory(selectedSubCategory);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error selecting subcategory: " + ex.Message, "Error", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cboSubCategory.SelectedIndex = 0;
+                }
+            }
+            else
+            {
+                cboSubCategory.SelectedIndex = 0;
             }
         }
     }

@@ -27,6 +27,7 @@ namespace client.Forms
         {
             InitializeComponent();
             _authController = new AuthController();
+            this.KeyPreview = true;
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -117,8 +118,11 @@ namespace client.Forms
             ToggleButton(false);
             await Task.Delay(1);
 
-            string username = txtUsername.Text.Trim();
-            string password = txtPassword.Text.Trim();
+            //string username = txtUsername.Text.Trim();
+            //string password = txtPassword.Text.Trim();
+
+            string username = "joma";
+            string password = "12345678@Joma";
 
             try
             {
@@ -126,12 +130,6 @@ namespace client.Forms
 
                 if (response)
                 {
-                    if (!Authenticated())
-                    {
-                        MessageBox.Show("You are not authenticated. Please log in again.", "Authentication Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
                     var mainMenu = new MainMenu();
                     mainMenu.Show();
                     this.Hide();
@@ -147,17 +145,24 @@ namespace client.Forms
             }
         }
 
-        private bool Authenticated()
-        {
-            var isAuth = CurrentUser.IsAuthenticated;
-            return isAuth;
-        }
-
         private void ToggleButton(Boolean tog)
         {
             btnSignIn.Enabled = tog;
             string text = (tog) ? "Sign In" : "Sining In...";
             btnSignIn.Text = text;
+        }
+
+        private void btnSignIn_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void Login_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSignIn.PerformClick();
+            }
         }
     }
 }

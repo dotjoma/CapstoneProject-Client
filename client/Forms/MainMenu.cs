@@ -1,6 +1,9 @@
-﻿using client.Forms.Loading;
+﻿using client.Controllers;
+using client.Forms.Loading;
 using client.Forms.POS;
 using client.Forms.UserControll;
+using client.Services;
+using client.Services.Auth;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,9 +18,13 @@ namespace client.Forms
 {
     public partial class MainMenu : Form
     {
+        private readonly AuthController _authController;
+
         public MainMenu()
         {
             InitializeComponent();
+            _authController = new AuthController();
+            this.Shown += MainMenu_Shown;
         }
 
         private void MainMenu_Load(object sender, EventArgs e)
@@ -25,6 +32,15 @@ namespace client.Forms
             //this.WindowState = FormWindowState.Maximized;
             UC_DashBoard uc = new UC_DashBoard();
             AddUserControl(uc);
+        }
+
+        private void MainMenu_Shown(object? sender, EventArgs e)
+        {
+            if (!CurrentUser.IsLoggedIn)
+            {
+                MessageBox.Show("Please log in to continue.", "Authentication Required", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                _authController.RedirectToLogin();
+            }
         }
 
         private void AddUserControl(UserControl userControl)

@@ -132,6 +132,7 @@
             btnSignUp.TabIndex = 3;
             btnSignUp.Text = "Sign Up";
             btnSignUp.Click += btnSignUp_Click;
+            btnSignUp.KeyDown += btnSignUp_KeyDown;
             // 
             // pictureBox1
             // 
@@ -309,6 +310,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Register";
             Load += Register_Load;
+            KeyDown += Register_KeyDown;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             guna2Panel2.ResumeLayout(false);
             guna2Panel1.ResumeLayout(false);

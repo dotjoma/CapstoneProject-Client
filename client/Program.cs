@@ -18,12 +18,13 @@ namespace client
 
             Application.ApplicationExit += new EventHandler(OnApplicationExit);
 
-            Application.Run(new MainMenu());
+            Application.Run(new Login());
         }
 
         private static void OnApplicationExit(object? sender, EventArgs e)
         {
             CurrentUser.Clear();
+            MessageBox.Show("Session Cleared!");
         }
     }
 }

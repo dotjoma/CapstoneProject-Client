@@ -9,17 +9,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using client.Services.Auth;
+using client.Models;
+using client.Controllers;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace client.Forms.POS
 {
     public partial class POS_MainMenu : Form
     {
+        private readonly CategoryController _categoryController;
         private Point dragOffset;
         private bool isDragging = false;
 
         public POS_MainMenu()
         {
             InitializeComponent();
+            _categoryController = new CategoryController();
         }
 
         private void POS_MainMenu_Load(object sender, EventArgs e)
@@ -27,9 +33,24 @@ namespace client.Forms.POS
             //WindowState = FormWindowState.Maximized;
             AddUserControl(new UC_Pos());
             ActiveButton(1);
+
+            if (!CurrentUser.IsLoggedIn)
+            {
+                Application.Exit();
+            }
+
+            if (!CurrentUser.IsAdmin)
+            {
+                btnProducts.Visible = false;
+            }
+            else
+            {
+                btnProducts.Visible = true;
+            }
+
         }
 
-        private void AddUserControl(UserControl userControl)
+        public void AddUserControl(UserControl userControl)
         {
             userControl.Dock = DockStyle.Fill;
             pnlContainer.Controls.Clear();
@@ -69,7 +90,10 @@ namespace client.Forms.POS
 
         private void btnCloseWindow_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (MessageBox.Show("Close application?", "Close", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void pnlHeader_MouseDown(object sender, MouseEventArgs e)
@@ -98,6 +122,13 @@ namespace client.Forms.POS
         private void btnMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainMenu mainMenu = new MainMenu();
+            mainMenu.Show();
         }
     }
 }

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -36,16 +38,17 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnlHeader = new Panel();
+            btnReturn = new Guna.UI2.WinForms.Guna2Button();
+            btnMinimize = new Guna.UI2.WinForms.Guna2Button();
             btnCloseWindow = new Guna.UI2.WinForms.Guna2Button();
             panel2 = new Panel();
             btnProducts = new Guna.UI2.WinForms.Guna2Button();
             btnOrders = new Guna.UI2.WinForms.Guna2Button();
             btnPos = new Guna.UI2.WinForms.Guna2Button();
             pnlContainer = new Panel();
-            btnMinimize = new Guna.UI2.WinForms.Guna2Button();
             pnlHeader.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -53,20 +56,63 @@
             // pnlHeader
             // 
             pnlHeader.BackColor = Color.FromArgb(98, 87, 87);
+            pnlHeader.Controls.Add(btnReturn);
             pnlHeader.Controls.Add(btnMinimize);
             pnlHeader.Controls.Add(btnCloseWindow);
             pnlHeader.Dock = DockStyle.Top;
             pnlHeader.Location = new Point(0, 0);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Size = new Size(1444, 64);
+            pnlHeader.Size = new Size(1200, 64);
             pnlHeader.TabIndex = 3;
             pnlHeader.MouseDown += pnlHeader_MouseDown;
             pnlHeader.MouseMove += pnlHeader_MouseMove;
             pnlHeader.MouseUp += pnlHeader_MouseUp;
             // 
+            // btnReturn
+            // 
+            btnReturn.CustomizableEdges = customizableEdges1;
+            btnReturn.DisabledState.BorderColor = Color.DarkGray;
+            btnReturn.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnReturn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnReturn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnReturn.FillColor = Color.FromArgb(98, 87, 87);
+            btnReturn.Font = new Font("Segoe UI", 9F);
+            btnReturn.ForeColor = Color.White;
+            btnReturn.Image = Properties.Resources.Left;
+            btnReturn.ImageSize = new Size(30, 30);
+            btnReturn.Location = new Point(23, 17);
+            btnReturn.Name = "btnReturn";
+            btnReturn.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnReturn.Size = new Size(48, 30);
+            btnReturn.TabIndex = 3;
+            btnReturn.TextAlign = HorizontalAlignment.Left;
+            btnReturn.Click += btnReturn_Click;
+            // 
+            // btnMinimize
+            // 
+            btnMinimize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMinimize.CustomizableEdges = customizableEdges3;
+            btnMinimize.DisabledState.BorderColor = Color.DarkGray;
+            btnMinimize.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnMinimize.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnMinimize.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnMinimize.FillColor = Color.FromArgb(98, 87, 87);
+            btnMinimize.Font = new Font("Segoe UI", 9F);
+            btnMinimize.ForeColor = Color.White;
+            btnMinimize.Image = Properties.Resources.Minimize_Window;
+            btnMinimize.ImageSize = new Size(30, 30);
+            btnMinimize.Location = new Point(1122, 17);
+            btnMinimize.Name = "btnMinimize";
+            btnMinimize.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnMinimize.Size = new Size(30, 30);
+            btnMinimize.TabIndex = 2;
+            btnMinimize.TextAlign = HorizontalAlignment.Left;
+            btnMinimize.Click += btnMinimize_Click;
+            // 
             // btnCloseWindow
             // 
-            btnCloseWindow.CustomizableEdges = customizableEdges3;
+            btnCloseWindow.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCloseWindow.CustomizableEdges = customizableEdges5;
             btnCloseWindow.DisabledState.BorderColor = Color.DarkGray;
             btnCloseWindow.DisabledState.CustomBorderColor = Color.DarkGray;
             btnCloseWindow.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -76,9 +122,9 @@
             btnCloseWindow.ForeColor = Color.White;
             btnCloseWindow.Image = Properties.Resources.Close_Window;
             btnCloseWindow.ImageSize = new Size(30, 30);
-            btnCloseWindow.Location = new Point(1402, 17);
+            btnCloseWindow.Location = new Point(1158, 17);
             btnCloseWindow.Name = "btnCloseWindow";
-            btnCloseWindow.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnCloseWindow.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnCloseWindow.Size = new Size(30, 30);
             btnCloseWindow.TabIndex = 1;
             btnCloseWindow.TextAlign = HorizontalAlignment.Left;
@@ -102,7 +148,7 @@
             btnProducts.CheckedState.CustomBorderColor = Color.FromArgb(98, 87, 87);
             btnProducts.CheckedState.FillColor = Color.Transparent;
             btnProducts.CustomBorderThickness = new Padding(5, 0, 0, 0);
-            btnProducts.CustomizableEdges = customizableEdges5;
+            btnProducts.CustomizableEdges = customizableEdges7;
             btnProducts.DisabledState.BorderColor = Color.DarkGray;
             btnProducts.DisabledState.CustomBorderColor = Color.DarkGray;
             btnProducts.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -117,9 +163,10 @@
             btnProducts.Location = new Point(0, 130);
             btnProducts.Name = "btnProducts";
             btnProducts.PressedColor = Color.Transparent;
-            btnProducts.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnProducts.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnProducts.Size = new Size(89, 65);
             btnProducts.TabIndex = 7;
+            btnProducts.Visible = false;
             btnProducts.Click += btnProducts_Click;
             // 
             // btnOrders
@@ -128,7 +175,7 @@
             btnOrders.CheckedState.CustomBorderColor = Color.FromArgb(98, 87, 87);
             btnOrders.CheckedState.FillColor = Color.Transparent;
             btnOrders.CustomBorderThickness = new Padding(5, 0, 0, 0);
-            btnOrders.CustomizableEdges = customizableEdges7;
+            btnOrders.CustomizableEdges = customizableEdges9;
             btnOrders.DisabledState.BorderColor = Color.DarkGray;
             btnOrders.DisabledState.CustomBorderColor = Color.DarkGray;
             btnOrders.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -143,7 +190,7 @@
             btnOrders.Location = new Point(0, 65);
             btnOrders.Name = "btnOrders";
             btnOrders.PressedColor = Color.Transparent;
-            btnOrders.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnOrders.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnOrders.Size = new Size(89, 65);
             btnOrders.TabIndex = 6;
             btnOrders.Click += btnOrders_Click;
@@ -154,7 +201,7 @@
             btnPos.CheckedState.CustomBorderColor = Color.FromArgb(98, 87, 87);
             btnPos.CheckedState.FillColor = Color.Transparent;
             btnPos.CustomBorderThickness = new Padding(5, 0, 0, 0);
-            btnPos.CustomizableEdges = customizableEdges9;
+            btnPos.CustomizableEdges = customizableEdges11;
             btnPos.DisabledState.BorderColor = Color.DarkGray;
             btnPos.DisabledState.CustomBorderColor = Color.DarkGray;
             btnPos.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -169,7 +216,7 @@
             btnPos.Location = new Point(0, 0);
             btnPos.Name = "btnPos";
             btnPos.PressedColor = Color.Transparent;
-            btnPos.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnPos.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnPos.Size = new Size(89, 65);
             btnPos.TabIndex = 5;
             btnPos.Click += btnPos_Click;
@@ -179,34 +226,14 @@
             pnlContainer.Dock = DockStyle.Fill;
             pnlContainer.Location = new Point(89, 64);
             pnlContainer.Name = "pnlContainer";
-            pnlContainer.Size = new Size(1355, 817);
+            pnlContainer.Size = new Size(1111, 817);
             pnlContainer.TabIndex = 5;
-            // 
-            // btnMinimize
-            // 
-            btnMinimize.CustomizableEdges = customizableEdges1;
-            btnMinimize.DisabledState.BorderColor = Color.DarkGray;
-            btnMinimize.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnMinimize.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnMinimize.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnMinimize.FillColor = Color.FromArgb(98, 87, 87);
-            btnMinimize.Font = new Font("Segoe UI", 9F);
-            btnMinimize.ForeColor = Color.White;
-            btnMinimize.Image = Properties.Resources.Hide;
-            btnMinimize.ImageSize = new Size(30, 30);
-            btnMinimize.Location = new Point(1366, 17);
-            btnMinimize.Name = "btnMinimize";
-            btnMinimize.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnMinimize.Size = new Size(30, 30);
-            btnMinimize.TabIndex = 2;
-            btnMinimize.TextAlign = HorizontalAlignment.Left;
-            btnMinimize.Click += btnMinimize_Click;
             // 
             // POS_MainMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1444, 881);
+            ClientSize = new Size(1200, 881);
             Controls.Add(pnlContainer);
             Controls.Add(panel2);
             Controls.Add(pnlHeader);
@@ -230,5 +257,6 @@
         private Panel pnlContainer;
         private Guna.UI2.WinForms.Guna2Button btnCloseWindow;
         private Guna.UI2.WinForms.Guna2Button btnMinimize;
+        private Guna.UI2.WinForms.Guna2Button btnReturn;
     }
 }

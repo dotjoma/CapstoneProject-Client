@@ -1,6 +1,8 @@
 ﻿using client.Forms;
 using client.Models;
 using client.Network;
+using client.Services.Auth;
+using client.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,22 @@ namespace client.Controllers
 {
     public class AuthController
     {
+        public void Logout()
+        {
+            if (MessageBox.Show("Confirm your logout", "Logout",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) 
+                == DialogResult.Yes)
+            {
+                CurrentUser.Clear();
+                Navigation.Instance.RedirectTo<Login>();
+            }
+        }
+
+        public void RedirectToLogin()
+        {
+            Navigation.Instance.RedirectTo<Login>();
+        }
+
         public async Task<bool> Login(string username, string password)
         {
             if(!ValidateLogin(username, password)) return false;

@@ -33,6 +33,7 @@ namespace client.Forms
         {
             InitializeComponent();
             _authController = new AuthController();
+            this.KeyPreview = true;
         }
 
         private void btnCloseWindow_Click(object sender, EventArgs e)
@@ -124,7 +125,7 @@ namespace client.Forms
         private void ToggleButton(Boolean tog)
         {
             btnSignUp.Enabled = tog;
-            string text = (tog)? "Sign Up" : "Registering...";
+            string text = (tog) ? "Sign Up" : "Registering...";
             btnSignUp.Text = text;
         }
 
@@ -149,6 +150,19 @@ namespace client.Forms
         private void guna2Panel2_MouseUp(object sender, MouseEventArgs e)
         {
             isDragging = false;
+        }
+
+        private void btnSignUp_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void Register_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSignUp.PerformClick();
+            }
         }
     }
 }

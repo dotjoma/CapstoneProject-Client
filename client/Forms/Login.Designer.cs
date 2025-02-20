@@ -167,6 +167,7 @@
             btnSignIn.TabIndex = 3;
             btnSignIn.Text = "Sign In";
             btnSignIn.Click += btnSignIn_Click;
+            btnSignIn.KeyDown += btnSignIn_KeyDown;
             // 
             // pictureBox1
             // 
@@ -316,6 +317,7 @@
             Opacity = 0D;
             StartPosition = FormStartPosition.CenterScreen;
             Load += Login_Load;
+            KeyDown += Login_KeyDown;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             guna2Panel1.ResumeLayout(false);
             guna2Panel1.PerformLayout();

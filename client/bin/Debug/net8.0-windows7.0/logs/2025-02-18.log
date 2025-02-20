@@ -1,6 +1,0 @@
-2025-02-18 00:27:49 [ TCP & NETWORKSTREAM ] : No active connection, attempting to connect...
-2025-02-18 00:27:49 [ TCP CLIENT ] : Successfully connected to server
-2025-02-18 00:27:49 [ NETWORKSTREAM ] : Packet sent success.
-2025-02-18 00:27:50 [ JSON RESPONSE ] : Received response: {"Type":7,"Data":{"success":"true","message":"Create product successful"},"Success":true,"Message":"New product created"}
-2025-02-18 00:27:50 [ SERVER RESPONSE ] : Response validation successful
-2025-02-18 00:27:51 [ RESPONSE ] : Received response: True
