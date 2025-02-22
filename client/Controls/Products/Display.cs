@@ -191,16 +191,14 @@ namespace client.Controls.Products
 
         private void HandleAddToCart(Product product)
         {
-            var orderEntryForm = Application.OpenForms["OrderEntryForm"] as OrderEntryForm;
-
-            if (orderEntryForm != null)
+            if (OrderEntryForm.Instance != null)
             {
                 if (!string.IsNullOrEmpty(product.productImage))
                 {
                     product.ProductImageObject = ConvertBase64ToImage(product.productImage);
                 }
 
-                orderEntryForm.AddCartItem(product);
+                OrderEntryForm.Instance.AddCartItem(product);
             }
             else
             {
