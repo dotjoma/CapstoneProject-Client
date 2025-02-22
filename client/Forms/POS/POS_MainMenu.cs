@@ -30,6 +30,7 @@ namespace client.Forms.POS
         private void POS_MainMenu_Load(object sender, EventArgs e)
         {
             //WindowState = FormWindowState.Maximized;
+
             AddUserControl(new UC_Pos());
             ActiveButton(1);
 
