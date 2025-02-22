@@ -1,5 +1,7 @@
-﻿using client.Controls.Products;
+﻿using client.Controllers;
+using client.Controls.Products;
 using client.Models;
+using client.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,30 +16,27 @@ namespace client.Forms.POS.POSUserControl.FoodCategory
 {
     public partial class UC_MainCourse : UserControl
     {
+        private readonly ProductController _productController;
         public UC_MainCourse()
         {
             InitializeComponent();
+            _productController = new ProductController();
+            LoadProducts();
+        }
 
-            var products = new List<Product>
+        private async void LoadProducts()
+        {
+            var productController = new ProductController();
+            if (await productController.Get())
             {
-                new Product(1,"Product 1", "Description 1", 100, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(2,"Product 2", "Description 2", 150, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(3,"Product 3", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(3,"Product 3", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(3,"Product 3", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(3,"Product 3", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(3,"Product 3", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(3,"Product 3", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(3,"Product 3", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png"),
-                new Product(3,"Product 3", "Description 3", 200, "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Resources\\Images\\ramen.png")
-            };
+                pnlContainer.Controls.Clear();
 
-            // Create and add ProductDisplay control
-            var productDisplay = new Display(products)
-            {
-                Dock = DockStyle.Fill
-            };
-            pnlContainer.Controls.Add(productDisplay);
+                var productDisplay = new Display(CurrentProduct.AllProduct)
+                {
+                    Dock = DockStyle.Fill
+                };
+                pnlContainer.Controls.Add(productDisplay);
+            }
         }
     }
 }

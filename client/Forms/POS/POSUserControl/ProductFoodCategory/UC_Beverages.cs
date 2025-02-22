@@ -35,11 +35,11 @@ namespace client.Forms.POS.POSUserControl.ProductFoodCategory
 
                 if (response)
                 {
-                    Logger.Write("RESPONSE", $"Received response: {response}");
+                    LoggerHelper.Write("RESPONSE", $"Received response: {response}");
                 }
                 else
                 {
-                    Logger.Write("RESPONSE", $"No any response from the server.");
+                    LoggerHelper.Write("RESPONSE", $"No any response from the server.");
                 }
             }
             catch (Exception ex)

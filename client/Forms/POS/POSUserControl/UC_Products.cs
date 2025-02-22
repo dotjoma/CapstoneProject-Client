@@ -24,8 +24,10 @@ namespace client.Forms.POS.POSUserControl
     public partial class UC_Products : UserControl
     {
         private readonly ProductController _productController;
+        private readonly UnitController _unitController;
         private readonly CategoryController _categoryController;
         private readonly SubCategoryController _subCategoryController;
+
         private string _productName = string.Empty;
         private int _selectedCategory = 0;
 
@@ -34,27 +36,36 @@ namespace client.Forms.POS.POSUserControl
             InitializeComponent();
             txtPrice.KeyPress += txtPrice_KeyPress;
             _productController = new ProductController();
+            _unitController = new UnitController();
             _categoryController = new CategoryController();
             _subCategoryController = new SubCategoryController();
-            cboCategory.SelectedIndexChanged += cboCategory_SelectedIndexChanged;
         }
 
         private async void UC_Products_Load(object sender, EventArgs e)
         {
             timer1.Start();
             AddUserControl(new UC_Beverages());
-            ActiveButton(1);
 
-            bool response = await _categoryController.Get();
-            if (response)
+            bool isInitialized = await InitializeComboboxes();
+            if (!isInitialized)
             {
-                GetCategory();
+                LoggerHelper.Write("INIT COMBOBOXES DATA", "Failed to initialize comboboxes.");
             }
+            LoggerHelper.Write("INIT COMBOBOXES DATA", "Comboboxes initialized successfully.");
         }
 
-        public void RefreshCategories()
+        private async Task<bool> InitializeComboboxes()
         {
-            GetCategory();
+            bool unitInitialized = await _unitController.Get();
+            if (unitInitialized) GetUnit();
+
+            bool categoryInitialized = await _categoryController.Get();
+            if (categoryInitialized) GetCategory();
+
+            bool subCategoryInitialized = await _subCategoryController.Get(CurrentCategory.Current?.Id ?? 0);
+            if (subCategoryInitialized) GetCategory();
+
+            return categoryInitialized && unitInitialized && subCategoryInitialized;
         }
 
         private void AddUserControl(UserControl userControl)
@@ -101,54 +112,25 @@ namespace client.Forms.POS.POSUserControl
             ActiveButton(3);
         }
 
-        private ImageCodecInfo? GetEncoder(ImageFormat format)
+        private string ConvertImageToBase64(Image image)
         {
-            return ImageCodecInfo.GetImageDecoders().FirstOrDefault(codec => codec.FormatID == format.Guid);
-        }
-
-        private byte[] GetPhoto()
-        {
-            using (MemoryStream stream = new MemoryStream())
+            try
             {
-                Image resizedImage = ResizeImage(pbImage.Image, 1024, 1024);
-
-                ImageCodecInfo? jpgEncoder = GetEncoder(ImageFormat.Jpeg);
-                EncoderParameters encoderParameters = new EncoderParameters(1);
-                encoderParameters.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 75L);
-
-                if (jpgEncoder != null)
+                using (MemoryStream ms = new MemoryStream())
                 {
-                    resizedImage.Save(stream, jpgEncoder, encoderParameters);
+                    // Convert Image to byte[]
+                    image.Save(ms, ImageFormat.Jpeg); // or use other format like PNG
+                    byte[] imageBytes = ms.ToArray();
+
+                    // Convert byte[] to base64 string
+                    return Convert.ToBase64String(imageBytes);
                 }
-                else
-                {
-                    resizedImage.Save(stream, ImageFormat.Jpeg);
-                }
-
-                return stream.ToArray();
             }
-        }
-
-        private Image ResizeImage(Image img, int maxWidth, int maxHeight)
-        {
-            if (img.Width <= maxWidth && img.Height <= maxHeight)
-                return img;
-
-            int newWidth = maxWidth;
-            int newHeight = maxHeight;
-            if (newHeight > maxHeight)
+            catch (Exception ex)
             {
-                newHeight = maxHeight;
-                newWidth = (int)((double)img.Width / img.Height * maxHeight);
+                LoggerHelper.Write("IMAGE CONVERSION", $"Error converting image to base64: {ex.Message}");
+                return string.Empty;
             }
-
-            Bitmap newImage = new Bitmap(newWidth, newHeight);
-            using (Graphics g = Graphics.FromImage(newImage))
-            {
-                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                g.DrawImage(img, 0, 0, newWidth, newHeight);
-            }
-            return newImage;
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
@@ -157,9 +139,9 @@ namespace client.Forms.POS.POSUserControl
             await Task.Delay(1);
 
             string name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtName.Text.Trim().ToLower());
-            string image = Convert.ToBase64String(GetPhoto());
+            string image = ConvertImageToBase64(pbImage.Image);
             string price = txtPrice.Text.Trim();
-            string description = txtName.Text.Trim();
+            string description = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(rtbDescription.Text.Trim()); 
 
             try
             {
@@ -172,8 +154,7 @@ namespace client.Forms.POS.POSUserControl
                     ToggleButton(true);
                     return;
                 }
-
-                int categoryId = CurrentCategory.Current.Id; 
+                int categoryId = CurrentCategory.Current.Id;
                 if (categoryId == 0)
                 {
                     MessageBox.Show("Invalid category selected.", "Validation Error",
@@ -182,7 +163,6 @@ namespace client.Forms.POS.POSUserControl
                     return;
                 }
 
-                string categoryName = CurrentCategory.Current.Name;
                 if (CurrentSubCategory.Current == null)
                 {
                     MessageBox.Show("Select a subcategory.", "Validation Error",
@@ -190,23 +170,30 @@ namespace client.Forms.POS.POSUserControl
                     ToggleButton(true);
                     return;
                 }
-
                 int subCategoryId = CurrentSubCategory.Current.catId;
-                string? subCategoryName = CurrentSubCategory.Current.scName;
+
+                if (CurrentUnit.Current == null)
+                {
+                    MessageBox.Show("Select a unit.", "Validation Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    ToggleButton(true);
+                    return;
+                }
+                int unitId = CurrentUnit.Current.unitId;
 
                 // TODO:
                 // Create a logic for create and update.
 
-                bool response = await _productController.Create(name, image, price, description, categoryName, subCategoryName);
+                bool response = await _productController.Create(name, image, price, description, categoryId, subCategoryId, unitId);
 
                 if (response)
                 {
-                    Logger.Write("RESPONSE", $"Received response: {response}");
+                    LoggerHelper.Write("RESPONSE", $"Received response: {response}");
                     ResetForm();
                 }
                 else
                 {
-                    Logger.Write("RESPONSE", $"No any response from the server.");
+                    LoggerHelper.Write("RESPONSE", $"No any response from the server.");
                 }
             }
             catch (Exception ex)
@@ -314,6 +301,11 @@ namespace client.Forms.POS.POSUserControl
             txtPrice.Text = string.Empty;
             rtbDescription.Clear();
 
+            if (cboUnit.Items.Count > 0)
+            {
+                cboUnit.SelectedIndex = 0;
+            }
+
             if (cboCategory.Items.Count > 0)
             {
                 cboCategory.SelectedIndex = 0;
@@ -377,7 +369,7 @@ namespace client.Forms.POS.POSUserControl
             }
         }
 
-        private void GetCategory()
+        public void GetCategory()
         {
             cboCategory.Items.Clear();
 
@@ -402,11 +394,13 @@ namespace client.Forms.POS.POSUserControl
             if (cboCategory.SelectedIndex == 0)
             {
                 CurrentCategory.SetCurrentCategory(null);
+                CurrentSubCategory.SetCurrentSubCategory(null);
                 return;
             }
 
             if (cboCategory.SelectedIndex == cboCategory.Items.Count - 1)
             {
+                CurrentCategory.Clear();
                 NewCategory newCategory = new NewCategory("Create Category", "Category", "Enter category name", this);
                 newCategory.ShowDialog();
                 cboCategory.SelectedIndex = 0;
@@ -431,7 +425,7 @@ namespace client.Forms.POS.POSUserControl
                     }
                     else
                     {
-                        Logger.Write("CATEGORY", "Selected category is null or has invalid ID");
+                        LoggerHelper.Write("CATEGORY", "Selected category is null or has invalid ID");
                         MessageBox.Show("Invalid category selected", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         cboCategory.SelectedIndex = 0;
@@ -450,7 +444,7 @@ namespace client.Forms.POS.POSUserControl
             }
         }
 
-        private void GetSubCategory()
+        public void GetSubCategory()
         {
             cboSubCategory.Items.Clear();
 
@@ -467,7 +461,7 @@ namespace client.Forms.POS.POSUserControl
                     }
                     else
                     {
-                        Logger.Write("SUBCATEGORY", "Skipped adding null or empty subcategory name");
+                        LoggerHelper.Write("SUBCATEGORY", "Skipped adding null or empty subcategory name");
                     }
                 }
             }
@@ -500,17 +494,17 @@ namespace client.Forms.POS.POSUserControl
             }
 
             if (cboSubCategory.SelectedIndex > 0 &&
-                CurrentSubCategory.AllSubCategories != null && 
+                CurrentSubCategory.AllSubCategories != null &&
                 (cboSubCategory.SelectedIndex - 1) < CurrentSubCategory.AllSubCategories.Count)
             {
                 try
                 {
-                    var selectedSubCategory = CurrentSubCategory.AllSubCategories[cboSubCategory.SelectedIndex - 1]; 
+                    var selectedSubCategory = CurrentSubCategory.AllSubCategories[cboSubCategory.SelectedIndex - 1];
                     CurrentSubCategory.SetCurrentSubCategory(selectedSubCategory);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error selecting subcategory: " + ex.Message, "Error", 
+                    MessageBox.Show("Error selecting subcategory: " + ex.Message, "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     cboSubCategory.SelectedIndex = 0;
                 }
@@ -518,6 +512,82 @@ namespace client.Forms.POS.POSUserControl
             else
             {
                 cboSubCategory.SelectedIndex = 0;
+            }
+        }
+
+        public void GetUnit()
+        {
+            cboUnit.Items.Clear();
+
+            cboUnit.Items.Add("Select Unit");
+
+            var units = CurrentUnit.AllUnit;
+            if (units != null && units.Count > 0)
+            {
+                foreach (var unit in units)
+                {
+                    if (unit != null && unit.unitName != null)
+                    {
+                        cboUnit.Items.Add(unit.unitName);
+                    }
+                    else
+                    {
+                        LoggerHelper.Write("UNIT", "Skipped adding null or empty unit name");
+                    }
+                }
+            }
+
+            cboUnit.Items.Add("+ Add Unit");
+
+            cboUnit.SelectedIndex = 0;
+        }
+
+
+        private void cboUnit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboUnit.SelectedIndex == 0)
+            {
+                CurrentUnit.SetCurrentUnit(null);
+                return;
+            }
+
+            if (cboUnit.SelectedIndex == cboUnit.Items.Count - 1)
+            {
+                NewCategory newUnit = new NewCategory("Create Unit", "Unit", "Enter unit name", this);
+                newUnit.ShowDialog();
+                cboUnit.SelectedIndex = 0;
+                return;
+            }
+
+            if (cboUnit.SelectedIndex > 0 &&
+                CurrentUnit.AllUnit != null &&
+                (cboUnit.SelectedIndex - 1) < CurrentUnit.AllUnit.Count)
+            {
+                try
+                {
+                    var selectedUnit = CurrentUnit.AllUnit[cboUnit.SelectedIndex - 1];
+                    if (selectedUnit != null && selectedUnit.unitId > 0) 
+                    {
+                        CurrentUnit.SetCurrentUnit(selectedUnit);
+                    }
+                    else
+                    {
+                        LoggerHelper.Write("UNIT", "Selected unit is null or has invalid ID");
+                        MessageBox.Show("Invalid unit selected", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        cboUnit.SelectedIndex = 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error selecting unit: " + ex.Message, "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cboUnit.SelectedIndex = 0; 
+                }
+            }
+            else
+            {
+                cboUnit.SelectedIndex = 0; 
             }
         }
     }
