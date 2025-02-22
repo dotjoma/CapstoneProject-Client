@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using client.Controls.Products;
+using client.Helpers;
 
 namespace client.Controls.Products
 {
@@ -68,17 +69,36 @@ namespace client.Controls.Products
             // PictureBox for product image
             var picProductImage = new PictureBox
             {
-                Image = Image.FromFile(product.ImagePath),
-                SizeMode = PictureBoxSizeMode.StretchImage,
                 Width = 140,
                 Height = 90,
-                Location = new Point(40, 15)
+                Location = new Point(40, 15),
+                SizeMode = PictureBoxSizeMode.StretchImage
             };
+
+            try
+            {
+                if (!string.IsNullOrEmpty(product.productImage))
+                {
+                    LoggerHelper.Write("IMAGE CONVERSION", $"Original string start: {product.productImage.Substring(0, Math.Min(100, product.productImage.Length))}");
+
+                    Image? convertedImage = ConvertBase64ToImage(product.productImage);
+                    picProductImage.Image = convertedImage ?? Properties.Resources.Add_Image;
+                }
+                else
+                {
+                    picProductImage.Image = Properties.Resources.Add_Image;
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerHelper.Write("PRODUCT DISPLAY", $"Error loading image for product {product.productId}: {ex.Message}");
+                picProductImage.Image = Properties.Resources.Add_Image;
+            }
 
             // Label for product name
             var lblProductName = new Label
             {
-                Text = product.Name,
+                Text = product.productName,
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
                 AutoSize = false,
                 TextAlign = ContentAlignment.MiddleLeft,
@@ -90,7 +110,7 @@ namespace client.Controls.Products
             // Label for product description
             var lblDescription = new Label
             {
-                Text = product.Description,
+                Text = product.productDesc, // Updated to use productDesc
                 Font = new Font("Segoe UI", 8, FontStyle.Regular),
                 AutoSize = false,
                 Height = 40,
@@ -103,7 +123,7 @@ namespace client.Controls.Products
             // Label for product price
             var lblPrice = new Label
             {
-                Text = "₱ " + product.Price.ToString("F2"),
+                Text = "₱ " + product.productPrice.ToString("F2"), // Updated to use productPrice
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
                 ForeColor = Color.FromArgb(73, 54, 40),
                 AutoSize = false,
@@ -147,12 +167,42 @@ namespace client.Controls.Products
             cardPanel.Controls.Add(btnAddToCart);
             cardPanel.Controls.Add(pnlBackground);
 
+            pnlBackground.SendToBack(); // Ensure background is behind other controls
+
             return cardPanel;
         }
 
         private void HandleAddToCart(Product product)
         {
-            MessageBox.Show($"Added Id:{product.Id} Name:{product.Name} Price:{product.Price} to cart!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(
+                $"Added Id:{product.productId} Name:{product.productName} Price:{product.productPrice} to cart!",
+                "Success",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+        }
+
+        private Image? ConvertBase64ToImage(string? base64String)
+        {
+            if (string.IsNullOrEmpty(base64String))
+                return null;
+
+            try
+            {
+                // Convert base64 string to byte array
+                byte[] imageBytes = Convert.FromBase64String(base64String);
+
+                // Convert byte array to Image
+                using (var ms = new MemoryStream(imageBytes))
+                {
+                    return Image.FromStream(ms);
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerHelper.Write("IMAGE CONVERSION", $"Error converting base64 to image: {ex.Message}");
+                return null;
+            }
         }
     }
 }
