@@ -186,7 +186,7 @@ namespace client.Network
                     }
 
                     // Wait for response with timeout
-                    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30)); // Increased timeout
+                    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
                     using var memoryStream = new MemoryStream();
                     byte[] buffer = new byte[bufferSize];
 
@@ -195,11 +195,10 @@ namespace client.Network
                         while (true)
                         {
                             int bytesRead = await networkStream.ReadAsync(buffer, 0, buffer.Length, cts.Token);
-                            if (bytesRead == 0) break; // End of stream
+                            if (bytesRead == 0) break;
 
                             await memoryStream.WriteAsync(buffer.AsMemory(0, bytesRead), cts.Token);
 
-                            // Check if we've reached the end of the JSON message (marked by newline)
                             if (buffer[bytesRead - 1] == '\n')
                             {
                                 break;
