@@ -67,7 +67,9 @@ namespace client.Controls.Manage
             // PictureBox for product image
             var picProductImage = new PictureBox
             {
-                Image = Image.FromFile(product.ImagePath),
+                Image = string.IsNullOrEmpty(product.productImage)
+                    ? Properties.Resources.Add_Image
+                    : Image.FromStream(new MemoryStream(Convert.FromBase64String(product.productImage))),
                 SizeMode = PictureBoxSizeMode.StretchImage,
                 Width = 140,
                 Height = 90,
@@ -77,7 +79,7 @@ namespace client.Controls.Manage
             // Label for product name
             var lblProductName = new Label
             {
-                Text = product.Name,
+                Text = product.productName,
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
                 AutoSize = false,
                 TextAlign = ContentAlignment.MiddleLeft,
@@ -89,7 +91,7 @@ namespace client.Controls.Manage
             // Label for product description
             var lblDescription = new Label
             {
-                Text = product.Description,
+                Text = product.productDesc,
                 Font = new Font("Segoe UI", 8, FontStyle.Regular),
                 AutoSize = false,
                 Height = 40,
@@ -102,7 +104,7 @@ namespace client.Controls.Manage
             // Label for product price
             var lblPrice = new Label
             {
-                Text = "₱ " + product.Price.ToString("F2"),
+                Text = "₱ " + product.productPrice.ToString("F2"),
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
                 ForeColor = Color.FromArgb(73, 54, 40),
                 AutoSize = false,
@@ -151,7 +153,7 @@ namespace client.Controls.Manage
 
         private void HandleAddToCart(Product product)
         {
-            MessageBox.Show($"Added Id:{product.Id} Name:{product.Name} Price:{product.Price} to cart!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Added Id:{product.productId} Name:{product.productName} Price:{product.productPrice} to cart!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
