@@ -13,5 +13,7 @@ namespace client.Models
         public string? productDesc { get; set; }
         public decimal productPrice { get; set; }
         public string? productImage { get; set; }
+
+        public Image? ProductImageObject { get; set; }
     }
 }
