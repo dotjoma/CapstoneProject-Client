@@ -62,7 +62,7 @@
             pnlHeader.Dock = DockStyle.Top;
             pnlHeader.Location = new Point(0, 0);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Size = new Size(1200, 64);
+            pnlHeader.Size = new Size(1024, 64);
             pnlHeader.TabIndex = 3;
             pnlHeader.MouseDown += pnlHeader_MouseDown;
             pnlHeader.MouseMove += pnlHeader_MouseMove;
@@ -101,7 +101,7 @@
             btnMinimize.ForeColor = Color.White;
             btnMinimize.Image = Properties.Resources.Minimize_Window;
             btnMinimize.ImageSize = new Size(30, 30);
-            btnMinimize.Location = new Point(1122, 17);
+            btnMinimize.Location = new Point(946, 17);
             btnMinimize.Name = "btnMinimize";
             btnMinimize.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnMinimize.Size = new Size(30, 30);
@@ -122,7 +122,7 @@
             btnCloseWindow.ForeColor = Color.White;
             btnCloseWindow.Image = Properties.Resources.Close_Window;
             btnCloseWindow.ImageSize = new Size(30, 30);
-            btnCloseWindow.Location = new Point(1158, 17);
+            btnCloseWindow.Location = new Point(982, 17);
             btnCloseWindow.Name = "btnCloseWindow";
             btnCloseWindow.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnCloseWindow.Size = new Size(30, 30);
@@ -139,7 +139,7 @@
             panel2.Dock = DockStyle.Left;
             panel2.Location = new Point(0, 64);
             panel2.Name = "panel2";
-            panel2.Size = new Size(89, 817);
+            panel2.Size = new Size(89, 704);
             panel2.TabIndex = 4;
             // 
             // btnProducts
@@ -225,14 +225,14 @@
             pnlContainer.Dock = DockStyle.Fill;
             pnlContainer.Location = new Point(89, 64);
             pnlContainer.Name = "pnlContainer";
-            pnlContainer.Size = new Size(1111, 817);
+            pnlContainer.Size = new Size(935, 704);
             pnlContainer.TabIndex = 5;
             // 
             // POS_MainMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1200, 881);
+            ClientSize = new Size(1024, 768);
             Controls.Add(pnlContainer);
             Controls.Add(panel2);
             Controls.Add(pnlHeader);

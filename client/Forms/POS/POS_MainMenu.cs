@@ -13,19 +13,18 @@ using client.Services.Auth;
 using client.Models;
 using client.Controllers;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using client.Forms.Order;
 
 namespace client.Forms.POS
 {
     public partial class POS_MainMenu : Form
     {
-        private readonly CategoryController _categoryController;
         private Point dragOffset;
         private bool isDragging = false;
 
         public POS_MainMenu()
         {
             InitializeComponent();
-            _categoryController = new CategoryController();
         }
 
         private void POS_MainMenu_Load(object sender, EventArgs e)
@@ -50,6 +49,17 @@ namespace client.Forms.POS
 
         }
 
+        public void AddFormToPanel(Form form)
+        {
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+
+            pnlContainer.Controls.Clear();
+            pnlContainer.Controls.Add(form);
+            form.Show();
+        }
+
         public void AddUserControl(UserControl userControl)
         {
             userControl.Dock = DockStyle.Fill;
@@ -72,7 +82,7 @@ namespace client.Forms.POS
 
         private void btnPos_Click(object sender, EventArgs e)
         {
-            AddUserControl(new UC_Pos());
+            AddFormToPanel(new OrderEntryForm());
             ActiveButton(1);
         }
 

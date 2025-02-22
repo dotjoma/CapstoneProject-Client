@@ -146,7 +146,7 @@
             guna2Panel1.Location = new Point(0, 0);
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            guna2Panel1.Size = new Size(1200, 34);
+            guna2Panel1.Size = new Size(1024, 34);
             guna2Panel1.TabIndex = 0;
             // 
             // btnMinimizeWindow
@@ -162,7 +162,7 @@
             btnMinimizeWindow.ForeColor = Color.White;
             btnMinimizeWindow.Image = Properties.Resources.Minimize_Window_White;
             btnMinimizeWindow.ImageSize = new Size(25, 25);
-            btnMinimizeWindow.Location = new Point(1125, 5);
+            btnMinimizeWindow.Location = new Point(949, 5);
             btnMinimizeWindow.Name = "btnMinimizeWindow";
             btnMinimizeWindow.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnMinimizeWindow.Size = new Size(25, 25);
@@ -183,7 +183,7 @@
             btnMaximizeWindow.ForeColor = Color.White;
             btnMaximizeWindow.Image = Properties.Resources.Full_Screen;
             btnMaximizeWindow.ImageSize = new Size(25, 25);
-            btnMaximizeWindow.Location = new Point(1149, 5);
+            btnMaximizeWindow.Location = new Point(973, 5);
             btnMaximizeWindow.Name = "btnMaximizeWindow";
             btnMaximizeWindow.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnMaximizeWindow.Size = new Size(25, 25);
@@ -204,7 +204,7 @@
             btnCloseWindow.ForeColor = Color.White;
             btnCloseWindow.Image = Properties.Resources.Close_Window_White;
             btnCloseWindow.ImageSize = new Size(25, 25);
-            btnCloseWindow.Location = new Point(1173, 5);
+            btnCloseWindow.Location = new Point(997, 5);
             btnCloseWindow.Name = "btnCloseWindow";
             btnCloseWindow.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnCloseWindow.Size = new Size(25, 25);
@@ -236,7 +236,7 @@
             pnlButtons.Location = new Point(0, 34);
             pnlButtons.Name = "pnlButtons";
             pnlButtons.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            pnlButtons.Size = new Size(1200, 85);
+            pnlButtons.Size = new Size(1024, 85);
             pnlButtons.TabIndex = 1;
             // 
             // panel1
@@ -250,7 +250,7 @@
             panel1.Dock = DockStyle.Bottom;
             panel1.Location = new Point(0, 25);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1200, 60);
+            panel1.Size = new Size(1024, 60);
             panel1.TabIndex = 7;
             // 
             // btnNotification
@@ -368,7 +368,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, exitToolStripMenuItem, reservationToolStripMenuItem, administrationToolStripMenuItem, reportsToolStripMenuItem, refreshToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1200, 24);
+            menuStrip1.Size = new Size(1024, 24);
             menuStrip1.TabIndex = 8;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -770,7 +770,7 @@
             pnlContainer.Dock = DockStyle.Fill;
             pnlContainer.Location = new Point(0, 119);
             pnlContainer.Name = "pnlContainer";
-            pnlContainer.Size = new Size(1200, 762);
+            pnlContainer.Size = new Size(1024, 649);
             pnlContainer.TabIndex = 2;
             // 
             // bgwDashboard
@@ -791,7 +791,7 @@
             AutoScaleDimensions = new SizeF(8F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1200, 881);
+            ClientSize = new Size(1024, 768);
             Controls.Add(pnlContainer);
             Controls.Add(pnlButtons);
             Controls.Add(guna2Panel1);

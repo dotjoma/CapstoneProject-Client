@@ -29,26 +29,29 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             btnFastFood = new Guna.UI2.WinForms.Guna2Button();
             btnMainCourse = new Guna.UI2.WinForms.Guna2Button();
             btnBeverages = new Guna.UI2.WinForms.Guna2Button();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            panel2 = new Panel();
             lblDate = new Label();
             lblDateTime = new Label();
             label1 = new Label();
+            panel1 = new Panel();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             pnlContainer = new Panel();
             timer1 = new System.Windows.Forms.Timer(components);
+            cartPanel = new FlowLayoutPanel();
             guna2Panel1.SuspendLayout();
             guna2Panel2.SuspendLayout();
             SuspendLayout();
@@ -57,7 +60,7 @@
             // 
             btnFastFood.BorderRadius = 5;
             btnFastFood.CheckedState.ForeColor = Color.White;
-            btnFastFood.CustomizableEdges = customizableEdges1;
+            btnFastFood.CustomizableEdges = customizableEdges11;
             btnFastFood.DisabledState.BorderColor = Color.DarkGray;
             btnFastFood.DisabledState.CustomBorderColor = Color.DarkGray;
             btnFastFood.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -67,7 +70,7 @@
             btnFastFood.ForeColor = Color.FromArgb(98, 87, 87);
             btnFastFood.Location = new Point(253, 49);
             btnFastFood.Name = "btnFastFood";
-            btnFastFood.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnFastFood.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnFastFood.Size = new Size(110, 45);
             btnFastFood.TabIndex = 10;
             btnFastFood.Text = "Fast Food";
@@ -77,7 +80,7 @@
             // 
             btnMainCourse.BorderRadius = 5;
             btnMainCourse.CheckedState.ForeColor = Color.White;
-            btnMainCourse.CustomizableEdges = customizableEdges3;
+            btnMainCourse.CustomizableEdges = customizableEdges13;
             btnMainCourse.DisabledState.BorderColor = Color.DarkGray;
             btnMainCourse.DisabledState.CustomBorderColor = Color.DarkGray;
             btnMainCourse.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -87,7 +90,7 @@
             btnMainCourse.ForeColor = Color.FromArgb(98, 87, 87);
             btnMainCourse.Location = new Point(137, 49);
             btnMainCourse.Name = "btnMainCourse";
-            btnMainCourse.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnMainCourse.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btnMainCourse.Size = new Size(110, 45);
             btnMainCourse.TabIndex = 9;
             btnMainCourse.Text = "Main Course";
@@ -97,7 +100,7 @@
             // 
             btnBeverages.BorderRadius = 5;
             btnBeverages.CheckedState.ForeColor = Color.White;
-            btnBeverages.CustomizableEdges = customizableEdges5;
+            btnBeverages.CustomizableEdges = customizableEdges15;
             btnBeverages.DisabledState.BorderColor = Color.DarkGray;
             btnBeverages.DisabledState.CustomBorderColor = Color.DarkGray;
             btnBeverages.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -107,7 +110,7 @@
             btnBeverages.ForeColor = Color.FromArgb(98, 87, 87);
             btnBeverages.Location = new Point(21, 49);
             btnBeverages.Name = "btnBeverages";
-            btnBeverages.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnBeverages.ShadowDecoration.CustomizableEdges = customizableEdges16;
             btnBeverages.Size = new Size(110, 45);
             btnBeverages.TabIndex = 8;
             btnBeverages.Text = "Beverages";
@@ -116,18 +119,29 @@
             // guna2Panel1
             // 
             guna2Panel1.BackColor = Color.FromArgb(249, 249, 249);
+            guna2Panel1.Controls.Add(cartPanel);
+            guna2Panel1.Controls.Add(panel2);
             guna2Panel1.Controls.Add(lblDate);
             guna2Panel1.Controls.Add(lblDateTime);
             guna2Panel1.Controls.Add(label1);
+            guna2Panel1.Controls.Add(panel1);
             guna2Panel1.CustomBorderColor = Color.LightGray;
             guna2Panel1.CustomBorderThickness = new Padding(1, 0, 0, 0);
-            guna2Panel1.CustomizableEdges = customizableEdges7;
+            guna2Panel1.CustomizableEdges = customizableEdges17;
             guna2Panel1.Dock = DockStyle.Right;
             guna2Panel1.Location = new Point(1040, 0);
             guna2Panel1.Name = "guna2Panel1";
-            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges18;
             guna2Panel1.Size = new Size(315, 817);
             guna2Panel1.TabIndex = 16;
+            // 
+            // panel2
+            // 
+            panel2.Dock = DockStyle.Bottom;
+            panel2.Location = new Point(0, 689);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(315, 128);
+            panel2.TabIndex = 7;
             // 
             // lblDate
             // 
@@ -158,6 +172,14 @@
             label1.TabIndex = 3;
             label1.Text = "Save Menu Item";
             // 
+            // panel1
+            // 
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(315, 119);
+            panel1.TabIndex = 6;
+            // 
             // guna2Panel2
             // 
             guna2Panel2.Controls.Add(btnBeverages);
@@ -165,11 +187,11 @@
             guna2Panel2.Controls.Add(btnFastFood);
             guna2Panel2.CustomBorderColor = Color.LightGray;
             guna2Panel2.CustomBorderThickness = new Padding(0, 0, 0, 1);
-            guna2Panel2.CustomizableEdges = customizableEdges9;
+            guna2Panel2.CustomizableEdges = customizableEdges19;
             guna2Panel2.Dock = DockStyle.Top;
             guna2Panel2.Location = new Point(0, 0);
             guna2Panel2.Name = "guna2Panel2";
-            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges20;
             guna2Panel2.Size = new Size(1040, 119);
             guna2Panel2.TabIndex = 17;
             // 
@@ -184,6 +206,15 @@
             // timer1
             // 
             timer1.Tick += timer1_Tick;
+            // 
+            // cartPanel
+            // 
+            cartPanel.BackColor = Color.LightGray;
+            cartPanel.Dock = DockStyle.Fill;
+            cartPanel.Location = new Point(0, 119);
+            cartPanel.Name = "cartPanel";
+            cartPanel.Size = new Size(315, 570);
+            cartPanel.TabIndex = 8;
             // 
             // UC_Pos
             // 
@@ -213,5 +244,8 @@
         private Label lblDateTime;
         private Label label1;
         private System.Windows.Forms.Timer timer1;
+        private Panel panel1;
+        private Panel panel2;
+        private FlowLayoutPanel cartPanel;
     }
 }

@@ -13,6 +13,9 @@
     <Compile Update="Forms\MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Order\OrderEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\POS\POSUserControl\PosFoodCategory\UC_Beverages.cs">
       <SubType>UserControl</SubType>
     </Compile>

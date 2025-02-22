@@ -16,27 +16,9 @@ namespace client.Forms.POS.POSUserControl.FoodCategory
 {
     public partial class UC_MainCourse : UserControl
     {
-        private readonly ProductController _productController;
         public UC_MainCourse()
         {
             InitializeComponent();
-            _productController = new ProductController();
-            LoadProducts();
-        }
-
-        private async void LoadProducts()
-        {
-            var productController = new ProductController();
-            if (await productController.Get())
-            {
-                pnlContainer.Controls.Clear();
-
-                var productDisplay = new Display(CurrentProduct.AllProduct)
-                {
-                    Dock = DockStyle.Fill
-                };
-                pnlContainer.Controls.Add(productDisplay);
-            }
         }
     }
 }
