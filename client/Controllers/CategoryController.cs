@@ -42,7 +42,7 @@ namespace client.Controllers
             {
                 if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                 {
-                    Logger.Write("CREATE CATEGORY", $"Category '{name}' created successfully");
+                    LoggerHelper.Write("CREATE CATEGORY", $"Category '{name}' created successfully");
 
                     return true;
                 }
@@ -53,7 +53,7 @@ namespace client.Controllers
                         ? response.Data["message"]
                         : "Unknown error occurred while creating category";
 
-                    Logger.Write("CREATE CATEGORY", $"Server error: {errorMessage}");
+                    LoggerHelper.Write("CREATE CATEGORY", $"Server error: {errorMessage}");
                     MessageBox.Show($"Failed to create category: {errorMessage}", "Category Creation Failed",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -62,7 +62,7 @@ namespace client.Controllers
             }
             else
             {
-                Logger.Write("CREATE CATEGORY", "Invalid server response format");
+                LoggerHelper.Write("CREATE CATEGORY", "Invalid server response format");
                 MessageBox.Show("Server returned an invalid response format while creating category.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -82,7 +82,7 @@ namespace client.Controllers
             {
                 MessageBox.Show("No response received from server", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Logger.Write("RESPONSE", $"No response received from server");
+                LoggerHelper.Write("RESPONSE", $"No response received from server");
                 return false;
             }
 
@@ -98,7 +98,7 @@ namespace client.Controllers
 
                     CurrentCategory.SetCategories(categories ?? new List<Category>());
 
-                    Logger.Write("GET CATEGORY", categories?.Count > 0
+                    LoggerHelper.Write("GET CATEGORY", categories?.Count > 0
                         ? $"Retrieved {categories.Count} categories successfully"
                         : "No categories found");
 
