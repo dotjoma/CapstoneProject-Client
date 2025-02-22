@@ -12,6 +12,10 @@ using System.Drawing;
 using System.Windows.Forms;
 using client.Controls.Products;
 using client.Helpers;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using client.Forms.POS.POSUserControl;
+using client.Forms.Order;
+using System.Reflection;
 
 namespace client.Controls.Products
 {
@@ -22,6 +26,7 @@ namespace client.Controls.Products
 
         public Display(List<Product> products)
         {
+
             flowPanel = new FlowLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -43,7 +48,6 @@ namespace client.Controls.Products
 
             gunaScrollBar.BindingContainer = flowPanel;
 
-            // Add product cards to the FlowLayoutPanel
             foreach (var product in products)
             {
                 var productCard = CreateProductCard(product);
@@ -56,17 +60,15 @@ namespace client.Controls.Products
 
         private Panel CreateProductCard(Product product)
         {
-            // Card config
             var cardPanel = new Panel
             {
                 Width = 220,
-                Height = 270,
+                Height = 240,
                 BackColor = Color.White,
                 Margin = new Padding(10),
-                Padding = new Padding(10)
+                Padding = new Padding(10),
             };
 
-            // PictureBox for product image
             var picProductImage = new PictureBox
             {
                 Width = 140,
@@ -82,6 +84,7 @@ namespace client.Controls.Products
                     LoggerHelper.Write("IMAGE CONVERSION", $"Original string start: {product.productImage.Substring(0, Math.Min(100, product.productImage.Length))}");
 
                     Image? convertedImage = ConvertBase64ToImage(product.productImage);
+                    product.ProductImageObject = convertedImage;
                     picProductImage.Image = convertedImage ?? Properties.Resources.Add_Image;
                 }
                 else
@@ -95,7 +98,6 @@ namespace client.Controls.Products
                 picProductImage.Image = Properties.Resources.Add_Image;
             }
 
-            // Label for product name
             var lblProductName = new Label
             {
                 Text = product.productName,
@@ -107,10 +109,9 @@ namespace client.Controls.Products
                 Left = 5
             };
 
-            // Label for product description
             var lblDescription = new Label
             {
-                Text = product.productDesc, // Updated to use productDesc
+                Text = product.productDesc,
                 Font = new Font("Segoe UI", 8, FontStyle.Regular),
                 AutoSize = false,
                 Height = 40,
@@ -120,10 +121,9 @@ namespace client.Controls.Products
                 Left = 6
             };
 
-            // Label for product price
             var lblPrice = new Label
             {
-                Text = "₱ " + product.productPrice.ToString("F2"), // Updated to use productPrice
+                Text = "₱ " + product.productPrice.ToString("F2"),
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
                 ForeColor = Color.FromArgb(73, 54, 40),
                 AutoSize = false,
@@ -133,25 +133,6 @@ namespace client.Controls.Products
                 Left = 5
             };
 
-            // Button for "Add to Cart"
-            var btnAddToCart = new Guna2Button
-            {
-                Text = "Add to Cart",
-                Dock = DockStyle.Bottom,
-                FillColor = Color.FromArgb(214, 192, 179),
-                Image = Properties.Resources.ShoppingBagBR,
-                Tag = product
-            };
-            btnAddToCart.HoverState.FillColor = Color.FromArgb(73, 54, 40);
-            btnAddToCart.Click += (sender, e) =>
-            {
-                if (sender is Guna2Button clickedButton &&
-                    clickedButton.Tag is Product selectedProduct)
-                {
-                    HandleAddToCart(selectedProduct);
-                }
-            };
-
             var pnlBackground = new Panel
             {
                 Dock = DockStyle.Top,
@@ -159,40 +140,87 @@ namespace client.Controls.Products
                 BackColor = Color.FromArgb(214, 192, 179)
             };
 
-            // Add controls to the card panel
             cardPanel.Controls.Add(picProductImage);
             cardPanel.Controls.Add(lblProductName);
             cardPanel.Controls.Add(lblDescription);
             cardPanel.Controls.Add(lblPrice);
-            cardPanel.Controls.Add(btnAddToCart);
             cardPanel.Controls.Add(pnlBackground);
 
-            pnlBackground.SendToBack(); // Ensure background is behind other controls
+            ApplyHover(cardPanel);
+            ApplyHover(picProductImage);
+            ApplyHover(lblProductName);
+            ApplyHover(lblDescription);
+            ApplyHover(lblPrice);
+            ApplyHover(pnlBackground);
+
+            cardPanel.Tag = product;
+            picProductImage.Tag = product;
+            lblProductName.Tag = product;
+            lblDescription.Tag = product;
+            lblPrice.Tag = product;
+            pnlBackground.Tag = product;
+
+            AttachClickEvent(cardPanel);
+            AttachClickEvent(picProductImage);
+            AttachClickEvent(lblProductName);
+            AttachClickEvent(lblDescription);
+            AttachClickEvent(lblPrice);
+            AttachClickEvent(pnlBackground);
+
+            pnlBackground.SendToBack();
 
             return cardPanel;
         }
 
+        void ApplyHover(Control control)
+        {
+            control.MouseEnter += (o, e) => Cursor = Cursors.Hand;
+            control.MouseLeave += (o, e) => Cursor = Cursors.Default;
+        }
+
+        void AttachClickEvent(Control control)
+        {
+            control.Click += (sender, e) =>
+            {
+                if (sender is Control clickedControl && clickedControl.Tag is Product selectedProduct)
+                {
+                    HandleAddToCart(selectedProduct);
+                }
+            };
+        }
+
         private void HandleAddToCart(Product product)
         {
-            MessageBox.Show(
-                $"Added Id:{product.productId} Name:{product.productName} Price:{product.productPrice} to cart!",
-                "Success",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            );
+            var orderEntryForm = Application.OpenForms["OrderEntryForm"] as OrderEntryForm;
+
+            if (orderEntryForm != null)
+            {
+                if (!string.IsNullOrEmpty(product.productImage))
+                {
+                    product.ProductImageObject = ConvertBase64ToImage(product.productImage);
+                }
+
+                orderEntryForm.AddCartItem(product);
+            }
+            else
+            {
+                MessageBox.Show("Order Entry Form is not open!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
+
 
         private Image? ConvertBase64ToImage(string? base64String)
         {
             if (string.IsNullOrEmpty(base64String))
                 return null;
 
+            LoggerHelper.Write("BASE64 LENGTH", $"Base64 string length: {base64String.Length}");
+            LoggerHelper.Write("BASE64 END", $"Base64 string end: {base64String.Substring(Math.Max(0, base64String.Length - 50))}");
+
             try
             {
-                // Convert base64 string to byte array
                 byte[] imageBytes = Convert.FromBase64String(base64String);
 
-                // Convert byte array to Image
                 using (var ms = new MemoryStream(imageBytes))
                 {
                     return Image.FromStream(ms);
