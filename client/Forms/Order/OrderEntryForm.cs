@@ -18,9 +18,13 @@ namespace client.Forms.Order
     {
         private FlowLayoutPanel cartContainerPanel;
 
+        public static OrderEntryForm? Instance { get; private set; }
+
         public OrderEntryForm()
         {
             InitializeComponent();
+            Instance = this;
+            this.FormClosed += OrderEntryForm_FormClosed;
             LoadProducts();
             this.Name = "OrderEntryForm";
 
@@ -90,7 +94,7 @@ namespace client.Forms.Order
                 BackColor = Color.White,
                 Padding = new Padding(5),
                 Margin = new Padding(5),
-                BorderStyle = BorderStyle.FixedSingle,
+                BorderStyle = BorderStyle.None,
                 Tag = product
             };
 
@@ -103,7 +107,6 @@ namespace client.Forms.Order
                 Image = product.ProductImageObject ?? Properties.Resources.Add_Image
             };
 
-            // Replace TableLayoutPanel with direct Label positioning
             var lblProductName = new Label
             {
                 Text = product.productName,
@@ -128,32 +131,90 @@ namespace client.Forms.Order
                 Name = "lblQuantity",
                 Text = "Qty: 1",
                 AutoSize = true,
-                Location = new Point(75, 45),
+                Location = new Point(95, 45),
                 Font = new Font("Segoe UI", 9, FontStyle.Regular),
-                ForeColor = Color.Blue,
+                ForeColor = Color.Black,
                 TextAlign = ContentAlignment.MiddleLeft
+            };
+
+            var btnMinus = new Button
+            {
+                Name = "btnMinus",
+                Text = "−", // Unicode minus sign for better alignment
+                Width = 24,
+                Height = 24,
+                Location = new Point(70, 42),
+                Font = new Font("Segoe UI", 10, FontStyle.Bold), // Slightly bigger font for clarity
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.FromArgb(214, 192, 179),
+                Cursor = Cursors.Hand // Changes cursor to hand when hovered
+            };
+
+            // Prevents resizing on click
+            btnMinus.FlatAppearance.BorderSize = 0;
+            btnMinus.FlatAppearance.MouseDownBackColor = Color.FromArgb(190, 170, 160); // Slightly darker when clicked
+            btnMinus.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 204, 192); // Lighter on hover
+
+            var btnPlus = new Button
+            {
+                Name = "btnPlus",
+                Text = "+",
+                Width = 24,
+                Height = 24,
+                Location = new Point(150, 42),
+                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.FromArgb(214, 192, 179),
+                Cursor = Cursors.Hand
+            };
+
+            // Prevents resizing on click
+            btnPlus.FlatAppearance.BorderSize = 0;
+            btnPlus.FlatAppearance.MouseDownBackColor = Color.FromArgb(190, 170, 160);
+            btnPlus.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 204, 192);
+
+            btnPlus.Click += (sender, e) =>
+            {
+                int currentQuantity = int.Parse(lblQuantity.Text.Replace("Qty: ", ""));
+                lblQuantity.Text = $"Qty: {currentQuantity + 1}";
+            };
+
+            btnMinus.Click += (sender, e) =>
+            {
+                int currentQuantity = int.Parse(lblQuantity.Text.Replace("Qty: ", ""));
+                if (currentQuantity > 1)
+                {
+                    lblQuantity.Text = $"Qty: {currentQuantity - 1}";
+                }
             };
 
             var btnRemove = new Button
             {
+                Name = "btnRemove",
                 Text = "X",
-                Width = 30,
-                Height = 30,
-                Location = new Point(cartItem.Width - 40, 25),
+                Width = 25,
+                Height = 25,
                 BackColor = Color.Red,
                 ForeColor = Color.White,
-                FlatStyle = FlatStyle.Flat
+                FlatStyle = FlatStyle.Flat,
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                Cursor = Cursors.Hand,
+                FlatAppearance = { BorderSize = 0 }
             };
 
-            btnRemove.Click += (s, e) =>
-            {
-                cartContainerPanel.Controls.Remove(cartItem);
-            };
+            btnRemove.Location = new Point(cartItem.Width - btnRemove.Width - 5, 5);
+            btnRemove.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+
+            btnRemove.Click += (s, e) => cartContainerPanel.Controls.Remove(cartItem);
 
             cartItem.Controls.Add(picProductImage);
             cartItem.Controls.Add(lblProductName);
             cartItem.Controls.Add(lblPrice);
             cartItem.Controls.Add(lblQuantity);
+            cartItem.Controls.Add(btnMinus);
+            cartItem.Controls.Add(btnPlus);
             cartItem.Controls.Add(btnRemove);
 
             cartContainerPanel.Controls.Add(cartItem);
@@ -179,6 +240,11 @@ namespace client.Forms.Order
         {
             lblDateTime.Text = $"{DateTime.Now.ToString("dddd")}, {DateTime.Now.ToString("hh:mm:ss tt").ToUpper()}";
             lblDate.Text = DateTime.Now.ToString("MMM dd, yyyy");
+        }
+
+        private void OrderEntryForm_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            Instance = null;
         }
     }
 }
