@@ -211,7 +211,6 @@
             btnPos.Font = new Font("Segoe UI", 9F);
             btnPos.ForeColor = Color.White;
             btnPos.HoverState.FillColor = Color.Transparent;
-            btnPos.Image = Properties.Resources.Cash_Register;
             btnPos.ImageSize = new Size(35, 35);
             btnPos.Location = new Point(0, 0);
             btnPos.Name = "btnPos";
