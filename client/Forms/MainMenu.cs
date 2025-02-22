@@ -2,6 +2,7 @@
 using client.Forms.Loading;
 using client.Forms.POS;
 using client.Forms.UserControll;
+using client.Helpers;
 using client.Services;
 using client.Services.Auth;
 using System;
@@ -23,8 +24,19 @@ namespace client.Forms
         public MainMenu()
         {
             InitializeComponent();
+            InitializeToolTip();
             _authController = new AuthController();
             this.Shown += MainMenu_Shown;
+        }
+
+        private void InitializeToolTip()
+        {
+            toolTip1.SetToolTip(btnMinimizeWindow, "Minimize the application");
+            toolTip1.SetToolTip(btnMaximizeWindow, "Maximize the application");
+            toolTip1.SetToolTip(btnCloseWindow, "Close the application");
+            toolTip1.SetToolTip(btnDashboard, "Home");
+            toolTip1.SetToolTip(btnPos, "POS");
+            toolTip1.SetToolTip(btnNotification, "Notification");
         }
 
         private void MainMenu_Load(object sender, EventArgs e)
@@ -53,35 +65,24 @@ namespace client.Forms
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            ActiveButton(1);
             bgwDashboard.RunWorkerAsync();
         }
 
         private void btnPos_Click(object sender, EventArgs e)
         {
-            ActiveButton(2);
             this.Hide();
             new POS_MainMenu().Show();
         }
 
         private void btnInventory_Click(object sender, EventArgs e)
         {
-            ActiveButton(3);
             UC_Inventory uc = new UC_Inventory();
             AddUserControl(uc);
         }
 
         private void btnReservation_Click(object sender, EventArgs e)
         {
-            ActiveButton(4);
             UC_Reservation uc = new UC_Reservation();
-            AddUserControl(uc);
-        }
-
-        private void btnSettings_Click(object sender, EventArgs e)
-        {
-            ActiveButton(5);
-            UC_Settings uc = new UC_Settings();
             AddUserControl(uc);
         }
 
@@ -96,18 +97,63 @@ namespace client.Forms
             AddUserControl(uc);
         }
 
-        private void ActiveButton(int btn)
-        {
-            var buttons = new[]
-            {
-                (1, btnDashboard),
-                (2, btnPos),
-                (3, btnInventory),
-                (4, btnReservation),
-                (5, btnSettings)
-            };
 
-            buttons.ToList().ForEach(b => b.Item2.Checked = b.Item1 == btn);
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Refresh();
+        }
+
+        private void tsExit_Click(object sender, EventArgs e)
+        {
+            CloseWindow();
+        }
+
+        private void tsLogout_Click(object sender, EventArgs e)
+        {
+            _authController.Logout();
+        }
+
+        private void tsSettings_Click(object sender, EventArgs e)
+        {
+            UC_Settings uc = new UC_Settings();
+            AddUserControl(uc);
+        }
+
+        private void btnCloseWindow_Click(object sender, EventArgs e)
+        {
+            CloseWindow();
+        }
+
+        private void CloseWindow()
+        {
+            if (MessageBox.Show("Are you sure you want to close application?", "Close Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void btnMaximizeWindow_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+                btnMaximizeWindow.Image = Properties.Resources.Full_Screen;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Maximized;
+                btnMaximizeWindow.Image = Properties.Resources.Normal_Screen;
+            }
+        }
+
+        private void btnMinimizeWindow_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+           
         }
     }
 }
