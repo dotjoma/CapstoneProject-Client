@@ -38,7 +38,7 @@ namespace client.Controllers
             {
                 if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                 {
-                    Logger.Write("CREATE SUBCATEGORY", $"Sub-category '{name}' created successfully");
+                    LoggerHelper.Write("CREATE SUBCATEGORY", $"Sub-category '{name}' created successfully");
 
                     return true;
                 }
@@ -48,7 +48,7 @@ namespace client.Controllers
                         ? response.Data["message"]
                         : "Unknown error occurred while creating sub-category";
 
-                    Logger.Write("CREATE SUBCATEGORY", $"Server error: {errorMessage}");
+                    LoggerHelper.Write("CREATE SUBCATEGORY", $"Server error: {errorMessage}");
                     MessageBox.Show($"Failed to create sub-category: {errorMessage}", "Sub-category Creation Failed",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -57,7 +57,7 @@ namespace client.Controllers
             }
             else
             {
-                Logger.Write("CREATE SUBCATEGORY", "Invalid server response format");
+                LoggerHelper.Write("CREATE SUBCATEGORY", "Invalid server response format");
                 MessageBox.Show("Server returned an invalid response format while creating sub-category.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -80,7 +80,7 @@ namespace client.Controllers
                 var response = await Client.Instance.SendToServerAndWaitResponse(getSubCategoryPacket);
                 if (response == null)
                 {
-                    Logger.Write("GET SUBCATEGORY", "No response from server");
+                    LoggerHelper.Write("GET SUBCATEGORY", "No response from server");
                     MessageBox.Show("No response received from server", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
@@ -90,7 +90,7 @@ namespace client.Controllers
                 {
                     if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                     {
-                        Logger.Write("GET SUBCATEGORY", "Sub category retrieved successful");
+                        LoggerHelper.Write("GET SUBCATEGORY", "Sub category retrieved successful");
 
                         if (response.Data.ContainsKey("subcategories"))
                         {
@@ -102,13 +102,13 @@ namespace client.Controllers
                                 if (subcategories != null)
                                 {
                                     CurrentSubCategory.SetSubCategories(subcategories);
-                                    Logger.Write("GET SUBCATEGORY", $"Successfully stored {subcategories.Count} subcategories");
+                                    LoggerHelper.Write("GET SUBCATEGORY", $"Successfully stored {subcategories.Count} subcategories");
                                     return true;
                                 }
                             }
                             catch (Exception ex)
                             {
-                                Logger.Write("GET SUBCATEGORY", $"Error deserializing subcategories: {ex.Message}");
+                                LoggerHelper.Write("GET SUBCATEGORY", $"Error deserializing subcategories: {ex.Message}");
                                 MessageBox.Show("Error processing subcategories data", "Error",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return false;
@@ -145,7 +145,7 @@ namespace client.Controllers
             }
             catch (Exception ex)
             {
-                Logger.Write("GET SUBCATEGORY", $"Error: {ex.Message}");
+                LoggerHelper.Write("GET SUBCATEGORY", $"Error: {ex.Message}");
                 MessageBox.Show($"Error: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
