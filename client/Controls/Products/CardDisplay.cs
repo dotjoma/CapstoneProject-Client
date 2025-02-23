@@ -19,12 +19,12 @@ using System.Reflection;
 
 namespace client.Controls.Products
 {
-    public class Display : UserControl
+    public partial class CardDisplay: UserControl
     {
         private readonly FlowLayoutPanel flowPanel;
         private readonly Guna2VScrollBar gunaScrollBar;
 
-        public Display(List<Product> products)
+        public CardDisplay(List<Product> products)
         {
 
             flowPanel = new FlowLayoutPanel
@@ -54,7 +54,7 @@ namespace client.Controls.Products
                 flowPanel.Controls.Add(productCard);
             }
 
-            Controls.Add(gunaScrollBar);
+            //Controls.Add(gunaScrollBar);
             Controls.Add(flowPanel);
         }
 
