@@ -88,19 +88,6 @@ namespace client.Controls.Manage
                 Left = 5
             };
 
-            // Label for product description
-            var lblDescription = new Label
-            {
-                Text = product.productDesc,
-                Font = new Font("Segoe UI", 8, FontStyle.Regular),
-                AutoSize = false,
-                Height = 40,
-                Width = 150,
-                TextAlign = ContentAlignment.MiddleLeft,
-                Top = 150,
-                Left = 6
-            };
-
             // Label for product price
             var lblPrice = new Label
             {
@@ -143,7 +130,6 @@ namespace client.Controls.Manage
             // Add controls to the card panel
             cardPanel.Controls.Add(picProductImage);
             cardPanel.Controls.Add(lblProductName);
-            cardPanel.Controls.Add(lblDescription);
             cardPanel.Controls.Add(lblPrice);
             cardPanel.Controls.Add(btnAddToCart);
             cardPanel.Controls.Add(pnlBackground);

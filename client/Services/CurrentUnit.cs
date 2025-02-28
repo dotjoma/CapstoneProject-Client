@@ -26,6 +26,11 @@ namespace client.Services
             _currentUnit = unit;
         }
 
+        public static Unit? GetUnitById(int id)
+        {
+            return AllUnit.FirstOrDefault(u => u.unitId == id);
+        }
+
         public static void Clear()
         {
             _currentUnit = null;

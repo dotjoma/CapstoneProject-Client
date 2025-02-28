@@ -26,6 +26,7 @@ namespace client.Controls.Products
 
         public CardDisplay(List<Product> products)
         {
+            InitializeComponent();
 
             flowPanel = new FlowLayoutPanel
             {
@@ -62,27 +63,29 @@ namespace client.Controls.Products
         {
             var cardPanel = new Panel
             {
-                Width = 220,
-                Height = 240,
+                Width = 200,
+                Height = 220,
                 BackColor = Color.White,
-                Margin = new Padding(10),
-                Padding = new Padding(10),
+                Margin = new Padding(3),
+                BorderStyle = BorderStyle.None
             };
 
             var picProductImage = new PictureBox
             {
                 Width = 140,
-                Height = 90,
-                Location = new Point(40, 15),
+                Height = 115,
                 SizeMode = PictureBoxSizeMode.StretchImage
             };
+
+            picProductImage.Location = new Point(
+                (cardPanel.ClientSize.Width - picProductImage.Width) / 2,
+                (cardPanel.ClientSize.Height - picProductImage.Height) / 2 - 20 
+            );
 
             try
             {
                 if (!string.IsNullOrEmpty(product.productImage))
                 {
-                    LoggerHelper.Write("IMAGE CONVERSION", $"Original string start: {product.productImage.Substring(0, Math.Min(100, product.productImage.Length))}");
-
                     Image? convertedImage = ConvertBase64ToImage(product.productImage);
                     product.ProductImageObject = convertedImage;
                     picProductImage.Image = convertedImage ?? Properties.Resources.Add_Image;
@@ -98,76 +101,61 @@ namespace client.Controls.Products
                 picProductImage.Image = Properties.Resources.Add_Image;
             }
 
-            var lblProductName = new Label
-            {
-                Text = product.productName,
-                Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                AutoSize = false,
-                TextAlign = ContentAlignment.MiddleLeft,
-                Width = 150,
-                Top = 120,
-                Left = 5
-            };
-
-            var lblDescription = new Label
-            {
-                Text = product.productDesc,
-                Font = new Font("Segoe UI", 8, FontStyle.Regular),
-                AutoSize = false,
-                Height = 40,
-                Width = 150,
-                TextAlign = ContentAlignment.MiddleLeft,
-                Top = 150,
-                Left = 6
-            };
-
             var lblPrice = new Label
             {
                 Text = "₱ " + product.productPrice.ToString("F2"),
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
                 ForeColor = Color.FromArgb(73, 54, 40),
-                AutoSize = false,
-                TextAlign = ContentAlignment.MiddleLeft,
-                Width = 150,
-                Top = 190,
-                Left = 5
+                AutoSize = true,
+                TextAlign = ContentAlignment.MiddleRight
             };
 
-            var pnlBackground = new Panel
+            lblPrice.Location = new Point(
+                cardPanel.ClientSize.Width - lblPrice.PreferredWidth - 15,
+                10
+            );
+
+            var bottomPanel = new Panel
             {
-                Dock = DockStyle.Top,
-                Height = 100,
-                BackColor = Color.FromArgb(214, 192, 179)
+                Height = 40,
+                BackColor = Color.FromArgb(214, 192, 179),
+                Dock = DockStyle.Bottom
             };
 
+            var lblProductName = new Label
+            {
+                Text = product.productName,
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                ForeColor = Color.FromArgb(73, 54, 40),
+                AutoSize = false,
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+
+            bottomPanel.Controls.Add(lblProductName);
             cardPanel.Controls.Add(picProductImage);
-            cardPanel.Controls.Add(lblProductName);
-            cardPanel.Controls.Add(lblDescription);
             cardPanel.Controls.Add(lblPrice);
-            cardPanel.Controls.Add(pnlBackground);
+            cardPanel.Controls.Add(bottomPanel);
+
+            bottomPanel.SendToBack();
+            picProductImage.BringToFront();
+            lblPrice.BringToFront();
+            lblProductName.BringToFront();
 
             ApplyHover(cardPanel);
             ApplyHover(picProductImage);
             ApplyHover(lblProductName);
-            ApplyHover(lblDescription);
             ApplyHover(lblPrice);
-            ApplyHover(pnlBackground);
 
             cardPanel.Tag = product;
             picProductImage.Tag = product;
             lblProductName.Tag = product;
-            lblDescription.Tag = product;
             lblPrice.Tag = product;
-            pnlBackground.Tag = product;
 
             AttachClickEvent(cardPanel);
             AttachClickEvent(picProductImage);
             AttachClickEvent(lblProductName);
-            AttachClickEvent(lblDescription);
             AttachClickEvent(lblPrice);
-            AttachClickEvent(pnlBackground);
-
-            pnlBackground.SendToBack();
 
             return cardPanel;
         }

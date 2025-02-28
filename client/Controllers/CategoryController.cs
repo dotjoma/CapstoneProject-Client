@@ -130,5 +130,66 @@ namespace client.Controllers
                 return false;
             }
         }
+
+        public async Task<List<Category>> GetAllCategories()
+        {
+            var getAllCategoriesPacket = new Packet
+            {
+                Type = PacketType.GetCategory
+            };
+
+            var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(getAllCategoriesPacket));
+
+            if (response == null)
+            {
+                MessageBox.Show("No response received from server", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerHelper.Write("RESPONSE", "No response received from server");
+                return new List<Category>();
+            }
+
+            if (response.Data != null && response.Data.ContainsKey("success"))
+            {
+                if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
+                {
+                    string categoriesJson = response.Data["categories"];
+                    List<Category>? categories = JsonSerializer.Deserialize<List<Category>>(
+                        categoriesJson,
+                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+                    );
+
+                    CurrentCategory.SetCategories(categories ?? new List<Category>());
+
+                    LoggerHelper.Write("GET ALL CATEGORIES", categories?.Count > 0
+                        ? $"Retrieved {categories.Count} categories successfully"
+                        : "No categories found");
+
+                    return categories ?? new List<Category>();
+                }
+                else
+                {
+                    string errorMessage = "Failed to retrieve categories: ";
+
+                    if (response.Data.ContainsKey("message"))
+                    {
+                        errorMessage += response.Data["message"];
+                    }
+                    else
+                    {
+                        errorMessage += "Unknown error occurred";
+                    }
+
+                    MessageBox.Show(errorMessage, "Category Retrieval Failed",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return new List<Category>();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid response format from server", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return new List<Category>();
+            }
+        }
     }
 }

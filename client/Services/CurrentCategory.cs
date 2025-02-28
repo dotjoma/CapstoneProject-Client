@@ -27,6 +27,11 @@ namespace client.Services
             _currentCategory = category;
         }
 
+        public static Category? GetCategoryById(int categoryId)
+        {
+            return _allCategories.FirstOrDefault(c => c.Id == categoryId);
+        }
+
         public static void Clear()
         {
             _currentCategory = null;

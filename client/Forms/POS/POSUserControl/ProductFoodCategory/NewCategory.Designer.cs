@@ -28,19 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panel1 = new Panel();
             txtTitle = new Label();
-            txtName = new Guna.UI2.WinForms.Guna2TextBox();
-            btnCancel = new Guna.UI2.WinForms.Guna2Button();
-            btnSave = new Guna.UI2.WinForms.Guna2Button();
             lblLabel = new Label();
-            lblSelectedId = new Label();
+            txtName = new TextBox();
+            btnCancel = new Button();
+            btnSave = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -66,100 +59,76 @@
             txtTitle.TabIndex = 0;
             txtTitle.Text = "Title";
             // 
-            // txtName
-            // 
-            txtName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtName.BorderColor = Color.FromArgb(214, 192, 179);
-            txtName.BorderRadius = 2;
-            txtName.CustomizableEdges = customizableEdges7;
-            txtName.DefaultText = "";
-            txtName.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtName.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtName.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtName.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtName.FillColor = Color.FromArgb(214, 192, 179);
-            txtName.FocusedState.BorderColor = Color.FromArgb(214, 192, 179);
-            txtName.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtName.ForeColor = Color.FromArgb(98, 87, 87);
-            txtName.HoverState.BorderColor = Color.FromArgb(214, 192, 179);
-            txtName.Location = new Point(43, 105);
-            txtName.Name = "txtName";
-            txtName.PasswordChar = '\0';
-            txtName.PlaceholderForeColor = Color.FromArgb(98, 87, 87);
-            txtName.PlaceholderText = "";
-            txtName.SelectedText = "";
-            txtName.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            txtName.Size = new Size(350, 38);
-            txtName.TabIndex = 6;
-            // 
-            // btnCancel
-            // 
-            btnCancel.BorderRadius = 2;
-            btnCancel.CustomizableEdges = customizableEdges9;
-            btnCancel.DisabledState.BorderColor = Color.DarkGray;
-            btnCancel.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnCancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnCancel.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnCancel.FillColor = Color.FromArgb(214, 192, 179);
-            btnCancel.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCancel.ForeColor = Color.White;
-            btnCancel.Location = new Point(225, 186);
-            btnCancel.Name = "btnCancel";
-            btnCancel.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            btnCancel.Size = new Size(168, 38);
-            btnCancel.TabIndex = 18;
-            btnCancel.Text = "Cancel";
-            btnCancel.Click += btnCancel_Click;
-            // 
-            // btnSave
-            // 
-            btnSave.BorderRadius = 2;
-            btnSave.CustomizableEdges = customizableEdges11;
-            btnSave.DisabledState.BorderColor = Color.DarkGray;
-            btnSave.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnSave.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnSave.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnSave.FillColor = Color.CornflowerBlue;
-            btnSave.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(43, 186);
-            btnSave.Name = "btnSave";
-            btnSave.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            btnSave.Size = new Size(168, 38);
-            btnSave.TabIndex = 19;
-            btnSave.Text = "Save";
-            btnSave.Click += btnSave_Click;
-            // 
             // lblLabel
             // 
             lblLabel.AutoSize = true;
             lblLabel.Font = new Font("Verdana", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLabel.Location = new Point(43, 84);
+            lblLabel.Location = new Point(43, 73);
             lblLabel.Name = "lblLabel";
             lblLabel.Size = new Size(83, 18);
             lblLabel.TabIndex = 20;
             lblLabel.Text = "Category";
             // 
-            // lblSelectedId
+            // txtName
             // 
-            lblSelectedId.AutoSize = true;
-            lblSelectedId.Location = new Point(7, 231);
-            lblSelectedId.Name = "lblSelectedId";
-            lblSelectedId.Size = new Size(45, 16);
-            lblSelectedId.TabIndex = 21;
-            lblSelectedId.Text = "label1";
+            txtName.Font = new Font("Verdana", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtName.Location = new Point(43, 96);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(350, 31);
+            txtName.TabIndex = 21;
+            // 
+            // btnCancel
+            // 
+            btnCancel.Anchor = AnchorStyles.None;
+            btnCancel.BackColor = Color.White;
+            btnCancel.FlatAppearance.BorderSize = 0;
+            btnCancel.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            btnCancel.FlatAppearance.MouseOverBackColor = Color.White;
+            btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCancel.ForeColor = Color.Black;
+            btnCancel.Image = Properties.Resources.Cancel;
+            btnCancel.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCancel.Location = new Point(136, 144);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(151, 37);
+            btnCancel.TabIndex = 25;
+            btnCancel.TabStop = false;
+            btnCancel.Text = "CANCEL";
+            btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // btnSave
+            // 
+            btnSave.Anchor = AnchorStyles.None;
+            btnSave.BackColor = Color.White;
+            btnSave.FlatAppearance.BorderSize = 0;
+            btnSave.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            btnSave.FlatAppearance.MouseOverBackColor = Color.White;
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSave.ForeColor = Color.Black;
+            btnSave.Image = Properties.Resources.Save;
+            btnSave.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSave.Location = new Point(293, 144);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(131, 37);
+            btnSave.TabIndex = 24;
+            btnSave.TabStop = false;
+            btnSave.Text = "SAVE";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // NewCategory
             // 
             AutoScaleDimensions = new SizeF(8F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
-            ClientSize = new Size(436, 252);
-            Controls.Add(lblSelectedId);
-            Controls.Add(lblLabel);
-            Controls.Add(btnSave);
+            BackColor = SystemColors.Control;
+            ClientSize = new Size(436, 193);
             Controls.Add(btnCancel);
+            Controls.Add(btnSave);
             Controls.Add(txtName);
+            Controls.Add(lblLabel);
             Controls.Add(panel1);
             Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
@@ -178,10 +147,9 @@
 
         private Panel panel1;
         private Label txtTitle;
-        private Guna.UI2.WinForms.Guna2TextBox txtName;
-        private Guna.UI2.WinForms.Guna2Button btnCancel;
-        private Guna.UI2.WinForms.Guna2Button btnSave;
         private Label lblLabel;
-        private Label lblSelectedId;
+        private TextBox txtName;
+        private Button btnCancel;
+        private Button btnSave;
     }
 }

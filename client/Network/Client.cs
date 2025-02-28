@@ -148,112 +148,40 @@ namespace client.Network
 
         public async Task<Packet?> SendToServerAndWaitResponse(Packet packet)
         {
-            int retryCount = 0;
             const int maxRetries = 2;
-            const int bufferSize = 8192; // 8KB chunks
+            const int bufferSize = 8192;
+            const int timeoutSeconds = 30;
 
-            while (retryCount <= maxRetries)
+            for (int attempt = 0; attempt <= maxRetries; attempt++)
             {
                 try
                 {
-                    if (!HasConnection())
-                    {
-                        LoggerHelper.Write("CONNECTION", "No connection available");
+                    if (!ValidateConnection())
                         return null;
-                    }
 
-                    if (networkStream == null)
+                    if (!await SendPacket(packet))
                     {
-                        LoggerHelper.Write("NETWORKSTREAM", "Network stream is not available");
-                        return null;
-                    }
-
-                    try
-                    {
-                        string jsonData = JsonConvert.SerializeObject(packet) + "\n";
-                        byte[] data = Encoding.UTF8.GetBytes(jsonData);
-                        await networkStream.WriteAsync(data, 0, data.Length);
-                        await networkStream.FlushAsync();
-
-                        LoggerHelper.Write("NETWORKSTREAM", "Packet sent success.");
-                    }
-                    catch (Exception ex)
-                    {
-                        LoggerHelper.Write("WRITE ERROR", $"Failed to send data: {ex.Message}");
-                        Disconnect();
-                        retryCount++;
+                        await HandleRetry(attempt, maxRetries);
                         continue;
                     }
 
-                    // Wait for response with timeout
-                    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
-                    using var memoryStream = new MemoryStream();
-                    byte[] buffer = new byte[bufferSize];
-
-                    try
+                    var response = await ReceiveResponse(bufferSize, timeoutSeconds);
+                    if (response == null)
                     {
-                        while (true)
-                        {
-                            int bytesRead = await networkStream.ReadAsync(buffer, 0, buffer.Length, cts.Token);
-                            if (bytesRead == 0) break;
-
-                            await memoryStream.WriteAsync(buffer.AsMemory(0, bytesRead), cts.Token);
-
-                            if (buffer[bytesRead - 1] == '\n')
-                            {
-                                break;
-                            }
-                        }
-
-                        string responseJson = Encoding.UTF8.GetString(memoryStream.ToArray()).Trim();
-                        LoggerHelper.Write("JSON RESPONSE", "Response received successfully");
-
-                        var response = JsonConvert.DeserializeObject<Packet>(responseJson);
-                        if (response == null)
-                        {
-                            LoggerHelper.Write("JSON RESPONSE", "Failed to deserialize server response");
-                            return null;
-                        }
-
-                        if (!IsValidResponse(response))
-                        {
-                            LoggerHelper.Write("JSON RESPONSE", "Invalid response format from server");
-                            return null;
-                        }
-
-                        HandleLogin(response);
-                        return response;
+                        await HandleRetry(attempt, maxRetries);
+                        continue;
                     }
-                    catch (IOException ex)
-                    {
-                        LoggerHelper.Write("READ ERROR", $"Connection error while reading: {ex.Message}");
-                        Disconnect();
 
-                        if (retryCount < maxRetries)
-                        {
-                            LoggerHelper.Write("RETRY", $"Attempting to reconnect (Attempt {retryCount + 1} of {maxRetries})");
-                            await Task.Delay(1000);
-                            retryCount++;
-                            continue;
-                        }
-                        return null;
-                    }
-                    catch (OperationCanceledException)
-                    {
-                        LoggerHelper.Write("CANCELED EXCEPTION", "Server response timeout");
-                        return null;
-                    }
+                    return response;
                 }
                 catch (Exception ex)
                 {
                     LoggerHelper.Write("SEND TO SERVER & WAIT RESPONSE", $"Error in communication: {ex.Message}");
                     Disconnect();
 
-                    if (retryCount < maxRetries)
+                    if (attempt < maxRetries)
                     {
-                        LoggerHelper.Write("RETRY", $"Attempting to reconnect (Attempt {retryCount + 1} of {maxRetries})");
-                        await Task.Delay(1000);
-                        retryCount++;
+                        await HandleRetry(attempt, maxRetries);
                         continue;
                     }
                     return null;
@@ -262,6 +190,102 @@ namespace client.Network
 
             LoggerHelper.Write("RETRY", "Max retry attempts reached");
             return null;
+        }
+
+        private bool ValidateConnection()
+        {
+            if (!HasConnection())
+            {
+                LoggerHelper.Write("CONNECTION", "No connection available");
+                return false;
+            }
+
+            if (networkStream == null)
+            {
+                LoggerHelper.Write("NETWORKSTREAM", "Network stream is not available");
+                return false;
+            }
+
+            return true;
+        }
+
+        private async Task<bool> SendPacket(Packet packet)
+        {
+            try
+            {
+                string jsonData = JsonConvert.SerializeObject(packet) + "\n";
+                byte[] data = Encoding.UTF8.GetBytes(jsonData);
+                await networkStream!.WriteAsync(data, 0, data.Length);
+                await networkStream.FlushAsync();
+
+                LoggerHelper.Write("NETWORKSTREAM", "Packet sent success.");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LoggerHelper.Write("WRITE ERROR", $"Failed to send data: {ex.Message}");
+                Disconnect();
+                return false;
+            }
+        }
+
+        private async Task<Packet?> ReceiveResponse(int bufferSize, int timeoutSeconds)
+        {
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(timeoutSeconds));
+            using var memoryStream = new MemoryStream();
+            byte[] buffer = new byte[bufferSize];
+
+            try
+            {
+                await ReadStreamToCompletion(networkStream!, buffer, memoryStream, cts.Token);
+
+                string responseJson = Encoding.UTF8.GetString(memoryStream.ToArray()).Trim();
+                LoggerHelper.Write("JSON RESPONSE", "Response received successfully");
+
+                var response = JsonConvert.DeserializeObject<Packet>(responseJson);
+                if (response == null || !IsValidResponse(response))
+                {
+                    LoggerHelper.Write("JSON RESPONSE", "Invalid or null response from server");
+                    return null;
+                }
+
+                HandleLogin(response);
+                return response;
+            }
+            catch (IOException ex)
+            {
+                LoggerHelper.Write("READ ERROR", $"Connection error while reading: {ex.Message}");
+                Disconnect();
+                return null;
+            }
+            catch (OperationCanceledException)
+            {
+                LoggerHelper.Write("CANCELED EXCEPTION", "Server response timeout");
+                return null;
+            }
+        }
+
+        private async Task ReadStreamToCompletion(NetworkStream stream, byte[] buffer, MemoryStream memoryStream, CancellationToken token)
+        {
+            while (true)
+            {
+                int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length, token);
+                if (bytesRead == 0) break;
+
+                await memoryStream.WriteAsync(buffer.AsMemory(0, bytesRead), token);
+
+                if (buffer[bytesRead - 1] == '\n')
+                    break;
+            }
+        }
+
+        private async Task HandleRetry(int attempt, int maxRetries)
+        {
+            if (attempt < maxRetries)
+            {
+                LoggerHelper.Write("RETRY", $"Attempting to reconnect (Attempt {attempt + 1} of {maxRetries})");
+                await Task.Delay(1000 * (attempt + 1));
+            }
         }
 
         public void HandleLogin(Packet response)

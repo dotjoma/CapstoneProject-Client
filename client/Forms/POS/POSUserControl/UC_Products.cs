@@ -44,7 +44,6 @@ namespace client.Forms.POS.POSUserControl
         private async void UC_Products_Load(object sender, EventArgs e)
         {
             timer1.Start();
-            AddUserControl(new UC_Beverages());
 
             bool isInitialized = await InitializeComboboxes();
             if (!isInitialized)
@@ -96,19 +95,16 @@ namespace client.Forms.POS.POSUserControl
 
         private void btnBeverages_Click(object sender, EventArgs e)
         {
-            AddUserControl(new UC_Beverages());
             ActiveButton(1);
         }
 
         private void btnMainCourse_Click(object sender, EventArgs e)
         {
-            AddUserControl(new UC_MainCourse());
             ActiveButton(2);
         }
 
         private void btnFastFood_Click(object sender, EventArgs e)
         {
-            AddUserControl(new UC_FastFood());
             ActiveButton(3);
         }
 
@@ -184,7 +180,7 @@ namespace client.Forms.POS.POSUserControl
                 // TODO:
                 // Create a logic for create and update.
 
-                bool response = await _productController.Create(name, image, price, description, categoryId, subCategoryId, unitId);
+                bool response = await _productController.Create(name, image, price, categoryId, subCategoryId, unitId, 1);
 
                 if (response)
                 {
@@ -400,11 +396,11 @@ namespace client.Forms.POS.POSUserControl
 
             if (cboCategory.SelectedIndex == cboCategory.Items.Count - 1)
             {
-                CurrentCategory.Clear();
-                NewCategory newCategory = new NewCategory("Create Category", "Category", "Enter category name", this);
-                newCategory.ShowDialog();
-                cboCategory.SelectedIndex = 0;
-                return;
+                //CurrentCategory.Clear();
+                //NewCategory newCategory = new NewCategory("Create Category", "Category", "Enter category name", this);
+                //newCategory.ShowDialog();
+                //cboCategory.SelectedIndex = 0;
+                //return;
             }
 
             if (cboCategory.SelectedIndex > 0 &&
@@ -486,9 +482,9 @@ namespace client.Forms.POS.POSUserControl
                 }
                 else
                 {
-                    NewCategory newCategory = new NewCategory("Create SubCategory", "SubCategory", "Enter subcategory name", this);
-                    newCategory.ShowDialog();
-                    cboSubCategory.SelectedIndex = 0;
+                    //NewCategory newCategory = new NewCategory("Create SubCategory", "SubCategory", "Enter subcategory name", this);
+                    //newCategory.ShowDialog();
+                    //cboSubCategory.SelectedIndex = 0;
                 }
                 return;
             }
@@ -553,10 +549,10 @@ namespace client.Forms.POS.POSUserControl
 
             if (cboUnit.SelectedIndex == cboUnit.Items.Count - 1)
             {
-                NewCategory newUnit = new NewCategory("Create Unit", "Unit", "Enter unit name", this);
-                newUnit.ShowDialog();
-                cboUnit.SelectedIndex = 0;
-                return;
+                //NewCategory newUnit = new NewCategory("Create Unit", "Unit", "Enter unit name", this);
+                //newUnit.ShowDialog();
+                //cboUnit.SelectedIndex = 0;
+                //return;
             }
 
             if (cboUnit.SelectedIndex > 0 &&

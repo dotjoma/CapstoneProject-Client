@@ -75,6 +75,66 @@ namespace client.Controllers
             }
         }
 
+        public async Task<List<Unit>> GetAllUnits()
+        {
+            var getAllUnitPacket = new Packet
+            {
+                Type = PacketType.GetUnit
+            };
+
+            var response = await Client.Instance.SendToServerAndWaitResponse(getAllUnitPacket);
+            if (response == null)
+            {
+                MessageBox.Show("No response received from server", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerHelper.Write("RESPONSE", "No response received from server");
+                return new List<Unit>();
+            }
+
+            if (response.Data != null && response.Data.ContainsKey("success"))
+            {
+                if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
+                {
+                    string unitsJson = response.Data["units"];
+                    List<Unit>? units = JsonSerializer.Deserialize<List<Unit>>(
+                        unitsJson,
+                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+                    );
+
+                    CurrentUnit.SetUnits(units ?? new List<Unit>());
+
+                    LoggerHelper.Write("GET ALL UNITS", units?.Count > 0
+                        ? $"Retrieved {units.Count} units successfully"
+                        : "No units found");
+
+                    return units ?? new List<Unit>();
+                }
+                else
+                {
+                    string errorMessage = "Failed to retrieve units: ";
+
+                    if (response.Data.ContainsKey("message"))
+                    {
+                        errorMessage += response.Data["message"];
+                    }
+                    else
+                    {
+                        errorMessage += "Unknown error occurred";
+                    }
+
+                    MessageBox.Show(errorMessage, "Unit Retrieve Failed",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return new List<Unit>();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid response format from server", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return new List<Unit>();
+            }
+        }
+
         public async Task<bool> Create(string unitName, string unitDescription)
         {
             if (string.IsNullOrWhiteSpace(unitName))

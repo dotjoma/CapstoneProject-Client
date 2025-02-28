@@ -1,5 +1,7 @@
 ﻿using client.Controllers;
+using client.Helpers;
 using client.Network;
+using client.Services;
 using client.Services.Auth;
 using Microsoft.VisualBasic;
 using System;
@@ -17,7 +19,11 @@ namespace client.Forms
 {
     public partial class Login : Form
     {
-        private readonly AuthController _authController;
+        private readonly AuthController _authController = new AuthController();
+        private readonly ProductController _productController = new ProductController();
+        private readonly UnitController _unitController = new UnitController();
+        private readonly CategoryController _categoryController = new CategoryController();
+        private readonly SubCategoryController _subCategoryController = new SubCategoryController();
 
         private Point dragOffset;
         private bool isDragging = false;
@@ -26,7 +32,6 @@ namespace client.Forms
         public Login()
         {
             InitializeComponent();
-            _authController = new AuthController();
             this.KeyPreview = true;
         }
 
@@ -130,9 +135,27 @@ namespace client.Forms
 
                 if (response)
                 {
-                    var mainMenu = new MainMenu();
-                    mainMenu.Show();
-                    this.Hide();
+                    try
+                    {
+                        bool dataLoaded = await LoadDataBase();
+                        if (!dataLoaded)
+                        {
+                            MessageBox.Show("Failed to load application data. Please try again.",
+                                "Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        MessageBox.Show("Login successful!", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        var mainMenu = new MainMenu();
+                        mainMenu.Show();
+                        this.Hide();
+                    }
+                    catch (Exception ex)
+                    {
+                        LoggerHelper.Write("MAIN MENU", $"Error loading data: {ex.Message}");
+                    }
                 }
             }
             catch (Exception ex)
@@ -142,6 +165,52 @@ namespace client.Forms
             finally
             {
                 ToggleButton(true);
+            }
+        }
+
+        private async Task<bool> LoadDataBase()
+        {
+            try
+            {
+                await _productController.GetAllProducts();
+                if (CurrentProduct.AllProduct == null)
+                {
+                    LoggerHelper.Write("MAIN MENU", "Failed to load products");
+                    return false;
+                }
+                LoggerHelper.Write("MAIN MENU", $"Successfully loaded {CurrentProduct.AllProduct.Count} products");
+
+                await _unitController.GetAllUnits();
+                if (CurrentUnit.AllUnit == null)
+                {
+                    LoggerHelper.Write("MAIN MENU", "Failed to load units");
+                    return false;
+                }
+                LoggerHelper.Write("MAIN MENU", $"Successfully loaded {CurrentUnit.AllUnit.Count} units");
+
+
+                await _categoryController.GetAllCategories();
+                if (CurrentCategory.AllCategories == null)
+                {
+                    LoggerHelper.Write("MAIN MENU", "Failed to load categories");
+                    return false;
+                }
+                LoggerHelper.Write("MAIN MENU", $"Successfully loaded {CurrentCategory.AllCategories.Count} categories");
+
+                await _subCategoryController.GetAllSubcategory();
+                if (CurrentSubCategory.AllSubCategories == null)
+                {
+                    LoggerHelper.Write("MAIN MENU", "Failed to load subcategories");
+                    return false;
+                }
+                LoggerHelper.Write("MAIN MENU", $"Successfully loaded {CurrentSubCategory.AllSubCategories.Count} subcategories");
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LoggerHelper.Write("MAIN MENU", $"Error loading data: {ex.Message}");
+                return false;
             }
         }
 

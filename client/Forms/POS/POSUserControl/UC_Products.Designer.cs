@@ -39,6 +39,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -57,14 +59,14 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnlContainer = new Panel();
             btnBeverages = new Guna.UI2.WinForms.Guna2Button();
             btnMainCourse = new Guna.UI2.WinForms.Guna2Button();
             btnFastFood = new Guna.UI2.WinForms.Guna2Button();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             productFormPanel = new Guna.UI2.WinForms.Guna2Panel();
+            cboUnit = new Guna.UI2.WinForms.Guna2ComboBox();
+            label8 = new Label();
             cboSubCategory = new Guna.UI2.WinForms.Guna2ComboBox();
             label7 = new Label();
             cboCategory = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -86,8 +88,6 @@
             lblDateTime = new Label();
             label1 = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
-            cboUnit = new Guna.UI2.WinForms.Guna2ComboBox();
-            label8 = new Label();
             guna2Panel2.SuspendLayout();
             productFormPanel.SuspendLayout();
             guna2GradientPanel1.SuspendLayout();
@@ -210,6 +210,34 @@
             productFormPanel.ShadowDecoration.CustomizableEdges = customizableEdges30;
             productFormPanel.Size = new Size(315, 817);
             productFormPanel.TabIndex = 19;
+            // 
+            // cboUnit
+            // 
+            cboUnit.BackColor = Color.Transparent;
+            cboUnit.CustomizableEdges = customizableEdges9;
+            cboUnit.DrawMode = DrawMode.OwnerDrawFixed;
+            cboUnit.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboUnit.FocusedColor = Color.FromArgb(94, 148, 255);
+            cboUnit.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            cboUnit.Font = new Font("Segoe UI", 10F);
+            cboUnit.ForeColor = Color.FromArgb(68, 88, 112);
+            cboUnit.ItemHeight = 30;
+            cboUnit.Location = new Point(4, 578);
+            cboUnit.Name = "cboUnit";
+            cboUnit.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            cboUnit.Size = new Size(307, 36);
+            cboUnit.TabIndex = 23;
+            cboUnit.SelectedIndexChanged += cboUnit_SelectedIndexChanged;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Verdana", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Location = new Point(7, 557);
+            label8.Name = "label8";
+            label8.Size = new Size(41, 18);
+            label8.TabIndex = 22;
+            label8.Text = "Unit";
             // 
             // cboSubCategory
             // 
@@ -495,34 +523,6 @@
             // timer1
             // 
             timer1.Tick += timer1_Tick;
-            // 
-            // cboUnit
-            // 
-            cboUnit.BackColor = Color.Transparent;
-            cboUnit.CustomizableEdges = customizableEdges9;
-            cboUnit.DrawMode = DrawMode.OwnerDrawFixed;
-            cboUnit.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboUnit.FocusedColor = Color.FromArgb(94, 148, 255);
-            cboUnit.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            cboUnit.Font = new Font("Segoe UI", 10F);
-            cboUnit.ForeColor = Color.FromArgb(68, 88, 112);
-            cboUnit.ItemHeight = 30;
-            cboUnit.Location = new Point(4, 578);
-            cboUnit.Name = "cboUnit";
-            cboUnit.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            cboUnit.Size = new Size(307, 36);
-            cboUnit.TabIndex = 23;
-            cboUnit.SelectedIndexChanged += cboUnit_SelectedIndexChanged;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Verdana", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(7, 557);
-            label8.Name = "label8";
-            label8.Size = new Size(41, 18);
-            label8.TabIndex = 22;
-            label8.Text = "Unit";
             // 
             // UC_Products
             // 

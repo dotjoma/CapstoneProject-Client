@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="Controls\Products\Display.cs">
+    <Compile Update="Controls\Products\CardDisplay.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\Dashboard.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Loading\MainMenuLoading.cs">
       <SubType>Form</SubType>
@@ -16,26 +19,8 @@
     <Compile Update="Forms\Order\OrderEntryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\POS\POSUserControl\PosFoodCategory\UC_Beverages.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Forms\POS\POSUserControl\PosFoodCategory\UC_FastFood.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Forms\POS\POSUserControl\PosFoodCategory\UC_MainCourse.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="Forms\POS\POSUserControl\ProductFoodCategory\NewCategory.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\POS\POSUserControl\ProductFoodCategory\UC_Beverages.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Forms\POS\POSUserControl\ProductFoodCategory\UC_FastFood.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Forms\POS\POSUserControl\ProductFoodCategory\UC_MainCourse.cs">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\POS\POSUserControl\UC_Orders.cs">
       <SubType>UserControl</SubType>
@@ -47,6 +32,15 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\POS\POS_MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ProductManagement\AddProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ProductManagement\NewUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ProductManagement\ProductHome.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Register.cs">

@@ -53,14 +53,11 @@ namespace client.Controllers
                 return false;
             }
 
-            // Handle server response
             if (response.Data != null && response.Data.ContainsKey("success"))
             {
                 if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                 {
-                    MessageBox.Show("Login successful!", "Success",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    // login success.
                     return true;
                 }
                 else

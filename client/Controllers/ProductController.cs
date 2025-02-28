@@ -39,7 +39,7 @@ namespace client.Controllers
                 var options = new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true,
-                    DefaultBufferSize = 104857600 // 100MB buffer
+                    DefaultBufferSize = 104857600
                 };
 
                 var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(getProduct));
@@ -82,7 +82,66 @@ namespace client.Controllers
             }
         }
 
-        public async Task<bool> Create(string name, string image, string price, string description, int categoryId, int subcategoryId, int unitId)
+        public async Task<List<Product>> GetAllProducts()
+        {
+            try
+            {
+                var getProductPacket = new Packet()
+                {
+                    Type = PacketType.GetProduct,
+                    Data = new Dictionary<string, string>()
+                };
+
+                LoggerHelper.Write("GET ALL PRODUCTS", "Sending request to server");
+
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true,
+                    DefaultBufferSize = 104857600
+                };
+
+                var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(getProductPacket));
+
+                if (response?.Data != null &&
+                    response.Data.ContainsKey("success") &&
+                    response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (response.Data.ContainsKey("products"))
+                    {
+                        var products = JsonSerializer.Deserialize<List<Product>>(
+                            response.Data["products"],
+                            options
+                        );
+
+                        if (products != null && products.Count > 0)
+                        {
+                            CurrentProduct.SetProducts(products);
+                            LoggerHelper.Write("GET ALL PRODUCTS", $"Successfully retrieved {products.Count} products");
+                            return products;
+                        }
+                    }
+                }
+                else
+                {
+                    string errorMessage = response?.Data?.ContainsKey("message") == true
+                        ? response.Data["message"]
+                        : "Unknown error occurred";
+                    LoggerHelper.Write("GET ALL PRODUCTS", $"Server returned error: {errorMessage}");
+                    MessageBox.Show($"Failed to retrieve products: {errorMessage}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerHelper.Write("GET ALL PRODUCTS", $"Error: {ex.Message}");
+                MessageBox.Show($"Error retrieving products: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return new List<Product>();
+        }
+
+        public async Task<bool> Create(string name, string image, string price, int categoryId, int subcategoryId, int unitId, int isActive)
         {
             var createProductPacket = new Packet
             {
@@ -92,14 +151,13 @@ namespace client.Controllers
                     { "pName", name },
                     { "image", image },
                     { "unitPrice", price },
-                    { "pDesc", description },
                     { "catId", categoryId.ToString()},
                     { "scId", subcategoryId.ToString() },
-                    { "unitId", unitId.ToString() }
+                    { "unitId", unitId.ToString() },
+                    { "isActive", isActive.ToString() }
                 }
             };
 
-            // Send packet to the server and wait for a response
             var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(createProductPacket));
 
             if (response == null)
@@ -109,7 +167,6 @@ namespace client.Controllers
                 return false;
             }
 
-            // Handle server response
             if (response.Data != null && response.Data.ContainsKey("success"))
             {
                 if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))

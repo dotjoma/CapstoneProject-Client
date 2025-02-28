@@ -6,7 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using static System.Windows.Forms.Design.AxImporter;
 
 namespace client.Controllers
 {
@@ -149,6 +151,75 @@ namespace client.Controllers
                 MessageBox.Show($"Error: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
+        }
+
+        public async Task<List<SubCategory>> GetAllSubcategory()
+        {
+            var getSubCategoryPacket = new Packet
+            {
+                Type = PacketType.GetAllSubcategory,
+                Data = new Dictionary<string, string>()
+            };
+
+            var response = await Client.Instance.SendToServerAndWaitResponse(getSubCategoryPacket);
+            if (response == null)
+            {
+                MessageBox.Show("No response received from server", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerHelper.Write("RESPONSE", "No response received from server");
+                return new List<SubCategory>();
+            }
+
+            if (response.Data != null && response.Data.ContainsKey("success"))
+            {
+                if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
+                {
+                    LoggerHelper.Write("SUBCATEGORY DEBUG", $"Raw response: {JsonSerializer.Serialize(response.Data)}");
+
+                    string subcategoriesJson = response.Data["subcategories"];
+                    LoggerHelper.Write("SUBCATEGORY DEBUG", $"JSON string: {subcategoriesJson}");
+
+                    List<SubCategory>? subcategories = JsonSerializer.Deserialize<List<SubCategory>>(
+                        subcategoriesJson,
+                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+                    );
+
+                    LoggerHelper.Write("SUBCATEGORY DEBUG", $"Deserialized count: {subcategories?.Count ?? 0}");
+                    CurrentSubCategory.SetSubCategories(subcategories ?? new List<SubCategory>());
+
+                    LoggerHelper.Write("SUBCATEGORY DEBUG",
+                        $"Stored subcategories count: {CurrentSubCategory.AllSubCategories.Count}");
+
+                    LoggerHelper.Write("GET ALL CATEGORIES", subcategories?.Count > 0
+                        ? $"Retrieved {subcategories.Count} categories successfully"
+                        : "No categories found");
+
+                    return subcategories ?? new List<SubCategory>();
+                }
+                else
+                {
+                    string errorMessage = "Failed to retrieve subcategories: ";
+
+                    if (response.Data.ContainsKey("message"))
+                    {
+                        errorMessage += response.Data["message"];
+                    }
+                    else
+                    {
+                        errorMessage += "Unknown error occurred";
+                    }
+
+                    MessageBox.Show(errorMessage, "Subcategory Retrieve Failed",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return new List<SubCategory>();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid response format from server", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return new List<SubCategory>();
             }
         }
     }

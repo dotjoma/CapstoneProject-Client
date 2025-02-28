@@ -14,45 +14,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using client.Forms.Order;
+using client.Models;
+using System.Globalization;
+using System.Xml.Linq;
+using client.Forms.POS.POSUserControl;
+using client.Forms.ProductManagement;
 
 namespace client.Forms
 {
     public partial class MainMenu : Form
     {
-        private readonly AuthController _authController;
+        private UserAccessManager? _userAccessManager;
+        private readonly AuthController _authController = new AuthController();
 
         public MainMenu()
         {
             InitializeComponent();
-            InitializeToolTip();
-            _authController = new AuthController();
             this.Shown += MainMenu_Shown;
+            this.Load += MainMenu_Load;
         }
 
-        private void InitializeToolTip()
+        private void MainMenu_Load(object? sender, EventArgs e)
         {
-            toolTip1.SetToolTip(btnMinimizeWindow, "Minimize the application");
-            toolTip1.SetToolTip(btnMaximizeWindow, "Maximize the application");
-            toolTip1.SetToolTip(btnCloseWindow, "Close the application");
-            toolTip1.SetToolTip(btnDashboard, "Home");
-            toolTip1.SetToolTip(btnPos, "POS");
-            toolTip1.SetToolTip(btnNotification, "Notification");
+            this.WindowState = FormWindowState.Maximized;
+            AddFormToPanel(new Dashboard());
+
+            string? userRole = CurrentUser.Current?.Role;
+            lblUser.Text = $"Welcome, {CurrentUser.Current?.Username} ({CultureInfo.CurrentCulture.TextInfo.ToTitleCase(userRole ?? "Unknown")})";
         }
 
-        private void MainMenu_Load(object sender, EventArgs e)
-        {
-            //this.WindowState = FormWindowState.Maximized;
-            UC_DashBoard uc = new UC_DashBoard();
-            AddUserControl(uc);
-        }
+
 
         private void MainMenu_Shown(object? sender, EventArgs e)
         {
-            if (!CurrentUser.IsLoggedIn)
-            {
-                MessageBox.Show("Please log in to continue.", "Authentication Required", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                _authController.RedirectToLogin();
-            }
+            _userAccessManager = new UserAccessManager(
+                _authController,
+                fileToolStripMenuItem,
+                reservationToolStripMenuItem,
+                administrationToolStripMenuItem,
+                refreshToolStripMenuItem,
+                helpToolStripMenuItem
+            );
+
+            _userAccessManager.ProcessUserAccess();
         }
 
         private void AddUserControl(UserControl userControl)
@@ -63,15 +68,21 @@ namespace client.Forms
             userControl.BringToFront();
         }
 
-        private void btnDashboard_Click(object sender, EventArgs e)
+        private void AddFormToPanel(Form form)
         {
-            bgwDashboard.RunWorkerAsync();
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+            pnlContainer.Controls.Clear();
+            pnlContainer.Controls.Add(form);
+            form.Show();
+            form.BringToFront();
         }
 
         private void btnPos_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new POS_MainMenu().Show();
+            new OrderEntryForm().Show();
         }
 
         private void btnInventory_Click(object sender, EventArgs e)
@@ -132,28 +143,30 @@ namespace client.Forms
             }
         }
 
-        private void btnMaximizeWindow_Click(object sender, EventArgs e)
+        private void addEditDeleteProductToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                this.WindowState = FormWindowState.Normal;
-                btnMaximizeWindow.Image = Properties.Resources.Full_Screen;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Maximized;
-                btnMaximizeWindow.Image = Properties.Resources.Normal_Screen;
-            }
+
         }
 
-        private void btnMinimizeWindow_Click(object sender, EventArgs e)
+        private void tlbDashboard_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            AddFormToPanel(new Dashboard());
         }
 
-        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        private void tsbTransaction_Click(object sender, EventArgs e)
         {
-           
+            this.Hide();
+            new OrderEntryForm().Show();
+        }
+
+        private void btnNotification_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            AddFormToPanel(new ProductHome());
         }
     }
 }

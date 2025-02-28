@@ -1,5 +1,6 @@
 ﻿using client.Controllers;
 using client.Controls.Products;
+using client.Helpers;
 using client.Models;
 using client.Services;
 using System;
@@ -17,6 +18,9 @@ namespace client.Forms.Order
     public partial class OrderEntryForm : Form
     {
         private FlowLayoutPanel cartContainerPanel;
+        private readonly SubCategoryController _subCategoryController = new SubCategoryController();
+        private readonly CategoryController _categoryController = new CategoryController();
+        private readonly ProductController _productController = new ProductController();
 
         public static OrderEntryForm? Instance { get; private set; }
 
@@ -25,7 +29,6 @@ namespace client.Forms.Order
             InitializeComponent();
             Instance = this;
             this.FormClosed += OrderEntryForm_FormClosed;
-            LoadProducts();
             this.Name = "OrderEntryForm";
 
             cartContainerPanel = cartPanel as FlowLayoutPanel;
@@ -41,27 +44,266 @@ namespace client.Forms.Order
             }
         }
 
-        private void OrderEntryForm_Load(object sender, EventArgs e)
+        private async void OrderEntryForm_Load(object sender, EventArgs e)
         {
+            DataCache.ShouldRefreshCategories = true;
+            this.WindowState = FormWindowState.Maximized;
             timer1.Start();
+            await InitializeData();
         }
 
-        private async void LoadProducts()
+        private async Task InitializeData()
         {
-            var productController = new ProductController();
-            if (await productController.Get())
+            try
             {
-                pnlContainer.Controls.Clear();
+                // Check if categories need to be refreshed
+                Task<bool> categoryTask = DataCache.ShouldRefreshCategories
+                    ? _categoryController.Get()
+                    : Task.FromResult(false); // If not refreshing, return a completed task
 
-                var productDisplay = new Display(CurrentProduct.AllProduct)
+                // Await the category task before loading products
+                bool categoriesRefreshed = await categoryTask; // Wait for category task to complete
+
+                // Check category load result
+                if (!categoriesRefreshed) // Check the result of categoryTask
                 {
-                    Dock = DockStyle.Fill
-                };
-                pnlContainer.Controls.Add(productDisplay);
+                    LoggerHelper.Write("LOAD CATEGORIES", "Failed to load categories.");
+                    MessageBox.Show("Failed to load categories.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Check if products are already cached and valid
+                if (!DataCache.ProductsAreValid) // Assuming a property to check cache validity
+                {
+                    // Load products after categories are loaded
+                    var products = await LoadProducts(); // Await the task to get the list of products
+
+                    // Save products and categories to cache after loading
+                    SaveProductsToCache(products); // New method to save products to cache
+                }
+
+                // Update the last category update time
+                DataCache.LastCategoryUpdate = DateTime.Now;
+
+                // Create category buttons after categories are loaded
+                CreateCategoryButtons();
+
+                // Load subcategories if a category is selected
+                if (CurrentCategory.Current?.Id > 0)
+                {
+                    bool subCategoriesLoaded = await _subCategoryController.Get(CurrentCategory.Current.Id);
+                    if (!subCategoriesLoaded)
+                    {
+                        MessageBox.Show("Failed to load subcategories.", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading data: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerHelper.Write("LOAD ERROR", ex.Message);
             }
         }
 
-        public void AddCartItem(Product product)
+        // Save products and categories to cache
+        private async void SaveProductsToCache(List<client.Models.Product> products)
+        {
+            var categories = await _categoryController.GetAllCategories();
+            var cacheData = new CacheData
+            {
+                LastUpdate = DateTime.UtcNow,
+                Products = products,
+                Categories = categories
+            };
+
+            CacheService.SaveToCache(cacheData);
+        }
+
+        private void CreateCategoryButtons()
+        {
+            categoriesPanel.Controls.Clear();
+
+            categoriesPanel.AutoScroll = true;
+            categoriesPanel.WrapContents = false;
+            categoriesPanel.FlowDirection = FlowDirection.LeftToRight;
+            categoriesPanel.HorizontalScroll.Enabled = true;
+            categoriesPanel.HorizontalScroll.Visible = true;
+
+            int buttonMargin = 5;
+            int buttonHeight = 40;
+            int buttonWidth = 110;
+
+            var categories = CurrentCategory.AllCategories;
+            if (categories != null && categories.Count > 0)
+            {
+                foreach (var category in categories)
+                {
+                    if (category != null && !string.IsNullOrEmpty(category.Name))
+                    {
+                        Button categoryButton = new Button
+                        {
+                            Text = category.Name,
+                            Width = buttonWidth,
+                            Height = buttonHeight,
+                            Margin = new Padding(buttonMargin, buttonMargin, 0, buttonMargin),
+                            Tag = category.Id,
+                            FlatStyle = FlatStyle.Flat,
+                            BackColor = Color.White,
+                            ForeColor = Color.Black,
+                            Font = new Font("Segoe UI", 11, FontStyle.Regular),
+                            Cursor = Cursors.Hand,
+                            TabStop = false
+                        };
+
+                        categoryButton.FlatAppearance.BorderSize = 1;
+                        categoryButton.FlatAppearance.BorderColor = Color.WhiteSmoke;
+
+                        categoryButton.MouseEnter += (s, e) =>
+                        {
+                            if (s is Button btn)
+                            {
+                                btn.BackColor = Color.LightGray;
+                            }
+                        };
+
+                        categoryButton.MouseLeave += (s, e) =>
+                        {
+                            if (s is Button btn)
+                            {
+                                btn.BackColor = Color.White;
+                            }
+                        };
+
+                        categoryButton.Click += async (sender, e) =>
+                        {
+                            if (sender is Button button && button.Tag is int categoryId)
+                            {
+                                categoriesPanel.Focus();
+                                await HandleCategoryClick(categoryId);
+                            }
+                        };
+
+                        categoriesPanel.Controls.Add(categoryButton);
+                    }
+                }
+            }
+        }
+
+        private async Task HandleCategoryClick(int categoryId)
+        {
+            try
+            {
+                if (CurrentCategory.AllCategories == null || !CurrentCategory.AllCategories.Any())
+                {
+                    MessageBox.Show("No categories available.", "Information",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                var selectedCategory = CurrentCategory.AllCategories
+                    .FirstOrDefault(c => c.Id == categoryId);
+
+                if (selectedCategory != null)
+                {
+                    CurrentCategory.SetCurrentCategory(selectedCategory);
+
+                    bool success = await _subCategoryController.Get(categoryId);
+                    if (success)
+                    {
+                        ShowSubCategories();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to load subcategories.", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        LoggerHelper.Write("SUBCATEGORY LOAD ERROR", $"Failed to load subcategories for category ID: {categoryId}");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selected category not found.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    LoggerHelper.Write("CATEGORY CLICK ERROR", $"Category ID {categoryId} not found in AllCategories.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error handling category click: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerHelper.Write("CATEGORY CLICK ERROR", ex.Message);
+            }
+        }
+
+        private void ShowSubCategories()
+        {
+            var subcategories = CurrentSubCategory.AllSubCategories;
+            if (subcategories != null && subcategories.Count > 0)
+            {
+                StringBuilder message = new StringBuilder();
+                message.AppendLine("Subcategories:");
+                message.AppendLine("-------------------");
+
+                foreach (var subcategory in subcategories)
+                {
+                    if (subcategory != null && !string.IsNullOrEmpty(subcategory.scName))
+                    {
+                        message.AppendLine($"• {subcategory.scName}");
+                    }
+                }
+
+                MessageBox.Show(message.ToString(), "Subcategories List",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("No subcategories found for this category.",
+                    "Subcategories List", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private async Task<List<client.Models.Product>> LoadProducts()
+        {
+            try
+            {
+                if (await _productController.Get())
+                {
+                    // Clear the existing controls in the panel
+                    pnlContainer.Controls.Clear();
+
+                    // Check if there are products available
+                    if (CurrentProduct.AllProduct != null && CurrentProduct.AllProduct.Count > 0)
+                    {
+                        // Create a display for the products
+                        var productDisplay = new CardDisplay(CurrentProduct.AllProduct)
+                        {
+                            Dock = DockStyle.Fill
+                        };
+                        pnlContainer.Controls.Add(productDisplay);
+
+                        // Return the list of products
+                        return CurrentProduct.AllProduct; // Return the list of products
+                    }
+                    else
+                    {
+                        MessageBox.Show("No products available to display.", "Information",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading products: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            // Return an empty list if no products were loaded or an error occurred
+            return new List<client.Models.Product>();
+        }
+
+        public void AddCartItem(client.Models.Product product)
         {
             if (cartContainerPanel == null)
             {
@@ -71,7 +313,7 @@ namespace client.Forms.Order
 
             foreach (Control control in cartContainerPanel.Controls)
             {
-                if (control is Panel existingCartItem && existingCartItem.Tag is Product existingProduct)
+                if (control is Panel existingCartItem && existingCartItem.Tag is client.Models.Product existingProduct)
                 {
                     if (existingProduct.productId == product.productId)
                     {
@@ -91,7 +333,7 @@ namespace client.Forms.Order
             {
                 Width = cartContainerPanel.Width - 30,
                 Height = 80,
-                BackColor = Color.White,
+                BackColor = Color.WhiteSmoke,
                 Padding = new Padding(5),
                 Margin = new Padding(5),
                 BorderStyle = BorderStyle.None,
@@ -140,21 +382,20 @@ namespace client.Forms.Order
             var btnMinus = new Button
             {
                 Name = "btnMinus",
-                Text = "−", // Unicode minus sign for better alignment
+                Text = "−",
                 Width = 24,
                 Height = 24,
                 Location = new Point(70, 42),
-                Font = new Font("Segoe UI", 10, FontStyle.Bold), // Slightly bigger font for clarity
+                Font = new Font("Segoe UI", 10, FontStyle.Bold),
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(214, 192, 179),
-                Cursor = Cursors.Hand // Changes cursor to hand when hovered
+                Cursor = Cursors.Hand
             };
 
-            // Prevents resizing on click
             btnMinus.FlatAppearance.BorderSize = 0;
-            btnMinus.FlatAppearance.MouseDownBackColor = Color.FromArgb(190, 170, 160); // Slightly darker when clicked
-            btnMinus.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 204, 192); // Lighter on hover
+            btnMinus.FlatAppearance.MouseDownBackColor = Color.FromArgb(190, 170, 160);
+            btnMinus.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 204, 192);
 
             var btnPlus = new Button
             {
@@ -238,13 +479,43 @@ namespace client.Forms.Order
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lblDateTime.Text = $"{DateTime.Now.ToString("dddd")}, {DateTime.Now.ToString("hh:mm:ss tt").ToUpper()}";
-            lblDate.Text = DateTime.Now.ToString("MMM dd, yyyy");
+            lblDateTime.Text = $"{DateTime.Now.ToString("MMM dd, yyyy")} - {DateTime.Now.ToString("dddd")}, {DateTime.Now.ToString("hh:mm:ss tt").ToUpper()}";
         }
 
         private void OrderEntryForm_FormClosed(object? sender, FormClosedEventArgs e)
         {
             Instance = null;
+        }
+
+        private void homeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new MainMenu().Show();
+        }
+
+        private Point dragOffset;
+        private bool isDragging = false;
+        private void pnlHeader_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = true;
+                dragOffset = new Point(e.X, e.Y);
+            }
+        }
+
+        private void pnlHeader_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point newLocation = PointToScreen(new Point(e.X, e.Y));
+                Location = new Point(newLocation.X - dragOffset.X, newLocation.Y - dragOffset.Y);
+            }
+        }
+
+        private void pnlHeader_MouseUp(object sender, MouseEventArgs e)
+        {
+            isDragging = false;
         }
     }
 }

@@ -33,6 +33,7 @@
 
   <ItemGroup>
     <Folder Include="Forms\Administration\" />
+    <Folder Include="Forms\ManageMenu\" />
   </ItemGroup>
 
 </Project>

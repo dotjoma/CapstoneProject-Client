@@ -1,4 +1,5 @@
-﻿using client.Models;
+﻿using client.Helpers;
+using client.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,28 @@ namespace client.Services
         public static void SetCurrentProduct(Product? product)
         {
             _currentProduct = product;
+        }
+
+        public static Product? GetProductById(int id)
+        {
+            try
+            {
+                var product = _allProduct.FirstOrDefault(p => p.productId == id);
+
+                if (product == null)
+                {
+                    LoggerHelper.Write("PRODUCT", $"Product with ID {id} not found");
+                    return null;
+                }
+
+                LoggerHelper.Write("PRODUCT", $"Found product: {product.productName} (ID: {id})");
+                return product;
+            }
+            catch (Exception ex)
+            {
+                LoggerHelper.Write("PRODUCT", $"Error getting product with ID {id}: {ex.Message}");
+                return null;
+            }
         }
 
         public static void Clear()

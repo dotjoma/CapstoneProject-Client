@@ -1,4 +1,5 @@
 ﻿using client.Controllers;
+using client.Forms.ProductManagement;
 using client.Helpers;
 using client.Services;
 using System;
@@ -25,9 +26,9 @@ namespace client.Forms.POS.POSUserControl.ProductFoodCategory
         private string label = string.Empty;
         private string name = string.Empty;
 
-        private UC_Products _ucProducts;
+        private readonly AddProduct _parentForm;
 
-        public NewCategory(string title, string label, string name, UC_Products uc_Prod)
+        public NewCategory(string title, string label, string name, AddProduct parent)
         {
             InitializeComponent();
             this.title = title;
@@ -37,8 +38,7 @@ namespace client.Forms.POS.POSUserControl.ProductFoodCategory
             _categoryController = new CategoryController();
             _subCategoryController = new SubCategoryController();
 
-            _ucProducts = uc_Prod;
-            lblSelectedId.Text = selectedCategoryId.ToString();
+            _parentForm = parent;
         }
 
         private void NewCategory_Load(object sender, EventArgs e)
@@ -48,21 +48,77 @@ namespace client.Forms.POS.POSUserControl.ProductFoodCategory
             txtName.PlaceholderText = name;
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void ToggleButton(Boolean tog)
         {
-            if (Convert.ToInt32(txtName.Text.Length) > 0)
+            btnSave.Enabled = tog;
+            string message = (tog) ? "Save" : "Saving...";
+            btnSave.Text = message;
+        }
+
+        private async void HandleUnit(string unitName)
+        {
+            bool response = await _unitController.Create(unitName, "Test Muna");
+            if (response)
             {
-                if (MessageBox.Show("Discard changes?", "Close", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                MessageBox.Show($"Unit '{unitName}' has been created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Dispose();
+
+                bool getUnits = await _unitController.Get();
+                if (getUnits)
                 {
-                    this.Dispose();
+                    _parentForm.GetUnit();
                 }
             }
             else
             {
-                this.Dispose();
+                ToggleButton(true);
             }
         }
-        
+
+        private async void HandleCategory(string categoryName)
+        {
+            if (selectedCategoryId == null) // Create new category.
+            {
+                bool response = await _categoryController.Create(categoryName);
+                if (response)
+                {
+                    MessageBox.Show($"Category '{categoryName}' has been created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Dispose();
+
+                    bool getCategories = await _categoryController.Get();
+                    if (getCategories)
+                    {
+                        _parentForm.GetCategory();
+                    }
+                }
+                else
+                {
+                    ToggleButton(true);
+                }
+            }
+            else // Create sub category
+            {
+                bool response = await _subCategoryController.Create(categoryName, (int)selectedCategoryId);
+                if (response)
+                {
+                    CurrentSubCategory.SetCurrentSubCategory(null); // This is to prevent the subcategory that show only the selected category previously.
+
+                    MessageBox.Show($"Subcategory '{categoryName}' has been created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Dispose();
+
+                    var getCategories = await _subCategoryController.GetAllSubcategory();
+                    if (getCategories.Any())
+                    {
+                        _parentForm.GetSubCategory();
+                    }
+                }
+                else
+                {
+                    ToggleButton(true);
+                }
+            }
+        }
+
         private async void btnSave_Click(object sender, EventArgs e)
         {
             ToggleButton(false);
@@ -90,8 +146,8 @@ namespace client.Forms.POS.POSUserControl.ProductFoodCategory
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), 
-                    "Error", 
+                MessageBox.Show(ex.Message.ToString(),
+                    "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
                 return;
@@ -101,72 +157,19 @@ namespace client.Forms.POS.POSUserControl.ProductFoodCategory
                 ToggleButton(true);
             }
         }
-        private void ToggleButton(Boolean tog)
-        {
-            btnSave.Enabled = tog;
-            string message = (tog) ? "Save" : "Saving...";
-            btnSave.Text = message;
-        }
 
-        private async void HandleUnit(string unitName)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-            bool response = await _unitController.Create(unitName, "Test Muna");
-            if (response)
+            if (Convert.ToInt32(txtName.Text.Length) > 0)
             {
-                MessageBox.Show($"Unit '{unitName}' has been created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Dispose();
-
-                bool getUnits = await _unitController.Get();
-                if (getUnits)
+                if (MessageBox.Show("Discard changes?", "Close", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    _ucProducts.GetUnit();
+                    this.Dispose();
                 }
             }
             else
             {
-                ToggleButton(true);
-            }
-        }
-
-        private async void HandleCategory(string categoryName)
-        {
-            if (selectedCategoryId == null) // Create new category.
-            {
-                bool response = await _categoryController.Create(categoryName);
-                if (response)
-                {
-                    MessageBox.Show($"Category '{categoryName}' has been created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Dispose();
-
-                    bool getCategories = await _categoryController.Get();
-                    if (getCategories)
-                    {
-                        _ucProducts.GetCategory();
-                    }
-                }
-                else
-                {
-                    ToggleButton(true);
-                }
-            }
-            else // Create sub category
-            {
-                bool response = await _subCategoryController.Create(categoryName, (int)selectedCategoryId);
-                if (response)
-                {
-                    MessageBox.Show($"Subcategory '{categoryName}' has been created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Dispose();
-
-                    bool getCategories = await _subCategoryController.Get((int)selectedCategoryId);
-                    if (getCategories)
-                    {
-                        _ucProducts.GetSubCategory();
-                    }
-                }
-                else
-                {
-                    ToggleButton(true);
-                }
+                this.Dispose();
             }
         }
     }

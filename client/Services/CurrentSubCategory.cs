@@ -26,6 +26,11 @@ namespace client.Services
             _currentSubCategory = subCategory;
         }
 
+        public static SubCategory? GetSubategoryById(int subcategoryId)
+        {
+            return _allSubCategories.FirstOrDefault(c => c.scId == subcategoryId);
+        }
+
         public static void Clear()
         {
             _currentSubCategory = null;

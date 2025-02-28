@@ -1,5 +1,4 @@
 ﻿using client.Controls;
-using client.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using client.Forms.POS.POSUserControl.FoodCategory;
+using client.Models;
 
 namespace client.Forms.POS.POSUserControl
 {
@@ -31,12 +30,11 @@ namespace client.Forms.POS.POSUserControl
 
         private void UC_Pos_Load(object sender, EventArgs e)
         {
-            AddUserControl(new UC_Beverages());
             ActiveButton(1);
             timer1.Start();
         }
 
-        public void AddCartItem(Product product)
+        public void AddCartItem(client.Models.Product product)
         {
             if (cartContainerPanel == null) return;
 
@@ -103,19 +101,16 @@ namespace client.Forms.POS.POSUserControl
 
         private void btnBeverages_Click(object sender, EventArgs e)
         {
-            AddUserControl(new UC_Beverages());
             ActiveButton(1);
         }
 
         private void btnMainCourse_Click(object sender, EventArgs e)
         {
-            AddUserControl(new UC_MainCourse());
             ActiveButton(2);
         }
 
         private void btnFastFood_Click(object sender, EventArgs e)
         {
-            AddUserControl(new UC_FastFood());
             ActiveButton(3);
         }
 
