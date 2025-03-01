@@ -475,6 +475,7 @@
             Name = "MainMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ELICIA'S GARDEN FOOD PARK";
+            FormClosing += MainMenu_FormClosing;
             Shown += MainMenu_Shown;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

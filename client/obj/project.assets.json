@@ -189,23 +189,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\baste\\.nuget\\packages\\": {},
+    "C:\\Users\\Talayqty\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\client.csproj",
+      "projectUniqueName": "C:\\CAPSTONE\\CapstoneProject-Client\\client\\client.csproj",
       "projectName": "client",
-      "projectPath": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\client.csproj",
-      "packagesPath": "C:\\Users\\baste\\.nuget\\packages\\",
-      "outputPath": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\obj\\",
+      "projectPath": "C:\\CAPSTONE\\CapstoneProject-Client\\client\\client.csproj",
+      "packagesPath": "C:\\Users\\Talayqty\\.nuget\\packages\\",
+      "outputPath": "C:\\CAPSTONE\\CapstoneProject-Client\\client\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\baste\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Talayqty\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

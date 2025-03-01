@@ -24,7 +24,6 @@ namespace client
         private static void OnApplicationExit(object? sender, EventArgs e)
         {
             CurrentUser.Clear();
-            MessageBox.Show("Session Cleared!");
         }
     }
 }

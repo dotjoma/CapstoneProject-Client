@@ -216,6 +216,8 @@ namespace client.Forms
 
         private void ToggleButton(Boolean tog)
         {
+            txtUsername.Enabled = tog;
+            txtPassword.Enabled = tog;
             btnSignIn.Enabled = tog;
             string text = (tog) ? "Sign In" : "Sining In...";
             btnSignIn.Text = text;

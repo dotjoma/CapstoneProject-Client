@@ -23,7 +23,7 @@ namespace client.Forms.ProductManagement
             InitializeComponent();
             Instance = this;
             dgvProducts.CellFormatting += dgvProducts_CellFormatting;
-            this.ShowInTaskbar = false;
+            //this.ShowInTaskbar = false;
 
             _dataLoadingService = new DataLoadingService(this);
 

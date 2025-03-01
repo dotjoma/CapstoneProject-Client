@@ -44,8 +44,6 @@ namespace client.Forms
             lblUser.Text = $"Welcome, {CurrentUser.Current?.Username} ({CultureInfo.CurrentCulture.TextInfo.ToTitleCase(userRole ?? "Unknown")})";
         }
 
-
-
         private void MainMenu_Shown(object? sender, EventArgs e)
         {
             _userAccessManager = new UserAccessManager(
@@ -139,7 +137,15 @@ namespace client.Forms
         {
             if (MessageBox.Show("Are you sure you want to close application?", "Close Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                Application.Exit();
+                var openForms = Application.OpenForms.Cast<Form>().ToList();
+
+                foreach (Form form in openForms)
+                {
+                    if (form != this)
+                    {
+                        form.Close();
+                    }
+                }
             }
         }
 
@@ -167,6 +173,11 @@ namespace client.Forms
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
             AddFormToPanel(new ProductHome());
+        }
+
+        private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CloseWindow();
         }
     }
 }

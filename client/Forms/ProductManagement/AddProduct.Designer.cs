@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddProduct));
             pbImage = new PictureBox();
             label7 = new Label();
             label6 = new Label();
@@ -46,7 +47,6 @@
             btnSave = new Button();
             btnUploadImage = new Button();
             cbIsActive = new CheckBox();
-            btnClose = new Button();
             ((System.ComponentModel.ISupportInitialize)pbImage).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -267,25 +267,12 @@
             cbIsActive.Text = "isActive";
             cbIsActive.UseVisualStyleBackColor = true;
             // 
-            // btnClose
-            // 
-            btnClose.FlatAppearance.BorderSize = 0;
-            btnClose.FlatStyle = FlatStyle.Flat;
-            btnClose.Image = Properties.Resources.Close_Window;
-            btnClose.Location = new Point(585, 12);
-            btnClose.Name = "btnClose";
-            btnClose.Size = new Size(25, 25);
-            btnClose.TabIndex = 31;
-            btnClose.UseVisualStyleBackColor = true;
-            btnClose.Click += btnClose_Click;
-            // 
             // AddProduct
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(622, 369);
-            Controls.Add(btnClose);
             Controls.Add(cbIsActive);
             Controls.Add(btnUploadImage);
             Controls.Add(panel1);
@@ -302,10 +289,12 @@
             Controls.Add(cboUnit);
             Controls.Add(label4);
             Controls.Add(label2);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AddProduct";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "AddProduct";
+            Text = "ELICIAS GARDEN FOOD PARK";
+            Activated += AddProduct_Activated;
             Load += AddProduct_Load;
             ((System.ComponentModel.ISupportInitialize)pbImage).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -334,6 +323,5 @@
         private Button btnCancel;
         private Button btnUploadImage;
         private CheckBox cbIsActive;
-        private Button btnClose;
     }
 }

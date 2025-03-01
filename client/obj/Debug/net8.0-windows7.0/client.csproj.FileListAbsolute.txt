@@ -42,3 +42,47 @@ E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-wi
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.pdb
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.genruntimeconfig.cache
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\ref\client.dll
+C:\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\Guna.UI2.dll
+C:\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\Newtonsoft.Json.dll
+C:\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\System.Management.dll
+C:\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net7.0\System.Management.dll
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.csproj.AssemblyReference.cache
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Controls.Products.CardDisplay.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Controls.Manage.Manage.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.Dashboard.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.Loading.MainMenuLoading.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.Login.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.MainMenu.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.Order.OrderEntryForm.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.POS.POSUserControl.ProductFoodCategory.NewCategory.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.POS.POSUserControl.UC_Orders.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.POS.POSUserControl.UC_Pos.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.POS.POSUserControl.UC_Products.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.POS.POS_MainMenu.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.ProductManagement.AddProduct.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.ProductManagement.NewUnit.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.ProductManagement.ProductHome.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.Register.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.UserControll.UC_DashBoard.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.UserControll.UC_Inventory.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.UserControll.UC_Reservation.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.UserControll.UC_Settings.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Properties.Resources.resources
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.csproj.GenerateResource.cache
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.GeneratedMSBuildEditorConfig.editorconfig
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.AssemblyInfoInputs.cache
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.AssemblyInfo.cs
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.csproj.CoreCompileInputs.cache
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.sourcelink.json
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.dll
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\refint\client.dll
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.pdb
+C:\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\client.exe
+C:\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\client.dll.config
+C:\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\client.deps.json
+C:\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\client.runtimeconfig.json
+C:\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\client.dll
+C:\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\client.pdb
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.csproj.Up2Date
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.genruntimeconfig.cache
+C:\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\ref\client.dll

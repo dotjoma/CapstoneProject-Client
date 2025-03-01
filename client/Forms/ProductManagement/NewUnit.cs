@@ -38,6 +38,7 @@ namespace client.Forms.ProductManagement
 
             try
             {
+                if (!Validation(name, desc)) return;
                 HandleUnit(name, desc);
             }
             catch (Exception ex)
@@ -52,6 +53,25 @@ namespace client.Forms.ProductManagement
             {
                 ToggleButton(true);
             }
+        }
+
+        private bool Validation(string name, string description)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                MessageBox.Show("Name cannot be empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtName.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(description))
+            {
+                MessageBox.Show("Description cannot be empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                rtbDescription.Focus();
+                return false;
+            }
+
+            return true;
         }
 
         private async void HandleUnit(string unitName, string unitDesc)
@@ -83,7 +103,13 @@ namespace client.Forms.ProductManagement
 
         private void NewUnit_Load(object sender, EventArgs e)
         {
-            this.ShowInTaskbar = false;
+            //this.ShowInTaskbar = false;
+            txtName.Focus();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

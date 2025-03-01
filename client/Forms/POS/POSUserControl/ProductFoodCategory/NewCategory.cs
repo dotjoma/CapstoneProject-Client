@@ -23,8 +23,8 @@ namespace client.Forms.POS.POSUserControl.ProductFoodCategory
 
         private int? selectedCategoryId = CurrentCategory.Current?.Id;
         private string title = string.Empty;
-        private string label = string.Empty;
         private string name = string.Empty;
+        private string label = string.Empty;
 
         private readonly AddProduct _parentForm;
 
@@ -32,8 +32,8 @@ namespace client.Forms.POS.POSUserControl.ProductFoodCategory
         {
             InitializeComponent();
             this.title = title;
-            this.label = label;
             this.name = name;
+            this.label = label;
             _unitController = new UnitController();
             _categoryController = new CategoryController();
             _subCategoryController = new SubCategoryController();
@@ -44,8 +44,7 @@ namespace client.Forms.POS.POSUserControl.ProductFoodCategory
         private void NewCategory_Load(object sender, EventArgs e)
         {
             txtTitle.Text = title;
-            lblLabel.Text = label;
-            txtName.PlaceholderText = name;
+            txtName.PlaceholderText = label;
         }
 
         private void ToggleButton(Boolean tog)
@@ -128,12 +127,18 @@ namespace client.Forms.POS.POSUserControl.ProductFoodCategory
 
             try
             {
+                if (string.IsNullOrWhiteSpace(name))
+                {
+                    MessageBox.Show("Name cannot be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 switch (label)
                 {
                     case "Category":
                         HandleCategory(name);
                         break;
-                    case "SubCategory":
+                    case "Subcategory":
                         HandleCategory(name);
                         break;
                     case "Unit":
@@ -164,12 +169,12 @@ namespace client.Forms.POS.POSUserControl.ProductFoodCategory
             {
                 if (MessageBox.Show("Discard changes?", "Close", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    this.Dispose();
+                    this.Close();
                 }
             }
             else
             {
-                this.Dispose();
+                this.Close();
             }
         }
     }

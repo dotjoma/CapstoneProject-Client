@@ -41,7 +41,7 @@ namespace client.Forms.ProductManagement
 
         private async void AddProduct_Load(object sender, EventArgs e)
         {
-            this.ShowInTaskbar = false;
+            //this.ShowInTaskbar = false;
             try
             {
                 bool isInitialized = await InitializeComboboxes();
@@ -236,7 +236,7 @@ namespace client.Forms.ProductManagement
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Close();
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
@@ -396,10 +396,10 @@ namespace client.Forms.ProductManagement
 
             if (cboCategory.SelectedIndex == cboCategory.Items.Count - 1)
             {
-                CurrentCategory.Clear();
+                //CurrentCategory.Clear();
                 NewCategory newCategory = new NewCategory("Create Category", "Category", "Enter category name", this);
                 newCategory.ShowDialog();
-                cboCategory.SelectedIndex = 0;
+                //cboCategory.SelectedIndex = 0;
                 return;
             }
 
@@ -457,7 +457,7 @@ namespace client.Forms.ProductManagement
                 }
                 else
                 {
-                    NewCategory newCategory = new NewCategory("Create SubCategory", "SubCategory", "Enter subcategory name", this);
+                    NewCategory newCategory = new NewCategory("Create SubCategory", "Category", "Enter subcategory name", this);
                     newCategory.ShowDialog();
                     cboSubCategory.SelectedIndex = 0;
                 }
@@ -564,6 +564,11 @@ namespace client.Forms.ProductManagement
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void AddProduct_Activated(object sender, EventArgs e)
+        {
+            txtName.Focus();
         }
     }
 }

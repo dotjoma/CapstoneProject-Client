@@ -233,6 +233,16 @@ namespace client.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap category {
+            get {
+                object obj = ResourceManager.GetObject("category", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Close_Window {
             get {
                 object obj = ResourceManager.GetObject("Close Window", resourceCulture);
@@ -616,6 +626,16 @@ namespace client.Properties {
         internal static System.Drawing.Bitmap Toggle_Full_Screen {
             get {
                 object obj = ResourceManager.GetObject("Toggle Full Screen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap unit {
+            get {
+                object obj = ResourceManager.GetObject("unit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
