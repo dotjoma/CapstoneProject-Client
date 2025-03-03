@@ -12,8 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\Talayqty\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Talayqty\\.nuget\\packages",
+      "C:\\Users\\baste\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\baste\\.nuget\\packages",
       "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ],
     "configProperties": {

@@ -398,7 +398,10 @@ namespace client.Forms.ProductManagement
             {
                 //CurrentCategory.Clear();
                 NewCategory newCategory = new NewCategory("Create Category", "Category", "Enter category name", this);
-                newCategory.ShowDialog();
+                newCategory.StartPosition = FormStartPosition.Manual;
+                newCategory.StartPosition = FormStartPosition.CenterParent;
+                newCategory.ShowDialog(this);
+
                 //cboCategory.SelectedIndex = 0;
                 return;
             }
@@ -458,7 +461,9 @@ namespace client.Forms.ProductManagement
                 else
                 {
                     NewCategory newCategory = new NewCategory("Create SubCategory", "Category", "Enter subcategory name", this);
-                    newCategory.ShowDialog();
+                    newCategory.StartPosition = FormStartPosition.Manual;
+                    newCategory.StartPosition = FormStartPosition.CenterParent;
+                    newCategory.ShowDialog(this);
                     cboSubCategory.SelectedIndex = 0;
                 }
                 return;
@@ -524,7 +529,9 @@ namespace client.Forms.ProductManagement
             if (cboUnit.SelectedIndex == cboUnit.Items.Count - 1)
             {
                 NewUnit newUnit = new NewUnit(this);
-                newUnit.ShowDialog();
+                newUnit.StartPosition = FormStartPosition.Manual;
+                newUnit.StartPosition = FormStartPosition.CenterParent;
+                newUnit.ShowDialog(this);
                 cboUnit.SelectedIndex = 0;
                 return;
             }
@@ -569,6 +576,22 @@ namespace client.Forms.ProductManagement
         private void AddProduct_Activated(object sender, EventArgs e)
         {
             txtName.Focus();
+        }
+
+        private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (sender is not TextBox textBox)
+            {
+                e.Handled = true;
+                return;
+            }
+
+            bool isNumber = char.IsDigit(e.KeyChar);
+            bool isBackspace = e.KeyChar == (char)Keys.Back;
+            bool isDecimalPoint = e.KeyChar == '.';
+            bool hasDecimalPoint = textBox.Text.Contains(".");
+
+            e.Handled = !isNumber && !isBackspace && !(isDecimalPoint && !hasDecimalPoint);
         }
     }
 }

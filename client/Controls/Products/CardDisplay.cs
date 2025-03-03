@@ -186,6 +186,8 @@ namespace client.Controls.Products
                     product.ProductImageObject = ConvertBase64ToImage(product.productImage);
                 }
 
+                //MessageBox.Show($"Adding {product.productName} to cart", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 OrderEntryForm.Instance.AddCartItem(product);
             }
             else

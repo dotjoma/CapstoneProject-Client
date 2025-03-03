@@ -24,6 +24,12 @@ namespace client.Forms.Order
 
         public static OrderEntryForm? Instance { get; private set; }
 
+        private decimal subTotal = 0;
+        //private decimal discount = 0;
+        //private decimal vatableSales = 0;
+        //private decimal vat = 0;
+        //private decimal totalAmount = 0;
+
         public OrderEntryForm()
         {
             InitializeComponent();
@@ -46,6 +52,8 @@ namespace client.Forms.Order
 
         private async void OrderEntryForm_Load(object sender, EventArgs e)
         {
+            btnPayment.BackColor = ColorTranslator.FromHtml("#28a745");
+            btnPayment.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#28a745");
             DataCache.ShouldRefreshCategories = true;
             this.WindowState = FormWindowState.Maximized;
             timer1.Start();
@@ -159,7 +167,7 @@ namespace client.Forms.Order
                         };
 
                         categoryButton.FlatAppearance.BorderSize = 1;
-                        categoryButton.FlatAppearance.BorderColor = Color.WhiteSmoke;
+                        categoryButton.FlatAppearance.BorderColor = Color.Black;
 
                         categoryButton.MouseEnter += (s, e) =>
                         {
@@ -305,6 +313,10 @@ namespace client.Forms.Order
 
         public void AddCartItem(client.Models.Product product)
         {
+            MessageBox.Show($"Adding {product.productName} to cart", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            subTotal = subTotal + product.productPrice;
+
             if (cartContainerPanel == null)
             {
                 MessageBox.Show("Cart panel is not initialized.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -516,6 +528,25 @@ namespace client.Forms.Order
         private void pnlHeader_MouseUp(object sender, MouseEventArgs e)
         {
             isDragging = false;
+        }
+
+        private void OrderEntryForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CloseWindow();
+        }
+
+        private void CloseWindow()
+        {
+            if (MessageBox.Show("Are you sure you want to exit?", "Exit Application",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Environment.Exit(0);
+            }
+        }
+
+        private void btnPayment_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

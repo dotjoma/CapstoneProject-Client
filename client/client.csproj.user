@@ -7,7 +7,10 @@
     <Compile Update="Forms\Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Loading\MainMenuLoading.cs">
+    <Compile Update="Forms\DiscountManagement\AddDiscount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\DiscountManagement\DiscountHome.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Login.cs">

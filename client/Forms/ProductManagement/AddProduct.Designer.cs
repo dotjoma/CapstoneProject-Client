@@ -34,7 +34,6 @@
             label6 = new Label();
             label5 = new Label();
             cboSubCategory = new ComboBox();
-            txtPrice = new TextBox();
             cboCategory = new ComboBox();
             txtName = new TextBox();
             cboUnit = new ComboBox();
@@ -47,6 +46,7 @@
             btnSave = new Button();
             btnUploadImage = new Button();
             cbIsActive = new CheckBox();
+            txtPrice = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pbImage).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -104,17 +104,6 @@
             cboSubCategory.Size = new Size(242, 29);
             cboSubCategory.TabIndex = 13;
             cboSubCategory.SelectedIndexChanged += cboSubCategory_SelectedIndexChanged;
-            // 
-            // txtPrice
-            // 
-            txtPrice.BorderStyle = BorderStyle.FixedSingle;
-            txtPrice.Font = new Font("Segoe UI", 14.25F);
-            txtPrice.Location = new Point(174, 233);
-            txtPrice.Name = "txtPrice";
-            txtPrice.Size = new Size(242, 33);
-            txtPrice.TabIndex = 19;
-            txtPrice.TabStop = false;
-            txtPrice.TextAlign = HorizontalAlignment.Right;
             // 
             // cboCategory
             // 
@@ -185,9 +174,9 @@
             label1.ForeColor = Color.FromArgb(98, 87, 87);
             label1.Location = new Point(58, 16);
             label1.Name = "label1";
-            label1.Size = new Size(164, 32);
+            label1.Size = new Size(146, 32);
             label1.TabIndex = 25;
-            label1.Text = "ADDD MENU";
+            label1.Text = "ADD MENU";
             // 
             // panel1
             // 
@@ -267,12 +256,25 @@
             cbIsActive.Text = "isActive";
             cbIsActive.UseVisualStyleBackColor = true;
             // 
+            // txtPrice
+            // 
+            txtPrice.BorderStyle = BorderStyle.FixedSingle;
+            txtPrice.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPrice.Location = new Point(174, 233);
+            txtPrice.Name = "txtPrice";
+            txtPrice.Size = new Size(242, 33);
+            txtPrice.TabIndex = 30;
+            txtPrice.TabStop = false;
+            txtPrice.TextAlign = HorizontalAlignment.Right;
+            txtPrice.KeyPress += txtPrice_KeyPress;
+            // 
             // AddProduct
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(622, 369);
+            Controls.Add(txtPrice);
             Controls.Add(cbIsActive);
             Controls.Add(btnUploadImage);
             Controls.Add(panel1);
@@ -283,7 +285,6 @@
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(cboSubCategory);
-            Controls.Add(txtPrice);
             Controls.Add(cboCategory);
             Controls.Add(txtName);
             Controls.Add(cboUnit);
@@ -310,7 +311,6 @@
         private Label label6;
         private Label label5;
         private ComboBox cboSubCategory;
-        private TextBox txtPrice;
         private ComboBox cboCategory;
         private TextBox txtName;
         private ComboBox cboUnit;
@@ -323,5 +323,6 @@
         private Button btnCancel;
         private Button btnUploadImage;
         private CheckBox cbIsActive;
+        private TextBox txtPrice;
     }
 }

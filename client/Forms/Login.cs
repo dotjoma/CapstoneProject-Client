@@ -32,6 +32,7 @@ namespace client.Forms
         public Login()
         {
             InitializeComponent();
+            InitializeLoadingControls();
             this.KeyPreview = true;
         }
 
@@ -91,11 +92,6 @@ namespace client.Forms
             Cursor = Cursors.Default;
         }
 
-        private void btnCloseWindow_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void txtPassword_IconRightClick(object sender, EventArgs e)
         {
             isPassHidden = !isPassHidden;
@@ -120,17 +116,19 @@ namespace client.Forms
 
         private async void btnSignIn_Click(object sender, EventArgs e)
         {
-            ToggleButton(false);
-            await Task.Delay(1);
-
-            //string username = txtUsername.Text.Trim();
-            //string password = txtPassword.Text.Trim();
-
-            string username = "joma";
-            string password = "12345678@Joma";
-
             try
             {
+                ShowLoading("Signing In...");
+                ToggleButton(false);
+                await Task.Delay(1);
+
+                //string username = txtUsername.Text.Trim();
+                //string password = txtPassword.Text.Trim();
+
+                string username = "joma";
+                string password = "12345678@Joma";
+
+
                 bool response = await _authController.Login(username, password);
 
                 if (response)
@@ -144,9 +142,6 @@ namespace client.Forms
                                 "Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-
-                        MessageBox.Show("Login successful!", "Success",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         var mainMenu = new MainMenu();
                         mainMenu.Show();
@@ -165,6 +160,7 @@ namespace client.Forms
             finally
             {
                 ToggleButton(true);
+                HideLoading();
             }
         }
 
@@ -219,8 +215,9 @@ namespace client.Forms
             txtUsername.Enabled = tog;
             txtPassword.Enabled = tog;
             btnSignIn.Enabled = tog;
-            string text = (tog) ? "Sign In" : "Sining In...";
-            btnSignIn.Text = text;
+            cbRememberMe.Enabled = tog;
+            btnCreateAccount.Enabled = tog;
+            btnForgotPass.Enabled = tog;
         }
 
         private void btnSignIn_KeyDown(object sender, KeyEventArgs e)
@@ -233,6 +230,76 @@ namespace client.Forms
             if (e.KeyCode == Keys.Enter)
             {
                 btnSignIn.PerformClick();
+            }
+        }
+
+        private Panel loadingPanel = new Panel();
+        private PictureBox pictureBox = new PictureBox();
+        private Label messageLabel = new Label();
+
+        private void InitializeLoadingControls()
+        {
+            // Panel settings
+            loadingPanel.BackColor = Color.White;
+            loadingPanel.BorderStyle = BorderStyle.FixedSingle;
+            loadingPanel.Size = new Size(300, 150);
+            loadingPanel.Location = new Point(
+                (this.ClientSize.Width - loadingPanel.Width) / 2,
+                (this.ClientSize.Height - loadingPanel.Height) / 2
+            );
+
+            // PictureBox settings
+            pictureBox.Size = new Size(64, 64);
+            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox.Location = new Point(
+                (loadingPanel.Width - pictureBox.Width) / 2,
+                20
+            );
+            try
+            {
+                pictureBox.Image = Properties.Resources.loading_gif; // Your GIF resource
+            }
+            catch
+            {
+                pictureBox.BackColor = Color.LightGray;
+            }
+
+            // Label settings
+            messageLabel.AutoSize = false;
+            messageLabel.Size = new Size(280, 30);
+            messageLabel.TextAlign = ContentAlignment.MiddleCenter;
+            messageLabel.Location = new Point(
+                (loadingPanel.Width - messageLabel.Width) / 2,
+                pictureBox.Bottom + 10
+            );
+            messageLabel.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
+
+            // Add controls
+            loadingPanel.Controls.Add(pictureBox);
+            loadingPanel.Controls.Add(messageLabel);
+            this.Controls.Add(loadingPanel);
+        }
+
+        private void ShowLoading(string message)
+        {
+            // Initialize controls if not already done
+            if (!this.Controls.Contains(loadingPanel))
+            {
+                InitializeLoadingControls();
+            }
+
+            // Update message and bring to front
+            messageLabel.Text = message;
+            loadingPanel.BringToFront();
+            loadingPanel.Visible = true;
+            Application.DoEvents(); // Ensure UI updates
+        }
+
+        private void HideLoading()
+        {
+            if (loadingPanel != null)
+            {
+                loadingPanel.Visible = false;
             }
         }
     }

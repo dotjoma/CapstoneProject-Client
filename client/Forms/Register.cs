@@ -36,11 +36,6 @@ namespace client.Forms
             this.KeyPreview = true;
         }
 
-        private void btnCloseWindow_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void Register_Load(object sender, EventArgs e)
         {
             timer1.Start();

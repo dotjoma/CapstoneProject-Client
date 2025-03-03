@@ -35,7 +35,6 @@
             tsSettings = new ToolStripMenuItem();
             tsLogout = new ToolStripMenuItem();
             tsExit = new ToolStripMenuItem();
-            viewToolStripMenuItem = new ToolStripMenuItem();
             reservationToolStripMenuItem = new ToolStripMenuItem();
             newReservationToolStripMenuItem = new ToolStripMenuItem();
             viewReservationToolStripMenuItem = new ToolStripMenuItem();
@@ -50,6 +49,7 @@
             subcategoriesSupportToolStripMenuItem = new ToolStripMenuItem();
             assignProductsToCategoriesToolStripMenuItem = new ToolStripMenuItem();
             categoryAvailabilityToggleToolStripMenuItem = new ToolStripMenuItem();
+            discountManagementToolStripMenuItem = new ToolStripMenuItem();
             systemSettingsToolStripMenuItem = new ToolStripMenuItem();
             storeConfigurationToolStripMenuItem = new ToolStripMenuItem();
             taxSettingsToolStripMenuItem = new ToolStripMenuItem();
@@ -89,7 +89,7 @@
             // 
             menuStrip1.BackColor = SystemColors.Control;
             menuStrip1.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, viewToolStripMenuItem, reservationToolStripMenuItem, administrationToolStripMenuItem, refreshToolStripMenuItem, helpToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, reservationToolStripMenuItem, administrationToolStripMenuItem, refreshToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1024, 24);
@@ -124,12 +124,6 @@
             tsExit.Text = "Exit";
             tsExit.Click += tsExit_Click;
             // 
-            // viewToolStripMenuItem
-            // 
-            viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            viewToolStripMenuItem.Size = new Size(50, 20);
-            viewToolStripMenuItem.Text = "View";
-            // 
             // reservationToolStripMenuItem
             // 
             reservationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { newReservationToolStripMenuItem, viewReservationToolStripMenuItem, manageReservationToolStripMenuItem, reservationCalendarToolStripMenuItem });
@@ -163,7 +157,7 @@
             // 
             // administrationToolStripMenuItem
             // 
-            administrationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { userManagementToolStripMenuItem, categoryManagementToolStripMenuItem, systemSettingsToolStripMenuItem, databaseToolStripMenuItem });
+            administrationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { userManagementToolStripMenuItem, categoryManagementToolStripMenuItem, discountManagementToolStripMenuItem, systemSettingsToolStripMenuItem, databaseToolStripMenuItem });
             administrationToolStripMenuItem.Name = "administrationToolStripMenuItem";
             administrationToolStripMenuItem.Size = new Size(112, 20);
             administrationToolStripMenuItem.Text = "Administration";
@@ -217,6 +211,13 @@
             categoryAvailabilityToggleToolStripMenuItem.Name = "categoryAvailabilityToggleToolStripMenuItem";
             categoryAvailabilityToggleToolStripMenuItem.Size = new Size(273, 22);
             categoryAvailabilityToggleToolStripMenuItem.Text = "Category Availability Toggle";
+            // 
+            // discountManagementToolStripMenuItem
+            // 
+            discountManagementToolStripMenuItem.Name = "discountManagementToolStripMenuItem";
+            discountManagementToolStripMenuItem.Size = new Size(223, 22);
+            discountManagementToolStripMenuItem.Text = "Manage Discounts";
+            discountManagementToolStripMenuItem.Click += discountManagementToolStripMenuItem_Click;
             // 
             // systemSettingsToolStripMenuItem
             // 
@@ -537,6 +538,6 @@
         private ToolStripButton toolStripButton3;
         private ToolStripSeparator toolStripSeparator6;
         private ToolStripButton toolStripButton4;
-        private ToolStripMenuItem viewToolStripMenuItem;
+        private ToolStripMenuItem discountManagementToolStripMenuItem;
     }
 }

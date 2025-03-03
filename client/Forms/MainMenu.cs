@@ -1,5 +1,4 @@
 ﻿using client.Controllers;
-using client.Forms.Loading;
 using client.Forms.POS;
 using client.Forms.UserControll;
 using client.Helpers;
@@ -20,6 +19,8 @@ using System.Globalization;
 using System.Xml.Linq;
 using client.Forms.POS.POSUserControl;
 using client.Forms.ProductManagement;
+using client.Forms.POS.POSUserControl.ProductFoodCategory;
+using client.Forms.DiscountManagement;
 
 namespace client.Forms
 {
@@ -135,17 +136,12 @@ namespace client.Forms
 
         private void CloseWindow()
         {
-            if (MessageBox.Show("Are you sure you want to close application?", "Close Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Are you sure you want to close application?",
+                "Close Application",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                var openForms = Application.OpenForms.Cast<Form>().ToList();
-
-                foreach (Form form in openForms)
-                {
-                    if (form != this)
-                    {
-                        form.Close();
-                    }
-                }
+                Environment.Exit(0);
             }
         }
 
@@ -177,7 +173,31 @@ namespace client.Forms
 
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            CloseWindow();
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                DialogResult result = MessageBox.Show(
+                    "Are you sure you want to close application?",
+                    "Close Application",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    Environment.Exit(0);
+                }
+            }
+        }
+
+        private void discountManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DiscountHome discountHome = new DiscountHome();
+            discountHome.StartPosition = FormStartPosition.Manual;
+            discountHome.StartPosition = FormStartPosition.CenterParent;
+            discountHome.ShowDialog(this);
         }
     }
 }

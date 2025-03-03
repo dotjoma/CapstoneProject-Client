@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace client.Forms.ProductManagement
 {
@@ -169,7 +170,10 @@ namespace client.Forms.ProductManagement
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            new AddProduct(_selectedId).ShowDialog();
+            AddProduct product = new AddProduct(_selectedId);
+            product.StartPosition = FormStartPosition.Manual;
+            product.StartPosition = FormStartPosition.CenterParent;
+            product.ShowDialog(this);
         }
 
         private void toolTip1_Popup(object sender, PopupEventArgs e)

@@ -30,14 +30,20 @@
         {
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             label1 = new Label();
             panel2 = new Panel();
             btnRefresh = new PictureBox();
             pictureBox1 = new PictureBox();
             timer1 = new System.Windows.Forms.Timer(components);
+            panel1 = new Panel();
+            btnDelete = new Button();
+            btnEdit = new Button();
+            btnNew = new Button();
+            toolTip1 = new ToolTip(components);
             dgvProducts = new DataGridView();
             productCategory = new DataGridViewTextBoxColumn();
             productSubcategory = new DataGridViewTextBoxColumn();
@@ -45,16 +51,11 @@
             productUnit = new DataGridViewTextBoxColumn();
             productPrice = new DataGridViewTextBoxColumn();
             productStatus = new DataGridViewTextBoxColumn();
-            panel1 = new Panel();
-            btnDelete = new Button();
-            btnEdit = new Button();
-            btnNew = new Button();
-            toolTip1 = new ToolTip(components);
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnRefresh).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -109,106 +110,6 @@
             // 
             timer1.Interval = 60;
             timer1.Tick += timer1_Tick;
-            // 
-            // dgvProducts
-            // 
-            dgvProducts.AllowUserToAddRows = false;
-            dgvProducts.AllowUserToDeleteRows = false;
-            dgvProducts.AllowUserToResizeColumns = false;
-            dgvProducts.AllowUserToResizeRows = false;
-            dgvProducts.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvProducts.BackgroundColor = Color.White;
-            dgvProducts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Control;
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dgvProducts.ColumnHeadersHeight = 35;
-            dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvProducts.Columns.AddRange(new DataGridViewColumn[] { productCategory, productSubcategory, productName, productUnit, productPrice, productStatus });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = Color.White;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgvProducts.DefaultCellStyle = dataGridViewCellStyle4;
-            dgvProducts.EnableHeadersVisualStyles = false;
-            dgvProducts.Location = new Point(2, 59);
-            dgvProducts.MultiSelect = false;
-            dgvProducts.Name = "dgvProducts";
-            dgvProducts.ReadOnly = true;
-            dgvProducts.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dgvProducts.RowHeadersVisible = false;
-            dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProducts.Size = new Size(1020, 411);
-            dgvProducts.TabIndex = 1;
-            dgvProducts.CellFormatting += dgvProducts_CellFormatting;
-            // 
-            // productCategory
-            // 
-            productCategory.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            productCategory.FillWeight = 114.315689F;
-            productCategory.HeaderText = "Category";
-            productCategory.MinimumWidth = 180;
-            productCategory.Name = "productCategory";
-            productCategory.ReadOnly = true;
-            // 
-            // productSubcategory
-            // 
-            productSubcategory.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            productSubcategory.FillWeight = 110.479927F;
-            productSubcategory.HeaderText = "Sub-Category";
-            productSubcategory.MinimumWidth = 180;
-            productSubcategory.Name = "productSubcategory";
-            productSubcategory.ReadOnly = true;
-            // 
-            // productName
-            // 
-            productName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            productName.FillWeight = 115.0222F;
-            productName.HeaderText = "Name";
-            productName.MinimumWidth = 290;
-            productName.Name = "productName";
-            productName.ReadOnly = true;
-            // 
-            // productUnit
-            // 
-            productUnit.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            productUnit.FillWeight = 137.7169F;
-            productUnit.HeaderText = "Unit";
-            productUnit.MinimumWidth = 150;
-            productUnit.Name = "productUnit";
-            productUnit.ReadOnly = true;
-            // 
-            // productPrice
-            // 
-            productPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleRight;
-            productPrice.DefaultCellStyle = dataGridViewCellStyle2;
-            productPrice.FillWeight = 178.85527F;
-            productPrice.HeaderText = "Price";
-            productPrice.MinimumWidth = 100;
-            productPrice.Name = "productPrice";
-            productPrice.ReadOnly = true;
-            // 
-            // productStatus
-            // 
-            productStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.SelectionBackColor = Color.LimeGreen;
-            productStatus.DefaultCellStyle = dataGridViewCellStyle3;
-            productStatus.FillWeight = 74.16836F;
-            productStatus.HeaderText = "Status";
-            productStatus.MinimumWidth = 101;
-            productStatus.Name = "productStatus";
-            productStatus.ReadOnly = true;
             // 
             // panel1
             // 
@@ -295,6 +196,116 @@
             toolTip1.ReshowDelay = 20;
             toolTip1.Popup += toolTip1_Popup;
             // 
+            // dgvProducts
+            // 
+            dgvProducts.AllowUserToAddRows = false;
+            dgvProducts.AllowUserToDeleteRows = false;
+            dgvProducts.AllowUserToResizeColumns = false;
+            dgvProducts.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dgvProducts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvProducts.BackgroundColor = Color.White;
+            dgvProducts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(214, 192, 179);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(98, 87, 87);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(214, 192, 179);
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(98, 87, 87);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvProducts.ColumnHeadersHeight = 35;
+            dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvProducts.Columns.AddRange(new DataGridViewColumn[] { productCategory, productSubcategory, productName, productUnit, productPrice, productStatus });
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dgvProducts.DefaultCellStyle = dataGridViewCellStyle5;
+            dgvProducts.Dock = DockStyle.Fill;
+            dgvProducts.EnableHeadersVisualStyles = false;
+            dgvProducts.Location = new Point(0, 59);
+            dgvProducts.MultiSelect = false;
+            dgvProducts.Name = "dgvProducts";
+            dgvProducts.ReadOnly = true;
+            dgvProducts.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvProducts.RowHeadersVisible = false;
+            dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProducts.Size = new Size(1024, 471);
+            dgvProducts.TabIndex = 1;
+            dgvProducts.TabStop = false;
+            dgvProducts.CellFormatting += dgvProducts_CellFormatting;
+            // 
+            // productCategory
+            // 
+            productCategory.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            productCategory.FillWeight = 114.315689F;
+            productCategory.HeaderText = "Category";
+            productCategory.MinimumWidth = 180;
+            productCategory.Name = "productCategory";
+            productCategory.ReadOnly = true;
+            productCategory.Width = 180;
+            // 
+            // productSubcategory
+            // 
+            productSubcategory.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            productSubcategory.FillWeight = 110.479927F;
+            productSubcategory.HeaderText = "Sub-Category";
+            productSubcategory.MinimumWidth = 180;
+            productSubcategory.Name = "productSubcategory";
+            productSubcategory.ReadOnly = true;
+            productSubcategory.Width = 180;
+            // 
+            // productName
+            // 
+            productName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            productName.FillWeight = 115.0222F;
+            productName.HeaderText = "Name";
+            productName.MinimumWidth = 290;
+            productName.Name = "productName";
+            productName.ReadOnly = true;
+            // 
+            // productUnit
+            // 
+            productUnit.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            productUnit.FillWeight = 137.7169F;
+            productUnit.HeaderText = "Unit";
+            productUnit.MinimumWidth = 150;
+            productUnit.Name = "productUnit";
+            productUnit.ReadOnly = true;
+            productUnit.Width = 150;
+            // 
+            // productPrice
+            // 
+            productPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
+            productPrice.DefaultCellStyle = dataGridViewCellStyle3;
+            productPrice.FillWeight = 178.85527F;
+            productPrice.HeaderText = "Price";
+            productPrice.MinimumWidth = 100;
+            productPrice.Name = "productPrice";
+            productPrice.ReadOnly = true;
+            productPrice.Width = 141;
+            // 
+            // productStatus
+            // 
+            productStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.SelectionBackColor = Color.LimeGreen;
+            productStatus.DefaultCellStyle = dataGridViewCellStyle4;
+            productStatus.FillWeight = 74.16836F;
+            productStatus.HeaderText = "Status";
+            productStatus.MinimumWidth = 80;
+            productStatus.Name = "productStatus";
+            productStatus.ReadOnly = true;
+            productStatus.Width = 80;
+            // 
             // ProductHome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -306,15 +317,15 @@
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ProductHome";
-            StartPosition = FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.CenterParent;
             Text = "ProductHome";
             Load += ProductHome_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)btnRefresh).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvProducts).EndInit();
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvProducts).EndInit();
             ResumeLayout(false);
         }
 
@@ -324,13 +335,13 @@
         private Panel panel2;
         private PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
-        private DataGridView dgvProducts;
         private Panel panel1;
         private Button btnNew;
         private Button btnDelete;
         private Button btnEdit;
         private PictureBox btnRefresh;
         private ToolTip toolTip1;
+        private DataGridView dgvProducts;
         private DataGridViewTextBoxColumn productCategory;
         private DataGridViewTextBoxColumn productSubcategory;
         private DataGridViewTextBoxColumn productName;

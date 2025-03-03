@@ -45,5 +45,8 @@ namespace client.Network
 
         GetAllSubcategory = 26,
         GetAllSubcategoryResponse = 27,
+
+        CreateDiscount = 28,
+        CreateDiscountResponse = 29,
     }
 }
