@@ -10,16 +10,14 @@ namespace client.Services
 {
     public class DataLoadingService
     {
-        private readonly ProductController _productController;
-        private readonly CategoryController _categoryController;
-        private readonly SubCategoryController _subCategoryController;
+        private readonly ProductController _productController = new ProductController();
+        private readonly CategoryController _categoryController = new CategoryController();
+        private readonly SubCategoryController _subCategoryController = new SubCategoryController();
+        private readonly DiscountController _discountController = new DiscountController();
         private readonly Form _ownerForm;
 
         public DataLoadingService(Form ownerForm = null!)
         {
-            _productController = new ProductController();
-            _categoryController = new CategoryController();
-            _subCategoryController = new SubCategoryController();
             _ownerForm = ownerForm;
         }
 
@@ -51,6 +49,35 @@ namespace client.Services
             }
         }
 
+        public async Task RefreshDataOf(string model, Action displayCallback = null!)
+        {
+            try
+            {
+                if (_ownerForm != null)
+                    _ownerForm.Cursor = Cursors.WaitCursor;
+
+                if (model == "discount")
+                {
+                    CurrentDiscount.Clear();
+
+                    await LoadTableOf(model);
+                }
+
+                displayCallback?.Invoke();
+            }
+            catch (Exception ex)
+            {
+                LoggerHelper.Write("DATA REFRESH", $"Error refreshing data: {ex.Message}");
+                MessageBox.Show($"Error refreshing data: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (_ownerForm != null)
+                    _ownerForm.Cursor = Cursors.Default;
+            }
+        }
+
         private async Task LoadDataBase()
         {
             await _productController.GetAllProducts();
@@ -61,6 +88,15 @@ namespace client.Services
 
             await _subCategoryController.GetAllSubcategory();
             LoggerHelper.Write("DATA LOADING", "Successfully loaded subcategories");
+        }
+
+        private async Task LoadTableOf(string model)
+        {
+            if (model == "discount")
+            {
+                await _discountController.GetAllDiscounts();
+                LoggerHelper.Write("DATA LOADING", "Successfully loaded discounts");
+            }
         }
     }
 }
