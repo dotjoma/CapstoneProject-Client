@@ -35,6 +35,7 @@
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DiscountHome));
             panel2 = new Panel();
+            btnRefreshh = new PictureBox();
             pictureBox1 = new PictureBox();
             label1 = new Label();
             btnRefresh = new PictureBox();
@@ -52,6 +53,7 @@
             applicable_to = new DataGridViewTextBoxColumn();
             status = new DataGridViewTextBoxColumn();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)btnRefreshh).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnRefresh).BeginInit();
             panel3.SuspendLayout();
@@ -62,13 +64,29 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.Control;
+            panel2.Controls.Add(btnRefreshh);
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(784, 59);
+            panel2.Size = new Size(964, 59);
             panel2.TabIndex = 1;
+            // 
+            // btnRefreshh
+            // 
+            btnRefreshh.Anchor = AnchorStyles.Right;
+            btnRefreshh.BackColor = Color.White;
+            btnRefreshh.Image = Properties.Resources.Refresh;
+            btnRefreshh.Location = new Point(928, 17);
+            btnRefreshh.Name = "btnRefreshh";
+            btnRefreshh.Size = new Size(24, 24);
+            btnRefreshh.SizeMode = PictureBoxSizeMode.StretchImage;
+            btnRefreshh.TabIndex = 4;
+            btnRefreshh.TabStop = false;
+            btnRefreshh.Click += btnRefreshh_Click;
+            btnRefreshh.MouseEnter += btnRefreshh_MouseEnter;
+            btnRefreshh.MouseLeave += btnRefreshh_MouseLeave;
             // 
             // pictureBox1
             // 
@@ -98,7 +116,7 @@
             btnRefresh.Anchor = AnchorStyles.Right;
             btnRefresh.BackColor = Color.White;
             btnRefresh.Image = Properties.Resources.Refresh;
-            btnRefresh.Location = new Point(1613, 132);
+            btnRefresh.Location = new Point(1793, 132);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(24, 24);
             btnRefresh.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -114,7 +132,7 @@
             panel3.Dock = DockStyle.Bottom;
             panel3.Location = new Point(0, 506);
             panel3.Name = "panel3";
-            panel3.Size = new Size(784, 55);
+            panel3.Size = new Size(964, 55);
             panel3.TabIndex = 4;
             // 
             // btnDelete
@@ -187,7 +205,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 59);
             panel1.Name = "panel1";
-            panel1.Size = new Size(784, 447);
+            panel1.Size = new Size(964, 447);
             panel1.TabIndex = 5;
             // 
             // dgvDiscount
@@ -231,9 +249,10 @@
             dgvDiscount.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dgvDiscount.RowHeadersVisible = false;
             dgvDiscount.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDiscount.Size = new Size(784, 447);
+            dgvDiscount.Size = new Size(964, 447);
             dgvDiscount.TabIndex = 6;
             dgvDiscount.TabStop = false;
+            dgvDiscount.CellFormatting += dgvDiscount_CellFormatting;
             // 
             // id
             // 
@@ -247,12 +266,13 @@
             // 
             // name
             // 
-            name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            name.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             name.FillWeight = 110.479927F;
             name.HeaderText = "Name";
             name.MinimumWidth = 150;
             name.Name = "name";
             name.ReadOnly = true;
+            name.Width = 171;
             // 
             // type
             // 
@@ -287,12 +307,11 @@
             // 
             // applicable_to
             // 
-            applicable_to.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            applicable_to.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             applicable_to.HeaderText = "Applicable To";
             applicable_to.MinimumWidth = 140;
             applicable_to.Name = "applicable_to";
             applicable_to.ReadOnly = true;
-            applicable_to.Width = 140;
             // 
             // status
             // 
@@ -311,7 +330,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(784, 561);
+            ClientSize = new Size(964, 561);
             Controls.Add(panel1);
             Controls.Add(panel3);
             Controls.Add(btnRefresh);
@@ -321,9 +340,11 @@
             Name = "DiscountHome";
             StartPosition = FormStartPosition.CenterParent;
             Text = "ELICIAS GARDEN FOOD PARK";
+            FormClosing += DiscountHome_FormClosing;
             Load += DiscountHome_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)btnRefreshh).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnRefresh).EndInit();
             panel3.ResumeLayout(false);
@@ -351,5 +372,6 @@
         private DataGridViewTextBoxColumn vat_exempt;
         private DataGridViewTextBoxColumn applicable_to;
         private DataGridViewTextBoxColumn status;
+        private PictureBox btnRefreshh;
     }
 }

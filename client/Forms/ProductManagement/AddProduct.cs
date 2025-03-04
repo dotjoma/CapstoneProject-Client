@@ -61,14 +61,8 @@ namespace client.Forms.ProductManagement
                         this.Close();
                         return;
                     }
-
                     CurrentProduct.SetCurrentProduct(selectedProduct);
-
                     LoadProductDetails(selectedProduct);
-                }
-                else
-                {
-
                 }
             }
             catch (Exception ex)
@@ -85,6 +79,28 @@ namespace client.Forms.ProductManagement
             txtName.Text = product.productName;
             txtPrice.Text = product.productPrice.ToString("F");
 
+            if (cboCategory.Items.Count > 0)
+            {
+                int categoryIndex = cboCategory.Items.Cast<string>()
+                    .ToList()
+                    .FindIndex(item => item == CurrentCategory.GetCategoryById(product.categoryId)?.Name);
+                if (categoryIndex >= 0)
+                {
+                    cboCategory.SelectedIndex = categoryIndex;
+                }
+            }
+
+            if (cboSubCategory.Items.Count > 0)
+            {
+                int subCategoryIndex = cboSubCategory.Items.Cast<string>()
+                    .ToList()
+                    .FindIndex(item => item == CurrentSubCategory.GetSubategoryById(product.subcategoryId)?.scName);
+                if (subCategoryIndex >= 0)
+                {
+                    cboSubCategory.SelectedIndex = subCategoryIndex;
+                }
+            }
+
             if (cboUnit.Items.Count > 0)
             {
                 int unitIndex = cboUnit.Items.Cast<string>()
@@ -95,6 +111,39 @@ namespace client.Forms.ProductManagement
                 {
                     cboUnit.SelectedIndex = unitIndex;
                 }
+            }
+
+            if (pbImage.Image != null)
+            {
+                pbImage.Image.Dispose();
+            }   
+            Image? convertedImage = ConvertBase64ToImage(product.productImage);
+            product.ProductImageObject = convertedImage;
+            pbImage.Image = convertedImage ?? Properties.Resources.Add_Image;
+            cbIsActive.Checked = product.isActive > 0;
+        }
+
+        private Image? ConvertBase64ToImage(string? base64String)
+        {
+            if (string.IsNullOrEmpty(base64String))
+                return null;
+
+            LoggerHelper.Write("BASE64 LENGTH", $"Base64 string length: {base64String.Length}");
+            LoggerHelper.Write("BASE64 END", $"Base64 string end: {base64String.Substring(Math.Max(0, base64String.Length - 50))}");
+
+            try
+            {
+                byte[] imageBytes = Convert.FromBase64String(base64String);
+
+                using (var ms = new MemoryStream(imageBytes))
+                {
+                    return Image.FromStream(ms);
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerHelper.Write("IMAGE CONVERSION", $"Error converting base64 to image: {ex.Message}");
+                return null;
             }
         }
 
@@ -197,11 +246,29 @@ namespace client.Forms.ProductManagement
             if (img1 == null || img2 == null)
                 return false;
 
-            using (MemoryStream ms1 = new MemoryStream(), ms2 = new MemoryStream())
+            try
             {
-                img1.Save(ms1, img1.RawFormat);
-                img2.Save(ms2, img2.RawFormat);
-                return ms1.ToArray().SequenceEqual(ms2.ToArray());
+                using (Bitmap bmp1 = new Bitmap(img1))
+                using (Bitmap bmp2 = new Bitmap(img2))
+                using (MemoryStream ms1 = new MemoryStream())
+                using (MemoryStream ms2 = new MemoryStream())
+                {
+                    bmp1.Save(ms1, ImageFormat.Png);
+                    bmp2.Save(ms2, ImageFormat.Png);
+
+                    if (ms1.Length != ms2.Length)
+                        return false;
+
+                    ms1.Position = 0;
+                    ms2.Position = 0;
+
+                    return ms1.ToArray().SequenceEqual(ms2.ToArray());
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerHelper.Write("IMAGE EQUAL", $"Error comparing images: {ex.Message}");
+                return false;
             }
         }
 
@@ -242,67 +309,34 @@ namespace client.Forms.ProductManagement
         private async void btnSave_Click(object sender, EventArgs e)
         {
             ToggleButton(false);
-            await Task.Delay(1);
 
             string name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtName.Text.Trim().ToLower());
-            string image = ConvertImageToBase64(pbImage.Image);
+            string image = pbImage.Image != null ? ConvertImageToBase64(pbImage.Image) : string.Empty;
             string price = txtPrice.Text.Trim();
-            int? isActive = (cbIsActive.CheckState == CheckState.Checked) ? 1 : 0;
+            int isActive = (cbIsActive.CheckState == CheckState.Checked) ? 1 : 0;
+
+            if (!ValidateFormInputs(out int categoryId, out int subCategoryId, out int unitId))
+            {
+                ToggleButton(true);
+                return;
+            }
 
             try
             {
-                if (!ValidateRequiredFields(name, price)) return;
-
-                if (CurrentCategory.Current == null)
+                if (_selectedId > 0)
                 {
-                    MessageBox.Show("Select a category.", "Validation Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    ToggleButton(true);
+                    MessageBox.Show("Edit product. Not implemented yet.");
                     return;
-                }
-                int categoryId = CurrentCategory.Current.Id;
-                if (categoryId == 0)
-                {
-                    MessageBox.Show("Invalid category selected.", "Validation Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    ToggleButton(true);
-                    return;
-                }
-
-                if (CurrentSubCategory.Current == null)
-                {
-                    MessageBox.Show("Select a subcategory.", "Validation Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    ToggleButton(true);
-                    return;
-                }
-                int subCategoryId = CurrentSubCategory.Current.scId;
-
-                if (CurrentUnit.Current == null)
-                {
-                    MessageBox.Show("Select a unit.", "Validation Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    ToggleButton(true);
-                    return;
-                }
-                int unitId = CurrentUnit.Current.unitId;
-
-                bool response = await _productController.Create(name, image, price, categoryId, subCategoryId, unitId, (int)isActive);
-
-                if (response)
-                {
-                    ProductHome.Instance?.RefreshDisplay();
-                    CleanForm();
-                    LoggerHelper.Write("RESPONSE", $"Received response: {response}");
                 }
                 else
                 {
-                    LoggerHelper.Write("RESPONSE", $"No any response from the server.");
+                    bool response = await _productController.Create(name, image, price, categoryId, subCategoryId, unitId, isActive);
+                    HandleResponse(response);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage(ex.Message);
             }
             finally
             {
@@ -310,11 +344,73 @@ namespace client.Forms.ProductManagement
             }
         }
 
+        private bool ValidateFormInputs(out int categoryId, out int subCategoryId, out int unitId)
+        {
+            categoryId = subCategoryId = unitId = 0;
+
+            if (!ValidateRequiredFields(txtName.Text, txtPrice.Text))
+            {
+                return false;
+            }
+
+            if (CurrentCategory.Current == null)
+            {
+                ShowValidationMessage("Select a category.");
+                return false;
+            }
+            categoryId = CurrentCategory.Current.Id;
+            if (categoryId == 0)
+            {
+                ShowValidationMessage("Invalid category selected.");
+                return false;
+            }
+
+            if (CurrentSubCategory.Current == null)
+            {
+                ShowValidationMessage("Select a subcategory.");
+                return false;
+            }
+            subCategoryId = CurrentSubCategory.Current.scId;
+
+            if (CurrentUnit.Current == null)
+            {
+                ShowValidationMessage("Select a unit.");
+                return false;
+            }
+            unitId = CurrentUnit.Current.unitId;
+
+            return true;
+        }
+
+        private void HandleResponse(bool response)
+        {
+            if (response)
+            {
+                ProductHome.Instance?.RefreshDisplay();
+                CleanForm();
+                LoggerHelper.Write("RESPONSE", $"Received response: {response}");
+            }
+        }
+
+        private void ShowValidationMessage(string message)
+        {
+            MessageBox.Show(message, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void ShowErrorMessage(string errorMessage)
+        {
+            MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         private void CleanForm()
         {
             txtName.Text = string.Empty;
             txtPrice.Text = string.Empty;
-            pbImage.Image = null;
+            if (pbImage.Image != null)
+            {
+                pbImage.Image.Dispose();
+            }
+            pbImage.Image = Properties.Resources.AddImage100x100_w;
             cboCategory.SelectedIndex = 0;
             cboSubCategory.SelectedIndex = 0;
             cboUnit.SelectedIndex = 0;

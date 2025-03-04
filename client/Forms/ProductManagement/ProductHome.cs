@@ -1,4 +1,5 @@
 ﻿using client.Helpers;
+using client.Models;
 using client.Services;
 using System;
 using System.Collections.Generic;
@@ -82,6 +83,7 @@ namespace client.Forms.ProductManagement
                     string status = (product.isActive) > 0 ? "Active" : "Inactive";
 
                     dgvProducts.Rows.Add(
+                        product.productId,
                         productCategory,
                         productSubCategory,
                         product.productName,
@@ -101,11 +103,6 @@ namespace client.Forms.ProductManagement
         private void timer1_Tick(object sender, EventArgs e)
         {
             Opacity += .4;
-        }
-
-        private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            _selectedId = Convert.ToInt32(dgvProducts.Rows[e.RowIndex].Cells[0].Value);
         }
 
         private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -170,6 +167,7 @@ namespace client.Forms.ProductManagement
 
         private void btnNew_Click(object sender, EventArgs e)
         {
+            _selectedId = 0;
             AddProduct product = new AddProduct(_selectedId);
             product.StartPosition = FormStartPosition.Manual;
             product.StartPosition = FormStartPosition.CenterParent;
@@ -178,12 +176,45 @@ namespace client.Forms.ProductManagement
 
         private void toolTip1_Popup(object sender, PopupEventArgs e)
         {
-            
+
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             ProductHome.Instance?.RefreshDisplay();
+        }
+
+        private void btnRefresh_MouseEnter(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Hand;
+            btnRefresh.BackColor = Color.Gray;
+        }
+
+        private void btnRefresh_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+            btnRefresh.BackColor = Color.White;
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (_selectedId > 0)
+            {
+                AddProduct product = new AddProduct(_selectedId);
+                product.StartPosition = FormStartPosition.Manual;
+                product.StartPosition = FormStartPosition.CenterParent;
+                product.ShowDialog(this);
+            }
+            else
+            {
+                MessageBox.Show("Please select a product to edit.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _selectedId = Convert.ToInt32(dgvProducts.Rows[e.RowIndex].Cells[0].Value);
         }
     }
 }

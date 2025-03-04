@@ -24,10 +24,12 @@ namespace client.Forms
         private readonly UnitController _unitController = new UnitController();
         private readonly CategoryController _categoryController = new CategoryController();
         private readonly SubCategoryController _subCategoryController = new SubCategoryController();
+        private readonly DiscountController _discountController = new DiscountController();
 
         private Point dragOffset;
         private bool isDragging = false;
         private bool isPassHidden = true;
+        private bool isSigningIn = false;
 
         public Login()
         {
@@ -118,6 +120,7 @@ namespace client.Forms
         {
             try
             {
+                isSigningIn = true;
                 ShowLoading("Signing In...");
                 ToggleButton(false);
                 await Task.Delay(1);
@@ -161,6 +164,7 @@ namespace client.Forms
             {
                 ToggleButton(true);
                 HideLoading();
+                isSigningIn = false;
             }
         }
 
@@ -201,6 +205,14 @@ namespace client.Forms
                 }
                 LoggerHelper.Write("MAIN MENU", $"Successfully loaded {CurrentSubCategory.AllSubCategories.Count} subcategories");
 
+                await _discountController.GetAllDiscounts();
+                if (CurrentDiscount.AllDiscount == null)
+                {
+                    LoggerHelper.Write("MAIN MENU", "Failed to load discounts");
+                    return false;
+                }
+                LoggerHelper.Write("MAIN MENU", $"Successfully loaded {CurrentDiscount.AllDiscount.Count} discounts");
+
                 return true;
             }
             catch (Exception ex)
@@ -227,9 +239,12 @@ namespace client.Forms
 
         private void Login_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (!isSigningIn)
             {
-                btnSignIn.PerformClick();
+                if (e.KeyCode == Keys.Enter)
+                {
+                    btnSignIn.PerformClick();
+                }
             }
         }
 

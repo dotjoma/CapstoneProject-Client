@@ -43,6 +43,8 @@
             lblSubtotal = new Label();
             label1 = new Label();
             panel1 = new Panel();
+            label3 = new Label();
+            label2 = new Label();
             lblDateTime = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
             pnlHeader = new Panel();
@@ -51,11 +53,16 @@
             panel4 = new Panel();
             categoriesPanel = new FlowLayoutPanel();
             panel5 = new Panel();
+            textBox1 = new TextBox();
             pnlContainer = new Panel();
+            btnRefresh = new PictureBox();
             panel2.SuspendLayout();
+            panel1.SuspendLayout();
             pnlHeader.SuspendLayout();
             menuStrip1.SuspendLayout();
             panel4.SuspendLayout();
+            panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)btnRefresh).BeginInit();
             SuspendLayout();
             // 
             // cartPanel
@@ -66,7 +73,7 @@
             cartPanel.Dock = DockStyle.Fill;
             cartPanel.Location = new Point(0, 56);
             cartPanel.Name = "cartPanel";
-            cartPanel.Size = new Size(350, 391);
+            cartPanel.Size = new Size(350, 433);
             cartPanel.TabIndex = 8;
             // 
             // panel2
@@ -85,17 +92,18 @@
             panel2.Controls.Add(lblSubtotal);
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 447);
+            panel2.Location = new Point(0, 489);
             panel2.Name = "panel2";
-            panel2.Size = new Size(350, 287);
+            panel2.Size = new Size(350, 245);
             panel2.TabIndex = 7;
             // 
             // lblTotal
             // 
+            lblTotal.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTotal.ForeColor = Color.FromArgb(98, 87, 87);
-            lblTotal.Location = new Point(274, 173);
+            lblTotal.Location = new Point(274, 131);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(63, 32);
             lblTotal.TabIndex = 13;
@@ -103,10 +111,11 @@
             // 
             // label10
             // 
+            label10.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.ForeColor = Color.FromArgb(98, 87, 87);
-            label10.Location = new Point(6, 173);
+            label10.Location = new Point(6, 131);
             label10.Name = "label10";
             label10.Size = new Size(85, 32);
             label10.TabIndex = 12;
@@ -161,7 +170,7 @@
             btnPayment.FlatStyle = FlatStyle.Flat;
             btnPayment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnPayment.ForeColor = Color.Black;
-            btnPayment.Location = new Point(0, 233);
+            btnPayment.Location = new Point(0, 191);
             btnPayment.Name = "btnPayment";
             btnPayment.Size = new Size(348, 52);
             btnPayment.TabIndex = 6;
@@ -215,12 +224,39 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.Control;
+            panel1.BackColor = Color.Gainsboro;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(label2);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(350, 56);
             panel1.TabIndex = 6;
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.FromArgb(98, 87, 87);
+            label3.Location = new Point(0, 33);
+            label3.Name = "label3";
+            label3.Size = new Size(83, 17);
+            label3.TabIndex = 14;
+            label3.Text = "ORDER NO :";
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.FromArgb(98, 87, 87);
+            label2.Location = new Point(0, 3);
+            label2.Name = "label2";
+            label2.Size = new Size(159, 21);
+            label2.TabIndex = 13;
+            label2.Text = "TRANSACTION NO :";
             // 
             // lblDateTime
             // 
@@ -284,7 +320,7 @@
             // 
             // categoriesPanel
             // 
-            categoriesPanel.BackColor = Color.White;
+            categoriesPanel.BackColor = Color.Gainsboro;
             categoriesPanel.Dock = DockStyle.Bottom;
             categoriesPanel.Location = new Point(0, 662);
             categoriesPanel.Name = "categoriesPanel";
@@ -293,12 +329,24 @@
             // 
             // panel5
             // 
-            panel5.BackColor = SystemColors.Control;
+            panel5.BackColor = Color.Gainsboro;
+            panel5.Controls.Add(btnRefresh);
+            panel5.Controls.Add(textBox1);
             panel5.Dock = DockStyle.Top;
             panel5.Location = new Point(0, 0);
             panel5.Name = "panel5";
             panel5.Size = new Size(674, 56);
             panel5.TabIndex = 29;
+            // 
+            // textBox1
+            // 
+            textBox1.Anchor = AnchorStyles.Right;
+            textBox1.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox1.Location = new Point(438, 17);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(186, 26);
+            textBox1.TabIndex = 0;
+            textBox1.TabStop = false;
             // 
             // pnlContainer
             // 
@@ -307,6 +355,18 @@
             pnlContainer.Name = "pnlContainer";
             pnlContainer.Size = new Size(674, 606);
             pnlContainer.TabIndex = 30;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.Anchor = AnchorStyles.Right;
+            btnRefresh.BackColor = Color.White;
+            btnRefresh.Image = Properties.Resources.icons8_search_24;
+            btnRefresh.Location = new Point(630, 17);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(27, 26);
+            btnRefresh.SizeMode = PictureBoxSizeMode.StretchImage;
+            btnRefresh.TabIndex = 4;
+            btnRefresh.TabStop = false;
             // 
             // OrderEntryForm
             // 
@@ -329,11 +389,16 @@
             Load += OrderEntryForm_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             panel4.ResumeLayout(false);
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)btnRefresh).EndInit();
             ResumeLayout(false);
         }
 
@@ -361,5 +426,9 @@
         private Label label8;
         private Label label6;
         private Label label4;
+        private Label label3;
+        private Label label2;
+        private TextBox textBox1;
+        private PictureBox btnRefresh;
     }
 }

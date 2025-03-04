@@ -1,4 +1,5 @@
 ﻿using client.Controllers;
+using client.Forms.ProductManagement;
 using client.Helpers;
 using client.Models;
 using client.Services;
@@ -46,20 +47,17 @@ namespace client.Forms.DiscountManagement
                            .Select(d => d.Id)
                            .ToList();
 
-                // Validate required fields
                 if (!ValidateRequiredFields(name, type, formattedValue, vatExempt.ToString(), applicableToList))
                     return;
 
-                // Send request to create discount
                 bool response = await _discountController.Create(name, type, value, vatExempt, isActive, applicableToList);
 
                 if (response)
                 {
                     LoggerHelper.Write("RESPONSE", $"Discount created successfully.");
-                }
-                else
-                {
-                    LoggerHelper.Write("RESPONSE", $"No response from the server.");
+                    MessageBox.Show("Discount created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    DiscountHome.Instance?.RefreshDisplay();
                 }
             }
             catch (Exception ex)
