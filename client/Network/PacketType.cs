@@ -48,5 +48,7 @@ namespace client.Network
 
         CreateDiscount = 28,
         CreateDiscountResponse = 29,
+        GetDiscount = 30,
+        GetDiscountResponse = 31,
     }
 }
