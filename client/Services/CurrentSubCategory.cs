@@ -31,6 +31,11 @@ namespace client.Services
             return _allSubCategories.FirstOrDefault(c => c.scId == subcategoryId);
         }
 
+        public static List<SubCategory> GetSubcategoriesByCategoryId(int categoryId)
+        {
+            return _allSubCategories.Where(sc => sc.catId == categoryId).ToList();
+        }
+
         public static void Clear()
         {
             _currentSubCategory = null;
