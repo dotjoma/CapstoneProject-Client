@@ -26,7 +26,6 @@ namespace client.Forms
 {
     public partial class MainMenu : Form
     {
-        private UserAccessManager? _userAccessManager;
         private readonly AuthController _authController = new AuthController();
 
         public MainMenu()
@@ -39,24 +38,21 @@ namespace client.Forms
         private void MainMenu_Load(object? sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+
             AddFormToPanel(new Dashboard());
 
-            string? userRole = CurrentUser.Current?.Role;
-            lblUser.Text = $"Welcome, {CurrentUser.Current?.Username} ({CultureInfo.CurrentCulture.TextInfo.ToTitleCase(userRole ?? "Unknown")})";
+            string? username = CurrentUser.Current?.Username;
+            string role = (CurrentUser.Current?.Role) == "admin" ? "Administrator" : "Cashier";
+            lblUser.Text = $"{char.ToUpper(username![0]) + username.Substring(1)} ({role})";
         }
 
         private void MainMenu_Shown(object? sender, EventArgs e)
         {
-            _userAccessManager = new UserAccessManager(
-                _authController,
-                fileToolStripMenuItem,
-                reservationToolStripMenuItem,
-                administrationToolStripMenuItem,
-                refreshToolStripMenuItem,
-                helpToolStripMenuItem
-            );
-
-            _userAccessManager.ProcessUserAccess();
+            if (CurrentUser.Current?.Role == "staff")
+            {
+                this.Hide();
+                new OrderEntryForm().Show();
+            }
         }
 
         private void AddUserControl(UserControl userControl)

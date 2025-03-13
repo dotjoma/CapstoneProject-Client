@@ -32,8 +32,10 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductHome));
             label1 = new Label();
             panel2 = new Panel();
             btnRefresh = new PictureBox();
@@ -52,7 +54,7 @@
             productName = new DataGridViewTextBoxColumn();
             productUnit = new DataGridViewTextBoxColumn();
             productPrice = new DataGridViewTextBoxColumn();
-            productStatus = new DataGridViewTextBoxColumn();
+            productStatus = new DataGridViewImageColumn();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnRefresh).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -84,6 +86,7 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1024, 59);
             panel2.TabIndex = 0;
+            panel2.Paint += panel2_Paint;
             // 
             // btnRefresh
             // 
@@ -139,7 +142,7 @@
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Font = new Font("Segoe UI", 12F);
             btnDelete.ForeColor = Color.Black;
-            btnDelete.Image = Properties.Resources.Delete;
+            btnDelete.Image = Properties.Resources.Deletebrown;
             btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
             btnDelete.Location = new Point(172, 7);
             btnDelete.Name = "btnDelete";
@@ -160,7 +163,7 @@
             btnEdit.FlatStyle = FlatStyle.Flat;
             btnEdit.Font = new Font("Segoe UI", 12F);
             btnEdit.ForeColor = Color.Black;
-            btnEdit.Image = Properties.Resources.Edit;
+            btnEdit.Image = Properties.Resources.Editbrown;
             btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
             btnEdit.Location = new Point(92, 7);
             btnEdit.Name = "btnEdit";
@@ -182,7 +185,7 @@
             btnNew.FlatStyle = FlatStyle.Flat;
             btnNew.Font = new Font("Segoe UI", 12F);
             btnNew.ForeColor = Color.Black;
-            btnNew.Image = Properties.Resources.Add;
+            btnNew.Image = Properties.Resources.PlusBrown;
             btnNew.ImageAlign = ContentAlignment.MiddleLeft;
             btnNew.Location = new Point(12, 7);
             btnNew.Name = "btnNew";
@@ -217,30 +220,31 @@
             dgvProducts.AllowUserToDeleteRows = false;
             dgvProducts.AllowUserToResizeColumns = false;
             dgvProducts.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.BackColor = Color.White;
             dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(214, 192, 179);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(50, 50, 50);
             dgvProducts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProducts.BackgroundColor = Color.White;
             dgvProducts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(214, 192, 179);
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(98, 87, 87);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.FromArgb(98, 87, 87);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(214, 192, 179);
-            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(98, 87, 87);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(98, 87, 87);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvProducts.ColumnHeadersHeight = 35;
             dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvProducts.Columns.AddRange(new DataGridViewColumn[] { id, productCategory, productSubcategory, productName, productUnit, productPrice, productStatus });
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
             dataGridViewCellStyle5.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(214, 192, 179);
+            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(50, 50, 50);
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
             dgvProducts.DefaultCellStyle = dataGridViewCellStyle5;
             dgvProducts.Dock = DockStyle.Fill;
@@ -250,6 +254,14 @@
             dgvProducts.Name = "dgvProducts";
             dgvProducts.ReadOnly = true;
             dgvProducts.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Control;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(214, 192, 179);
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dgvProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgvProducts.RowHeadersVisible = false;
             dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProducts.Size = new Size(1024, 412);
@@ -321,13 +333,18 @@
             // 
             productStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.SelectionBackColor = Color.LimeGreen;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.NullValue = resources.GetObject("dataGridViewCellStyle4.NullValue");
+            dataGridViewCellStyle4.SelectionBackColor = Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = Color.White;
             productStatus.DefaultCellStyle = dataGridViewCellStyle4;
             productStatus.FillWeight = 74.16836F;
             productStatus.HeaderText = "Status";
             productStatus.MinimumWidth = 80;
             productStatus.Name = "productStatus";
             productStatus.ReadOnly = true;
+            productStatus.Resizable = DataGridViewTriState.True;
+            productStatus.SortMode = DataGridViewColumnSortMode.Automatic;
             productStatus.Width = 80;
             // 
             // ProductHome
@@ -374,6 +391,6 @@
         private DataGridViewTextBoxColumn productName;
         private DataGridViewTextBoxColumn productUnit;
         private DataGridViewTextBoxColumn productPrice;
-        private DataGridViewTextBoxColumn productStatus;
+        private DataGridViewImageColumn productStatus;
     }
 }

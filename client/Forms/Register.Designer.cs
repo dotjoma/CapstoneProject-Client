@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
             txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
             btnSignUp = new Guna.UI2.WinForms.Guna2Button();
@@ -62,7 +62,7 @@
             // 
             txtUsername.BorderColor = Color.White;
             txtUsername.BorderRadius = 5;
-            txtUsername.CustomizableEdges = customizableEdges13;
+            txtUsername.CustomizableEdges = customizableEdges1;
             txtUsername.DefaultText = "";
             txtUsername.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtUsername.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -79,7 +79,7 @@
             txtUsername.PasswordChar = '\0';
             txtUsername.PlaceholderText = "Username";
             txtUsername.SelectedText = "";
-            txtUsername.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            txtUsername.ShadowDecoration.CustomizableEdges = customizableEdges2;
             txtUsername.Size = new Size(289, 43);
             txtUsername.TabIndex = 0;
             // 
@@ -87,7 +87,7 @@
             // 
             txtPassword.BorderColor = Color.White;
             txtPassword.BorderRadius = 5;
-            txtPassword.CustomizableEdges = customizableEdges15;
+            txtPassword.CustomizableEdges = customizableEdges3;
             txtPassword.DefaultText = "";
             txtPassword.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtPassword.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -105,7 +105,7 @@
             txtPassword.PasswordChar = '●';
             txtPassword.PlaceholderText = "Password";
             txtPassword.SelectedText = "";
-            txtPassword.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            txtPassword.ShadowDecoration.CustomizableEdges = customizableEdges4;
             txtPassword.Size = new Size(289, 43);
             txtPassword.TabIndex = 1;
             txtPassword.UseSystemPasswordChar = true;
@@ -113,7 +113,7 @@
             // btnSignUp
             // 
             btnSignUp.BorderRadius = 5;
-            btnSignUp.CustomizableEdges = customizableEdges17;
+            btnSignUp.CustomizableEdges = customizableEdges5;
             btnSignUp.DisabledState.BorderColor = Color.DarkGray;
             btnSignUp.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSignUp.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -123,7 +123,7 @@
             btnSignUp.ForeColor = Color.White;
             btnSignUp.Location = new Point(29, 235);
             btnSignUp.Name = "btnSignUp";
-            btnSignUp.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            btnSignUp.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnSignUp.Size = new Size(289, 43);
             btnSignUp.TabIndex = 3;
             btnSignUp.Text = "Sign Up";
@@ -154,12 +154,12 @@
             // 
             // guna2Panel2
             // 
-            guna2Panel2.CustomizableEdges = customizableEdges19;
+            guna2Panel2.CustomizableEdges = customizableEdges7;
             guna2Panel2.Dock = DockStyle.Bottom;
             guna2Panel2.FillColor = Color.FromArgb(98, 87, 87);
             guna2Panel2.Location = new Point(0, 523);
             guna2Panel2.Name = "guna2Panel2";
-            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2Panel2.Size = new Size(420, 40);
             guna2Panel2.TabIndex = 17;
             guna2Panel2.MouseDown += guna2Panel2_MouseDown;
@@ -198,11 +198,11 @@
             guna2Panel1.Controls.Add(guna2HtmlLabel2);
             guna2Panel1.Controls.Add(txtPassword);
             guna2Panel1.Controls.Add(btnSignUp);
-            guna2Panel1.CustomizableEdges = customizableEdges23;
+            guna2Panel1.CustomizableEdges = customizableEdges11;
             guna2Panel1.FillColor = Color.White;
             guna2Panel1.Location = new Point(37, 181);
             guna2Panel1.Name = "guna2Panel1";
-            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges12;
             guna2Panel1.Size = new Size(347, 299);
             guna2Panel1.TabIndex = 14;
             // 
@@ -210,7 +210,7 @@
             // 
             txtConfirmPass.BorderColor = Color.White;
             txtConfirmPass.BorderRadius = 5;
-            txtConfirmPass.CustomizableEdges = customizableEdges21;
+            txtConfirmPass.CustomizableEdges = customizableEdges9;
             txtConfirmPass.DefaultText = "";
             txtConfirmPass.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtConfirmPass.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -229,7 +229,7 @@
             txtConfirmPass.PasswordChar = '●';
             txtConfirmPass.PlaceholderText = "Confirm Password";
             txtConfirmPass.SelectedText = "";
-            txtConfirmPass.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            txtConfirmPass.ShadowDecoration.CustomizableEdges = customizableEdges10;
             txtConfirmPass.Size = new Size(289, 43);
             txtConfirmPass.TabIndex = 2;
             txtConfirmPass.UseSystemPasswordChar = true;
@@ -283,6 +283,7 @@
             Name = "Register";
             Opacity = 0D;
             StartPosition = FormStartPosition.CenterScreen;
+            FormClosing += Register_FormClosing;
             Load += Register_Load;
             KeyDown += Register_KeyDown;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

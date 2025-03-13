@@ -11,6 +11,7 @@
   <ItemGroup>
     <PackageReference Include="Guna.UI2.WinForms" Version="2.0.4.6" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="WinForms.DataVisualization" Version="1.10.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,8 +33,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Forms\Administration\" />
     <Folder Include="Forms\ManageMenu\" />
+    <Folder Include="Forms\Administration\" />
+    <Folder Include="Forms\PredictiveAnalytics\" />
   </ItemGroup>
 
 </Project>

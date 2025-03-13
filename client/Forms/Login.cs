@@ -1,4 +1,5 @@
 ﻿using client.Controllers;
+using client.Forms.Order;
 using client.Helpers;
 using client.Network;
 using client.Services;
@@ -14,6 +15,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace client.Forms
 {
@@ -118,19 +120,21 @@ namespace client.Forms
 
         private async void btnSignIn_Click(object sender, EventArgs e)
         {
+            isSigningIn = true;
+            ShowLoading("Signing In...");
+            ToggleButton(false);
+            await Task.Delay(1);
+
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
+
+            //string username = "joma";
+            //string password = "12345678@Joma";
+
             try
             {
-                isSigningIn = true;
-                ShowLoading("Signing In...");
-                ToggleButton(false);
-                await Task.Delay(1);
-
-                //string username = txtUsername.Text.Trim();
-                //string password = txtPassword.Text.Trim();
-
-                string username = "joma";
-                string password = "12345678@Joma";
-
+                if (!ValidateFields(username, password))
+                    return;
 
                 bool response = await _authController.Login(username, password);
 
@@ -146,9 +150,14 @@ namespace client.Forms
                             return;
                         }
 
-                        var mainMenu = new MainMenu();
-                        mainMenu.Show();
-                        this.Hide();
+                        if (CurrentUser.IsAdmin)
+                        {
+                            RedirectToDashboard();
+                        }
+                        else
+                        {
+                            RedirectToTransaction();
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -166,6 +175,65 @@ namespace client.Forms
                 HideLoading();
                 isSigningIn = false;
             }
+        }
+
+        private bool ValidateFields(string username, string password)
+        {
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                MessageBox.Show("Username is required", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUsername.Focus();
+                return false;
+            }
+
+            if (username.Length < 4)
+            {
+                MessageBox.Show("Username must be at least 4 characters long", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUsername.Focus();
+                return false;
+            }
+
+            if (!username.All(c => char.IsLetterOrDigit(c) || c == '_'))
+            {
+                MessageBox.Show("Username can only contain letters, numbers, and underscores",
+                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUsername.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Password is required", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPassword.Focus();
+                return false;
+            }
+
+            if (password.Length < 8)
+            {
+                MessageBox.Show("Password must be at least 8 characters long", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPassword.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        private void RedirectToDashboard()
+        {
+            var mainMenu = new MainMenu();
+            mainMenu.Show();
+            this.Hide();
+        }
+
+        private void RedirectToTransaction()
+        {
+            var transaction = new OrderEntryForm();
+            transaction.Show();
+            this.Hide();
         }
 
         private async Task<bool> LoadDataBase()
@@ -250,64 +318,69 @@ namespace client.Forms
 
         private Panel loadingPanel = new Panel();
         private PictureBox pictureBox = new PictureBox();
+        private Panel panelBox = new Panel();
         private Label messageLabel = new Label();
 
         private void InitializeLoadingControls()
         {
-            // Panel settings
             loadingPanel.BackColor = Color.White;
-            loadingPanel.BorderStyle = BorderStyle.FixedSingle;
+            loadingPanel.BorderStyle = BorderStyle.None;
             loadingPanel.Size = new Size(300, 150);
             loadingPanel.Location = new Point(
                 (this.ClientSize.Width - loadingPanel.Width) / 2,
                 (this.ClientSize.Height - loadingPanel.Height) / 2
             );
 
-            // PictureBox settings
-            pictureBox.Size = new Size(64, 64);
-            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox.Location = new Point(
-                (loadingPanel.Width - pictureBox.Width) / 2,
+            panelBox.Size = new Size(64, 64);
+            panelBox.Location = new Point(
+                (loadingPanel.Width - panelBox.Width) / 2,
                 20
             );
+            panelBox.BorderStyle = BorderStyle.None;
+            panelBox.BackColor = Color.White;
+
+            pictureBox.Size = new Size(24, 24);
+            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox.Location = new Point(
+                (panelBox.Width - pictureBox.Width) / 2,
+                (panelBox.Height - pictureBox.Height) / 2
+            );
+
             try
             {
-                pictureBox.Image = Properties.Resources.loading_gif; // Your GIF resource
+                pictureBox.Image = Properties.Resources.loading_gif;
             }
             catch
             {
                 pictureBox.BackColor = Color.LightGray;
             }
 
-            // Label settings
             messageLabel.AutoSize = false;
             messageLabel.Size = new Size(280, 30);
             messageLabel.TextAlign = ContentAlignment.MiddleCenter;
             messageLabel.Location = new Point(
                 (loadingPanel.Width - messageLabel.Width) / 2,
-                pictureBox.Bottom + 10
+                panelBox.Bottom + 8
             );
             messageLabel.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
 
-            // Add controls
-            loadingPanel.Controls.Add(pictureBox);
+            panelBox.Controls.Add(pictureBox);
+            loadingPanel.Controls.Add(panelBox);
             loadingPanel.Controls.Add(messageLabel);
             this.Controls.Add(loadingPanel);
         }
 
         private void ShowLoading(string message)
         {
-            // Initialize controls if not already done
             if (!this.Controls.Contains(loadingPanel))
             {
                 InitializeLoadingControls();
             }
 
-            // Update message and bring to front
             messageLabel.Text = message;
             loadingPanel.BringToFront();
             loadingPanel.Visible = true;
-            Application.DoEvents(); // Ensure UI updates
+            Application.DoEvents();
         }
 
         private void HideLoading()
@@ -316,6 +389,11 @@ namespace client.Forms
             {
                 loadingPanel.Visible = false;
             }
+        }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           
         }
     }
 }

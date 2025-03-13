@@ -48,21 +48,31 @@
             lblDateTime = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
             pnlHeader = new Panel();
-            menuStrip1 = new MenuStrip();
-            homeToolStripMenuItem = new ToolStripMenuItem();
+            btnLogout = new Button();
+            btnHome = new PictureBox();
+            lblUser = new Label();
+            pictureBox2 = new PictureBox();
+            pictureBox1 = new PictureBox();
+            btnClose = new Button();
             panel4 = new Panel();
-            categoriesPanel = new FlowLayoutPanel();
             panel5 = new Panel();
-            textBox1 = new TextBox();
-            pnlContainer = new Panel();
             btnRefresh = new PictureBox();
+            textBox1 = new TextBox();
+            panel3 = new Panel();
+            button2 = new Button();
+            button1 = new Button();
+            categoriesPanel = new FlowLayoutPanel();
+            pnlContainer = new Panel();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             pnlHeader.SuspendLayout();
-            menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)btnHome).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnRefresh).BeginInit();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // cartPanel
@@ -163,19 +173,18 @@
             // 
             // btnPayment
             // 
-            btnPayment.BackColor = Color.Teal;
+            btnPayment.BackColor = Color.FromArgb(98, 87, 87);
             btnPayment.Dock = DockStyle.Bottom;
             btnPayment.FlatAppearance.BorderSize = 0;
-            btnPayment.FlatAppearance.MouseDownBackColor = Color.Teal;
             btnPayment.FlatStyle = FlatStyle.Flat;
             btnPayment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnPayment.ForeColor = Color.Black;
+            btnPayment.ForeColor = Color.White;
             btnPayment.Location = new Point(0, 191);
             btnPayment.Name = "btnPayment";
             btnPayment.Size = new Size(348, 52);
             btnPayment.TabIndex = 6;
             btnPayment.TabStop = false;
-            btnPayment.Text = "PAYMENT";
+            btnPayment.Text = "PAYMENT - [F2]";
             btnPayment.UseVisualStyleBackColor = false;
             btnPayment.Click += btnPayment_Click;
             // 
@@ -276,10 +285,15 @@
             // pnlHeader
             // 
             pnlHeader.BackColor = Color.FromArgb(98, 87, 87);
+            pnlHeader.Controls.Add(btnLogout);
+            pnlHeader.Controls.Add(btnHome);
+            pnlHeader.Controls.Add(lblUser);
+            pnlHeader.Controls.Add(pictureBox2);
+            pnlHeader.Controls.Add(pictureBox1);
+            pnlHeader.Controls.Add(btnClose);
             pnlHeader.Controls.Add(lblDateTime);
-            pnlHeader.Controls.Add(menuStrip1);
-            pnlHeader.Dock = DockStyle.Bottom;
-            pnlHeader.Location = new Point(0, 734);
+            pnlHeader.Dock = DockStyle.Top;
+            pnlHeader.Location = new Point(0, 0);
             pnlHeader.Name = "pnlHeader";
             pnlHeader.Size = new Size(1024, 34);
             pnlHeader.TabIndex = 24;
@@ -287,25 +301,82 @@
             pnlHeader.MouseMove += pnlHeader_MouseMove;
             pnlHeader.MouseUp += pnlHeader_MouseUp;
             // 
-            // menuStrip1
+            // btnLogout
             // 
-            menuStrip1.BackColor = Color.Transparent;
-            menuStrip1.Dock = DockStyle.None;
-            menuStrip1.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { homeToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 5);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(63, 24);
-            menuStrip1.TabIndex = 0;
-            menuStrip1.Text = "menuStrip1";
+            btnLogout.Anchor = AnchorStyles.Right;
+            btnLogout.FlatAppearance.BorderSize = 0;
+            btnLogout.FlatStyle = FlatStyle.Flat;
+            btnLogout.ForeColor = Color.White;
+            btnLogout.Image = Properties.Resources.logout_24;
+            btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLogout.Location = new Point(482, 4);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(85, 26);
+            btnLogout.TabIndex = 13;
+            btnLogout.Text = "Logout";
+            btnLogout.TextAlign = ContentAlignment.MiddleRight;
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
             // 
-            // homeToolStripMenuItem
+            // btnHome
             // 
-            homeToolStripMenuItem.ForeColor = Color.White;
-            homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            homeToolStripMenuItem.Size = new Size(55, 20);
-            homeToolStripMenuItem.Text = "Home";
-            homeToolStripMenuItem.Click += homeToolStripMenuItem_Click;
+            btnHome.Anchor = AnchorStyles.Right;
+            btnHome.Image = Properties.Resources.HomeRounded;
+            btnHome.Location = new Point(573, 2);
+            btnHome.Name = "btnHome";
+            btnHome.Size = new Size(30, 30);
+            btnHome.SizeMode = PictureBoxSizeMode.StretchImage;
+            btnHome.TabIndex = 12;
+            btnHome.TabStop = false;
+            btnHome.Click += btnHome_Click;
+            btnHome.MouseEnter += btnHome_MouseEnter;
+            btnHome.MouseLeave += btnHome_MouseLeave;
+            // 
+            // lblUser
+            // 
+            lblUser.Anchor = AnchorStyles.Left;
+            lblUser.AutoSize = true;
+            lblUser.ForeColor = Color.White;
+            lblUser.Location = new Point(36, 9);
+            lblUser.Name = "lblUser";
+            lblUser.Size = new Size(38, 16);
+            lblUser.TabIndex = 11;
+            lblUser.Text = "- - -";
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Anchor = AnchorStyles.Left;
+            pictureBox2.Image = Properties.Resources.Name;
+            pictureBox2.Location = new Point(3, 2);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(30, 30);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 10;
+            pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Anchor = AnchorStyles.Right;
+            pictureBox1.Image = Properties.Resources.CalendarColored;
+            pictureBox1.Location = new Point(644, 2);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(30, 30);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 9;
+            pictureBox1.TabStop = false;
+            // 
+            // btnClose
+            // 
+            btnClose.Anchor = AnchorStyles.Right;
+            btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.FlatStyle = FlatStyle.Flat;
+            btnClose.Image = Properties.Resources.CloseWhite;
+            btnClose.Location = new Point(988, 2);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(30, 30);
+            btnClose.TabIndex = 8;
+            btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click;
             // 
             // panel4
             // 
@@ -313,19 +384,10 @@
             panel4.Controls.Add(panel1);
             panel4.Controls.Add(panel2);
             panel4.Dock = DockStyle.Right;
-            panel4.Location = new Point(674, 0);
+            panel4.Location = new Point(674, 34);
             panel4.Name = "panel4";
             panel4.Size = new Size(350, 734);
             panel4.TabIndex = 25;
-            // 
-            // categoriesPanel
-            // 
-            categoriesPanel.BackColor = Color.Gainsboro;
-            categoriesPanel.Dock = DockStyle.Bottom;
-            categoriesPanel.Location = new Point(0, 662);
-            categoriesPanel.Name = "categoriesPanel";
-            categoriesPanel.Size = new Size(674, 72);
-            categoriesPanel.TabIndex = 0;
             // 
             // panel5
             // 
@@ -333,10 +395,22 @@
             panel5.Controls.Add(btnRefresh);
             panel5.Controls.Add(textBox1);
             panel5.Dock = DockStyle.Top;
-            panel5.Location = new Point(0, 0);
+            panel5.Location = new Point(0, 34);
             panel5.Name = "panel5";
             panel5.Size = new Size(674, 56);
             panel5.TabIndex = 29;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.Anchor = AnchorStyles.Right;
+            btnRefresh.BackColor = Color.Transparent;
+            btnRefresh.Image = Properties.Resources.icons8_search_24;
+            btnRefresh.Location = new Point(633, 17);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(27, 26);
+            btnRefresh.SizeMode = PictureBoxSizeMode.StretchImage;
+            btnRefresh.TabIndex = 4;
+            btnRefresh.TabStop = false;
             // 
             // textBox1
             // 
@@ -348,25 +422,67 @@
             textBox1.TabIndex = 0;
             textBox1.TabStop = false;
             // 
+            // panel3
+            // 
+            panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(button2);
+            panel3.Controls.Add(button1);
+            panel3.Dock = DockStyle.Bottom;
+            panel3.Location = new Point(0, 702);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(674, 66);
+            panel3.TabIndex = 31;
+            // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Left;
+            button2.BackColor = Color.White;
+            button2.FlatAppearance.BorderColor = Color.Gray;
+            button2.FlatAppearance.BorderSize = 2;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Image = Properties.Resources.icons8_discount_24;
+            button2.ImageAlign = ContentAlignment.MiddleLeft;
+            button2.Location = new Point(174, 5);
+            button2.Name = "button2";
+            button2.Size = new Size(189, 54);
+            button2.TabIndex = 1;
+            button2.Text = "Apply Discount - [F3]";
+            button2.TextAlign = ContentAlignment.MiddleRight;
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Left;
+            button1.BackColor = Color.White;
+            button1.FlatAppearance.BorderColor = Color.Gray;
+            button1.FlatAppearance.BorderSize = 2;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Image = Properties.Resources.new_order_24;
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(6, 5);
+            button1.Name = "button1";
+            button1.Size = new Size(162, 54);
+            button1.TabIndex = 0;
+            button1.Text = "New Order - [F1]";
+            button1.TextAlign = ContentAlignment.MiddleRight;
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // categoriesPanel
+            // 
+            categoriesPanel.BorderStyle = BorderStyle.FixedSingle;
+            categoriesPanel.Dock = DockStyle.Bottom;
+            categoriesPanel.Location = new Point(0, 630);
+            categoriesPanel.Name = "categoriesPanel";
+            categoriesPanel.Size = new Size(674, 72);
+            categoriesPanel.TabIndex = 33;
+            // 
             // pnlContainer
             // 
             pnlContainer.Dock = DockStyle.Fill;
-            pnlContainer.Location = new Point(0, 56);
+            pnlContainer.Location = new Point(0, 90);
             pnlContainer.Name = "pnlContainer";
-            pnlContainer.Size = new Size(674, 606);
-            pnlContainer.TabIndex = 30;
-            // 
-            // btnRefresh
-            // 
-            btnRefresh.Anchor = AnchorStyles.Right;
-            btnRefresh.BackColor = Color.White;
-            btnRefresh.Image = Properties.Resources.icons8_search_24;
-            btnRefresh.Location = new Point(630, 17);
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(27, 26);
-            btnRefresh.SizeMode = PictureBoxSizeMode.StretchImage;
-            btnRefresh.TabIndex = 4;
-            btnRefresh.TabStop = false;
+            pnlContainer.Size = new Size(674, 540);
+            pnlContainer.TabIndex = 34;
             // 
             // OrderEntryForm
             // 
@@ -374,16 +490,17 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1024, 768);
             Controls.Add(pnlContainer);
-            Controls.Add(panel5);
             Controls.Add(categoriesPanel);
+            Controls.Add(panel3);
+            Controls.Add(panel5);
             Controls.Add(panel4);
             Controls.Add(pnlHeader);
             Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-            MainMenuStrip = menuStrip1;
+            FormBorderStyle = FormBorderStyle.None;
             Name = "OrderEntryForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "OrderEntryForm";
+            TopMost = true;
             FormClosing += OrderEntryForm_FormClosing;
             FormClosed += OrderEntryForm_FormClosed;
             Load += OrderEntryForm_Load;
@@ -393,12 +510,14 @@
             panel1.PerformLayout();
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)btnHome).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)btnRefresh).EndInit();
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -410,16 +529,12 @@
         private Panel pnlHeader;
         private Panel panel4;
         private Label lblDateTime;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem homeToolStripMenuItem;
-        private FlowLayoutPanel categoriesPanel;
         private Label lblSubtotal;
         private Label label1;
         private Label lblVatable;
         private Label lblDiscount;
         private Button btnPayment;
         private Panel panel5;
-        private Panel pnlContainer;
         private Label lblTotal;
         private Label label10;
         private Label lblVat;
@@ -430,5 +545,16 @@
         private Label label2;
         private TextBox textBox1;
         private PictureBox btnRefresh;
+        private Button btnClose;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
+        private Label lblUser;
+        private PictureBox btnHome;
+        private Panel panel3;
+        private Button button1;
+        private FlowLayoutPanel categoriesPanel;
+        private Button button2;
+        private Panel pnlContainer;
+        private Button btnLogout;
     }
 }

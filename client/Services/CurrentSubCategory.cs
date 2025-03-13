@@ -33,7 +33,12 @@ namespace client.Services
 
         public static List<SubCategory> GetSubcategoriesByCategoryId(int categoryId)
         {
-            return _allSubCategories.Where(sc => sc.catId == categoryId).ToList();
+            if (_allSubCategories == null)
+                return new List<SubCategory>();
+
+            return _allSubCategories
+                .Where(sc => sc != null && sc.catId == categoryId)
+                .ToList();
         }
 
         public static void Clear()

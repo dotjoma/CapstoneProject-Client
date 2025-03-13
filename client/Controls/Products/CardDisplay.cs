@@ -22,7 +22,6 @@ namespace client.Controls.Products
     public partial class CardDisplay: UserControl
     {
         private readonly FlowLayoutPanel flowPanel;
-        private readonly Guna2VScrollBar gunaScrollBar;
 
         public CardDisplay(List<Product> products)
         {
@@ -38,24 +37,12 @@ namespace client.Controls.Products
                 Margin = new Padding(0)
             };
 
-            gunaScrollBar = new Guna2VScrollBar
-            {
-                Dock = DockStyle.Right,
-                FillColor = Color.LightGray,
-                ThumbColor = Color.DarkGray,
-                BorderRadius = 5,
-                Width = 2
-            };
-
-            gunaScrollBar.BindingContainer = flowPanel;
-
             foreach (var product in products)
             {
                 var productCard = CreateProductCard(product);
                 flowPanel.Controls.Add(productCard);
             }
 
-            //Controls.Add(gunaScrollBar);
             Controls.Add(flowPanel);
         }
 

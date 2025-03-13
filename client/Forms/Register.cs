@@ -98,6 +98,9 @@ namespace client.Forms
 
             try
             {
+                if (!ValidateFields(username, password, confirmPass))
+                    return;
+
                 bool response = await _authController.Register(username, password, confirmPass);
 
                 if (response)
@@ -115,6 +118,88 @@ namespace client.Forms
             {
                 ToggleButton(true);
             }
+        }
+
+        private bool ValidateFields(string username, string password, string confirmpass)
+        {
+            // Username validation
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                MessageBox.Show("Username cannot be empty", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUsername.Focus();
+                return false;
+            }
+
+            if (username.Length < 4)
+            {
+                MessageBox.Show("Username must be at least 4 characters long", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUsername.Focus();
+                return false;
+            }
+
+            if (!username.All(c => char.IsLetterOrDigit(c) || c == '_'))
+            {
+                MessageBox.Show("Username can only contain letters, numbers, and underscores", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUsername.Focus();
+                return false;
+            }
+
+            // Password validation
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Password cannot be empty", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPassword.Focus();
+                return false;
+            }
+
+            if (password.Length < 8)
+            {
+                MessageBox.Show("Password must be at least 8 characters long", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPassword.Focus();
+                return false;
+            }
+
+            // Check for common passwords
+            var commonPasswords = new HashSet<string>
+            {
+                "password123", "12345678", "qwerty123", "admin123"
+            };
+
+            if (commonPasswords.Contains(password.ToLower()))
+            {
+                MessageBox.Show("This password is too common. Please choose a stronger password.",
+                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPassword.Focus();
+                return false;
+            }
+
+            if (!password.Any(char.IsUpper) || !password.Any(char.IsLower) || !password.Any(char.IsDigit) || !password.Any(c => !char.IsLetterOrDigit(c)))
+            {
+                MessageBox.Show("Password must contain at least:\n" +
+                              "- One uppercase letter\n" +
+                              "- One lowercase letter\n" +
+                              "- One number\n" +
+                              "- One special character",
+                              "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPassword.Focus();
+                return false;
+            }
+
+            // Confirm password validation
+            if (string.IsNullOrWhiteSpace(confirmpass))
+            {
+                MessageBox.Show("Please confirm your password", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtConfirmPass.Focus();
+                return false;
+            }
+            if (confirmpass != password)
+            {
+                MessageBox.Show("Passwords do not match", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtConfirmPass.Focus();
+                return false;
+            }
+
+            return true;
         }
 
         private void ToggleButton(Boolean tog)
@@ -158,6 +243,11 @@ namespace client.Forms
             {
                 btnSignUp.PerformClick();
             }
+        }
+
+        private void Register_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
         }
     }
 }

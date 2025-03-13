@@ -3,6 +3,7 @@ using client.Controls.Products;
 using client.Helpers;
 using client.Models;
 using client.Services;
+using client.Services.Auth;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,7 @@ namespace client.Forms.Order
         private readonly SubCategoryController _subCategoryController = new SubCategoryController();
         private readonly CategoryController _categoryController = new CategoryController();
         private readonly ProductController _productController = new ProductController();
+        private readonly AuthController _authController = new AuthController();
 
         public static OrderEntryForm? Instance { get; private set; }
 
@@ -52,10 +54,15 @@ namespace client.Forms.Order
 
         private async void OrderEntryForm_Load(object sender, EventArgs e)
         {
-            btnPayment.BackColor = ColorTranslator.FromHtml("#28a745");
-            btnPayment.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#28a745");
             DataCache.ShouldRefreshCategories = true;
             this.WindowState = FormWindowState.Maximized;
+
+            btnHome.Visible = (CurrentUser.IsAdmin) ? true : false;
+
+            string? username = CurrentUser.Current?.Username;
+            string role = (CurrentUser.Current?.Role) == "admin" ? "Administrator" : "Cashier";
+            lblUser.Text = $"{char.ToUpper(username![0]) + username.Substring(1)} ({role})";
+
             timer1.Start();
             await InitializeData();
         }
@@ -64,40 +71,10 @@ namespace client.Forms.Order
         {
             try
             {
-                // Check if categories need to be refreshed
-                Task<bool> categoryTask = DataCache.ShouldRefreshCategories
-                    ? _categoryController.Get()
-                    : Task.FromResult(false); // If not refreshing, return a completed task
+                LoadProducts();
 
-                // Await the category task before loading products
-                bool categoriesRefreshed = await categoryTask; // Wait for category task to complete
-
-                // Check category load result
-                if (!categoriesRefreshed) // Check the result of categoryTask
-                {
-                    LoggerHelper.Write("LOAD CATEGORIES", "Failed to load categories.");
-                    MessageBox.Show("Failed to load categories.", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Check if products are already cached and valid
-                if (!DataCache.ProductsAreValid) // Assuming a property to check cache validity
-                {
-                    // Load products after categories are loaded
-                    var products = await LoadProducts(); // Await the task to get the list of products
-
-                    // Save products and categories to cache after loading
-                    SaveProductsToCache(products); // New method to save products to cache
-                }
-
-                // Update the last category update time
-                DataCache.LastCategoryUpdate = DateTime.Now;
-
-                // Create category buttons after categories are loaded
                 CreateCategoryButtons();
 
-                // Load subcategories if a category is selected
                 if (CurrentCategory.Current?.Id > 0)
                 {
                     bool subCategoriesLoaded = await _subCategoryController.Get(CurrentCategory.Current.Id);
@@ -116,20 +93,6 @@ namespace client.Forms.Order
             }
         }
 
-        // Save products and categories to cache
-        private async void SaveProductsToCache(List<client.Models.Product> products)
-        {
-            var categories = await _categoryController.GetAllCategories();
-            var cacheData = new CacheData
-            {
-                LastUpdate = DateTime.UtcNow,
-                Products = products,
-                Categories = categories
-            };
-
-            CacheService.SaveToCache(cacheData);
-        }
-
         private void CreateCategoryButtons()
         {
             categoriesPanel.Controls.Clear();
@@ -142,7 +105,6 @@ namespace client.Forms.Order
 
             int buttonMargin = 5;
             int buttonHeight = 40;
-            int buttonWidth = 110;
 
             var categories = CurrentCategory.AllCategories;
             if (categories != null && categories.Count > 0)
@@ -154,7 +116,6 @@ namespace client.Forms.Order
                         Button categoryButton = new Button
                         {
                             Text = category.Name,
-                            Width = buttonWidth,
                             Height = buttonHeight,
                             Margin = new Padding(buttonMargin, buttonMargin, 0, buttonMargin),
                             Tag = category.Id,
@@ -166,8 +127,16 @@ namespace client.Forms.Order
                             TabStop = false
                         };
 
+                        categoryButton.AutoSize = true;
+                        categoryButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+                        categoryButton.Padding = new Padding(5);
+
                         categoryButton.FlatAppearance.BorderSize = 1;
                         categoryButton.FlatAppearance.BorderColor = Color.Black;
+
+                        ToolTip toolTip = new ToolTip();
+                        toolTip.InitialDelay = 50;
+                        toolTip.SetToolTip(categoryButton, category.Name);
 
                         categoryButton.MouseEnter += (s, e) =>
                         {
@@ -185,12 +154,12 @@ namespace client.Forms.Order
                             }
                         };
 
-                        categoryButton.Click += async (sender, e) =>
+                        categoryButton.Click += (sender, e) =>
                         {
                             if (sender is Button button && button.Tag is int categoryId)
                             {
                                 categoriesPanel.Focus();
-                                await HandleCategoryClick(categoryId);
+                                HandleCategoryClick(categoryId);
                             }
                         };
 
@@ -200,7 +169,7 @@ namespace client.Forms.Order
             }
         }
 
-        private async Task HandleCategoryClick(int categoryId)
+        private void HandleCategoryClick(int categoryId)
         {
             try
             {
@@ -218,16 +187,16 @@ namespace client.Forms.Order
                 {
                     CurrentCategory.SetCurrentCategory(selectedCategory);
 
-                    bool success = await _subCategoryController.Get(categoryId);
-                    if (success)
+                    var subcategories = CurrentSubCategory.GetSubcategoriesByCategoryId(categoryId);
+                    if (subcategories.Any())
                     {
-                        ShowSubCategories();
+                        ShowSubCategories(subcategories);
                     }
                     else
                     {
-                        MessageBox.Show("Failed to load subcategories.", "Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        LoggerHelper.Write("SUBCATEGORY LOAD ERROR", $"Failed to load subcategories for category ID: {categoryId}");
+                        MessageBox.Show("No subcategories found for this category.", "Information",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoggerHelper.Write("SUBCATEGORY INFO", $"No subcategories found for category ID: {categoryId}");
                     }
                 }
                 else
@@ -245,9 +214,8 @@ namespace client.Forms.Order
             }
         }
 
-        private void ShowSubCategories()
+        private void ShowSubCategories(List<SubCategory> subcategories)
         {
-            var subcategories = CurrentSubCategory.AllSubCategories;
             if (subcategories != null && subcategories.Count > 0)
             {
                 StringBuilder message = new StringBuilder();
@@ -272,33 +240,26 @@ namespace client.Forms.Order
             }
         }
 
-        private async Task<List<client.Models.Product>> LoadProducts()
+        private List<Product> LoadProducts()
         {
             try
             {
-                if (await _productController.Get())
+                pnlContainer.Controls.Clear();
+
+                if (CurrentProduct.AllProduct != null && CurrentProduct.AllProduct.Count > 0)
                 {
-                    // Clear the existing controls in the panel
-                    pnlContainer.Controls.Clear();
-
-                    // Check if there are products available
-                    if (CurrentProduct.AllProduct != null && CurrentProduct.AllProduct.Count > 0)
+                    var productDisplay = new CardDisplay(CurrentProduct.AllProduct)
                     {
-                        // Create a display for the products
-                        var productDisplay = new CardDisplay(CurrentProduct.AllProduct)
-                        {
-                            Dock = DockStyle.Fill
-                        };
-                        pnlContainer.Controls.Add(productDisplay);
+                        Dock = DockStyle.Fill
+                    };
+                    pnlContainer.Controls.Add(productDisplay);
 
-                        // Return the list of products
-                        return CurrentProduct.AllProduct; // Return the list of products
-                    }
-                    else
-                    {
-                        MessageBox.Show("No products available to display.", "Information",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    return CurrentProduct.AllProduct;
+                }
+                else
+                {
+                    MessageBox.Show("No products available to display.", "Information",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -307,11 +268,10 @@ namespace client.Forms.Order
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            // Return an empty list if no products were loaded or an error occurred
-            return new List<client.Models.Product>();
+            return new List<Product>();
         }
 
-        public void AddCartItem(client.Models.Product product)
+        public void AddCartItem(Product product)
         {
             MessageBox.Show($"Adding {product.productName} to cart", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -423,7 +383,6 @@ namespace client.Forms.Order
                 Cursor = Cursors.Hand
             };
 
-            // Prevents resizing on click
             btnPlus.FlatAppearance.BorderSize = 0;
             btnPlus.FlatAppearance.MouseDownBackColor = Color.FromArgb(190, 170, 160);
             btnPlus.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 204, 192);
@@ -501,8 +460,7 @@ namespace client.Forms.Order
 
         private void homeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            new MainMenu().Show();
+
         }
 
         private Point dragOffset;
@@ -547,6 +505,32 @@ namespace client.Forms.Order
         private void btnPayment_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            CloseWindow();
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new MainMenu().Show();
+        }
+
+        private void btnHome_MouseEnter(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+
+        private void btnHome_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            _authController.Logout();
         }
     }
 }

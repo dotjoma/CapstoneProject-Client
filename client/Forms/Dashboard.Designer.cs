@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
             panel2 = new Panel();
@@ -42,6 +45,8 @@
             label2 = new Label();
             pictureBox1 = new PictureBox();
             label1 = new Label();
+            panel4 = new Panel();
+            chartSalesPrediction = new System.Windows.Forms.DataVisualization.Charting.Chart();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -49,22 +54,25 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartSalesPrediction).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 39.0489731F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 39.04897F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 29.9784145F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30.9726143F));
             tableLayoutPanel1.Controls.Add(panel1, 0, 0);
+            tableLayoutPanel1.Controls.Add(panel4, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Top;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(1238, 572);
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new Size(1238, 284);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
@@ -73,7 +81,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(477, 280);
+            panel1.Size = new Size(477, 278);
             panel1.TabIndex = 0;
             // 
             // panel2
@@ -83,7 +91,7 @@
             panel2.Controls.Add(panel3);
             panel2.Location = new Point(0, 9);
             panel2.Name = "panel2";
-            panel2.Size = new Size(477, 268);
+            panel2.Size = new Size(477, 266);
             panel2.TabIndex = 1;
             // 
             // panel3
@@ -102,7 +110,7 @@
             panel3.Controls.Add(label1);
             panel3.Location = new Point(3, 3);
             panel3.Name = "panel3";
-            panel3.Size = new Size(471, 262);
+            panel3.Size = new Size(471, 260);
             panel3.TabIndex = 0;
             // 
             // label4
@@ -208,6 +216,31 @@
             label1.TabIndex = 11;
             label1.Text = "SALES OVERVIEW";
             // 
+            // panel4
+            // 
+            panel4.Controls.Add(chartSalesPrediction);
+            panel4.Dock = DockStyle.Fill;
+            panel4.Location = new Point(486, 3);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(365, 278);
+            panel4.TabIndex = 1;
+            // 
+            // chartSalesPrediction
+            // 
+            chartArea1.Name = "ChartArea1";
+            chartSalesPrediction.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chartSalesPrediction.Legends.Add(legend1);
+            chartSalesPrediction.Location = new Point(23, 34);
+            chartSalesPrediction.Name = "chartSalesPrediction";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chartSalesPrediction.Series.Add(series1);
+            chartSalesPrediction.Size = new Size(318, 211);
+            chartSalesPrediction.TabIndex = 2;
+            chartSalesPrediction.Text = "chart1";
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 16F);
@@ -228,6 +261,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chartSalesPrediction).EndInit();
             ResumeLayout(false);
         }
 
@@ -247,5 +282,7 @@
         private Label label3;
         private Label label2;
         private PictureBox pictureBox1;
+        private Panel panel4;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartSalesPrediction;
     }
 }

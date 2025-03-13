@@ -55,6 +55,7 @@
             taxSettingsToolStripMenuItem = new ToolStripMenuItem();
             paymentMethodsToolStripMenuItem = new ToolStripMenuItem();
             printerSetupToolStripMenuItem = new ToolStripMenuItem();
+            themeToolStripMenuItem = new ToolStripMenuItem();
             databaseToolStripMenuItem = new ToolStripMenuItem();
             backupDatabaseToolStripMenuItem = new ToolStripMenuItem();
             restoreDatabaseToolStripMenuItem = new ToolStripMenuItem();
@@ -80,9 +81,11 @@
             toolStripSeparator5 = new ToolStripSeparator();
             toolStripButton1 = new ToolStripButton();
             pnlContainer = new Panel();
+            pictureBox2 = new PictureBox();
             menuStrip1.SuspendLayout();
             panel2.SuspendLayout();
             toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
@@ -221,7 +224,7 @@
             // 
             // systemSettingsToolStripMenuItem
             // 
-            systemSettingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { storeConfigurationToolStripMenuItem, taxSettingsToolStripMenuItem, paymentMethodsToolStripMenuItem, printerSetupToolStripMenuItem });
+            systemSettingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { storeConfigurationToolStripMenuItem, taxSettingsToolStripMenuItem, paymentMethodsToolStripMenuItem, printerSetupToolStripMenuItem, themeToolStripMenuItem });
             systemSettingsToolStripMenuItem.Name = "systemSettingsToolStripMenuItem";
             systemSettingsToolStripMenuItem.Size = new Size(223, 22);
             systemSettingsToolStripMenuItem.Text = "System Settings";
@@ -249,6 +252,12 @@
             printerSetupToolStripMenuItem.Name = "printerSetupToolStripMenuItem";
             printerSetupToolStripMenuItem.Size = new Size(202, 22);
             printerSetupToolStripMenuItem.Text = "Printer Setup";
+            // 
+            // themeToolStripMenuItem
+            // 
+            themeToolStripMenuItem.Name = "themeToolStripMenuItem";
+            themeToolStripMenuItem.Size = new Size(202, 22);
+            themeToolStripMenuItem.Text = "Theme";
             // 
             // databaseToolStripMenuItem
             // 
@@ -303,6 +312,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(98, 87, 87);
+            panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(lblUser);
             panel2.Dock = DockStyle.Bottom;
             panel2.Location = new Point(0, 627);
@@ -313,8 +323,8 @@
             // lblUser
             // 
             lblUser.AutoSize = true;
-            lblUser.ForeColor = Color.FromArgb(214, 192, 179);
-            lblUser.Location = new Point(12, 9);
+            lblUser.ForeColor = Color.White;
+            lblUser.Location = new Point(36, 9);
             lblUser.Name = "lblUser";
             lblUser.Size = new Size(38, 16);
             lblUser.TabIndex = 0;
@@ -460,6 +470,17 @@
             pnlContainer.Size = new Size(1024, 530);
             pnlContainer.TabIndex = 9;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Anchor = AnchorStyles.Left;
+            pictureBox2.Image = Properties.Resources.Name;
+            pictureBox2.Location = new Point(3, 2);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(30, 30);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 12;
+            pictureBox2.TabStop = false;
+            // 
             // MainMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 16F);
@@ -484,6 +505,7 @@
             panel2.PerformLayout();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -539,5 +561,7 @@
         private ToolStripSeparator toolStripSeparator6;
         private ToolStripButton toolStripButton4;
         private ToolStripMenuItem discountManagementToolStripMenuItem;
+        private ToolStripMenuItem themeToolStripMenuItem;
+        private PictureBox pictureBox2;
     }
 }

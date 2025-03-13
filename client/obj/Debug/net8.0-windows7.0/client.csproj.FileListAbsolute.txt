@@ -95,6 +95,8 @@ E:\Visual Studio 2022\Projects\CapstoneProject\CapstoneProject-Client\client\bin
 E:\Visual Studio 2022\Projects\CapstoneProject\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\Guna.UI2.dll
 E:\Visual Studio 2022\Projects\CapstoneProject\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\Newtonsoft.Json.dll
 E:\Visual Studio 2022\Projects\CapstoneProject\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\System.Management.dll
+E:\Visual Studio 2022\Projects\CapstoneProject\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\WinForms.DataVisualization.Utilities.dll
+E:\Visual Studio 2022\Projects\CapstoneProject\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\WinForms.DataVisualization.dll
 E:\Visual Studio 2022\Projects\CapstoneProject\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net7.0\System.Management.dll
 E:\Visual Studio 2022\Projects\CapstoneProject\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.csproj.AssemblyReference.cache
 E:\Visual Studio 2022\Projects\CapstoneProject\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Controls.Products.CardDisplay.resources

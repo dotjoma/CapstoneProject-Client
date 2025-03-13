@@ -139,23 +139,20 @@ namespace client.Forms.ProductManagement
         {
             if (e.CellStyle == null) return;
 
-            if (dgvProducts.Columns[e.ColumnIndex].Name == "productStatus")
+            if (dgvProducts.Columns[e.ColumnIndex].Name == "productStatus" && e.Value != null)
             {
-                if (e.Value != null)
+                string status = e.Value.ToString() ?? string.Empty;
+                e.FormattingApplied = true;
+
+                if (status == "Active")
                 {
-                    string status = e.Value?.ToString() ?? string.Empty;
-                    if (status == "Active")
-                    {
-                        e.CellStyle.SelectionBackColor = Color.Green;
-                        e.CellStyle.BackColor = Color.Green;
-                        e.CellStyle.ForeColor = Color.White;
-                    }
-                    else if (status == "Inactive")
-                    {
-                        e.CellStyle.SelectionBackColor = Color.Red;
-                        e.CellStyle.BackColor = Color.Red;
-                        e.CellStyle.ForeColor = Color.White;
-                    }
+                    e.CellStyle.SelectionBackColor = Color.White;
+                    e.Value = Properties.Resources.CheckBrown;
+                }
+                else if (status == "Inactive")
+                {
+                    e.CellStyle.SelectionBackColor = Color.White;
+                    e.Value = Properties.Resources.EkisBrown;
                 }
             }
         }
@@ -214,7 +211,19 @@ namespace client.Forms.ProductManagement
 
         private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            _selectedId = Convert.ToInt32(dgvProducts.Rows[e.RowIndex].Cells[0].Value);
+            try
+            {
+                _selectedId = Convert.ToInt32(dgvProducts.Rows[e.RowIndex].Cells[0].Value);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
