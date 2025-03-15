@@ -36,7 +36,10 @@ namespace client.Forms.Order
 
         private decimal subTotal = 0;
         private decimal totalAmount = 0;
+        private string orderType = "Dine-In";
         //private decimal discount = 0;
+
+        private Button activeButton = new Button();
 
         public OrderEntryForm()
         {
@@ -60,6 +63,13 @@ namespace client.Forms.Order
                 };
                 cartPanel.Controls.Add(cartContainerPanel);
             }
+
+            AppliedDiscount.OnDiscountChanged += UpdateDiscount;
+        }
+
+        private void UpdateDiscount(decimal newDiscount)
+        {
+            MessageBox.Show($"Discount applied: {newDiscount}", "Discount", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private async void OrderEntryForm_Load(object sender, EventArgs e)
@@ -817,6 +827,7 @@ namespace client.Forms.Order
 
                 UpdateSubTotal();
                 CurrentCart.RemoveItem(product.productId);
+                AppliedDiscount.RemoveDiscount(product.productId);
                 cartContainerPanel.Controls.Remove(cartItem);
             };
 
@@ -1093,6 +1104,10 @@ namespace client.Forms.Order
                 {
                     RefreshTransaction();
                 }
+                else
+                {
+                    return;
+                }
             }
 
             btnNewOrder.Enabled = false;
@@ -1106,6 +1121,8 @@ namespace client.Forms.Order
 
                 lblTransactionNo.Text = transNumber;
                 lblOrderNo.Text = orderNumber;
+                SetActiveButton(btnDineIn);
+                UpdateOrderType("Dine-In");
 
                 ToggleButton(true);
 
@@ -1151,11 +1168,12 @@ namespace client.Forms.Order
             subTotal = 0;
             totalAmount = 0;
             lblOrderNo.Text = "";
+            RemoveActiveButton();
             CurrentCart.ClearCart();
             lblTransactionNo.Text = "";
             CurrentTransaction.Clear();
             cartContainerPanel.Controls.Clear();
-            
+
             UpdateSubTotal();
         }
 
@@ -1186,6 +1204,8 @@ namespace client.Forms.Order
             btnApplyDiscount.Enabled = tog;
             btnCancelTransaction.Enabled = tog;
             btnPayment.Enabled = tog;
+            btnDineIn.Enabled = tog;
+            btnTakeOut.Enabled = tog;
         }
 
         private void btnCancelTransaction_Click(object sender, EventArgs e)
@@ -1250,7 +1270,7 @@ namespace client.Forms.Order
         private void InitializeLoadingControls()
         {
             loadingPanel.BackColor = Color.White;
-            loadingPanel.BorderStyle = BorderStyle.None;
+            loadingPanel.BorderStyle = BorderStyle.FixedSingle;
             loadingPanel.Size = new Size(300, 150);
             loadingPanel.Location = new Point(
                 (this.ClientSize.Width - loadingPanel.Width) / 2,
@@ -1315,6 +1335,60 @@ namespace client.Forms.Order
             {
                 loadingPanel.Visible = false;
             }
+        }
+
+        private void SetActiveButton(Button? clickedButton)
+        {
+            if (activeButton != null)
+            {
+                activeButton.BackColor = SystemColors.Control;
+                activeButton.ForeColor = Color.Black;
+            }
+
+            activeButton = clickedButton!;
+            activeButton.BackColor = Color.DodgerBlue;
+            activeButton.ForeColor = Color.White;
+        }
+
+        private void RemoveActiveButton()
+        {
+            if (activeButton != null)
+            {
+                orderType = "Dine-In";
+                lblOrderType.Text = string.Empty;
+                activeButton.BackColor = SystemColors.Control;
+                activeButton.ForeColor = Color.Black;
+            }
+        }
+
+        private void btnDineIn_Click(object sender, EventArgs e)
+        {
+            if (!IsTransactionActive())
+                return;
+
+            SetActiveButton(sender as Button);
+            UpdateOrderType("Dine-In");
+        }
+
+        private void btnTakeOut_Click(object sender, EventArgs e)
+        {
+            if (!IsTransactionActive())
+                return;
+
+            SetActiveButton(sender as Button);
+            UpdateOrderType("Take-Out");
+        }
+
+        private void UpdateOrderType(string type)
+        {
+            orderType = type;
+            lblOrderType.Text = (type == "Dine-In") ? "DINE IN" : "TAKE OUT";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"Total Discount: {AppliedDiscount.TotalDiscount.ToString("F2")}", "Discount Information",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //private bool ValidateTransaction()

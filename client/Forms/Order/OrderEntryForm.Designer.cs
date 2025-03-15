@@ -52,12 +52,15 @@
             cartPanel = new FlowLayoutPanel();
             panel2 = new Panel();
             panel12 = new Panel();
+            lblOrderType = new Label();
+            label12 = new Label();
             lblOrderNo = new Label();
             lblTransactionNo = new Label();
             label3 = new Label();
             label2 = new Label();
             panel4 = new Panel();
             panel13 = new Panel();
+            panel14 = new Panel();
             lblSubTotal = new Label();
             lblTotal = new Label();
             label11 = new Label();
@@ -76,6 +79,10 @@
             pictureBox6 = new PictureBox();
             txtSearchInput = new TextBox();
             panel8 = new Panel();
+            panel15 = new Panel();
+            btnTakeOut = new Button();
+            btnDineIn = new Button();
+            label9 = new Label();
             panel3 = new Panel();
             panel10 = new Panel();
             btnCancelTransaction = new Button();
@@ -87,6 +94,7 @@
             subCategoriesPanel = new FlowLayoutPanel();
             panel7 = new Panel();
             pnlContainer = new Panel();
+            button1 = new Button();
             pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
             panel6.SuspendLayout();
@@ -105,6 +113,7 @@
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             panel8.SuspendLayout();
+            panel15.SuspendLayout();
             panel3.SuspendLayout();
             panel10.SuspendLayout();
             panel9.SuspendLayout();
@@ -135,7 +144,7 @@
             label13.Anchor = AnchorStyles.Left;
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.ForeColor = Color.FromArgb(98, 87, 87);
+            label13.ForeColor = Color.FromArgb(62, 39, 35);
             label13.Location = new Point(3, 7);
             label13.Name = "label13";
             label13.Size = new Size(208, 20);
@@ -351,9 +360,9 @@
             // 
             panel11.Controls.Add(cartPanel);
             panel11.Dock = DockStyle.Fill;
-            panel11.Location = new Point(0, 56);
+            panel11.Location = new Point(0, 84);
             panel11.Name = "panel11";
-            panel11.Size = new Size(350, 399);
+            panel11.Size = new Size(350, 319);
             panel11.TabIndex = 11;
             // 
             // cartPanel
@@ -363,7 +372,7 @@
             cartPanel.BackColor = Color.FromArgb(232, 232, 232);
             cartPanel.Location = new Point(0, 8);
             cartPanel.Name = "cartPanel";
-            cartPanel.Size = new Size(345, 385);
+            cartPanel.Size = new Size(345, 305);
             cartPanel.TabIndex = 12;
             // 
             // panel2
@@ -373,21 +382,44 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(350, 56);
+            panel2.Size = new Size(350, 84);
             panel2.TabIndex = 9;
             // 
             // panel12
             // 
             panel12.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel12.BackColor = Color.FromArgb(232, 232, 232);
+            panel12.Controls.Add(lblOrderType);
+            panel12.Controls.Add(label12);
             panel12.Controls.Add(lblOrderNo);
             panel12.Controls.Add(lblTransactionNo);
             panel12.Controls.Add(label3);
             panel12.Controls.Add(label2);
             panel12.Location = new Point(-1, -1);
             panel12.Name = "panel12";
-            panel12.Size = new Size(347, 58);
+            panel12.Size = new Size(347, 86);
             panel12.TabIndex = 0;
+            // 
+            // lblOrderType
+            // 
+            lblOrderType.AutoSize = true;
+            lblOrderType.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblOrderType.ForeColor = Color.Black;
+            lblOrderType.Location = new Point(104, 58);
+            lblOrderType.Name = "lblOrderType";
+            lblOrderType.Size = new Size(0, 20);
+            lblOrderType.TabIndex = 20;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.ForeColor = Color.Black;
+            label12.Location = new Point(4, 60);
+            label12.Name = "label12";
+            label12.Size = new Size(94, 17);
+            label12.TabIndex = 19;
+            label12.Text = "ORDER TYPE :";
             // 
             // lblOrderNo
             // 
@@ -437,15 +469,16 @@
             panel4.Controls.Add(panel13);
             panel4.Controls.Add(label10);
             panel4.Dock = DockStyle.Bottom;
-            panel4.Location = new Point(0, 455);
+            panel4.Location = new Point(0, 403);
             panel4.Name = "panel4";
-            panel4.Size = new Size(350, 245);
+            panel4.Size = new Size(350, 297);
             panel4.TabIndex = 10;
             // 
             // panel13
             // 
             panel13.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel13.BackColor = Color.FromArgb(232, 232, 232);
+            panel13.Controls.Add(panel14);
             panel13.Controls.Add(lblSubTotal);
             panel13.Controls.Add(lblTotal);
             panel13.Controls.Add(label11);
@@ -457,29 +490,37 @@
             panel13.Controls.Add(lblVatable);
             panel13.Controls.Add(lblDiscount);
             panel13.Controls.Add(label1);
-            panel13.Location = new Point(-1, -1);
+            panel13.Location = new Point(-1, 18);
             panel13.Name = "panel13";
-            panel13.Size = new Size(347, 237);
+            panel13.Size = new Size(347, 270);
             panel13.TabIndex = 14;
+            // 
+            // panel14
+            // 
+            panel14.BackColor = Color.Black;
+            panel14.Location = new Point(3, 120);
+            panel14.Name = "panel14";
+            panel14.Size = new Size(335, 1);
+            panel14.TabIndex = 28;
             // 
             // lblSubTotal
             // 
             lblSubTotal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            lblSubTotal.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblSubTotal.Location = new Point(202, 10);
+            lblSubTotal.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSubTotal.Location = new Point(206, 11);
             lblSubTotal.Name = "lblSubTotal";
-            lblSubTotal.Size = new Size(133, 18);
+            lblSubTotal.Size = new Size(133, 21);
             lblSubTotal.TabIndex = 27;
             lblSubTotal.Text = "0.00";
             lblSubTotal.TextAlign = ContentAlignment.MiddleRight;
             // 
             // lblTotal
             // 
-            lblTotal.Font = new Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTotal.ForeColor = Color.Black;
-            lblTotal.Location = new Point(202, 104);
+            lblTotal.Font = new Font("Arial Rounded MT Bold", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTotal.ForeColor = Color.FromArgb(62, 39, 35);
+            lblTotal.Location = new Point(168, 126);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(133, 22);
+            lblTotal.Size = new Size(170, 30);
             lblTotal.TabIndex = 26;
             lblTotal.Text = "0.00";
             lblTotal.TextAlign = ContentAlignment.MiddleRight;
@@ -487,20 +528,20 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.ForeColor = Color.Black;
-            label11.Location = new Point(3, 102);
+            label11.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.ForeColor = Color.FromArgb(62, 39, 35);
+            label11.Location = new Point(3, 125);
             label11.Name = "label11";
-            label11.Size = new Size(68, 25);
+            label11.Size = new Size(76, 30);
             label11.TabIndex = 25;
             label11.Text = "TOTAL";
             // 
             // lblVat
             // 
-            lblVat.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblVat.Location = new Point(202, 78);
+            lblVat.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblVat.Location = new Point(206, 90);
             lblVat.Name = "lblVat";
-            lblVat.Size = new Size(133, 18);
+            lblVat.Size = new Size(133, 21);
             lblVat.TabIndex = 24;
             lblVat.Text = "0.00";
             lblVat.TextAlign = ContentAlignment.MiddleRight;
@@ -508,30 +549,30 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(4, 80);
+            label8.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label8.Location = new Point(4, 89);
             label8.Name = "label8";
-            label8.Size = new Size(67, 17);
+            label8.Size = new Size(76, 21);
             label8.TabIndex = 23;
             label8.Text = "VAT(12%)";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(4, 57);
+            label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label6.Location = new Point(4, 63);
             label6.Name = "label6";
-            label6.Size = new Size(58, 17);
+            label6.Size = new Size(69, 21);
             label6.TabIndex = 22;
             label6.Text = "Vat-able";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(4, 35);
+            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label4.Location = new Point(4, 37);
             label4.Name = "label4";
-            label4.Size = new Size(63, 17);
+            label4.Size = new Size(74, 21);
             label4.TabIndex = 21;
             label4.Text = "Discount";
             // 
@@ -544,7 +585,7 @@
             btnPayment.FlatStyle = FlatStyle.Flat;
             btnPayment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnPayment.ForeColor = Color.Black;
-            btnPayment.Location = new Point(3, 181);
+            btnPayment.Location = new Point(3, 214);
             btnPayment.Name = "btnPayment";
             btnPayment.Size = new Size(340, 52);
             btnPayment.TabIndex = 20;
@@ -555,20 +596,20 @@
             // 
             // lblVatable
             // 
-            lblVatable.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblVatable.Location = new Point(202, 57);
+            lblVatable.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblVatable.Location = new Point(206, 64);
             lblVatable.Name = "lblVatable";
-            lblVatable.Size = new Size(133, 18);
+            lblVatable.Size = new Size(133, 21);
             lblVatable.TabIndex = 19;
             lblVatable.Text = "0.00";
             lblVatable.TextAlign = ContentAlignment.MiddleRight;
             // 
             // lblDiscount
             // 
-            lblDiscount.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDiscount.Location = new Point(202, 34);
+            lblDiscount.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblDiscount.Location = new Point(206, 38);
             lblDiscount.Name = "lblDiscount";
-            lblDiscount.Size = new Size(133, 18);
+            lblDiscount.Size = new Size(133, 21);
             lblDiscount.TabIndex = 18;
             lblDiscount.Text = "0.00";
             lblDiscount.TextAlign = ContentAlignment.MiddleRight;
@@ -576,10 +617,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(4, 11);
             label1.Name = "label1";
-            label1.Size = new Size(67, 17);
+            label1.Size = new Size(79, 21);
             label1.TabIndex = 17;
             label1.Text = "Sub-Total";
             // 
@@ -589,7 +630,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.ForeColor = Color.FromArgb(98, 87, 87);
-            label10.Location = new Point(6, 276);
+            label10.Location = new Point(6, 328);
             label10.Name = "label10";
             label10.Size = new Size(85, 32);
             label10.TabIndex = 12;
@@ -605,12 +646,11 @@
             panel5.Controls.Add(txtSearchInput);
             panel5.Location = new Point(6, 0);
             panel5.Name = "panel5";
-            panel5.Size = new Size(767, 56);
+            panel5.Size = new Size(767, 57);
             panel5.TabIndex = 36;
             // 
             // btnPendingOrders
             // 
-            btnPendingOrders.Anchor = AnchorStyles.Left;
             btnPendingOrders.BackColor = Color.White;
             btnPendingOrders.FlatAppearance.BorderColor = Color.Gray;
             btnPendingOrders.FlatAppearance.BorderSize = 2;
@@ -628,7 +668,6 @@
             // 
             // btnHoldOrder
             // 
-            btnHoldOrder.Anchor = AnchorStyles.Left;
             btnHoldOrder.BackColor = Color.White;
             btnHoldOrder.FlatAppearance.BorderColor = Color.Gray;
             btnHoldOrder.FlatAppearance.BorderSize = 2;
@@ -646,7 +685,7 @@
             // 
             // pictureBox6
             // 
-            pictureBox6.Anchor = AnchorStyles.Right;
+            pictureBox6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox6.Image = Properties.Resources.Search;
             pictureBox6.Location = new Point(730, 13);
             pictureBox6.Name = "pictureBox6";
@@ -657,7 +696,7 @@
             // 
             // txtSearchInput
             // 
-            txtSearchInput.Anchor = AnchorStyles.Right;
+            txtSearchInput.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtSearchInput.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtSearchInput.Location = new Point(533, 13);
             txtSearchInput.Name = "txtSearchInput";
@@ -668,12 +707,59 @@
             // 
             // panel8
             // 
+            panel8.Controls.Add(panel15);
             panel8.Controls.Add(panel5);
             panel8.Dock = DockStyle.Top;
             panel8.Location = new Point(0, 34);
             panel8.Name = "panel8";
-            panel8.Size = new Size(778, 56);
+            panel8.Size = new Size(778, 95);
             panel8.TabIndex = 42;
+            // 
+            // panel15
+            // 
+            panel15.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel15.BackColor = Color.FromArgb(232, 232, 232);
+            panel15.Controls.Add(btnTakeOut);
+            panel15.Controls.Add(btnDineIn);
+            panel15.Controls.Add(label9);
+            panel15.Location = new Point(6, 59);
+            panel15.Name = "panel15";
+            panel15.Size = new Size(767, 36);
+            panel15.TabIndex = 37;
+            // 
+            // btnTakeOut
+            // 
+            btnTakeOut.BackColor = Color.White;
+            btnTakeOut.Location = new Point(236, 4);
+            btnTakeOut.Name = "btnTakeOut";
+            btnTakeOut.Size = new Size(104, 28);
+            btnTakeOut.TabIndex = 41;
+            btnTakeOut.Text = "TAKE OUT";
+            btnTakeOut.UseVisualStyleBackColor = false;
+            btnTakeOut.Click += btnTakeOut_Click;
+            // 
+            // btnDineIn
+            // 
+            btnDineIn.BackColor = Color.White;
+            btnDineIn.Location = new Point(126, 4);
+            btnDineIn.Name = "btnDineIn";
+            btnDineIn.Size = new Size(104, 28);
+            btnDineIn.TabIndex = 40;
+            btnDineIn.Text = "DINE IN";
+            btnDineIn.UseVisualStyleBackColor = false;
+            btnDineIn.Click += btnDineIn_Click;
+            // 
+            // label9
+            // 
+            label9.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            label9.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.Black;
+            label9.Location = new Point(6, 4);
+            label9.Name = "label9";
+            label9.Size = new Size(114, 28);
+            label9.TabIndex = 39;
+            label9.Text = "ORDER TYPE :";
+            label9.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // panel3
             // 
@@ -688,6 +774,7 @@
             // 
             panel10.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel10.BackColor = Color.FromArgb(232, 232, 232);
+            panel10.Controls.Add(button1);
             panel10.Controls.Add(btnCancelTransaction);
             panel10.Controls.Add(btnApplyDiscount);
             panel10.Controls.Add(btnNewOrder);
@@ -757,9 +844,9 @@
             // 
             panel9.Controls.Add(categoriesPanel);
             panel9.Dock = DockStyle.Left;
-            panel9.Location = new Point(0, 90);
+            panel9.Location = new Point(0, 129);
             panel9.Name = "panel9";
-            panel9.Size = new Size(193, 568);
+            panel9.Size = new Size(193, 529);
             panel9.TabIndex = 50;
             // 
             // categoriesPanel
@@ -768,7 +855,7 @@
             categoriesPanel.BackColor = Color.FromArgb(232, 232, 232);
             categoriesPanel.Location = new Point(6, 8);
             categoriesPanel.Name = "categoriesPanel";
-            categoriesPanel.Size = new Size(181, 553);
+            categoriesPanel.Size = new Size(181, 514);
             categoriesPanel.TabIndex = 41;
             // 
             // subCategoryPanel
@@ -793,9 +880,9 @@
             // 
             panel7.Controls.Add(pnlContainer);
             panel7.Dock = DockStyle.Fill;
-            panel7.Location = new Point(193, 90);
+            panel7.Location = new Point(193, 129);
             panel7.Name = "panel7";
-            panel7.Size = new Size(585, 506);
+            panel7.Size = new Size(585, 467);
             panel7.TabIndex = 53;
             // 
             // pnlContainer
@@ -803,8 +890,20 @@
             pnlContainer.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlContainer.Location = new Point(3, 7);
             pnlContainer.Name = "pnlContainer";
-            pnlContainer.Size = new Size(578, 491);
+            pnlContainer.Size = new Size(578, 452);
             pnlContainer.TabIndex = 49;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.White;
+            button1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Location = new Point(595, 6);
+            button1.Name = "button1";
+            button1.Size = new Size(161, 54);
+            button1.TabIndex = 5;
+            button1.Text = "CHECK TOTAL DISCOUNT";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // OrderEntryForm
             // 
@@ -853,6 +952,7 @@
             panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             panel8.ResumeLayout(false);
+            panel15.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel10.ResumeLayout(false);
             panel9.ResumeLayout(false);
@@ -920,5 +1020,13 @@
         private Button btnCancelTransaction;
         private Button btnHoldOrder;
         private Button btnPendingOrders;
+        private Panel panel14;
+        private Panel panel15;
+        private Button btnDineIn;
+        private Label label9;
+        private Button btnTakeOut;
+        private Label lblOrderType;
+        private Label label12;
+        private Button button1;
     }
 }

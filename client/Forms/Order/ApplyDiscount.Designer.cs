@@ -40,6 +40,7 @@
             pictureBox1 = new PictureBox();
             label1 = new Label();
             dgvCartItem = new DataGridView();
+            id = new DataGridViewTextBoxColumn();
             name = new DataGridViewTextBoxColumn();
             quantity = new DataGridViewTextBoxColumn();
             price = new DataGridViewTextBoxColumn();
@@ -56,14 +57,14 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 66);
+            panel1.Size = new Size(657, 59);
             panel1.TabIndex = 6;
             // 
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.Left;
-            pictureBox1.Image = Properties.Resources.Discount;
-            pictureBox1.Location = new Point(12, 13);
+            pictureBox1.Image = Properties.Resources.discount_501;
+            pictureBox1.Location = new Point(12, 9);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(40, 40);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -75,8 +76,8 @@
             label1.Anchor = AnchorStyles.Left;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.FromArgb(98, 87, 87);
-            label1.Location = new Point(58, 17);
+            label1.ForeColor = Color.FromArgb(62, 39, 35);
+            label1.Location = new Point(58, 13);
             label1.Name = "label1";
             label1.Size = new Size(215, 32);
             label1.TabIndex = 27;
@@ -104,9 +105,9 @@
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvCartItem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dgvCartItem.ColumnHeadersHeight = 35;
+            dgvCartItem.ColumnHeadersHeight = 30;
             dgvCartItem.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvCartItem.Columns.AddRange(new DataGridViewColumn[] { name, quantity, price, discount });
+            dgvCartItem.Columns.AddRange(new DataGridViewColumn[] { id, name, quantity, price, discount });
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = SystemColors.Control;
             dataGridViewCellStyle6.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -117,7 +118,7 @@
             dgvCartItem.DefaultCellStyle = dataGridViewCellStyle6;
             dgvCartItem.Dock = DockStyle.Fill;
             dgvCartItem.EnableHeadersVisualStyles = false;
-            dgvCartItem.Location = new Point(0, 66);
+            dgvCartItem.Location = new Point(0, 59);
             dgvCartItem.MultiSelect = false;
             dgvCartItem.Name = "dgvCartItem";
             dgvCartItem.ReadOnly = true;
@@ -132,10 +133,20 @@
             dgvCartItem.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dgvCartItem.RowHeadersVisible = false;
             dgvCartItem.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCartItem.Size = new Size(800, 384);
+            dgvCartItem.Size = new Size(657, 302);
             dgvCartItem.TabIndex = 7;
             dgvCartItem.TabStop = false;
             dgvCartItem.CellClick += dgvCartItem_CellClick;
+            dgvCartItem.CellPainting += dgvCartItem_CellPainting;
+            // 
+            // id
+            // 
+            id.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            id.HeaderText = "#";
+            id.MinimumWidth = 50;
+            id.Name = "id";
+            id.ReadOnly = true;
+            id.Width = 50;
             // 
             // name
             // 
@@ -172,6 +183,7 @@
             // discount
             // 
             discount.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            discount.DataPropertyName = "discount";
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = Color.White;
             dataGridViewCellStyle5.SelectionBackColor = Color.White;
@@ -190,7 +202,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(657, 361);
             Controls.Add(dgvCartItem);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
@@ -214,6 +226,7 @@
         private PictureBox pictureBox1;
         private Label label1;
         private DataGridView dgvCartItem;
+        private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn name;
         private DataGridViewTextBoxColumn quantity;
         private DataGridViewTextBoxColumn price;

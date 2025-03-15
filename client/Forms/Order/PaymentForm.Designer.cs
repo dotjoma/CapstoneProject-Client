@@ -30,8 +30,9 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaymentForm));
             panel1 = new Panel();
             label1 = new Label();
@@ -41,15 +42,14 @@
             panel6 = new Panel();
             dgvMop = new DataGridView();
             mode = new DataGridViewTextBoxColumn();
-            productCategory = new DataGridViewTextBoxColumn();
-            productSubcategory = new DataGridViewTextBoxColumn();
+            amount = new DataGridViewTextBoxColumn();
+            refnumber = new DataGridViewTextBoxColumn();
             panel10 = new Panel();
+            label2 = new Label();
             btnRemove = new Button();
             btnApply = new Button();
-            lblTotal = new Label();
+            lblAmountPaid = new Label();
             panel5 = new Panel();
-            txtAmount = new TextBox();
-            label5 = new Label();
             paymentDetailsPanel = new Panel();
             cboPaymentMethod = new ComboBox();
             label4 = new Label();
@@ -122,13 +122,13 @@
             btnConfirmPayment.Dock = DockStyle.Fill;
             btnConfirmPayment.FlatAppearance.BorderSize = 0;
             btnConfirmPayment.FlatStyle = FlatStyle.Flat;
-            btnConfirmPayment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnConfirmPayment.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnConfirmPayment.ForeColor = Color.White;
             btnConfirmPayment.Location = new Point(0, 0);
             btnConfirmPayment.Name = "btnConfirmPayment";
             btnConfirmPayment.Size = new Size(621, 41);
             btnConfirmPayment.TabIndex = 0;
-            btnConfirmPayment.Text = "Confirm Payment - [ENTER]";
+            btnConfirmPayment.Text = "CONFIRM PAYMENT - [ENTER]";
             btnConfirmPayment.UseVisualStyleBackColor = true;
             // 
             // panel2
@@ -146,9 +146,9 @@
             panel6.Controls.Add(dgvMop);
             panel6.Controls.Add(panel10);
             panel6.Dock = DockStyle.Fill;
-            panel6.Location = new Point(0, 295);
+            panel6.Location = new Point(0, 259);
             panel6.Name = "panel6";
-            panel6.Size = new Size(323, 199);
+            panel6.Size = new Size(323, 235);
             panel6.TabIndex = 3;
             // 
             // dgvMop
@@ -158,10 +158,11 @@
             dgvMop.AllowUserToResizeColumns = false;
             dgvMop.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(93, 64, 55);
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(215, 204, 200);
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(93, 64, 55);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
             dgvMop.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvMop.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvMop.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMop.BackgroundColor = Color.White;
             dgvMop.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
@@ -170,119 +171,135 @@
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(232, 232, 232);
-            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(232, 232, 232);
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvMop.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dgvMop.ColumnHeadersHeight = 35;
+            dgvMop.ColumnHeadersHeight = 25;
             dgvMop.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvMop.Columns.AddRange(new DataGridViewColumn[] { mode, productCategory, productSubcategory });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(93, 64, 55);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(215, 204, 200);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(93, 64, 55);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvMop.DefaultCellStyle = dataGridViewCellStyle3;
-            dgvMop.Dock = DockStyle.Fill;
+            dgvMop.Columns.AddRange(new DataGridViewColumn[] { mode, amount, refnumber });
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = Color.White;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvMop.DefaultCellStyle = dataGridViewCellStyle4;
             dgvMop.EnableHeadersVisualStyles = false;
-            dgvMop.Location = new Point(0, 0);
+            dgvMop.Location = new Point(12, 0);
             dgvMop.MultiSelect = false;
             dgvMop.Name = "dgvMop";
             dgvMop.ReadOnly = true;
             dgvMop.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(214, 192, 179);
-            dataGridViewCellStyle4.SelectionForeColor = Color.White;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvMop.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(214, 192, 179);
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvMop.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvMop.RowHeadersVisible = false;
+            dgvMop.RowHeadersWidth = 51;
             dgvMop.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMop.Size = new Size(323, 153);
+            dgvMop.Size = new Size(311, 138);
             dgvMop.TabIndex = 5;
             dgvMop.TabStop = false;
+            dgvMop.CellClick += dgvMop_CellClick;
             // 
             // mode
             // 
             mode.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            mode.DataPropertyName = "mode";
             mode.HeaderText = "MODE";
             mode.MinimumWidth = 100;
             mode.Name = "mode";
             mode.ReadOnly = true;
             // 
-            // productCategory
+            // amount
             // 
-            productCategory.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            productCategory.DataPropertyName = "amount";
-            productCategory.FillWeight = 114.315689F;
-            productCategory.HeaderText = "AMOUNT";
-            productCategory.MinimumWidth = 100;
-            productCategory.Name = "productCategory";
-            productCategory.ReadOnly = true;
+            amount.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            amount.DataPropertyName = "amount";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
+            amount.DefaultCellStyle = dataGridViewCellStyle3;
+            amount.FillWeight = 114.315689F;
+            amount.HeaderText = "AMOUNT";
+            amount.MinimumWidth = 80;
+            amount.Name = "amount";
+            amount.ReadOnly = true;
+            amount.Width = 80;
             // 
-            // productSubcategory
+            // refnumber
             // 
-            productSubcategory.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            productSubcategory.DataPropertyName = "refnumber";
-            productSubcategory.FillWeight = 110.479927F;
-            productSubcategory.HeaderText = "REF NO";
-            productSubcategory.MinimumWidth = 100;
-            productSubcategory.Name = "productSubcategory";
-            productSubcategory.ReadOnly = true;
+            refnumber.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            refnumber.DataPropertyName = "refnumber";
+            refnumber.FillWeight = 110.479927F;
+            refnumber.HeaderText = "REF #";
+            refnumber.MinimumWidth = 100;
+            refnumber.Name = "refnumber";
+            refnumber.ReadOnly = true;
             // 
             // panel10
             // 
+            panel10.Controls.Add(label2);
             panel10.Controls.Add(btnRemove);
             panel10.Controls.Add(btnApply);
-            panel10.Controls.Add(lblTotal);
+            panel10.Controls.Add(lblAmountPaid);
             panel10.Dock = DockStyle.Bottom;
-            panel10.Location = new Point(0, 153);
+            panel10.Location = new Point(0, 140);
             panel10.Name = "panel10";
-            panel10.Size = new Size(323, 46);
+            panel10.Size = new Size(323, 95);
             panel10.TabIndex = 0;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(12, 14);
+            label2.Name = "label2";
+            label2.Size = new Size(116, 20);
+            label2.TabIndex = 6;
+            label2.Text = "AMOUNT PAID:";
             // 
             // btnRemove
             // 
             btnRemove.FlatAppearance.BorderColor = Color.Crimson;
             btnRemove.FlatStyle = FlatStyle.Flat;
-            btnRemove.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnRemove.Location = new Point(107, 9);
+            btnRemove.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRemove.Location = new Point(166, 52);
             btnRemove.Name = "btnRemove";
-            btnRemove.Size = new Size(116, 29);
+            btnRemove.Size = new Size(157, 29);
             btnRemove.TabIndex = 5;
             btnRemove.Text = "REMOVE - [DELETE]";
             btnRemove.UseVisualStyleBackColor = true;
+            btnRemove.Click += btnRemove_Click;
             // 
             // btnApply
             // 
             btnApply.FlatAppearance.BorderColor = Color.Green;
             btnApply.FlatStyle = FlatStyle.Flat;
-            btnApply.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnApply.Location = new Point(4, 9);
+            btnApply.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnApply.Location = new Point(12, 52);
             btnApply.Name = "btnApply";
-            btnApply.Size = new Size(97, 29);
+            btnApply.Size = new Size(145, 29);
             btnApply.TabIndex = 4;
             btnApply.Text = "APPLY - [INSERT]";
             btnApply.UseVisualStyleBackColor = true;
+            btnApply.Click += btnApply_Click;
             // 
-            // lblTotal
+            // lblAmountPaid
             // 
-            lblTotal.BackColor = Color.FromArgb(232, 232, 232);
-            lblTotal.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotal.Location = new Point(229, 9);
-            lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(91, 29);
-            lblTotal.TabIndex = 3;
-            lblTotal.Text = "0.00";
-            lblTotal.TextAlign = ContentAlignment.MiddleRight;
+            lblAmountPaid.BackColor = Color.FromArgb(232, 232, 232);
+            lblAmountPaid.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblAmountPaid.Location = new Point(168, 10);
+            lblAmountPaid.Name = "lblAmountPaid";
+            lblAmountPaid.Size = new Size(155, 29);
+            lblAmountPaid.TabIndex = 3;
+            lblAmountPaid.Text = "0.00";
+            lblAmountPaid.TextAlign = ContentAlignment.MiddleRight;
             // 
             // panel5
             // 
-            panel5.Controls.Add(txtAmount);
-            panel5.Controls.Add(label5);
             panel5.Controls.Add(paymentDetailsPanel);
             panel5.Controls.Add(cboPaymentMethod);
             panel5.Controls.Add(label4);
@@ -290,38 +307,16 @@
             panel5.Dock = DockStyle.Top;
             panel5.Location = new Point(0, 0);
             panel5.Name = "panel5";
-            panel5.Size = new Size(323, 295);
+            panel5.Size = new Size(323, 259);
             panel5.TabIndex = 2;
-            // 
-            // txtAmount
-            // 
-            txtAmount.BackColor = Color.FromArgb(232, 232, 232);
-            txtAmount.BorderStyle = BorderStyle.None;
-            txtAmount.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtAmount.Location = new Point(16, 254);
-            txtAmount.Name = "txtAmount";
-            txtAmount.Size = new Size(289, 28);
-            txtAmount.TabIndex = 5;
-            txtAmount.TextAlign = HorizontalAlignment.Right;
-            txtAmount.KeyPress += textBox1_KeyPress;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(17, 230);
-            label5.Name = "label5";
-            label5.Size = new Size(84, 21);
-            label5.TabIndex = 4;
-            label5.Text = "AMOUNT:";
             // 
             // paymentDetailsPanel
             // 
             paymentDetailsPanel.BackColor = Color.FromArgb(232, 232, 232);
             paymentDetailsPanel.BorderStyle = BorderStyle.FixedSingle;
-            paymentDetailsPanel.Location = new Point(17, 131);
+            paymentDetailsPanel.Location = new Point(12, 131);
             paymentDetailsPanel.Name = "paymentDetailsPanel";
-            paymentDetailsPanel.Size = new Size(289, 81);
+            paymentDetailsPanel.Size = new Size(311, 120);
             paymentDetailsPanel.TabIndex = 3;
             // 
             // cboPaymentMethod
@@ -332,9 +327,9 @@
             cboPaymentMethod.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cboPaymentMethod.FormattingEnabled = true;
             cboPaymentMethod.Items.AddRange(new object[] { "Cash", "Digital Payment" });
-            cboPaymentMethod.Location = new Point(17, 96);
+            cboPaymentMethod.Location = new Point(12, 96);
             cboPaymentMethod.Name = "cboPaymentMethod";
-            cboPaymentMethod.Size = new Size(289, 29);
+            cboPaymentMethod.Size = new Size(311, 29);
             cboPaymentMethod.TabIndex = 2;
             cboPaymentMethod.SelectedIndexChanged += cboPaymentMethod_SelectedIndexChanged;
             // 
@@ -342,7 +337,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(16, 72);
+            label4.Location = new Point(12, 72);
             label4.Name = "label4";
             label4.Size = new Size(156, 21);
             label4.TabIndex = 1;
@@ -353,18 +348,18 @@
             panel7.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel7.BackColor = Color.FromArgb(232, 232, 232);
             panel7.Controls.Add(lblAmountToPay);
-            panel7.Location = new Point(17, 6);
+            panel7.Location = new Point(12, 6);
             panel7.Name = "panel7";
-            panel7.Size = new Size(289, 51);
+            panel7.Size = new Size(311, 51);
             panel7.TabIndex = 0;
             // 
             // lblAmountToPay
             // 
             lblAmountToPay.Anchor = AnchorStyles.None;
             lblAmountToPay.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAmountToPay.Location = new Point(35, 8);
+            lblAmountToPay.Location = new Point(13, 8);
             lblAmountToPay.Name = "lblAmountToPay";
-            lblAmountToPay.Size = new Size(219, 35);
+            lblAmountToPay.Size = new Size(285, 35);
             lblAmountToPay.TabIndex = 1;
             lblAmountToPay.Text = "0.00";
             lblAmountToPay.TextAlign = ContentAlignment.MiddleCenter;
@@ -642,7 +637,6 @@
             Text = "ELICIAS GARDEN FOOD PARK";
             TopMost = true;
             Load += PaymentForm_Load;
-            KeyDown += PaymentForm_KeyDown;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel9.ResumeLayout(false);
@@ -650,6 +644,7 @@
             panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvMop).EndInit();
             panel10.ResumeLayout(false);
+            panel10.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             panel7.ResumeLayout(false);
@@ -692,16 +687,15 @@
         private Button btn8;
         private Button btn7;
         private Panel paymentDetailsPanel;
-        private TextBox txtAmount;
-        private Label label5;
         private Panel panel10;
-        private DataGridView dgvMop;
-        private DataGridViewTextBoxColumn mode;
-        private DataGridViewTextBoxColumn productCategory;
-        private DataGridViewTextBoxColumn productSubcategory;
         private Button btnConfirmPayment;
         private Button btnApply;
-        private Label lblTotal;
+        private Label lblAmountPaid;
         private Button btnRemove;
+        private Label label2;
+        private DataGridView dgvMop;
+        private DataGridViewTextBoxColumn mode;
+        private DataGridViewTextBoxColumn amount;
+        private DataGridViewTextBoxColumn refnumber;
     }
 }
