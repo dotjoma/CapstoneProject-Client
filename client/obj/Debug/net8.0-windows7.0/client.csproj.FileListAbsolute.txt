@@ -106,6 +106,7 @@ E:\Visual Studio 2022\Projects\CapstoneProject\CapstoneProject-Client\client\obj
 E:\Visual Studio 2022\Projects\CapstoneProject\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.DiscountManagement.DiscountHome.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.Login.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.MainMenu.resources
+E:\Visual Studio 2022\Projects\CapstoneProject\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.Order.ApplyDiscount.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.Order.OrderEntryForm.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.POS.POSUserControl.ProductFoodCategory.NewCategory.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.POS.POSUserControl.UC_Orders.resources

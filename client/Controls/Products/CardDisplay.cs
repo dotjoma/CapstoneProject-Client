@@ -50,24 +50,35 @@ namespace client.Controls.Products
         {
             var cardPanel = new Panel
             {
-                Width = 200,
-                Height = 220,
-                BackColor = Color.White,
-                Margin = new Padding(3),
+                Width = 160,
+                Height = 180,
+                BackColor = Color.FromArgb(232, 232, 232),
+                Margin = new Padding(4),
                 BorderStyle = BorderStyle.None
+            };
+
+            var pricePanel = new Panel
+            {
+                Height = 25,
+                Dock = DockStyle.Top,
+                BackColor = Color.FromArgb(232, 232, 232)
+            };
+
+            var lblPrice = new Label
+            {
+                Text = "₱ " + product.productPrice.ToString("F2"),
+                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                ForeColor = Color.Black,
+                AutoSize = false,
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.MiddleCenter
             };
 
             var picProductImage = new PictureBox
             {
-                Width = 140,
-                Height = 115,
+                Dock = DockStyle.Fill,
                 SizeMode = PictureBoxSizeMode.StretchImage
             };
-
-            picProductImage.Location = new Point(
-                (cardPanel.ClientSize.Width - picProductImage.Width) / 2,
-                (cardPanel.ClientSize.Height - picProductImage.Height) / 2 - 20 
-            );
 
             try
             {
@@ -88,40 +99,27 @@ namespace client.Controls.Products
                 picProductImage.Image = Properties.Resources.Add_Image;
             }
 
-            var lblPrice = new Label
-            {
-                Text = "₱ " + product.productPrice.ToString("F2"),
-                Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                ForeColor = Color.FromArgb(73, 54, 40),
-                AutoSize = true,
-                TextAlign = ContentAlignment.MiddleRight
-            };
-
-            lblPrice.Location = new Point(
-                cardPanel.ClientSize.Width - lblPrice.PreferredWidth - 15,
-                10
-            );
-
             var bottomPanel = new Panel
             {
                 Height = 40,
-                BackColor = Color.FromArgb(214, 192, 179),
+                BackColor = Color.FromArgb(232, 232, 232),
                 Dock = DockStyle.Bottom
             };
 
             var lblProductName = new Label
             {
                 Text = product.productName,
-                Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                ForeColor = Color.FromArgb(73, 54, 40),
+                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                ForeColor = Color.Black,
                 AutoSize = false,
                 Dock = DockStyle.Fill,
                 TextAlign = ContentAlignment.MiddleCenter
             };
 
             bottomPanel.Controls.Add(lblProductName);
+            pricePanel.Controls.Add(lblPrice);
+            cardPanel.Controls.Add(pricePanel);
             cardPanel.Controls.Add(picProductImage);
-            cardPanel.Controls.Add(lblPrice);
             cardPanel.Controls.Add(bottomPanel);
 
             bottomPanel.SendToBack();

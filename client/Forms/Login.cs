@@ -125,11 +125,11 @@ namespace client.Forms
             ToggleButton(false);
             await Task.Delay(1);
 
-            string username = txtUsername.Text.Trim();
-            string password = txtPassword.Text.Trim();
+            //string username = txtUsername.Text.Trim();
+            //string password = txtPassword.Text.Trim();
 
-            //string username = "joma";
-            //string password = "12345678@Joma";
+            string username = "joma";
+            string password = "12345678@Joma";
 
             try
             {

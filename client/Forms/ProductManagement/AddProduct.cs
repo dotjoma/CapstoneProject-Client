@@ -406,14 +406,11 @@ namespace client.Forms.ProductManagement
         {
             txtName.Text = string.Empty;
             txtPrice.Text = string.Empty;
-            if (pbImage.Image != null)
-            {
-                pbImage.Image.Dispose();
-            }
-            pbImage.Image = Properties.Resources.AddImage100x100_w;
             cboCategory.SelectedIndex = 0;
             cboSubCategory.SelectedIndex = 0;
             cboUnit.SelectedIndex = 0;
+            pbImage.Image = null;
+            pbImage.Image = Properties.Resources.AddImage100x100_w;
         }
 
         public void GetCategory()

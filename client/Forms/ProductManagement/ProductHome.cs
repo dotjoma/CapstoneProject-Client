@@ -220,10 +220,5 @@ namespace client.Forms.ProductManagement
 
             }
         }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

@@ -28,9 +28,6 @@ namespace client.Forms.Order
 
         private decimal subTotal = 0;
         //private decimal discount = 0;
-        //private decimal vatableSales = 0;
-        //private decimal vat = 0;
-        //private decimal totalAmount = 0;
 
         public OrderEntryForm()
         {
@@ -46,7 +43,9 @@ namespace client.Forms.Order
                 cartContainerPanel = new FlowLayoutPanel
                 {
                     Dock = DockStyle.Fill,
-                    AutoScroll = true
+                    AutoScroll = true,
+                    WrapContents = false,
+                    FlowDirection = FlowDirection.TopDown
                 };
                 cartPanel.Controls.Add(cartContainerPanel);
             }
@@ -99,8 +98,8 @@ namespace client.Forms.Order
 
             categoriesPanel.AutoScroll = true;
             categoriesPanel.WrapContents = false;
-            categoriesPanel.FlowDirection = FlowDirection.LeftToRight;
-            categoriesPanel.HorizontalScroll.Enabled = true;
+            categoriesPanel.FlowDirection = FlowDirection.TopDown;
+            categoriesPanel.HorizontalScroll.Enabled = false;
             categoriesPanel.HorizontalScroll.Visible = true;
 
             int buttonMargin = 5;
@@ -117,6 +116,7 @@ namespace client.Forms.Order
                         {
                             Text = category.Name,
                             Height = buttonHeight,
+                            Width = categoriesPanel.Width - 10,
                             Margin = new Padding(buttonMargin, buttonMargin, 0, buttonMargin),
                             Tag = category.Id,
                             FlatStyle = FlatStyle.Flat,
@@ -127,16 +127,12 @@ namespace client.Forms.Order
                             TabStop = false
                         };
 
-                        categoryButton.AutoSize = true;
-                        categoryButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-                        categoryButton.Padding = new Padding(5);
+                        categoryButton.FlatAppearance.BorderSize = 2;
+                        categoryButton.FlatAppearance.BorderColor = Color.Gray;
 
-                        categoryButton.FlatAppearance.BorderSize = 1;
-                        categoryButton.FlatAppearance.BorderColor = Color.Black;
-
-                        ToolTip toolTip = new ToolTip();
-                        toolTip.InitialDelay = 50;
-                        toolTip.SetToolTip(categoryButton, category.Name);
+                        //ToolTip toolTip = new ToolTip();
+                        //toolTip.InitialDelay = 50;
+                        //toolTip.SetToolTip(categoryButton, category.Name);
 
                         categoryButton.MouseEnter += (s, e) =>
                         {
@@ -169,6 +165,127 @@ namespace client.Forms.Order
             }
         }
 
+        private void CreateSubCategoryButtons(List<SubCategory> subcategories)
+        {
+            subCategoriesPanel.Controls.Clear();
+            subCategoriesPanel.AutoScroll = false;
+            subCategoriesPanel.WrapContents = false;
+            subCategoriesPanel.FlowDirection = FlowDirection.LeftToRight;
+
+            int buttonMargin = 5;
+            int buttonHeight = 40;
+            int paddingWidth = 20;
+            Font buttonFont = new Font("Segoe UI", 10, FontStyle.Regular);
+
+            int totalWidth = 0;
+
+            if (subcategories != null && subcategories.Count > 0)
+            {
+                foreach (var subCategory in subcategories)
+                {
+                    if (subCategory != null && !string.IsNullOrEmpty(subCategory.scName))
+                    {
+                        int textWidth = TextRenderer.MeasureText(subCategory.scName, buttonFont).Width + paddingWidth;
+
+                        Button subCategoryButton = new Button
+                        {
+                            Text = subCategory.scName,
+                            Height = buttonHeight,
+                            Width = Math.Max(textWidth, 100),
+                            Margin = new Padding(buttonMargin),
+                            Tag = subCategory.scId,
+                            FlatStyle = FlatStyle.Flat,
+                            BackColor = Color.White,
+                            ForeColor = Color.Black,
+                            Font = buttonFont,
+                            Cursor = Cursors.Hand
+                        };
+
+                        subCategoryButton.FlatAppearance.BorderSize = 2;
+                        subCategoryButton.FlatAppearance.BorderColor = Color.Gray;
+
+                        subCategoryButton.MouseEnter += (s, e) =>
+                        {
+                            if (s is Button btn)
+                            {
+                                btn.BackColor = Color.LightGray;
+                            }
+                        };
+
+                        subCategoryButton.MouseLeave += (s, e) =>
+                        {
+                            if (s is Button btn)
+                            {
+                                btn.BackColor = Color.White;
+                            }
+                        };
+
+                        subCategoryButton.Click += (sender, e) =>
+                        {
+                            if (sender is Button button && button.Tag is int subCategoryId)
+                            {
+                                subCategoriesPanel.Focus();
+                                MessageBox.Show("Coming Soon.");
+                            }
+                        };
+
+                        subCategoriesPanel.Controls.Add(subCategoryButton);
+                        totalWidth += subCategoryButton.Width + buttonMargin;
+                    }
+                }
+
+                subCategoriesPanel.AutoScroll = true;
+                subCategoriesPanel.HorizontalScroll.Enabled = true;
+                subCategoriesPanel.HorizontalScroll.Visible = true;
+
+                subCategoriesPanel.Width = subCategoryPanel.ClientSize.Width - 10;
+
+                AdjustSubCategoriesPanelHeight();
+            }
+            else
+            {
+                MessageBox.Show("No subcategories found.", "Information",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void AdjustSubCategoriesPanelHeight()
+        {
+            int defaultHeight = 55;
+            int subCategoryPanelMinHeight = 62;
+            int subCategoryPanelMaxHeight = 150;
+
+            subCategoriesPanel.Height = defaultHeight;
+
+            if (subCategoriesPanel.HorizontalScroll.Visible)
+            {
+                int scrollbarHeight = SystemInformation.HorizontalScrollBarHeight;
+                int subCategoryContentHeight = subCategoryPanel.Controls.Cast<Control>().Sum(c => c.Height + c.Margin.Vertical);
+                subCategoryPanel.Height = Math.Clamp(
+                    subCategoryContentHeight + subCategoryPanel.Padding.Vertical + (subCategoryPanel.HorizontalScroll.Visible ? scrollbarHeight : 0),
+                    subCategoryPanelMinHeight,
+                    subCategoryPanelMaxHeight
+                );
+
+                int subCategoriesContentHeight = subCategoryPanel.Height + subCategoriesPanel.Padding.Vertical;
+                subCategoriesPanel.Height = Math.Clamp(
+                    subCategoriesContentHeight + (subCategoriesPanel.HorizontalScroll.Visible ? scrollbarHeight : 0),
+                    55,
+                    65
+                );
+
+                subCategoryPanel.Height = Math.Clamp(
+                    subCategoriesPanel.Height + subCategoryPanel.Padding.Vertical + (subCategoryPanel.HorizontalScroll.Visible ? scrollbarHeight : 0),
+                    subCategoryPanelMinHeight,
+                    subCategoryPanelMaxHeight
+                );
+            }
+            else
+            {
+                subCategoryPanel.Height = subCategoryPanelMinHeight;
+            }
+        }
+
         private void HandleCategoryClick(int categoryId)
         {
             try
@@ -188,15 +305,17 @@ namespace client.Forms.Order
                     CurrentCategory.SetCurrentCategory(selectedCategory);
 
                     var subcategories = CurrentSubCategory.GetSubcategoriesByCategoryId(categoryId);
+
                     if (subcategories.Any())
                     {
-                        ShowSubCategories(subcategories);
+                        CreateSubCategoryButtons(subcategories);
                     }
                     else
                     {
                         MessageBox.Show("No subcategories found for this category.", "Information",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoggerHelper.Write("SUBCATEGORY INFO", $"No subcategories found for category ID: {categoryId}");
+                        subCategoriesPanel.Controls.Clear();
                     }
                 }
                 else
@@ -211,32 +330,6 @@ namespace client.Forms.Order
                 MessageBox.Show($"Error handling category click: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LoggerHelper.Write("CATEGORY CLICK ERROR", ex.Message);
-            }
-        }
-
-        private void ShowSubCategories(List<SubCategory> subcategories)
-        {
-            if (subcategories != null && subcategories.Count > 0)
-            {
-                StringBuilder message = new StringBuilder();
-                message.AppendLine("Subcategories:");
-                message.AppendLine("-------------------");
-
-                foreach (var subcategory in subcategories)
-                {
-                    if (subcategory != null && !string.IsNullOrEmpty(subcategory.scName))
-                    {
-                        message.AppendLine($"• {subcategory.scName}");
-                    }
-                }
-
-                MessageBox.Show(message.ToString(), "Subcategories List",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("No subcategories found for this category.",
-                    "Subcategories List", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -271,11 +364,34 @@ namespace client.Forms.Order
             return new List<Product>();
         }
 
+        private void AddProductToCart(Product product)
+        {
+            var existingItem = CurrentCart.Items.FirstOrDefault(p => p.productId == product.productId);
+
+            if (existingItem != null)
+            {
+                existingItem.Quantity += 1;
+            }
+            else
+            {
+                var cartItem = new CartItem()
+                {
+                    productId = product.productId,
+                    productName = product.productName,
+                    productPrice = product.productPrice,
+                    Quantity = 1
+                };
+
+                CurrentCart.AddItem(cartItem);
+            }
+        }
+
         public void AddCartItem(Product product)
         {
-            MessageBox.Show($"Adding {product.productName} to cart", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            subTotal += product.productPrice;
+            UpdateSubTotal();
 
-            subTotal = subTotal + product.productPrice;
+            AddProductToCart(product);
 
             if (cartContainerPanel == null)
             {
@@ -303,13 +419,34 @@ namespace client.Forms.Order
 
             var cartItem = new Panel
             {
-                Width = cartContainerPanel.Width - 30,
+                Width = GetCartItemWidth(),
                 Height = 80,
-                BackColor = Color.WhiteSmoke,
+                BackColor = Color.White,
                 Padding = new Padding(5),
                 Margin = new Padding(5),
                 BorderStyle = BorderStyle.None,
                 Tag = product
+            };
+
+            int GetCartItemWidth()
+            {
+                return cartContainerPanel.ClientSize.Width - 10;
+            }
+
+            cartContainerPanel.SizeChanged += (s, e) =>
+            {
+                foreach (Control control in cartContainerPanel.Controls)
+                {
+                    if (control is Panel panel)
+                    {
+                        panel.Width = GetCartItemWidth();
+                        var removeButton = panel.Controls.OfType<Button>().FirstOrDefault(b => b.Name == "btnRemove");
+                        if (removeButton != null)
+                        {
+                            removeButton.Location = new Point(panel.Width - removeButton.Width - 5, 5);
+                        }
+                    }
+                }
             };
 
             var picProductImage = new PictureBox
@@ -362,7 +499,8 @@ namespace client.Forms.Order
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(214, 192, 179),
-                Cursor = Cursors.Hand
+                Cursor = Cursors.Hand,
+                TabStop = false
             };
 
             btnMinus.FlatAppearance.BorderSize = 0;
@@ -380,18 +518,13 @@ namespace client.Forms.Order
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(214, 192, 179),
-                Cursor = Cursors.Hand
+                Cursor = Cursors.Hand,
+                TabStop = false
             };
 
             btnPlus.FlatAppearance.BorderSize = 0;
             btnPlus.FlatAppearance.MouseDownBackColor = Color.FromArgb(190, 170, 160);
             btnPlus.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 204, 192);
-
-            btnPlus.Click += (sender, e) =>
-            {
-                int currentQuantity = int.Parse(lblQuantity.Text.Replace("Qty: ", ""));
-                lblQuantity.Text = $"Qty: {currentQuantity + 1}";
-            };
 
             btnMinus.Click += (sender, e) =>
             {
@@ -399,7 +532,21 @@ namespace client.Forms.Order
                 if (currentQuantity > 1)
                 {
                     lblQuantity.Text = $"Qty: {currentQuantity - 1}";
+
+                    subTotal -= product.productPrice;
+                    CurrentCart.UpdateItemQuantity(product.productId, currentQuantity - 1);
+                    UpdateSubTotal();
                 }
+            };
+
+            btnPlus.Click += (sender, e) =>
+            {
+                int currentQuantity = int.Parse(lblQuantity.Text.Replace("Qty: ", ""));
+                lblQuantity.Text = $"Qty: {currentQuantity + 1}";
+
+                subTotal += product.productPrice;
+                CurrentCart.UpdateItemQuantity(product.productId, currentQuantity + 1);
+                UpdateSubTotal();
             };
 
             var btnRemove = new Button
@@ -413,13 +560,27 @@ namespace client.Forms.Order
                 FlatStyle = FlatStyle.Flat,
                 Font = new Font("Segoe UI", 9, FontStyle.Bold),
                 Cursor = Cursors.Hand,
-                FlatAppearance = { BorderSize = 0 }
+                FlatAppearance = { BorderSize = 0 },
+                TabStop = false
             };
 
             btnRemove.Location = new Point(cartItem.Width - btnRemove.Width - 5, 5);
             btnRemove.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 
-            btnRemove.Click += (s, e) => cartContainerPanel.Controls.Remove(cartItem);
+            btnRemove.Click += (s, e) =>
+            {
+                Label? quantityLabel = cartItem.Controls.OfType<Label>().FirstOrDefault(l => l.Name == "lblQuantity");
+
+                if (quantityLabel != null)
+                {
+                    int currentQuantity = int.Parse(quantityLabel.Text.Replace("Qty: ", ""));
+                    subTotal -= product.productPrice * currentQuantity;
+                }
+
+                UpdateSubTotal();
+                CurrentCart.RemoveItem(product.productId);
+                cartContainerPanel.Controls.Remove(cartItem);
+            };
 
             cartItem.Controls.Add(picProductImage);
             cartItem.Controls.Add(lblProductName);
@@ -432,6 +593,17 @@ namespace client.Forms.Order
             cartContainerPanel.Controls.Add(cartItem);
         }
 
+        private void UpdateSubTotal()
+        {
+            decimal vatableSales = subTotal / 1.12m;
+            decimal vat = subTotal - vatableSales;
+            decimal total = subTotal;
+
+            lblSubTotal.Text = subTotal.ToString("F2");
+            lblVatable.Text = vatableSales.ToString("F2");
+            lblVat.Text = vat.ToString("F2");
+            lblTotal.Text = total.ToString("F2");
+        }
 
         private void btnBeverages_Click(object sender, EventArgs e)
         {
@@ -507,17 +679,6 @@ namespace client.Forms.Order
 
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            CloseWindow();
-        }
-
-        private void btnHome_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            new MainMenu().Show();
-        }
-
         private void btnHome_MouseEnter(object sender, EventArgs e)
         {
             Cursor = Cursors.Hand;
@@ -528,9 +689,51 @@ namespace client.Forms.Order
             Cursor = Cursors.Default;
         }
 
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new MainMenu().Show();
+            CurrentCart.ClearCart();
+        }
+
         private void btnLogout_Click(object sender, EventArgs e)
         {
             _authController.Logout();
+            CurrentCart.ClearCart();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            CloseWindow();
+        }
+
+        private void btnClose_MouseHover(object sender, EventArgs e)
+        {
+
+        }
+        private void btnClose_MouseEnter(object sender, EventArgs e)
+        {
+            btnClose.BackColor = Color.WhiteSmoke;
+        }
+
+        private void btnClose_MouseLeave(object sender, EventArgs e)
+        {
+            btnClose.BackColor = Color.Transparent;
+        }
+
+        private void btnApplyDiscount_Click(object sender, EventArgs e)
+        {
+            new ApplyDiscount().ShowDialog();
         }
     }
 }

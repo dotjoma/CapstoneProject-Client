@@ -65,6 +65,7 @@
             bgwDashboard = new System.ComponentModel.BackgroundWorker();
             toolTip1 = new ToolTip(components);
             panel2 = new Panel();
+            pictureBox2 = new PictureBox();
             lblUser = new Label();
             toolStrip1 = new ToolStrip();
             tlbDashboard = new ToolStripButton();
@@ -81,11 +82,10 @@
             toolStripSeparator5 = new ToolStripSeparator();
             toolStripButton1 = new ToolStripButton();
             pnlContainer = new Panel();
-            pictureBox2 = new PictureBox();
             menuStrip1.SuspendLayout();
             panel2.SuspendLayout();
-            toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -320,6 +320,17 @@
             panel2.Size = new Size(1024, 34);
             panel2.TabIndex = 3;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Anchor = AnchorStyles.Left;
+            pictureBox2.Image = Properties.Resources.Name;
+            pictureBox2.Location = new Point(3, 2);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(30, 30);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 12;
+            pictureBox2.TabStop = false;
+            // 
             // lblUser
             // 
             lblUser.AutoSize = true;
@@ -332,7 +343,7 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.BackColor = Color.Gainsboro;
+            toolStrip1.BackColor = Color.FromArgb(215, 204, 200);
             toolStrip1.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             toolStrip1.Items.AddRange(new ToolStripItem[] { tlbDashboard, toolStripSeparator1, tsbTransaction, toolStripSeparator2, toolStripButton4, toolStripSeparator3, toolStripButton2, toolStripSeparator6, tsbSalesReport, toolStripSeparator4, toolStripButton3, toolStripSeparator5, toolStripButton1 });
             toolStrip1.Location = new Point(0, 24);
@@ -344,8 +355,8 @@
             // tlbDashboard
             // 
             tlbDashboard.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tlbDashboard.ForeColor = Color.FromArgb(98, 87, 87);
-            tlbDashboard.Image = Properties.Resources.Control_Panel;
+            tlbDashboard.ForeColor = Color.FromArgb(62, 39, 35);
+            tlbDashboard.Image = Properties.Resources.Control_PanelDB;
             tlbDashboard.ImageScaling = ToolStripItemImageScaling.None;
             tlbDashboard.ImageTransparentColor = Color.Magenta;
             tlbDashboard.Name = "tlbDashboard";
@@ -363,8 +374,8 @@
             // tsbTransaction
             // 
             tsbTransaction.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tsbTransaction.ForeColor = Color.FromArgb(98, 87, 87);
-            tsbTransaction.Image = Properties.Resources.Cash_Register_outlined;
+            tsbTransaction.ForeColor = Color.FromArgb(62, 39, 35);
+            tsbTransaction.Image = Properties.Resources.Cash_RegisterDB;
             tsbTransaction.ImageScaling = ToolStripItemImageScaling.None;
             tsbTransaction.ImageTransparentColor = Color.Magenta;
             tsbTransaction.Name = "tsbTransaction";
@@ -382,8 +393,8 @@
             // toolStripButton4
             // 
             toolStripButton4.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            toolStripButton4.ForeColor = Color.FromArgb(98, 87, 87);
-            toolStripButton4.Image = Properties.Resources.Restaurant_Menu;
+            toolStripButton4.ForeColor = Color.FromArgb(62, 39, 35);
+            toolStripButton4.Image = Properties.Resources.RestaurantMenu;
             toolStripButton4.ImageScaling = ToolStripItemImageScaling.None;
             toolStripButton4.ImageTransparentColor = Color.Magenta;
             toolStripButton4.Name = "toolStripButton4";
@@ -400,8 +411,8 @@
             // toolStripButton2
             // 
             toolStripButton2.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            toolStripButton2.ForeColor = Color.FromArgb(98, 87, 87);
-            toolStripButton2.Image = Properties.Resources.Product;
+            toolStripButton2.ForeColor = Color.FromArgb(62, 39, 35);
+            toolStripButton2.Image = Properties.Resources.inventory_501;
             toolStripButton2.ImageScaling = ToolStripItemImageScaling.None;
             toolStripButton2.ImageTransparentColor = Color.Magenta;
             toolStripButton2.Name = "toolStripButton2";
@@ -417,8 +428,8 @@
             // tsbSalesReport
             // 
             tsbSalesReport.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tsbSalesReport.ForeColor = Color.FromArgb(98, 87, 87);
-            tsbSalesReport.Image = Properties.Resources.Health_Graph;
+            tsbSalesReport.ForeColor = Color.FromArgb(62, 39, 35);
+            tsbSalesReport.Image = Properties.Resources.Health_Graph2;
             tsbSalesReport.ImageScaling = ToolStripItemImageScaling.None;
             tsbSalesReport.ImageTransparentColor = Color.Magenta;
             tsbSalesReport.Name = "tsbSalesReport";
@@ -435,8 +446,8 @@
             // toolStripButton3
             // 
             toolStripButton3.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            toolStripButton3.ForeColor = Color.FromArgb(98, 87, 87);
-            toolStripButton3.Image = Properties.Resources.Best_Seller;
+            toolStripButton3.ForeColor = Color.FromArgb(62, 39, 35);
+            toolStripButton3.Image = Properties.Resources.Best_Seller1;
             toolStripButton3.ImageScaling = ToolStripItemImageScaling.None;
             toolStripButton3.ImageTransparentColor = Color.Magenta;
             toolStripButton3.Name = "toolStripButton3";
@@ -452,8 +463,8 @@
             // toolStripButton1
             // 
             toolStripButton1.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            toolStripButton1.ForeColor = Color.FromArgb(98, 87, 87);
-            toolStripButton1.Image = Properties.Resources.Audit;
+            toolStripButton1.ForeColor = Color.FromArgb(62, 39, 35);
+            toolStripButton1.Image = Properties.Resources.Audit2;
             toolStripButton1.ImageScaling = ToolStripItemImageScaling.None;
             toolStripButton1.ImageTransparentColor = Color.Magenta;
             toolStripButton1.Name = "toolStripButton1";
@@ -469,17 +480,6 @@
             pnlContainer.Name = "pnlContainer";
             pnlContainer.Size = new Size(1024, 530);
             pnlContainer.TabIndex = 9;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Anchor = AnchorStyles.Left;
-            pictureBox2.Image = Properties.Resources.Name;
-            pictureBox2.Location = new Point(3, 2);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(30, 30);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 12;
-            pictureBox2.TabStop = false;
             // 
             // MainMenu
             // 
@@ -503,9 +503,9 @@
             menuStrip1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

@@ -31,6 +31,12 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
             panel2 = new Panel();
@@ -46,7 +52,13 @@
             pictureBox1 = new PictureBox();
             label1 = new Label();
             panel4 = new Panel();
+            panel8 = new Panel();
+            panel7 = new Panel();
             chartSalesPrediction = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            panel5 = new Panel();
+            chartBestSelling = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            panel6 = new Panel();
+            chartProductPopularity = new System.Windows.Forms.DataVisualization.Charting.Chart();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -55,24 +67,32 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel4.SuspendLayout();
+            panel8.SuspendLayout();
+            panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chartSalesPrediction).BeginInit();
+            panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartBestSelling).BeginInit();
+            panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartProductPopularity).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 39.04897F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 39.0489731F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 29.9784145F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30.9726143F));
             tableLayoutPanel1.Controls.Add(panel1, 0, 0);
             tableLayoutPanel1.Controls.Add(panel4, 1, 0);
+            tableLayoutPanel1.Controls.Add(panel5, 2, 0);
+            tableLayoutPanel1.Controls.Add(panel6, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Top;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(1238, 284);
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(1238, 574);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
@@ -81,7 +101,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(477, 278);
+            panel1.Size = new Size(477, 281);
             panel1.TabIndex = 0;
             // 
             // panel2
@@ -91,7 +111,7 @@
             panel2.Controls.Add(panel3);
             panel2.Location = new Point(0, 9);
             panel2.Name = "panel2";
-            panel2.Size = new Size(477, 266);
+            panel2.Size = new Size(477, 269);
             panel2.TabIndex = 1;
             // 
             // panel3
@@ -110,18 +130,18 @@
             panel3.Controls.Add(label1);
             panel3.Location = new Point(3, 3);
             panel3.Name = "panel3";
-            panel3.Size = new Size(471, 260);
+            panel3.Size = new Size(471, 263);
             panel3.TabIndex = 0;
             // 
             // label4
             // 
-            label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.Location = new Point(114, 222);
             label4.Name = "label4";
-            label4.Size = new Size(54, 20);
+            label4.Size = new Size(116, 20);
             label4.TabIndex = 37;
-            label4.Text = "₱ 0.00";
+            label4.Text = "₱61,100";
+            label4.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label5
             // 
@@ -146,13 +166,13 @@
             // label6
             // 
             label6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.Location = new Point(353, 119);
             label6.Name = "label6";
-            label6.Size = new Size(54, 20);
+            label6.Size = new Size(103, 20);
             label6.TabIndex = 34;
-            label6.Text = "₱ 0.00";
+            label6.Text = "₱753,600";
+            label6.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label7
             // 
@@ -178,13 +198,13 @@
             // 
             // label3
             // 
-            label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(114, 119);
             label3.Name = "label3";
-            label3.Size = new Size(54, 20);
+            label3.Size = new Size(116, 20);
             label3.TabIndex = 31;
-            label3.Text = "₱ 0.00";
+            label3.Text = "₱15,600";
+            label3.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label2
             // 
@@ -218,28 +238,101 @@
             // 
             // panel4
             // 
-            panel4.Controls.Add(chartSalesPrediction);
+            panel4.Controls.Add(panel8);
             panel4.Dock = DockStyle.Fill;
             panel4.Location = new Point(486, 3);
             panel4.Name = "panel4";
-            panel4.Size = new Size(365, 278);
+            panel4.Size = new Size(365, 281);
             panel4.TabIndex = 1;
+            // 
+            // panel8
+            // 
+            panel8.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel8.BackColor = Color.FromArgb(98, 87, 87);
+            panel8.Controls.Add(panel7);
+            panel8.Location = new Point(3, 9);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(359, 269);
+            panel8.TabIndex = 2;
+            // 
+            // panel7
+            // 
+            panel7.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel7.BackColor = Color.WhiteSmoke;
+            panel7.Controls.Add(chartSalesPrediction);
+            panel7.Location = new Point(3, 3);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(353, 263);
+            panel7.TabIndex = 0;
             // 
             // chartSalesPrediction
             // 
+            chartSalesPrediction.Anchor = AnchorStyles.None;
             chartArea1.Name = "ChartArea1";
             chartSalesPrediction.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             chartSalesPrediction.Legends.Add(legend1);
-            chartSalesPrediction.Location = new Point(23, 34);
+            chartSalesPrediction.Location = new Point(3, 3);
             chartSalesPrediction.Name = "chartSalesPrediction";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             chartSalesPrediction.Series.Add(series1);
-            chartSalesPrediction.Size = new Size(318, 211);
+            chartSalesPrediction.Size = new Size(347, 257);
             chartSalesPrediction.TabIndex = 2;
             chartSalesPrediction.Text = "chart1";
+            // 
+            // panel5
+            // 
+            panel5.Controls.Add(chartBestSelling);
+            panel5.Dock = DockStyle.Fill;
+            panel5.Location = new Point(857, 3);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(378, 281);
+            panel5.TabIndex = 2;
+            // 
+            // chartBestSelling
+            // 
+            chartBestSelling.Anchor = AnchorStyles.None;
+            chartArea2.Name = "ChartArea1";
+            chartBestSelling.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            chartBestSelling.Legends.Add(legend2);
+            chartBestSelling.Location = new Point(3, 3);
+            chartBestSelling.Name = "chartBestSelling";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            chartBestSelling.Series.Add(series2);
+            chartBestSelling.Size = new Size(372, 272);
+            chartBestSelling.TabIndex = 2;
+            chartBestSelling.Text = "chart1";
+            // 
+            // panel6
+            // 
+            panel6.Controls.Add(chartProductPopularity);
+            panel6.Dock = DockStyle.Fill;
+            panel6.Location = new Point(3, 290);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(477, 281);
+            panel6.TabIndex = 3;
+            // 
+            // chartProductPopularity
+            // 
+            chartProductPopularity.Anchor = AnchorStyles.None;
+            chartArea3.Name = "ChartArea1";
+            chartProductPopularity.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            chartProductPopularity.Legends.Add(legend3);
+            chartProductPopularity.Location = new Point(3, 3);
+            chartProductPopularity.Name = "chartProductPopularity";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            chartProductPopularity.Series.Add(series3);
+            chartProductPopularity.Size = new Size(471, 275);
+            chartProductPopularity.TabIndex = 0;
+            chartProductPopularity.Text = "chart1";
             // 
             // Dashboard
             // 
@@ -262,7 +355,13 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel4.ResumeLayout(false);
+            panel8.ResumeLayout(false);
+            panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)chartSalesPrediction).EndInit();
+            panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chartBestSelling).EndInit();
+            panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chartProductPopularity).EndInit();
             ResumeLayout(false);
         }
 
@@ -284,5 +383,11 @@
         private PictureBox pictureBox1;
         private Panel panel4;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartSalesPrediction;
+        private Panel panel5;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartBestSelling;
+        private Panel panel6;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartProductPopularity;
+        private Panel panel8;
+        private Panel panel7;
     }
 }

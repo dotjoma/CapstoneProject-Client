@@ -19,6 +19,9 @@
     <Compile Update="Forms\MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Order\ApplyDiscount.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Order\OrderEntryForm.cs">
       <SubType>Form</SubType>
     </Compile>
