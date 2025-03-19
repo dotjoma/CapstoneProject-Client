@@ -147,12 +147,12 @@ namespace client.Forms.ProductManagement
                 if (status == "Active")
                 {
                     e.CellStyle.SelectionBackColor = Color.White;
-                    e.Value = Properties.Resources.CheckBrown;
+                    e.Value = Properties.Resources.check_24;
                 }
                 else if (status == "Inactive")
                 {
                     e.CellStyle.SelectionBackColor = Color.White;
-                    e.Value = Properties.Resources.EkisBrown;
+                    e.Value = Properties.Resources.icons8_x_24;
                 }
             }
         }
@@ -184,13 +184,13 @@ namespace client.Forms.ProductManagement
         private void btnRefresh_MouseEnter(object sender, EventArgs e)
         {
             Cursor = Cursors.Hand;
-            btnRefresh.BackColor = Color.Gray;
+            btnRefresh.BackColor = Color.FromArgb(232, 232, 232);
         }
 
         private void btnRefresh_MouseLeave(object sender, EventArgs e)
         {
             Cursor = Cursors.Default;
-            btnRefresh.BackColor = Color.White;
+            btnRefresh.BackColor = Color.FromArgb(232, 232, 232);
         }
 
         private void btnEdit_Click(object sender, EventArgs e)

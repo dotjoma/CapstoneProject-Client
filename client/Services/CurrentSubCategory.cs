@@ -51,6 +51,12 @@ namespace client.Services
             return _allSubCategories.FirstOrDefault(c => c.scId == subcategoryId);
         }
 
+        public static string GetSubcategoryNameById(int subcategoryId)
+        {
+            var subCategory = GetSubategoryById(subcategoryId);
+            return subCategory?.scName ?? "Unknown Subcategory";
+        }
+
         public static List<SubCategory> GetSubcategoriesByCategoryId(int categoryId)
         {
             if (_categorySubcategoriesCache.ContainsKey(categoryId))

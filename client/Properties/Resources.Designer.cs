@@ -343,6 +343,16 @@ namespace client.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap check_24 {
+            get {
+                object obj = ResourceManager.GetObject("check-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Check_Mark {
             get {
                 object obj = ResourceManager.GetObject("Check Mark", resourceCulture);
@@ -666,6 +676,16 @@ namespace client.Properties {
         internal static System.Drawing.Bitmap icons8_search_24 {
             get {
                 object obj = ResourceManager.GetObject("icons8-search-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_x_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-x-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

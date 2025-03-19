@@ -71,16 +71,16 @@
             label1 = new Label();
             label10 = new Label();
             panel5 = new Panel();
-            button6 = new Button();
-            button5 = new Button();
+            btnPendingOrders = new Button();
+            btnHoldOrder = new Button();
             pictureBox6 = new PictureBox();
-            textBox1 = new TextBox();
+            txtSearchInput = new TextBox();
             panel8 = new Panel();
             panel3 = new Panel();
             panel10 = new Panel();
-            button2 = new Button();
+            btnCancelTransaction = new Button();
             btnApplyDiscount = new Button();
-            button1 = new Button();
+            btnNewOrder = new Button();
             panel9 = new Panel();
             categoriesPanel = new FlowLayoutPanel();
             subCategoryPanel = new Panel();
@@ -396,9 +396,8 @@
             lblOrderNo.ForeColor = Color.Black;
             lblOrderNo.Location = new Point(93, 33);
             lblOrderNo.Name = "lblOrderNo";
-            lblOrderNo.Size = new Size(36, 20);
+            lblOrderNo.Size = new Size(0, 20);
             lblOrderNo.TabIndex = 18;
-            lblOrderNo.Text = "013";
             // 
             // lblTransactionNo
             // 
@@ -407,9 +406,8 @@
             lblTransactionNo.ForeColor = Color.Black;
             lblTransactionNo.Location = new Point(169, 2);
             lblTransactionNo.Name = "lblTransactionNo";
-            lblTransactionNo.Size = new Size(144, 25);
+            lblTransactionNo.Size = new Size(0, 25);
             lblTransactionNo.TabIndex = 17;
-            lblTransactionNo.Text = "202503190013";
             // 
             // label3
             // 
@@ -553,6 +551,7 @@
             btnPayment.TabStop = false;
             btnPayment.Text = "PAYMENT - [F2]";
             btnPayment.UseVisualStyleBackColor = false;
+            btnPayment.Click += btnPayment_Click;
             // 
             // lblVatable
             // 
@@ -600,50 +599,50 @@
             // 
             panel5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel5.BackColor = Color.FromArgb(232, 232, 232);
-            panel5.Controls.Add(button6);
-            panel5.Controls.Add(button5);
+            panel5.Controls.Add(btnPendingOrders);
+            panel5.Controls.Add(btnHoldOrder);
             panel5.Controls.Add(pictureBox6);
-            panel5.Controls.Add(textBox1);
+            panel5.Controls.Add(txtSearchInput);
             panel5.Location = new Point(6, 0);
             panel5.Name = "panel5";
             panel5.Size = new Size(767, 56);
             panel5.TabIndex = 36;
             // 
-            // button6
+            // btnPendingOrders
             // 
-            button6.Anchor = AnchorStyles.Left;
-            button6.BackColor = Color.White;
-            button6.FlatAppearance.BorderColor = Color.Gray;
-            button6.FlatAppearance.BorderSize = 2;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Image = Properties.Resources.pending_24;
-            button6.ImageAlign = ContentAlignment.MiddleLeft;
-            button6.Location = new Point(174, 3);
-            button6.Name = "button6";
-            button6.Size = new Size(193, 50);
-            button6.TabIndex = 15;
-            button6.TabStop = false;
-            button6.Text = "Pending Orders - [F6]";
-            button6.TextAlign = ContentAlignment.MiddleRight;
-            button6.UseVisualStyleBackColor = false;
+            btnPendingOrders.Anchor = AnchorStyles.Left;
+            btnPendingOrders.BackColor = Color.White;
+            btnPendingOrders.FlatAppearance.BorderColor = Color.Gray;
+            btnPendingOrders.FlatAppearance.BorderSize = 2;
+            btnPendingOrders.FlatStyle = FlatStyle.Flat;
+            btnPendingOrders.Image = Properties.Resources.pending_24;
+            btnPendingOrders.ImageAlign = ContentAlignment.MiddleLeft;
+            btnPendingOrders.Location = new Point(174, 3);
+            btnPendingOrders.Name = "btnPendingOrders";
+            btnPendingOrders.Size = new Size(193, 50);
+            btnPendingOrders.TabIndex = 15;
+            btnPendingOrders.TabStop = false;
+            btnPendingOrders.Text = "Pending Orders - [F6]";
+            btnPendingOrders.TextAlign = ContentAlignment.MiddleRight;
+            btnPendingOrders.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // btnHoldOrder
             // 
-            button5.Anchor = AnchorStyles.Left;
-            button5.BackColor = Color.White;
-            button5.FlatAppearance.BorderColor = Color.Gray;
-            button5.FlatAppearance.BorderSize = 2;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Image = Properties.Resources.hold_24;
-            button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.Location = new Point(6, 3);
-            button5.Name = "button5";
-            button5.Size = new Size(162, 50);
-            button5.TabIndex = 14;
-            button5.TabStop = false;
-            button5.Text = "Hold Order - [F5]";
-            button5.TextAlign = ContentAlignment.MiddleRight;
-            button5.UseVisualStyleBackColor = false;
+            btnHoldOrder.Anchor = AnchorStyles.Left;
+            btnHoldOrder.BackColor = Color.White;
+            btnHoldOrder.FlatAppearance.BorderColor = Color.Gray;
+            btnHoldOrder.FlatAppearance.BorderSize = 2;
+            btnHoldOrder.FlatStyle = FlatStyle.Flat;
+            btnHoldOrder.Image = Properties.Resources.hold_24;
+            btnHoldOrder.ImageAlign = ContentAlignment.MiddleLeft;
+            btnHoldOrder.Location = new Point(6, 3);
+            btnHoldOrder.Name = "btnHoldOrder";
+            btnHoldOrder.Size = new Size(162, 50);
+            btnHoldOrder.TabIndex = 14;
+            btnHoldOrder.TabStop = false;
+            btnHoldOrder.Text = "Hold Order - [F5]";
+            btnHoldOrder.TextAlign = ContentAlignment.MiddleRight;
+            btnHoldOrder.UseVisualStyleBackColor = false;
             // 
             // pictureBox6
             // 
@@ -656,15 +655,16 @@
             pictureBox6.TabIndex = 13;
             pictureBox6.TabStop = false;
             // 
-            // textBox1
+            // txtSearchInput
             // 
-            textBox1.Anchor = AnchorStyles.Right;
-            textBox1.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(533, 13);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Search Product(s)";
-            textBox1.Size = new Size(188, 26);
-            textBox1.TabIndex = 0;
+            txtSearchInput.Anchor = AnchorStyles.Right;
+            txtSearchInput.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSearchInput.Location = new Point(533, 13);
+            txtSearchInput.Name = "txtSearchInput";
+            txtSearchInput.PlaceholderText = "Search Product(s)";
+            txtSearchInput.Size = new Size(188, 26);
+            txtSearchInput.TabIndex = 0;
+            txtSearchInput.TextChanged += txtSearchInput_TextChanged;
             // 
             // panel8
             // 
@@ -688,31 +688,32 @@
             // 
             panel10.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel10.BackColor = Color.FromArgb(232, 232, 232);
-            panel10.Controls.Add(button2);
+            panel10.Controls.Add(btnCancelTransaction);
             panel10.Controls.Add(btnApplyDiscount);
-            panel10.Controls.Add(button1);
+            panel10.Controls.Add(btnNewOrder);
             panel10.Location = new Point(6, 0);
             panel10.Name = "panel10";
             panel10.Size = new Size(767, 67);
             panel10.TabIndex = 47;
             // 
-            // button2
+            // btnCancelTransaction
             // 
-            button2.Anchor = AnchorStyles.Left;
-            button2.BackColor = Color.White;
-            button2.FlatAppearance.BorderColor = Color.Gray;
-            button2.FlatAppearance.BorderSize = 2;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Image = Properties.Resources.cancel_24;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(369, 6);
-            button2.Name = "button2";
-            button2.Size = new Size(217, 54);
-            button2.TabIndex = 4;
-            button2.TabStop = false;
-            button2.Text = "Cancel Transaction - [F4]";
-            button2.TextAlign = ContentAlignment.MiddleRight;
-            button2.UseVisualStyleBackColor = false;
+            btnCancelTransaction.Anchor = AnchorStyles.Left;
+            btnCancelTransaction.BackColor = Color.White;
+            btnCancelTransaction.FlatAppearance.BorderColor = Color.Gray;
+            btnCancelTransaction.FlatAppearance.BorderSize = 2;
+            btnCancelTransaction.FlatStyle = FlatStyle.Flat;
+            btnCancelTransaction.Image = Properties.Resources.cancel_24;
+            btnCancelTransaction.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCancelTransaction.Location = new Point(369, 6);
+            btnCancelTransaction.Name = "btnCancelTransaction";
+            btnCancelTransaction.Size = new Size(217, 54);
+            btnCancelTransaction.TabIndex = 4;
+            btnCancelTransaction.TabStop = false;
+            btnCancelTransaction.Text = "Cancel Transaction - [F4]";
+            btnCancelTransaction.TextAlign = ContentAlignment.MiddleRight;
+            btnCancelTransaction.UseVisualStyleBackColor = false;
+            btnCancelTransaction.Click += btnCancelTransaction_Click;
             // 
             // btnApplyDiscount
             // 
@@ -733,23 +734,24 @@
             btnApplyDiscount.UseVisualStyleBackColor = false;
             btnApplyDiscount.Click += btnApplyDiscount_Click;
             // 
-            // button1
+            // btnNewOrder
             // 
-            button1.Anchor = AnchorStyles.Left;
-            button1.BackColor = Color.White;
-            button1.FlatAppearance.BorderColor = Color.Gray;
-            button1.FlatAppearance.BorderSize = 2;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Image = Properties.Resources.new_order_24;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(6, 6);
-            button1.Name = "button1";
-            button1.Size = new Size(162, 54);
-            button1.TabIndex = 2;
-            button1.TabStop = false;
-            button1.Text = "New Order - [F1]";
-            button1.TextAlign = ContentAlignment.MiddleRight;
-            button1.UseVisualStyleBackColor = false;
+            btnNewOrder.Anchor = AnchorStyles.Left;
+            btnNewOrder.BackColor = Color.White;
+            btnNewOrder.FlatAppearance.BorderColor = Color.Gray;
+            btnNewOrder.FlatAppearance.BorderSize = 2;
+            btnNewOrder.FlatStyle = FlatStyle.Flat;
+            btnNewOrder.Image = Properties.Resources.new_order_24;
+            btnNewOrder.ImageAlign = ContentAlignment.MiddleLeft;
+            btnNewOrder.Location = new Point(6, 6);
+            btnNewOrder.Name = "btnNewOrder";
+            btnNewOrder.Size = new Size(162, 54);
+            btnNewOrder.TabIndex = 2;
+            btnNewOrder.TabStop = false;
+            btnNewOrder.Text = "New Order - [F1]";
+            btnNewOrder.TextAlign = ContentAlignment.MiddleRight;
+            btnNewOrder.UseVisualStyleBackColor = false;
+            btnNewOrder.Click += btnNewOrder_Click;
             // 
             // panel9
             // 
@@ -876,7 +878,7 @@
         private Label label10;
         private Panel panel5;
         private PictureBox pictureBox6;
-        private TextBox textBox1;
+        private TextBox txtSearchInput;
         private Button btnLogout;
         private PictureBox btnHome;
         private Label lblUser;
@@ -888,7 +890,7 @@
         private Panel panel3;
         private Panel panel10;
         private Button btnApplyDiscount;
-        private Button button1;
+        private Button btnNewOrder;
         private Panel panel9;
         private FlowLayoutPanel categoriesPanel;
         private Label label13;
@@ -915,8 +917,8 @@
         private Panel panel7;
         private Panel pnlContainer;
         private FlowLayoutPanel subCategoriesPanel;
-        private Button button2;
-        private Button button5;
-        private Button button6;
+        private Button btnCancelTransaction;
+        private Button btnHoldOrder;
+        private Button btnPendingOrders;
     }
 }

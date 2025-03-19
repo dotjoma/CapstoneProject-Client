@@ -343,7 +343,7 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.BackColor = Color.FromArgb(215, 204, 200);
+            toolStrip1.BackColor = SystemColors.ControlLight;
             toolStrip1.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             toolStrip1.Items.AddRange(new ToolStripItem[] { tlbDashboard, toolStripSeparator1, tsbTransaction, toolStripSeparator2, toolStripButton4, toolStripSeparator3, toolStripButton2, toolStripSeparator6, tsbSalesReport, toolStripSeparator4, toolStripButton3, toolStripSeparator5, toolStripButton1 });
             toolStrip1.Location = new Point(0, 24);

@@ -3,7 +3,59 @@
   "WorkspaceRootPath": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\forms\\productmanagement\\producthome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\forms\\order\\orderentryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\order\\orderentryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\forms\\order\\orderentryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\order\\orderentryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\forms\\discountmanagement\\discounthome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\discountmanagement\\discounthome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\network\\packettype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\network\\packettype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\network\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\network\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\network\\packet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\network\\packet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\forms\\order\\applydiscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\order\\applydiscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\forms\\order\\applydiscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\order\\applydiscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\forms\\order\\orderentryform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\order\\orderentryform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\services\\currentsubcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\services\\currentsubcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\forms\\productmanagement\\producthome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\productmanagement\\producthome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -15,24 +67,12 @@
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\forms\\order\\orderentryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\order\\orderentryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\forms\\dashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\dashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\forms\\dashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\dashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\forms\\order\\orderentryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\order\\orderentryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\forms\\order\\orderentryform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\order\\orderentryform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\controls\\products\\carddisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -51,18 +91,6 @@
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\productmanagement\\newunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\services\\currentcart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\services\\currentcart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\forms\\order\\applydiscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\order\\applydiscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\forms\\order\\applydiscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\order\\applydiscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -75,20 +103,8 @@
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\productmanagement\\producthome.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\services\\currentcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\services\\currentcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\services\\currentsubcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\services\\currentsubcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\services\\cacheservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -99,24 +115,8 @@
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\controls\\products\\carddisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\forms\\discountmanagement\\discounthome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\discountmanagement\\discounthome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\forms\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\models\\discount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -165,18 +165,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\services\\dataloadingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\services\\dataloadingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\network\\packettype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\network\\packettype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\network\\packet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\network\\packet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\network\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\network\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|e:\\visual studio 2022\\projects\\capstoneproject\\capstoneproject-client\\client\\services\\currentdiscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -313,6 +301,26 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\forms\\pos\\posusercontrol\\foodcategory\\uc_beverages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Services\\CurrentTransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:client\\Services\\CurrentTransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Controllers\\TransactionController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:client\\Controllers\\TransactionController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Models\\TransactionNumbers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:client\\Models\\TransactionNumbers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Services\\CurrentCart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:client\\Services\\CurrentCart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Models\\CartItem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:client\\Models\\CartItem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -322,17 +330,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "OrderEntryForm.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Order\\OrderEntryForm.cs",
               "RelativeDocumentMoniker": "client\\Forms\\Order\\OrderEntryForm.cs",
               "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Order\\OrderEntryForm.cs",
               "RelativeToolTip": "client\\Forms\\Order\\OrderEntryForm.cs",
-              "ViewState": "AgIAAD8CAAAAAAAAAAAAAF0CAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAHcEAAAAAAAAAAAqwKsEAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-22T13:52:11.888Z",
               "IsPinned": true,
@@ -344,6 +352,46 @@
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 76,
+              "Title": "CurrentTransaction.cs",
+              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Services\\CurrentTransaction.cs",
+              "RelativeDocumentMoniker": "client\\Services\\CurrentTransaction.cs",
+              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Services\\CurrentTransaction.cs",
+              "RelativeToolTip": "client\\Services\\CurrentTransaction.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAIAwwBcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T19:15:28.647Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OrderEntryForm.cs [Design]",
+              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Order\\OrderEntryForm.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\Order\\OrderEntryForm.cs",
+              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Order\\OrderEntryForm.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\Order\\OrderEntryForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T15:40:15.396Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DiscountHome.cs [Design]",
+              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\DiscountManagement\\DiscountHome.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\DiscountManagement\\DiscountHome.cs",
+              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\DiscountManagement\\DiscountHome.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\DiscountManagement\\DiscountHome.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-02T05:00:37.708Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
@@ -351,73 +399,210 @@
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProductHome.cs [Design]",
-              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\ProductManagement\\ProductHome.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\ProductHome.cs",
-              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\ProductManagement\\ProductHome.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\ProductManagement\\ProductHome.cs [Design]",
+              "DocumentIndex": 77,
+              "Title": "TransactionController.cs",
+              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Controllers\\TransactionController.cs",
+              "RelativeDocumentMoniker": "client\\Controllers\\TransactionController.cs",
+              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Controllers\\TransactionController.cs",
+              "RelativeToolTip": "client\\Controllers\\TransactionController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAQwDgAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T16:32:17.086Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-03-19T16:33:11.013Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainMenu.cs [Design]",
-              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\MainMenu.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\MainMenu.cs",
-              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\MainMenu.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\MainMenu.cs [Design]",
+              "DocumentIndex": 78,
+              "Title": "TransactionNumbers.cs",
+              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Models\\TransactionNumbers.cs",
+              "RelativeDocumentMoniker": "client\\Models\\TransactionNumbers.cs",
+              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Models\\TransactionNumbers.cs",
+              "RelativeToolTip": "client\\Models\\TransactionNumbers.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T15:59:00.629Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-03-19T18:16:36.409Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 79,
+              "Title": "CurrentCart.cs",
+              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Services\\CurrentCart.cs",
+              "RelativeDocumentMoniker": "client\\Services\\CurrentCart.cs",
+              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Services\\CurrentCart.cs",
+              "RelativeToolTip": "client\\Services\\CurrentCart.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAwwDMAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T16:30:25.256Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PacketType.cs",
+              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Network\\PacketType.cs",
+              "RelativeDocumentMoniker": "client\\Network\\PacketType.cs",
+              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Network\\PacketType.cs",
+              "RelativeToolTip": "client\\Network\\PacketType.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAEwD8AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T17:49:34.32Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Packet.cs",
+              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Network\\Packet.cs",
+              "RelativeDocumentMoniker": "client\\Network\\Packet.cs",
+              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Network\\Packet.cs",
+              "RelativeToolTip": "client\\Network\\Packet.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAUwDMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T14:03:43.325Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Client.cs",
+              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Network\\Client.cs",
+              "RelativeDocumentMoniker": "client\\Network\\Client.cs",
+              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Network\\Client.cs",
+              "RelativeToolTip": "client\\Network\\Client.cs",
+              "ViewState": "AgIAAPEAAAAAAAAAAIAwwGsBAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-26T08:17:38.581Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "client\\Controllers\\CategoryController.cs",
+              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "client\\Controllers\\CategoryController.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAxwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T17:54:01.381Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ApplyDiscount.cs",
+              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Order\\ApplyDiscount.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\Order\\ApplyDiscount.cs",
+              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Order\\ApplyDiscount.cs",
+              "RelativeToolTip": "client\\Forms\\Order\\ApplyDiscount.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAwwEYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T15:41:17.843Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ApplyDiscount.cs [Design]",
+              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Order\\ApplyDiscount.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\Order\\ApplyDiscount.cs",
+              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Order\\ApplyDiscount.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\Order\\ApplyDiscount.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T15:44:28.524Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "ProductHome.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\ProductManagement\\ProductHome.cs",
               "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\ProductHome.cs",
               "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\ProductManagement\\ProductHome.cs",
               "RelativeToolTip": "client\\Forms\\ProductManagement\\ProductHome.cs",
-              "ViewState": "AgIAALEAAAAAAAAAAAAowN0AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAKwAAAAAAAAAAAAUwL8AAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-03T14:29:45.44Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "OrderEntryForm.cs [Design]",
-              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Order\\OrderEntryForm.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\Order\\OrderEntryForm.cs",
-              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Order\\OrderEntryForm.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\Order\\OrderEntryForm.cs [Design]",
+              "DocumentIndex": 10,
+              "Title": "Login.cs [Design]",
+              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Login.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\Login.cs",
+              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Login.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\Login.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T06:25:24.559Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-03-02T04:50:07.404Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
+              "Title": "Login.cs",
+              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Login.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\Login.cs",
+              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Login.cs",
+              "RelativeToolTip": "client\\Forms\\Login.cs",
+              "ViewState": "AgIAACgBAAAAAAAAAAAnwDcBAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T14:03:43.331Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "OrderEntryForm.Designer.cs",
+              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Order\\OrderEntryForm.Designer.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\Order\\OrderEntryForm.Designer.cs",
+              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Order\\OrderEntryForm.Designer.cs",
+              "RelativeToolTip": "client\\Forms\\Order\\OrderEntryForm.Designer.cs",
+              "ViewState": "AgIAABYCAAAAAAAAAAAEwCgCAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T14:44:13.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ProductHome.cs [Design]",
+              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\ProductManagement\\ProductHome.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\ProductHome.cs",
+              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\ProductManagement\\ProductHome.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\ProductManagement\\ProductHome.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T16:32:17.086Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CurrentSubCategory.cs",
+              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Services\\CurrentSubCategory.cs",
+              "RelativeDocumentMoniker": "client\\Services\\CurrentSubCategory.cs",
+              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Services\\CurrentSubCategory.cs",
+              "RelativeToolTip": "client\\Services\\CurrentSubCategory.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAvwDcAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T16:50:31.492Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MainMenu.cs [Design]",
+              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\MainMenu.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\MainMenu.cs",
+              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\MainMenu.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\MainMenu.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T15:59:00.629Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "Dashboard.cs [Design]",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Dashboard.cs",
               "RelativeDocumentMoniker": "client\\Forms\\Dashboard.cs",
               "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Dashboard.cs [Design]",
               "RelativeToolTip": "client\\Forms\\Dashboard.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T10:56:25.862Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-02-27T10:56:25.862Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 18,
               "Title": "CardDisplay.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Controls\\Products\\CardDisplay.cs",
               "RelativeDocumentMoniker": "client\\Controls\\Products\\CardDisplay.cs",
@@ -430,7 +615,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 17,
               "Title": "Dashboard.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Dashboard.cs",
               "RelativeDocumentMoniker": "client\\Forms\\Dashboard.cs",
@@ -438,37 +623,22 @@
               "RelativeToolTip": "client\\Forms\\Dashboard.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAAqwFgAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T01:49:55.599Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T01:49:55.599Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "OrderEntryForm.Designer.cs",
-              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Order\\OrderEntryForm.Designer.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\Order\\OrderEntryForm.Designer.cs",
-              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Order\\OrderEntryForm.Designer.cs",
-              "RelativeToolTip": "client\\Forms\\Order\\OrderEntryForm.Designer.cs",
-              "ViewState": "AgIAAKQBAAAAAAAAAAAEwLYBAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T14:44:13.592Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 20,
               "Title": "AddProduct.cs [Design]",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\ProductManagement\\AddProduct.cs",
               "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\AddProduct.cs",
               "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\ProductManagement\\AddProduct.cs [Design]",
               "RelativeToolTip": "client\\Forms\\ProductManagement\\AddProduct.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T11:06:05.438Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-03-02T11:06:05.438Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 19,
               "Title": "AddProduct.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\ProductManagement\\AddProduct.cs",
               "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\AddProduct.cs",
@@ -476,62 +646,22 @@
               "RelativeToolTip": "client\\Forms\\ProductManagement\\AddProduct.cs",
               "ViewState": "AgIAAIYBAAAAAAAAAAAewJcBAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T05:20:34.949Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T05:20:34.949Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 21,
               "Title": "NewUnit.cs [Design]",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\ProductManagement\\NewUnit.cs",
               "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\NewUnit.cs",
               "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\ProductManagement\\NewUnit.cs [Design]",
               "RelativeToolTip": "client\\Forms\\ProductManagement\\NewUnit.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-28T01:18:40.115Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-02-28T01:18:40.115Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ApplyDiscount.cs [Design]",
-              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Order\\ApplyDiscount.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\Order\\ApplyDiscount.cs",
-              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Order\\ApplyDiscount.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\Order\\ApplyDiscount.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T15:44:28.524Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "ApplyDiscount.cs",
-              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Order\\ApplyDiscount.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\Order\\ApplyDiscount.cs",
-              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Order\\ApplyDiscount.cs",
-              "RelativeToolTip": "client\\Forms\\Order\\ApplyDiscount.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAewCUAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T15:41:17.843Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "CurrentCart.cs",
-              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Services\\CurrentCart.cs",
-              "RelativeDocumentMoniker": "client\\Services\\CurrentCart.cs",
-              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Services\\CurrentCart.cs",
-              "RelativeToolTip": "client\\Services\\CurrentCart.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAqwCwAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T16:30:25.256Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 22,
               "Title": "AuthController.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "client\\Controllers\\AuthController.cs",
@@ -539,50 +669,34 @@
               "RelativeToolTip": "client\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwBUAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T18:17:14.123Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-26T18:17:14.123Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 23,
               "Title": "AddDiscount.cs [Design]",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\DiscountManagement\\AddDiscount.cs",
               "RelativeDocumentMoniker": "client\\Forms\\DiscountManagement\\AddDiscount.cs",
               "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\DiscountManagement\\AddDiscount.cs [Design]",
               "RelativeToolTip": "client\\Forms\\DiscountManagement\\AddDiscount.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T05:22:42.055Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-03-02T05:22:42.055Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 24,
               "Title": "ProductHome.Designer.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\ProductManagement\\ProductHome.Designer.cs",
               "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\ProductHome.Designer.cs",
               "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\ProductManagement\\ProductHome.Designer.cs",
               "RelativeToolTip": "client\\Forms\\ProductManagement\\ProductHome.Designer.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAowGAAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAowGAAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T14:29:17.072Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-03T14:29:17.072Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "CurrentCategory.cs",
-              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Services\\CurrentCategory.cs",
-              "RelativeDocumentMoniker": "client\\Services\\CurrentCategory.cs",
-              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Services\\CurrentCategory.cs",
-              "RelativeToolTip": "client\\Services\\CurrentCategory.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAUwCkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T16:29:22.913Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 80,
               "Title": "CartItem.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Models\\CartItem.cs",
               "RelativeDocumentMoniker": "client\\Models\\CartItem.cs",
@@ -590,25 +704,11 @@
               "RelativeToolTip": "client\\Models\\CartItem.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T16:28:34.009Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-17T16:28:34.009Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "CurrentSubCategory.cs",
-              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Services\\CurrentSubCategory.cs",
-              "RelativeDocumentMoniker": "client\\Services\\CurrentSubCategory.cs",
-              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Services\\CurrentSubCategory.cs",
-              "RelativeToolTip": "client\\Services\\CurrentSubCategory.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAmwGUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T16:50:31.492Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 25,
               "Title": "Product.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Models\\Product.cs",
               "RelativeDocumentMoniker": "client\\Models\\Product.cs",
@@ -616,12 +716,11 @@
               "RelativeToolTip": "client\\Models\\Product.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T13:41:58.6Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T13:41:58.6Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 26,
               "Title": "CacheService.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Services\\CacheService.cs",
               "RelativeDocumentMoniker": "client\\Services\\CacheService.cs",
@@ -633,7 +732,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 27,
               "Title": "CardDisplay.cs [Design]",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Controls\\Products\\CardDisplay.cs",
               "RelativeDocumentMoniker": "client\\Controls\\Products\\CardDisplay.cs",
@@ -644,41 +743,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "Login.cs [Design]",
-              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Login.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\Login.cs",
-              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Login.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\Login.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T04:50:07.404Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Login.cs",
-              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Login.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\Login.cs",
-              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Login.cs",
-              "RelativeToolTip": "client\\Forms\\Login.cs",
-              "ViewState": "AgIAAJAAAAAAAAAAAAAowIAAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T14:03:43.331Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "DiscountHome.cs [Design]",
-              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\DiscountManagement\\DiscountHome.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\DiscountManagement\\DiscountHome.cs",
-              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\DiscountManagement\\DiscountHome.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\DiscountManagement\\DiscountHome.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T05:00:37.708Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "MainMenu.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\MainMenu.cs",
               "RelativeDocumentMoniker": "client\\Forms\\MainMenu.cs",
@@ -687,18 +752,6 @@
               "ViewState": "AgIAAGAAAAAAAAAAAAAMwHYAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-23T05:48:11.762Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "CategoryController.cs",
-              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Controllers\\CategoryController.cs",
-              "RelativeDocumentMoniker": "client\\Controllers\\CategoryController.cs",
-              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Controllers\\CategoryController.cs",
-              "RelativeToolTip": "client\\Controllers\\CategoryController.cs",
-              "ViewState": "AgIAAJsAAAAAAAAAAAAwwBIAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T17:54:01.381Z"
             },
             {
               "$type": "Document",
@@ -793,8 +846,7 @@
               "RelativeToolTip": "client\\Forms\\MainMenu.Designer.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAEwBYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T15:50:42.881Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-10T15:50:42.881Z"
             },
             {
               "$type": "Document",
@@ -847,42 +899,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 41,
-              "Title": "PacketType.cs",
-              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Network\\PacketType.cs",
-              "RelativeDocumentMoniker": "client\\Network\\PacketType.cs",
-              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Network\\PacketType.cs",
-              "RelativeToolTip": "client\\Network\\PacketType.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAQwDMAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T04:08:49.883Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "Packet.cs",
-              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Network\\Packet.cs",
-              "RelativeDocumentMoniker": "client\\Network\\Packet.cs",
-              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Network\\Packet.cs",
-              "RelativeToolTip": "client\\Network\\Packet.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAUwDMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T14:03:43.325Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
-              "Title": "Client.cs",
-              "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Network\\Client.cs",
-              "RelativeDocumentMoniker": "client\\Network\\Client.cs",
-              "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Network\\Client.cs",
-              "RelativeToolTip": "client\\Network\\Client.cs",
-              "ViewState": "AgIAAKQAAAAAAAAAAAAuwM0AAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T08:17:38.581Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
               "Title": "CurrentDiscount.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Services\\CurrentDiscount.cs",
               "RelativeDocumentMoniker": "client\\Services\\CurrentDiscount.cs",
@@ -894,7 +910,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 42,
               "Title": "NewUnit.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\ProductManagement\\NewUnit.cs",
               "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\NewUnit.cs",
@@ -906,7 +922,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 43,
               "Title": "CurrentUnit.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Services\\CurrentUnit.cs",
               "RelativeDocumentMoniker": "client\\Services\\CurrentUnit.cs",
@@ -918,7 +934,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 44,
               "Title": "DataCache.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Models\\DataCache.cs",
               "RelativeDocumentMoniker": "client\\Models\\DataCache.cs",
@@ -930,7 +946,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 45,
               "Title": "CacheData.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Models\\CacheData.cs",
               "RelativeDocumentMoniker": "client\\Models\\CacheData.cs",
@@ -942,7 +958,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 46,
               "Title": "AddProduct.Designer.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\ProductManagement\\AddProduct.Designer.cs",
               "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\AddProduct.Designer.cs",
@@ -950,12 +966,11 @@
               "RelativeToolTip": "client\\Forms\\ProductManagement\\AddProduct.Designer.cs",
               "ViewState": "AgIAAGIAAAAAAAAAAAAEwGsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T11:42:23.651Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-27T11:42:23.651Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 47,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Program.cs",
               "RelativeDocumentMoniker": "client\\Program.cs",
@@ -967,7 +982,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 48,
               "Title": "Register.Designer.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Register.Designer.cs",
               "RelativeDocumentMoniker": "client\\Forms\\Register.Designer.cs",
@@ -979,7 +994,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 49,
               "Title": "Login.Designer.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Login.Designer.cs",
               "RelativeDocumentMoniker": "client\\Forms\\Login.Designer.cs",
@@ -991,7 +1006,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 50,
               "Title": "Navigation.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Services\\Navigation.cs",
               "RelativeDocumentMoniker": "client\\Services\\Navigation.cs",
@@ -1003,7 +1018,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 51,
               "Title": "NewCategory.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\POS\\POSUserControl\\ProductFoodCategory\\NewCategory.cs",
               "RelativeDocumentMoniker": "client\\Forms\\POS\\POSUserControl\\ProductFoodCategory\\NewCategory.cs",
@@ -1015,7 +1030,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 52,
               "Title": "ProductService.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Services\\ProductService.cs",
               "RelativeDocumentMoniker": "client\\Services\\ProductService.cs",
@@ -1027,7 +1042,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 54,
               "Title": "UC_Products.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\POS\\POSUserControl\\UC_Products.cs",
               "RelativeDocumentMoniker": "client\\Forms\\POS\\POSUserControl\\UC_Products.cs",
@@ -1040,7 +1055,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 55,
               "Title": "NewCategory.Designer.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\POS\\POSUserControl\\ProductFoodCategory\\NewCategory.Designer.cs",
               "RelativeDocumentMoniker": "client\\Forms\\POS\\POSUserControl\\ProductFoodCategory\\NewCategory.Designer.cs",
@@ -1052,7 +1067,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 57,
               "Title": "Manage.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Controls\\Products\\Manage.cs",
               "RelativeDocumentMoniker": "client\\Controls\\Products\\Manage.cs",
@@ -1064,7 +1079,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 58,
               "Title": "SubCategoryController.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Controllers\\SubCategoryController.cs",
               "RelativeDocumentMoniker": "client\\Controllers\\SubCategoryController.cs",
@@ -1076,19 +1091,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 63,
               "Title": "MainMenu.resx",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\MainMenu.resx",
               "RelativeDocumentMoniker": "client\\Forms\\MainMenu.resx",
               "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\MainMenu.resx",
               "RelativeToolTip": "client\\Forms\\MainMenu.resx",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2025-02-27T11:14:04.176Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-27T11:14:04.176Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 65,
               "Title": "POS_MainMenu.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\POS\\POS_MainMenu.cs",
               "RelativeDocumentMoniker": "client\\Forms\\POS\\POS_MainMenu.cs",
@@ -1101,7 +1115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 66,
               "Title": "UC_Pos.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\POS\\POSUserControl\\UC_Pos.cs",
               "RelativeDocumentMoniker": "client\\Forms\\POS\\POSUserControl\\UC_Pos.cs",
@@ -1113,7 +1127,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 67,
               "Title": "App.config",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\App.config",
               "RelativeDocumentMoniker": "client\\App.config",
@@ -1125,7 +1139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 68,
               "Title": "LoggerHelper.cs",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Helpers\\LoggerHelper.cs",
               "RelativeDocumentMoniker": "client\\Helpers\\LoggerHelper.cs",
@@ -1137,7 +1151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 74,
+              "DocumentIndex": 71,
               "Title": "Microsoft.Common.CurrentVersion.targets",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
               "RelativeDocumentMoniker": "..\\..\\..\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
@@ -1149,7 +1163,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 73,
+              "DocumentIndex": 70,
               "Title": "client.csproj",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\client.csproj",
               "RelativeDocumentMoniker": "client\\client.csproj",
@@ -1161,7 +1175,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 69,
               "Title": "Login.resx",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\Login.resx",
               "RelativeDocumentMoniker": "client\\Forms\\Login.resx",
@@ -1173,7 +1187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 75,
+              "DocumentIndex": 72,
               "Title": "client.csproj.user",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\client.csproj.user",
               "RelativeDocumentMoniker": "client\\client.csproj.user",
@@ -1185,7 +1199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 53,
               "Title": "UC_Orders.cs [Design]",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\POS\\POSUserControl\\UC_Orders.cs",
               "RelativeDocumentMoniker": "client\\Forms\\POS\\POSUserControl\\UC_Orders.cs",
@@ -1195,7 +1209,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 56,
               "Title": "POS_MainMenu.cs [Design]",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\POS\\POS_MainMenu.cs",
               "RelativeDocumentMoniker": "client\\Forms\\POS\\POS_MainMenu.cs",
@@ -1206,7 +1220,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 61,
               "Title": "UC_Inventory.cs [Design]",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\UserControl\\UC_Inventory.cs",
               "RelativeDocumentMoniker": "client\\Forms\\UserControl\\UC_Inventory.cs",
@@ -1217,7 +1231,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 60,
               "Title": "UC_Reservation.cs [Design]",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\UserControl\\UC_Reservation.cs",
               "RelativeDocumentMoniker": "client\\Forms\\UserControl\\UC_Reservation.cs",
@@ -1228,7 +1242,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 59,
               "Title": "UC_Settings.cs [Design]",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\UserControl\\UC_Settings.cs",
               "RelativeDocumentMoniker": "client\\Forms\\UserControl\\UC_Settings.cs",
@@ -1239,7 +1253,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 62,
               "Title": "UC_DashBoard.cs [Design]",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\UserControl\\UC_DashBoard.cs",
               "RelativeDocumentMoniker": "client\\Forms\\UserControl\\UC_DashBoard.cs",
@@ -1250,7 +1264,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 64,
               "Title": "UC_Products.cs [Design]",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\CapstoneProject-Client\\client\\Forms\\POS\\POSUserControl\\UC_Products.cs",
               "RelativeDocumentMoniker": "client\\Forms\\POS\\POSUserControl\\UC_Products.cs",
@@ -1261,7 +1275,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 76,
+              "DocumentIndex": 73,
               "Title": "UC_MainCourse.cs [Design]",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Forms\\POS\\POSUserControl\\FoodCategory\\UC_MainCourse.cs",
               "RelativeDocumentMoniker": "..\\client\\client\\Forms\\POS\\POSUserControl\\FoodCategory\\UC_MainCourse.cs",
@@ -1272,7 +1286,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 77,
+              "DocumentIndex": 74,
               "Title": "UC_FastFood.cs [Design]",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Forms\\POS\\POSUserControl\\FoodCategory\\UC_FastFood.cs",
               "RelativeDocumentMoniker": "..\\client\\client\\Forms\\POS\\POSUserControl\\FoodCategory\\UC_FastFood.cs",
@@ -1283,7 +1297,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 78,
+              "DocumentIndex": 75,
               "Title": "UC_Beverages.cs [Design]",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Forms\\POS\\POSUserControl\\FoodCategory\\UC_Beverages.cs",
               "RelativeDocumentMoniker": "..\\client\\client\\Forms\\POS\\POSUserControl\\FoodCategory\\UC_Beverages.cs",

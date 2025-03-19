@@ -201,6 +201,7 @@
             TopMost = true;
             FormClosing += ApplyDiscount_FormClosing;
             Load += ApplyDiscount_Load;
+            KeyDown += ApplyDiscount_KeyDown;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

@@ -23,6 +23,13 @@ namespace client.Forms.Order
         private readonly CategoryController _categoryController = new CategoryController();
         private readonly ProductController _productController = new ProductController();
         private readonly AuthController _authController = new AuthController();
+        private readonly TransactionController _transactionController = new TransactionController();
+
+        private System.Threading.Timer? searchTimer;
+        private string lastSearchText = string.Empty;
+        private readonly int searchDelayMs = 300;
+
+        private bool isTransactionActive = false;
 
         public static OrderEntryForm? Instance { get; private set; }
 
@@ -34,6 +41,8 @@ namespace client.Forms.Order
             InitializeComponent();
             Instance = this;
             this.FormClosed += OrderEntryForm_FormClosed;
+            this.KeyPreview = true;
+            this.KeyDown += OrderEntryForm_KeyDown;
             this.Name = "OrderEntryForm";
 
             cartContainerPanel = cartPanel as FlowLayoutPanel;
@@ -55,6 +64,8 @@ namespace client.Forms.Order
         {
             DataCache.ShouldRefreshCategories = true;
             this.WindowState = FormWindowState.Maximized;
+
+            ToggleButton(false);
 
             btnHome.Visible = (CurrentUser.IsAdmin) ? true : false;
 
@@ -104,6 +115,50 @@ namespace client.Forms.Order
 
             int buttonMargin = 5;
             int buttonHeight = 40;
+
+            Button allMenusButton = new Button
+            {
+                Text = "All Menus",
+                Height = buttonHeight,
+                Width = categoriesPanel.Width - 10,
+                Margin = new Padding(buttonMargin, buttonMargin, 0, buttonMargin),
+                Tag = -1,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.White,
+                ForeColor = Color.Black,
+                Font = new Font("Segoe UI", 11, FontStyle.Regular),
+                Cursor = Cursors.Hand,
+                TabStop = false
+            };
+
+            allMenusButton.FlatAppearance.BorderSize = 2;
+            allMenusButton.FlatAppearance.BorderColor = Color.Gray;
+
+            allMenusButton.MouseEnter += (s, e) =>
+            {
+                if (s is Button btn)
+                {
+                    btn.BackColor = Color.LightGray;
+                }
+            };
+
+            allMenusButton.MouseLeave += (s, e) =>
+            {
+                if (s is Button btn)
+                {
+                    btn.BackColor = Color.White;
+                }
+            };
+
+            allMenusButton.Click += (sender, e) =>
+            {
+                categoriesPanel.Focus();
+                subCategoriesPanel.Controls.Clear();
+                CurrentCategory.SetCurrentCategory(null);
+                LoadProducts();
+            };
+
+            categoriesPanel.Controls.Add(allMenusButton);
 
             var categories = CurrentCategory.AllCategories;
             if (categories != null && categories.Count > 0)
@@ -181,6 +236,52 @@ namespace client.Forms.Order
 
             if (subcategories != null && subcategories.Count > 0)
             {
+                Button allButton = new Button
+                {
+                    Text = "All",
+                    Height = buttonHeight,
+                    Width = 80,
+                    Margin = new Padding(buttonMargin),
+                    Tag = -1,
+                    FlatStyle = FlatStyle.Flat,
+                    BackColor = Color.White,
+                    ForeColor = Color.Black,
+                    Font = buttonFont,
+                    Cursor = Cursors.Hand,
+                    TabStop = false
+                };
+
+                allButton.FlatAppearance.BorderSize = 2;
+                allButton.FlatAppearance.BorderColor = Color.Gray;
+
+                allButton.MouseEnter += (s, e) =>
+                {
+                    if (s is Button btn)
+                    {
+                        btn.BackColor = Color.LightGray;
+                    }
+                };
+
+                allButton.MouseLeave += (s, e) =>
+                {
+                    if (s is Button btn)
+                    {
+                        btn.BackColor = Color.White;
+                    }
+                };
+
+                allButton.Click += (sender, e) =>
+                {
+                    subCategoriesPanel.Focus();
+                    if (CurrentCategory.Current != null)
+                    {
+                        DisplayProductsByCategory(CurrentCategory.Current.Id);
+                    }
+                };
+
+                subCategoriesPanel.Controls.Add(allButton);
+                totalWidth += allButton.Width + buttonMargin;
+
                 foreach (var subCategory in subcategories)
                 {
                     if (subCategory != null && !string.IsNullOrEmpty(subCategory.scName))
@@ -225,7 +326,7 @@ namespace client.Forms.Order
                             if (sender is Button button && button.Tag is int subCategoryId)
                             {
                                 subCategoriesPanel.Focus();
-                                MessageBox.Show("Coming Soon.");
+                                DisplayProductsBySubcategory(subCategoryId);
                             }
                         };
 
@@ -246,6 +347,136 @@ namespace client.Forms.Order
             {
                 MessageBox.Show("No subcategories found.", "Information",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void DisplayProductsBySubcategory(int subcategoryId)
+        {
+            try
+            {
+                if (CurrentProduct.AllProduct == null || !CurrentProduct.AllProduct.Any())
+                {
+                    MessageBox.Show("No products available.", "Information",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                var filteredProducts = CurrentProduct.AllProduct
+                    .Where(p => p.subcategoryId == subcategoryId)
+                    .ToList();
+
+                pnlContainer.Controls.Clear();
+
+                if (filteredProducts.Any())
+                {
+                    var productDisplay = new CardDisplay(filteredProducts)
+                    {
+                        Dock = DockStyle.Fill
+                    };
+                    pnlContainer.Controls.Add(productDisplay);
+                }
+                else
+                {
+                    var noResultsLabel = new Label
+                    {
+                        AutoSize = false,
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Dock = DockStyle.Fill,
+                        Font = new Font("Segoe UI", 12, FontStyle.Regular),
+                        ForeColor = Color.Gray
+                    };
+
+                    noResultsLabel.Paint += (s, e) =>
+                    {
+                        if (s is Label label)
+                        {
+                            e.Graphics.Clear(pnlContainer.BackColor);
+
+                            string normalText = "No products found in";
+                            string boldText = CurrentSubCategory.GetSubcategoryNameById(subcategoryId) + ".";
+
+                            Font normalFont = label.Font;
+                            Font boldFont = new Font(normalFont, FontStyle.Bold);
+
+                            float normalWidth = e.Graphics.MeasureString(normalText, normalFont).Width;
+                            float boldWidth = e.Graphics.MeasureString(boldText, boldFont).Width;
+                            float totalWidth = normalWidth + boldWidth;
+
+                            float normalHeight = e.Graphics.MeasureString(normalText, normalFont).Height;
+                            float boldHeight = e.Graphics.MeasureString(boldText, boldFont).Height;
+                            float totalHeight = Math.Max(normalHeight, boldHeight);
+
+                            float startX = (label.Width - totalWidth) / 2;
+                            float startY = (label.Height - totalHeight) / 2;
+
+                            e.Graphics.DrawString(normalText, normalFont, new SolidBrush(label.ForeColor), new PointF(startX, startY));
+                            e.Graphics.DrawString(boldText, boldFont, new SolidBrush(label.ForeColor), new PointF(startX + normalWidth, startY));
+                        }
+                    };
+
+                    Panel centerPanel = new Panel
+                    {
+                        Dock = DockStyle.Fill,
+                        BackColor = pnlContainer.BackColor
+                    };
+
+                    centerPanel.Controls.Add(noResultsLabel);
+                    pnlContainer.Controls.Add(centerPanel);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error displaying products: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerHelper.Write("DISPLAY ERROR", ex.Message);
+            }
+        }
+
+        private void DisplayProductsByCategory(int categoryId)
+        {
+            try
+            {
+                if (CurrentProduct.AllProduct == null || !CurrentProduct.AllProduct.Any())
+                {
+                    MessageBox.Show("No products available.", "Information",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                var filteredProducts = CurrentProduct.AllProduct
+                    .Where(p => p.categoryId == categoryId)
+                    .ToList();
+
+                pnlContainer.Controls.Clear();
+
+                if (filteredProducts.Any())
+                {
+                    var productDisplay = new CardDisplay(filteredProducts)
+                    {
+                        Dock = DockStyle.Fill
+                    };
+                    pnlContainer.Controls.Add(productDisplay);
+                }
+                else
+                {
+                    var noResultsLabel = new Label
+                    {
+                        Text = "No products found in this category.",
+                        AutoSize = false,
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Dock = DockStyle.Fill,
+                        Font = new Font("Segoe UI", 12, FontStyle.Regular),
+                        ForeColor = Color.Gray
+                    };
+
+                    pnlContainer.Controls.Add(noResultsLabel);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error displaying products: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerHelper.Write("DISPLAY ERROR", ex.Message);
             }
         }
 
@@ -388,6 +619,9 @@ namespace client.Forms.Order
 
         public void AddCartItem(Product product)
         {
+            if (!IsTransactionActive())
+                return;
+
             subTotal += product.productPrice;
             UpdateSubTotal();
 
@@ -452,18 +686,20 @@ namespace client.Forms.Order
             var picProductImage = new PictureBox
             {
                 SizeMode = PictureBoxSizeMode.Zoom,
-                Width = 60,
-                Height = 60,
+                Width = 80,
+                Height = 70,
                 Location = new Point(5, 5),
                 Image = product.ProductImageObject ?? Properties.Resources.Add_Image
             };
+
+            int textStartX = picProductImage.Width + 10;
 
             var lblProductName = new Label
             {
                 Text = product.productName,
                 AutoSize = true,
-                Location = new Point(75, 5),
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Location = new Point(textStartX, 5),
+                Font = new Font("Segoe UI", 11, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleLeft
             };
 
@@ -471,8 +707,8 @@ namespace client.Forms.Order
             {
                 Text = "₱ " + product.productPrice.ToString("F2"),
                 AutoSize = true,
-                Location = new Point(75, 25),
-                Font = new Font("Segoe UI", 9, FontStyle.Regular),
+                Location = new Point(textStartX, 30),
+                Font = new Font("Segoe UI", 10, FontStyle.Regular),
                 ForeColor = Color.Green,
                 TextAlign = ContentAlignment.MiddleLeft
             };
@@ -482,8 +718,8 @@ namespace client.Forms.Order
                 Name = "lblQuantity",
                 Text = "Qty: 1",
                 AutoSize = true,
-                Location = new Point(95, 45),
-                Font = new Font("Segoe UI", 9, FontStyle.Regular),
+                Location = new Point(textStartX + 30, 55),
+                Font = new Font("Segoe UI", 10, FontStyle.Regular),
                 ForeColor = Color.Black,
                 TextAlign = ContentAlignment.MiddleLeft
             };
@@ -494,8 +730,8 @@ namespace client.Forms.Order
                 Text = "−",
                 Width = 24,
                 Height = 24,
-                Location = new Point(70, 42),
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Location = new Point(textStartX, 52),
+                Font = new Font("Segoe UI", 11, FontStyle.Bold),
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(214, 192, 179),
@@ -513,8 +749,8 @@ namespace client.Forms.Order
                 Text = "+",
                 Width = 24,
                 Height = 24,
-                Location = new Point(150, 42),
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Location = new Point(textStartX + 90, 52),
+                Font = new Font("Segoe UI", 11, FontStyle.Bold),
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(214, 192, 179),
@@ -674,11 +910,6 @@ namespace client.Forms.Order
             }
         }
 
-        private void btnPayment_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnHome_MouseEnter(object sender, EventArgs e)
         {
             Cursor = Cursors.Hand;
@@ -735,5 +966,282 @@ namespace client.Forms.Order
         {
             new ApplyDiscount().ShowDialog();
         }
+
+        private void txtSearchInput_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = txtSearchInput.Text.Trim();
+
+            lastSearchText = searchText;
+
+            searchTimer?.Dispose();
+
+            searchTimer = new System.Threading.Timer(
+                _ => PerformSearch(searchText),
+                null,
+                searchDelayMs,
+                Timeout.Infinite
+            );
+        }
+
+        private void PerformSearch(string searchText)
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke(new Action(() => PerformSearch(searchText)));
+                return;
+            }
+
+            if (searchText != lastSearchText)
+                return;
+
+            try
+            {
+                if (string.IsNullOrWhiteSpace(searchText))
+                {
+                    if (CurrentCategory.Current != null)
+                    {
+                        DisplayProductsByCategory(CurrentCategory.Current.Id);
+                    }
+                    else
+                    {
+                        LoadProducts();
+                    }
+                    return;
+                }
+
+                searchText = searchText.ToLower();
+
+                if (CurrentProduct.AllProduct == null || !CurrentProduct.AllProduct.Any())
+                {
+                    MessageBox.Show("No products available to search.", "Information",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                var filteredProducts = CurrentProduct.AllProduct
+                    .Where(p => p.productName != null && p.productName.ToLower().Contains(searchText))
+                    .ToList();
+
+                pnlContainer.Controls.Clear();
+
+                if (filteredProducts.Any())
+                {
+                    var productDisplay = new CardDisplay(filteredProducts)
+                    {
+                        Dock = DockStyle.Fill
+                    };
+                    pnlContainer.Controls.Add(productDisplay);
+                }
+                else
+                {
+                    var noResultsLabel = new Label
+                    {
+                        Text = "No products found matching your search.",
+                        AutoSize = false,
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Dock = DockStyle.Fill,
+                        Font = new Font("Segoe UI", 12, FontStyle.Regular),
+                        ForeColor = Color.Gray
+                    };
+
+                    pnlContainer.Controls.Add(noResultsLabel);
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerHelper.Write("SEARCH ERROR", ex.Message);
+            }
+        }
+
+        private async void btnNewOrder_Click(object sender, EventArgs e)
+        {
+            isTransactionActive = true;
+            await StartNewTransaction();
+        }
+
+        private void btnPayment_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private async Task StartNewTransaction()
+        {
+            if (!IsTransactionActive())
+                return;
+
+            if (!IsCartEmpty())
+            {
+                if (MessageBox.Show(
+                    "Are you sure you want to create a new transaction? All changes will be discarded.",
+                    "Warning",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                ) == DialogResult.Yes)
+                {
+                    RefreshTransaction();
+                }
+            }
+
+            ToggleButton(true);
+
+            var numbers = await _transactionController.GenerateTransactionNumbers();
+            if (numbers != null)
+            {
+                string? transNumber = numbers.TransNumber;
+                string? orderNumber = numbers.OrderNumber;
+
+                lblTransactionNo.Text = transNumber;
+                lblOrderNo.Text = orderNumber;
+
+                LoggerHelper.Write("NEW TRANSACTION",
+                    $"Started new transaction: {transNumber}, Order: {orderNumber}");
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Failed to start new transaction. Please try again.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                ToggleButton(false);
+            }
+        }
+
+        private bool IsCartEmpty()
+        {
+            return cartContainerPanel.Controls.Count <= 0;
+        }
+
+        private bool IsTransactionActive()
+        {
+            if (!isTransactionActive)
+            {
+                MessageBox.Show("Please start a new transaction first!", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            return true;
+        }
+
+        private void RefreshTransaction()
+        {
+            cartContainerPanel.Controls.Clear();
+            CurrentCart.ClearCart();
+            subTotal = 0;
+            UpdateSubTotal();
+        }
+
+        private void ResetTransaction()
+        {
+            if (!IsCartEmpty())
+            {
+                var confirmCancel = MessageBox.Show(
+                    "Are you sure you want to cancel the transaction? All changes will be discarded.",
+                    "Warning",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (confirmCancel != DialogResult.Yes)
+                    return;
+            }
+
+            RefreshTransaction();
+            RemoveTransaction();
+            ToggleButton(false);
+            isTransactionActive = false;
+        }
+
+        private void ToggleButton(Boolean tog)
+        {
+            btnHoldOrder.Enabled = tog;
+            btnPendingOrders.Enabled = tog;
+            btnApplyDiscount.Enabled = tog;
+            btnCancelTransaction.Enabled = tog;
+            btnPayment.Enabled = tog;
+        }
+
+        private void btnCancelTransaction_Click(object sender, EventArgs e)
+        {
+            ResetTransaction();
+        }
+
+        private void OrderEntryForm_KeyDown(object? sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F1:
+                    btnNewOrder.PerformClick();
+                    break;
+                case Keys.F2:
+                    btnPayment.PerformClick();
+                    break;
+                case Keys.F3:
+                    btnApplyDiscount.PerformClick();
+                    break;
+                case Keys.F4:
+                    btnCancelTransaction.PerformClick();
+                    break;
+                case Keys.F5:
+                    btnHoldOrder.PerformClick();
+                    break;
+                case Keys.F6:
+                    btnPendingOrders.PerformClick();
+                    break;
+            }
+        }
+
+        private async void RemoveTransaction()
+        {
+            if (!IsTransactionActive())
+                return;
+
+            string transNum = CurrentTransaction.Current!.TransNumber!;
+            var res = await _transactionController.RemoveTransaction(transNum);
+            if (res)
+            {
+                LoggerHelper.Write("TRANSACTION REMOVED", $"Transaction {transNum} removed.");
+                lblTransactionNo.Text = "";
+                lblOrderNo.Text = "";
+                CurrentTransaction.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Failed to remove transaction.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerHelper.Write("TRANSACTION REMOVAL ERROR", $"Failed to remove transaction {transNum}.");
+            }
+        }
+
+        //private bool ValidateTransaction()
+        //{
+        //    if (!IsTransactionActive())
+        //        return false;
+
+        //    if (cartContainerPanel.Controls.Count <= 0)
+        //    {
+        //        MessageBox.Show("Cannot proceed with an empty cart!", "Warning",
+        //            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        return false;
+        //    }
+
+        //    if (selectedPaymentMethod == null)
+        //    {
+        //        MessageBox.Show("Please select a payment method!", "Warning",
+        //            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        return false;
+        //    }
+
+        //    if (totalAmountDue > customerPayment) // Check if payment is sufficient
+        //    {
+        //        MessageBox.Show("Insufficient payment amount!", "Warning",
+        //            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        return false;
+        //    }
+
+        //    return true;
+        //}
     }
 }

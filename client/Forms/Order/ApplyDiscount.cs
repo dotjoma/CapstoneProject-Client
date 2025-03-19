@@ -17,6 +17,8 @@ namespace client.Forms.Order
         {
             InitializeComponent();
             LoadCart();
+            this.KeyPreview = true;
+            this.KeyDown += ApplyDiscount_KeyDown;
         }
 
         private void ApplyDiscount_Load(object sender, EventArgs e)
@@ -54,6 +56,14 @@ namespace client.Forms.Order
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // TODO: discount logic.
+            }
+        }
+
+        private void ApplyDiscount_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Dispose();
             }
         }
     }
