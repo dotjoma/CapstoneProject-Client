@@ -74,9 +74,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(62, 39, 35);
-            label1.Location = new Point(58, 13);
+            label1.Location = new Point(66, 17);
             label1.Name = "label1";
-            label1.Size = new Size(99, 32);
+            label1.Size = new Size(126, 41);
             label1.TabIndex = 0;
             label1.Text = "MENUS";
             // 
@@ -92,8 +92,9 @@
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
+            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1024, 59);
+            panel2.Size = new Size(1170, 79);
             panel2.TabIndex = 0;
             // 
             // comboBox1
@@ -103,9 +104,10 @@
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FlatStyle = FlatStyle.System;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(570, 18);
+            comboBox1.Location = new Point(651, 24);
+            comboBox1.Margin = new Padding(3, 4, 3, 4);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(130, 23);
+            comboBox1.Size = new Size(148, 28);
             comboBox1.TabIndex = 9;
             // 
             // label2
@@ -114,9 +116,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(93, 64, 55);
-            label2.Location = new Point(499, 19);
+            label2.Location = new Point(570, 25);
             label2.Name = "label2";
-            label2.Size = new Size(69, 20);
+            label2.Size = new Size(87, 25);
             label2.TabIndex = 8;
             label2.Text = "Filter by:";
             // 
@@ -124,9 +126,10 @@
             // 
             pictureBox2.Anchor = AnchorStyles.Right;
             pictureBox2.Image = Properties.Resources.Search;
-            pictureBox2.Location = new Point(732, 17);
+            pictureBox2.Location = new Point(837, 23);
+            pictureBox2.Margin = new Padding(3, 4, 3, 4);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(24, 24);
+            pictureBox2.Size = new Size(27, 32);
             pictureBox2.TabIndex = 7;
             pictureBox2.TabStop = false;
             // 
@@ -137,10 +140,11 @@
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox1.ForeColor = Color.FromArgb(93, 64, 55);
-            textBox1.Location = new Point(762, 18);
+            textBox1.Location = new Point(871, 24);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
             textBox1.PlaceholderText = "Search Item(s)";
-            textBox1.Size = new Size(208, 22);
+            textBox1.Size = new Size(238, 27);
             textBox1.TabIndex = 6;
             // 
             // btnRefresh
@@ -148,9 +152,10 @@
             btnRefresh.Anchor = AnchorStyles.Right;
             btnRefresh.BackColor = Color.FromArgb(232, 232, 232);
             btnRefresh.Image = Properties.Resources.Refresh1;
-            btnRefresh.Location = new Point(455, 17);
+            btnRefresh.Location = new Point(520, 23);
+            btnRefresh.Margin = new Padding(3, 4, 3, 4);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(24, 24);
+            btnRefresh.Size = new Size(27, 32);
             btnRefresh.SizeMode = PictureBoxSizeMode.StretchImage;
             btnRefresh.TabIndex = 3;
             btnRefresh.TabStop = false;
@@ -162,9 +167,10 @@
             // 
             pictureBox1.Anchor = AnchorStyles.Left;
             pictureBox1.Image = Properties.Resources.RestaurantMenu1;
-            pictureBox1.Location = new Point(12, 9);
+            pictureBox1.Location = new Point(14, 12);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(40, 40);
+            pictureBox1.Size = new Size(46, 53);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
@@ -181,9 +187,10 @@
             panel1.Controls.Add(btnEdit);
             panel1.Controls.Add(btnNew);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 471);
+            panel1.Location = new Point(0, 628);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1024, 59);
+            panel1.Size = new Size(1170, 79);
             panel1.TabIndex = 2;
             panel1.Paint += panel1_Paint;
             // 
@@ -199,14 +206,16 @@
             btnDelete.ForeColor = Color.Black;
             btnDelete.Image = Properties.Resources.Delete1;
             btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDelete.Location = new Point(172, 7);
+            btnDelete.Location = new Point(197, 9);
+            btnDelete.Margin = new Padding(3, 4, 3, 4);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(86, 44);
+            btnDelete.Size = new Size(98, 59);
             btnDelete.TabIndex = 9;
             btnDelete.TabStop = false;
             btnDelete.Text = "Delete";
             btnDelete.TextAlign = ContentAlignment.MiddleRight;
             btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += this.btnDelete_Click;
             // 
             // btnEdit
             // 
@@ -220,9 +229,10 @@
             btnEdit.ForeColor = Color.Black;
             btnEdit.Image = Properties.Resources.Edit1;
             btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEdit.Location = new Point(92, 7);
+            btnEdit.Location = new Point(105, 9);
+            btnEdit.Margin = new Padding(3, 4, 3, 4);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(74, 44);
+            btnEdit.Size = new Size(85, 59);
             btnEdit.TabIndex = 8;
             btnEdit.TabStop = false;
             btnEdit.Text = "Edit";
@@ -242,9 +252,10 @@
             btnNew.ForeColor = Color.Black;
             btnNew.Image = Properties.Resources.Add1;
             btnNew.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNew.Location = new Point(12, 7);
+            btnNew.Location = new Point(14, 9);
+            btnNew.Margin = new Padding(3, 4, 3, 4);
             btnNew.Name = "btnNew";
-            btnNew.Size = new Size(74, 44);
+            btnNew.Size = new Size(85, 59);
             btnNew.TabIndex = 7;
             btnNew.TabStop = false;
             btnNew.Text = "New";
@@ -264,9 +275,10 @@
             // 
             panel3.Controls.Add(dgvProducts);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 59);
+            panel3.Location = new Point(0, 79);
+            panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1024, 412);
+            panel3.Size = new Size(1170, 549);
             panel3.TabIndex = 3;
             // 
             // dgvProducts
@@ -305,6 +317,7 @@
             dgvProducts.Dock = DockStyle.Fill;
             dgvProducts.EnableHeadersVisualStyles = false;
             dgvProducts.Location = new Point(0, 0);
+            dgvProducts.Margin = new Padding(3, 4, 3, 4);
             dgvProducts.MultiSelect = false;
             dgvProducts.Name = "dgvProducts";
             dgvProducts.ReadOnly = true;
@@ -318,8 +331,9 @@
             dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
             dgvProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgvProducts.RowHeadersVisible = false;
+            dgvProducts.RowHeadersWidth = 51;
             dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProducts.Size = new Size(1024, 412);
+            dgvProducts.Size = new Size(1170, 549);
             dgvProducts.TabIndex = 4;
             dgvProducts.TabStop = false;
             dgvProducts.CellClick += dgvProducts_CellClick;
@@ -404,14 +418,15 @@
             // 
             // ProductHome
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1024, 530);
+            ClientSize = new Size(1170, 707);
             Controls.Add(panel3);
             Controls.Add(panel1);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "ProductHome";
             StartPosition = FormStartPosition.CenterParent;
             Text = "ProductHome";

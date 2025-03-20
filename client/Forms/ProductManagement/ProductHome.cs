@@ -1,4 +1,5 @@
-﻿using client.Helpers;
+﻿using client.Controllers;
+using client.Helpers;
 using client.Models;
 using client.Services;
 using System;
@@ -16,6 +17,7 @@ namespace client.Forms.ProductManagement
 {
     public partial class ProductHome : Form
     {
+        ProductController _productController = new ProductController();
         public static ProductHome? Instance { get; private set; }
         private readonly DataLoadingService _dataLoadingService;
         private int _selectedId = 0;
@@ -218,6 +220,125 @@ namespace client.Forms.ProductManagement
             catch
             {
 
+            }
+        }
+
+        private async void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (_selectedId > 0)
+            {
+                var confirmDelete = MessageBox.Show(
+                    "Are you sure you want to delete this product.",
+                    "Warning",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (confirmDelete == DialogResult.Yes)
+                {
+                    try
+                    {
+                        ShowLoading("Deleting product...");
+
+                        bool success = await _productController.Destroy(_selectedId);
+                        if (success)
+                        {
+                            RefreshDisplay();
+
+                            MessageBox.Show("Product deleted successfully", "Success",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error deleting product: " + ex.Message, "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        HideLoading();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a product to delete.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private Panel loadingPanel = new Panel();
+        private PictureBox pictureBox = new PictureBox();
+        private Panel panelBox = new Panel();
+        private Label messageLabel = new Label();
+
+        private void InitializeLoadingControls()
+        {
+            loadingPanel.BackColor = Color.White;
+            loadingPanel.BorderStyle = BorderStyle.None;
+            loadingPanel.Size = new Size(300, 150);
+            loadingPanel.Location = new Point(
+                (this.ClientSize.Width - loadingPanel.Width) / 2,
+                (this.ClientSize.Height - loadingPanel.Height) / 2
+            );
+
+            panelBox.Size = new Size(64, 64);
+            panelBox.Location = new Point(
+                (loadingPanel.Width - panelBox.Width) / 2,
+                20
+            );
+            panelBox.BorderStyle = BorderStyle.None;
+            panelBox.BackColor = Color.White;
+
+            pictureBox.Size = new Size(24, 24);
+            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox.Location = new Point(
+                (panelBox.Width - pictureBox.Width) / 2,
+                (panelBox.Height - pictureBox.Height) / 2
+            );
+
+            try
+            {
+                pictureBox.Image = Properties.Resources.loading_gif;
+            }
+            catch
+            {
+                pictureBox.BackColor = Color.LightGray;
+            }
+
+            messageLabel.AutoSize = false;
+            messageLabel.Size = new Size(280, 30);
+            messageLabel.TextAlign = ContentAlignment.MiddleCenter;
+            messageLabel.Location = new Point(
+                (loadingPanel.Width - messageLabel.Width) / 2,
+                panelBox.Bottom + 8
+            );
+            messageLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular);
+
+            panelBox.Controls.Add(pictureBox);
+            loadingPanel.Controls.Add(panelBox);
+            loadingPanel.Controls.Add(messageLabel);
+            this.Controls.Add(loadingPanel);
+        }
+
+        private void ShowLoading(string message)
+        {
+            if (!this.Controls.Contains(loadingPanel))
+            {
+                InitializeLoadingControls();
+            }
+
+            messageLabel.Text = message;
+            loadingPanel.BringToFront();
+            loadingPanel.Visible = true;
+            Application.DoEvents();
+        }
+
+        private void HideLoading()
+        {
+            if (loadingPanel != null)
+            {
+                loadingPanel.Visible = false;
             }
         }
     }

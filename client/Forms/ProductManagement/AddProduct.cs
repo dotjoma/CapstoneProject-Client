@@ -286,18 +286,29 @@ namespace client.Forms.ProductManagement
             {
                 using (MemoryStream ms = new MemoryStream())
                 {
-                    // Clone the image to avoid GDI+ lock issues
-                    using (Bitmap clone = new Bitmap(image))
-                    {
-                        clone.Save(ms, ImageFormat.Png); // PNG format is more stable
-                    }
-
-                    return Convert.ToBase64String(ms.ToArray());
+                    image.Save(ms, ImageFormat.Jpeg);
+                    byte[] imageBytes = ms.ToArray();
+                    return Convert.ToBase64String(imageBytes);
                 }
+            }
+            catch (ArgumentException ex)
+            {
+                LoggerHelper.Write("IMAGE CONVERSION", $"Argument Exception: {ex.Message}");
+                return string.Empty;
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                LoggerHelper.Write("IMAGE CONVERSION", $"Unauthorized Access: {ex.Message}");
+                return string.Empty;
+            }
+            catch (IOException ex)
+            {
+                LoggerHelper.Write("IMAGE CONVERSION", $"IO Error: {ex.Message}");
+                return string.Empty;
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("IMAGE CONVERSION", $"Error converting image to base64: {ex.Message}");
+                LoggerHelper.Write("IMAGE CONVERSION", $"General Error: {ex.Message}");
                 return string.Empty;
             }
         }
@@ -324,9 +335,9 @@ namespace client.Forms.ProductManagement
             ShowLoading("Saving product...");
 
             string name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtName.Text.Trim().ToLower());
-            //string image = pbImage.Image != null ? ConvertImageToBase64(pbImage.Image) : "";
+            string image = pbImage.Image != null ? ConvertImageToBase64(pbImage.Image) : "test";
 
-            string image = (pbImage.Image != null) ? ConvertImageToBase64(new Bitmap(pbImage.Image)) : string.Empty;
+            //string image = (pbImage.Image != null) ? ConvertImageToBase64(new Bitmap(pbImage.Image)) : string.Empty; // Ayaw nito gumana.
 
             string price = txtPrice.Text.Trim();
             int isActive = (cbIsActive.CheckState == CheckState.Checked) ? 1 : 0;

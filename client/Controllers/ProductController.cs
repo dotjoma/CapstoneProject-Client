@@ -248,5 +248,41 @@ namespace client.Controllers
 
             return false;
         }
+
+        public async Task<bool> Destroy(int productId)
+        {
+            var deleteProduct = new Packet
+            {
+                Type = PacketType.DeleteProduct,
+                Data = new Dictionary<string, string>
+                {
+                    { "productId", productId.ToString() }
+                }
+            };
+
+            var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(deleteProduct));
+
+            if (response == null)
+            {
+                MessageBox.Show("No response received from server", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (response.Data != null && response.Data.TryGetValue("success", out string? success) &&
+                success.Equals("true", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            string errorMessage = response.Data?.ContainsKey("message") == true
+                ? response.Data["message"]
+                : "Unknown error occurred while deleting product";
+
+            MessageBox.Show($"Product delete failed: {errorMessage}", "Error",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            return false;
+        }
     }
 }
