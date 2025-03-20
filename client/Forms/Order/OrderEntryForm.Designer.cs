@@ -647,7 +647,7 @@
             // pictureBox6
             // 
             pictureBox6.Anchor = AnchorStyles.Right;
-            pictureBox6.Image = Properties.Resources.search_24;
+            pictureBox6.Image = Properties.Resources.Search;
             pictureBox6.Location = new Point(730, 13);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(26, 26);

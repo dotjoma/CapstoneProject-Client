@@ -1,4 +1,5 @@
-﻿using System;
+﻿using client.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,12 +14,42 @@ namespace client.Forms.Order
 {
     public partial class PaymentForm : Form
     {
+        private decimal totalAmount = 0.00m;
         private string amountPaid = string.Empty;
-        public PaymentForm()
+
+        private TextBox? lastFocusedTextBox = null;
+        public PaymentForm(decimal totalAmount)
         {
             InitializeComponent();
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    textBox.GotFocus += (s, e) => lastFocusedTextBox = textBox;
+                }
+            }
+
             this.KeyPreview = true;
             this.KeyDown += PaymentForm_KeyDown;
+            btn1.Click += Numpad_Click;
+            btn2.Click += Numpad_Click;
+            btn3.Click += Numpad_Click;
+            btn4.Click += Numpad_Click;
+            btn5.Click += Numpad_Click;
+            btn6.Click += Numpad_Click;
+            btn7.Click += Numpad_Click;
+            btn8.Click += Numpad_Click;
+            btn9.Click += Numpad_Click;
+            btn0.Click += Numpad_Click;
+            btnDot.Click += Numpad_Click;
+            btnDelete.Click += Numpad_Click;
+
+            this.totalAmount = totalAmount;
+        }
+        private void PaymentForm_Load(object sender, EventArgs e)
+        {
+            lblAmountToPay.Text = totalAmount.ToString("N2");
         }
 
         private void cboPaymentMethod_SelectedIndexChanged(object sender, EventArgs e)
@@ -115,7 +146,6 @@ namespace client.Forms.Order
             paymentDetailsPanel.Controls.Add(mainLayout);
         }
 
-        // Helper methods
         private Label CreateLabel(string text, bool isFieldLabel)
         {
             return new Label
@@ -161,8 +191,7 @@ namespace client.Forms.Order
         {
             if (decimal.TryParse(amountPaid.Text, out decimal paid))
             {
-                // Assuming you have a way to get the total amount
-                decimal total = GetTotalAmount(); // Implement this method
+                decimal total = GetTotalAmount();
                 decimal changeAmount = paid - total;
                 change.Text = changeAmount >= 0 ? changeAmount.ToString("N2") : "0.00";
                 change.ForeColor = changeAmount >= 0 ? Color.FromArgb(46, 213, 115) : Color.Red;
@@ -176,7 +205,7 @@ namespace client.Forms.Order
 
         private decimal GetTotalAmount()
         {
-            return 0.00m;
+            return totalAmount;
         }
 
         private void PaymentForm_KeyDown(object? sender, KeyEventArgs e)
@@ -186,6 +215,7 @@ namespace client.Forms.Order
                 this.Dispose();
             }
         }
+
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -201,6 +231,56 @@ namespace client.Forms.Order
             bool hasDecimalPoint = textBox.Text.Contains(".");
 
             e.Handled = !isNumber && !isBackspace && !(isDecimalPoint && !hasDecimalPoint);
+        }
+
+        private void Numpad_Click(object? sender, EventArgs e)
+        {
+            if (sender is Button btn)
+            {
+                // Use the last focused TextBox
+                if (lastFocusedTextBox != null)
+                {
+                    var textBox = lastFocusedTextBox;
+
+                    // Check if the button is for deletion
+                    if (btn.Tag?.ToString() == "delete")
+                    {
+                        // Handle backspace (delete)
+                        if (textBox.SelectionLength > 0)
+                        {
+                            // Remove selected text
+                            int start = textBox.SelectionStart;
+                            textBox.Text = textBox.Text.Remove(start, textBox.SelectionLength);
+                            textBox.SelectionStart = start; // Set cursor position
+                        }
+                        else if (textBox.SelectionStart > 0)
+                        {
+                            // Remove the character before the cursor
+                            int start = textBox.SelectionStart - 1;
+                            textBox.Text = textBox.Text.Remove(start, 1);
+                            textBox.SelectionStart = start; // Set cursor position
+                        }
+                    }
+                    else
+                    {
+                        // Insert button text at the cursor position
+                        int selectionStart = textBox.SelectionStart;
+                        textBox.Text = textBox.Text.Insert(selectionStart, btn.Text);
+                        textBox.SelectionStart = selectionStart + btn.Text.Length; // Move cursor after inserted text
+                    }
+
+                    // Refocus the TextBox after the operation
+                    textBox.Focus();
+                }
+                else
+                {
+                    LoggerHelper.Write("NUMPAD", "No TextBox has been focused.");
+                }
+            }
+            else
+            {
+                LoggerHelper.Write("NUMPAD", "Sender is not a Button.");
+            }
         }
     }
 }

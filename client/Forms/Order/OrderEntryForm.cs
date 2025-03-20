@@ -35,6 +35,7 @@ namespace client.Forms.Order
         public static OrderEntryForm? Instance { get; private set; }
 
         private decimal subTotal = 0;
+        private decimal totalAmount = 0;
         //private decimal discount = 0;
 
         public OrderEntryForm()
@@ -834,12 +835,12 @@ namespace client.Forms.Order
         {
             decimal vatableSales = subTotal / 1.12m;
             decimal vat = subTotal - vatableSales;
-            decimal total = subTotal;
+            totalAmount = subTotal;
 
             lblSubTotal.Text = subTotal.ToString("F2");
             lblVatable.Text = vatableSales.ToString("F2");
             lblVat.Text = vat.ToString("F2");
-            lblTotal.Text = total.ToString("F2");
+            lblTotal.Text = totalAmount.ToString("F2");
         }
 
         private void btnBeverages_Click(object sender, EventArgs e)
@@ -1065,7 +1066,14 @@ namespace client.Forms.Order
             if (!IsTransactionActive())
                 return;
 
-            var paymentForm = new PaymentForm();
+            if (IsCartEmpty())
+            {
+                MessageBox.Show("Please add items to the cart first.", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var paymentForm = new PaymentForm(totalAmount);
             paymentForm.ShowDialog();
         }
 
@@ -1087,6 +1095,7 @@ namespace client.Forms.Order
                 }
             }
 
+            btnNewOrder.Enabled = false;
             ShowLoading("Starting new transaction...");
 
             var numbers = await _transactionController.GenerateTransactionNumbers();
@@ -1101,6 +1110,7 @@ namespace client.Forms.Order
                 ToggleButton(true);
 
                 HideLoading();
+                btnNewOrder.Enabled = true;
 
                 LoggerHelper.Write("NEW TRANSACTION",
                     $"Started new transaction: {transNumber}, Order: {orderNumber}");
@@ -1115,6 +1125,7 @@ namespace client.Forms.Order
                 );
                 ToggleButton(false);
                 HideLoading();
+                btnNewOrder.Enabled = true;
             }
         }
 
@@ -1137,9 +1148,14 @@ namespace client.Forms.Order
 
         private void RefreshTransaction()
         {
-            cartContainerPanel.Controls.Clear();
-            CurrentCart.ClearCart();
             subTotal = 0;
+            totalAmount = 0;
+            lblOrderNo.Text = "";
+            CurrentCart.ClearCart();
+            lblTransactionNo.Text = "";
+            CurrentTransaction.Clear();
+            cartContainerPanel.Controls.Clear();
+            
             UpdateSubTotal();
         }
 
@@ -1159,8 +1175,6 @@ namespace client.Forms.Order
             }
 
             ShowLoading("Cancelling transaction...");
-
-            RefreshTransaction();
             RemoveTransaction();
             isTransactionActive = false;
         }
@@ -1214,9 +1228,7 @@ namespace client.Forms.Order
             if (res)
             {
                 LoggerHelper.Write("TRANSACTION REMOVED", $"Transaction {transNum} removed.");
-                lblTransactionNo.Text = "";
-                lblOrderNo.Text = "";
-                CurrentTransaction.Clear();
+                RefreshTransaction();
                 HideLoading();
                 ToggleButton(false);
             }

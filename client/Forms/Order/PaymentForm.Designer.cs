@@ -39,7 +39,7 @@
             btnConfirmPayment = new Button();
             panel2 = new Panel();
             panel6 = new Panel();
-            dgvProducts = new DataGridView();
+            dgvMop = new DataGridView();
             mode = new DataGridViewTextBoxColumn();
             productCategory = new DataGridViewTextBoxColumn();
             productSubcategory = new DataGridViewTextBoxColumn();
@@ -48,43 +48,43 @@
             btnApply = new Button();
             lblTotal = new Label();
             panel5 = new Panel();
-            textBox1 = new TextBox();
+            txtAmount = new TextBox();
             label5 = new Label();
             paymentDetailsPanel = new Panel();
             cboPaymentMethod = new ComboBox();
             label4 = new Label();
             panel7 = new Panel();
-            label2 = new Label();
+            lblAmountToPay = new Label();
             panel3 = new Panel();
             lblChange = new Label();
             label6 = new Label();
             lblBalance = new Label();
             label3 = new Label();
             panel4 = new Panel();
-            panel8 = new Panel();
-            button10 = new Button();
-            button11 = new Button();
-            button12 = new Button();
-            button7 = new Button();
-            button8 = new Button();
-            button9 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            numpadPanel = new Panel();
+            btnDelete = new Button();
+            btnDot = new Button();
+            btn0 = new Button();
+            btn3 = new Button();
+            btn2 = new Button();
+            btn1 = new Button();
+            btn6 = new Button();
+            btn5 = new Button();
+            btn4 = new Button();
+            btn9 = new Button();
+            btn8 = new Button();
+            btn7 = new Button();
             panel1.SuspendLayout();
             panel9.SuspendLayout();
             panel2.SuspendLayout();
             panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvMop).BeginInit();
             panel10.SuspendLayout();
             panel5.SuspendLayout();
             panel7.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
-            panel8.SuspendLayout();
+            numpadPanel.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -143,7 +143,7 @@
             // 
             // panel6
             // 
-            panel6.Controls.Add(dgvProducts);
+            panel6.Controls.Add(dgvMop);
             panel6.Controls.Add(panel10);
             panel6.Dock = DockStyle.Fill;
             panel6.Location = new Point(0, 295);
@@ -151,20 +151,20 @@
             panel6.Size = new Size(323, 199);
             panel6.TabIndex = 3;
             // 
-            // dgvProducts
+            // dgvMop
             // 
-            dgvProducts.AllowUserToAddRows = false;
-            dgvProducts.AllowUserToDeleteRows = false;
-            dgvProducts.AllowUserToResizeColumns = false;
-            dgvProducts.AllowUserToResizeRows = false;
+            dgvMop.AllowUserToAddRows = false;
+            dgvMop.AllowUserToDeleteRows = false;
+            dgvMop.AllowUserToResizeColumns = false;
+            dgvMop.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.WhiteSmoke;
             dataGridViewCellStyle1.ForeColor = Color.FromArgb(93, 64, 55);
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(215, 204, 200);
             dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(93, 64, 55);
-            dgvProducts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvProducts.BackgroundColor = Color.White;
-            dgvProducts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvMop.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvMop.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvMop.BackgroundColor = Color.White;
+            dgvMop.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(232, 232, 232);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -172,10 +172,10 @@
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(232, 232, 232);
             dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(232, 232, 232);
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dgvProducts.ColumnHeadersHeight = 35;
-            dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvProducts.Columns.AddRange(new DataGridViewColumn[] { mode, productCategory, productSubcategory });
+            dgvMop.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvMop.ColumnHeadersHeight = 35;
+            dgvMop.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvMop.Columns.AddRange(new DataGridViewColumn[] { mode, productCategory, productSubcategory });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -183,14 +183,14 @@
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(215, 204, 200);
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(93, 64, 55);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvProducts.DefaultCellStyle = dataGridViewCellStyle3;
-            dgvProducts.Dock = DockStyle.Fill;
-            dgvProducts.EnableHeadersVisualStyles = false;
-            dgvProducts.Location = new Point(0, 0);
-            dgvProducts.MultiSelect = false;
-            dgvProducts.Name = "dgvProducts";
-            dgvProducts.ReadOnly = true;
-            dgvProducts.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvMop.DefaultCellStyle = dataGridViewCellStyle3;
+            dgvMop.Dock = DockStyle.Fill;
+            dgvMop.EnableHeadersVisualStyles = false;
+            dgvMop.Location = new Point(0, 0);
+            dgvMop.MultiSelect = false;
+            dgvMop.Name = "dgvMop";
+            dgvMop.ReadOnly = true;
+            dgvMop.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = SystemColors.Control;
             dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
@@ -198,12 +198,12 @@
             dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(214, 192, 179);
             dataGridViewCellStyle4.SelectionForeColor = Color.White;
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dgvProducts.RowHeadersVisible = false;
-            dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProducts.Size = new Size(323, 153);
-            dgvProducts.TabIndex = 5;
-            dgvProducts.TabStop = false;
+            dgvMop.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dgvMop.RowHeadersVisible = false;
+            dgvMop.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvMop.Size = new Size(323, 153);
+            dgvMop.TabIndex = 5;
+            dgvMop.TabStop = false;
             // 
             // mode
             // 
@@ -281,7 +281,7 @@
             // 
             // panel5
             // 
-            panel5.Controls.Add(textBox1);
+            panel5.Controls.Add(txtAmount);
             panel5.Controls.Add(label5);
             panel5.Controls.Add(paymentDetailsPanel);
             panel5.Controls.Add(cboPaymentMethod);
@@ -293,17 +293,17 @@
             panel5.Size = new Size(323, 295);
             panel5.TabIndex = 2;
             // 
-            // textBox1
+            // txtAmount
             // 
-            textBox1.BackColor = Color.FromArgb(232, 232, 232);
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(16, 254);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(289, 28);
-            textBox1.TabIndex = 5;
-            textBox1.TextAlign = HorizontalAlignment.Right;
-            textBox1.KeyPress += textBox1_KeyPress;
+            txtAmount.BackColor = Color.FromArgb(232, 232, 232);
+            txtAmount.BorderStyle = BorderStyle.None;
+            txtAmount.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtAmount.Location = new Point(16, 254);
+            txtAmount.Name = "txtAmount";
+            txtAmount.Size = new Size(289, 28);
+            txtAmount.TabIndex = 5;
+            txtAmount.TextAlign = HorizontalAlignment.Right;
+            txtAmount.KeyPress += textBox1_KeyPress;
             // 
             // label5
             // 
@@ -352,22 +352,22 @@
             // 
             panel7.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel7.BackColor = Color.FromArgb(232, 232, 232);
-            panel7.Controls.Add(label2);
+            panel7.Controls.Add(lblAmountToPay);
             panel7.Location = new Point(17, 6);
             panel7.Name = "panel7";
             panel7.Size = new Size(289, 51);
             panel7.TabIndex = 0;
             // 
-            // label2
+            // lblAmountToPay
             // 
-            label2.Anchor = AnchorStyles.None;
-            label2.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(35, 8);
-            label2.Name = "label2";
-            label2.Size = new Size(219, 35);
-            label2.TabIndex = 1;
-            label2.Text = "0.00";
-            label2.TextAlign = ContentAlignment.MiddleCenter;
+            lblAmountToPay.Anchor = AnchorStyles.None;
+            lblAmountToPay.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblAmountToPay.Location = new Point(35, 8);
+            lblAmountToPay.Name = "lblAmountToPay";
+            lblAmountToPay.Size = new Size(219, 35);
+            lblAmountToPay.TabIndex = 1;
+            lblAmountToPay.Text = "0.00";
+            lblAmountToPay.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel3
             // 
@@ -426,177 +426,204 @@
             // 
             // panel4
             // 
-            panel4.Controls.Add(panel8);
+            panel4.Controls.Add(numpadPanel);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 0);
             panel4.Name = "panel4";
             panel4.Size = new Size(298, 350);
             panel4.TabIndex = 0;
             // 
-            // panel8
+            // numpadPanel
             // 
-            panel8.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel8.BackColor = Color.FromArgb(232, 232, 232);
-            panel8.Controls.Add(button10);
-            panel8.Controls.Add(button11);
-            panel8.Controls.Add(button12);
-            panel8.Controls.Add(button7);
-            panel8.Controls.Add(button8);
-            panel8.Controls.Add(button9);
-            panel8.Controls.Add(button4);
-            panel8.Controls.Add(button5);
-            panel8.Controls.Add(button6);
-            panel8.Controls.Add(button3);
-            panel8.Controls.Add(button2);
-            panel8.Controls.Add(button1);
-            panel8.Location = new Point(14, 5);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(271, 341);
-            panel8.TabIndex = 1;
+            numpadPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            numpadPanel.BackColor = Color.FromArgb(232, 232, 232);
+            numpadPanel.Controls.Add(btnDelete);
+            numpadPanel.Controls.Add(btnDot);
+            numpadPanel.Controls.Add(btn0);
+            numpadPanel.Controls.Add(btn3);
+            numpadPanel.Controls.Add(btn2);
+            numpadPanel.Controls.Add(btn1);
+            numpadPanel.Controls.Add(btn6);
+            numpadPanel.Controls.Add(btn5);
+            numpadPanel.Controls.Add(btn4);
+            numpadPanel.Controls.Add(btn9);
+            numpadPanel.Controls.Add(btn8);
+            numpadPanel.Controls.Add(btn7);
+            numpadPanel.Location = new Point(14, 5);
+            numpadPanel.Name = "numpadPanel";
+            numpadPanel.Size = new Size(271, 341);
+            numpadPanel.TabIndex = 1;
             // 
-            // button10
+            // btnDelete
             // 
-            button10.BackColor = Color.FromArgb(51, 51, 51);
-            button10.FlatAppearance.BorderColor = Color.Gray;
-            button10.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button10.Image = Properties.Resources.delete_24;
-            button10.Location = new Point(187, 258);
-            button10.Name = "button10";
-            button10.Size = new Size(70, 70);
-            button10.TabIndex = 11;
-            button10.UseVisualStyleBackColor = false;
+            btnDelete.BackColor = Color.FromArgb(51, 51, 51);
+            btnDelete.CausesValidation = false;
+            btnDelete.FlatAppearance.BorderColor = Color.Gray;
+            btnDelete.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDelete.Image = Properties.Resources.delete_24;
+            btnDelete.Location = new Point(187, 258);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(70, 70);
+            btnDelete.TabIndex = 11;
+            btnDelete.TabStop = false;
+            btnDelete.Tag = "delete";
+            btnDelete.TextAlign = ContentAlignment.TopLeft;
+            btnDelete.UseVisualStyleBackColor = false;
             // 
-            // button11
+            // btnDot
             // 
-            button11.BackColor = Color.White;
-            button11.FlatAppearance.BorderColor = Color.Gray;
-            button11.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button11.Location = new Point(100, 258);
-            button11.Name = "button11";
-            button11.Size = new Size(70, 70);
-            button11.TabIndex = 10;
-            button11.Text = ".";
-            button11.UseVisualStyleBackColor = false;
+            btnDot.BackColor = Color.White;
+            btnDot.CausesValidation = false;
+            btnDot.FlatAppearance.BorderColor = Color.Gray;
+            btnDot.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDot.Location = new Point(100, 258);
+            btnDot.Name = "btnDot";
+            btnDot.Size = new Size(70, 70);
+            btnDot.TabIndex = 10;
+            btnDot.TabStop = false;
+            btnDot.Text = ".";
+            btnDot.UseVisualStyleBackColor = false;
             // 
-            // button12
+            // btn0
             // 
-            button12.BackColor = Color.White;
-            button12.FlatAppearance.BorderColor = Color.Gray;
-            button12.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button12.Location = new Point(13, 258);
-            button12.Name = "button12";
-            button12.Size = new Size(70, 70);
-            button12.TabIndex = 9;
-            button12.Text = "0";
-            button12.UseVisualStyleBackColor = false;
+            btn0.BackColor = Color.White;
+            btn0.CausesValidation = false;
+            btn0.FlatAppearance.BorderColor = Color.Gray;
+            btn0.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn0.Location = new Point(13, 258);
+            btn0.Name = "btn0";
+            btn0.Size = new Size(70, 70);
+            btn0.TabIndex = 9;
+            btn0.TabStop = false;
+            btn0.Text = "0";
+            btn0.UseVisualStyleBackColor = false;
+            btn0.Click += Numpad_Click;
             // 
-            // button7
+            // btn3
             // 
-            button7.BackColor = Color.White;
-            button7.FlatAppearance.BorderColor = Color.Gray;
-            button7.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button7.Location = new Point(187, 176);
-            button7.Name = "button7";
-            button7.Size = new Size(70, 70);
-            button7.TabIndex = 8;
-            button7.Text = "3";
-            button7.UseVisualStyleBackColor = false;
+            btn3.BackColor = Color.White;
+            btn3.CausesValidation = false;
+            btn3.FlatAppearance.BorderColor = Color.Gray;
+            btn3.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn3.Location = new Point(187, 176);
+            btn3.Name = "btn3";
+            btn3.Size = new Size(70, 70);
+            btn3.TabIndex = 8;
+            btn3.TabStop = false;
+            btn3.Text = "3";
+            btn3.UseVisualStyleBackColor = false;
             // 
-            // button8
+            // btn2
             // 
-            button8.BackColor = Color.White;
-            button8.FlatAppearance.BorderColor = Color.Gray;
-            button8.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button8.Location = new Point(100, 176);
-            button8.Name = "button8";
-            button8.Size = new Size(70, 70);
-            button8.TabIndex = 7;
-            button8.Text = "2";
-            button8.UseVisualStyleBackColor = false;
+            btn2.BackColor = Color.White;
+            btn2.CausesValidation = false;
+            btn2.FlatAppearance.BorderColor = Color.Gray;
+            btn2.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn2.Location = new Point(100, 176);
+            btn2.Name = "btn2";
+            btn2.Size = new Size(70, 70);
+            btn2.TabIndex = 7;
+            btn2.TabStop = false;
+            btn2.Text = "2";
+            btn2.UseVisualStyleBackColor = false;
             // 
-            // button9
+            // btn1
             // 
-            button9.BackColor = Color.White;
-            button9.FlatAppearance.BorderColor = Color.Gray;
-            button9.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button9.Location = new Point(13, 176);
-            button9.Name = "button9";
-            button9.Size = new Size(70, 70);
-            button9.TabIndex = 6;
-            button9.Text = "1";
-            button9.UseVisualStyleBackColor = false;
+            btn1.BackColor = Color.White;
+            btn1.CausesValidation = false;
+            btn1.FlatAppearance.BorderColor = Color.Gray;
+            btn1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn1.Location = new Point(13, 176);
+            btn1.Name = "btn1";
+            btn1.Size = new Size(70, 70);
+            btn1.TabIndex = 6;
+            btn1.TabStop = false;
+            btn1.Text = "1";
+            btn1.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // btn6
             // 
-            button4.BackColor = Color.White;
-            button4.FlatAppearance.BorderColor = Color.Gray;
-            button4.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.Location = new Point(187, 94);
-            button4.Name = "button4";
-            button4.Size = new Size(70, 70);
-            button4.TabIndex = 5;
-            button4.Text = "6";
-            button4.UseVisualStyleBackColor = false;
+            btn6.BackColor = Color.White;
+            btn6.CausesValidation = false;
+            btn6.FlatAppearance.BorderColor = Color.Gray;
+            btn6.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn6.Location = new Point(187, 94);
+            btn6.Name = "btn6";
+            btn6.Size = new Size(70, 70);
+            btn6.TabIndex = 5;
+            btn6.TabStop = false;
+            btn6.Text = "6";
+            btn6.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // btn5
             // 
-            button5.BackColor = Color.White;
-            button5.FlatAppearance.BorderColor = Color.Gray;
-            button5.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.Location = new Point(100, 94);
-            button5.Name = "button5";
-            button5.Size = new Size(70, 70);
-            button5.TabIndex = 4;
-            button5.Text = "5";
-            button5.UseVisualStyleBackColor = false;
+            btn5.BackColor = Color.White;
+            btn5.CausesValidation = false;
+            btn5.FlatAppearance.BorderColor = Color.Gray;
+            btn5.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn5.Location = new Point(100, 94);
+            btn5.Name = "btn5";
+            btn5.Size = new Size(70, 70);
+            btn5.TabIndex = 4;
+            btn5.TabStop = false;
+            btn5.Text = "5";
+            btn5.UseVisualStyleBackColor = false;
             // 
-            // button6
+            // btn4
             // 
-            button6.BackColor = Color.White;
-            button6.FlatAppearance.BorderColor = Color.Gray;
-            button6.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.Location = new Point(13, 94);
-            button6.Name = "button6";
-            button6.Size = new Size(70, 70);
-            button6.TabIndex = 3;
-            button6.Text = "4";
-            button6.UseVisualStyleBackColor = false;
+            btn4.BackColor = Color.White;
+            btn4.CausesValidation = false;
+            btn4.FlatAppearance.BorderColor = Color.Gray;
+            btn4.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn4.Location = new Point(13, 94);
+            btn4.Name = "btn4";
+            btn4.Size = new Size(70, 70);
+            btn4.TabIndex = 3;
+            btn4.TabStop = false;
+            btn4.Text = "4";
+            btn4.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // btn9
             // 
-            button3.BackColor = Color.White;
-            button3.FlatAppearance.BorderColor = Color.Gray;
-            button3.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.Location = new Point(187, 12);
-            button3.Name = "button3";
-            button3.Size = new Size(70, 70);
-            button3.TabIndex = 2;
-            button3.Text = "9";
-            button3.UseVisualStyleBackColor = false;
+            btn9.BackColor = Color.White;
+            btn9.CausesValidation = false;
+            btn9.FlatAppearance.BorderColor = Color.Gray;
+            btn9.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn9.Location = new Point(187, 12);
+            btn9.Name = "btn9";
+            btn9.Size = new Size(70, 70);
+            btn9.TabIndex = 2;
+            btn9.TabStop = false;
+            btn9.Text = "9";
+            btn9.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btn8
             // 
-            button2.BackColor = Color.White;
-            button2.FlatAppearance.BorderColor = Color.Gray;
-            button2.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.Location = new Point(100, 12);
-            button2.Name = "button2";
-            button2.Size = new Size(70, 70);
-            button2.TabIndex = 1;
-            button2.Text = "8";
-            button2.UseVisualStyleBackColor = false;
+            btn8.BackColor = Color.White;
+            btn8.CausesValidation = false;
+            btn8.FlatAppearance.BorderColor = Color.Gray;
+            btn8.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn8.Location = new Point(100, 12);
+            btn8.Name = "btn8";
+            btn8.Size = new Size(70, 70);
+            btn8.TabIndex = 1;
+            btn8.TabStop = false;
+            btn8.Text = "8";
+            btn8.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btn7
             // 
-            button1.BackColor = Color.White;
-            button1.FlatAppearance.BorderColor = Color.Gray;
-            button1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(13, 12);
-            button1.Name = "button1";
-            button1.Size = new Size(70, 70);
-            button1.TabIndex = 0;
-            button1.Text = "7";
-            button1.UseVisualStyleBackColor = false;
+            btn7.BackColor = Color.White;
+            btn7.CausesValidation = false;
+            btn7.FlatAppearance.BorderColor = Color.Gray;
+            btn7.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn7.Location = new Point(13, 12);
+            btn7.Name = "btn7";
+            btn7.Size = new Size(70, 70);
+            btn7.TabIndex = 0;
+            btn7.TabStop = false;
+            btn7.Text = "7";
+            btn7.UseVisualStyleBackColor = false;
             // 
             // PaymentForm
             // 
@@ -614,13 +641,14 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ELICIAS GARDEN FOOD PARK";
             TopMost = true;
+            Load += PaymentForm_Load;
             KeyDown += PaymentForm_KeyDown;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel9.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvProducts).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvMop).EndInit();
             panel10.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
@@ -628,7 +656,7 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel4.ResumeLayout(false);
-            panel8.ResumeLayout(false);
+            numpadPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -643,31 +671,31 @@
         private ComboBox cboPaymentMethod;
         private Label label4;
         private Panel panel7;
-        private Label label2;
+        private Label lblAmountToPay;
         private Panel panel3;
         private Label lblChange;
         private Label label6;
         private Label lblBalance;
         private Label label3;
         private Panel panel4;
-        private Panel panel8;
-        private Button button10;
-        private Button button11;
-        private Button button12;
-        private Button button7;
-        private Button button8;
-        private Button button9;
-        private Button button4;
-        private Button button5;
-        private Button button6;
-        private Button button3;
-        private Button button2;
-        private Button button1;
+        private Panel numpadPanel;
+        private Button btnDelete;
+        private Button btnDot;
+        private Button btn0;
+        private Button btn3;
+        private Button btn2;
+        private Button btn1;
+        private Button btn6;
+        private Button btn5;
+        private Button btn4;
+        private Button btn9;
+        private Button btn8;
+        private Button btn7;
         private Panel paymentDetailsPanel;
-        private TextBox textBox1;
+        private TextBox txtAmount;
         private Label label5;
         private Panel panel10;
-        private DataGridView dgvProducts;
+        private DataGridView dgvMop;
         private DataGridViewTextBoxColumn mode;
         private DataGridViewTextBoxColumn productCategory;
         private DataGridViewTextBoxColumn productSubcategory;

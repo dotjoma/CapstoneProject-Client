@@ -93,59 +93,96 @@ namespace client.Forms
             chartBestSelling.ChartAreas.Clear();
             chartBestSelling.Titles.Clear();
 
-            // Create chart area with modern styling
-            ChartArea chartArea = new ChartArea("BestSellingChart");
-            chartArea.BackColor = Color.Transparent; // Transparent background
-            chartArea.AxisX.Title = "Menu Item";
-            chartArea.AxisY.Title = "Total Sold";
+            // Create chart area
+            ChartArea chartArea = new ChartArea("BestSellingChart")
+            {
+                BackColor = Color.Transparent // Transparent background
+            };
+            chartArea.AxisX.Title = "Menu Name";
+            chartArea.AxisY.Title = "Quantity Sold";
             chartArea.AxisY.LabelStyle.Format = "#,##0";
 
-            // Customize gridlines for a modern look
+            // Disable gridlines for a modern look
             chartArea.AxisX.MajorGrid.Enabled = false;
             chartArea.AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
 
             // Add chart area
             chartBestSelling.ChartAreas.Add(chartArea);
 
-            // Create data series with better colors
-            Series productSeries = new Series("Best-Selling Products");
-            productSeries.ChartType = SeriesChartType.Column; // Bar Chart
-            productSeries.Color = Color.FromArgb(52, 152, 219); // Modern blue
-            productSeries.BorderWidth = 2;
-            productSeries.IsValueShownAsLabel = true; // Show values on top of bars
-            productSeries.Font = new Font("Arial", 10, FontStyle.Bold);
-
-            // Add best-selling product data (Sorted Mock Data)
-            var products = new (string Name, int Sold)[]
+            // Best-selling individual items
+            Series productSeries = new Series("Best Selling Items")
             {
-                ("Burger", 250),
-                ("Fries", 320),
-                ("Milk Tea", 410),
-                ("Pizza", 380),
-                ("Coffee", 290)
-            }
-            .OrderByDescending(p => p.Sold) // Sort from highest to lowest
-            .ToArray();
+                ChartType = SeriesChartType.Column,
+                Color = Color.FromArgb(52, 152, 219), // Blue color
+                BorderWidth = 2,
+                IsValueShownAsLabel = false, // Hide values
+                Font = new Font("Arial", 9, FontStyle.Bold)
+            };
 
-            // Add products to chart dynamically
+            // Top-selling categories
+            Series categorySeries = new Series("Top Categories")
+            {
+                ChartType = SeriesChartType.Column,
+                Color = Color.FromArgb(231, 76, 60), // Red color
+                BorderWidth = 2,
+                IsValueShownAsLabel = false, // Hide values
+                Font = new Font("Arial", 9, FontStyle.Bold)
+            };
+
+            // Best-selling product data
+            var products = new (string Name, int Sold, int CategorySold)[]
+            {
+        ("Chicken Wings", 98, 120),
+        ("Extra Rice", 37, 90),
+        ("Burger", 18, 85),
+        ("Fried Chicken", 17, 110),
+        ("Pasta", 12, 50),
+        ("Pizza", 12, 45),
+        ("Coffee", 10, 40),
+        ("Smoothie", 9, 30),
+        ("Ice Cream", 8, 35),
+        ("Tacos", 8, 28),
+        ("Menu1", 15, 25),
+        ("Menu2", 20, 30),
+        ("Menu3", 25, 35),
+        ("Menu4", 30, 40),
+        ("Menu5", 35, 45)
+            };
+
+            // Add products dynamically
             foreach (var product in products)
             {
                 productSeries.Points.AddXY(product.Name, product.Sold);
+                categorySeries.Points.AddXY(product.Name, product.CategorySold);
             }
 
-            // Add series to chart
+            // Add both series to chart
             chartBestSelling.Series.Add(productSeries);
+            chartBestSelling.Series.Add(categorySeries);
 
-            // Set chart title with modern font
-            Title title = new Title("Best-Selling Menu Items", Docking.Top, new Font("Arial", 14, FontStyle.Bold), Color.Black);
+            // Set chart title
+            Title title = new Title("Best Selling Menus as of 2024", Docking.Top, new Font("Arial", 14, FontStyle.Bold), Color.Black);
             chartBestSelling.Titles.Add(title);
 
-            // Apply 3D effect for a modern look
-            chartBestSelling.ChartAreas[0].Area3DStyle.Enable3D = true;
+            // Adjust series to be side by side
+            chartBestSelling.ChartAreas[0].AxisX.Interval = 1;
+            chartBestSelling.ChartAreas[0].AxisX.LabelStyle.Angle = -30; // Slight rotation for readability
+            chartBestSelling.ChartAreas[0].AxisX.IsMarginVisible = true;
 
-            // Animation Effect
-            productSeries["DrawingStyle"] = "Cylinder"; // Cylinder effect for bars
-            productSeries["PointWidth"] = "0.6"; // Adjust width of bars
+            // Set bars side by side for comparison
+            chartBestSelling.Series[0]["PixelPointWidth"] = "40";
+            chartBestSelling.Series[1]["PixelPointWidth"] = "40";
+            chartBestSelling.Series[0]["DrawingStyle"] = "Cylinder"; // Adds 3D effect
+            chartBestSelling.Series[1]["DrawingStyle"] = "Cylinder";
+
+            // Add legend
+            chartBestSelling.Legends.Clear();
+            Legend legend = new Legend()
+            {
+                Docking = Docking.Top,
+                Font = new Font("Arial", 10, FontStyle.Bold)
+            };
+            chartBestSelling.Legends.Add(legend);
         }
 
         private void LoadProductPopularityChart()
