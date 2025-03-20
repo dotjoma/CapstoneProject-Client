@@ -202,5 +202,51 @@ namespace client.Controllers
                 return false;
             }
         }
+
+        public async Task<bool> Update(int productId, string name, string image, string price, int categoryId, int subcategoryId, int unitId, int isActive)
+        {
+            var editProductPacket = new Packet
+            {
+                Type = PacketType.UpdateProduct,
+                Data = new Dictionary<string, string>
+                {
+                    { "productId", productId.ToString() },
+                    { "pName", name },
+                    { "image", image },
+                    { "unitPrice", price },
+                    { "catId", categoryId.ToString() },
+                    { "scId", subcategoryId.ToString() },
+                    { "unitId", unitId.ToString() },
+                    { "isActive", isActive.ToString() }
+                }
+            };
+
+            var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(editProductPacket));
+
+            if (response == null)
+            {
+                MessageBox.Show("No response received from server", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (response.Data != null && response.Data.TryGetValue("success", out string? success) &&
+                success.Equals("true", StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show("Product update successful!", "Success",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+
+            // Handle error message if provided
+            string errorMessage = response.Data?.ContainsKey("message") == true
+                ? response.Data["message"]
+                : "Unknown error occurred while updating product";
+
+            MessageBox.Show($"Product update failed: {errorMessage}", "Error",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            return false;
+        }
     }
 }

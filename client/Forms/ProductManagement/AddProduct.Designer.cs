@@ -200,7 +200,7 @@
             btnCancel.FlatStyle = FlatStyle.Flat;
             btnCancel.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCancel.ForeColor = Color.Black;
-            btnCancel.Image = Properties.Resources.Cancel;
+            btnCancel.Image = Properties.Resources.Cancel222;
             btnCancel.ImageAlign = ContentAlignment.MiddleLeft;
             btnCancel.Location = new Point(324, 10);
             btnCancel.Name = "btnCancel";
@@ -221,7 +221,7 @@
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.Black;
-            btnSave.Image = Properties.Resources.Save;
+            btnSave.Image = Properties.Resources.Save12;
             btnSave.ImageAlign = ContentAlignment.MiddleLeft;
             btnSave.Location = new Point(486, 10);
             btnSave.Name = "btnSave";

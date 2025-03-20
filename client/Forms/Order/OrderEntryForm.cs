@@ -1276,7 +1276,7 @@ namespace client.Forms.Order
                 (loadingPanel.Width - messageLabel.Width) / 2,
                 panelBox.Bottom + 8
             );
-            messageLabel.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
+            messageLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular);
 
             panelBox.Controls.Add(pictureBox);
             loadingPanel.Controls.Add(panelBox);

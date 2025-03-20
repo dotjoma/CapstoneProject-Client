@@ -39,16 +39,12 @@ namespace client.Forms.ProductManagement
             new ProductHome().ShowDialog();
         }
 
-        private async void AddProduct_Load(object sender, EventArgs e)
+        private void AddProduct_Load(object sender, EventArgs e)
         {
             //this.ShowInTaskbar = false;
             try
             {
-                bool isInitialized = await InitializeComboboxes();
-                if (!isInitialized)
-                {
-                    LoggerHelper.Write("INIT COMBOBOXES DATA", "Failed to initialize comboboxes.");
-                }
+                InitializeComboboxes();
                 LoggerHelper.Write("INIT COMBOBOXES DATA", "Comboboxes initialized successfully.");
 
                 if (_selectedId > 0)
@@ -90,14 +86,41 @@ namespace client.Forms.ProductManagement
                 }
             }
 
+            //GetSubCategory();
             if (cboSubCategory.Items.Count > 0)
             {
-                int subCategoryIndex = cboSubCategory.Items.Cast<string>()
-                    .ToList()
-                    .FindIndex(item => item == CurrentSubCategory.GetSubategoryById(product.subcategoryId)?.scName);
-                if (subCategoryIndex >= 0)
+                var subCategoryName = CurrentSubCategory.GetSubategoryById(product.subcategoryId)?.scName;
+
+                var subCategory = CurrentSubCategory.GetSubategoryById(product.subcategoryId);
+                if (subCategory == null)
                 {
-                    cboSubCategory.SelectedIndex = subCategoryIndex;
+                    LoggerHelper.Write("SUBCATEGORY", $"No subcategory found for ID: {product.subcategoryId}");
+                }
+                else
+                {
+                    subCategoryName = subCategory.scName;
+                }
+
+                if (!string.IsNullOrEmpty(subCategoryName))
+                {
+                    int subCategoryIndex = cboSubCategory.Items.Cast<string>()
+                    .ToList()
+                    .FindIndex(item => string.Equals(item.Trim(),
+                        subCategoryName?.Trim(),
+                        StringComparison.OrdinalIgnoreCase));
+
+                    if (subCategoryIndex >= 0)
+                    {
+                        cboSubCategory.SelectedIndex = subCategoryIndex;
+                    }
+                    else
+                    {
+                        LoggerHelper.Write("SUBCATEGORY", $"Subcategory '{subCategoryName}' not found in ComboBox items.");
+                    }
+                }
+                else
+                {
+                    LoggerHelper.Write("SUBCATEGORY", "Subcategory name is null or empty.");
                 }
             }
 
@@ -113,13 +136,10 @@ namespace client.Forms.ProductManagement
                 }
             }
 
-            if (pbImage.Image != null)
-            {
-                pbImage.Image.Dispose();
-            }   
             Image? convertedImage = ConvertBase64ToImage(product.productImage);
             product.ProductImageObject = convertedImage;
             pbImage.Image = convertedImage ?? Properties.Resources.Add_Image;
+
             cbIsActive.Checked = product.isActive > 0;
         }
 
@@ -157,30 +177,18 @@ namespace client.Forms.ProductManagement
             Cursor = Cursors.Default;
         }
 
-        private async Task<bool> InitializeComboboxes()
+        private void InitializeComboboxes()
         {
             try
             {
-                bool unitInitialized = await _unitController.Get();
-                if (unitInitialized) GetUnit();
-
-                bool categoryInitialized = await _categoryController.Get();
-                if (categoryInitialized) GetCategory();
-
-                // Get ALL subcategories first
-                var allSubcategories = await _subCategoryController.GetAllSubcategory();
-                bool subCategoryInitialized = allSubcategories.Any();
-
-                LoggerHelper.Write("INIT DEBUG",
-                    $"Units: {unitInitialized}, Categories: {categoryInitialized}, " +
-                    $"Subcategories: {subCategoryInitialized} (Count: {allSubcategories.Count})");
-
-                return categoryInitialized && unitInitialized && subCategoryInitialized;
+                GetUnit();
+                GetCategory();
+                GetSubCategory();
             }
             catch (Exception ex)
             {
                 LoggerHelper.Write("INIT ERROR", $"Failed to initialize comboboxes: {ex.Message}");
-                return false;
+                return;
             }
         }
 
@@ -278,10 +286,13 @@ namespace client.Forms.ProductManagement
             {
                 using (MemoryStream ms = new MemoryStream())
                 {
-                    image.Save(ms, ImageFormat.Jpeg);
-                    byte[] imageBytes = ms.ToArray();
+                    // Clone the image to avoid GDI+ lock issues
+                    using (Bitmap clone = new Bitmap(image))
+                    {
+                        clone.Save(ms, ImageFormat.Png); // PNG format is more stable
+                    }
 
-                    return Convert.ToBase64String(imageBytes);
+                    return Convert.ToBase64String(ms.ToArray());
                 }
             }
             catch (Exception ex)
@@ -290,6 +301,7 @@ namespace client.Forms.ProductManagement
                 return string.Empty;
             }
         }
+
 
         private void pbImage_Click(object sender, EventArgs e)
         {
@@ -309,15 +321,20 @@ namespace client.Forms.ProductManagement
         private async void btnSave_Click(object sender, EventArgs e)
         {
             ToggleButton(false);
+            ShowLoading("Saving product...");
 
             string name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtName.Text.Trim().ToLower());
-            string image = pbImage.Image != null ? ConvertImageToBase64(pbImage.Image) : string.Empty;
+            //string image = pbImage.Image != null ? ConvertImageToBase64(pbImage.Image) : "";
+
+            string image = (pbImage.Image != null) ? ConvertImageToBase64(new Bitmap(pbImage.Image)) : string.Empty;
+
             string price = txtPrice.Text.Trim();
             int isActive = (cbIsActive.CheckState == CheckState.Checked) ? 1 : 0;
 
             if (!ValidateFormInputs(out int categoryId, out int subCategoryId, out int unitId))
             {
                 ToggleButton(true);
+                HideLoading();
                 return;
             }
 
@@ -325,8 +342,8 @@ namespace client.Forms.ProductManagement
             {
                 if (_selectedId > 0)
                 {
-                    MessageBox.Show("Edit product. Not implemented yet.");
-                    return;
+                    bool response = await _productController.Update(_selectedId, name, image, price, categoryId, subCategoryId, unitId, isActive);
+                    HandleResponse(response);
                 }
                 else
                 {
@@ -341,6 +358,7 @@ namespace client.Forms.ProductManagement
             finally
             {
                 ToggleButton(true);
+                HideLoading();
             }
         }
 
@@ -365,12 +383,31 @@ namespace client.Forms.ProductManagement
                 return false;
             }
 
-            if (CurrentSubCategory.Current == null)
+            if (cboSubCategory.SelectedIndex > 0)
             {
-                ShowValidationMessage("Select a subcategory.");
-                return false;
+                string? selectedSubCategory = cboSubCategory.SelectedItem as string;
+
+                if (!string.IsNullOrEmpty(selectedSubCategory))
+                {
+                    var subCategory = CurrentSubCategory.AllSubCategories
+                        .FirstOrDefault(sc => sc.scName == selectedSubCategory);
+
+                    if (subCategory != null)
+                    {
+                        subCategoryId = subCategory.scId;
+                    }
+                    else
+                    {
+                        ShowValidationMessage($"Invalid subcategory selected: {selectedSubCategory}");
+                        return false;
+                    }
+                }
+                else
+                {
+                    ShowValidationMessage("Select a subcategory.");
+                    return false;
+                }
             }
-            subCategoryId = CurrentSubCategory.Current.scId;
 
             if (CurrentUnit.Current == null)
             {
@@ -685,6 +722,81 @@ namespace client.Forms.ProductManagement
             bool hasDecimalPoint = textBox.Text.Contains(".");
 
             e.Handled = !isNumber && !isBackspace && !(isDecimalPoint && !hasDecimalPoint);
+        }
+
+        private Panel loadingPanel = new Panel();
+        private PictureBox pictureBox = new PictureBox();
+        private Panel panelBox = new Panel();
+        private Label messageLabel = new Label();
+
+        private void InitializeLoadingControls()
+        {
+            loadingPanel.BackColor = Color.White;
+            loadingPanel.BorderStyle = BorderStyle.None;
+            loadingPanel.Size = new Size(300, 150);
+            loadingPanel.Location = new Point(
+                (this.ClientSize.Width - loadingPanel.Width) / 2,
+                (this.ClientSize.Height - loadingPanel.Height) / 2
+            );
+
+            panelBox.Size = new Size(64, 64);
+            panelBox.Location = new Point(
+                (loadingPanel.Width - panelBox.Width) / 2,
+                20
+            );
+            panelBox.BorderStyle = BorderStyle.None;
+            panelBox.BackColor = Color.White;
+
+            pictureBox.Size = new Size(24, 24);
+            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox.Location = new Point(
+                (panelBox.Width - pictureBox.Width) / 2,
+                (panelBox.Height - pictureBox.Height) / 2
+            );
+
+            try
+            {
+                pictureBox.Image = Properties.Resources.loading_gif;
+            }
+            catch
+            {
+                pictureBox.BackColor = Color.LightGray;
+            }
+
+            messageLabel.AutoSize = false;
+            messageLabel.Size = new Size(280, 30);
+            messageLabel.TextAlign = ContentAlignment.MiddleCenter;
+            messageLabel.Location = new Point(
+                (loadingPanel.Width - messageLabel.Width) / 2,
+                panelBox.Bottom + 8
+            );
+            messageLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular);
+
+            panelBox.Controls.Add(pictureBox);
+            loadingPanel.Controls.Add(panelBox);
+            loadingPanel.Controls.Add(messageLabel);
+            this.Controls.Add(loadingPanel);
+        }
+
+        private void ShowLoading(string message)
+        {
+            if (!this.Controls.Contains(loadingPanel))
+            {
+                InitializeLoadingControls();
+            }
+
+            messageLabel.Text = message;
+            loadingPanel.BringToFront();
+            loadingPanel.Visible = true;
+            Application.DoEvents();
+        }
+
+        private void HideLoading()
+        {
+            if (loadingPanel != null)
+            {
+                loadingPanel.Visible = false;
+            }
         }
     }
 }
