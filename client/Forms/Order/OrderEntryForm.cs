@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -1061,7 +1062,11 @@ namespace client.Forms.Order
 
         private void btnPayment_Click(object sender, EventArgs e)
         {
+            if (!IsTransactionActive())
+                return;
 
+            var paymentForm = new PaymentForm();
+            paymentForm.ShowDialog();
         }
 
         private async Task StartNewTransaction()
@@ -1082,7 +1087,7 @@ namespace client.Forms.Order
                 }
             }
 
-            ToggleButton(true);
+            ShowLoading("Starting new transaction...");
 
             var numbers = await _transactionController.GenerateTransactionNumbers();
             if (numbers != null)
@@ -1092,6 +1097,10 @@ namespace client.Forms.Order
 
                 lblTransactionNo.Text = transNumber;
                 lblOrderNo.Text = orderNumber;
+
+                ToggleButton(true);
+
+                HideLoading();
 
                 LoggerHelper.Write("NEW TRANSACTION",
                     $"Started new transaction: {transNumber}, Order: {orderNumber}");
@@ -1105,6 +1114,7 @@ namespace client.Forms.Order
                     MessageBoxIcon.Error
                 );
                 ToggleButton(false);
+                HideLoading();
             }
         }
 
@@ -1148,9 +1158,10 @@ namespace client.Forms.Order
                     return;
             }
 
+            ShowLoading("Cancelling transaction...");
+
             RefreshTransaction();
             RemoveTransaction();
-            ToggleButton(false);
             isTransactionActive = false;
         }
 
@@ -1206,12 +1217,91 @@ namespace client.Forms.Order
                 lblTransactionNo.Text = "";
                 lblOrderNo.Text = "";
                 CurrentTransaction.Clear();
+                HideLoading();
+                ToggleButton(false);
             }
             else
             {
                 MessageBox.Show("Failed to remove transaction.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LoggerHelper.Write("TRANSACTION REMOVAL ERROR", $"Failed to remove transaction {transNum}.");
+                HideLoading();
+                ToggleButton(false);
+            }
+        }
+
+        private Panel loadingPanel = new Panel();
+        private PictureBox pictureBox = new PictureBox();
+        private Panel panelBox = new Panel();
+        private Label messageLabel = new Label();
+
+        private void InitializeLoadingControls()
+        {
+            loadingPanel.BackColor = Color.White;
+            loadingPanel.BorderStyle = BorderStyle.None;
+            loadingPanel.Size = new Size(300, 150);
+            loadingPanel.Location = new Point(
+                (this.ClientSize.Width - loadingPanel.Width) / 2,
+                (this.ClientSize.Height - loadingPanel.Height) / 2
+            );
+
+            panelBox.Size = new Size(64, 64);
+            panelBox.Location = new Point(
+                (loadingPanel.Width - panelBox.Width) / 2,
+                20
+            );
+            panelBox.BorderStyle = BorderStyle.None;
+            panelBox.BackColor = Color.White;
+
+            pictureBox.Size = new Size(24, 24);
+            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox.Location = new Point(
+                (panelBox.Width - pictureBox.Width) / 2,
+                (panelBox.Height - pictureBox.Height) / 2
+            );
+
+            try
+            {
+                pictureBox.Image = Properties.Resources.loading_gif;
+            }
+            catch
+            {
+                pictureBox.BackColor = Color.LightGray;
+            }
+
+            messageLabel.AutoSize = false;
+            messageLabel.Size = new Size(280, 30);
+            messageLabel.TextAlign = ContentAlignment.MiddleCenter;
+            messageLabel.Location = new Point(
+                (loadingPanel.Width - messageLabel.Width) / 2,
+                panelBox.Bottom + 8
+            );
+            messageLabel.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
+
+            panelBox.Controls.Add(pictureBox);
+            loadingPanel.Controls.Add(panelBox);
+            loadingPanel.Controls.Add(messageLabel);
+            this.Controls.Add(loadingPanel);
+        }
+
+        private void ShowLoading(string message)
+        {
+            if (!this.Controls.Contains(loadingPanel))
+            {
+                InitializeLoadingControls();
+            }
+
+            messageLabel.Text = message;
+            loadingPanel.BringToFront();
+            loadingPanel.Visible = true;
+            Application.DoEvents();
+        }
+
+        private void HideLoading()
+        {
+            if (loadingPanel != null)
+            {
+                loadingPanel.Visible = false;
             }
         }
 

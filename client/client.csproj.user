@@ -25,6 +25,9 @@
     <Compile Update="Forms\Order\OrderEntryForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Order\PaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\POS\POSUserControl\ProductFoodCategory\NewCategory.cs">
       <SubType>Form</SubType>
     </Compile>

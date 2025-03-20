@@ -87,6 +87,135 @@ namespace client.Controllers
             }
         }
 
+        public async Task<bool> ProcessTransaction(Transaction transaction, List<TransactionItem> items, Payment payment)
+        {
+            try
+            {
+                // Validate inputs before processing
+                if (!ValidateTransaction(transaction, items, payment))
+                {
+                    return false;
+                }
+
+                var packet = new Packet
+                {
+                    Type = PacketType.ProcessTransaction,
+                    Data = new Dictionary<string, string>
+                    {
+                        { "transId", transaction.TransId.ToString() },
+                        { "totalAmount", transaction.TotalAmount.ToString() },
+                        { "paymentMethod", payment.PaymentMethod ?? "" },
+                        { "items", JsonConvert.SerializeObject(items) },
+                        { "payment", JsonConvert.SerializeObject(payment) }
+                    }
+                };
+
+                LoggerHelper.Write("TRANSACTION", $"Sending transaction {transaction.TransId} for processing");
+                var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(packet));
+
+                if (response?.Success == true)
+                {
+                    LoggerHelper.Write("TRANSACTION",
+                        $"Successfully processed transaction {transaction.TransId}");
+                    return true;
+                }
+
+                LoggerHelper.Write("TRANSACTION",
+                    $"Failed to process transaction {transaction.TransId}: {response?.Message}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                LoggerHelper.Write("TRANSACTION", $"Error processing transaction: {ex.Message}");
+                return false;
+            }
+        }
+
+        private bool ValidateTransaction(Transaction transaction, List<TransactionItem> items, Payment payment)
+        {
+            // Validate Transaction
+            if (transaction == null)
+            {
+                LoggerHelper.Write("VALIDATION", "Transaction object is null");
+                return false;
+            }
+
+            if (transaction.TransId <= 0)
+            {
+                LoggerHelper.Write("VALIDATION", "Invalid transaction ID");
+                return false;
+            }
+
+            if (transaction.TotalAmount <= 0)
+            {
+                LoggerHelper.Write("VALIDATION", "Invalid total amount");
+                return false;
+            }
+
+            // Validate Items
+            if (items == null || !items.Any())
+            {
+                LoggerHelper.Write("VALIDATION", "No items in transaction");
+                return false;
+            }
+
+            foreach (var item in items)
+            {
+                if (item.Product == null)
+                {
+                    LoggerHelper.Write("VALIDATION", "Product object is null in transaction items");
+                    return false;
+                }
+
+                if (item.Quantity <= 0)
+                {
+                    LoggerHelper.Write("VALIDATION", $"Invalid quantity for product {item.Product.productName}");
+                    return false;
+                }
+
+                if (item.Price <= 0)
+                {
+                    LoggerHelper.Write("VALIDATION", $"Invalid price for product {item.Product.productName}");
+                    return false;
+                }
+            }
+
+            // Validate Payment
+            if (payment == null)
+            {
+                LoggerHelper.Write("VALIDATION", "Payment object is null");
+                return false;
+            }
+
+            return ValidatePayment(payment);
+        }
+
+        private bool ValidatePayment(Payment payment)
+        {
+            // List of valid payment methods
+            var validPaymentMethods = new[] { "cash", "card", "online", "gcash", "grabpay", "other" };
+
+            if (string.IsNullOrEmpty(payment.PaymentMethod) ||
+                !validPaymentMethods.Contains(payment.PaymentMethod.ToLower()))
+            {
+                LoggerHelper.Write("VALIDATION", $"Invalid payment method: {payment.PaymentMethod}");
+                return false;
+            }
+
+            if (payment.AmountPaid <= 0)
+            {
+                LoggerHelper.Write("VALIDATION", "Amount paid must be greater than 0");
+                return false;
+            }
+
+            if (payment.ChangeAmount < 0)
+            {
+                LoggerHelper.Write("VALIDATION", "Change amount cannot be negative");
+                return false;
+            }
+
+            return true;
+        }
 
         public async Task<bool> SaveTransaction(string transNumber, string orderNumber)
         {
