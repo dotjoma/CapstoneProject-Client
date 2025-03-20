@@ -58,9 +58,18 @@ namespace client.Forms.ProductManagement
             new AddProduct(_selectedId).ShowDialog();
         }
 
-        public async void RefreshDisplay()
+        public async Task RefreshDisplay()
         {
-            await _dataLoadingService.RefreshDataAsync(() => DisplayProducts());
+            ShowLoading("Refreshing products...");
+
+            try
+            {
+                await _dataLoadingService.RefreshDataAsync(() => DisplayProducts());
+            }
+            finally
+            {
+                HideLoading();
+            }
         }
 
         public void DisplayProducts()
@@ -178,9 +187,9 @@ namespace client.Forms.ProductManagement
 
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private async void btnRefresh_Click(object sender, EventArgs e)
         {
-            ProductHome.Instance?.RefreshDisplay();
+            await RefreshDisplay();
         }
 
         private void btnRefresh_MouseEnter(object sender, EventArgs e)
@@ -228,7 +237,7 @@ namespace client.Forms.ProductManagement
             if (_selectedId > 0)
             {
                 var confirmDelete = MessageBox.Show(
-                    "Are you sure you want to delete this product.",
+                    "Are you sure you want to delete this product?",
                     "Warning",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning
@@ -243,7 +252,8 @@ namespace client.Forms.ProductManagement
                         bool success = await _productController.Destroy(_selectedId);
                         if (success)
                         {
-                            RefreshDisplay();
+                            HideLoading();
+                            await RefreshDisplay();
 
                             MessageBox.Show("Product deleted successfully", "Success",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -251,6 +261,7 @@ namespace client.Forms.ProductManagement
                     }
                     catch (Exception ex)
                     {
+                        HideLoading();
                         MessageBox.Show("Error deleting product: " + ex.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }

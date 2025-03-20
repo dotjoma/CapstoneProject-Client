@@ -458,9 +458,8 @@
             // 
             button10.BackColor = Color.FromArgb(51, 51, 51);
             button10.FlatAppearance.BorderColor = Color.Gray;
-            button10.FlatStyle = FlatStyle.Flat;
             button10.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button10.Image = Properties.Resources.Clear_Symbol;
+            button10.Image = Properties.Resources.delete_24;
             button10.Location = new Point(187, 258);
             button10.Name = "button10";
             button10.Size = new Size(70, 70);
@@ -471,7 +470,6 @@
             // 
             button11.BackColor = Color.White;
             button11.FlatAppearance.BorderColor = Color.Gray;
-            button11.FlatStyle = FlatStyle.Flat;
             button11.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button11.Location = new Point(100, 258);
             button11.Name = "button11";
@@ -484,7 +482,6 @@
             // 
             button12.BackColor = Color.White;
             button12.FlatAppearance.BorderColor = Color.Gray;
-            button12.FlatStyle = FlatStyle.Flat;
             button12.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button12.Location = new Point(13, 258);
             button12.Name = "button12";
@@ -497,7 +494,6 @@
             // 
             button7.BackColor = Color.White;
             button7.FlatAppearance.BorderColor = Color.Gray;
-            button7.FlatStyle = FlatStyle.Flat;
             button7.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button7.Location = new Point(187, 176);
             button7.Name = "button7";
@@ -510,7 +506,6 @@
             // 
             button8.BackColor = Color.White;
             button8.FlatAppearance.BorderColor = Color.Gray;
-            button8.FlatStyle = FlatStyle.Flat;
             button8.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button8.Location = new Point(100, 176);
             button8.Name = "button8";
@@ -523,7 +518,6 @@
             // 
             button9.BackColor = Color.White;
             button9.FlatAppearance.BorderColor = Color.Gray;
-            button9.FlatStyle = FlatStyle.Flat;
             button9.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button9.Location = new Point(13, 176);
             button9.Name = "button9";
@@ -536,7 +530,6 @@
             // 
             button4.BackColor = Color.White;
             button4.FlatAppearance.BorderColor = Color.Gray;
-            button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.Location = new Point(187, 94);
             button4.Name = "button4";
@@ -549,7 +542,6 @@
             // 
             button5.BackColor = Color.White;
             button5.FlatAppearance.BorderColor = Color.Gray;
-            button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button5.Location = new Point(100, 94);
             button5.Name = "button5";
@@ -562,7 +554,6 @@
             // 
             button6.BackColor = Color.White;
             button6.FlatAppearance.BorderColor = Color.Gray;
-            button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button6.Location = new Point(13, 94);
             button6.Name = "button6";
@@ -575,7 +566,6 @@
             // 
             button3.BackColor = Color.White;
             button3.FlatAppearance.BorderColor = Color.Gray;
-            button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.Location = new Point(187, 12);
             button3.Name = "button3";
@@ -588,7 +578,6 @@
             // 
             button2.BackColor = Color.White;
             button2.FlatAppearance.BorderColor = Color.Gray;
-            button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.Location = new Point(100, 12);
             button2.Name = "button2";
@@ -601,7 +590,6 @@
             // 
             button1.BackColor = Color.White;
             button1.FlatAppearance.BorderColor = Color.Gray;
-            button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.Location = new Point(13, 12);
             button1.Name = "button1";
