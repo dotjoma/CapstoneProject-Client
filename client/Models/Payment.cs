@@ -8,13 +8,12 @@ namespace client.Models
 {
     public class Payment
     {
-        public int PaymentId { get; set; }
-        public int TransId { get; set; }
-        public decimal AmountPaid { get; set; }
-        public string? PaymentMethod { get; set; }
-        public string? ReferenceNumber { get; set; }
-        public DateTime PaymentTime { get; set; }
-        public decimal ChangeAmount { get; set; }
-        public string? Notes { get; set; }
+        public int paymentId { get; set; }
+        public int transId { get; set; }
+        public decimal amountPaid { get; set; }
+        public string? paymentMethod { get; set; }
+        public string? referenceNumber { get; set; }
+        public DateTime paymentTime { get; set; }
+        public decimal changeAmount { get; set; }
     }
 }

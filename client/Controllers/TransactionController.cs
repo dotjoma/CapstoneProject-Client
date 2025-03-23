@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using client.Models;
 using client.Services;
+using System.Diagnostics;
 
 namespace client.Controllers
 {
@@ -39,18 +40,21 @@ namespace client.Controllers
 
                 if (response.Success && response.Data != null)
                 {
-                    if (response.Data.TryGetValue("transNumber", out string? transNumber) &&
+                    if (response.Data.TryGetValue("transID", out string? transId) &&
+                        response.Data.TryGetValue("transNumber", out string? transNumber) &&
                         response.Data.TryGetValue("orderNumber", out string? orderNumber) &&
+                        !string.IsNullOrEmpty(transId) &&
                         !string.IsNullOrEmpty(transNumber) &&
                         !string.IsNullOrEmpty(orderNumber))
                     {
                         LoggerHelper.Write("SUCCESS", $"Transaction: {transNumber}, Order: {orderNumber} received.");
                         
-                        var transaction = new TransactionNumbers(transNumber, orderNumber);
+                        var transaction = new TransactionNumbers(int.Parse(transId), transNumber, orderNumber);
                         CurrentTransaction.SetCurrentTransaction(transaction);
 
                         return new TransactionNumbers
                         (
+                            int.Parse(transId),
                             transNumber,
                             orderNumber
                         );
@@ -70,10 +74,11 @@ namespace client.Controllers
 
                     LoggerHelper.Write("SUCCESS", $"Fallback successful - TransID: {nextTransId}, TransNumber: {fallbackTransNumber}, Order: {fallbackOrderNumber}");
                     return new TransactionNumbers
-                        (
-                            fallbackTransNumber,
-                            fallbackOrderNumber
-                        );
+                    (
+                        nextTransId,
+                        fallbackTransNumber,
+                        fallbackOrderNumber
+                    );
                 }
 
                 LoggerHelper.Write("ERROR", "Both primary and fallback methods failed");
@@ -87,51 +92,47 @@ namespace client.Controllers
             }
         }
 
-        public async Task<bool> ProcessTransaction(Transaction transaction, List<TransactionItem> items, Payment payment)
+        public async Task<bool> ProcessTransaction(TransactionProcessing trans)
         {
             try
             {
-                // Validate inputs before processing
-                if (!ValidateTransaction(transaction, items, payment))
+                var transactionData = new Dictionary<string, string>
                 {
-                    return false;
-                }
+                    { "transId", trans.TransId.ToString() },
+                    { "status", trans.status ?? "" },
+                    { "paymentMethod", trans.paymentMethod ?? "" }
+                };
 
                 var packet = new Packet
                 {
                     Type = PacketType.ProcessTransaction,
                     Data = new Dictionary<string, string>
                     {
-                        { "transId", transaction.TransId.ToString() },
-                        { "totalAmount", transaction.TotalAmount.ToString() },
-                        { "paymentMethod", payment.PaymentMethod ?? "" },
-                        { "items", JsonConvert.SerializeObject(items) },
-                        { "payment", JsonConvert.SerializeObject(payment) }
+                        { "transaction", JsonConvert.SerializeObject(transactionData) }
                     }
                 };
 
-                LoggerHelper.Write("TRANSACTION", $"Sending transaction {transaction.TransId} for processing");
+                LoggerHelper.Write("TRANSACTION", $"Sending transaction {trans.TransNo} to the server...");
+
                 var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(packet));
 
                 if (response?.Success == true)
                 {
-                    LoggerHelper.Write("TRANSACTION",
-                        $"Successfully processed transaction {transaction.TransId}");
+                    LoggerHelper.Write("SUCCESS", $"Transaction {trans.TransNo} processed successfully.");
                     return true;
                 }
 
-                LoggerHelper.Write("TRANSACTION",
-                    $"Failed to process transaction {transaction.TransId}: {response?.Message}");
+                LoggerHelper.Write("ERROR", $"Failed to process transaction {trans.TransNo}: {response?.Message}");
                 return false;
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("TRANSACTION", $"Error processing transaction: {ex.Message}");
+                LoggerHelper.Write("ERROR", $"Error processing transaction: {ex.Message}");
                 return false;
             }
         }
 
-        private bool ValidateTransaction(Transaction transaction, List<TransactionItem> items, Payment payment)
+        private bool ValidateTransaction(Transaction transaction, List<CartItem> items, Payment payment)
         {
             // Validate Transaction
             if (transaction == null)
@@ -161,7 +162,7 @@ namespace client.Controllers
 
             foreach (var item in items)
             {
-                if (item.Product == null)
+                if (item == null)
                 {
                     LoggerHelper.Write("VALIDATION", "Product object is null in transaction items");
                     return false;
@@ -169,13 +170,13 @@ namespace client.Controllers
 
                 if (item.Quantity <= 0)
                 {
-                    LoggerHelper.Write("VALIDATION", $"Invalid quantity for product {item.Product.productName}");
+                    LoggerHelper.Write("VALIDATION", $"Invalid quantity for product {item.productName}");
                     return false;
                 }
 
-                if (item.Price <= 0)
+                if (item.productPrice <= 0)
                 {
-                    LoggerHelper.Write("VALIDATION", $"Invalid price for product {item.Product.productName}");
+                    LoggerHelper.Write("VALIDATION", $"Invalid price for product {item.productName}");
                     return false;
                 }
             }
@@ -195,20 +196,20 @@ namespace client.Controllers
             // List of valid payment methods
             var validPaymentMethods = new[] { "cash", "card", "online", "gcash", "grabpay", "other" };
 
-            if (string.IsNullOrEmpty(payment.PaymentMethod) ||
-                !validPaymentMethods.Contains(payment.PaymentMethod.ToLower()))
+            if (string.IsNullOrEmpty(payment.paymentMethod) ||
+                !validPaymentMethods.Contains(payment.paymentMethod.ToLower()))
             {
-                LoggerHelper.Write("VALIDATION", $"Invalid payment method: {payment.PaymentMethod}");
+                LoggerHelper.Write("VALIDATION", $"Invalid payment method: {payment.paymentMethod}");
                 return false;
             }
 
-            if (payment.AmountPaid <= 0)
+            if (payment.amountPaid <= 0)
             {
                 LoggerHelper.Write("VALIDATION", "Amount paid must be greater than 0");
                 return false;
             }
 
-            if (payment.ChangeAmount < 0)
+            if (payment.changeAmount < 0)
             {
                 LoggerHelper.Write("VALIDATION", "Change amount cannot be negative");
                 return false;

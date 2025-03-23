@@ -8,52 +8,158 @@ namespace client.Models
 {
     public class AppliedDiscount
     {
-        private static decimal _totalDiscount = 0;
-        private static Dictionary<int, decimal> _discountedItems = new Dictionary<int, decimal>();
+        // Private fields for tracking discounts
+        private static decimal _totalDiscountedAmount = 0;
+        private static Dictionary<int, (decimal unitPrice, int quantity)> _discountedItems
+            = new Dictionary<int, (decimal unitPrice, int quantity)>();
 
-        public static decimal TotalDiscount => _totalDiscount;
-        public static Dictionary<int, decimal> DiscountedItems => _discountedItems;
+        private static string _discountName = string.Empty;
+        private static DiscountTypeEnum _discountType = DiscountTypeEnum.None;
+        private static decimal _discountValue = 0;
+        private static string _customerName = string.Empty;
+        private static string _idNumber = string.Empty;
+        private static bool _isDiscountSet = false;
+        private static bool _isCustomerSet = false;
+
+        public static string DiscountName => _discountName;
+        public static DiscountTypeEnum DiscountType => _discountType;
+        public static decimal DiscountValue => _discountValue;
+        public static decimal TotalDiscount => _totalDiscountedAmount;
+        public static string CustomerDetails => _customerName;
+        public static string CustomerIdNumber => _idNumber;
+        public static IReadOnlyDictionary<int, (decimal unitPrice, int quantity)> DiscountedItems => _discountedItems;
 
         public static event Action<decimal>? OnDiscountChanged;
+        public static event Action? OnDiscountAppliedSuccess;
 
-        public static void AddDiscount(int productId, decimal amount)
+        public enum DiscountTypeEnum
         {
-            if (_discountedItems.ContainsKey(productId))
+            None,
+            Percentage,
+            Fixed
+        }
+
+        public static void SetDiscountDetails(string name, DiscountTypeEnum type, decimal value)
+        {
+            if (value < 0)
             {
-                _discountedItems[productId] += amount;
+                MessageBox.Show("Discount value must be non-negative.", "Invalid Discount", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            _discountName = name;
+            _discountType = type;
+            _discountValue = value;
+            _isDiscountSet = true;
+
+            CalculateTotalDiscount();
+            CheckAndApplyDiscount();
+        }
+
+        public static void SetCustomerDiscountDetails(string customerName, string idNumber)
+        {
+            if (string.IsNullOrEmpty(customerName) || string.IsNullOrEmpty(idNumber))
+            {
+                MessageBox.Show("Customer name and ID number must not be empty.", "Invalid Details", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            _customerName = customerName;
+            _idNumber = idNumber;
+            _isCustomerSet = true;
+
+            CheckAndApplyDiscount();
+        }
+
+        private static void CheckAndApplyDiscount()
+        {
+            if (_isDiscountSet && _isCustomerSet)
+            {
+                OnDiscountAppliedSuccess?.Invoke();
+            }
+        }
+
+        // Calculate total discount based on the current discount type
+        private static void CalculateTotalDiscount()
+        {
+            lock (_discountedItems)
+            {
+                _totalDiscountedAmount = 0;
+
+                foreach (var item in _discountedItems)
+                {
+                    var (unitPrice, quantity) = item.Value;
+                    decimal totalPrice = unitPrice * quantity;
+
+                    if (_discountType == DiscountTypeEnum.Percentage)
+                    {
+                        _totalDiscountedAmount += totalPrice * (_discountValue / 100);
+                    }
+                    else if (_discountType == DiscountTypeEnum.Fixed)
+                    {
+                        _totalDiscountedAmount += _discountValue * quantity;
+                    }
+                }
+
+                OnDiscountChanged?.Invoke(_totalDiscountedAmount);
+            }
+        }
+
+        // Add a discount for a specific product
+        public static void AddDiscount(int productId, decimal unitPrice, int quantity)
+        {
+            if (_discountedItems.TryGetValue(productId, out var existing))
+            {
+                _discountedItems[productId] = (unitPrice, existing.quantity + quantity);
             }
             else
             {
-                _discountedItems[productId] = amount;
+                _discountedItems[productId] = (unitPrice, quantity);
             }
-
-            _totalDiscount += amount;
-            OnDiscountChanged?.Invoke(_totalDiscount);
         }
 
+        // Remove discount for a specific product
         public static void RemoveDiscount(int productId)
         {
-            if (_discountedItems.ContainsKey(productId))
-            {
-                _totalDiscount -= _discountedItems[productId];
-                _discountedItems.Remove(productId);
-            }
-
-            if (_totalDiscount < 0) _totalDiscount = 0;
-            OnDiscountChanged?.Invoke(_totalDiscount);
+            _discountedItems.Remove(productId);
         }
 
-        public static void SetDiscount(int productId, decimal amount)
+        // Increment the discount quantity for a product
+        public static void IncrementDiscount(int productId)
         {
-            RemoveDiscount(productId);
-            AddDiscount(productId, amount);
+            if (_discountedItems.TryGetValue(productId, out var existing))
+            {
+                _discountedItems[productId] = (existing.unitPrice, existing.quantity + 1);
+            }
         }
 
+        // Decrement the discount quantity for a product
+        public static void DecrementDiscount(int productId)
+        {
+            if (_discountedItems.TryGetValue(productId, out var existing))
+            {
+                if (existing.quantity > 1)
+                {
+                    _discountedItems[productId] = (existing.unitPrice, existing.quantity - 1);
+                }
+                else
+                {
+                    _discountedItems.Remove(productId);
+                }
+            }
+        }
+
+        // Reset all
         public static void Clear()
         {
-            _totalDiscount = 0;
+            _totalDiscountedAmount = 0;
             _discountedItems.Clear();
-            OnDiscountChanged?.Invoke(_totalDiscount);
+            _discountName = string.Empty;
+            _discountType = DiscountTypeEnum.None;
+            _discountValue = 0;
+            _customerName = string.Empty;
+            _idNumber = string.Empty;
+            OnDiscountChanged?.Invoke(0);
         }
     }
 }

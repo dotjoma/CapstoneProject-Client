@@ -8,11 +8,13 @@ namespace client.Models
 {
     public class TransactionNumbers
     {
+        public int TransId { get; set; }
         public string? TransNumber { get; set; }
         public string? OrderNumber { get; set; }
 
-        public TransactionNumbers(string transNumber, string orderNumber)
+        public TransactionNumbers(int transId, string transNumber, string orderNumber)
         {
+            TransId = transId;
             TransNumber = transNumber;
             OrderNumber = orderNumber;
         }

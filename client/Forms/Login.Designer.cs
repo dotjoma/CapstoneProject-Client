@@ -50,11 +50,13 @@
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            lblCredits = new Label();
             guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btnCreateAccount = new Guna.UI2.WinForms.Guna2HtmlLabel();
             timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             guna2Panel1.SuspendLayout();
+            guna2Panel2.SuspendLayout();
             SuspendLayout();
             // 
             // txtUsername
@@ -130,6 +132,7 @@
             cbRememberMe.UncheckedState.BorderThickness = 1;
             cbRememberMe.UncheckedState.FillColor = Color.White;
             cbRememberMe.UseVisualStyleBackColor = false;
+            cbRememberMe.Visible = false;
             // 
             // btnForgotPass
             // 
@@ -142,6 +145,7 @@
             btnForgotPass.Size = new Size(117, 16);
             btnForgotPass.TabIndex = 3;
             btnForgotPass.Text = "Forgot Password?";
+            btnForgotPass.Visible = false;
             btnForgotPass.MouseEnter += btnForgotPass_MouseEnter;
             btnForgotPass.MouseLeave += btnForgotPass_MouseLeave;
             // 
@@ -230,6 +234,7 @@
             // 
             // guna2Panel2
             // 
+            guna2Panel2.Controls.Add(lblCredits);
             guna2Panel2.CustomizableEdges = customizableEdges9;
             guna2Panel2.Dock = DockStyle.Bottom;
             guna2Panel2.FillColor = Color.FromArgb(98, 87, 87);
@@ -242,6 +247,18 @@
             guna2Panel2.MouseMove += guna2Panel2_MouseMove;
             guna2Panel2.MouseUp += guna2Panel2_MouseUp;
             // 
+            // lblCredits
+            // 
+            lblCredits.BackColor = Color.Transparent;
+            lblCredits.Dock = DockStyle.Fill;
+            lblCredits.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblCredits.ForeColor = Color.White;
+            lblCredits.Location = new Point(0, 0);
+            lblCredits.Name = "lblCredits";
+            lblCredits.Size = new Size(420, 40);
+            lblCredits.TabIndex = 0;
+            lblCredits.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // guna2HtmlLabel5
             // 
             guna2HtmlLabel5.BackColor = Color.Transparent;
@@ -253,6 +270,7 @@
             guna2HtmlLabel5.Size = new Size(158, 19);
             guna2HtmlLabel5.TabIndex = 11;
             guna2HtmlLabel5.Text = "New to Elicia's Garden?";
+            guna2HtmlLabel5.Visible = false;
             // 
             // btnCreateAccount
             // 
@@ -265,6 +283,7 @@
             btnCreateAccount.Size = new Size(133, 20);
             btnCreateAccount.TabIndex = 12;
             btnCreateAccount.Text = "Create an Account";
+            btnCreateAccount.Visible = false;
             btnCreateAccount.Click += btnCreateAccount_Click;
             btnCreateAccount.MouseEnter += btnCreateAccount_MouseEnter;
             btnCreateAccount.MouseLeave += btnCreateAccount_MouseLeave;
@@ -297,6 +316,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             guna2Panel1.ResumeLayout(false);
             guna2Panel1.PerformLayout();
+            guna2Panel2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -317,5 +337,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
         private Guna.UI2.WinForms.Guna2HtmlLabel btnCreateAccount;
         private System.Windows.Forms.Timer timer1;
+        private Label lblCredits;
     }
 }

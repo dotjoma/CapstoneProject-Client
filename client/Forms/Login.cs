@@ -42,6 +42,7 @@ namespace client.Forms
 
         private void Login_Load(object sender, EventArgs e)
         {
+            lblCredits.Text = $"© {DateAndTime.Now.Year} Elicia's Garden Food Park. All Rights Reserved.";
             timer1.Start();
             isPassHidden = true;
             txtPassword.PasswordChar = '●';

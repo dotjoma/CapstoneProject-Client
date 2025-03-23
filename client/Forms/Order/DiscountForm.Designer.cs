@@ -45,7 +45,7 @@
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(18, 22);
             label1.Name = "label1";
-            label1.Size = new Size(64, 28);
+            label1.Size = new Size(52, 21);
             label1.TabIndex = 0;
             label1.Text = "TYPE:";
             // 
@@ -58,8 +58,9 @@
             cboType.FormattingEnabled = true;
             cboType.Location = new Point(155, 19);
             cboType.Name = "cboType";
-            cboType.Size = new Size(204, 36);
+            cboType.Size = new Size(204, 29);
             cboType.TabIndex = 1;
+            cboType.SelectedIndexChanged += cboType_SelectedIndexChanged;
             // 
             // label2
             // 
@@ -67,7 +68,7 @@
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(18, 63);
             label2.Name = "label2";
-            label2.Size = new Size(77, 28);
+            label2.Size = new Size(62, 21);
             label2.TabIndex = 2;
             label2.Text = "NAME:";
             // 
@@ -79,7 +80,7 @@
             txtName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtName.Location = new Point(155, 63);
             txtName.Name = "txtName";
-            txtName.Size = new Size(204, 27);
+            txtName.Size = new Size(204, 22);
             txtName.TabIndex = 3;
             // 
             // txtIdNumber
@@ -90,7 +91,7 @@
             txtIdNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtIdNumber.Location = new Point(155, 104);
             txtIdNumber.Name = "txtIdNumber";
-            txtIdNumber.Size = new Size(204, 27);
+            txtIdNumber.Size = new Size(204, 22);
             txtIdNumber.TabIndex = 5;
             // 
             // label3
@@ -99,7 +100,7 @@
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(18, 104);
             label3.Name = "label3";
-            label3.Size = new Size(130, 28);
+            label3.Size = new Size(104, 21);
             label3.TabIndex = 4;
             label3.Text = "ID NUMBER:";
             // 
@@ -115,6 +116,7 @@
             // 
             // btnConfirmPayment
             // 
+            btnConfirmPayment.BackColor = Color.FromArgb(141, 110, 99);
             btnConfirmPayment.Dock = DockStyle.Fill;
             btnConfirmPayment.FlatAppearance.BorderSize = 0;
             btnConfirmPayment.FlatStyle = FlatStyle.Flat;
@@ -125,11 +127,14 @@
             btnConfirmPayment.Size = new Size(377, 37);
             btnConfirmPayment.TabIndex = 1;
             btnConfirmPayment.Text = "SAVE - [ENTER]";
-            btnConfirmPayment.UseVisualStyleBackColor = true;
+            btnConfirmPayment.UseVisualStyleBackColor = false;
+            btnConfirmPayment.Click += btnConfirmPayment_Click;
+            btnConfirmPayment.MouseEnter += btnConfirmPayment_MouseEnter;
+            btnConfirmPayment.MouseLeave += btnConfirmPayment_MouseLeave;
             // 
             // DiscountForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 18F);
+            AutoScaleDimensions = new SizeF(8F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(377, 215);
@@ -146,6 +151,9 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "DISCOUNT";
             TopMost = true;
+            Load += DiscountForm_Load;
+            KeyDown += DiscountForm_KeyDown;
+            KeyPress += DiscountForm_KeyPress;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

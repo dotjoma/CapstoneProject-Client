@@ -65,11 +65,17 @@ namespace client.Forms.Order
             }
 
             AppliedDiscount.OnDiscountChanged += UpdateDiscount;
+            AppliedDiscount.OnDiscountAppliedSuccess += DiscountAppliedSuccess;
         }
 
-        private void UpdateDiscount(decimal newDiscount)
+        private void UpdateDiscount(decimal updatedDiscount)
         {
-            //MessageBox.Show($"Discount applied: {newDiscount}", "Discount", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            lblDiscount.Text = updatedDiscount.ToString("F2");
+        }
+
+        private void DiscountAppliedSuccess()
+        {
+            
         }
 
         private async void OrderEntryForm_Load(object sender, EventArgs e)
@@ -632,7 +638,11 @@ namespace client.Forms.Order
         public void AddCartItem(Product product)
         {
             if (!IsTransactionActive())
+            {
+                MessageBox.Show("Please start a new transaction first!", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
 
             subTotal += product.productPrice;
             UpdateSubTotal();
@@ -784,6 +794,11 @@ namespace client.Forms.Order
                     subTotal -= product.productPrice;
                     CurrentCart.UpdateItemQuantity(product.productId, currentQuantity - 1);
                     UpdateSubTotal();
+
+                    if (AppliedDiscount.DiscountedItems.ContainsKey(product.productId))
+                    {
+                        AppliedDiscount.DecrementDiscount(product.productId);
+                    }
                 }
             };
 
@@ -795,6 +810,15 @@ namespace client.Forms.Order
                 subTotal += product.productPrice;
                 CurrentCart.UpdateItemQuantity(product.productId, currentQuantity + 1);
                 UpdateSubTotal();
+
+                if (AppliedDiscount.DiscountedItems.ContainsKey(product.productId))
+                {
+                    AppliedDiscount.IncrementDiscount(product.productId);
+                }
+                else
+                {
+                    AppliedDiscount.AddDiscount(product.productId, product.productPrice, 1);
+                }
             };
 
             var btnRemove = new Button
@@ -828,6 +852,7 @@ namespace client.Forms.Order
                 UpdateSubTotal();
                 CurrentCart.RemoveItem(product.productId);
                 AppliedDiscount.RemoveDiscount(product.productId);
+
                 cartContainerPanel.Controls.Remove(cartItem);
             };
 
@@ -914,11 +939,22 @@ namespace client.Forms.Order
             CloseWindow();
         }
 
+        private void ForceResetTransaction()
+        {
+            ShowLoading("Closing transaction...");
+            RemoveTransaction();
+        }
+
         private void CloseWindow()
         {
             if (MessageBox.Show("Are you sure you want to exit?", "Exit Application",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                if (IsTransactionActive())
+                {
+                    ForceResetTransaction();
+                }
+
                 Environment.Exit(0);
             }
         }
@@ -944,6 +980,16 @@ namespace client.Forms.Order
         }
 
         private void btnHome_Click(object sender, EventArgs e)
+        {
+            if (IsTransactionActive())
+            {
+                ForceResetTransaction();
+            }
+
+            NavigateToDashboard();
+        }
+
+        private void NavigateToDashboard()
         {
             this.Hide();
             new MainMenu().Show();
@@ -1083,7 +1129,12 @@ namespace client.Forms.Order
         private void btnPayment_Click(object sender, EventArgs e)
         {
             if (!IsTransactionActive())
+            {
+                MessageBox.Show("Please start a new transaction first!", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+            
 
             if (IsCartEmpty())
             {
@@ -1092,14 +1143,19 @@ namespace client.Forms.Order
                 return;
             }
 
-            var paymentForm = new PaymentForm(totalAmount);
+            var paymentForm = new PaymentForm(totalAmount, orderType);
             paymentForm.ShowDialog();
         }
 
         private async Task StartNewTransaction()
         {
             if (!IsTransactionActive())
+            {
+                MessageBox.Show("Please start a new transaction first!", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+            
 
             if (!IsCartEmpty())
             {
@@ -1163,8 +1219,6 @@ namespace client.Forms.Order
         {
             if (!isTransactionActive)
             {
-                MessageBox.Show("Please start a new transaction first!", "Warning",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -1249,7 +1303,12 @@ namespace client.Forms.Order
         private async void RemoveTransaction()
         {
             if (!IsTransactionActive())
+            {
+                MessageBox.Show("Please start a new transaction first!", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+            
 
             string transNum = CurrentTransaction.Current!.TransNumber!;
             var res = await _transactionController.RemoveTransaction(transNum);
@@ -1259,6 +1318,8 @@ namespace client.Forms.Order
                 RefreshTransaction();
                 HideLoading();
                 ToggleButton(false);
+                AppliedDiscount.Clear();
+                isTransactionActive = false;
             }
             else
             {
@@ -1372,7 +1433,13 @@ namespace client.Forms.Order
         private void btnDineIn_Click(object sender, EventArgs e)
         {
             if (!IsTransactionActive())
+            {
+                MessageBox.Show("Please start a new transaction first!", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+            
+
 
             SetActiveButton(sender as Button);
             UpdateOrderType("Dine-In");
@@ -1381,7 +1448,12 @@ namespace client.Forms.Order
         private void btnTakeOut_Click(object sender, EventArgs e)
         {
             if (!IsTransactionActive())
+            {
+                MessageBox.Show("Please start a new transaction first!", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+            
 
             SetActiveButton(sender as Button);
             UpdateOrderType("Take-Out");

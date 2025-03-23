@@ -130,6 +130,7 @@
             btnConfirmPayment.TabIndex = 0;
             btnConfirmPayment.Text = "CONFIRM PAYMENT - [ENTER]";
             btnConfirmPayment.UseVisualStyleBackColor = true;
+            btnConfirmPayment.Click += btnConfirmPayment_Click;
             // 
             // panel2
             // 

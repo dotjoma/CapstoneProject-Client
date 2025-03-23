@@ -1,4 +1,9 @@
-﻿using client.Helpers;
+﻿using client.Controllers;
+using client.Helpers;
+using client.Models;
+using client.Network;
+using client.Services;
+using client.Services.Auth;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,22 +13,32 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows.Forms;
 
 namespace client.Forms.Order
 {
     public partial class PaymentForm : Form
     {
+        private readonly TransactionController _transactionController = new TransactionController();
+
         private decimal totalAmount = 0.00m;
         private decimal amountPaid = 0.00m;
         private decimal totalAmountPaid = 0.00m;
-        private string paymentMethod = "Cash";
+        private decimal totalChange = 0.00m;
         private string referenceNumber = string.Empty;
+
+        // Transaction Details.
+        private string paymentMethod = "Cash";
+        private string status = "Unpaid";
+
+        // Order Details.
+        private string orderType = string.Empty;
 
         private string _selectedPayment = string.Empty;
 
         private TextBox? lastFocusedTextBox = new TextBox();
-        public PaymentForm(decimal totalAmount)
+        public PaymentForm(decimal totalAmount, string orderType)
         {
             InitializeComponent();
 
@@ -51,6 +66,7 @@ namespace client.Forms.Order
             btnRemove.Click += Numpad_Click;
 
             this.totalAmount = totalAmount;
+            this.orderType = orderType;
         }
         private void PaymentForm_Load(object sender, EventArgs e)
         {
@@ -162,7 +178,7 @@ namespace client.Forms.Order
 
             Label lblAmountSent = StyledLabel("Amount", true);
             TextBox txtAmountSent = StyledTextBox(false);
-      
+
             txtAmountSent.TextChanged += (s, e) =>
             {
                 if (decimal.TryParse(txtAmountSent.Text, out decimal value))
@@ -509,6 +525,7 @@ namespace client.Forms.Order
         {
             decimal change = totalAmountPaid - GetTotalAmount();
             decimal defChange = 0.00m;
+            totalChange = change;
             if (change > 0)
             {
                 lblChange.Text = $"{change:C}";
@@ -554,7 +571,7 @@ namespace client.Forms.Order
             }
             catch
             {
-               
+
             }
         }
         private void CalculateTotalAmountPaid()
@@ -583,6 +600,30 @@ namespace client.Forms.Order
             catch
             {
 
+            }
+        }
+
+        private async void btnConfirmPayment_Click(object sender, EventArgs e)
+        {
+            int transId = (int)Convert.ToUInt64(CurrentTransaction.Current?.TransId.ToString());
+            int cashierId = Convert.ToInt32(CurrentUser.Current?.UserId.ToString());
+
+            var transaction = new TransactionProcessing
+            { 
+                TransId = transId, 
+                status = "paid",
+                paymentMethod = paymentMethod
+            };
+
+            bool response = await _transactionController.ProcessTransaction(transaction);
+
+            if (response)
+            {
+                MessageBox.Show("Transaction processed successfully.");
+            }
+            else
+            {
+                MessageBox.Show("Failed to process transaction.");
             }
         }
     }

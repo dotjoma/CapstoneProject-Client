@@ -41,6 +41,7 @@
             pictureBox1 = new PictureBox();
             label1 = new Label();
             panel2 = new Panel();
+            btnSaveDraft = new Button();
             btnCancel = new Button();
             btnConfirmPayment = new Button();
             dgvCartItem = new DataGridView();
@@ -63,19 +64,17 @@
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(874, 60);
+            panel1.Size = new Size(765, 45);
             panel1.TabIndex = 6;
             // 
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.Left;
             pictureBox1.Image = Properties.Resources.discount_501;
-            pictureBox1.Location = new Point(14, 4);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Location = new Point(12, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(53, 53);
+            pictureBox1.Size = new Size(46, 40);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 28;
             pictureBox1.TabStop = false;
@@ -86,22 +85,44 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(62, 39, 35);
-            label1.Location = new Point(68, 10);
+            label1.Location = new Point(60, 8);
             label1.Name = "label1";
-            label1.Size = new Size(269, 41);
+            label1.Size = new Size(215, 32);
             label1.TabIndex = 27;
             label1.Text = "APPLY DISCOUNT";
             // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(239, 235, 233);
+            panel2.Controls.Add(btnSaveDraft);
             panel2.Controls.Add(btnCancel);
             panel2.Controls.Add(btnConfirmPayment);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 416);
+            panel2.Location = new Point(0, 312);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(874, 65);
+            panel2.Size = new Size(765, 49);
             panel2.TabIndex = 7;
+            // 
+            // btnSaveDraft
+            // 
+            btnSaveDraft.Anchor = AnchorStyles.Right;
+            btnSaveDraft.BackColor = Color.FromArgb(141, 110, 99);
+            btnSaveDraft.FlatAppearance.BorderColor = Color.Gray;
+            btnSaveDraft.FlatAppearance.BorderSize = 0;
+            btnSaveDraft.FlatStyle = FlatStyle.Flat;
+            btnSaveDraft.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSaveDraft.ForeColor = Color.White;
+            btnSaveDraft.Location = new Point(519, 8);
+            btnSaveDraft.Margin = new Padding(3, 2, 3, 2);
+            btnSaveDraft.Name = "btnSaveDraft";
+            btnSaveDraft.Size = new Size(87, 32);
+            btnSaveDraft.TabIndex = 4;
+            btnSaveDraft.Text = "Save Draft";
+            btnSaveDraft.UseVisualStyleBackColor = false;
+            btnSaveDraft.Click += btnSaveDraft_Click;
+            btnSaveDraft.MouseEnter += btnSaveDraft_MouseEnter;
+            btnSaveDraft.MouseLeave += btnSaveDraft_MouseLeave;
             // 
             // btnCancel
             // 
@@ -112,12 +133,14 @@
             btnCancel.FlatStyle = FlatStyle.Flat;
             btnCancel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCancel.ForeColor = Color.White;
-            btnCancel.Location = new Point(594, 11);
+            btnCancel.Location = new Point(426, 8);
+            btnCancel.Margin = new Padding(3, 2, 3, 2);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(99, 42);
+            btnCancel.Size = new Size(87, 32);
             btnCancel.TabIndex = 3;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnCancel_Click;
             btnCancel.MouseEnter += btnCancel_MouseEnter;
             btnCancel.MouseLeave += btnCancel_MouseLeave;
             // 
@@ -130,9 +153,10 @@
             btnConfirmPayment.FlatStyle = FlatStyle.Flat;
             btnConfirmPayment.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnConfirmPayment.ForeColor = Color.White;
-            btnConfirmPayment.Location = new Point(699, 11);
+            btnConfirmPayment.Location = new Point(612, 8);
+            btnConfirmPayment.Margin = new Padding(3, 2, 3, 2);
             btnConfirmPayment.Name = "btnConfirmPayment";
-            btnConfirmPayment.Size = new Size(163, 42);
+            btnConfirmPayment.Size = new Size(143, 32);
             btnConfirmPayment.TabIndex = 2;
             btnConfirmPayment.Text = "Apply Discount";
             btnConfirmPayment.UseVisualStyleBackColor = false;
@@ -177,8 +201,7 @@
             dgvCartItem.Dock = DockStyle.Fill;
             dgvCartItem.EnableHeadersVisualStyles = false;
             dgvCartItem.GridColor = Color.FromArgb(239, 235, 233);
-            dgvCartItem.Location = new Point(0, 60);
-            dgvCartItem.Margin = new Padding(3, 4, 3, 4);
+            dgvCartItem.Location = new Point(0, 45);
             dgvCartItem.MultiSelect = false;
             dgvCartItem.Name = "dgvCartItem";
             dgvCartItem.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
@@ -193,12 +216,11 @@
             dgvCartItem.RowHeadersVisible = false;
             dgvCartItem.RowHeadersWidth = 51;
             dgvCartItem.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCartItem.Size = new Size(874, 356);
+            dgvCartItem.Size = new Size(765, 267);
             dgvCartItem.TabIndex = 8;
             dgvCartItem.TabStop = false;
             dgvCartItem.CellContentClick += dgvCartItem_CellContentClick;
             dgvCartItem.CellValueChanged += dgvCartItem_CellValueChanged;
-            dgvCartItem.ColumnHeaderMouseClick += dgvCartItem_ColumnHeaderMouseClick;
             // 
             // checkBoxColumn
             // 
@@ -268,15 +290,14 @@
             // 
             // ApplyDiscount
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(874, 481);
+            ClientSize = new Size(765, 361);
             Controls.Add(dgvCartItem);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
             Name = "ApplyDiscount";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ELICIAS GARDEN FOOD PARK";
@@ -306,5 +327,6 @@
         private DataGridViewTextBoxColumn quantity;
         private DataGridViewTextBoxColumn unitprice;
         private DataGridViewTextBoxColumn totalPrice;
+        private Button btnSaveDraft;
     }
 }

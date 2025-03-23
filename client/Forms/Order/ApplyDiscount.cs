@@ -18,16 +18,20 @@ namespace client.Forms.Order
         {
             InitializeComponent();
             LoadCart();
-            //LoadCheckBox();
             this.KeyPreview = true;
             this.KeyDown += ApplyDiscount_KeyDown;
-            dgvCartItem.CellPainting += new DataGridViewCellPaintingEventHandler(dgvCartItem_CellPainting);
-            dgvCartItem.ColumnHeaderMouseClick += dgvCartItem_ColumnHeaderMouseClick;
+
+            AppliedDiscount.OnDiscountAppliedSuccess += DiscountAppliedSuccess;
         }
 
         private void ApplyDiscount_Load(object sender, EventArgs e)
         {
             LoadDiscountState();
+        }
+
+        private void DiscountAppliedSuccess()
+        {
+            this.Dispose();
         }
 
         public void LoadCart()
@@ -52,53 +56,9 @@ namespace client.Forms.Order
         {
 
         }
-
-        private void dgvCartItem_CellPainting(object? sender, DataGridViewCellPaintingEventArgs e)
-        {
-            if (e.RowIndex == -1 && e.ColumnIndex == 0)
-            {
-                e.PaintBackground(e.ClipBounds, false);
-                Point point = e.CellBounds.Location;
-                int offset = (e.CellBounds.Width - 14) / 2;
-                point.X += offset;
-                point.Y += (e.CellBounds.Height - 14) / 2;
-
-                CheckBox checkBox = new CheckBox();
-                checkBox.BackColor = Color.FromArgb(121, 85, 72);
-                checkBox.Size = new Size(14, 14);
-                checkBox.Location = point;
-                checkBox.CheckedChanged += new EventHandler(HeaderCheckBox_CheckedChanged);
-                dgvCartItem.Controls.Add(checkBox);
-
-                e.Handled = true;
-            }
-        }
-
-        private void HeaderCheckBox_CheckedChanged(object? sender, EventArgs e)
-        {
-            CheckBox? headerCheckBox = sender as CheckBox;
-            if (headerCheckBox == null) return;  // Early exit if the header checkbox is null
-
-            // Iterate through all rows in the DataGridView
-            foreach (DataGridViewRow row in dgvCartItem.Rows)
-            {
-                DataGridViewCheckBoxCell? checkBoxCell = row.Cells["checkBoxColumn"] as DataGridViewCheckBoxCell;
-
-                if (checkBoxCell != null)  // Only proceed if the checkbox cell exists
-                {
-                    checkBoxCell.Value = headerCheckBox.Checked;  // Set the checkbox state based on the header checkbox
-                }
-            }
-
-            // Refresh the DataGridView to reflect the changes visually
-            dgvCartItem.Refresh();
-        }
-
-
-
         private void dgvCartItem_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
         private void ApplyDiscount_KeyDown(object? sender, KeyEventArgs e)
         {
@@ -129,192 +89,145 @@ namespace client.Forms.Order
 
         private void btnConfirmPayment_Click(object sender, EventArgs e)
         {
-            var discountFrm = new DiscountForm();
-            discountFrm.ShowDialog();
+            bool isAnyCheckboxChecked = dgvCartItem.Rows.Cast<DataGridViewRow>()
+            .Any(row =>
+            {
+                var cellValue = row.Cells["checkBoxColumn"].Value;
+
+                return cellValue != null && (cellValue is bool boolValue ? boolValue : cellValue.ToString() == "True");
+            });
+
+            if (!isAnyCheckboxChecked)
+            {
+                MessageBox.Show("Please select at least one item before proceeding.",
+                    "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (var paymentFrm = new DiscountForm())
+            {
+                paymentFrm.ShowDialog();
+            }
         }
+
         private void LoadDiscountState()
         {
-            bool allChecked = true;
+            if (dgvCartItem.Rows.Count == 0) return;
 
             foreach (DataGridViewRow row in dgvCartItem.Rows)
             {
                 if (row.Cells["id"].Value == null) continue;
 
-                int productId = Convert.ToInt32(row.Cells["id"].Value);
+                if (!int.TryParse(row.Cells["id"].Value.ToString(), out int productId)) continue;
 
-                // Check if the product has a discount applied
-                if (AppliedDiscount.DiscountedItems.ContainsKey(productId))
-                {
-                    // Set the checkbox to true (checked)
-                    row.Cells["checkBoxColumn"].Value = true;
-                }
-                else
-                {
-                    // Set the checkbox to false (unchecked)
-                    row.Cells["checkBoxColumn"].Value = false;
-                    allChecked = false; // At least one checkbox is unchecked
-                }
-            }
+                bool hasDiscount = AppliedDiscount.DiscountedItems.TryGetValue(productId, out _);
 
-            // Update the "Select All" checkbox state based on the current state of row checkboxes
-            var headerCheckBox = dgvCartItem.Controls.OfType<CheckBox>().FirstOrDefault();
-            if (headerCheckBox != null)
-            {
-                headerCheckBox.Checked = allChecked; // Check if all are checked
-            }
-
-            // Refresh the DataGridView to ensure UI updates correctly
-            dgvCartItem.Refresh();
-        }
-        private void dgvCartItem_ColumnHeaderMouseClick(object? sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.RowIndex == -1 && dgvCartItem.Columns[e.ColumnIndex].Name == "checkBoxColumn")
-            {
-                bool allChecked = true;
-
-                // Check if all checkboxes are already checked
-                foreach (DataGridViewRow row in dgvCartItem.Rows)
-                {
-                    var cellValue = row.Cells["checkBoxColumn"].Value;
-                    if (cellValue == null || !Convert.ToBoolean(cellValue))
-                    {
-                        allChecked = false;
-                        break;  // Exit early if any checkbox is unchecked
-                    }
-                }
-
-                // Toggle the checkboxes based on the current state
-                bool newCheckedState = !allChecked;  // If all are checked, uncheck; otherwise, check all
-
-                // Update the state of all checkboxes in the column
-                foreach (DataGridViewRow row in dgvCartItem.Rows)
-                {
-                    // Explicitly set the checkbox value for all rows
-                    row.Cells["checkBoxColumn"].Value = newCheckedState;
-
-                    // Apply or remove discount based on the new checkbox state
-                    int productId = Convert.ToInt32(row.Cells["id"].Value);
-                    decimal productTotalPrice = Convert.ToDecimal(row.Cells["totalPrice"].Value);
-
-                    if (newCheckedState)
-                    {
-                        AppliedDiscount.AddDiscount(productId, productTotalPrice);
-                    }
-                    else
-                    {
-                        AppliedDiscount.RemoveDiscount(productId);
-                    }
-                }
-
-                // Update the header checkbox state
-                var headerCheckBox = dgvCartItem.Controls.OfType<CheckBox>().FirstOrDefault();
-                if (headerCheckBox != null)
-                {
-                    headerCheckBox.Checked = newCheckedState;
-                }
-
-                // Refresh the DataGridView to ensure UI updates correctly
-                dgvCartItem.Refresh();
+                row.Cells["checkBoxColumn"].Value = hasDiscount;
             }
         }
 
         private void dgvCartItem_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            // Check if the changed cell is in the checkbox column
-            if (e.RowIndex >= 0 && dgvCartItem.Columns[e.ColumnIndex].Name == "checkBoxColumn")
-            {
-                // Get the product ID and the total price for the clicked row
-                int productId = Convert.ToInt32(dgvCartItem.Rows[e.RowIndex].Cells["id"].Value);
+            if (e.RowIndex < 0 || dgvCartItem.Columns[e.ColumnIndex].Name != "checkBoxColumn")
+                return;
 
-                //decimal productTotalPrice = Convert.ToDecimal(dgvCartItem.Rows[e.RowIndex].Cells["totalPrice"].Value);
+            bool isChecked = Convert.ToBoolean(dgvCartItem.Rows[e.RowIndex].Cells["checkBoxColumn"].Value);
 
-                string priceText = dgvCartItem.Rows[e.RowIndex].Cells["totalPrice"].Value?.ToString() ?? "0.00";
-                priceText = new string(priceText.Where(c => Char.IsDigit(c) || c == '.').ToArray());
-
-                decimal productTotalPrice = 0;
-                if (!decimal.TryParse(priceText, out productTotalPrice))
-                {
-                    MessageBox.Show("Error: Total Price is not in a valid format.");
-                    return;
-                }
-
-                // Get the current value of the checkbox (whether it's checked or unchecked)
-                bool isChecked = Convert.ToBoolean(dgvCartItem.Rows[e.RowIndex].Cells["checkBoxColumn"].Value);
-
-                // Apply or remove the discount based on the new state
-                if (isChecked)
-                {
-                    AppliedDiscount.AddDiscount(productId, productTotalPrice);
-                }
-                else
-                {
-                    AppliedDiscount.RemoveDiscount(productId);
-                }
-
-                // Update the header checkbox state
-                bool allChecked = true;
-                foreach (DataGridViewRow row in dgvCartItem.Rows)
-                {
-                    var cellValue = row.Cells["checkBoxColumn"].Value;
-                    if (cellValue == null || !Convert.ToBoolean(cellValue))
-                    {
-                        allChecked = false;
-                        break;
-                    }
-                }
-
-                var headerCheckBox = dgvCartItem.Controls.OfType<CheckBox>().FirstOrDefault();
-                if (headerCheckBox != null)
-                {
-                    headerCheckBox.Checked = allChecked;
-                }
-
-                // Refresh the DataGridView to ensure UI updates correctly
-                dgvCartItem.Refresh();
-            }
+            ProcessDiscount(e.RowIndex, isChecked);
         }
 
         private void dgvCartItem_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && dgvCartItem.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn)
+            if (e.RowIndex < 0 || !(dgvCartItem.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn))
+                return;
+
+            var cell = dgvCartItem.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            if (cell == null) return;
+
+            bool newCheckedState = !(cell.Value is bool currentState && currentState);
+            cell.Value = newCheckedState;
+
+            ProcessDiscount(e.RowIndex, newCheckedState);
+
+            dgvCartItem.Refresh();
+        }
+
+        private void ProcessDiscount(int rowIndex, bool isChecked)
+        {
+            if (rowIndex < 0 || rowIndex >= dgvCartItem.Rows.Count)
+                return;
+
+            var row = dgvCartItem.Rows[rowIndex];
+
+            if (!int.TryParse(row.Cells["id"].Value?.ToString(), out int productId))
+                return;
+
+            if (!int.TryParse(row.Cells["quantity"].Value?.ToString(), out int quantity) || quantity <= 0)
+                quantity = 1;
+
+            string priceText = row.Cells["unitprice"].Value?.ToString() ?? "0.00";
+            priceText = new string(priceText.Where(c => Char.IsDigit(c) || c == '.').ToArray());
+
+            if (!decimal.TryParse(priceText, out decimal unitPrice))
             {
-                var cell = dgvCartItem.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                if (cell == null)
-                    return;
+                MessageBox.Show("Error: Total Price is not in a valid format.");
+                return;
+            }
 
-                bool isChecked = Convert.ToBoolean(cell.Value);
-
-                int productId = Convert.ToInt32(dgvCartItem.Rows[e.RowIndex].Cells[1].Value);
-                string? productName = dgvCartItem.Rows[e.RowIndex].Cells[2].Value?.ToString();
-                
-                string priceText = dgvCartItem.Rows[e.RowIndex].Cells[5].Value?.ToString() ?? "0.00";
-                priceText = new string(priceText.Where(c => Char.IsDigit(c) || c == '.').ToArray());
-
-                decimal productTotalPrice = 0;
-                if (!decimal.TryParse(priceText, out productTotalPrice))
+            if (isChecked)
+            {
+                if (!AppliedDiscount.DiscountedItems.ContainsKey(productId))
                 {
-                    MessageBox.Show("Error: Total Price is not in a valid format.");
-                    return;
+                    AppliedDiscount.AddDiscount(productId, unitPrice, quantity);
+                }
+            }
+            else
+            {
+                AppliedDiscount.RemoveDiscount(productId);
+            }
+        }
+
+
+        private void CancelAllDiscounts()
+        {
+            foreach (DataGridViewRow row in dgvCartItem.Rows)
+            {
+                if (row.Cells["checkBoxColumn"] is DataGridViewCheckBoxCell checkBoxCell)
+                {
+                    checkBoxCell.Value = false;
                 }
 
-                bool newCheckedState = !isChecked;
-
-                cell.Value = newCheckedState;
-
-                if (newCheckedState)
-                {
-                    AppliedDiscount.AddDiscount(productId, productTotalPrice);
-                    MessageBox.Show($"Checked ID: {productId}\n" +
-                        $"Checked Name: {productName}\n" +
-                        $"Total: {productTotalPrice:C}");
-                }
-                else
+                if (row.Cells["id"].Value != null && int.TryParse(row.Cells["id"].Value.ToString(), out int productId))
                 {
                     AppliedDiscount.RemoveDiscount(productId);
                 }
-
-                dgvCartItem.Refresh();
             }
+
+            AppliedDiscount.Clear();
+
+            dgvCartItem.Refresh();
+        }
+
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            CancelAllDiscounts();
+            this.Dispose();
+        }
+
+        private void btnSaveDraft_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void btnSaveDraft_MouseEnter(object sender, EventArgs e)
+        {
+            btnSaveDraft.BackColor = Color.FromArgb(109, 76, 65);
+        }
+
+        private void btnSaveDraft_MouseLeave(object sender, EventArgs e)
+        {
+            btnSaveDraft.BackColor = Color.FromArgb(141, 110, 99);
         }
     }
 }

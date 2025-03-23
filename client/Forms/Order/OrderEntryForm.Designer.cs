@@ -85,6 +85,7 @@
             label9 = new Label();
             panel3 = new Panel();
             panel10 = new Panel();
+            button1 = new Button();
             btnCancelTransaction = new Button();
             btnApplyDiscount = new Button();
             btnNewOrder = new Button();
@@ -94,7 +95,6 @@
             subCategoriesPanel = new FlowLayoutPanel();
             panel7 = new Panel();
             pnlContainer = new Panel();
-            button1 = new Button();
             pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
             panel6.SuspendLayout();
@@ -783,6 +783,18 @@
             panel10.Size = new Size(767, 67);
             panel10.TabIndex = 47;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.White;
+            button1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Location = new Point(595, 6);
+            button1.Name = "button1";
+            button1.Size = new Size(161, 54);
+            button1.TabIndex = 5;
+            button1.Text = "CHECK TOTAL DISCOUNT";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // btnCancelTransaction
             // 
             btnCancelTransaction.Anchor = AnchorStyles.Left;
@@ -892,18 +904,6 @@
             pnlContainer.Name = "pnlContainer";
             pnlContainer.Size = new Size(578, 452);
             pnlContainer.TabIndex = 49;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.White;
-            button1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(595, 6);
-            button1.Name = "button1";
-            button1.Size = new Size(161, 54);
-            button1.TabIndex = 5;
-            button1.Text = "CHECK TOTAL DISCOUNT";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
             // 
             // OrderEntryForm
             // 
