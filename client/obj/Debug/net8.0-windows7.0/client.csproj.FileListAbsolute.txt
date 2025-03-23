@@ -207,3 +207,22 @@ E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-wi
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.pdb
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.genruntimeconfig.cache
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\ref\client.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\HarfBuzzSharp.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\LiveChartsCore.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\LiveChartsCore.SkiaSharpView.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\LiveChartsCore.SkiaSharpView.WinForms.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\OpenTK.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\OpenTK.GLControl.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\SkiaSharp.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\SkiaSharp.HarfBuzz.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\SkiaSharp.Views.Desktop.Common.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\SkiaSharp.Views.WindowsForms.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\runtimes\osx\native\libHarfBuzzSharp.dylib
+C:\Users\raymond balondo\Desktop\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\runtimes\win-arm64\native\libHarfBuzzSharp.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\runtimes\win-x64\native\libHarfBuzzSharp.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\runtimes\win-x86\native\libHarfBuzzSharp.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\runtimes\osx\native\libSkiaSharp.dylib
+C:\Users\raymond balondo\Desktop\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\runtimes\win-arm64\native\libSkiaSharp.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\runtimes\win-x64\native\libSkiaSharp.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\CapstoneProject-Client\client\bin\Debug\net8.0-windows7.0\runtimes\win-x86\native\libSkiaSharp.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\CapstoneProject-Client\client\obj\Debug\net8.0-windows7.0\client.Forms.Order.DiscountForm.resources

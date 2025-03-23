@@ -69,7 +69,7 @@ namespace client.Forms.Order
 
         private void UpdateDiscount(decimal newDiscount)
         {
-            MessageBox.Show($"Discount applied: {newDiscount}", "Discount", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show($"Discount applied: {newDiscount}", "Discount", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private async void OrderEntryForm_Load(object sender, EventArgs e)
@@ -977,6 +977,14 @@ namespace client.Forms.Order
 
         private void btnApplyDiscount_Click(object sender, EventArgs e)
         {
+            if (IsCartEmpty())
+            {
+                MessageBox.Show("The cart is empty, Please add item to the cart first.", 
+                    "Cart Empty", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             new ApplyDiscount().ShowDialog();
         }
 

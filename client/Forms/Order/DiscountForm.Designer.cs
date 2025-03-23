@@ -45,19 +45,20 @@
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(18, 22);
             label1.Name = "label1";
-            label1.Size = new Size(52, 21);
+            label1.Size = new Size(64, 28);
             label1.TabIndex = 0;
             label1.Text = "TYPE:";
             // 
             // cboType
             // 
+            cboType.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             cboType.BackColor = Color.FromArgb(232, 232, 232);
             cboType.DropDownStyle = ComboBoxStyle.DropDownList;
             cboType.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cboType.FormattingEnabled = true;
-            cboType.Location = new Point(146, 19);
+            cboType.Location = new Point(155, 19);
             cboType.Name = "cboType";
-            cboType.Size = new Size(171, 29);
+            cboType.Size = new Size(204, 36);
             cboType.TabIndex = 1;
             // 
             // label2
@@ -66,28 +67,30 @@
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(18, 63);
             label2.Name = "label2";
-            label2.Size = new Size(62, 21);
+            label2.Size = new Size(77, 28);
             label2.TabIndex = 2;
             label2.Text = "NAME:";
             // 
             // txtName
             // 
+            txtName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtName.BackColor = Color.FromArgb(232, 232, 232);
             txtName.BorderStyle = BorderStyle.None;
             txtName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtName.Location = new Point(146, 63);
+            txtName.Location = new Point(155, 63);
             txtName.Name = "txtName";
-            txtName.Size = new Size(171, 22);
+            txtName.Size = new Size(204, 27);
             txtName.TabIndex = 3;
             // 
             // txtIdNumber
             // 
+            txtIdNumber.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtIdNumber.BackColor = Color.FromArgb(232, 232, 232);
             txtIdNumber.BorderStyle = BorderStyle.None;
             txtIdNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtIdNumber.Location = new Point(146, 104);
+            txtIdNumber.Location = new Point(155, 104);
             txtIdNumber.Name = "txtIdNumber";
-            txtIdNumber.Size = new Size(171, 22);
+            txtIdNumber.Size = new Size(204, 27);
             txtIdNumber.TabIndex = 5;
             // 
             // label3
@@ -96,7 +99,7 @@
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(18, 104);
             label3.Name = "label3";
-            label3.Size = new Size(104, 21);
+            label3.Size = new Size(130, 28);
             label3.TabIndex = 4;
             label3.Text = "ID NUMBER:";
             // 
@@ -107,7 +110,7 @@
             panel1.Dock = DockStyle.Bottom;
             panel1.Location = new Point(0, 178);
             panel1.Name = "panel1";
-            panel1.Size = new Size(335, 37);
+            panel1.Size = new Size(377, 37);
             panel1.TabIndex = 6;
             // 
             // btnConfirmPayment
@@ -119,17 +122,17 @@
             btnConfirmPayment.ForeColor = Color.White;
             btnConfirmPayment.Location = new Point(0, 0);
             btnConfirmPayment.Name = "btnConfirmPayment";
-            btnConfirmPayment.Size = new Size(335, 37);
+            btnConfirmPayment.Size = new Size(377, 37);
             btnConfirmPayment.TabIndex = 1;
-            btnConfirmPayment.Text = "CONFIRM PAYMENT - [ENTER]";
+            btnConfirmPayment.Text = "SAVE - [ENTER]";
             btnConfirmPayment.UseVisualStyleBackColor = true;
             // 
             // DiscountForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 16F);
+            AutoScaleDimensions = new SizeF(10F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(335, 215);
+            ClientSize = new Size(377, 215);
             Controls.Add(panel1);
             Controls.Add(txtIdNumber);
             Controls.Add(label3);
@@ -142,6 +145,7 @@
             Name = "DiscountForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "DISCOUNT";
+            TopMost = true;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
