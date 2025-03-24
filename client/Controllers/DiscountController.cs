@@ -64,13 +64,13 @@ namespace client.Controllers
 
                 if (response.Data?.ContainsKey("success") == true && response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                 {
-                    LoggerHelper.Write("CREATE DISCOUNT", $"Discount '{name}' created successfully");
+                    Logger.Write("CREATE DISCOUNT", $"Discount '{name}' created successfully");
                     return true;
                 }
                 else
                 {
                     string errorMessage = response.Data?.ContainsKey("message") == true ? response.Data["message"] : "Unknown error occurred while creating unit";
-                    LoggerHelper.Write("CREATE DISCOUNT", $"Server error: {errorMessage}");
+                    Logger.Write("CREATE DISCOUNT", $"Server error: {errorMessage}");
                     MessageBox.Show($"Failed to create discount: {errorMessage}", "Discount Creation Failed",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
@@ -78,7 +78,7 @@ namespace client.Controllers
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("CREATE DISCOUNT", $"Exception: {ex.Message}");
+                Logger.Write("CREATE DISCOUNT", $"Exception: {ex.Message}");
                 MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -97,7 +97,7 @@ namespace client.Controllers
             {
                 MessageBox.Show("No response received from server", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LoggerHelper.Write("RESPONSE", "No response received from server");
+                Logger.Write("RESPONSE", "No response received from server");
                 return new List<Discount>();
             }
 
@@ -113,7 +113,7 @@ namespace client.Controllers
 
                     CurrentDiscount.SetDiscounts(discounts ?? new List<Discount>());
 
-                    LoggerHelper.Write("GET ALL DISCOUNTS", discounts?.Count > 0
+                    Logger.Write("GET ALL DISCOUNTS", discounts?.Count > 0
                         ? $"Retrieved {discounts.Count} discounts successfully"
                         : "No discounts found");
 

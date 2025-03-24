@@ -10,8 +10,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Formats.Tar;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -65,19 +68,13 @@ namespace client.Forms.Order
             }
 
             AppliedDiscount.OnDiscountChanged += UpdateDiscount;
-            AppliedDiscount.OnDiscountAppliedSuccess += DiscountAppliedSuccess;
+            PaymentForm.PostPaymentProcess += ManagePostPayment;
         }
 
         private void UpdateDiscount(decimal updatedDiscount)
         {
             lblDiscount.Text = updatedDiscount.ToString("F2");
         }
-
-        private void DiscountAppliedSuccess()
-        {
-            
-        }
-
         private async void OrderEntryForm_Load(object sender, EventArgs e)
         {
             DataCache.ShouldRefreshCategories = true;
@@ -117,7 +114,7 @@ namespace client.Forms.Order
             {
                 MessageBox.Show($"Error loading data: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LoggerHelper.Write("LOAD ERROR", ex.Message);
+                Logger.Write("LOAD ERROR", ex.Message);
             }
         }
 
@@ -446,7 +443,7 @@ namespace client.Forms.Order
             {
                 MessageBox.Show($"Error displaying products: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LoggerHelper.Write("DISPLAY ERROR", ex.Message);
+                Logger.Write("DISPLAY ERROR", ex.Message);
             }
         }
 
@@ -494,7 +491,7 @@ namespace client.Forms.Order
             {
                 MessageBox.Show($"Error displaying products: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LoggerHelper.Write("DISPLAY ERROR", ex.Message);
+                Logger.Write("DISPLAY ERROR", ex.Message);
             }
         }
 
@@ -563,7 +560,7 @@ namespace client.Forms.Order
                     {
                         MessageBox.Show("No subcategories found for this category.", "Information",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoggerHelper.Write("SUBCATEGORY INFO", $"No subcategories found for category ID: {categoryId}");
+                        Logger.Write("SUBCATEGORY INFO", $"No subcategories found for category ID: {categoryId}");
                         subCategoriesPanel.Controls.Clear();
                     }
                 }
@@ -571,14 +568,14 @@ namespace client.Forms.Order
                 {
                     MessageBox.Show("Selected category not found.", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    LoggerHelper.Write("CATEGORY CLICK ERROR", $"Category ID {categoryId} not found in AllCategories.");
+                    Logger.Write("CATEGORY CLICK ERROR", $"Category ID {categoryId} not found in AllCategories.");
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error handling category click: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LoggerHelper.Write("CATEGORY CLICK ERROR", ex.Message);
+                Logger.Write("CATEGORY CLICK ERROR", ex.Message);
             }
         }
 
@@ -1025,8 +1022,8 @@ namespace client.Forms.Order
         {
             if (IsCartEmpty())
             {
-                MessageBox.Show("The cart is empty, Please add item to the cart first.", 
-                    "Cart Empty", 
+                MessageBox.Show("The cart is empty, Please add item to the cart first.",
+                    "Cart Empty",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -1116,7 +1113,7 @@ namespace client.Forms.Order
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("SEARCH ERROR", ex.Message);
+                Logger.Write("SEARCH ERROR", ex.Message);
             }
         }
 
@@ -1134,7 +1131,7 @@ namespace client.Forms.Order
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            
+
 
             if (IsCartEmpty())
             {
@@ -1155,7 +1152,7 @@ namespace client.Forms.Order
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            
+
 
             if (!IsCartEmpty())
             {
@@ -1193,7 +1190,7 @@ namespace client.Forms.Order
                 HideLoading();
                 btnNewOrder.Enabled = true;
 
-                LoggerHelper.Write("NEW TRANSACTION",
+                Logger.Write("NEW TRANSACTION",
                     $"Started new transaction: {transNumber}, Order: {orderNumber}");
             }
             else
@@ -1308,13 +1305,13 @@ namespace client.Forms.Order
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            
+
 
             string transNum = CurrentTransaction.Current!.TransNumber!;
             var res = await _transactionController.RemoveTransaction(transNum);
             if (res)
             {
-                LoggerHelper.Write("TRANSACTION REMOVED", $"Transaction {transNum} removed.");
+                Logger.Write("TRANSACTION REMOVED", $"Transaction {transNum} removed.");
                 RefreshTransaction();
                 HideLoading();
                 ToggleButton(false);
@@ -1325,7 +1322,7 @@ namespace client.Forms.Order
             {
                 MessageBox.Show("Failed to remove transaction.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LoggerHelper.Write("TRANSACTION REMOVAL ERROR", $"Failed to remove transaction {transNum}.");
+                Logger.Write("TRANSACTION REMOVAL ERROR", $"Failed to remove transaction {transNum}.");
                 HideLoading();
                 ToggleButton(false);
             }
@@ -1438,7 +1435,7 @@ namespace client.Forms.Order
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            
+
 
 
             SetActiveButton(sender as Button);
@@ -1453,7 +1450,7 @@ namespace client.Forms.Order
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            
+
 
             SetActiveButton(sender as Button);
             UpdateOrderType("Take-Out");
@@ -1471,33 +1468,67 @@ namespace client.Forms.Order
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        //private bool ValidateTransaction()
-        //{
-        //    if (!IsTransactionActive())
-        //        return false;
+        private void ManagePostPayment()
+        {
+            // TODO:
+            // Generate Receipt.
+            // Update Inventory.
+            ResetPOSAfterPayment(true);
+        }
+        public void ResetPOSAfterPayment(bool transactionSuccess)
+        {
+            try
+            {
+                // Clear current order data
+                CurrentOrder.Clear();
+                CurrentCart.ClearCart();
 
-        //    if (cartContainerPanel.Controls.Count <= 0)
-        //    {
-        //        MessageBox.Show("Cannot proceed with an empty cart!", "Warning",
-        //            MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return false;
-        //    }
+                // Release hardware resources
+                // cash drawer, thermal printer etc
 
-        //    if (selectedPaymentMethod == null)
-        //    {
-        //        MessageBox.Show("Please select a payment method!", "Warning",
-        //            MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return false;
-        //    }
+                // UI Reset
+                this.Invoke((System.Windows.Forms.MethodInvoker)delegate
+                {
+                    RefreshTransaction();
+                    ToggleButton(false);
+                });
 
-        //    if (totalAmountDue > customerPayment) // Check if payment is sufficient
-        //    {
-        //        MessageBox.Show("Insufficient payment amount!", "Warning",
-        //            MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return false;
-        //    }
+                if (IsTransactionActive()) isTransactionActive = false;
 
-        //    return true;
-        //}
+                // Log cleanup completion
+                Logger.LogPOSEvent(
+                    eventType: "SystemReset",
+                    details: $"After {(transactionSuccess ? "successful" : "failed")} payment",
+                    orderId: int.Parse(CurrentOrder.Current?.orderId.ToString() ?? "")
+                );
+
+                if (ShouldPerformMaintenance())
+                {
+                    PerformScheduledCleanup();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Write("RESET FAILURE", ex.Message);
+            }
+        }
+
+        private bool ShouldPerformMaintenance()
+        {
+            bool isOffPeak = DateTime.Now.Hour < 8 || DateTime.Now.Hour > 21;
+
+            //return isOffPeak &&
+            //      (TransactionCounter.DailyCount > 1000 ||
+            //       MemoryMonitor.IsHighUsage);
+
+            return isOffPeak;
+        }
+
+        private void PerformScheduledCleanup()
+        {
+            GC.Collect(GC.MaxGeneration, GCCollectionMode.Optimized);
+            //DatabaseConnectionPool.CleanIdleConnections();
+            //TempFileCleaner.Run();
+        }
     }
 }

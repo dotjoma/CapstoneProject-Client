@@ -48,9 +48,9 @@ namespace client.Forms.POS.POSUserControl
             bool isInitialized = await InitializeComboboxes();
             if (!isInitialized)
             {
-                LoggerHelper.Write("INIT COMBOBOXES DATA", "Failed to initialize comboboxes.");
+                Logger.Write("INIT COMBOBOXES DATA", "Failed to initialize comboboxes.");
             }
-            LoggerHelper.Write("INIT COMBOBOXES DATA", "Comboboxes initialized successfully.");
+            Logger.Write("INIT COMBOBOXES DATA", "Comboboxes initialized successfully.");
         }
 
         private async Task<bool> InitializeComboboxes()
@@ -124,7 +124,7 @@ namespace client.Forms.POS.POSUserControl
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("IMAGE CONVERSION", $"Error converting image to base64: {ex.Message}");
+                Logger.Write("IMAGE CONVERSION", $"Error converting image to base64: {ex.Message}");
                 return string.Empty;
             }
         }
@@ -184,12 +184,12 @@ namespace client.Forms.POS.POSUserControl
 
                 if (response)
                 {
-                    LoggerHelper.Write("RESPONSE", $"Received response: {response}");
+                    Logger.Write("RESPONSE", $"Received response: {response}");
                     ResetForm();
                 }
                 else
                 {
-                    LoggerHelper.Write("RESPONSE", $"No any response from the server.");
+                    Logger.Write("RESPONSE", $"No any response from the server.");
                 }
             }
             catch (Exception ex)
@@ -421,7 +421,7 @@ namespace client.Forms.POS.POSUserControl
                     }
                     else
                     {
-                        LoggerHelper.Write("CATEGORY", "Selected category is null or has invalid ID");
+                        Logger.Write("CATEGORY", "Selected category is null or has invalid ID");
                         MessageBox.Show("Invalid category selected", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         cboCategory.SelectedIndex = 0;
@@ -457,7 +457,7 @@ namespace client.Forms.POS.POSUserControl
                     }
                     else
                     {
-                        LoggerHelper.Write("SUBCATEGORY", "Skipped adding null or empty subcategory name");
+                        Logger.Write("SUBCATEGORY", "Skipped adding null or empty subcategory name");
                     }
                 }
             }
@@ -528,7 +528,7 @@ namespace client.Forms.POS.POSUserControl
                     }
                     else
                     {
-                        LoggerHelper.Write("UNIT", "Skipped adding null or empty unit name");
+                        Logger.Write("UNIT", "Skipped adding null or empty unit name");
                     }
                 }
             }
@@ -568,7 +568,7 @@ namespace client.Forms.POS.POSUserControl
                     }
                     else
                     {
-                        LoggerHelper.Write("UNIT", "Selected unit is null or has invalid ID");
+                        Logger.Write("UNIT", "Selected unit is null or has invalid ID");
                         MessageBox.Show("Invalid unit selected", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         cboUnit.SelectedIndex = 0;

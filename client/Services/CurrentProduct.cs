@@ -35,16 +35,16 @@ namespace client.Services
 
                 if (product == null)
                 {
-                    LoggerHelper.Write("PRODUCT", $"Product with ID {id} not found");
+                    Logger.Write("PRODUCT", $"Product with ID {id} not found");
                     return null;
                 }
 
-                LoggerHelper.Write("PRODUCT", $"Found product: {product.productName} (ID: {id})");
+                Logger.Write("PRODUCT", $"Found product: {product.productName} (ID: {id})");
                 return product;
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("PRODUCT", $"Error getting product with ID {id}: {ex.Message}");
+                Logger.Write("PRODUCT", $"Error getting product with ID {id}: {ex.Message}");
                 return null;
             }
         }

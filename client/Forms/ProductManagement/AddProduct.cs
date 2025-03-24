@@ -45,7 +45,7 @@ namespace client.Forms.ProductManagement
             try
             {
                 InitializeComboboxes();
-                LoggerHelper.Write("INIT COMBOBOXES DATA", "Comboboxes initialized successfully.");
+                Logger.Write("INIT COMBOBOXES DATA", "Comboboxes initialized successfully.");
 
                 if (_selectedId > 0)
                 {
@@ -63,7 +63,7 @@ namespace client.Forms.ProductManagement
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("EDIT PRODUCT", $"Error loading product: {ex.Message}");
+                Logger.Write("EDIT PRODUCT", $"Error loading product: {ex.Message}");
                 MessageBox.Show("Failed to load product details.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
@@ -94,7 +94,7 @@ namespace client.Forms.ProductManagement
                 var subCategory = CurrentSubCategory.GetSubategoryById(product.subcategoryId);
                 if (subCategory == null)
                 {
-                    LoggerHelper.Write("SUBCATEGORY", $"No subcategory found for ID: {product.subcategoryId}");
+                    Logger.Write("SUBCATEGORY", $"No subcategory found for ID: {product.subcategoryId}");
                 }
                 else
                 {
@@ -115,12 +115,12 @@ namespace client.Forms.ProductManagement
                     }
                     else
                     {
-                        LoggerHelper.Write("SUBCATEGORY", $"Subcategory '{subCategoryName}' not found in ComboBox items.");
+                        Logger.Write("SUBCATEGORY", $"Subcategory '{subCategoryName}' not found in ComboBox items.");
                     }
                 }
                 else
                 {
-                    LoggerHelper.Write("SUBCATEGORY", "Subcategory name is null or empty.");
+                    Logger.Write("SUBCATEGORY", "Subcategory name is null or empty.");
                 }
             }
 
@@ -148,8 +148,8 @@ namespace client.Forms.ProductManagement
             if (string.IsNullOrEmpty(base64String))
                 return null;
 
-            LoggerHelper.Write("BASE64 LENGTH", $"Base64 string length: {base64String.Length}");
-            LoggerHelper.Write("BASE64 END", $"Base64 string end: {base64String.Substring(Math.Max(0, base64String.Length - 50))}");
+            Logger.Write("BASE64 LENGTH", $"Base64 string length: {base64String.Length}");
+            Logger.Write("BASE64 END", $"Base64 string end: {base64String.Substring(Math.Max(0, base64String.Length - 50))}");
 
             try
             {
@@ -162,7 +162,7 @@ namespace client.Forms.ProductManagement
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("IMAGE CONVERSION", $"Error converting base64 to image: {ex.Message}");
+                Logger.Write("IMAGE CONVERSION", $"Error converting base64 to image: {ex.Message}");
                 return null;
             }
         }
@@ -187,7 +187,7 @@ namespace client.Forms.ProductManagement
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("INIT ERROR", $"Failed to initialize comboboxes: {ex.Message}");
+                Logger.Write("INIT ERROR", $"Failed to initialize comboboxes: {ex.Message}");
                 return;
             }
         }
@@ -275,7 +275,7 @@ namespace client.Forms.ProductManagement
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("IMAGE EQUAL", $"Error comparing images: {ex.Message}");
+                Logger.Write("IMAGE EQUAL", $"Error comparing images: {ex.Message}");
                 return false;
             }
         }
@@ -293,22 +293,22 @@ namespace client.Forms.ProductManagement
             }
             catch (ArgumentException ex)
             {
-                LoggerHelper.Write("IMAGE CONVERSION", $"Argument Exception: {ex.Message}");
+                Logger.Write("IMAGE CONVERSION", $"Argument Exception: {ex.Message}");
                 return string.Empty;
             }
             catch (UnauthorizedAccessException ex)
             {
-                LoggerHelper.Write("IMAGE CONVERSION", $"Unauthorized Access: {ex.Message}");
+                Logger.Write("IMAGE CONVERSION", $"Unauthorized Access: {ex.Message}");
                 return string.Empty;
             }
             catch (IOException ex)
             {
-                LoggerHelper.Write("IMAGE CONVERSION", $"IO Error: {ex.Message}");
+                Logger.Write("IMAGE CONVERSION", $"IO Error: {ex.Message}");
                 return string.Empty;
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("IMAGE CONVERSION", $"General Error: {ex.Message}");
+                Logger.Write("IMAGE CONVERSION", $"General Error: {ex.Message}");
                 return string.Empty;
             }
         }
@@ -436,7 +436,7 @@ namespace client.Forms.ProductManagement
             {
                 ProductHome.Instance?.RefreshDisplay();
                 CleanForm();
-                LoggerHelper.Write("RESPONSE", $"Received response: {response}");
+                Logger.Write("RESPONSE", $"Received response: {response}");
             }
         }
 
@@ -483,27 +483,27 @@ namespace client.Forms.ProductManagement
 
         public void GetSubCategory()
         {
-            LoggerHelper.Write("SUBCATEGORY DEBUG", "Starting GetSubCategory method");
+            Logger.Write("SUBCATEGORY DEBUG", "Starting GetSubCategory method");
 
             cboSubCategory.Items.Clear();
             cboSubCategory.Items.Add("Select SubCategory");
 
             int selectedCategoryId = CurrentCategory.Current?.Id ?? 0;
-            LoggerHelper.Write("SUBCATEGORY DEBUG", $"Selected Category ID: {selectedCategoryId}");
+            Logger.Write("SUBCATEGORY DEBUG", $"Selected Category ID: {selectedCategoryId}");
 
-            LoggerHelper.Write("SUBCATEGORY DEBUG",
+            Logger.Write("SUBCATEGORY DEBUG",
                 $"Total subcategories in AllSubCategories: {CurrentSubCategory.AllSubCategories.Count}");
 
             var subcategories = CurrentSubCategory.AllSubCategories
                 .Where(sc => sc.catId == selectedCategoryId)
                 .ToList();
 
-            LoggerHelper.Write("SUBCATEGORY DEBUG",
+            Logger.Write("SUBCATEGORY DEBUG",
                 $"Found {subcategories.Count} subcategories for category {selectedCategoryId}");
 
             foreach (var sc in CurrentSubCategory.AllSubCategories)
             {
-                LoggerHelper.Write("SUBCATEGORY DEBUG",
+                Logger.Write("SUBCATEGORY DEBUG",
                     $"Subcategory - ID: {sc.scId}, CategoryID: {sc.catId}, Name: {sc.scName}");
             }
 
@@ -512,20 +512,20 @@ namespace client.Forms.ProductManagement
                 if (subcategory != null && !string.IsNullOrEmpty(subcategory.scName))
                 {
                     cboSubCategory.Items.Add(subcategory.scName);
-                    LoggerHelper.Write("SUBCATEGORY DEBUG", $"Added subcategory: {subcategory.scName}");
+                    Logger.Write("SUBCATEGORY DEBUG", $"Added subcategory: {subcategory.scName}");
                 }
             }
 
             cboSubCategory.Items.Add("+ Add SubCategory");
             cboSubCategory.SelectedIndex = 0;
 
-            LoggerHelper.Write("SUBCATEGORY DEBUG",
+            Logger.Write("SUBCATEGORY DEBUG",
                 $"Final combobox items count: {cboSubCategory.Items.Count}");
         }
 
         private void cboCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoggerHelper.Write("CATEGORY DEBUG", $"Category selection changed. Index: {cboCategory.SelectedIndex}");
+            Logger.Write("CATEGORY DEBUG", $"Category selection changed. Index: {cboCategory.SelectedIndex}");
 
             if (cboCategory.SelectedIndex == 0)
             {
@@ -554,19 +554,19 @@ namespace client.Forms.ProductManagement
                 try
                 {
                     var selectedCategory = CurrentCategory.AllCategories[cboCategory.SelectedIndex - 1];
-                    LoggerHelper.Write("CATEGORY DEBUG",
+                    Logger.Write("CATEGORY DEBUG",
                         $"Selected category object - Name: {selectedCategory?.Name}, ID: {selectedCategory?.Id}");
 
                     if (selectedCategory != null && selectedCategory.Id > 0)
                     {
                         CurrentCategory.SetCurrentCategory(selectedCategory);
-                        LoggerHelper.Write("CATEGORY DEBUG",
+                        Logger.Write("CATEGORY DEBUG",
                             $"Set current category: {selectedCategory.Name} (ID: {selectedCategory.Id})");
                         GetSubCategory();
                     }
                     else
                     {
-                        LoggerHelper.Write("CATEGORY DEBUG", "Selected category is null or has invalid ID");
+                        Logger.Write("CATEGORY DEBUG", "Selected category is null or has invalid ID");
                         MessageBox.Show("Invalid category selected", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         cboCategory.SelectedIndex = 0;
@@ -574,7 +574,7 @@ namespace client.Forms.ProductManagement
                 }
                 catch (Exception ex)
                 {
-                    LoggerHelper.Write("CATEGORY ERROR", $"Error selecting category: {ex.Message}");
+                    Logger.Write("CATEGORY ERROR", $"Error selecting category: {ex.Message}");
                     MessageBox.Show("Error selecting category: " + ex.Message, "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     cboCategory.SelectedIndex = 0;
@@ -649,7 +649,7 @@ namespace client.Forms.ProductManagement
                     }
                     else
                     {
-                        LoggerHelper.Write("UNIT", "Skipped adding null or empty unit name");
+                        Logger.Write("UNIT", "Skipped adding null or empty unit name");
                     }
                 }
             }
@@ -690,7 +690,7 @@ namespace client.Forms.ProductManagement
                     }
                     else
                     {
-                        LoggerHelper.Write("UNIT", "Selected unit is null or has invalid ID");
+                        Logger.Write("UNIT", "Selected unit is null or has invalid ID");
                         MessageBox.Show("Invalid unit selected", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         cboUnit.SelectedIndex = 0;

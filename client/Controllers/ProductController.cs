@@ -34,7 +34,7 @@ namespace client.Controllers
                     Data = new Dictionary<string, string>()
                 };
 
-                LoggerHelper.Write("GET PRODUCT", "Sending request to server");
+                Logger.Write("GET PRODUCT", "Sending request to server");
 
                 var options = new JsonSerializerOptions
                 {
@@ -58,7 +58,7 @@ namespace client.Controllers
                         if (products != null && products.Count > 0)
                         {
                             CurrentProduct.SetProducts(products);
-                            LoggerHelper.Write("GET PRODUCT", $"Successfully retrieved {products.Count} products");
+                            Logger.Write("GET PRODUCT", $"Successfully retrieved {products.Count} products");
                             return true;
                         }
                     }
@@ -68,14 +68,14 @@ namespace client.Controllers
                     string errorMessage = response?.Data?.ContainsKey("message") == true
                         ? response.Data["message"]
                         : "Unknown error occurred";
-                    LoggerHelper.Write("GET PRODUCT", $"Server returned error: {errorMessage}");
+                    Logger.Write("GET PRODUCT", $"Server returned error: {errorMessage}");
                 }
 
                 return false;
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("GET PRODUCT", $"Error: {ex.Message}");
+                Logger.Write("GET PRODUCT", $"Error: {ex.Message}");
                 MessageBox.Show($"Error retrieving products: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -92,7 +92,7 @@ namespace client.Controllers
                     Data = new Dictionary<string, string>()
                 };
 
-                LoggerHelper.Write("GET ALL PRODUCTS", "Sending request to server");
+                Logger.Write("GET ALL PRODUCTS", "Sending request to server");
 
                 var options = new JsonSerializerOptions
                 {
@@ -116,7 +116,7 @@ namespace client.Controllers
                         if (products != null && products.Count > 0)
                         {
                             CurrentProduct.SetProducts(products);
-                            LoggerHelper.Write("GET ALL PRODUCTS", $"Successfully retrieved {products.Count} products");
+                            Logger.Write("GET ALL PRODUCTS", $"Successfully retrieved {products.Count} products");
                             return products;
                         }
                     }
@@ -126,14 +126,14 @@ namespace client.Controllers
                     string errorMessage = response?.Data?.ContainsKey("message") == true
                         ? response.Data["message"]
                         : "Unknown error occurred";
-                    LoggerHelper.Write("GET ALL PRODUCTS", $"Server returned error: {errorMessage}");
+                    Logger.Write("GET ALL PRODUCTS", $"Server returned error: {errorMessage}");
                     MessageBox.Show($"Failed to retrieve products: {errorMessage}", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("GET ALL PRODUCTS", $"Error: {ex.Message}");
+                Logger.Write("GET ALL PRODUCTS", $"Error: {ex.Message}");
                 MessageBox.Show($"Error retrieving products: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

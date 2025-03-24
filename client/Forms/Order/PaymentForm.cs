@@ -22,23 +22,30 @@ namespace client.Forms.Order
     {
         private readonly TransactionController _transactionController = new TransactionController();
 
-        private decimal totalAmount = 0.00m;
-        private decimal amountPaid = 0.00m;
-        private decimal totalAmountPaid = 0.00m;
-        private decimal totalChange = 0.00m;
-        private string referenceNumber = string.Empty;
+        private decimal _totalAmount = 0.00m;
+        private decimal _amountPaid = 0.00m;
+        private decimal _totalAmountPaid = 0.00m;
+        private decimal _totalChange = 0.00m;
+        private string _referenceNumber = string.Empty;
 
         // Transaction Details.
-        private string paymentMethod = "Cash";
-        private string status = "Unpaid";
+        private string? _paymentMethod = "cash";
 
         // Order Details.
-        private string orderType = string.Empty;
+        private string _orderType = string.Empty;
 
         private string _selectedPayment = string.Empty;
 
         private TextBox? lastFocusedTextBox = new TextBox();
-        public PaymentForm(decimal totalAmount, string orderType)
+        private TextBox txtAmountPaid = new TextBox();
+        private TextBox txtReference = new TextBox();
+        private TextBox txtAmountSent = new TextBox();
+
+        public static event Action? PostPaymentProcess;
+
+        private static int refreshScreen = 5;
+
+        public PaymentForm(decimal _totalAmount, string _orderType)
         {
             InitializeComponent();
 
@@ -65,12 +72,12 @@ namespace client.Forms.Order
             btnApply.Click += Numpad_Click;
             btnRemove.Click += Numpad_Click;
 
-            this.totalAmount = totalAmount;
-            this.orderType = orderType;
+            this._totalAmount = _totalAmount;
+            this._orderType = _orderType;
         }
         private void PaymentForm_Load(object sender, EventArgs e)
         {
-            lblAmountToPay.Text = $"{totalAmount:C}";
+            lblAmountToPay.Text = $"{_totalAmount:C}";
             cboPaymentMethod.SelectedIndex = 0;
         }
 
@@ -95,7 +102,7 @@ namespace client.Forms.Order
 
             Label lblAmountPaid = StyledLabel("Amount", true);
 
-            TextBox txtAmountPaid = new TextBox
+            txtAmountPaid = new TextBox
             {
                 Font = new Font("Segoe UI", 12),
                 BackColor = Color.WhiteSmoke,
@@ -111,11 +118,11 @@ namespace client.Forms.Order
             {
                 if (decimal.TryParse(txtAmountPaid.Text, out decimal value))
                 {
-                    amountPaid = value;
+                    _amountPaid = value;
                 }
                 else
                 {
-                    amountPaid = 0m;
+                    _amountPaid = 0m;
                 }
             };
             txtAmountPaid.KeyPress += txtAmountPaid_KeyPress;
@@ -172,40 +179,33 @@ namespace client.Forms.Order
             cmbProvider.Items.AddRange(new string[] { "GCash", "PayMaya", "Bank" });
 
             Label lblReference = StyledLabel("Ref #", true);
-            TextBox txtReference = StyledTextBox(false);
-            txtReference.TextChanged += (s, e) => referenceNumber = txtReference.Text;
+            txtReference = StyledTextBox(false);
+            txtReference.TextChanged += (s, e) => _referenceNumber = txtReference.Text;
             txtReference.Enter += txtReference_Enter;
 
             Label lblAmountSent = StyledLabel("Amount", true);
-            TextBox txtAmountSent = StyledTextBox(false);
+            txtAmountSent = StyledTextBox(false);
 
             txtAmountSent.TextChanged += (s, e) =>
             {
                 if (decimal.TryParse(txtAmountSent.Text, out decimal value))
                 {
-                    amountPaid = value;
+                    _amountPaid = value;
                 }
                 else
                 {
-                    amountPaid = 0m;
+                    _amountPaid = 0m;
                 }
             };
             txtAmountSent.Enter += txtAmountSent_Enter;
             txtAmountSent.KeyPress += txtAmountSent_KeyPress;
 
             cmbProvider.SelectedIndexChanged += (sender, e) => cmbProvider_SelectedIndexChanged(sender as ComboBox, txtReference, txtAmountSent);
+
             void cmbProvider_SelectedIndexChanged(ComboBox? cmb, TextBox reference, TextBox amountSent)
             {
-                if (cmb?.SelectedIndex == -1)
-                {
-                    reference.Enabled = false;
-                    amountSent.Enabled = false;
-                }
-                else
-                {
-                    reference.Enabled = true;
-                    amountSent.Enabled = true;
-                }
+                string? selectedPaymentMethod = cmbProvider.SelectedItem?.ToString();
+                _paymentMethod = selectedPaymentMethod;
             }
 
             int fieldHeight = 30;
@@ -243,6 +243,7 @@ namespace client.Forms.Order
                 txtReference.Focus();
             });
         }
+
         private void cboPaymentMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboPaymentMethod.SelectedItem is null)
@@ -260,13 +261,13 @@ namespace client.Forms.Order
 
                     if (selectedPayment == "Cash")
                     {
-                        paymentMethod = "Cash";
+                        _paymentMethod = "cash";
                         ResetFields();
                         AddCashPaymentUI();
                     }
                     else if (selectedPayment == "Digital Payment")
                     {
-                        paymentMethod = "Digital Payment";
+                        _paymentMethod = "gcash";
                         ResetFields();
                         AddDigitalPaymentUI();
                     }
@@ -283,11 +284,11 @@ namespace client.Forms.Order
         }
         private void ResetAmountPaid()
         {
-            amountPaid = 0.00m;
+            _amountPaid = 0.00m;
         }
         private void ResetReferenceNumber()
         {
-            referenceNumber = string.Empty;
+            _referenceNumber = string.Empty;
         }
         private void AnimatePanelClear(Panel panel, Action onComplete)
         {
@@ -414,7 +415,7 @@ namespace client.Forms.Order
         }
         private decimal GetTotalAmount()
         {
-            return totalAmount;
+            return _totalAmount;
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -439,7 +440,7 @@ namespace client.Forms.Order
         {
             if (sender is Button btn)
             {
-                LoggerHelper.Write("NUMPAD", $"Button clicked: {btn.Text}");
+                Logger.Write("NUMPAD", $"Button clicked: {btn.Text}");
 
                 if (lastFocusedTextBox != null)
                 {
@@ -479,12 +480,12 @@ namespace client.Forms.Order
                 }
                 else
                 {
-                    LoggerHelper.Write("NUMPAD", "No TextBox has been focused.");
+                    Logger.Write("NUMPAD", "No TextBox has been focused.");
                 }
             }
             else
             {
-                LoggerHelper.Write("NUMPAD", "Sender is not a Button.");
+                Logger.Write("NUMPAD", "Sender is not a Button.");
             }
         }
         private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
@@ -504,14 +505,14 @@ namespace client.Forms.Order
         }
         private void btnApply_Click(object sender, EventArgs e)
         {
-            if (amountPaid <= 0)
+            if (_amountPaid <= 0)
             {
                 MessageBox.Show("Please enter the amount paid.", "Payment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else
             {
-                dgvMop.Rows.Add(paymentMethod, amountPaid, referenceNumber);
+                dgvMop.Rows.Add(_paymentMethod, _amountPaid, _referenceNumber);
                 ProcessPayment();
             }
         }
@@ -523,9 +524,9 @@ namespace client.Forms.Order
 
         private void UpdateChange()
         {
-            decimal change = totalAmountPaid - GetTotalAmount();
+            decimal change = _totalAmountPaid - GetTotalAmount();
             decimal defChange = 0.00m;
-            totalChange = change;
+            _totalChange = change;
             if (change > 0)
             {
                 lblChange.Text = $"{change:C}";
@@ -538,7 +539,7 @@ namespace client.Forms.Order
 
         private void UpdateBalance()
         {
-            decimal balance = GetTotalAmount() - totalAmountPaid;
+            decimal balance = GetTotalAmount() - _totalAmountPaid;
             decimal defBal = 0.00m;
             if (balance > 0)
             {
@@ -576,19 +577,19 @@ namespace client.Forms.Order
         }
         private void CalculateTotalAmountPaid()
         {
-            totalAmountPaid = 0m;
+            _totalAmountPaid = 0m;
 
             foreach (DataGridViewRow row in dgvMop.Rows)
             {
                 if (row.Cells["Amount"].Value != null)
                 {
-                    totalAmountPaid += Convert.ToDecimal(row.Cells["Amount"].Value);
+                    _totalAmountPaid += Convert.ToDecimal(row.Cells["Amount"].Value);
                 }
             }
 
             UpdateChange();
             UpdateBalance();
-            lblAmountPaid.Text = $"{totalAmountPaid:C}";
+            lblAmountPaid.Text = $"{_totalAmountPaid:C}";
         }
 
         private void dgvMop_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -603,27 +604,258 @@ namespace client.Forms.Order
             }
         }
 
+        private Panel loadingPanel = new Panel();
+        private PictureBox pictureBox = new PictureBox();
+        private Panel panelBox = new Panel();
+        private Label messageLabel = new Label();
+
+        private void InitializeLoadingControls()
+        {
+            loadingPanel.BackColor = Color.White;
+            loadingPanel.BorderStyle = BorderStyle.FixedSingle;
+            loadingPanel.Size = new Size(300, 150);
+            loadingPanel.Location = new Point(
+                (this.ClientSize.Width - loadingPanel.Width) / 2,
+                (this.ClientSize.Height - loadingPanel.Height) / 2
+            );
+
+            panelBox.Size = new Size(64, 64);
+            panelBox.Location = new Point(
+                (loadingPanel.Width - panelBox.Width) / 2,
+                20
+            );
+            panelBox.BorderStyle = BorderStyle.None;
+            panelBox.BackColor = Color.White;
+
+            pictureBox.Size = new Size(24, 24);
+            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox.Location = new Point(
+                (panelBox.Width - pictureBox.Width) / 2,
+                (panelBox.Height - pictureBox.Height) / 2
+            );
+
+            try
+            {
+                pictureBox.Image = Properties.Resources.loading_gif;
+            }
+            catch
+            {
+                pictureBox.BackColor = Color.LightGray;
+            }
+
+            messageLabel.AutoSize = false;
+            messageLabel.Size = new Size(280, 30);
+            messageLabel.TextAlign = ContentAlignment.MiddleCenter;
+            messageLabel.Location = new Point(
+                (loadingPanel.Width - messageLabel.Width) / 2,
+                panelBox.Bottom + 8
+            );
+            messageLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular);
+
+            panelBox.Controls.Add(pictureBox);
+            loadingPanel.Controls.Add(panelBox);
+            loadingPanel.Controls.Add(messageLabel);
+            this.Controls.Add(loadingPanel);
+        }
+
+        private void ShowLoading(string message)
+        {
+            if (!this.Controls.Contains(loadingPanel))
+            {
+                InitializeLoadingControls();
+            }
+
+            messageLabel.Text = message;
+            loadingPanel.BringToFront();
+            loadingPanel.Visible = true;
+            Application.DoEvents();
+        }
+
+        private void HideLoading()
+        {
+            if (loadingPanel != null)
+            {
+                loadingPanel.Visible = false;
+            }
+        }
+
+        private void postPaymentTimer_Tick(object sender, EventArgs e)
+        {
+            refreshScreen -= 1;
+
+            if (refreshScreen <= 0)
+            {
+                PostPaymentProcess?.Invoke();
+                this.Dispose();
+                postPaymentTimer.Stop();
+            }
+        }
+
+        private bool ValidatePaymentInputs(out string errorMessage)
+        {
+            errorMessage = string.Empty;
+            string? selectedPayment = cboPaymentMethod.SelectedItem?.ToString();
+
+            if (CurrentTransaction.Current == null)
+            {
+                errorMessage = "No active transaction found";
+                return false;
+            }
+
+            if (CurrentTransaction.Current.TransId <= 0)
+            {
+                errorMessage = "Invalid transaction ID";
+                return false;
+            }
+
+            if (CurrentUser.Current == null || CurrentUser.Current.UserId <= 0)
+            {
+                errorMessage = "Invalid cashier session";
+                return false;
+            }
+
+            if (dgvMop.Rows.Count == 0)
+            {
+                errorMessage = "Apply the payment first.";
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(_paymentMethod))
+            {
+                errorMessage = "Payment method not selected";
+                return false;
+            }
+
+            if ((cboPaymentMethod.SelectedItem?.ToString() == "Digital Payment") && string.IsNullOrWhiteSpace(_referenceNumber))
+            {
+                errorMessage = "Reference number is required for digital payment";
+                txtReference.Focus();
+                return false;
+            }
+
+            if (_totalAmount <= 0)
+            {
+                errorMessage = "Invalid total amount";
+                if (selectedPayment == "Cash")
+                {
+                    txtAmountPaid.Focus();
+                }
+                else
+                {
+                    txtAmountSent.Focus();
+                }
+
+                return false;
+            }
+
+            if (_amountPaid <= 0)
+            {
+                errorMessage = "Invalid payment amount";
+                if (selectedPayment == "Cash")
+                {
+                    txtAmountPaid.Focus();
+                }
+                else
+                {
+                    txtAmountSent.Focus();
+                }
+                return false;
+            }
+
+            if (_amountPaid < _totalAmount)
+            {
+                errorMessage = "Payment amount is less than total amount";
+                if (selectedPayment == "Cash")
+                {
+                    txtAmountPaid.Focus();
+                }
+                else
+                {
+                    txtAmountSent.Focus();
+                }
+                return false;
+            }
+
+            if (_totalChange < 0)
+            {
+                errorMessage = "Invalid change amount";
+                return false;
+            }
+
+            return true;
+        }
+
         private async void btnConfirmPayment_Click(object sender, EventArgs e)
         {
-            int transId = (int)Convert.ToUInt64(CurrentTransaction.Current?.TransId.ToString());
-            int cashierId = Convert.ToInt32(CurrentUser.Current?.UserId.ToString());
-
-            var transaction = new TransactionProcessing
-            { 
-                TransId = transId, 
-                status = "paid",
-                paymentMethod = paymentMethod
-            };
-
-            bool response = await _transactionController.ProcessTransaction(transaction);
-
-            if (response)
+            try
             {
-                MessageBox.Show("Transaction processed successfully.");
+                ShowLoading("Processing payment, please wait...");
+
+                if (!ValidatePaymentInputs(out string errorMessage))
+                {
+                    HideLoading();
+                    MessageBox.Show(errorMessage, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int transId = Convert.ToInt32(CurrentTransaction.Current?.TransId);
+                string transNo = CurrentTransaction.Current?.TransNumber ?? string.Empty;
+                int cashierId = CurrentUser.Current?.UserId ?? 0;
+                var cartItems = CurrentCart.Items;
+                string notes = string.Empty;
+                string orderType = _orderType.Trim();
+
+                var transaction = new TransactionProcessing()
+                {
+                    TransId = transId,
+                    totalAmount = _totalAmount,
+                    status = "paid",
+                    paymentMethod = _paymentMethod
+                };
+
+                var order = ProcessOrderHelper.CreateOrderProcessingList(cartItems, transNo, cashierId, notes, orderType);
+
+                var payment = new PaymentProcessing()
+                {
+                    transId = transId,
+                    amountPaid = _totalAmountPaid,
+                    paymentMethod = _paymentMethod,
+                    referenceNumber = _referenceNumber,
+                    changeAmount = _totalChange
+                };
+
+                bool response = await _transactionController.ProcessTransaction(transaction, order, payment);
+
+                if (response)
+                {
+                    postPaymentTimer.Start();
+                    HideLoading();
+                    MessageBox.Show("Transaction processed successfully.",
+                        "Payment",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    PostPaymentProcess?.Invoke();
+
+                    this.Dispose();
+                }
+                else
+                {
+                    HideLoading();
+                    MessageBox.Show("Failed to process transaction.",
+                        "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Failed to process transaction.");
+                HideLoading();
+                MessageBox.Show($"An error occurred: {ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                HideLoading();
             }
         }
     }

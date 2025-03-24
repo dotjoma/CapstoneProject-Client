@@ -68,7 +68,7 @@ namespace client.Network
                 if (!success)
                 {
                     Disconnect();
-                    LoggerHelper.Write("CONNECTION TIMEOUT", "Failed to connect to server: Connection timed out");
+                    Logger.Write("CONNECTION TIMEOUT", "Failed to connect to server: Connection timed out");
                     return false;
                 }
 
@@ -79,25 +79,25 @@ namespace client.Network
                 networkStream = tcpClient.GetStream();
                 if (networkStream == null)
                 {
-                    LoggerHelper.Write("TCP CLIENT", "Failed to initialize network stream");
+                    Logger.Write("TCP CLIENT", "Failed to initialize network stream");
                     return false;
                 }
 
-                LoggerHelper.Write("TCP CLIENT", "Successfully connected to server");
+                Logger.Write("TCP CLIENT", "Successfully connected to server");
                 return true;
             }
             catch (SocketException ex)
             {
-                LoggerHelper.Write("SOCKET", $"Socket error: {ex.Message}");
+                Logger.Write("SOCKET", $"Socket error: {ex.Message}");
                 Disconnect();
-                LoggerHelper.Write("SOCKET", "Could not connect to server. Please check if the server is running.");
+                Logger.Write("SOCKET", "Could not connect to server. Please check if the server is running.");
                 return false;
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("EXCEPTION", $"Connection error: {ex.Message}");
+                Logger.Write("EXCEPTION", $"Connection error: {ex.Message}");
                 Disconnect();
-                LoggerHelper.Write("EXCEPTION", $"Failed to connect: {ex.Message}");
+                Logger.Write("EXCEPTION", $"Failed to connect: {ex.Message}");
                 return false;
 
             }
@@ -110,7 +110,7 @@ namespace client.Network
                 // Check connection and try to connect if needed
                 if (!IsConnected || networkStream == null)
                 {
-                    LoggerHelper.Write("TCP & NETWORKSTREAM", "No active connection, attempting to connect...");
+                    Logger.Write("TCP & NETWORKSTREAM", "No active connection, attempting to connect...");
                     if (!Connect())
                     {
                         MessageBox.Show("Could not establish connection to server", "Error",
@@ -121,7 +121,7 @@ namespace client.Network
                 // Ensure we have a valid stream after connection
                 if (networkStream == null)
                 {
-                    LoggerHelper.Write("NETWORKSTREAM", "Network stream is not available");
+                    Logger.Write("NETWORKSTREAM", "Network stream is not available");
                 }
 
 
@@ -131,18 +131,18 @@ namespace client.Network
                 if (networkStream != null)
                 {
                     networkStream.Write(data, 0, data.Length);
-                    LoggerHelper.Write("NETWORKSTREAM", "Packet sent success.");
+                    Logger.Write("NETWORKSTREAM", "Packet sent success.");
                 }
                 else
                 {
-                    LoggerHelper.Write("NETWORKSTREAM", "Cannot send data, network stream is null.");
+                    Logger.Write("NETWORKSTREAM", "Cannot send data, network stream is null.");
                 }
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("EXCEPTION", $"Error sending data: {ex.Message}");
+                Logger.Write("EXCEPTION", $"Error sending data: {ex.Message}");
                 Disconnect();
-                LoggerHelper.Write("EXCEPTION", $"Failed to send data: {ex.Message}");
+                Logger.Write("EXCEPTION", $"Failed to send data: {ex.Message}");
             }
         }
 
@@ -176,7 +176,7 @@ namespace client.Network
                 }
                 catch (Exception ex)
                 {
-                    LoggerHelper.Write("SEND TO SERVER & WAIT RESPONSE", $"Error in communication: {ex.Message}");
+                    Logger.Write("SEND TO SERVER & WAIT RESPONSE", $"Error in communication: {ex.Message}");
                     Disconnect();
 
                     if (attempt < maxRetries)
@@ -188,7 +188,7 @@ namespace client.Network
                 }
             }
 
-            LoggerHelper.Write("RETRY", "Max retry attempts reached");
+            Logger.Write("RETRY", "Max retry attempts reached");
             return null;
         }
 
@@ -196,13 +196,13 @@ namespace client.Network
         {
             if (!HasConnection())
             {
-                LoggerHelper.Write("CONNECTION", "No connection available");
+                Logger.Write("CONNECTION", "No connection available");
                 return false;
             }
 
             if (networkStream == null)
             {
-                LoggerHelper.Write("NETWORKSTREAM", "Network stream is not available");
+                Logger.Write("NETWORKSTREAM", "Network stream is not available");
                 return false;
             }
 
@@ -218,12 +218,12 @@ namespace client.Network
                 await networkStream!.WriteAsync(data, 0, data.Length);
                 await networkStream.FlushAsync();
 
-                LoggerHelper.Write("NETWORKSTREAM", "Packet sent success.");
+                Logger.Write("NETWORKSTREAM", "Packet sent success.");
                 return true;
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("WRITE ERROR", $"Failed to send data: {ex.Message}");
+                Logger.Write("WRITE ERROR", $"Failed to send data: {ex.Message}");
                 Disconnect();
                 return false;
             }
@@ -240,12 +240,12 @@ namespace client.Network
                 await ReadStreamToCompletion(networkStream!, buffer, memoryStream, cts.Token);
 
                 string responseJson = Encoding.UTF8.GetString(memoryStream.ToArray()).Trim();
-                LoggerHelper.Write("JSON RESPONSE", "Response received successfully");
+                Logger.Write("JSON RESPONSE", "Response received successfully");
 
                 var response = JsonConvert.DeserializeObject<Packet>(responseJson);
                 if (response == null || !IsValidResponse(response))
                 {
-                    LoggerHelper.Write("JSON RESPONSE", "Invalid or null response from server");
+                    Logger.Write("JSON RESPONSE", "Invalid or null response from server");
                     return null;
                 }
 
@@ -254,13 +254,13 @@ namespace client.Network
             }
             catch (IOException ex)
             {
-                LoggerHelper.Write("READ ERROR", $"Connection error while reading: {ex.Message}");
+                Logger.Write("READ ERROR", $"Connection error while reading: {ex.Message}");
                 Disconnect();
                 return null;
             }
             catch (OperationCanceledException)
             {
-                LoggerHelper.Write("CANCELED EXCEPTION", "Server response timeout");
+                Logger.Write("CANCELED EXCEPTION", "Server response timeout");
                 return null;
             }
         }
@@ -283,7 +283,7 @@ namespace client.Network
         {
             if (attempt < maxRetries)
             {
-                LoggerHelper.Write("RETRY", $"Attempting to reconnect (Attempt {attempt + 1} of {maxRetries})");
+                Logger.Write("RETRY", $"Attempting to reconnect (Attempt {attempt + 1} of {maxRetries})");
                 await Task.Delay(1000 * (attempt + 1));
             }
         }
@@ -311,11 +311,11 @@ namespace client.Network
                         
                         CurrentUser.SetCurrentUser(userSession);
 
-                        LoggerHelper.Write("CURRENT USER", $"Current user set successfully");
+                        Logger.Write("CURRENT USER", $"Current user set successfully");
                     }
                     catch (Exception ex)
                     {
-                        LoggerHelper.Write("CURRENT USER", $"Error setting current user: {ex.Message}");
+                        Logger.Write("CURRENT USER", $"Error setting current user: {ex.Message}");
                         MessageBox.Show("Error setting current user, Please contact support", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -332,19 +332,19 @@ namespace client.Network
                     // Check if connection is actually still valid
                     if (!tcpClient.Connected)
                     {
-                        LoggerHelper.Write("CONNECTION CHECK", "Connection detected as closed");
+                        Logger.Write("CONNECTION CHECK", "Connection detected as closed");
                         Disconnect();
                         return Connect();
                     }
                     return true;
                 }
 
-                LoggerHelper.Write("TCP & NETWORKSTREAM", "No active connection, attempting to connect...");
+                Logger.Write("TCP & NETWORKSTREAM", "No active connection, attempting to connect...");
                 return Connect();
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("CONNECTION CHECK", $"Error checking connection: {ex.Message}");
+                Logger.Write("CONNECTION CHECK", $"Error checking connection: {ex.Message}");
                 Disconnect();
                 return Connect();
             }
@@ -357,32 +357,32 @@ namespace client.Network
             // Check if Data dictionary exists and has required keys
             if (response.Data == null || !response.Data.ContainsKey("success") || !response.Data.ContainsKey("message"))
             {
-                LoggerHelper.Write("SERVER RESPONSE", "Response missing required Data fields");
+                Logger.Write("SERVER RESPONSE", "Response missing required Data fields");
                 return false;
             }
 
             // Validate success value is a valid string
             if (string.IsNullOrEmpty(response.Data["success"]))
             {
-                LoggerHelper.Write("SERVER RESPONSE", "Response success value is empty");
+                Logger.Write("SERVER RESPONSE", "Response success value is empty");
                 return false;
             }
 
             // Validate message exists (can be empty but should exist)
             if (!response.Data.ContainsKey("message"))
             {
-                LoggerHelper.Write("SERVER RESPONSE", "Response missing message field");
+                Logger.Write("SERVER RESPONSE", "Response missing message field");
                 return false;
             }
 
             // Check packet type is valid
             if (!Enum.IsDefined(typeof(PacketType), response.Type))
             {
-                LoggerHelper.Write("SERVER RESPONSE", $"Invalid packet type: {response.Type}");
+                Logger.Write("SERVER RESPONSE", $"Invalid packet type: {response.Type}");
                 return false;
             }
 
-            LoggerHelper.Write("SERVER RESPONSE", "Response validation successful");
+            Logger.Write("SERVER RESPONSE", "Response validation successful");
             return true;
         }
 
@@ -395,7 +395,7 @@ namespace client.Network
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("TCP & NETWORKSTREAM", $"Error during disconnect: {ex.Message}");
+                Logger.Write("TCP & NETWORKSTREAM", $"Error during disconnect: {ex.Message}");
             }
             finally
             {

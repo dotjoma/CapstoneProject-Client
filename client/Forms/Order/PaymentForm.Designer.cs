@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
@@ -74,6 +75,7 @@
             btn9 = new Button();
             btn8 = new Button();
             btn7 = new Button();
+            postPaymentTimer = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             panel9.SuspendLayout();
             panel2.SuspendLayout();
@@ -621,6 +623,11 @@
             btn7.Text = "7";
             btn7.UseVisualStyleBackColor = false;
             // 
+            // postPaymentTimer
+            // 
+            postPaymentTimer.Interval = 1000;
+            postPaymentTimer.Tick += postPaymentTimer_Tick;
+            // 
             // PaymentForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -698,5 +705,6 @@
         private DataGridViewTextBoxColumn mode;
         private DataGridViewTextBoxColumn amount;
         private DataGridViewTextBoxColumn refnumber;
+        private System.Windows.Forms.Timer postPaymentTimer;
     }
 }

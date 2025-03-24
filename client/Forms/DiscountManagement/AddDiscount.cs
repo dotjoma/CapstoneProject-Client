@@ -54,7 +54,7 @@ namespace client.Forms.DiscountManagement
 
                 if (response)
                 {
-                    LoggerHelper.Write("RESPONSE", $"Discount created successfully.");
+                    Logger.Write("RESPONSE", $"Discount created successfully.");
                     MessageBox.Show("Discount created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     DiscountHome.Instance?.RefreshDisplay();

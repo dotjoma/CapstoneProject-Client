@@ -1,0 +1,200 @@
+create paymode table for split payment
+id, transno, amount
+
+create discount table for discounted people
+id, transno, idnumber, name, valdate?
+
+
+Post-Payment Workflow
+1. Receipt Generation & Delivery
+	- use receipt builder
+2. Inventory Update (Real-Time Sync)
+	// Deduct inventory
+	foreach (var item in CurrentCart.Items)
+	{
+    		InventorySystem.UpdateStock(
+        	item.ProductId, 
+        	-item.Quantity, 
+        	Location: CurrentRegister.Id);
+    
+    		if (InventorySystem.IsLowStock(item.ProductId))
+    		{
+        		ManagerNotifier.SendLowStockAlert(item);
+    		}
+	}
+3. Transaction Finalization
+UPDATE transactions 
+SET 
+    status = 'COMPLETED',
+    completed_at = NOW(),
+    reference_no = @ReferenceNo
+WHERE id = @TransId;
+
+5. Data Synchronization
+if has database to update online.
+
+6. System Reset & Cleanup
+CurrentCart.Clear();
+CurrentTransaction.Reset();
+DrawerService.CloseCashDrawer();
+
+// Return to home screen in 5 seconds if no action
+// or close modals/forms
+POSUI.ReturnToHomeScreen(delaySeconds: 5);
+
+7. Back-Office Processes
+	-Nightly batch jobs (typically run at 2 AM):
+	-Financial reconciliation
+	-Z-report generation
+	-Tax filing preparation
+	-Inventory reorder automation
+
+8. Security Actions
+// PCI compliance cleanup
+PaymentProcessor.PurgeCardData(transId);
+
+// Log security event
+AuditLogger.Log(
+    eventType: "PAYMENT_COMPLETE",
+    userId: CurrentUser.Id,
+    transactionId: transId
+);
+
+
+graph TD
+    A[Payment Success] --> B[Print/Send Receipt]
+    B --> C[Update Inventory]
+    C --> D[Finalize Transaction]
+    D --> E[Customer Experience]
+    E --> F[Data Sync]
+    F --> G[System Reset]
+    G --> H[Back-Office Processes]
+
+
+Key Timing Requirements
+Process			Max Duration		Criticality
+Receipt Print		3 sec			High
+Inventory Update	1 sec			High
+Payment Confirm		500 ms			Critical
+Data Sync		5 sec (async)		Medium
+
+
+try {
+    // Main workflow
+}
+catch (PrinterException ex) {
+    POSDisplay.ShowWarning("Receipt failed to print. Email sent to customer.");
+    Logger.Log(ex);
+    // Continue other steps
+}
+catch (InventoryException ex) {
+    ManagerNotifier.Alert("INVENTORY OUT OF SYNC");
+    // Queue for manual review
+}
+
+
+ISO 25010
+1. Functional Suitability
+✅ Completeness
+
+Handles all payment scenarios (cash, card, split-tender)
+
+Covers inventory, receipts, and data sync
+
+✅ Correctness
+
+Math validation (changeAmount = amountPaid - totalAmount)
+
+Database constraints enforce integrity
+
+✅ Appropriateness
+
+PCI-compliant card data handling
+
+Business rule enforcement (e.g., reference numbers for cards)
+
+2. Performance Efficiency
+⏱️ Time Behavior
+
+Receipt printing (<3 sec)
+
+Real-time inventory updates
+
+📈 Resource Utilization
+
+Batch processing for non-critical tasks (nightly reports)
+
+Async data sync to reduce UI blocking
+
+3. Compatibility
+🔌 Interoperability
+
+REST APIs for cloud sync
+
+Standard SQL for database ops
+
+💾 Co-Existence
+
+Works alongside legacy systems (fallback to local DB)
+
+4. Usability
+🎯 Appropriateness Recognizability
+
+Clear success/error messages
+
+On-screen change amount display
+
+📱 User Error Protection
+
+Pre-validation of amounts
+
+Reference number auto-generation
+
+5. Reliability
+🛡️ Fault Tolerance
+
+Offline mode with queued sync
+
+Printer failures don't block transaction
+
+🔁 Recoverability
+
+Transaction rollback capability
+
+Pending sync retry mechanism
+
+6. Security
+🔒 Confidentiality
+
+Card data purging post-transaction
+
+Audit logging
+
+🛡️ Integrity
+
+Inventory updates are atomic
+
+Database transactions
+
+7. Maintainability
+🧩 Modularity
+
+Separated validation logic
+
+Isolated payment processors
+
+📄 Analyzability
+
+Structured logs with transaction IDs
+
+8. Portability
+📱 Adaptability
+
+Configurable receipt templates
+
+Payment method plugins
+
+
+
+
+

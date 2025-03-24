@@ -26,7 +26,7 @@ namespace client.Controllers
             {
                 MessageBox.Show("No response received from server", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LoggerHelper.Write("RESPONSE", "No response received from server");
+                Logger.Write("RESPONSE", "No response received from server");
                 return false;
             }
 
@@ -42,7 +42,7 @@ namespace client.Controllers
 
                     CurrentUnit.SetUnits(units ?? new List<Unit>());
 
-                    LoggerHelper.Write("GET UNIT", units?.Count > 0
+                    Logger.Write("GET UNIT", units?.Count > 0
                         ? $"Retrieved {units.Count} units successfully"
                         : "No units found");
 
@@ -87,7 +87,7 @@ namespace client.Controllers
             {
                 MessageBox.Show("No response received from server", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LoggerHelper.Write("RESPONSE", "No response received from server");
+                Logger.Write("RESPONSE", "No response received from server");
                 return new List<Unit>();
             }
 
@@ -103,7 +103,7 @@ namespace client.Controllers
 
                     CurrentUnit.SetUnits(units ?? new List<Unit>());
 
-                    LoggerHelper.Write("GET ALL UNITS", units?.Count > 0
+                    Logger.Write("GET ALL UNITS", units?.Count > 0
                         ? $"Retrieved {units.Count} units successfully"
                         : "No units found");
 
@@ -174,13 +174,13 @@ namespace client.Controllers
 
                 if (response.Data?.ContainsKey("success") == true && response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                 {
-                    LoggerHelper.Write("CREATE UNIT", $"Unit '{unitName}' created successfully");
+                    Logger.Write("CREATE UNIT", $"Unit '{unitName}' created successfully");
                     return true;
                 }
                 else
                 {
                     string errorMessage = response.Data?.ContainsKey("message") == true ? response.Data["message"] : "Unknown error occurred while creating unit";
-                    LoggerHelper.Write("CREATE UNIT", $"Server error: {errorMessage}");
+                    Logger.Write("CREATE UNIT", $"Server error: {errorMessage}");
                     MessageBox.Show($"Failed to create unit: {errorMessage}", "Unit Creation Failed",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
@@ -188,7 +188,7 @@ namespace client.Controllers
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("CREATE UNIT", $"Exception: {ex.Message}");
+                Logger.Write("CREATE UNIT", $"Exception: {ex.Message}");
                 MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;

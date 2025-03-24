@@ -26,7 +26,7 @@ namespace client.Network
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("PACKET", $"Error serializing packet: {ex.Message}");
+                Logger.Write("PACKET", $"Error serializing packet: {ex.Message}");
                 throw;
             }
         }
@@ -45,7 +45,7 @@ namespace client.Network
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("PACKET", $"Error deserializing packet: {ex.Message}");
+                Logger.Write("PACKET", $"Error deserializing packet: {ex.Message}");
                 return null;
             }
         }

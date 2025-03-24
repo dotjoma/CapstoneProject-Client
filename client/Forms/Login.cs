@@ -162,7 +162,7 @@ namespace client.Forms
                     }
                     catch (Exception ex)
                     {
-                        LoggerHelper.Write("MAIN MENU", $"Error loading data: {ex.Message}");
+                        Logger.Write("MAIN MENU", $"Error loading data: {ex.Message}");
                     }
                 }
             }
@@ -244,49 +244,49 @@ namespace client.Forms
                 await _productController.GetAllProducts();
                 if (CurrentProduct.AllProduct == null)
                 {
-                    LoggerHelper.Write("MAIN MENU", "Failed to load products");
+                    Logger.Write("MAIN MENU", "Failed to load products");
                     return false;
                 }
-                LoggerHelper.Write("MAIN MENU", $"Successfully loaded {CurrentProduct.AllProduct.Count} products");
+                Logger.Write("MAIN MENU", $"Successfully loaded {CurrentProduct.AllProduct.Count} products");
 
                 await _unitController.GetAllUnits();
                 if (CurrentUnit.AllUnit == null)
                 {
-                    LoggerHelper.Write("MAIN MENU", "Failed to load units");
+                    Logger.Write("MAIN MENU", "Failed to load units");
                     return false;
                 }
-                LoggerHelper.Write("MAIN MENU", $"Successfully loaded {CurrentUnit.AllUnit.Count} units");
+                Logger.Write("MAIN MENU", $"Successfully loaded {CurrentUnit.AllUnit.Count} units");
 
 
                 await _categoryController.GetAllCategories();
                 if (CurrentCategory.AllCategories == null)
                 {
-                    LoggerHelper.Write("MAIN MENU", "Failed to load categories");
+                    Logger.Write("MAIN MENU", "Failed to load categories");
                     return false;
                 }
-                LoggerHelper.Write("MAIN MENU", $"Successfully loaded {CurrentCategory.AllCategories.Count} categories");
+                Logger.Write("MAIN MENU", $"Successfully loaded {CurrentCategory.AllCategories.Count} categories");
 
                 await _subCategoryController.GetAllSubcategory();
                 if (CurrentSubCategory.AllSubCategories == null)
                 {
-                    LoggerHelper.Write("MAIN MENU", "Failed to load subcategories");
+                    Logger.Write("MAIN MENU", "Failed to load subcategories");
                     return false;
                 }
-                LoggerHelper.Write("MAIN MENU", $"Successfully loaded {CurrentSubCategory.AllSubCategories.Count} subcategories");
+                Logger.Write("MAIN MENU", $"Successfully loaded {CurrentSubCategory.AllSubCategories.Count} subcategories");
 
                 await _discountController.GetAllDiscounts();
                 if (CurrentDiscount.AllDiscount == null)
                 {
-                    LoggerHelper.Write("MAIN MENU", "Failed to load discounts");
+                    Logger.Write("MAIN MENU", "Failed to load discounts");
                     return false;
                 }
-                LoggerHelper.Write("MAIN MENU", $"Successfully loaded {CurrentDiscount.AllDiscount.Count} discounts");
+                Logger.Write("MAIN MENU", $"Successfully loaded {CurrentDiscount.AllDiscount.Count} discounts");
 
                 return true;
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("MAIN MENU", $"Error loading data: {ex.Message}");
+                Logger.Write("MAIN MENU", $"Error loading data: {ex.Message}");
                 return false;
             }
         }

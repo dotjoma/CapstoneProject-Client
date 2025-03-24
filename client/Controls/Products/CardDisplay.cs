@@ -95,7 +95,7 @@ namespace client.Controls.Products
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("PRODUCT DISPLAY", $"Error loading image for product {product.productId}: {ex.Message}");
+                Logger.Write("PRODUCT DISPLAY", $"Error loading image for product {product.productId}: {ex.Message}");
                 picProductImage.Image = Properties.Resources.Add_Image;
             }
 
@@ -187,8 +187,8 @@ namespace client.Controls.Products
             if (string.IsNullOrEmpty(base64String))
                 return null;
 
-            LoggerHelper.Write("BASE64 LENGTH", $"Base64 string length: {base64String.Length}");
-            LoggerHelper.Write("BASE64 END", $"Base64 string end: {base64String.Substring(Math.Max(0, base64String.Length - 50))}");
+            Logger.Write("BASE64 LENGTH", $"Base64 string length: {base64String.Length}");
+            Logger.Write("BASE64 END", $"Base64 string end: {base64String.Substring(Math.Max(0, base64String.Length - 50))}");
 
             try
             {
@@ -201,7 +201,7 @@ namespace client.Controls.Products
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("IMAGE CONVERSION", $"Error converting base64 to image: {ex.Message}");
+                Logger.Write("IMAGE CONVERSION", $"Error converting base64 to image: {ex.Message}");
                 return null;
             }
         }

@@ -145,7 +145,7 @@ namespace client.Forms.POS.POSUserControl.ProductFoodCategory
                         HandleUnit(name);
                         break;
                     default:
-                        LoggerHelper.Write("CREATE UNIT/CATEGORY", "Unknown data received!");
+                        Logger.Write("CREATE UNIT/CATEGORY", "Unknown data received!");
                         break;
                 }
             }

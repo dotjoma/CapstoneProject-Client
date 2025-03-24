@@ -30,7 +30,7 @@ namespace client.Models
         public static IReadOnlyDictionary<int, (decimal unitPrice, int quantity)> DiscountedItems => _discountedItems;
 
         public static event Action<decimal>? OnDiscountChanged;
-        public static event Action? OnDiscountAppliedSuccess;
+        public static event Action? OnDiscountAppliedSuccess; 
 
         public enum DiscountTypeEnum
         {

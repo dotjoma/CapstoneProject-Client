@@ -105,7 +105,7 @@ namespace client.Forms.Order
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("DISCOUNT ERROR", $"Error selecting discount: {ex.Message}");
+                Logger.Write("DISCOUNT ERROR", $"Error selecting discount: {ex.Message}");
                 MessageBox.Show("An error occurred while selecting the discount:\n" + ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cboType.SelectedIndex = 0;

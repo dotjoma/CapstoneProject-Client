@@ -134,7 +134,7 @@ namespace client.Forms.ProductManagement
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("PRODUCT ACTION", $"Error performing {dgvProducts.Columns[e.ColumnIndex].Name} action: {ex.Message}");
+                Logger.Write("PRODUCT ACTION", $"Error performing {dgvProducts.Columns[e.ColumnIndex].Name} action: {ex.Message}");
                 MessageBox.Show("An error occurred while processing your request.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

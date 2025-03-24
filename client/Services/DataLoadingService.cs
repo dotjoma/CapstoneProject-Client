@@ -38,7 +38,7 @@ namespace client.Services
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("DATA REFRESH", $"Error refreshing data: {ex.Message}");
+                Logger.Write("DATA REFRESH", $"Error refreshing data: {ex.Message}");
                 MessageBox.Show($"Error refreshing data: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -67,7 +67,7 @@ namespace client.Services
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("DATA REFRESH", $"Error refreshing data: {ex.Message}");
+                Logger.Write("DATA REFRESH", $"Error refreshing data: {ex.Message}");
                 MessageBox.Show($"Error refreshing data: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -81,13 +81,13 @@ namespace client.Services
         private async Task LoadDataBase()
         {
             await _productController.GetAllProducts();
-            LoggerHelper.Write("DATA LOADING", "Successfully loaded products");
+            Logger.Write("DATA LOADING", "Successfully loaded products");
 
             await _categoryController.GetAllCategories();
-            LoggerHelper.Write("DATA LOADING", "Successfully loaded categories");
+            Logger.Write("DATA LOADING", "Successfully loaded categories");
 
             await _subCategoryController.GetAllSubcategory();
-            LoggerHelper.Write("DATA LOADING", "Successfully loaded subcategories");
+            Logger.Write("DATA LOADING", "Successfully loaded subcategories");
         }
 
         private async Task LoadTableOf(string model)
@@ -95,7 +95,7 @@ namespace client.Services
             if (model == "discount")
             {
                 await _discountController.GetAllDiscounts();
-                LoggerHelper.Write("DATA LOADING", "Successfully loaded discounts");
+                Logger.Write("DATA LOADING", "Successfully loaded discounts");
             }
         }
     }

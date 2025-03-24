@@ -40,7 +40,7 @@ namespace client.Controllers
             {
                 if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                 {
-                    LoggerHelper.Write("CREATE SUBCATEGORY", $"Sub-category '{name}' created successfully");
+                    Logger.Write("CREATE SUBCATEGORY", $"Sub-category '{name}' created successfully");
 
                     return true;
                 }
@@ -50,7 +50,7 @@ namespace client.Controllers
                         ? response.Data["message"]
                         : "Unknown error occurred while creating sub-category";
 
-                    LoggerHelper.Write("CREATE SUBCATEGORY", $"Server error: {errorMessage}");
+                    Logger.Write("CREATE SUBCATEGORY", $"Server error: {errorMessage}");
                     MessageBox.Show($"Failed to create sub-category: {errorMessage}", "Sub-category Creation Failed",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -59,7 +59,7 @@ namespace client.Controllers
             }
             else
             {
-                LoggerHelper.Write("CREATE SUBCATEGORY", "Invalid server response format");
+                Logger.Write("CREATE SUBCATEGORY", "Invalid server response format");
                 MessageBox.Show("Server returned an invalid response format while creating sub-category.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -82,7 +82,7 @@ namespace client.Controllers
                 var response = await Client.Instance.SendToServerAndWaitResponse(getSubCategoryPacket);
                 if (response == null)
                 {
-                    LoggerHelper.Write("GET SUBCATEGORY", "No response from server");
+                    Logger.Write("GET SUBCATEGORY", "No response from server");
                     MessageBox.Show("No response received from server", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
@@ -92,7 +92,7 @@ namespace client.Controllers
                 {
                     if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                     {
-                        LoggerHelper.Write("GET SUBCATEGORY", "Sub category retrieved successful");
+                        Logger.Write("GET SUBCATEGORY", "Sub category retrieved successful");
 
                         if (response.Data.ContainsKey("subcategories"))
                         {
@@ -104,13 +104,13 @@ namespace client.Controllers
                                 if (subcategories != null)
                                 {
                                     CurrentSubCategory.SetSubCategories(subcategories);
-                                    LoggerHelper.Write("GET SUBCATEGORY", $"Successfully stored {subcategories.Count} subcategories");
+                                    Logger.Write("GET SUBCATEGORY", $"Successfully stored {subcategories.Count} subcategories");
                                     return true;
                                 }
                             }
                             catch (Exception ex)
                             {
-                                LoggerHelper.Write("GET SUBCATEGORY", $"Error deserializing subcategories: {ex.Message}");
+                                Logger.Write("GET SUBCATEGORY", $"Error deserializing subcategories: {ex.Message}");
                                 MessageBox.Show("Error processing subcategories data", "Error",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return false;
@@ -147,7 +147,7 @@ namespace client.Controllers
             }
             catch (Exception ex)
             {
-                LoggerHelper.Write("GET SUBCATEGORY", $"Error: {ex.Message}");
+                Logger.Write("GET SUBCATEGORY", $"Error: {ex.Message}");
                 MessageBox.Show($"Error: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -167,7 +167,7 @@ namespace client.Controllers
             {
                 MessageBox.Show("No response received from server", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LoggerHelper.Write("RESPONSE", "No response received from server");
+                Logger.Write("RESPONSE", "No response received from server");
                 return new List<SubCategory>();
             }
 
@@ -175,23 +175,23 @@ namespace client.Controllers
             {
                 if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                 {
-                    LoggerHelper.Write("SUBCATEGORY DEBUG", $"Raw response: {JsonSerializer.Serialize(response.Data)}");
+                    Logger.Write("SUBCATEGORY DEBUG", $"Raw response: {JsonSerializer.Serialize(response.Data)}");
 
                     string subcategoriesJson = response.Data["subcategories"];
-                    LoggerHelper.Write("SUBCATEGORY DEBUG", $"JSON string: {subcategoriesJson}");
+                    Logger.Write("SUBCATEGORY DEBUG", $"JSON string: {subcategoriesJson}");
 
                     List<SubCategory>? subcategories = JsonSerializer.Deserialize<List<SubCategory>>(
                         subcategoriesJson,
                         new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
                     );
 
-                    LoggerHelper.Write("SUBCATEGORY DEBUG", $"Deserialized count: {subcategories?.Count ?? 0}");
+                    Logger.Write("SUBCATEGORY DEBUG", $"Deserialized count: {subcategories?.Count ?? 0}");
                     CurrentSubCategory.SetSubCategories(subcategories ?? new List<SubCategory>());
 
-                    LoggerHelper.Write("SUBCATEGORY DEBUG",
+                    Logger.Write("SUBCATEGORY DEBUG",
                         $"Stored subcategories count: {CurrentSubCategory.AllSubCategories.Count}");
 
-                    LoggerHelper.Write("GET ALL CATEGORIES", subcategories?.Count > 0
+                    Logger.Write("GET ALL CATEGORIES", subcategories?.Count > 0
                         ? $"Retrieved {subcategories.Count} categories successfully"
                         : "No categories found");
 

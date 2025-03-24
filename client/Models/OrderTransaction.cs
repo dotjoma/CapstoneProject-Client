@@ -24,6 +24,7 @@ namespace client.Models
     {
         public int TransId { get; set; }
         public int TransNo { get; set; }
+        public decimal totalAmount { get; set; }
         public string? status { get; set; }
         public string? paymentMethod { get; set; }
     }
@@ -31,7 +32,7 @@ namespace client.Models
     public class OrderProcessing
     {
         public int OrderId { get; set; }
-        public int TransNo { get; set; }
+        public string? TransNo { get; set; }
         public int ProductId { get; set; }
         public int CashierId { get; set; }
         public int Quantity { get; set; }
@@ -45,7 +46,7 @@ namespace client.Models
     public class PaymentProcessing
     {
         public int paymentId { get; set; }
-        public int transNo { get; set; }
+        public int transId { get; set; }
         public decimal amountPaid { get; set; }
         public string? paymentMethod { get; set; }
         public string? referenceNumber { get; set; }
