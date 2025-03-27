@@ -52,12 +52,12 @@
             cartPanel = new FlowLayoutPanel();
             panel2 = new Panel();
             panel12 = new Panel();
+            label2 = new Label();
             lblOrderType = new Label();
             label12 = new Label();
             lblOrderNo = new Label();
             lblTransactionNo = new Label();
             label3 = new Label();
-            label2 = new Label();
             panel4 = new Panel();
             panel13 = new Panel();
             panel14 = new Panel();
@@ -74,18 +74,16 @@
             label1 = new Label();
             label10 = new Label();
             panel5 = new Panel();
+            btnTakeOut = new Button();
+            pictureBox6 = new PictureBox();
+            btnDineIn = new Button();
+            txtSearchInput = new TextBox();
+            label9 = new Label();
             btnPendingOrders = new Button();
             btnHoldOrder = new Button();
-            pictureBox6 = new PictureBox();
-            txtSearchInput = new TextBox();
             panel8 = new Panel();
-            panel15 = new Panel();
-            btnTakeOut = new Button();
-            btnDineIn = new Button();
-            label9 = new Label();
             panel3 = new Panel();
             panel10 = new Panel();
-            button1 = new Button();
             btnCancelTransaction = new Button();
             btnApplyDiscount = new Button();
             btnNewOrder = new Button();
@@ -113,7 +111,6 @@
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             panel8.SuspendLayout();
-            panel15.SuspendLayout();
             panel3.SuspendLayout();
             panel10.SuspendLayout();
             panel9.SuspendLayout();
@@ -127,13 +124,13 @@
             // 
             // pnlHeader
             // 
-            pnlHeader.BackColor = Color.White;
+            pnlHeader.BackColor = Color.FromArgb(121, 85, 72);
             pnlHeader.Controls.Add(label13);
             pnlHeader.Controls.Add(btnClose);
             pnlHeader.Dock = DockStyle.Top;
             pnlHeader.Location = new Point(0, 0);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Size = new Size(1128, 34);
+            pnlHeader.Size = new Size(1665, 34);
             pnlHeader.TabIndex = 24;
             pnlHeader.MouseDown += pnlHeader_MouseDown;
             pnlHeader.MouseMove += pnlHeader_MouseMove;
@@ -144,18 +141,18 @@
             label13.Anchor = AnchorStyles.Left;
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.ForeColor = Color.FromArgb(62, 39, 35);
-            label13.Location = new Point(3, 7);
+            label13.ForeColor = Color.White;
+            label13.Location = new Point(3, 5);
             label13.Name = "label13";
-            label13.Size = new Size(208, 20);
+            label13.Size = new Size(269, 25);
             label13.TabIndex = 20;
             label13.Text = "ELICIAS GARDEN FOOD PARK";
             // 
             // btnClose
             // 
             btnClose.Anchor = AnchorStyles.Right;
-            btnClose.Image = Properties.Resources.CloseX32;
-            btnClose.Location = new Point(1096, 5);
+            btnClose.Image = Properties.Resources.CloseWhite;
+            btnClose.Location = new Point(1633, 5);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(24, 24);
             btnClose.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -168,7 +165,7 @@
             // 
             // panel6
             // 
-            panel6.BackColor = Color.FromArgb(98, 87, 87);
+            panel6.BackColor = Color.FromArgb(121, 85, 72);
             panel6.Controls.Add(btnLogout);
             panel6.Controls.Add(btnHome);
             panel6.Controls.Add(lblUser);
@@ -183,10 +180,11 @@
             panel6.Controls.Add(button4);
             panel6.Controls.Add(label7);
             panel6.Dock = DockStyle.Bottom;
-            panel6.Location = new Point(0, 734);
+            panel6.Location = new Point(0, 778);
             panel6.Name = "panel6";
-            panel6.Size = new Size(1128, 34);
+            panel6.Size = new Size(1665, 34);
             panel6.TabIndex = 25;
+            panel6.Paint += panel6_Paint;
             // 
             // btnLogout
             // 
@@ -196,9 +194,9 @@
             btnLogout.ForeColor = Color.White;
             btnLogout.Image = Properties.Resources.logout_24;
             btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLogout.Location = new Point(682, 4);
+            btnLogout.Location = new Point(1193, 4);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(85, 26);
+            btnLogout.Size = new Size(100, 26);
             btnLogout.TabIndex = 19;
             btnLogout.Text = "Logout";
             btnLogout.TextAlign = ContentAlignment.MiddleRight;
@@ -209,7 +207,7 @@
             // 
             btnHome.Anchor = AnchorStyles.Right;
             btnHome.Image = Properties.Resources.HomeRounded;
-            btnHome.Location = new Point(646, 2);
+            btnHome.Location = new Point(1155, 2);
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(30, 30);
             btnHome.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -224,7 +222,7 @@
             lblUser.ForeColor = Color.White;
             lblUser.Location = new Point(36, 9);
             lblUser.Name = "lblUser";
-            lblUser.Size = new Size(38, 16);
+            lblUser.Size = new Size(45, 20);
             lblUser.TabIndex = 17;
             lblUser.Text = "- - -";
             // 
@@ -243,7 +241,7 @@
             // 
             pictureBox1.Anchor = AnchorStyles.Right;
             pictureBox1.Image = Properties.Resources.CalendarColored;
-            pictureBox1.Location = new Point(773, 2);
+            pictureBox1.Location = new Point(1299, 2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(30, 30);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -256,9 +254,9 @@
             lblDateTime.Anchor = AnchorStyles.Right;
             lblDateTime.AutoSize = true;
             lblDateTime.ForeColor = Color.White;
-            lblDateTime.Location = new Point(803, 9);
+            lblDateTime.Location = new Point(1329, 9);
             lblDateTime.Name = "lblDateTime";
-            lblDateTime.Size = new Size(38, 16);
+            lblDateTime.Size = new Size(45, 20);
             lblDateTime.TabIndex = 14;
             lblDateTime.Text = "- - -";
             // 
@@ -270,7 +268,7 @@
             button3.ForeColor = Color.White;
             button3.Image = Properties.Resources.logout_24;
             button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(1410, -29);
+            button3.Location = new Point(1947, -29);
             button3.Name = "button3";
             button3.Size = new Size(85, 26);
             button3.TabIndex = 13;
@@ -282,7 +280,7 @@
             // 
             pictureBox3.Anchor = AnchorStyles.Right;
             pictureBox3.Image = Properties.Resources.HomeRounded;
-            pictureBox3.Location = new Point(1501, -31);
+            pictureBox3.Location = new Point(2038, -31);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(30, 30);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -296,7 +294,7 @@
             label5.ForeColor = Color.White;
             label5.Location = new Point(36, -24);
             label5.Name = "label5";
-            label5.Size = new Size(38, 16);
+            label5.Size = new Size(45, 20);
             label5.TabIndex = 11;
             label5.Text = "- - -";
             // 
@@ -315,7 +313,7 @@
             // 
             pictureBox5.Anchor = AnchorStyles.Right;
             pictureBox5.Image = Properties.Resources.CalendarColored;
-            pictureBox5.Location = new Point(1572, -31);
+            pictureBox5.Location = new Point(2109, -31);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(30, 30);
             pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -328,7 +326,7 @@
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
             button4.Image = Properties.Resources.CloseWhite;
-            button4.Location = new Point(1916, -31);
+            button4.Location = new Point(2453, -31);
             button4.Name = "button4";
             button4.Size = new Size(30, 30);
             button4.TabIndex = 8;
@@ -339,9 +337,9 @@
             label7.Anchor = AnchorStyles.Right;
             label7.AutoSize = true;
             label7.ForeColor = Color.White;
-            label7.Location = new Point(1602, -24);
+            label7.Location = new Point(2139, -24);
             label7.Name = "label7";
-            label7.Size = new Size(38, 16);
+            label7.Size = new Size(45, 20);
             label7.TabIndex = 5;
             label7.Text = "- - -";
             // 
@@ -351,18 +349,17 @@
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(panel4);
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(778, 34);
+            panel1.Location = new Point(1225, 34);
             panel1.Name = "panel1";
-            panel1.Size = new Size(350, 700);
+            panel1.Size = new Size(440, 744);
             panel1.TabIndex = 35;
             // 
             // panel11
             // 
             panel11.Controls.Add(cartPanel);
-            panel11.Dock = DockStyle.Fill;
-            panel11.Location = new Point(0, 84);
+            panel11.Location = new Point(0, 95);
             panel11.Name = "panel11";
-            panel11.Size = new Size(350, 319);
+            panel11.Size = new Size(440, 334);
             panel11.TabIndex = 11;
             // 
             // cartPanel
@@ -372,7 +369,7 @@
             cartPanel.BackColor = Color.FromArgb(232, 232, 232);
             cartPanel.Location = new Point(0, 8);
             cartPanel.Name = "cartPanel";
-            cartPanel.Size = new Size(345, 305);
+            cartPanel.Size = new Size(435, 320);
             cartPanel.TabIndex = 12;
             // 
             // panel2
@@ -382,32 +379,44 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(350, 84);
+            panel2.Size = new Size(440, 95);
             panel2.TabIndex = 9;
             // 
             // panel12
             // 
             panel12.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel12.BackColor = Color.FromArgb(232, 232, 232);
+            panel12.Controls.Add(label2);
             panel12.Controls.Add(lblOrderType);
             panel12.Controls.Add(label12);
             panel12.Controls.Add(lblOrderNo);
             panel12.Controls.Add(lblTransactionNo);
             panel12.Controls.Add(label3);
-            panel12.Controls.Add(label2);
             panel12.Location = new Point(-1, -1);
             panel12.Name = "panel12";
-            panel12.Size = new Size(347, 86);
+            panel12.Size = new Size(437, 96);
             panel12.TabIndex = 0;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.Black;
+            label2.Location = new Point(4, 6);
+            label2.Name = "label2";
+            label2.Size = new Size(201, 28);
+            label2.TabIndex = 15;
+            label2.Text = "TRANSACTION NO :";
             // 
             // lblOrderType
             // 
+            lblOrderType.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblOrderType.AutoSize = true;
             lblOrderType.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblOrderType.ForeColor = Color.Black;
-            lblOrderType.Location = new Point(104, 58);
+            lblOrderType.Location = new Point(211, 58);
             lblOrderType.Name = "lblOrderType";
-            lblOrderType.Size = new Size(0, 20);
+            lblOrderType.Size = new Size(0, 25);
             lblOrderType.TabIndex = 20;
             // 
             // label12
@@ -417,28 +426,30 @@
             label12.ForeColor = Color.Black;
             label12.Location = new Point(4, 60);
             label12.Name = "label12";
-            label12.Size = new Size(94, 17);
+            label12.Size = new Size(121, 23);
             label12.TabIndex = 19;
             label12.Text = "ORDER TYPE :";
             // 
             // lblOrderNo
             // 
+            lblOrderNo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblOrderNo.AutoSize = true;
             lblOrderNo.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblOrderNo.ForeColor = Color.Black;
-            lblOrderNo.Location = new Point(93, 33);
+            lblOrderNo.Location = new Point(211, 33);
             lblOrderNo.Name = "lblOrderNo";
-            lblOrderNo.Size = new Size(0, 20);
+            lblOrderNo.Size = new Size(0, 25);
             lblOrderNo.TabIndex = 18;
             // 
             // lblTransactionNo
             // 
+            lblTransactionNo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblTransactionNo.AutoSize = true;
             lblTransactionNo.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTransactionNo.ForeColor = Color.Black;
-            lblTransactionNo.Location = new Point(169, 2);
+            lblTransactionNo.Location = new Point(211, 2);
             lblTransactionNo.Name = "lblTransactionNo";
-            lblTransactionNo.Size = new Size(0, 25);
+            lblTransactionNo.Size = new Size(0, 32);
             lblTransactionNo.TabIndex = 17;
             // 
             // label3
@@ -448,20 +459,9 @@
             label3.ForeColor = Color.Black;
             label3.Location = new Point(4, 35);
             label3.Name = "label3";
-            label3.Size = new Size(83, 17);
+            label3.Size = new Size(108, 23);
             label3.TabIndex = 16;
             label3.Text = "ORDER NO :";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.Black;
-            label2.Location = new Point(4, 5);
-            label2.Name = "label2";
-            label2.Size = new Size(159, 21);
-            label2.TabIndex = 15;
-            label2.Text = "TRANSACTION NO :";
             // 
             // panel4
             // 
@@ -469,9 +469,9 @@
             panel4.Controls.Add(panel13);
             panel4.Controls.Add(label10);
             panel4.Dock = DockStyle.Bottom;
-            panel4.Location = new Point(0, 403);
+            panel4.Location = new Point(0, 429);
             panel4.Name = "panel4";
-            panel4.Size = new Size(350, 297);
+            panel4.Size = new Size(440, 315);
             panel4.TabIndex = 10;
             // 
             // panel13
@@ -490,35 +490,37 @@
             panel13.Controls.Add(lblVatable);
             panel13.Controls.Add(lblDiscount);
             panel13.Controls.Add(label1);
-            panel13.Location = new Point(-1, 18);
+            panel13.Location = new Point(-1, 6);
             panel13.Name = "panel13";
-            panel13.Size = new Size(347, 270);
+            panel13.Size = new Size(437, 300);
             panel13.TabIndex = 14;
             // 
             // panel14
             // 
+            panel14.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel14.BackColor = Color.Black;
-            panel14.Location = new Point(3, 120);
+            panel14.Location = new Point(3, 160);
             panel14.Name = "panel14";
-            panel14.Size = new Size(335, 1);
+            panel14.Size = new Size(425, 1);
             panel14.TabIndex = 28;
             // 
             // lblSubTotal
             // 
             lblSubTotal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblSubTotal.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSubTotal.Location = new Point(206, 11);
+            lblSubTotal.Location = new Point(296, 11);
             lblSubTotal.Name = "lblSubTotal";
-            lblSubTotal.Size = new Size(133, 21);
+            lblSubTotal.Size = new Size(133, 28);
             lblSubTotal.TabIndex = 27;
             lblSubTotal.Text = "0.00";
             lblSubTotal.TextAlign = ContentAlignment.MiddleRight;
             // 
             // lblTotal
             // 
+            lblTotal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblTotal.Font = new Font("Arial Rounded MT Bold", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblTotal.ForeColor = Color.FromArgb(62, 39, 35);
-            lblTotal.Location = new Point(168, 126);
+            lblTotal.Location = new Point(258, 166);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(170, 30);
             lblTotal.TabIndex = 26;
@@ -530,18 +532,19 @@
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label11.ForeColor = Color.FromArgb(62, 39, 35);
-            label11.Location = new Point(3, 125);
+            label11.Location = new Point(3, 165);
             label11.Name = "label11";
-            label11.Size = new Size(76, 30);
+            label11.Size = new Size(98, 37);
             label11.TabIndex = 25;
             label11.Text = "TOTAL";
             // 
             // lblVat
             // 
+            lblVat.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblVat.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            lblVat.Location = new Point(206, 90);
+            lblVat.Location = new Point(296, 122);
             lblVat.Name = "lblVat";
-            lblVat.Size = new Size(133, 21);
+            lblVat.Size = new Size(133, 35);
             lblVat.TabIndex = 24;
             lblVat.Text = "0.00";
             lblVat.TextAlign = ContentAlignment.MiddleRight;
@@ -550,9 +553,9 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label8.Location = new Point(4, 89);
+            label8.Location = new Point(4, 121);
             label8.Name = "label8";
-            label8.Size = new Size(76, 21);
+            label8.Size = new Size(97, 28);
             label8.TabIndex = 23;
             label8.Text = "VAT(12%)";
             // 
@@ -560,9 +563,9 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label6.Location = new Point(4, 63);
+            label6.Location = new Point(4, 83);
             label6.Name = "label6";
-            label6.Size = new Size(69, 21);
+            label6.Size = new Size(86, 28);
             label6.TabIndex = 22;
             label6.Text = "Vat-able";
             // 
@@ -570,24 +573,24 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label4.Location = new Point(4, 37);
+            label4.Location = new Point(4, 44);
             label4.Name = "label4";
-            label4.Size = new Size(74, 21);
+            label4.Size = new Size(92, 28);
             label4.TabIndex = 21;
             label4.Text = "Discount";
             // 
             // btnPayment
             // 
-            btnPayment.Anchor = AnchorStyles.Bottom;
+            btnPayment.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnPayment.BackColor = Color.White;
             btnPayment.FlatAppearance.BorderColor = Color.Gray;
             btnPayment.FlatAppearance.BorderSize = 2;
             btnPayment.FlatStyle = FlatStyle.Flat;
             btnPayment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnPayment.ForeColor = Color.Black;
-            btnPayment.Location = new Point(3, 214);
+            btnPayment.Location = new Point(3, 244);
             btnPayment.Name = "btnPayment";
-            btnPayment.Size = new Size(340, 52);
+            btnPayment.Size = new Size(430, 52);
             btnPayment.TabIndex = 20;
             btnPayment.TabStop = false;
             btnPayment.Text = "PAYMENT - [F2]";
@@ -596,20 +599,22 @@
             // 
             // lblVatable
             // 
+            lblVatable.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblVatable.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            lblVatable.Location = new Point(206, 64);
+            lblVatable.Location = new Point(296, 84);
             lblVatable.Name = "lblVatable";
-            lblVatable.Size = new Size(133, 21);
+            lblVatable.Size = new Size(133, 38);
             lblVatable.TabIndex = 19;
             lblVatable.Text = "0.00";
             lblVatable.TextAlign = ContentAlignment.MiddleRight;
             // 
             // lblDiscount
             // 
+            lblDiscount.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblDiscount.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            lblDiscount.Location = new Point(206, 38);
+            lblDiscount.Location = new Point(296, 45);
             lblDiscount.Name = "lblDiscount";
-            lblDiscount.Size = new Size(133, 21);
+            lblDiscount.Size = new Size(133, 38);
             lblDiscount.TabIndex = 18;
             lblDiscount.Text = "0.00";
             lblDiscount.TextAlign = ContentAlignment.MiddleRight;
@@ -620,7 +625,7 @@
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(4, 11);
             label1.Name = "label1";
-            label1.Size = new Size(79, 21);
+            label1.Size = new Size(98, 28);
             label1.TabIndex = 17;
             label1.Text = "Sub-Total";
             // 
@@ -630,24 +635,81 @@
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.ForeColor = Color.FromArgb(98, 87, 87);
-            label10.Location = new Point(6, 328);
+            label10.Location = new Point(6, 346);
             label10.Name = "label10";
-            label10.Size = new Size(85, 32);
+            label10.Size = new Size(109, 41);
             label10.TabIndex = 12;
             label10.Text = "TOTAL";
             // 
             // panel5
             // 
-            panel5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel5.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel5.BackColor = Color.FromArgb(232, 232, 232);
-            panel5.Controls.Add(btnPendingOrders);
-            panel5.Controls.Add(btnHoldOrder);
+            panel5.Controls.Add(btnTakeOut);
             panel5.Controls.Add(pictureBox6);
+            panel5.Controls.Add(btnDineIn);
             panel5.Controls.Add(txtSearchInput);
-            panel5.Location = new Point(6, 0);
+            panel5.Controls.Add(label9);
+            panel5.Location = new Point(6, 1);
             panel5.Name = "panel5";
-            panel5.Size = new Size(767, 57);
+            panel5.Size = new Size(1214, 57);
             panel5.TabIndex = 36;
+            panel5.Paint += panel5_Paint;
+            // 
+            // btnTakeOut
+            // 
+            btnTakeOut.BackColor = Color.White;
+            btnTakeOut.Location = new Point(260, 14);
+            btnTakeOut.Name = "btnTakeOut";
+            btnTakeOut.Size = new Size(104, 28);
+            btnTakeOut.TabIndex = 41;
+            btnTakeOut.Text = "TAKE OUT";
+            btnTakeOut.UseVisualStyleBackColor = false;
+            btnTakeOut.Click += btnTakeOut_Click;
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pictureBox6.Image = Properties.Resources.Search;
+            pictureBox6.Location = new Point(1177, 13);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(26, 26);
+            pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox6.TabIndex = 13;
+            pictureBox6.TabStop = false;
+            // 
+            // btnDineIn
+            // 
+            btnDineIn.BackColor = Color.White;
+            btnDineIn.Location = new Point(150, 14);
+            btnDineIn.Name = "btnDineIn";
+            btnDineIn.Size = new Size(104, 28);
+            btnDineIn.TabIndex = 40;
+            btnDineIn.Text = "DINE IN";
+            btnDineIn.UseVisualStyleBackColor = false;
+            btnDineIn.Click += btnDineIn_Click;
+            // 
+            // txtSearchInput
+            // 
+            txtSearchInput.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            txtSearchInput.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSearchInput.Location = new Point(980, 13);
+            txtSearchInput.Name = "txtSearchInput";
+            txtSearchInput.PlaceholderText = "Search Product(s)";
+            txtSearchInput.Size = new Size(188, 30);
+            txtSearchInput.TabIndex = 0;
+            txtSearchInput.TextChanged += txtSearchInput_TextChanged;
+            // 
+            // label9
+            // 
+            label9.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.Black;
+            label9.Location = new Point(6, 14);
+            label9.Name = "label9";
+            label9.Size = new Size(138, 28);
+            label9.TabIndex = 39;
+            label9.Text = "ORDER TYPE :";
+            label9.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // btnPendingOrders
             // 
@@ -657,9 +719,9 @@
             btnPendingOrders.FlatStyle = FlatStyle.Flat;
             btnPendingOrders.Image = Properties.Resources.pending_24;
             btnPendingOrders.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPendingOrders.Location = new Point(174, 3);
+            btnPendingOrders.Location = new Point(928, 8);
             btnPendingOrders.Name = "btnPendingOrders";
-            btnPendingOrders.Size = new Size(193, 50);
+            btnPendingOrders.Size = new Size(236, 50);
             btnPendingOrders.TabIndex = 15;
             btnPendingOrders.TabStop = false;
             btnPendingOrders.Text = "Pending Orders - [F6]";
@@ -674,126 +736,46 @@
             btnHoldOrder.FlatStyle = FlatStyle.Flat;
             btnHoldOrder.Image = Properties.Resources.hold_24;
             btnHoldOrder.ImageAlign = ContentAlignment.MiddleLeft;
-            btnHoldOrder.Location = new Point(6, 3);
+            btnHoldOrder.Location = new Point(724, 8);
             btnHoldOrder.Name = "btnHoldOrder";
-            btnHoldOrder.Size = new Size(162, 50);
+            btnHoldOrder.Size = new Size(198, 50);
             btnHoldOrder.TabIndex = 14;
             btnHoldOrder.TabStop = false;
             btnHoldOrder.Text = "Hold Order - [F5]";
             btnHoldOrder.TextAlign = ContentAlignment.MiddleRight;
             btnHoldOrder.UseVisualStyleBackColor = false;
             // 
-            // pictureBox6
-            // 
-            pictureBox6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox6.Image = Properties.Resources.Search;
-            pictureBox6.Location = new Point(730, 13);
-            pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(26, 26);
-            pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox6.TabIndex = 13;
-            pictureBox6.TabStop = false;
-            // 
-            // txtSearchInput
-            // 
-            txtSearchInput.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            txtSearchInput.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSearchInput.Location = new Point(533, 13);
-            txtSearchInput.Name = "txtSearchInput";
-            txtSearchInput.PlaceholderText = "Search Product(s)";
-            txtSearchInput.Size = new Size(188, 26);
-            txtSearchInput.TabIndex = 0;
-            txtSearchInput.TextChanged += txtSearchInput_TextChanged;
-            // 
             // panel8
             // 
-            panel8.Controls.Add(panel15);
             panel8.Controls.Add(panel5);
             panel8.Dock = DockStyle.Top;
             panel8.Location = new Point(0, 34);
             panel8.Name = "panel8";
-            panel8.Size = new Size(778, 95);
+            panel8.Size = new Size(1225, 68);
             panel8.TabIndex = 42;
-            // 
-            // panel15
-            // 
-            panel15.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel15.BackColor = Color.FromArgb(232, 232, 232);
-            panel15.Controls.Add(btnTakeOut);
-            panel15.Controls.Add(btnDineIn);
-            panel15.Controls.Add(label9);
-            panel15.Location = new Point(6, 59);
-            panel15.Name = "panel15";
-            panel15.Size = new Size(767, 36);
-            panel15.TabIndex = 37;
-            // 
-            // btnTakeOut
-            // 
-            btnTakeOut.BackColor = Color.White;
-            btnTakeOut.Location = new Point(236, 4);
-            btnTakeOut.Name = "btnTakeOut";
-            btnTakeOut.Size = new Size(104, 28);
-            btnTakeOut.TabIndex = 41;
-            btnTakeOut.Text = "TAKE OUT";
-            btnTakeOut.UseVisualStyleBackColor = false;
-            btnTakeOut.Click += btnTakeOut_Click;
-            // 
-            // btnDineIn
-            // 
-            btnDineIn.BackColor = Color.White;
-            btnDineIn.Location = new Point(126, 4);
-            btnDineIn.Name = "btnDineIn";
-            btnDineIn.Size = new Size(104, 28);
-            btnDineIn.TabIndex = 40;
-            btnDineIn.Text = "DINE IN";
-            btnDineIn.UseVisualStyleBackColor = false;
-            btnDineIn.Click += btnDineIn_Click;
-            // 
-            // label9
-            // 
-            label9.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            label9.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.ForeColor = Color.Black;
-            label9.Location = new Point(6, 4);
-            label9.Name = "label9";
-            label9.Size = new Size(114, 28);
-            label9.TabIndex = 39;
-            label9.Text = "ORDER TYPE :";
-            label9.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // panel3
             // 
             panel3.Controls.Add(panel10);
             panel3.Dock = DockStyle.Bottom;
-            panel3.Location = new Point(0, 658);
+            panel3.Location = new Point(0, 702);
             panel3.Name = "panel3";
-            panel3.Size = new Size(778, 76);
+            panel3.Size = new Size(1225, 76);
             panel3.TabIndex = 49;
             // 
             // panel10
             // 
             panel10.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel10.BackColor = Color.FromArgb(232, 232, 232);
-            panel10.Controls.Add(button1);
+            panel10.Controls.Add(btnPendingOrders);
+            panel10.Controls.Add(btnHoldOrder);
             panel10.Controls.Add(btnCancelTransaction);
             panel10.Controls.Add(btnApplyDiscount);
             panel10.Controls.Add(btnNewOrder);
             panel10.Location = new Point(6, 0);
             panel10.Name = "panel10";
-            panel10.Size = new Size(767, 67);
+            panel10.Size = new Size(1214, 67);
             panel10.TabIndex = 47;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.White;
-            button1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(595, 6);
-            button1.Name = "button1";
-            button1.Size = new Size(161, 54);
-            button1.TabIndex = 5;
-            button1.Text = "CHECK TOTAL DISCOUNT";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
             // 
             // btnCancelTransaction
             // 
@@ -804,9 +786,9 @@
             btnCancelTransaction.FlatStyle = FlatStyle.Flat;
             btnCancelTransaction.Image = Properties.Resources.cancel_24;
             btnCancelTransaction.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancelTransaction.Location = new Point(369, 6);
+            btnCancelTransaction.Location = new Point(452, 6);
             btnCancelTransaction.Name = "btnCancelTransaction";
-            btnCancelTransaction.Size = new Size(217, 54);
+            btnCancelTransaction.Size = new Size(266, 54);
             btnCancelTransaction.TabIndex = 4;
             btnCancelTransaction.TabStop = false;
             btnCancelTransaction.Text = "Cancel Transaction - [F4]";
@@ -823,9 +805,9 @@
             btnApplyDiscount.FlatStyle = FlatStyle.Flat;
             btnApplyDiscount.Image = Properties.Resources.icons8_discount_24;
             btnApplyDiscount.ImageAlign = ContentAlignment.MiddleLeft;
-            btnApplyDiscount.Location = new Point(174, 6);
+            btnApplyDiscount.Location = new Point(210, 6);
             btnApplyDiscount.Name = "btnApplyDiscount";
-            btnApplyDiscount.Size = new Size(189, 54);
+            btnApplyDiscount.Size = new Size(236, 54);
             btnApplyDiscount.TabIndex = 3;
             btnApplyDiscount.TabStop = false;
             btnApplyDiscount.Text = "Apply Discount - [F3]";
@@ -844,7 +826,7 @@
             btnNewOrder.ImageAlign = ContentAlignment.MiddleLeft;
             btnNewOrder.Location = new Point(6, 6);
             btnNewOrder.Name = "btnNewOrder";
-            btnNewOrder.Size = new Size(162, 54);
+            btnNewOrder.Size = new Size(198, 54);
             btnNewOrder.TabIndex = 2;
             btnNewOrder.TabStop = false;
             btnNewOrder.Text = "New Order - [F1]";
@@ -856,9 +838,9 @@
             // 
             panel9.Controls.Add(categoriesPanel);
             panel9.Dock = DockStyle.Left;
-            panel9.Location = new Point(0, 129);
+            panel9.Location = new Point(0, 102);
             panel9.Name = "panel9";
-            panel9.Size = new Size(193, 529);
+            panel9.Size = new Size(223, 600);
             panel9.TabIndex = 50;
             // 
             // categoriesPanel
@@ -867,16 +849,16 @@
             categoriesPanel.BackColor = Color.FromArgb(232, 232, 232);
             categoriesPanel.Location = new Point(6, 8);
             categoriesPanel.Name = "categoriesPanel";
-            categoriesPanel.Size = new Size(181, 514);
+            categoriesPanel.Size = new Size(211, 585);
             categoriesPanel.TabIndex = 41;
             // 
             // subCategoryPanel
             // 
             subCategoryPanel.Controls.Add(subCategoriesPanel);
             subCategoryPanel.Dock = DockStyle.Bottom;
-            subCategoryPanel.Location = new Point(193, 596);
+            subCategoryPanel.Location = new Point(223, 640);
             subCategoryPanel.Name = "subCategoryPanel";
-            subCategoryPanel.Size = new Size(585, 62);
+            subCategoryPanel.Size = new Size(1002, 62);
             subCategoryPanel.TabIndex = 52;
             // 
             // subCategoriesPanel
@@ -885,16 +867,16 @@
             subCategoriesPanel.BackColor = Color.FromArgb(232, 232, 232);
             subCategoriesPanel.Location = new Point(0, 0);
             subCategoriesPanel.Name = "subCategoriesPanel";
-            subCategoriesPanel.Size = new Size(580, 55);
+            subCategoriesPanel.Size = new Size(997, 55);
             subCategoriesPanel.TabIndex = 0;
             // 
             // panel7
             // 
             panel7.Controls.Add(pnlContainer);
             panel7.Dock = DockStyle.Fill;
-            panel7.Location = new Point(193, 129);
+            panel7.Location = new Point(223, 102);
             panel7.Name = "panel7";
-            panel7.Size = new Size(585, 467);
+            panel7.Size = new Size(1002, 538);
             panel7.TabIndex = 53;
             // 
             // pnlContainer
@@ -902,15 +884,15 @@
             pnlContainer.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlContainer.Location = new Point(3, 7);
             pnlContainer.Name = "pnlContainer";
-            pnlContainer.Size = new Size(578, 452);
+            pnlContainer.Size = new Size(995, 523);
             pnlContainer.TabIndex = 49;
             // 
             // OrderEntryForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 16F);
+            AutoScaleDimensions = new SizeF(10F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1128, 768);
+            ClientSize = new Size(1665, 812);
             Controls.Add(panel7);
             Controls.Add(subCategoryPanel);
             Controls.Add(panel9);
@@ -952,7 +934,6 @@
             panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             panel8.ResumeLayout(false);
-            panel15.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel10.ResumeLayout(false);
             panel9.ResumeLayout(false);
@@ -1021,12 +1002,10 @@
         private Button btnHoldOrder;
         private Button btnPendingOrders;
         private Panel panel14;
-        private Panel panel15;
         private Button btnDineIn;
         private Label label9;
         private Button btnTakeOut;
         private Label lblOrderType;
         private Label label12;
-        private Button button1;
     }
 }

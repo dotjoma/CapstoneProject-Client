@@ -15,6 +15,7 @@ namespace client.Models
         public int VatExempt { get; set; }
         public string ApplicableTo { get; set; } = string.Empty;
         public int Status { get; set; }
+        public int IsDiscountable { get; set; }
         public List<int>? CategoryIds { get; set; }
     }
 }

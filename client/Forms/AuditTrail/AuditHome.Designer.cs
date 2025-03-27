@@ -1,0 +1,446 @@
+﻿namespace client.Forms.AuditTrail
+{
+    partial class AuditHome
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            panel2 = new Panel();
+            comboBox2 = new ComboBox();
+            label3 = new Label();
+            pictureBox3 = new PictureBox();
+            textBox2 = new TextBox();
+            pictureBox4 = new PictureBox();
+            comboBox1 = new ComboBox();
+            label2 = new Label();
+            pictureBox2 = new PictureBox();
+            textBox1 = new TextBox();
+            btnRefresh = new PictureBox();
+            pictureBox1 = new PictureBox();
+            label1 = new Label();
+            panel1 = new Panel();
+            dgvAudit = new DataGridView();
+            date = new DataGridViewTextBoxColumn();
+            username = new DataGridViewTextBoxColumn();
+            action = new DataGridViewTextBoxColumn();
+            description = new DataGridViewTextBoxColumn();
+            prevvalue = new DataGridViewTextBoxColumn();
+            newvalue = new DataGridViewTextBoxColumn();
+            ipaddress = new DataGridViewTextBoxColumn();
+            machineid = new DataGridViewTextBoxColumn();
+            sessionid = new DataGridViewTextBoxColumn();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnRefresh).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAudit).BeginInit();
+            SuspendLayout();
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(239, 235, 233);
+            panel2.Controls.Add(comboBox2);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(pictureBox3);
+            panel2.Controls.Add(textBox2);
+            panel2.Controls.Add(pictureBox4);
+            panel2.Controls.Add(comboBox1);
+            panel2.Controls.Add(label2);
+            panel2.Controls.Add(pictureBox2);
+            panel2.Controls.Add(textBox1);
+            panel2.Controls.Add(btnRefresh);
+            panel2.Controls.Add(pictureBox1);
+            panel2.Controls.Add(label1);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 0);
+            panel2.Margin = new Padding(3, 4, 3, 4);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1170, 79);
+            panel2.TabIndex = 2;
+            // 
+            // comboBox2
+            // 
+            comboBox2.Anchor = AnchorStyles.Right;
+            comboBox2.BackColor = Color.FromArgb(248, 245, 240);
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox2.FlatStyle = FlatStyle.System;
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(1660, 14);
+            comboBox2.Margin = new Padding(3, 4, 3, 4);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(148, 28);
+            comboBox2.TabIndex = 14;
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Right;
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.FromArgb(93, 64, 55);
+            label3.Location = new Point(1579, 16);
+            label3.Name = "label3";
+            label3.Size = new Size(87, 25);
+            label3.TabIndex = 13;
+            label3.Text = "Filter by:";
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Anchor = AnchorStyles.Right;
+            pictureBox3.Image = Properties.Resources.Search;
+            pictureBox3.Location = new Point(1846, 12);
+            pictureBox3.Margin = new Padding(3, 4, 3, 4);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(27, 32);
+            pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox3.TabIndex = 12;
+            pictureBox3.TabStop = false;
+            // 
+            // textBox2
+            // 
+            textBox2.Anchor = AnchorStyles.Right;
+            textBox2.BackColor = Color.White;
+            textBox2.BorderStyle = BorderStyle.None;
+            textBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox2.ForeColor = Color.FromArgb(93, 64, 55);
+            textBox2.Location = new Point(1880, 15);
+            textBox2.Margin = new Padding(3, 4, 3, 4);
+            textBox2.Name = "textBox2";
+            textBox2.PlaceholderText = "Search Item(s)";
+            textBox2.Size = new Size(238, 27);
+            textBox2.TabIndex = 11;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Anchor = AnchorStyles.Right;
+            pictureBox4.BackColor = Color.FromArgb(232, 232, 232);
+            pictureBox4.Image = Properties.Resources.Refresh1;
+            pictureBox4.Location = new Point(1529, 12);
+            pictureBox4.Margin = new Padding(3, 4, 3, 4);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(27, 32);
+            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox4.TabIndex = 10;
+            pictureBox4.TabStop = false;
+            // 
+            // comboBox1
+            // 
+            comboBox1.Anchor = AnchorStyles.Right;
+            comboBox1.BackColor = Color.FromArgb(248, 245, 240);
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FlatStyle = FlatStyle.System;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(2591, 2);
+            comboBox1.Margin = new Padding(3, 4, 3, 4);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(148, 28);
+            comboBox1.TabIndex = 9;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.FromArgb(93, 64, 55);
+            label2.Location = new Point(2510, 3);
+            label2.Name = "label2";
+            label2.Size = new Size(87, 25);
+            label2.TabIndex = 8;
+            label2.Text = "Filter by:";
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Anchor = AnchorStyles.Right;
+            pictureBox2.Image = Properties.Resources.Search;
+            pictureBox2.Location = new Point(2777, 1);
+            pictureBox2.Margin = new Padding(3, 4, 3, 4);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(27, 32);
+            pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox2.TabIndex = 7;
+            pictureBox2.TabStop = false;
+            // 
+            // textBox1
+            // 
+            textBox1.Anchor = AnchorStyles.Right;
+            textBox1.BackColor = Color.White;
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox1.ForeColor = Color.FromArgb(93, 64, 55);
+            textBox1.Location = new Point(2811, 2);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
+            textBox1.Name = "textBox1";
+            textBox1.PlaceholderText = "Search Item(s)";
+            textBox1.Size = new Size(238, 27);
+            textBox1.TabIndex = 6;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.Anchor = AnchorStyles.Right;
+            btnRefresh.BackColor = Color.FromArgb(232, 232, 232);
+            btnRefresh.Image = Properties.Resources.Refresh1;
+            btnRefresh.Location = new Point(2460, 1);
+            btnRefresh.Margin = new Padding(3, 4, 3, 4);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(27, 32);
+            btnRefresh.SizeMode = PictureBoxSizeMode.StretchImage;
+            btnRefresh.TabIndex = 3;
+            btnRefresh.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Anchor = AnchorStyles.Left;
+            pictureBox1.Image = Properties.Resources.inventory_501;
+            pictureBox1.Location = new Point(14, 13);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(46, 53);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Left;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(62, 39, 35);
+            label1.Location = new Point(66, 19);
+            label1.Name = "label1";
+            label1.Size = new Size(193, 41);
+            label1.TabIndex = 0;
+            label1.Text = "AUDIT LOGS";
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(239, 235, 233);
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(0, 628);
+            panel1.Margin = new Padding(3, 4, 3, 4);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1170, 79);
+            panel1.TabIndex = 4;
+            // 
+            // dgvAudit
+            // 
+            dgvAudit.AllowUserToAddRows = false;
+            dgvAudit.AllowUserToDeleteRows = false;
+            dgvAudit.AllowUserToResizeColumns = false;
+            dgvAudit.AllowUserToResizeRows = false;
+            dataGridViewCellStyle6.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(93, 64, 55);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(245, 242, 237);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(93, 64, 55);
+            dgvAudit.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dgvAudit.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvAudit.BackgroundColor = Color.White;
+            dgvAudit.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(121, 85, 72);
+            dataGridViewCellStyle7.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(121, 85, 72);
+            dataGridViewCellStyle7.SelectionForeColor = Color.White;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgvAudit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dgvAudit.ColumnHeadersHeight = 35;
+            dgvAudit.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvAudit.Columns.AddRange(new DataGridViewColumn[] { date, username, action, description, prevvalue, newvalue, ipaddress, machineid, sessionid });
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = Color.White;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle9.ForeColor = Color.FromArgb(93, 64, 55);
+            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(245, 242, 237);
+            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(93, 64, 55);
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            dgvAudit.DefaultCellStyle = dataGridViewCellStyle9;
+            dgvAudit.Dock = DockStyle.Fill;
+            dgvAudit.EnableHeadersVisualStyles = false;
+            dgvAudit.GridColor = Color.White;
+            dgvAudit.Location = new Point(0, 79);
+            dgvAudit.Margin = new Padding(3, 4, 3, 4);
+            dgvAudit.MultiSelect = false;
+            dgvAudit.Name = "dgvAudit";
+            dgvAudit.ReadOnly = true;
+            dgvAudit.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = SystemColors.Control;
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle10.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(214, 192, 179);
+            dataGridViewCellStyle10.SelectionForeColor = Color.White;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            dgvAudit.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dgvAudit.RowHeadersVisible = false;
+            dgvAudit.RowHeadersWidth = 51;
+            dgvAudit.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvAudit.Size = new Size(1170, 549);
+            dgvAudit.TabIndex = 6;
+            dgvAudit.TabStop = false;
+            // 
+            // date
+            // 
+            date.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            date.FillWeight = 114.315689F;
+            date.HeaderText = "Date";
+            date.MinimumWidth = 120;
+            date.Name = "date";
+            date.ReadOnly = true;
+            date.Width = 120;
+            // 
+            // username
+            // 
+            username.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            username.FillWeight = 110.479927F;
+            username.HeaderText = "Name";
+            username.MinimumWidth = 120;
+            username.Name = "username";
+            username.ReadOnly = true;
+            username.Width = 120;
+            // 
+            // action
+            // 
+            action.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            action.FillWeight = 115.0222F;
+            action.HeaderText = "Action";
+            action.MinimumWidth = 100;
+            action.Name = "action";
+            action.ReadOnly = true;
+            // 
+            // description
+            // 
+            description.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            description.FillWeight = 137.7169F;
+            description.HeaderText = "Description";
+            description.MinimumWidth = 150;
+            description.Name = "description";
+            description.ReadOnly = true;
+            description.Width = 150;
+            // 
+            // prevvalue
+            // 
+            prevvalue.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleRight;
+            prevvalue.DefaultCellStyle = dataGridViewCellStyle8;
+            prevvalue.FillWeight = 178.85527F;
+            prevvalue.HeaderText = "Prev Value";
+            prevvalue.MinimumWidth = 100;
+            prevvalue.Name = "prevvalue";
+            prevvalue.ReadOnly = true;
+            prevvalue.Width = 141;
+            // 
+            // newvalue
+            // 
+            newvalue.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            newvalue.HeaderText = "New Value";
+            newvalue.MinimumWidth = 140;
+            newvalue.Name = "newvalue";
+            newvalue.ReadOnly = true;
+            newvalue.Width = 140;
+            // 
+            // ipaddress
+            // 
+            ipaddress.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ipaddress.HeaderText = "IP Address";
+            ipaddress.MinimumWidth = 6;
+            ipaddress.Name = "ipaddress";
+            ipaddress.ReadOnly = true;
+            // 
+            // machineid
+            // 
+            machineid.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            machineid.HeaderText = "Machine Id";
+            machineid.MinimumWidth = 150;
+            machineid.Name = "machineid";
+            machineid.ReadOnly = true;
+            machineid.Width = 150;
+            // 
+            // sessionid
+            // 
+            sessionid.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            sessionid.HeaderText = "Session Id";
+            sessionid.MinimumWidth = 100;
+            sessionid.Name = "sessionid";
+            sessionid.ReadOnly = true;
+            // 
+            // AuditHome
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1170, 707);
+            Controls.Add(dgvAudit);
+            Controls.Add(panel1);
+            Controls.Add(panel2);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "AuditHome";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "AuditHome";
+            Load += AuditHome_Load;
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnRefresh).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAudit).EndInit();
+            ResumeLayout(false);
+        }
+
+        #endregion
+
+        private Panel panel2;
+        private ComboBox comboBox2;
+        private Label label3;
+        private PictureBox pictureBox3;
+        private TextBox textBox2;
+        private PictureBox pictureBox4;
+        private ComboBox comboBox1;
+        private Label label2;
+        private PictureBox pictureBox2;
+        private TextBox textBox1;
+        private PictureBox btnRefresh;
+        private PictureBox pictureBox1;
+        private Label label1;
+        private Panel panel1;
+        private DataGridView dgvAudit;
+        private DataGridViewTextBoxColumn date;
+        private DataGridViewTextBoxColumn username;
+        private DataGridViewTextBoxColumn action;
+        private DataGridViewTextBoxColumn description;
+        private DataGridViewTextBoxColumn prevvalue;
+        private DataGridViewTextBoxColumn newvalue;
+        private DataGridViewTextBoxColumn ipaddress;
+        private DataGridViewTextBoxColumn machineid;
+        private DataGridViewTextBoxColumn sessionid;
+    }
+}

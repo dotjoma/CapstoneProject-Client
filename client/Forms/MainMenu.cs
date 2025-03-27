@@ -1,6 +1,5 @@
 ﻿using client.Controllers;
 using client.Forms.POS;
-using client.Forms.UserControll;
 using client.Helpers;
 using client.Services;
 using client.Services.Auth;
@@ -21,6 +20,10 @@ using client.Forms.POS.POSUserControl;
 using client.Forms.ProductManagement;
 using client.Forms.POS.POSUserControl.ProductFoodCategory;
 using client.Forms.DiscountManagement;
+using client.Forms.InventoryManagement;
+using client.Forms.AuditTrail;
+using client.Forms.SalesReport;
+using client.Forms.BestSelling;
 
 namespace client.Forms
 {
@@ -82,14 +85,12 @@ namespace client.Forms
 
         private void btnInventory_Click(object sender, EventArgs e)
         {
-            UC_Inventory uc = new UC_Inventory();
-            AddUserControl(uc);
+
         }
 
         private void btnReservation_Click(object sender, EventArgs e)
         {
-            UC_Reservation uc = new UC_Reservation();
-            AddUserControl(uc);
+
         }
 
         private void bgwDashboard_DoWork(object sender, DoWorkEventArgs e)
@@ -99,8 +100,7 @@ namespace client.Forms
 
         private void bgwDashboard_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            UC_DashBoard uc = new UC_DashBoard();
-            AddUserControl(uc);
+
         }
 
 
@@ -121,8 +121,7 @@ namespace client.Forms
 
         private void tsSettings_Click(object sender, EventArgs e)
         {
-            UC_Settings uc = new UC_Settings();
-            AddUserControl(uc);
+
         }
 
         private void btnCloseWindow_Click(object sender, EventArgs e)
@@ -162,11 +161,6 @@ namespace client.Forms
 
         }
 
-        private void toolStripButton4_Click(object sender, EventArgs e)
-        {
-            AddFormToPanel(new ProductHome());
-        }
-
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
@@ -194,6 +188,31 @@ namespace client.Forms
             discountHome.StartPosition = FormStartPosition.Manual;
             discountHome.StartPosition = FormStartPosition.CenterParent;
             discountHome.ShowDialog(this);
+        }
+
+        private void tsbManageMenu_Click(object sender, EventArgs e)
+        {
+            AddFormToPanel(new ProductHome());
+        }
+
+        private void tsbManageInventory_Click(object sender, EventArgs e)
+        {
+            AddFormToPanel(new InventoryHome());
+        }
+
+        private void tsbSalesReport_Click(object sender, EventArgs e)
+        {
+            AddFormToPanel(new SalesReportHome());
+        }
+
+        private void tsbBestSelling_Click(object sender, EventArgs e)
+        {
+            AddFormToPanel(new BestSellingHome());
+        }
+
+        private void tsbAuditTrial_Click(object sender, EventArgs e)
+        {
+            AddFormToPanel(new AuditHome());
         }
     }
 }

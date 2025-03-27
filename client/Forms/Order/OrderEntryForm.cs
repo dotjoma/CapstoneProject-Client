@@ -1412,7 +1412,7 @@ namespace client.Forms.Order
             }
 
             activeButton = clickedButton!;
-            activeButton.BackColor = Color.DodgerBlue;
+            activeButton.BackColor = Color.FromArgb(141, 110, 99);
             activeButton.ForeColor = Color.White;
         }
 
@@ -1529,6 +1529,16 @@ namespace client.Forms.Order
             GC.Collect(GC.MaxGeneration, GCCollectionMode.Optimized);
             //DatabaseConnectionPool.CleanIdleConnections();
             //TempFileCleaner.Run();
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -4,6 +4,12 @@
     <Compile Update="Controls\Products\CardDisplay.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Forms\AuditTrail\AuditHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\BestSelling\BestSellingHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -11,6 +17,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\DiscountManagement\DiscountHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\InventoryManagement\InventoryHome.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Login.cs">
@@ -31,19 +40,7 @@
     <Compile Update="Forms\Order\PaymentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\POS\POSUserControl\ProductFoodCategory\NewCategory.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\POS\POSUserControl\UC_Orders.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Forms\POS\POSUserControl\UC_Pos.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Forms\POS\POSUserControl\UC_Products.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Forms\POS\POS_MainMenu.cs">
+    <Compile Update="Forms\ProductManagement\NewCategory.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\ProductManagement\AddProduct.cs">
@@ -58,17 +55,8 @@
     <Compile Update="Forms\Register.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\UserControl\UC_DashBoard.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Forms\UserControl\UC_Inventory.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Forms\UserControl\UC_Reservation.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Forms\UserControl\UC_Settings.cs">
-      <SubType>UserControl</SubType>
+    <Compile Update="Forms\SalesReport\SalesReportHome.cs">
+      <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>

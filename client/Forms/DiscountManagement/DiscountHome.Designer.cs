@@ -63,14 +63,15 @@
             // 
             // panel2
             // 
-            panel2.BackColor = SystemColors.Control;
+            panel2.BackColor = Color.FromArgb(239, 235, 233);
             panel2.Controls.Add(btnRefreshh);
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
+            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(964, 59);
+            panel2.Size = new Size(1102, 79);
             panel2.TabIndex = 1;
             // 
             // btnRefreshh
@@ -78,9 +79,10 @@
             btnRefreshh.Anchor = AnchorStyles.Right;
             btnRefreshh.BackColor = Color.White;
             btnRefreshh.Image = Properties.Resources.Refresh;
-            btnRefreshh.Location = new Point(928, 17);
+            btnRefreshh.Location = new Point(1061, 23);
+            btnRefreshh.Margin = new Padding(3, 4, 3, 4);
             btnRefreshh.Name = "btnRefreshh";
-            btnRefreshh.Size = new Size(24, 24);
+            btnRefreshh.Size = new Size(27, 32);
             btnRefreshh.SizeMode = PictureBoxSizeMode.StretchImage;
             btnRefreshh.TabIndex = 4;
             btnRefreshh.TabStop = false;
@@ -92,9 +94,10 @@
             // 
             pictureBox1.Anchor = AnchorStyles.Left;
             pictureBox1.Image = Properties.Resources.Discount;
-            pictureBox1.Location = new Point(12, 9);
+            pictureBox1.Location = new Point(14, 12);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(40, 40);
+            pictureBox1.Size = new Size(46, 53);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
@@ -105,9 +108,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(98, 87, 87);
-            label1.Location = new Point(58, 13);
+            label1.Location = new Point(66, 17);
             label1.Name = "label1";
-            label1.Size = new Size(149, 32);
+            label1.Size = new Size(190, 41);
             label1.TabIndex = 0;
             label1.Text = "DISCOUNTS";
             // 
@@ -116,23 +119,25 @@
             btnRefresh.Anchor = AnchorStyles.Right;
             btnRefresh.BackColor = Color.White;
             btnRefresh.Image = Properties.Resources.Refresh;
-            btnRefresh.Location = new Point(1793, 132);
+            btnRefresh.Location = new Point(2049, 127);
+            btnRefresh.Margin = new Padding(3, 4, 3, 4);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(24, 24);
+            btnRefresh.Size = new Size(27, 32);
             btnRefresh.SizeMode = PictureBoxSizeMode.StretchImage;
             btnRefresh.TabIndex = 3;
             btnRefresh.TabStop = false;
             // 
             // panel3
             // 
-            panel3.BackColor = Color.FromArgb(98, 87, 87);
+            panel3.BackColor = Color.FromArgb(239, 235, 233);
             panel3.Controls.Add(btnDelete);
             panel3.Controls.Add(btnEdit);
             panel3.Controls.Add(btnNew);
             panel3.Dock = DockStyle.Bottom;
-            panel3.Location = new Point(0, 506);
+            panel3.Location = new Point(0, 577);
+            panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(964, 55);
+            panel3.Size = new Size(1102, 73);
             panel3.TabIndex = 4;
             // 
             // btnDelete
@@ -147,9 +152,10 @@
             btnDelete.ForeColor = Color.Black;
             btnDelete.Image = Properties.Resources.Delete;
             btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDelete.Location = new Point(172, 5);
+            btnDelete.Location = new Point(197, 7);
+            btnDelete.Margin = new Padding(3, 4, 3, 4);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(86, 44);
+            btnDelete.Size = new Size(98, 59);
             btnDelete.TabIndex = 12;
             btnDelete.TabStop = false;
             btnDelete.Text = "Delete";
@@ -168,9 +174,10 @@
             btnEdit.ForeColor = Color.Black;
             btnEdit.Image = Properties.Resources.Edit;
             btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEdit.Location = new Point(92, 5);
+            btnEdit.Location = new Point(105, 7);
+            btnEdit.Margin = new Padding(3, 4, 3, 4);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(74, 44);
+            btnEdit.Size = new Size(85, 59);
             btnEdit.TabIndex = 11;
             btnEdit.TabStop = false;
             btnEdit.Text = "Edit";
@@ -189,9 +196,10 @@
             btnNew.ForeColor = Color.Black;
             btnNew.Image = Properties.Resources.Add;
             btnNew.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNew.Location = new Point(12, 5);
+            btnNew.Location = new Point(14, 7);
+            btnNew.Margin = new Padding(3, 4, 3, 4);
             btnNew.Name = "btnNew";
-            btnNew.Size = new Size(74, 44);
+            btnNew.Size = new Size(85, 59);
             btnNew.TabIndex = 10;
             btnNew.TabStop = false;
             btnNew.Text = "New";
@@ -203,9 +211,10 @@
             // 
             panel1.Controls.Add(dgvDiscount);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 59);
+            panel1.Location = new Point(0, 79);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(964, 447);
+            panel1.Size = new Size(1102, 498);
             panel1.TabIndex = 5;
             // 
             // dgvDiscount
@@ -214,42 +223,46 @@
             dgvDiscount.AllowUserToDeleteRows = false;
             dgvDiscount.AllowUserToResizeColumns = false;
             dgvDiscount.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(93, 64, 55);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(245, 242, 237);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(93, 64, 55);
             dgvDiscount.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvDiscount.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDiscount.BackgroundColor = Color.White;
             dgvDiscount.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(214, 192, 179);
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(121, 85, 72);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.FromArgb(98, 87, 87);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(214, 192, 179);
-            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(98, 87, 87);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(121, 85, 72);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvDiscount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvDiscount.ColumnHeadersHeight = 35;
             dgvDiscount.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvDiscount.Columns.AddRange(new DataGridViewColumn[] { id, name, type, value, vat_exempt, applicable_to, status });
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.BackColor = Color.White;
             dataGridViewCellStyle5.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(93, 64, 55);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(245, 242, 237);
+            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(93, 64, 55);
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
             dgvDiscount.DefaultCellStyle = dataGridViewCellStyle5;
             dgvDiscount.Dock = DockStyle.Fill;
             dgvDiscount.EnableHeadersVisualStyles = false;
+            dgvDiscount.GridColor = Color.White;
             dgvDiscount.Location = new Point(0, 0);
+            dgvDiscount.Margin = new Padding(3, 4, 3, 4);
             dgvDiscount.MultiSelect = false;
             dgvDiscount.Name = "dgvDiscount";
             dgvDiscount.ReadOnly = true;
             dgvDiscount.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dgvDiscount.RowHeadersVisible = false;
+            dgvDiscount.RowHeadersWidth = 51;
             dgvDiscount.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDiscount.Size = new Size(964, 447);
+            dgvDiscount.Size = new Size(1102, 498);
             dgvDiscount.TabIndex = 6;
             dgvDiscount.TabStop = false;
             dgvDiscount.CellFormatting += dgvDiscount_CellFormatting;
@@ -304,6 +317,7 @@
             vat_exempt.MinimumWidth = 100;
             vat_exempt.Name = "vat_exempt";
             vat_exempt.ReadOnly = true;
+            vat_exempt.Width = 125;
             // 
             // applicable_to
             // 
@@ -327,16 +341,17 @@
             // 
             // DiscountHome
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(964, 561);
+            ClientSize = new Size(1102, 650);
             Controls.Add(panel1);
             Controls.Add(panel3);
             Controls.Add(btnRefresh);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 4, 3, 4);
             Name = "DiscountHome";
             StartPosition = FormStartPosition.CenterParent;
             Text = "ELICIAS GARDEN FOOD PARK";

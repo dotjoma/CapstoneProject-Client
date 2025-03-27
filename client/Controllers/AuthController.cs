@@ -8,80 +8,160 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using client.Models.Audit;
+using System.Net.Sockets;
+using System.Net;
 
 namespace client.Controllers
 {
     public class AuthController
     {
-        public void Logout()
-        {
-            if (MessageBox.Show("Confirm your logout", "Logout",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) 
-                == DialogResult.Yes)
-            {
-                CurrentUser.Clear();
-                Navigation.Instance.RedirectTo<Login>();
-            }
-        }
+        AuditService _auditService = new AuditService();
 
         public void RedirectToLogin()
         {
             Navigation.Instance.RedirectTo<Login>();
         }
 
+        public void Logout()
+        {
+            try
+            {
+                if (MessageBox.Show("Confirm your logout", "Logout",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                    == DialogResult.Yes)
+                {
+                    _auditService.Log(new AuditRecord
+                    {
+                        UserId = CurrentUser.Current!.UserId,
+                        Username = CurrentUser.Current.Username,
+                        Action = AuditActionType.Logout,
+                        EntityType = AuditEntityType.User,
+                        EntityId = CurrentUser.Current.UserId.ToString(),
+                        Description = "User initiated logout",
+                        IPAddress = GetCurrentIP()
+                    });
+
+                    CurrentUser.Clear();
+                    Navigation.Instance.RedirectTo<Login>();
+                }
+                else
+                {
+                    _auditService.Log(new AuditRecord
+                    {
+                        UserId = CurrentUser.Current!.UserId,
+                        Username = CurrentUser.Current.Username,
+                        Action = AuditActionType.SystemEvent,
+                        EntityType = AuditEntityType.User,
+                        EntityId = CurrentUser.Current.UserId.ToString(),
+                        Description = "User cancelled logout attempt",
+                        IPAddress = GetCurrentIP()
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                File.AppendAllText("emergency.log", $"{DateTime.UtcNow} - Logout failed: {ex}\n");
+                CurrentUser.Clear();
+                Navigation.Instance.RedirectTo<Login>();
+            }
+        }
+
         public async Task<bool> Login(string username, string password)
         {
-            if(!ValidateLogin(username, password)) return false;
+            // Create audit record for login attempt
+            var auditRecord = new AuditRecord
+            {
+                Username = username,
+                Action = AuditActionType.Login,
+                EntityType = AuditEntityType.User,
+                EntityId = "NotAuthenticated",
+                Description = "Login attempt initiated"
+            };
 
-            // Login packet to send to the server.
+            if (!ValidateLogin(username, password))
+            {
+                auditRecord.Action = AuditActionType.LoginFailure;
+                auditRecord.Description = "Invalid credentials format";
+                _auditService.Log(auditRecord);
+                return false;
+            }
+
             var loginPacket = new Packet
             {
                 Type = PacketType.Login,
                 Data = new Dictionary<string, string>
-                {
-                    { "username", username },
-                    { "password", password }
-                }
+        {
+            { "username", username },
+            { "password", password }
+        }
             };
 
-            var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(loginPacket));
-
-            if (response == null)
+            try
             {
-                MessageBox.Show("No response received from server", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+                var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(loginPacket));
 
-            if (response.Data != null && response.Data.ContainsKey("success"))
-            {
-                if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
+                if (response == null)
                 {
-                    // login success.
-                    return true;
+                    auditRecord.Action = AuditActionType.LoginFailure;
+                    auditRecord.Description = "No server response";
+                    _auditService.Log(auditRecord);
+
+                    MessageBox.Show("No response received from server", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
-                else
-                {
-                    string errorMessage = "Login failed: ";
 
-                    if (response.Data.ContainsKey("message"))
+                if (response.Data != null && response.Data.ContainsKey("success"))
+                {
+                    if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                     {
-                        errorMessage += response.Data["message"];
+                        // Successful login
+                        auditRecord.Action = AuditActionType.Login;
+                        auditRecord.Description = "Login successful";
+                        auditRecord.NewValue = "Authenticated";
+                        auditRecord.UserId = CurrentUser.Current!.UserId;
+                        auditRecord.EntityId = auditRecord.UserId.ToString();
+                        _auditService.Log(auditRecord);
+
+                        return true;
                     }
                     else
                     {
-                        errorMessage += "Unknown error occurred";
+                        // Failed login
+                        string errorMessage = response.Data.ContainsKey("message")
+                            ? response.Data["message"]
+                            : "Unknown error occurred";
+
+                        auditRecord.Action = AuditActionType.LoginFailure;
+                        auditRecord.Description = $"Login failed: {errorMessage}";
+                        auditRecord.NewValue = errorMessage;
+                        _auditService.Log(auditRecord);
+
+                        MessageBox.Show($"Login failed: {errorMessage}", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
                     }
+                }
+                else
+                {
+                    auditRecord.Action = AuditActionType.LoginFailure;
+                    auditRecord.Description = "Invalid server response format";
+                    _auditService.Log(auditRecord);
 
-                    MessageBox.Show(errorMessage, "Registration Failed",
+                    MessageBox.Show("Invalid response format from server", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                     return false;
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Invalid response format from server", "Error",
+                auditRecord.Action = AuditActionType.LoginFailure;
+                auditRecord.Description = $"Login exception: {ex.Message}";
+                auditRecord.NewValue = ex.ToString();
+                _auditService.Log(auditRecord);
+
+                MessageBox.Show($"Login error: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
@@ -256,6 +336,21 @@ namespace client.Controllers
             }
 
             return true;
+        }
+
+        private string GetCurrentIP()
+        {
+            try
+            {
+                return Dns.GetHostEntry(Dns.GetHostName())
+                    .AddressList
+                    .FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork)?
+                    .ToString() ?? "Unknown";
+            }
+            catch
+            {
+                return "Unknown";
+            }
         }
     }
 }

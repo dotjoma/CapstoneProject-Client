@@ -762,7 +762,7 @@ namespace client.Forms.Order
                 return false;
             }
 
-            if (_amountPaid < _totalAmount)
+            if (_totalAmountPaid < _totalAmount)
             {
                 errorMessage = "Payment amount is less than total amount";
                 if (selectedPayment == "Cash")

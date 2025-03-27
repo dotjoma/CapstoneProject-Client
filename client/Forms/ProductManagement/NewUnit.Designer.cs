@@ -44,19 +44,21 @@
             // 
             // txtName
             // 
+            txtName.BackColor = Color.FromArgb(232, 232, 232);
             txtName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtName.Location = new Point(161, 75);
+            txtName.Location = new Point(184, 100);
+            txtName.Margin = new Padding(3, 4, 3, 4);
             txtName.Name = "txtName";
-            txtName.Size = new Size(307, 29);
+            txtName.Size = new Size(350, 34);
             txtName.TabIndex = 28;
             // 
             // lblLabel
             // 
             lblLabel.AutoSize = true;
             lblLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLabel.Location = new Point(12, 78);
+            lblLabel.Location = new Point(14, 104);
             lblLabel.Name = "lblLabel";
-            lblLabel.Size = new Size(97, 21);
+            lblLabel.Size = new Size(119, 28);
             lblLabel.TabIndex = 27;
             lblLabel.Text = "Unit Name:";
             // 
@@ -64,36 +66,38 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label1.Location = new Point(12, 117);
+            label1.Location = new Point(14, 156);
             label1.Name = "label1";
-            label1.Size = new Size(139, 21);
+            label1.Size = new Size(172, 28);
             label1.TabIndex = 31;
             label1.Text = "Unit Description:";
             // 
             // rtbDescription
             // 
+            rtbDescription.BackColor = Color.FromArgb(232, 232, 232);
+            rtbDescription.BorderStyle = BorderStyle.FixedSingle;
             rtbDescription.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            rtbDescription.Location = new Point(161, 117);
+            rtbDescription.Location = new Point(184, 156);
+            rtbDescription.Margin = new Padding(3, 4, 3, 4);
             rtbDescription.Name = "rtbDescription";
-            rtbDescription.Size = new Size(307, 45);
+            rtbDescription.Size = new Size(350, 59);
             rtbDescription.TabIndex = 32;
             rtbDescription.Text = "";
             // 
             // btnCancel
             // 
             btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnCancel.BackColor = Color.White;
+            btnCancel.BackColor = Color.FromArgb(161, 136, 127);
             btnCancel.FlatAppearance.BorderSize = 0;
-            btnCancel.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            btnCancel.FlatAppearance.MouseOverBackColor = Color.White;
+            btnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(141, 110, 99);
             btnCancel.FlatStyle = FlatStyle.Flat;
             btnCancel.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCancel.ForeColor = Color.Black;
-            btnCancel.Image = Properties.Resources.Cancel221;
+            btnCancel.ForeColor = Color.White;
             btnCancel.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancel.Location = new Point(204, 10);
+            btnCancel.Location = new Point(233, 13);
+            btnCancel.Margin = new Padding(3, 4, 3, 4);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(151, 37);
+            btnCancel.Size = new Size(173, 49);
             btnCancel.TabIndex = 34;
             btnCancel.TabStop = false;
             btnCancel.Text = "CANCEL";
@@ -103,18 +107,17 @@
             // btnSave
             // 
             btnSave.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnSave.BackColor = Color.White;
+            btnSave.BackColor = Color.FromArgb(141, 110, 99);
             btnSave.FlatAppearance.BorderSize = 0;
-            btnSave.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            btnSave.FlatAppearance.MouseOverBackColor = Color.White;
+            btnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(109, 76, 65);
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSave.ForeColor = Color.Black;
-            btnSave.Image = Properties.Resources.Save11;
+            btnSave.ForeColor = Color.White;
             btnSave.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSave.Location = new Point(361, 10);
+            btnSave.Location = new Point(413, 13);
+            btnSave.Margin = new Padding(3, 4, 3, 4);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(131, 37);
+            btnSave.Size = new Size(150, 49);
             btnSave.TabIndex = 33;
             btnSave.TabStop = false;
             btnSave.Text = "SAVE";
@@ -126,41 +129,43 @@
             txtTitle.Anchor = AnchorStyles.Left;
             txtTitle.AutoSize = true;
             txtTitle.Font = new Font("Verdana", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtTitle.ForeColor = Color.FromArgb(98, 87, 87);
-            txtTitle.Location = new Point(56, 17);
+            txtTitle.ForeColor = Color.FromArgb(62, 39, 35);
+            txtTitle.Location = new Point(64, 23);
             txtTitle.Name = "txtTitle";
-            txtTitle.Size = new Size(184, 32);
+            txtTitle.Size = new Size(235, 41);
             txtTitle.TabIndex = 0;
             txtTitle.Text = "Create Unit";
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(98, 87, 87);
+            panel1.BackColor = Color.FromArgb(239, 235, 233);
             panel1.Controls.Add(btnSave);
             panel1.Controls.Add(btnCancel);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 181);
+            panel1.Location = new Point(0, 241);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(504, 56);
+            panel1.Size = new Size(576, 75);
             panel1.TabIndex = 36;
             // 
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.Left;
             pictureBox1.Image = Properties.Resources.unit;
-            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Location = new Point(14, 16);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(40, 40);
+            pictureBox1.Size = new Size(46, 53);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 37;
             pictureBox1.TabStop = false;
             // 
             // NewUnit
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(504, 237);
+            ClientSize = new Size(576, 316);
             Controls.Add(pictureBox1);
             Controls.Add(txtTitle);
             Controls.Add(rtbDescription);
@@ -170,6 +175,7 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 4, 3, 4);
             Name = "NewUnit";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ELICIAS GARDEN FOOD PARK";

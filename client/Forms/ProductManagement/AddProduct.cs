@@ -30,6 +30,9 @@ namespace client.Forms.ProductManagement
         {
             InitializeComponent();
             _selectedId = selectedId;
+
+            this.KeyPreview = true;
+            this.KeyDown += AddProduct_KeyDown;
         }
 
         private void backToolStripMenuItem_Click(object sender, EventArgs e)
@@ -136,9 +139,26 @@ namespace client.Forms.ProductManagement
                 }
             }
 
-            Image? convertedImage = ConvertBase64ToImage(product.productImage);
-            product.ProductImageObject = convertedImage;
-            pbImage.Image = convertedImage ?? Properties.Resources.Add_Image;
+            Image oldImage = pbImage.Image; // Store the old image
+            Image? newImage = null;
+
+            try
+            {
+                newImage = ConvertBase64ToImage(product.productImage) ?? Properties.Resources.Add_Image;
+                pbImage.Image = newImage;
+            }
+            catch (Exception ex)
+            {
+                Logger.Write("IMAGE_LOAD", $"Error loading image: {ex.Message}");
+                pbImage.Image = Properties.Resources.Add_Image;
+            }
+            finally
+            {
+                if (oldImage != null && oldImage != Properties.Resources.Add_Image)
+                {
+                    oldImage.Dispose();
+                }
+            }
 
             cbIsActive.Checked = product.isActive > 0;
         }
@@ -207,8 +227,8 @@ namespace client.Forms.ProductManagement
         private void ToggleButton(Boolean tog)
         {
             btnSave.Enabled = tog;
-            string text = (tog) ? "Save" : "Loading...";
-            btnSave.Text = text;
+            //string text = (tog) ? "Save" : "Loading...";
+            //btnSave.Text = text;
         }
 
         private bool ValidateRequiredFields(string name, string price)
@@ -335,9 +355,24 @@ namespace client.Forms.ProductManagement
             ShowLoading("Saving product...");
 
             string name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtName.Text.Trim().ToLower());
-            string image = pbImage.Image != null ? ConvertImageToBase64(pbImage.Image) : "test";
+            //string image = pbImage.Image != null ? ConvertImageToBase64(pbImage.Image) : "test";
 
-            //string image = (pbImage.Image != null) ? ConvertImageToBase64(new Bitmap(pbImage.Image)) : string.Empty; // Ayaw nito gumana.
+            string image;
+            if (pbImage.Image != null && pbImage.Image != pbImage.InitialImage)
+            {
+                try
+                {
+                    image = ConvertImageToBase64(new Bitmap(pbImage.Image));
+                }
+                catch
+                {
+                    image = string.Empty;
+                }
+            }
+            else
+            {
+                image = string.Empty;
+            }
 
             string price = txtPrice.Text.Trim();
             int isActive = (cbIsActive.CheckState == CheckState.Checked) ? 1 : 0;
@@ -437,6 +472,13 @@ namespace client.Forms.ProductManagement
                 ProductHome.Instance?.RefreshDisplay();
                 CleanForm();
                 Logger.Write("RESPONSE", $"Received response: {response}");
+                if (!(_selectedId > 0))
+                {
+                    if (!(MessageBox.Show("Do you want to add more produt?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
+                    {
+                        this.Dispose();
+                    }
+                }
             }
         }
 
@@ -454,10 +496,11 @@ namespace client.Forms.ProductManagement
         {
             txtName.Text = string.Empty;
             txtPrice.Text = string.Empty;
+
             cboCategory.SelectedIndex = 0;
             cboSubCategory.SelectedIndex = 0;
             cboUnit.SelectedIndex = 0;
-            pbImage.Image = null;
+
             pbImage.Image = Properties.Resources.AddImage100x100_w;
         }
 
@@ -808,6 +851,39 @@ namespace client.Forms.ProductManagement
             {
                 loadingPanel.Visible = false;
             }
+        }
+
+        private void AddProduct_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void AddProduct_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Dispose();
+            }
+        }
+
+        private void btnSave_MouseEnter(object sender, EventArgs e)
+        {
+            btnSave.BackColor = Color.FromArgb(109, 76, 65);
+        }
+
+        private void btnSave_MouseLeave(object sender, EventArgs e)
+        {
+            btnSave.BackColor = Color.FromArgb(141, 110, 99);
+        }
+
+        private void btnCancel_MouseEnter(object sender, EventArgs e)
+        {
+            btnCancel.BackColor = Color.FromArgb(141, 110, 99);
+        }
+
+        private void btnCancel_MouseLeave(object sender, EventArgs e)
+        {
+            btnCancel.BackColor = Color.FromArgb(161, 136, 127);
         }
     }
 }

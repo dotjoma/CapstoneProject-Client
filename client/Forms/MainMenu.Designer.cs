@@ -42,13 +42,7 @@
             reservationCalendarToolStripMenuItem = new ToolStripMenuItem();
             administrationToolStripMenuItem = new ToolStripMenuItem();
             userManagementToolStripMenuItem = new ToolStripMenuItem();
-            createNewUserToolStripMenuItem = new ToolStripMenuItem();
-            manageUserRolesToolStripMenuItem = new ToolStripMenuItem();
             categoryManagementToolStripMenuItem = new ToolStripMenuItem();
-            createEditDeleteCategoriesToolStripMenuItem = new ToolStripMenuItem();
-            subcategoriesSupportToolStripMenuItem = new ToolStripMenuItem();
-            assignProductsToCategoriesToolStripMenuItem = new ToolStripMenuItem();
-            categoryAvailabilityToggleToolStripMenuItem = new ToolStripMenuItem();
             discountManagementToolStripMenuItem = new ToolStripMenuItem();
             systemSettingsToolStripMenuItem = new ToolStripMenuItem();
             storeConfigurationToolStripMenuItem = new ToolStripMenuItem();
@@ -59,7 +53,6 @@
             databaseToolStripMenuItem = new ToolStripMenuItem();
             backupDatabaseToolStripMenuItem = new ToolStripMenuItem();
             restoreDatabaseToolStripMenuItem = new ToolStripMenuItem();
-            clearTransactionLogsToolStripMenuItem = new ToolStripMenuItem();
             refreshToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
             bgwDashboard = new System.ComponentModel.BackgroundWorker();
@@ -72,16 +65,17 @@
             toolStripSeparator1 = new ToolStripSeparator();
             tsbTransaction = new ToolStripButton();
             toolStripSeparator2 = new ToolStripSeparator();
-            toolStripButton4 = new ToolStripButton();
+            tsbManageMenu = new ToolStripButton();
             toolStripSeparator3 = new ToolStripSeparator();
-            toolStripButton2 = new ToolStripButton();
+            tsbManageInventory = new ToolStripButton();
             toolStripSeparator6 = new ToolStripSeparator();
             tsbSalesReport = new ToolStripButton();
             toolStripSeparator4 = new ToolStripSeparator();
-            toolStripButton3 = new ToolStripButton();
+            tsbBestSelling = new ToolStripButton();
             toolStripSeparator5 = new ToolStripSeparator();
-            toolStripButton1 = new ToolStripButton();
+            tsbAuditTrial = new ToolStripButton();
             pnlContainer = new Panel();
+            toolStripButton1 = new ToolStripButton();
             menuStrip1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -92,10 +86,11 @@
             // 
             menuStrip1.BackColor = SystemColors.Control;
             menuStrip1.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, reservationToolStripMenuItem, administrationToolStripMenuItem, refreshToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1024, 24);
+            menuStrip1.Size = new Size(1352, 28);
             menuStrip1.TabIndex = 8;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -103,27 +98,27 @@
             // 
             fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tsSettings, tsLogout, tsExit });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new Size(41, 20);
+            fileToolStripMenuItem.Size = new Size(53, 24);
             fileToolStripMenuItem.Text = "File";
             // 
             // tsSettings
             // 
             tsSettings.Name = "tsSettings";
-            tsSettings.Size = new Size(129, 22);
+            tsSettings.Size = new Size(164, 26);
             tsSettings.Text = "Settings";
             tsSettings.Click += tsSettings_Click;
             // 
             // tsLogout
             // 
             tsLogout.Name = "tsLogout";
-            tsLogout.Size = new Size(129, 22);
+            tsLogout.Size = new Size(164, 26);
             tsLogout.Text = "Logout";
             tsLogout.Click += tsLogout_Click;
             // 
             // tsExit
             // 
             tsExit.Name = "tsExit";
-            tsExit.Size = new Size(129, 22);
+            tsExit.Size = new Size(164, 26);
             tsExit.Text = "Exit";
             tsExit.Click += tsExit_Click;
             // 
@@ -131,94 +126,56 @@
             // 
             reservationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { newReservationToolStripMenuItem, viewReservationToolStripMenuItem, manageReservationToolStripMenuItem, reservationCalendarToolStripMenuItem });
             reservationToolStripMenuItem.Name = "reservationToolStripMenuItem";
-            reservationToolStripMenuItem.Size = new Size(103, 20);
+            reservationToolStripMenuItem.Size = new Size(133, 24);
             reservationToolStripMenuItem.Text = "Reservations";
             // 
             // newReservationToolStripMenuItem
             // 
             newReservationToolStripMenuItem.Name = "newReservationToolStripMenuItem";
-            newReservationToolStripMenuItem.Size = new Size(214, 22);
+            newReservationToolStripMenuItem.Size = new Size(275, 26);
             newReservationToolStripMenuItem.Text = "New Reservation";
             // 
             // viewReservationToolStripMenuItem
             // 
             viewReservationToolStripMenuItem.Name = "viewReservationToolStripMenuItem";
-            viewReservationToolStripMenuItem.Size = new Size(214, 22);
+            viewReservationToolStripMenuItem.Size = new Size(275, 26);
             viewReservationToolStripMenuItem.Text = "View Reservations";
             // 
             // manageReservationToolStripMenuItem
             // 
             manageReservationToolStripMenuItem.Name = "manageReservationToolStripMenuItem";
-            manageReservationToolStripMenuItem.Size = new Size(214, 22);
+            manageReservationToolStripMenuItem.Size = new Size(275, 26);
             manageReservationToolStripMenuItem.Text = "Manage Reservations";
             // 
             // reservationCalendarToolStripMenuItem
             // 
             reservationCalendarToolStripMenuItem.Name = "reservationCalendarToolStripMenuItem";
-            reservationCalendarToolStripMenuItem.Size = new Size(214, 22);
+            reservationCalendarToolStripMenuItem.Size = new Size(275, 26);
             reservationCalendarToolStripMenuItem.Text = "Reservation Calendar";
             // 
             // administrationToolStripMenuItem
             // 
             administrationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { userManagementToolStripMenuItem, categoryManagementToolStripMenuItem, discountManagementToolStripMenuItem, systemSettingsToolStripMenuItem, databaseToolStripMenuItem });
             administrationToolStripMenuItem.Name = "administrationToolStripMenuItem";
-            administrationToolStripMenuItem.Size = new Size(112, 20);
+            administrationToolStripMenuItem.Size = new Size(150, 24);
             administrationToolStripMenuItem.Text = "Administration";
             // 
             // userManagementToolStripMenuItem
             // 
-            userManagementToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { createNewUserToolStripMenuItem, manageUserRolesToolStripMenuItem });
             userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            userManagementToolStripMenuItem.Size = new Size(223, 22);
-            userManagementToolStripMenuItem.Text = "User Management";
-            // 
-            // createNewUserToolStripMenuItem
-            // 
-            createNewUserToolStripMenuItem.Name = "createNewUserToolStripMenuItem";
-            createNewUserToolStripMenuItem.Size = new Size(198, 22);
-            createNewUserToolStripMenuItem.Text = "Create New User";
-            // 
-            // manageUserRolesToolStripMenuItem
-            // 
-            manageUserRolesToolStripMenuItem.Name = "manageUserRolesToolStripMenuItem";
-            manageUserRolesToolStripMenuItem.Size = new Size(198, 22);
-            manageUserRolesToolStripMenuItem.Text = "Manage User Roles";
+            userManagementToolStripMenuItem.Size = new Size(248, 26);
+            userManagementToolStripMenuItem.Text = "Manage Users";
             // 
             // categoryManagementToolStripMenuItem
             // 
-            categoryManagementToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { createEditDeleteCategoriesToolStripMenuItem, subcategoriesSupportToolStripMenuItem, assignProductsToCategoriesToolStripMenuItem, categoryAvailabilityToggleToolStripMenuItem });
             categoryManagementToolStripMenuItem.Name = "categoryManagementToolStripMenuItem";
-            categoryManagementToolStripMenuItem.Size = new Size(223, 22);
-            categoryManagementToolStripMenuItem.Text = "Category Management";
-            // 
-            // createEditDeleteCategoriesToolStripMenuItem
-            // 
-            createEditDeleteCategoriesToolStripMenuItem.Name = "createEditDeleteCategoriesToolStripMenuItem";
-            createEditDeleteCategoriesToolStripMenuItem.Size = new Size(273, 22);
-            createEditDeleteCategoriesToolStripMenuItem.Text = "Create/Edit/Delete Categories";
-            // 
-            // subcategoriesSupportToolStripMenuItem
-            // 
-            subcategoriesSupportToolStripMenuItem.Name = "subcategoriesSupportToolStripMenuItem";
-            subcategoriesSupportToolStripMenuItem.Size = new Size(273, 22);
-            subcategoriesSupportToolStripMenuItem.Text = "Subcategories Support";
-            // 
-            // assignProductsToCategoriesToolStripMenuItem
-            // 
-            assignProductsToCategoriesToolStripMenuItem.Name = "assignProductsToCategoriesToolStripMenuItem";
-            assignProductsToCategoriesToolStripMenuItem.Size = new Size(273, 22);
-            assignProductsToCategoriesToolStripMenuItem.Text = "Assign Products to Categories";
-            // 
-            // categoryAvailabilityToggleToolStripMenuItem
-            // 
-            categoryAvailabilityToggleToolStripMenuItem.Name = "categoryAvailabilityToggleToolStripMenuItem";
-            categoryAvailabilityToggleToolStripMenuItem.Size = new Size(273, 22);
-            categoryAvailabilityToggleToolStripMenuItem.Text = "Category Availability Toggle";
+            categoryManagementToolStripMenuItem.Size = new Size(248, 26);
+            categoryManagementToolStripMenuItem.Text = "Manage Category";
             // 
             // discountManagementToolStripMenuItem
             // 
             discountManagementToolStripMenuItem.Name = "discountManagementToolStripMenuItem";
-            discountManagementToolStripMenuItem.Size = new Size(223, 22);
+            discountManagementToolStripMenuItem.Size = new Size(248, 26);
             discountManagementToolStripMenuItem.Text = "Manage Discounts";
             discountManagementToolStripMenuItem.Click += discountManagementToolStripMenuItem_Click;
             // 
@@ -226,75 +183,69 @@
             // 
             systemSettingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { storeConfigurationToolStripMenuItem, taxSettingsToolStripMenuItem, paymentMethodsToolStripMenuItem, printerSetupToolStripMenuItem, themeToolStripMenuItem });
             systemSettingsToolStripMenuItem.Name = "systemSettingsToolStripMenuItem";
-            systemSettingsToolStripMenuItem.Size = new Size(223, 22);
+            systemSettingsToolStripMenuItem.Size = new Size(248, 26);
             systemSettingsToolStripMenuItem.Text = "System Settings";
             // 
             // storeConfigurationToolStripMenuItem
             // 
             storeConfigurationToolStripMenuItem.Name = "storeConfigurationToolStripMenuItem";
-            storeConfigurationToolStripMenuItem.Size = new Size(202, 22);
+            storeConfigurationToolStripMenuItem.Size = new Size(260, 26);
             storeConfigurationToolStripMenuItem.Text = "Store Configuration";
             // 
             // taxSettingsToolStripMenuItem
             // 
             taxSettingsToolStripMenuItem.Name = "taxSettingsToolStripMenuItem";
-            taxSettingsToolStripMenuItem.Size = new Size(202, 22);
+            taxSettingsToolStripMenuItem.Size = new Size(260, 26);
             taxSettingsToolStripMenuItem.Text = "Tax Settings";
             // 
             // paymentMethodsToolStripMenuItem
             // 
             paymentMethodsToolStripMenuItem.Name = "paymentMethodsToolStripMenuItem";
-            paymentMethodsToolStripMenuItem.Size = new Size(202, 22);
+            paymentMethodsToolStripMenuItem.Size = new Size(260, 26);
             paymentMethodsToolStripMenuItem.Text = "Payment Methods";
             // 
             // printerSetupToolStripMenuItem
             // 
             printerSetupToolStripMenuItem.Name = "printerSetupToolStripMenuItem";
-            printerSetupToolStripMenuItem.Size = new Size(202, 22);
+            printerSetupToolStripMenuItem.Size = new Size(260, 26);
             printerSetupToolStripMenuItem.Text = "Printer Setup";
             // 
             // themeToolStripMenuItem
             // 
             themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-            themeToolStripMenuItem.Size = new Size(202, 22);
+            themeToolStripMenuItem.Size = new Size(260, 26);
             themeToolStripMenuItem.Text = "Theme";
             // 
             // databaseToolStripMenuItem
             // 
-            databaseToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { backupDatabaseToolStripMenuItem, restoreDatabaseToolStripMenuItem, clearTransactionLogsToolStripMenuItem });
+            databaseToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { backupDatabaseToolStripMenuItem, restoreDatabaseToolStripMenuItem });
             databaseToolStripMenuItem.Name = "databaseToolStripMenuItem";
-            databaseToolStripMenuItem.Size = new Size(223, 22);
+            databaseToolStripMenuItem.Size = new Size(248, 26);
             databaseToolStripMenuItem.Text = "Database";
             // 
             // backupDatabaseToolStripMenuItem
             // 
             backupDatabaseToolStripMenuItem.Name = "backupDatabaseToolStripMenuItem";
-            backupDatabaseToolStripMenuItem.Size = new Size(224, 22);
+            backupDatabaseToolStripMenuItem.Size = new Size(243, 26);
             backupDatabaseToolStripMenuItem.Text = "Backup Database";
             // 
             // restoreDatabaseToolStripMenuItem
             // 
             restoreDatabaseToolStripMenuItem.Name = "restoreDatabaseToolStripMenuItem";
-            restoreDatabaseToolStripMenuItem.Size = new Size(224, 22);
+            restoreDatabaseToolStripMenuItem.Size = new Size(243, 26);
             restoreDatabaseToolStripMenuItem.Text = "Restore Database";
-            // 
-            // clearTransactionLogsToolStripMenuItem
-            // 
-            clearTransactionLogsToolStripMenuItem.Name = "clearTransactionLogsToolStripMenuItem";
-            clearTransactionLogsToolStripMenuItem.Size = new Size(224, 22);
-            clearTransactionLogsToolStripMenuItem.Text = "Clear Transaction Logs";
             // 
             // refreshToolStripMenuItem
             // 
             refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            refreshToolStripMenuItem.Size = new Size(68, 20);
+            refreshToolStripMenuItem.Size = new Size(88, 24);
             refreshToolStripMenuItem.Text = "Refresh";
             refreshToolStripMenuItem.Click += refreshToolStripMenuItem_Click;
             // 
             // helpToolStripMenuItem
             // 
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            helpToolStripMenuItem.Size = new Size(47, 20);
+            helpToolStripMenuItem.Size = new Size(62, 24);
             helpToolStripMenuItem.Text = "Help";
             // 
             // bgwDashboard
@@ -311,13 +262,13 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.FromArgb(98, 87, 87);
+            panel2.BackColor = Color.FromArgb(121, 85, 72);
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(lblUser);
             panel2.Dock = DockStyle.Bottom;
             panel2.Location = new Point(0, 627);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1024, 34);
+            panel2.Size = new Size(1352, 34);
             panel2.TabIndex = 3;
             // 
             // pictureBox2
@@ -337,7 +288,7 @@
             lblUser.ForeColor = Color.White;
             lblUser.Location = new Point(36, 9);
             lblUser.Name = "lblUser";
-            lblUser.Size = new Size(38, 16);
+            lblUser.Size = new Size(45, 20);
             lblUser.TabIndex = 0;
             lblUser.Text = "- - -";
             // 
@@ -345,10 +296,11 @@
             // 
             toolStrip1.BackColor = SystemColors.ControlLight;
             toolStrip1.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { tlbDashboard, toolStripSeparator1, tsbTransaction, toolStripSeparator2, toolStripButton4, toolStripSeparator3, toolStripButton2, toolStripSeparator6, tsbSalesReport, toolStripSeparator4, toolStripButton3, toolStripSeparator5, toolStripButton1 });
-            toolStrip1.Location = new Point(0, 24);
+            toolStrip1.ImageScalingSize = new Size(20, 20);
+            toolStrip1.Items.AddRange(new ToolStripItem[] { tlbDashboard, toolStripSeparator1, tsbTransaction, toolStripSeparator2, tsbManageMenu, toolStripSeparator3, tsbManageInventory, toolStripSeparator6, tsbAuditTrial, tsbSalesReport, toolStripSeparator4, tsbBestSelling, toolStripSeparator5, toolStripButton1 });
+            toolStrip1.Location = new Point(0, 28);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1024, 73);
+            toolStrip1.Size = new Size(1352, 77);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -360,7 +312,7 @@
             tlbDashboard.ImageScaling = ToolStripItemImageScaling.None;
             tlbDashboard.ImageTransparentColor = Color.Magenta;
             tlbDashboard.Name = "tlbDashboard";
-            tlbDashboard.Size = new Size(101, 70);
+            tlbDashboard.Size = new Size(133, 74);
             tlbDashboard.Text = "DASHBOARD";
             tlbDashboard.TextAlign = ContentAlignment.BottomCenter;
             tlbDashboard.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -369,7 +321,7 @@
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(6, 73);
+            toolStripSeparator1.Size = new Size(6, 77);
             // 
             // tsbTransaction
             // 
@@ -379,7 +331,7 @@
             tsbTransaction.ImageScaling = ToolStripItemImageScaling.None;
             tsbTransaction.ImageTransparentColor = Color.Magenta;
             tsbTransaction.Name = "tsbTransaction";
-            tsbTransaction.Size = new Size(112, 70);
+            tsbTransaction.Size = new Size(151, 74);
             tsbTransaction.Text = "TRANSACTION";
             tsbTransaction.TextAlign = ContentAlignment.BottomCenter;
             tsbTransaction.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -388,42 +340,43 @@
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(6, 73);
+            toolStripSeparator2.Size = new Size(6, 77);
             // 
-            // toolStripButton4
+            // tsbManageMenu
             // 
-            toolStripButton4.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            toolStripButton4.ForeColor = Color.FromArgb(62, 39, 35);
-            toolStripButton4.Image = Properties.Resources.RestaurantMenu;
-            toolStripButton4.ImageScaling = ToolStripItemImageScaling.None;
-            toolStripButton4.ImageTransparentColor = Color.Magenta;
-            toolStripButton4.Name = "toolStripButton4";
-            toolStripButton4.Size = new Size(117, 70);
-            toolStripButton4.Text = "MANAGE MENU";
-            toolStripButton4.TextImageRelation = TextImageRelation.ImageAboveText;
-            toolStripButton4.Click += toolStripButton4_Click;
+            tsbManageMenu.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tsbManageMenu.ForeColor = Color.FromArgb(62, 39, 35);
+            tsbManageMenu.Image = Properties.Resources.RestaurantMenu;
+            tsbManageMenu.ImageScaling = ToolStripItemImageScaling.None;
+            tsbManageMenu.ImageTransparentColor = Color.Magenta;
+            tsbManageMenu.Name = "tsbManageMenu";
+            tsbManageMenu.Size = new Size(157, 74);
+            tsbManageMenu.Text = "MANAGE MENU";
+            tsbManageMenu.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbManageMenu.Click += tsbManageMenu_Click;
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(6, 73);
+            toolStripSeparator3.Size = new Size(6, 77);
             // 
-            // toolStripButton2
+            // tsbManageInventory
             // 
-            toolStripButton2.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            toolStripButton2.ForeColor = Color.FromArgb(62, 39, 35);
-            toolStripButton2.Image = Properties.Resources.inventory_501;
-            toolStripButton2.ImageScaling = ToolStripItemImageScaling.None;
-            toolStripButton2.ImageTransparentColor = Color.Magenta;
-            toolStripButton2.Name = "toolStripButton2";
-            toolStripButton2.Size = new Size(159, 70);
-            toolStripButton2.Text = "MANAGE INVENTORY";
-            toolStripButton2.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbManageInventory.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tsbManageInventory.ForeColor = Color.FromArgb(62, 39, 35);
+            tsbManageInventory.Image = Properties.Resources.inventory_501;
+            tsbManageInventory.ImageScaling = ToolStripItemImageScaling.None;
+            tsbManageInventory.ImageTransparentColor = Color.Magenta;
+            tsbManageInventory.Name = "tsbManageInventory";
+            tsbManageInventory.Size = new Size(215, 74);
+            tsbManageInventory.Text = "MANAGE INVENTORY";
+            tsbManageInventory.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbManageInventory.Click += tsbManageInventory_Click;
             // 
             // toolStripSeparator6
             // 
             toolStripSeparator6.Name = "toolStripSeparator6";
-            toolStripSeparator6.Size = new Size(6, 73);
+            toolStripSeparator6.Size = new Size(6, 77);
             // 
             // tsbSalesReport
             // 
@@ -433,32 +386,56 @@
             tsbSalesReport.ImageScaling = ToolStripItemImageScaling.None;
             tsbSalesReport.ImageTransparentColor = Color.Magenta;
             tsbSalesReport.Name = "tsbSalesReport";
-            tsbSalesReport.Size = new Size(115, 70);
+            tsbSalesReport.Size = new Size(155, 74);
             tsbSalesReport.Text = "SALES REPORT";
             tsbSalesReport.TextAlign = ContentAlignment.BottomCenter;
             tsbSalesReport.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbSalesReport.Click += tsbSalesReport_Click;
             // 
             // toolStripSeparator4
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(6, 73);
+            toolStripSeparator4.Size = new Size(6, 77);
             // 
-            // toolStripButton3
+            // tsbBestSelling
             // 
-            toolStripButton3.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            toolStripButton3.ForeColor = Color.FromArgb(62, 39, 35);
-            toolStripButton3.Image = Properties.Resources.Best_Seller1;
-            toolStripButton3.ImageScaling = ToolStripItemImageScaling.None;
-            toolStripButton3.ImageTransparentColor = Color.Magenta;
-            toolStripButton3.Name = "toolStripButton3";
-            toolStripButton3.Size = new Size(111, 70);
-            toolStripButton3.Text = "BEST SELLING";
-            toolStripButton3.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbBestSelling.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tsbBestSelling.ForeColor = Color.FromArgb(62, 39, 35);
+            tsbBestSelling.Image = Properties.Resources.Best_Seller1;
+            tsbBestSelling.ImageScaling = ToolStripItemImageScaling.None;
+            tsbBestSelling.ImageTransparentColor = Color.Magenta;
+            tsbBestSelling.Name = "tsbBestSelling";
+            tsbBestSelling.Size = new Size(151, 74);
+            tsbBestSelling.Text = "BEST SELLING";
+            tsbBestSelling.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbBestSelling.Click += tsbBestSelling_Click;
             // 
             // toolStripSeparator5
             // 
             toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(6, 73);
+            toolStripSeparator5.Size = new Size(6, 77);
+            // 
+            // tsbAuditTrial
+            // 
+            tsbAuditTrial.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tsbAuditTrial.ForeColor = Color.FromArgb(62, 39, 35);
+            tsbAuditTrial.Image = Properties.Resources.manage_user1;
+            tsbAuditTrial.ImageScaling = ToolStripItemImageScaling.None;
+            tsbAuditTrial.ImageTransparentColor = Color.Magenta;
+            tsbAuditTrial.Name = "tsbAuditTrial";
+            tsbAuditTrial.Size = new Size(164, 74);
+            tsbAuditTrial.Text = "MANAGE USERS";
+            tsbAuditTrial.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbAuditTrial.ToolTipText = "Audit Trail";
+            tsbAuditTrial.Click += tsbAuditTrial_Click;
+            // 
+            // pnlContainer
+            // 
+            pnlContainer.Dock = DockStyle.Fill;
+            pnlContainer.Location = new Point(0, 105);
+            pnlContainer.Name = "pnlContainer";
+            pnlContainer.Size = new Size(1352, 522);
+            pnlContainer.TabIndex = 9;
             // 
             // toolStripButton1
             // 
@@ -468,25 +445,17 @@
             toolStripButton1.ImageScaling = ToolStripItemImageScaling.None;
             toolStripButton1.ImageTransparentColor = Color.Magenta;
             toolStripButton1.Name = "toolStripButton1";
-            toolStripButton1.Size = new Size(100, 70);
+            toolStripButton1.Size = new Size(139, 74);
             toolStripButton1.Text = "AUDIT TRAIL";
             toolStripButton1.TextImageRelation = TextImageRelation.ImageAboveText;
             toolStripButton1.ToolTipText = "Audit Trail";
             // 
-            // pnlContainer
-            // 
-            pnlContainer.Dock = DockStyle.Fill;
-            pnlContainer.Location = new Point(0, 97);
-            pnlContainer.Name = "pnlContainer";
-            pnlContainer.Size = new Size(1024, 530);
-            pnlContainer.TabIndex = 9;
-            // 
             // MainMenu
             // 
-            AutoScaleDimensions = new SizeF(8F, 16F);
+            AutoScaleDimensions = new SizeF(10F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1024, 661);
+            ClientSize = new Size(1352, 661);
             Controls.Add(pnlContainer);
             Controls.Add(toolStrip1);
             Controls.Add(menuStrip1);
@@ -524,8 +493,6 @@
         private ToolStripMenuItem reservationCalendarToolStripMenuItem;
         private ToolStripMenuItem administrationToolStripMenuItem;
         private ToolStripMenuItem userManagementToolStripMenuItem;
-        private ToolStripMenuItem createNewUserToolStripMenuItem;
-        private ToolStripMenuItem manageUserRolesToolStripMenuItem;
         private ToolStripMenuItem systemSettingsToolStripMenuItem;
         private ToolStripMenuItem storeConfigurationToolStripMenuItem;
         private ToolStripMenuItem taxSettingsToolStripMenuItem;
@@ -536,32 +503,28 @@
         private ToolStripMenuItem restoreDatabaseToolStripMenuItem;
         private ToolStripMenuItem refreshToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
-        private ToolStripMenuItem clearTransactionLogsToolStripMenuItem;
         private ToolTip toolTip1;
         private Panel panel2;
         private Label lblUser;
         private ToolStripMenuItem categoryManagementToolStripMenuItem;
-        private ToolStripMenuItem createEditDeleteCategoriesToolStripMenuItem;
-        private ToolStripMenuItem subcategoriesSupportToolStripMenuItem;
-        private ToolStripMenuItem assignProductsToCategoriesToolStripMenuItem;
-        private ToolStripMenuItem categoryAvailabilityToggleToolStripMenuItem;
         private ToolStrip toolStrip1;
         private ToolStripButton tsbTransaction;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripButton tlbDashboard;
         private ToolStripSeparator toolStripSeparator3;
-        private ToolStripButton toolStripButton1;
+        private ToolStripButton tsbAuditTrial;
         private Panel pnlContainer;
         private ToolStripButton tsbSalesReport;
         private ToolStripSeparator toolStripSeparator4;
-        private ToolStripButton toolStripButton2;
+        private ToolStripButton tsbManageInventory;
         private ToolStripSeparator toolStripSeparator5;
-        private ToolStripButton toolStripButton3;
+        private ToolStripButton tsbBestSelling;
         private ToolStripSeparator toolStripSeparator6;
-        private ToolStripButton toolStripButton4;
+        private ToolStripButton tsbManageMenu;
         private ToolStripMenuItem discountManagementToolStripMenuItem;
         private ToolStripMenuItem themeToolStripMenuItem;
         private PictureBox pictureBox2;
+        private ToolStripButton toolStripButton1;
     }
 }
