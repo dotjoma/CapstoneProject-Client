@@ -357,6 +357,7 @@
             // panel11
             // 
             panel11.Controls.Add(cartPanel);
+            panel11.Dock = DockStyle.Fill;
             panel11.Location = new Point(0, 95);
             panel11.Name = "panel11";
             panel11.Size = new Size(440, 334);

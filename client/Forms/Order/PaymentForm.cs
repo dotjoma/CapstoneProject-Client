@@ -45,6 +45,9 @@ namespace client.Forms.Order
 
         private static int refreshScreen = 5;
 
+        // Event
+        public static event Action? OnSalesReportUpdated;
+
         public PaymentForm(decimal _totalAmount, string _orderType)
         {
             InitializeComponent();
@@ -835,6 +838,7 @@ namespace client.Forms.Order
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     PostPaymentProcess?.Invoke();
+                    OnSalesReportUpdated?.Invoke();
 
                     this.Dispose();
                 }

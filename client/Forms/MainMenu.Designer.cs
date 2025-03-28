@@ -69,13 +69,14 @@
             toolStripSeparator3 = new ToolStripSeparator();
             tsbManageInventory = new ToolStripButton();
             toolStripSeparator6 = new ToolStripSeparator();
+            tsbAuditTrial = new ToolStripButton();
             tsbSalesReport = new ToolStripButton();
             toolStripSeparator4 = new ToolStripSeparator();
             tsbBestSelling = new ToolStripButton();
             toolStripSeparator5 = new ToolStripSeparator();
-            tsbAuditTrial = new ToolStripButton();
-            pnlContainer = new Panel();
             toolStripButton1 = new ToolStripButton();
+            pnlContainer = new Panel();
+            toolStripSeparator7 = new ToolStripSeparator();
             menuStrip1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -297,7 +298,7 @@
             toolStrip1.BackColor = SystemColors.ControlLight;
             toolStrip1.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { tlbDashboard, toolStripSeparator1, tsbTransaction, toolStripSeparator2, tsbManageMenu, toolStripSeparator3, tsbManageInventory, toolStripSeparator6, tsbAuditTrial, tsbSalesReport, toolStripSeparator4, tsbBestSelling, toolStripSeparator5, toolStripButton1 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { tlbDashboard, toolStripSeparator1, tsbTransaction, toolStripSeparator2, tsbManageMenu, toolStripSeparator3, tsbManageInventory, toolStripSeparator6, toolStripButton1, toolStripSeparator7, tsbSalesReport, toolStripSeparator4, tsbBestSelling, toolStripSeparator5, tsbAuditTrial });
             toolStrip1.Location = new Point(0, 28);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1352, 77);
@@ -378,6 +379,20 @@
             toolStripSeparator6.Name = "toolStripSeparator6";
             toolStripSeparator6.Size = new Size(6, 77);
             // 
+            // tsbAuditTrial
+            // 
+            tsbAuditTrial.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tsbAuditTrial.ForeColor = Color.FromArgb(62, 39, 35);
+            tsbAuditTrial.Image = Properties.Resources.Audit2;
+            tsbAuditTrial.ImageScaling = ToolStripItemImageScaling.None;
+            tsbAuditTrial.ImageTransparentColor = Color.Magenta;
+            tsbAuditTrial.Name = "tsbAuditTrial";
+            tsbAuditTrial.Size = new Size(139, 74);
+            tsbAuditTrial.Text = "AUDIT TRAIL";
+            tsbAuditTrial.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbAuditTrial.ToolTipText = "Audit Trail";
+            tsbAuditTrial.Click += tsbAuditTrial_Click;
+            // 
             // tsbSalesReport
             // 
             tsbSalesReport.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -415,19 +430,19 @@
             toolStripSeparator5.Name = "toolStripSeparator5";
             toolStripSeparator5.Size = new Size(6, 77);
             // 
-            // tsbAuditTrial
+            // toolStripButton1
             // 
-            tsbAuditTrial.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tsbAuditTrial.ForeColor = Color.FromArgb(62, 39, 35);
-            tsbAuditTrial.Image = Properties.Resources.manage_user1;
-            tsbAuditTrial.ImageScaling = ToolStripItemImageScaling.None;
-            tsbAuditTrial.ImageTransparentColor = Color.Magenta;
-            tsbAuditTrial.Name = "tsbAuditTrial";
-            tsbAuditTrial.Size = new Size(164, 74);
-            tsbAuditTrial.Text = "MANAGE USERS";
-            tsbAuditTrial.TextImageRelation = TextImageRelation.ImageAboveText;
-            tsbAuditTrial.ToolTipText = "Audit Trail";
-            tsbAuditTrial.Click += tsbAuditTrial_Click;
+            toolStripButton1.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            toolStripButton1.ForeColor = Color.FromArgb(62, 39, 35);
+            toolStripButton1.Image = Properties.Resources.manage_user1;
+            toolStripButton1.ImageScaling = ToolStripItemImageScaling.None;
+            toolStripButton1.ImageTransparentColor = Color.Magenta;
+            toolStripButton1.Name = "toolStripButton1";
+            toolStripButton1.Size = new Size(152, 74);
+            toolStripButton1.Text = "MANAGE USER";
+            toolStripButton1.TextImageRelation = TextImageRelation.ImageAboveText;
+            toolStripButton1.ToolTipText = "Audit Trail";
+            toolStripButton1.Click += toolStripButton1_Click;
             // 
             // pnlContainer
             // 
@@ -437,18 +452,10 @@
             pnlContainer.Size = new Size(1352, 522);
             pnlContainer.TabIndex = 9;
             // 
-            // toolStripButton1
+            // toolStripSeparator7
             // 
-            toolStripButton1.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            toolStripButton1.ForeColor = Color.FromArgb(62, 39, 35);
-            toolStripButton1.Image = Properties.Resources.Audit2;
-            toolStripButton1.ImageScaling = ToolStripItemImageScaling.None;
-            toolStripButton1.ImageTransparentColor = Color.Magenta;
-            toolStripButton1.Name = "toolStripButton1";
-            toolStripButton1.Size = new Size(139, 74);
-            toolStripButton1.Text = "AUDIT TRAIL";
-            toolStripButton1.TextImageRelation = TextImageRelation.ImageAboveText;
-            toolStripButton1.ToolTipText = "Audit Trail";
+            toolStripSeparator7.Name = "toolStripSeparator7";
+            toolStripSeparator7.Size = new Size(6, 77);
             // 
             // MainMenu
             // 
@@ -526,5 +533,6 @@
         private ToolStripMenuItem themeToolStripMenuItem;
         private PictureBox pictureBox2;
         private ToolStripButton toolStripButton1;
+        private ToolStripSeparator toolStripSeparator7;
     }
 }

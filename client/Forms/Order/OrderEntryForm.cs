@@ -1495,11 +1495,25 @@ namespace client.Forms.Order
 
                 if (IsTransactionActive()) isTransactionActive = false;
 
+                // SAFE orderId parsing - fixed version
+                int orderId = 0;
+                try
+                {
+                    if (CurrentOrder.Current?.orderId != null)
+                    {
+                        if (int.TryParse(CurrentOrder.Current.orderId.ToString(), out int parsedId))
+                        {
+                            orderId = parsedId;
+                        }
+                    }
+                }
+                catch { /* Silently handle any parse errors */ }
+
                 // Log cleanup completion
                 Logger.LogPOSEvent(
                     eventType: "SystemReset",
                     details: $"After {(transactionSuccess ? "successful" : "failed")} payment",
-                    orderId: int.Parse(CurrentOrder.Current?.orderId.ToString() ?? "")
+                    orderId: orderId
                 );
 
                 if (ShouldPerformMaintenance())

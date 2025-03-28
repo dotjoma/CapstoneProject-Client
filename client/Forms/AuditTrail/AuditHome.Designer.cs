@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel2 = new Panel();
             comboBox2 = new ComboBox();
             label3 = new Label();
@@ -256,33 +256,33 @@
             dgvAudit.AllowUserToDeleteRows = false;
             dgvAudit.AllowUserToResizeColumns = false;
             dgvAudit.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(93, 64, 55);
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(245, 242, 237);
-            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(93, 64, 55);
-            dgvAudit.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(93, 64, 55);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(245, 242, 237);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(93, 64, 55);
+            dgvAudit.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvAudit.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvAudit.BackgroundColor = Color.White;
             dgvAudit.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = Color.FromArgb(121, 85, 72);
-            dataGridViewCellStyle7.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(121, 85, 72);
-            dataGridViewCellStyle7.SelectionForeColor = Color.White;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dgvAudit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(121, 85, 72);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(121, 85, 72);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvAudit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvAudit.ColumnHeadersHeight = 35;
             dgvAudit.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvAudit.Columns.AddRange(new DataGridViewColumn[] { date, username, action, description, prevvalue, newvalue, ipaddress, machineid, sessionid });
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = Color.White;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle9.ForeColor = Color.FromArgb(93, 64, 55);
-            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(245, 242, 237);
-            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(93, 64, 55);
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
-            dgvAudit.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(93, 64, 55);
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(245, 242, 237);
+            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(93, 64, 55);
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvAudit.DefaultCellStyle = dataGridViewCellStyle4;
             dgvAudit.Dock = DockStyle.Fill;
             dgvAudit.EnableHeadersVisualStyles = false;
             dgvAudit.GridColor = Color.White;
@@ -292,14 +292,14 @@
             dgvAudit.Name = "dgvAudit";
             dgvAudit.ReadOnly = true;
             dgvAudit.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = SystemColors.Control;
-            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle10.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(214, 192, 179);
-            dataGridViewCellStyle10.SelectionForeColor = Color.White;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
-            dgvAudit.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(214, 192, 179);
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvAudit.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvAudit.RowHeadersVisible = false;
             dgvAudit.RowHeadersWidth = 51;
             dgvAudit.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -335,6 +335,7 @@
             action.MinimumWidth = 100;
             action.Name = "action";
             action.ReadOnly = true;
+            action.Width = 125;
             // 
             // description
             // 
@@ -349,8 +350,8 @@
             // prevvalue
             // 
             prevvalue.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleRight;
-            prevvalue.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
+            prevvalue.DefaultCellStyle = dataGridViewCellStyle3;
             prevvalue.FillWeight = 178.85527F;
             prevvalue.HeaderText = "Prev Value";
             prevvalue.MinimumWidth = 100;
@@ -391,6 +392,7 @@
             sessionid.MinimumWidth = 100;
             sessionid.Name = "sessionid";
             sessionid.ReadOnly = true;
+            sessionid.Width = 125;
             // 
             // AuditHome
             // 

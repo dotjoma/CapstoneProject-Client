@@ -58,6 +58,9 @@
     <Compile Update="Forms\SalesReport\SalesReportHome.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\UserManagement\UserHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">

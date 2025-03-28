@@ -24,6 +24,7 @@ using client.Forms.InventoryManagement;
 using client.Forms.AuditTrail;
 using client.Forms.SalesReport;
 using client.Forms.BestSelling;
+using client.Forms.UserManagement;
 
 namespace client.Forms
 {
@@ -56,14 +57,6 @@ namespace client.Forms
                 this.Hide();
                 new OrderEntryForm().Show();
             }
-        }
-
-        private void AddUserControl(UserControl userControl)
-        {
-            userControl.Dock = DockStyle.Fill;
-            pnlContainer.Controls.Clear();
-            pnlContainer.Controls.Add(userControl);
-            userControl.BringToFront();
         }
 
         private void AddFormToPanel(Form form)
@@ -213,6 +206,11 @@ namespace client.Forms
         private void tsbAuditTrial_Click(object sender, EventArgs e)
         {
             AddFormToPanel(new AuditHome());
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            AddFormToPanel(new UserHome());
         }
     }
 }

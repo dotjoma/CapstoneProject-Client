@@ -291,3 +291,4 @@ C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\obj\Debug\net8.0-windows
 C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\obj\Debug\net8.0-windows7.0\client.Forms.AuditTrail.AuditHome.resources
 C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\obj\Debug\net8.0-windows7.0\client.Forms.BestSelling.BestSellingHome.resources
 C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\obj\Debug\net8.0-windows7.0\client.Forms.SalesReport.SalesReportHome.resources
+C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\obj\Debug\net8.0-windows7.0\client.Forms.UserManagement.UserHome.resources
