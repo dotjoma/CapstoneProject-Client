@@ -9,13 +9,14 @@ namespace client.Models
     public class AppliedDiscount
     {
         // Private fields for tracking discounts
-        private static decimal _totalDiscountedAmount = 0;
+        private static decimal _discountAmount = 0;
         private static Dictionary<int, (decimal unitPrice, int quantity)> _discountedItems
             = new Dictionary<int, (decimal unitPrice, int quantity)>();
 
         private static string _discountName = string.Empty;
         private static DiscountTypeEnum _discountType = DiscountTypeEnum.None;
         private static decimal _discountValue = 0;
+        private static decimal _subtotal = 0;
         private static string _customerName = string.Empty;
         private static string _idNumber = string.Empty;
         private static bool _isDiscountSet = false;
@@ -24,9 +25,10 @@ namespace client.Models
         public static string DiscountName => _discountName;
         public static DiscountTypeEnum DiscountType => _discountType;
         public static decimal DiscountValue => _discountValue;
-        public static decimal TotalDiscount => _totalDiscountedAmount;
-        public static string CustomerDetails => _customerName;
+        public static decimal TotalDiscount => _discountAmount;
+        public static string CustomerName => _customerName;
         public static string CustomerIdNumber => _idNumber;
+        public static decimal SubTotal => _subtotal;
         public static IReadOnlyDictionary<int, (decimal unitPrice, int quantity)> DiscountedItems => _discountedItems;
 
         public static event Action<decimal>? OnDiscountChanged;
@@ -39,7 +41,7 @@ namespace client.Models
             Fixed
         }
 
-        public static void SetDiscountDetails(string name, DiscountTypeEnum type, decimal value)
+        public static void SetDiscountDetails(string name, DiscountTypeEnum type, decimal value, decimal subtotal)
         {
             if (value < 0)
             {
@@ -50,6 +52,7 @@ namespace client.Models
             _discountName = name;
             _discountType = type;
             _discountValue = value;
+            _subtotal = subtotal;
             _isDiscountSet = true;
 
             CalculateTotalDiscount();
@@ -82,27 +85,19 @@ namespace client.Models
         // Calculate total discount based on the current discount type
         private static void CalculateTotalDiscount()
         {
-            lock (_discountedItems)
+            _discountAmount = 0;
+
+            if (_discountType == DiscountTypeEnum.Percentage)
             {
-                _totalDiscountedAmount = 0;
-
-                foreach (var item in _discountedItems)
-                {
-                    var (unitPrice, quantity) = item.Value;
-                    decimal totalPrice = unitPrice * quantity;
-
-                    if (_discountType == DiscountTypeEnum.Percentage)
-                    {
-                        _totalDiscountedAmount += totalPrice * (_discountValue / 100);
-                    }
-                    else if (_discountType == DiscountTypeEnum.Fixed)
-                    {
-                        _totalDiscountedAmount += _discountValue * quantity;
-                    }
-                }
-
-                OnDiscountChanged?.Invoke(_totalDiscountedAmount);
+                _discountAmount = 0.20m;
+                                    // vat-able * 0.2
             }
+            else if (_discountType == DiscountTypeEnum.Fixed)
+            {
+                _discountAmount = _discountValue;
+            }
+
+            OnDiscountChanged?.Invoke(_discountAmount);
         }
 
         // Add a discount for a specific product
@@ -152,7 +147,7 @@ namespace client.Models
         // Reset all
         public static void Clear()
         {
-            _totalDiscountedAmount = 0;
+            _discountAmount = 0;
             _discountedItems.Clear();
             _discountName = string.Empty;
             _discountType = DiscountTypeEnum.None;

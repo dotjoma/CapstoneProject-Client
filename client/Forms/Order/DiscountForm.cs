@@ -17,11 +17,16 @@ namespace client.Forms.Order
     public partial class DiscountForm : Form
     {
         private static string _discountName = string.Empty;
+        private static string _discountCusName = string.Empty;
         private static DiscountTypeEnum _discountType = DiscountTypeEnum.None;
         private static decimal _discountValue = 0;
-        public DiscountForm()
+
+        private decimal _subtotal = 0;
+
+        public DiscountForm(decimal subtotal)
         {
             InitializeComponent();
+            this._subtotal = subtotal;
             this.KeyPreview = true;
             this.KeyDown += DiscountForm_KeyDown;
         }
@@ -29,7 +34,7 @@ namespace client.Forms.Order
         private void DiscountForm_Load(object sender, EventArgs e)
         {
             GetDiscount();
-            txtName.Text = DiscountName;
+            txtName.Text = CustomerName;
             txtIdNumber.Text = CustomerIdNumber;
         }
 
@@ -93,9 +98,10 @@ namespace client.Forms.Order
                         discountType = DiscountTypeEnum.None;
                     }
 
+                    _discountCusName = txtName.Text.Trim();
                     _discountName = selectedDiscount.Name;
                     _discountType = discountType;
-                    _discountValue = selectedDiscount.Value;
+                    _discountValue = selectedDiscount.Value; // total amount!
                 }
                 else
                 {
@@ -130,7 +136,7 @@ namespace client.Forms.Order
                 return;
             }
 
-            SetDiscountDetails(_discountName, _discountType, _discountValue);
+            SetDiscountDetails(_discountName, _discountType, _discountValue, _subtotal);
             SetCustomerDiscountDetails(name, idNumber);
 
             this.Dispose();

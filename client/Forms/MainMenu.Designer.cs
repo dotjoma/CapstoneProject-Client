@@ -50,9 +50,7 @@
             paymentMethodsToolStripMenuItem = new ToolStripMenuItem();
             printerSetupToolStripMenuItem = new ToolStripMenuItem();
             themeToolStripMenuItem = new ToolStripMenuItem();
-            databaseToolStripMenuItem = new ToolStripMenuItem();
-            backupDatabaseToolStripMenuItem = new ToolStripMenuItem();
-            restoreDatabaseToolStripMenuItem = new ToolStripMenuItem();
+            msBackupControlPanel = new ToolStripMenuItem();
             refreshToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
             bgwDashboard = new System.ComponentModel.BackgroundWorker();
@@ -69,14 +67,14 @@
             toolStripSeparator3 = new ToolStripSeparator();
             tsbManageInventory = new ToolStripButton();
             toolStripSeparator6 = new ToolStripSeparator();
-            tsbAuditTrial = new ToolStripButton();
+            toolStripButton1 = new ToolStripButton();
+            toolStripSeparator7 = new ToolStripSeparator();
             tsbSalesReport = new ToolStripButton();
             toolStripSeparator4 = new ToolStripSeparator();
             tsbBestSelling = new ToolStripButton();
             toolStripSeparator5 = new ToolStripSeparator();
-            toolStripButton1 = new ToolStripButton();
+            tsbAuditTrial = new ToolStripButton();
             pnlContainer = new Panel();
-            toolStripSeparator7 = new ToolStripSeparator();
             menuStrip1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -86,97 +84,100 @@
             // menuStrip1
             // 
             menuStrip1.BackColor = SystemColors.Control;
-            menuStrip1.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            menuStrip1.Font = new Font("Verdana", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, reservationToolStripMenuItem, administrationToolStripMenuItem, refreshToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1352, 28);
+            menuStrip1.Size = new Size(1352, 30);
             menuStrip1.TabIndex = 8;
             menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
             fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tsSettings, tsLogout, tsExit });
+            fileToolStripMenuItem.ForeColor = Color.Black;
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new Size(53, 24);
+            fileToolStripMenuItem.Size = new Size(55, 26);
             fileToolStripMenuItem.Text = "File";
             // 
             // tsSettings
             // 
             tsSettings.Name = "tsSettings";
-            tsSettings.Size = new Size(164, 26);
+            tsSettings.Size = new Size(224, 26);
             tsSettings.Text = "Settings";
             tsSettings.Click += tsSettings_Click;
             // 
             // tsLogout
             // 
             tsLogout.Name = "tsLogout";
-            tsLogout.Size = new Size(164, 26);
+            tsLogout.Size = new Size(224, 26);
             tsLogout.Text = "Logout";
             tsLogout.Click += tsLogout_Click;
             // 
             // tsExit
             // 
             tsExit.Name = "tsExit";
-            tsExit.Size = new Size(164, 26);
+            tsExit.Size = new Size(224, 26);
             tsExit.Text = "Exit";
             tsExit.Click += tsExit_Click;
             // 
             // reservationToolStripMenuItem
             // 
             reservationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { newReservationToolStripMenuItem, viewReservationToolStripMenuItem, manageReservationToolStripMenuItem, reservationCalendarToolStripMenuItem });
+            reservationToolStripMenuItem.ForeColor = Color.Black;
             reservationToolStripMenuItem.Name = "reservationToolStripMenuItem";
-            reservationToolStripMenuItem.Size = new Size(133, 24);
+            reservationToolStripMenuItem.Size = new Size(141, 26);
             reservationToolStripMenuItem.Text = "Reservations";
             // 
             // newReservationToolStripMenuItem
             // 
             newReservationToolStripMenuItem.Name = "newReservationToolStripMenuItem";
-            newReservationToolStripMenuItem.Size = new Size(275, 26);
+            newReservationToolStripMenuItem.Size = new Size(289, 26);
             newReservationToolStripMenuItem.Text = "New Reservation";
             // 
             // viewReservationToolStripMenuItem
             // 
             viewReservationToolStripMenuItem.Name = "viewReservationToolStripMenuItem";
-            viewReservationToolStripMenuItem.Size = new Size(275, 26);
+            viewReservationToolStripMenuItem.Size = new Size(289, 26);
             viewReservationToolStripMenuItem.Text = "View Reservations";
             // 
             // manageReservationToolStripMenuItem
             // 
             manageReservationToolStripMenuItem.Name = "manageReservationToolStripMenuItem";
-            manageReservationToolStripMenuItem.Size = new Size(275, 26);
+            manageReservationToolStripMenuItem.Size = new Size(289, 26);
             manageReservationToolStripMenuItem.Text = "Manage Reservations";
             // 
             // reservationCalendarToolStripMenuItem
             // 
             reservationCalendarToolStripMenuItem.Name = "reservationCalendarToolStripMenuItem";
-            reservationCalendarToolStripMenuItem.Size = new Size(275, 26);
+            reservationCalendarToolStripMenuItem.Size = new Size(289, 26);
             reservationCalendarToolStripMenuItem.Text = "Reservation Calendar";
             // 
             // administrationToolStripMenuItem
             // 
-            administrationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { userManagementToolStripMenuItem, categoryManagementToolStripMenuItem, discountManagementToolStripMenuItem, systemSettingsToolStripMenuItem, databaseToolStripMenuItem });
+            administrationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { userManagementToolStripMenuItem, categoryManagementToolStripMenuItem, discountManagementToolStripMenuItem, systemSettingsToolStripMenuItem, msBackupControlPanel });
+            administrationToolStripMenuItem.ForeColor = Color.Black;
             administrationToolStripMenuItem.Name = "administrationToolStripMenuItem";
-            administrationToolStripMenuItem.Size = new Size(150, 24);
+            administrationToolStripMenuItem.Size = new Size(155, 26);
             administrationToolStripMenuItem.Text = "Administration";
             // 
             // userManagementToolStripMenuItem
             // 
             userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            userManagementToolStripMenuItem.Size = new Size(248, 26);
+            userManagementToolStripMenuItem.Size = new Size(286, 26);
             userManagementToolStripMenuItem.Text = "Manage Users";
             // 
             // categoryManagementToolStripMenuItem
             // 
             categoryManagementToolStripMenuItem.Name = "categoryManagementToolStripMenuItem";
-            categoryManagementToolStripMenuItem.Size = new Size(248, 26);
+            categoryManagementToolStripMenuItem.Size = new Size(286, 26);
             categoryManagementToolStripMenuItem.Text = "Manage Category";
             // 
             // discountManagementToolStripMenuItem
             // 
             discountManagementToolStripMenuItem.Name = "discountManagementToolStripMenuItem";
-            discountManagementToolStripMenuItem.Size = new Size(248, 26);
+            discountManagementToolStripMenuItem.Size = new Size(286, 26);
             discountManagementToolStripMenuItem.Text = "Manage Discounts";
             discountManagementToolStripMenuItem.Click += discountManagementToolStripMenuItem_Click;
             // 
@@ -184,69 +185,59 @@
             // 
             systemSettingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { storeConfigurationToolStripMenuItem, taxSettingsToolStripMenuItem, paymentMethodsToolStripMenuItem, printerSetupToolStripMenuItem, themeToolStripMenuItem });
             systemSettingsToolStripMenuItem.Name = "systemSettingsToolStripMenuItem";
-            systemSettingsToolStripMenuItem.Size = new Size(248, 26);
+            systemSettingsToolStripMenuItem.Size = new Size(286, 26);
             systemSettingsToolStripMenuItem.Text = "System Settings";
             // 
             // storeConfigurationToolStripMenuItem
             // 
             storeConfigurationToolStripMenuItem.Name = "storeConfigurationToolStripMenuItem";
-            storeConfigurationToolStripMenuItem.Size = new Size(260, 26);
+            storeConfigurationToolStripMenuItem.Size = new Size(270, 26);
             storeConfigurationToolStripMenuItem.Text = "Store Configuration";
             // 
             // taxSettingsToolStripMenuItem
             // 
             taxSettingsToolStripMenuItem.Name = "taxSettingsToolStripMenuItem";
-            taxSettingsToolStripMenuItem.Size = new Size(260, 26);
+            taxSettingsToolStripMenuItem.Size = new Size(270, 26);
             taxSettingsToolStripMenuItem.Text = "Tax Settings";
             // 
             // paymentMethodsToolStripMenuItem
             // 
             paymentMethodsToolStripMenuItem.Name = "paymentMethodsToolStripMenuItem";
-            paymentMethodsToolStripMenuItem.Size = new Size(260, 26);
+            paymentMethodsToolStripMenuItem.Size = new Size(270, 26);
             paymentMethodsToolStripMenuItem.Text = "Payment Methods";
             // 
             // printerSetupToolStripMenuItem
             // 
             printerSetupToolStripMenuItem.Name = "printerSetupToolStripMenuItem";
-            printerSetupToolStripMenuItem.Size = new Size(260, 26);
+            printerSetupToolStripMenuItem.Size = new Size(270, 26);
             printerSetupToolStripMenuItem.Text = "Printer Setup";
             // 
             // themeToolStripMenuItem
             // 
             themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-            themeToolStripMenuItem.Size = new Size(260, 26);
+            themeToolStripMenuItem.Size = new Size(270, 26);
             themeToolStripMenuItem.Text = "Theme";
             // 
-            // databaseToolStripMenuItem
+            // msBackupControlPanel
             // 
-            databaseToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { backupDatabaseToolStripMenuItem, restoreDatabaseToolStripMenuItem });
-            databaseToolStripMenuItem.Name = "databaseToolStripMenuItem";
-            databaseToolStripMenuItem.Size = new Size(248, 26);
-            databaseToolStripMenuItem.Text = "Database";
-            // 
-            // backupDatabaseToolStripMenuItem
-            // 
-            backupDatabaseToolStripMenuItem.Name = "backupDatabaseToolStripMenuItem";
-            backupDatabaseToolStripMenuItem.Size = new Size(243, 26);
-            backupDatabaseToolStripMenuItem.Text = "Backup Database";
-            // 
-            // restoreDatabaseToolStripMenuItem
-            // 
-            restoreDatabaseToolStripMenuItem.Name = "restoreDatabaseToolStripMenuItem";
-            restoreDatabaseToolStripMenuItem.Size = new Size(243, 26);
-            restoreDatabaseToolStripMenuItem.Text = "Restore Database";
+            msBackupControlPanel.Name = "msBackupControlPanel";
+            msBackupControlPanel.Size = new Size(286, 26);
+            msBackupControlPanel.Text = "Backup Control Panel";
+            msBackupControlPanel.Click += msBackupControlPanel_Click;
             // 
             // refreshToolStripMenuItem
             // 
+            refreshToolStripMenuItem.ForeColor = Color.Black;
             refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            refreshToolStripMenuItem.Size = new Size(88, 24);
+            refreshToolStripMenuItem.Size = new Size(93, 26);
             refreshToolStripMenuItem.Text = "Refresh";
             refreshToolStripMenuItem.Click += refreshToolStripMenuItem_Click;
             // 
             // helpToolStripMenuItem
             // 
+            helpToolStripMenuItem.ForeColor = Color.Black;
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            helpToolStripMenuItem.Size = new Size(62, 24);
+            helpToolStripMenuItem.Size = new Size(65, 26);
             helpToolStripMenuItem.Text = "Help";
             // 
             // bgwDashboard
@@ -299,7 +290,7 @@
             toolStrip1.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             toolStrip1.ImageScalingSize = new Size(20, 20);
             toolStrip1.Items.AddRange(new ToolStripItem[] { tlbDashboard, toolStripSeparator1, tsbTransaction, toolStripSeparator2, tsbManageMenu, toolStripSeparator3, tsbManageInventory, toolStripSeparator6, toolStripButton1, toolStripSeparator7, tsbSalesReport, toolStripSeparator4, tsbBestSelling, toolStripSeparator5, tsbAuditTrial });
-            toolStrip1.Location = new Point(0, 28);
+            toolStrip1.Location = new Point(0, 30);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1352, 77);
             toolStrip1.TabIndex = 0;
@@ -379,19 +370,24 @@
             toolStripSeparator6.Name = "toolStripSeparator6";
             toolStripSeparator6.Size = new Size(6, 77);
             // 
-            // tsbAuditTrial
+            // toolStripButton1
             // 
-            tsbAuditTrial.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tsbAuditTrial.ForeColor = Color.FromArgb(62, 39, 35);
-            tsbAuditTrial.Image = Properties.Resources.Audit2;
-            tsbAuditTrial.ImageScaling = ToolStripItemImageScaling.None;
-            tsbAuditTrial.ImageTransparentColor = Color.Magenta;
-            tsbAuditTrial.Name = "tsbAuditTrial";
-            tsbAuditTrial.Size = new Size(139, 74);
-            tsbAuditTrial.Text = "AUDIT TRAIL";
-            tsbAuditTrial.TextImageRelation = TextImageRelation.ImageAboveText;
-            tsbAuditTrial.ToolTipText = "Audit Trail";
-            tsbAuditTrial.Click += tsbAuditTrial_Click;
+            toolStripButton1.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            toolStripButton1.ForeColor = Color.FromArgb(62, 39, 35);
+            toolStripButton1.Image = Properties.Resources.manage_user1;
+            toolStripButton1.ImageScaling = ToolStripItemImageScaling.None;
+            toolStripButton1.ImageTransparentColor = Color.Magenta;
+            toolStripButton1.Name = "toolStripButton1";
+            toolStripButton1.Size = new Size(152, 74);
+            toolStripButton1.Text = "MANAGE USER";
+            toolStripButton1.TextImageRelation = TextImageRelation.ImageAboveText;
+            toolStripButton1.ToolTipText = "Audit Trail";
+            toolStripButton1.Click += toolStripButton1_Click;
+            // 
+            // toolStripSeparator7
+            // 
+            toolStripSeparator7.Name = "toolStripSeparator7";
+            toolStripSeparator7.Size = new Size(6, 77);
             // 
             // tsbSalesReport
             // 
@@ -430,32 +426,27 @@
             toolStripSeparator5.Name = "toolStripSeparator5";
             toolStripSeparator5.Size = new Size(6, 77);
             // 
-            // toolStripButton1
+            // tsbAuditTrial
             // 
-            toolStripButton1.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            toolStripButton1.ForeColor = Color.FromArgb(62, 39, 35);
-            toolStripButton1.Image = Properties.Resources.manage_user1;
-            toolStripButton1.ImageScaling = ToolStripItemImageScaling.None;
-            toolStripButton1.ImageTransparentColor = Color.Magenta;
-            toolStripButton1.Name = "toolStripButton1";
-            toolStripButton1.Size = new Size(152, 74);
-            toolStripButton1.Text = "MANAGE USER";
-            toolStripButton1.TextImageRelation = TextImageRelation.ImageAboveText;
-            toolStripButton1.ToolTipText = "Audit Trail";
-            toolStripButton1.Click += toolStripButton1_Click;
+            tsbAuditTrial.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tsbAuditTrial.ForeColor = Color.FromArgb(62, 39, 35);
+            tsbAuditTrial.Image = Properties.Resources.Audit2;
+            tsbAuditTrial.ImageScaling = ToolStripItemImageScaling.None;
+            tsbAuditTrial.ImageTransparentColor = Color.Magenta;
+            tsbAuditTrial.Name = "tsbAuditTrial";
+            tsbAuditTrial.Size = new Size(139, 74);
+            tsbAuditTrial.Text = "AUDIT TRAIL";
+            tsbAuditTrial.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbAuditTrial.ToolTipText = "Audit Trail";
+            tsbAuditTrial.Click += tsbAuditTrial_Click;
             // 
             // pnlContainer
             // 
             pnlContainer.Dock = DockStyle.Fill;
-            pnlContainer.Location = new Point(0, 105);
+            pnlContainer.Location = new Point(0, 107);
             pnlContainer.Name = "pnlContainer";
-            pnlContainer.Size = new Size(1352, 522);
+            pnlContainer.Size = new Size(1352, 520);
             pnlContainer.TabIndex = 9;
-            // 
-            // toolStripSeparator7
-            // 
-            toolStripSeparator7.Name = "toolStripSeparator7";
-            toolStripSeparator7.Size = new Size(6, 77);
             // 
             // MainMenu
             // 
@@ -505,9 +496,7 @@
         private ToolStripMenuItem taxSettingsToolStripMenuItem;
         private ToolStripMenuItem paymentMethodsToolStripMenuItem;
         private ToolStripMenuItem printerSetupToolStripMenuItem;
-        private ToolStripMenuItem databaseToolStripMenuItem;
-        private ToolStripMenuItem backupDatabaseToolStripMenuItem;
-        private ToolStripMenuItem restoreDatabaseToolStripMenuItem;
+        private ToolStripMenuItem msBackupControlPanel;
         private ToolStripMenuItem refreshToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolTip toolTip1;

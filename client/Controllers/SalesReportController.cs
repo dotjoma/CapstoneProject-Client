@@ -5,6 +5,7 @@ using client.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -17,12 +18,10 @@ namespace client.Controllers
         {
             List<SalesReport> salesReports = new List<SalesReport>();
 
-            var getSalesReportsPacket = new Packet
+            var response = await Client.Instance.SendRequestAsync(new Packet
             {
                 Type = PacketType.GetSalesReport
-            };
-
-            var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(getSalesReportsPacket));
+            });
 
             if (response == null)
             {

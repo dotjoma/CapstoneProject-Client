@@ -1,4 +1,5 @@
 ﻿using client.Forms.POS.POSUserControl;
+using client.Forms.UserManagement;
 using client.Helpers;
 using client.Models;
 using client.Network;
@@ -8,9 +9,11 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace client.Controllers
@@ -19,16 +22,14 @@ namespace client.Controllers
     {
         public async Task<bool> Create(string name)
         {
-            var createCategoryPacket = new Packet
+            var response = await Client.Instance.SendRequestAsync(new Packet
             {
                 Type = PacketType.CreateCategory,
                 Data = new Dictionary<string, string>
                 {
                     { "name", name }
                 }
-            };
-
-            var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(createCategoryPacket));
+            });
 
             if (response == null)
             {
@@ -71,12 +72,10 @@ namespace client.Controllers
 
         public async Task<bool> Get()
         {
-            var getCategoryPacket = new Packet
+            var response = await Client.Instance.SendRequestAsync(new Packet
             {
                 Type = PacketType.GetCategory
-            };
-
-            var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(getCategoryPacket));
+            });
 
             if (response == null)
             {
@@ -133,12 +132,10 @@ namespace client.Controllers
 
         public async Task<List<Category>> GetAllCategories()
         {
-            var getAllCategoriesPacket = new Packet
+            var response = await Client.Instance.SendRequestAsync(new Packet
             {
                 Type = PacketType.GetCategory
-            };
-
-            var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(getAllCategoriesPacket));
+            });
 
             if (response == null)
             {

@@ -32,7 +32,6 @@
             btnCancel = new Button();
             btnSave = new Button();
             panel1 = new Panel();
-            pictureBox1 = new PictureBox();
             label1 = new Label();
             label7 = new Label();
             label6 = new Label();
@@ -47,7 +46,6 @@
             btnCategoryList = new Button();
             txtApplicableTo = new TextBox();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // cbIsActive
@@ -120,23 +118,12 @@
             panel1.Size = new Size(491, 75);
             panel1.TabIndex = 43;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.Discount;
-            pictureBox1.Location = new Point(14, 8);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(50, 53);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 42;
-            pictureBox1.TabStop = false;
-            // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(62, 39, 35);
-            label1.Location = new Point(69, 13);
+            label1.Location = new Point(122, 13);
             label1.Name = "label1";
             label1.Size = new Size(246, 41);
             label1.TabIndex = 41;
@@ -294,7 +281,6 @@
             Controls.Add(rbVatExemptYes);
             Controls.Add(cbIsActive);
             Controls.Add(panel1);
-            Controls.Add(pictureBox1);
             Controls.Add(label1);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -309,7 +295,6 @@
             Text = "ELICIAS GARDEN FOOD PARK";
             Load += AddDiscount_Load;
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -320,7 +305,6 @@
         private Button btnCancel;
         private Button btnSave;
         private Panel panel1;
-        private PictureBox pictureBox1;
         private Label label1;
         private Label label7;
         private Label label6;

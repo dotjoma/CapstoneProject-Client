@@ -25,6 +25,7 @@ using client.Forms.AuditTrail;
 using client.Forms.SalesReport;
 using client.Forms.BestSelling;
 using client.Forms.UserManagement;
+using client.Forms.BackupControl;
 
 namespace client.Forms
 {
@@ -211,6 +212,11 @@ namespace client.Forms
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             AddFormToPanel(new UserHome());
+        }
+
+        private void msBackupControlPanel_Click(object sender, EventArgs e)
+        {
+            new BackupPanel().ShowDialog();
         }
     }
 }

@@ -1,31 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
-using System;
 using System.Threading;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Threading.Tasks;
+using System.Collections.Concurrent;
 using System.Configuration;
+using Newtonsoft.Json;
 using client.Helpers;
-using client.Services.Auth;
 using client.Models;
+using client.Services.Auth;
 
 namespace client.Network
 {
-    public class Client
+    public class Client : IDisposable
     {
+        private static readonly object _instanceLock = new object();
         private static Client? _instance;
-        private static readonly object _lock = new object();
-        private TcpClient? tcpClient;
-        private NetworkStream? networkStream;
-        private readonly string serverIp;
-        private readonly int serverPort;
-        public bool IsConnected => tcpClient?.Connected ?? false && networkStream != null;
+
+        // Connection pool settings
+        private const int MaxPoolSize = 3;
+        private const int MinPoolSize = 1;
+        private readonly ConcurrentBag<TcpClient> _connectionPool = new();
+        private readonly SemaphoreSlim _poolSemaphore = new(MaxPoolSize, MaxPoolSize);
+        private readonly CancellationTokenSource _lifetimeCts = new();
+
+        // Network settings
+        private readonly string _serverIp;
+        private readonly int _serverPort;
+        private readonly TimeSpan _connectTimeout = TimeSpan.FromSeconds(5);
+        private readonly TimeSpan _sendTimeout = TimeSpan.FromSeconds(10);
+        private readonly TimeSpan _receiveTimeout = TimeSpan.FromSeconds(30);
+        private readonly TimeSpan _keepAliveInterval = TimeSpan.FromSeconds(30);
+        private const int MaxRetryAttempts = 2;
+        private const int RetryBaseDelayMs = 1000;
+
+        // Statistics
+        private int _totalConnectionsCreated;
+        private int _failedConnections;
 
         public static Client Instance
         {
@@ -33,7 +45,7 @@ namespace client.Network
             {
                 if (_instance == null)
                 {
-                    lock (_lock)
+                    lock (_instanceLock)
                     {
                         _instance ??= new Client();
                     }
@@ -44,364 +56,303 @@ namespace client.Network
 
         private Client()
         {
-            serverIp = ConfigurationManager.AppSettings["ServerIP"] ?? "127.0.0.1";
+            _serverIp = ConfigurationManager.AppSettings["ServerIP"] ?? "127.0.0.1";
             if (!int.TryParse(ConfigurationManager.AppSettings["ServerPort"], out int port))
             {
                 port = 8888;
             }
-            serverPort = port;
+            _serverPort = port;
+
+            // Initialize connection pool
+            _ = InitializeConnectionPoolAsync();
         }
 
-        public bool Connect()
+        private async Task InitializeConnectionPoolAsync()
         {
-            try
+            for (int i = 0; i < MinPoolSize; i++)
             {
-                Disconnect();
-
-                // Create new TCP client
-                tcpClient = new TcpClient();
-
-                // Create connection timeout
-                var result = tcpClient.BeginConnect(serverIp, serverPort, null, null);
-                var success = result.AsyncWaitHandle.WaitOne(TimeSpan.FromSeconds(5));
-
-                if (!success)
+                var client = await CreateNewConnectionAsync();
+                if (client != null)
                 {
-                    Disconnect();
-                    Logger.Write("CONNECTION TIMEOUT", "Failed to connect to server: Connection timed out");
-                    return false;
+                    _connectionPool.Add(client);
                 }
-
-
-                tcpClient.EndConnect(result);
-
-                // Initialize network stream
-                networkStream = tcpClient.GetStream();
-                if (networkStream == null)
-                {
-                    Logger.Write("TCP CLIENT", "Failed to initialize network stream");
-                    return false;
-                }
-
-                Logger.Write("TCP CLIENT", "Successfully connected to server");
-                return true;
-            }
-            catch (SocketException ex)
-            {
-                Logger.Write("SOCKET", $"Socket error: {ex.Message}");
-                Disconnect();
-                Logger.Write("SOCKET", "Could not connect to server. Please check if the server is running.");
-                return false;
-            }
-            catch (Exception ex)
-            {
-                Logger.Write("EXCEPTION", $"Connection error: {ex.Message}");
-                Disconnect();
-                Logger.Write("EXCEPTION", $"Failed to connect: {ex.Message}");
-                return false;
-
             }
         }
 
-        public void SendToServer(Packet packet)
+        public async Task<Packet?> SendRequestAsync(Packet packet)
         {
-            try
+            for (int attempt = 0; attempt <= MaxRetryAttempts; attempt++)
             {
-                // Check connection and try to connect if needed
-                if (!IsConnected || networkStream == null)
-                {
-                    Logger.Write("TCP & NETWORKSTREAM", "No active connection, attempting to connect...");
-                    if (!Connect())
-                    {
-                        MessageBox.Show("Could not establish connection to server", "Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
+                TcpClient? client = null;
+                NetworkStream? stream = null;
 
-                // Ensure we have a valid stream after connection
-                if (networkStream == null)
-                {
-                    Logger.Write("NETWORKSTREAM", "Network stream is not available");
-                }
-
-
-                string jsonData = JsonConvert.SerializeObject(packet);
-                byte[] data = Encoding.UTF8.GetBytes(jsonData);
-
-                if (networkStream != null)
-                {
-                    networkStream.Write(data, 0, data.Length);
-                    Logger.Write("NETWORKSTREAM", "Packet sent success.");
-                }
-                else
-                {
-                    Logger.Write("NETWORKSTREAM", "Cannot send data, network stream is null.");
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Write("EXCEPTION", $"Error sending data: {ex.Message}");
-                Disconnect();
-                Logger.Write("EXCEPTION", $"Failed to send data: {ex.Message}");
-            }
-        }
-
-        public async Task<Packet?> SendToServerAndWaitResponse(Packet packet)
-        {
-            const int maxRetries = 2;
-            const int bufferSize = 8192;
-            const int timeoutSeconds = 30;
-
-            for (int attempt = 0; attempt <= maxRetries; attempt++)
-            {
                 try
                 {
-                    if (!ValidateConnection())
-                        return null;
-
-                    if (!await SendPacket(packet))
+                    // Get connection from pool or create new one
+                    client = await GetConnectionAsync();
+                    if (client == null)
                     {
-                        await HandleRetry(attempt, maxRetries);
+                        Logger.Write("CONNECTION", "Failed to obtain connection");
                         continue;
                     }
 
-                    var response = await ReceiveResponse(bufferSize, timeoutSeconds);
-                    if (response == null)
+                    stream = client.GetStream();
+                    stream.ReadTimeout = (int)_receiveTimeout.TotalMilliseconds;
+                    stream.WriteTimeout = (int)_sendTimeout.TotalMilliseconds;
+
+                    // Send request
+                    var sendTask = SendPacketAsync(stream, packet);
+                    var timeoutTask = Task.Delay(_sendTimeout, _lifetimeCts.Token);
+                    var completedTask = await Task.WhenAny(sendTask, timeoutTask);
+
+                    if (completedTask == timeoutTask)
                     {
-                        await HandleRetry(attempt, maxRetries);
+                        Logger.Write("TIMEOUT", "Send operation timed out");
                         continue;
                     }
 
-                    return response;
+                    if (!await sendTask)
+                    {
+                        continue;
+                    }
+
+                    // Receive response
+                    var receiveTask = ReceiveResponseAsync(stream);
+                    timeoutTask = Task.Delay(_receiveTimeout, _lifetimeCts.Token);
+                    completedTask = await Task.WhenAny(receiveTask, timeoutTask);
+
+                    if (completedTask == timeoutTask)
+                    {
+                        Logger.Write("TIMEOUT", "Receive operation timed out");
+                        continue;
+                    }
+
+                    var response = await receiveTask;
+                    if (response != null)
+                    {
+                        HandleLogin(response);
+                        ReturnConnectionToPool(client);
+                        return response;
+                    }
                 }
                 catch (Exception ex)
                 {
-                    Logger.Write("SEND TO SERVER & WAIT RESPONSE", $"Error in communication: {ex.Message}");
-                    Disconnect();
+                    Logger.Write("ERROR", $"Attempt {attempt + 1} failed: {ex.Message}");
+                    client?.Dispose();
 
-                    if (attempt < maxRetries)
+                    if (attempt < MaxRetryAttempts)
                     {
-                        await HandleRetry(attempt, maxRetries);
-                        continue;
+                        int delay = RetryBaseDelayMs * (attempt + 1);
+                        Logger.Write("RETRY", $"Waiting {delay}ms before retry...");
+                        await Task.Delay(delay, _lifetimeCts.Token);
                     }
-                    return null;
+                }
+                finally
+                {
+                    stream?.Dispose();
                 }
             }
 
-            Logger.Write("RETRY", "Max retry attempts reached");
+            Logger.Write("ERROR", "Max retry attempts reached");
             return null;
         }
 
-        private bool ValidateConnection()
+        private async Task<TcpClient?> GetConnectionAsync()
         {
-            if (!HasConnection())
+            // Try to get from pool first
+            if (_connectionPool.TryTake(out var client))
             {
-                Logger.Write("CONNECTION", "No connection available");
-                return false;
+                if (IsConnectionValid(client))
+                {
+                    return client;
+                }
+                client.Dispose();
             }
 
-            if (networkStream == null)
-            {
-                Logger.Write("NETWORKSTREAM", "Network stream is not available");
-                return false;
-            }
-
-            return true;
+            // Create new connection if pool is empty
+            return await CreateNewConnectionAsync();
         }
 
-        private async Task<bool> SendPacket(Packet packet)
+        private void ReturnConnectionToPool(TcpClient client)
+        {
+            if (_connectionPool.Count < MaxPoolSize && IsConnectionValid(client))
+            {
+                _connectionPool.Add(client);
+            }
+            else
+            {
+                client.Dispose();
+            }
+        }
+
+        private async Task<TcpClient?> CreateNewConnectionAsync()
         {
             try
             {
-                string jsonData = JsonConvert.SerializeObject(packet) + "\n";
-                byte[] data = Encoding.UTF8.GetBytes(jsonData);
-                await networkStream!.WriteAsync(data, 0, data.Length);
-                await networkStream.FlushAsync();
+                var client = new TcpClient();
+                ConfigureKeepAlive(client.Client);
 
-                Logger.Write("NETWORKSTREAM", "Packet sent success.");
-                return true;
+                var connectTask = client.ConnectAsync(_serverIp, _serverPort);
+                var timeoutTask = Task.Delay(_connectTimeout, _lifetimeCts.Token);
+                var completedTask = await Task.WhenAny(connectTask, timeoutTask);
+
+                if (completedTask == timeoutTask || !client.Connected)
+                {
+                    client.Dispose();
+                    _failedConnections++;
+                    Logger.Write("CONNECTION", "Connection timed out");
+                    return null;
+                }
+
+                _totalConnectionsCreated++;
+                return client;
             }
             catch (Exception ex)
             {
-                Logger.Write("WRITE ERROR", $"Failed to send data: {ex.Message}");
-                Disconnect();
+                _failedConnections++;
+                Logger.Write("CONNECTION", $"Failed to create connection: {ex.Message}");
+                return null;
+            }
+        }
+
+        private bool IsConnectionValid(TcpClient client)
+        {
+            try
+            {
+                return client.Connected &&
+                       client.Client != null &&
+                       client.Client.Connected &&
+                       (client.Client.Poll(1000, SelectMode.SelectRead) ? client.Client.Available > 0 : true);
+            }
+            catch
+            {
                 return false;
             }
         }
 
-        private async Task<Packet?> ReceiveResponse(int bufferSize, int timeoutSeconds)
+        private void ConfigureKeepAlive(Socket socket)
         {
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(timeoutSeconds));
-            using var memoryStream = new MemoryStream();
-            byte[] buffer = new byte[bufferSize];
-
             try
             {
-                await ReadStreamToCompletion(networkStream!, buffer, memoryStream, cts.Token);
+                socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
+
+                if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+                {
+                    byte[] inValue = new byte[12];
+                    BitConverter.GetBytes(1u).CopyTo(inValue, 0);
+                    BitConverter.GetBytes((uint)_keepAliveInterval.TotalMilliseconds).CopyTo(inValue, 4);
+                    BitConverter.GetBytes((uint)_keepAliveInterval.TotalMilliseconds).CopyTo(inValue, 8);
+
+                    socket.IOControl(IOControlCode.KeepAliveValues, inValue, null);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Write("KEEPALIVE", $"Failed to configure keep-alive: {ex.Message}");
+            }
+        }
+
+        private async Task<bool> SendPacketAsync(NetworkStream stream, Packet packet)
+        {
+            string jsonData = JsonConvert.SerializeObject(packet) + "\n";
+            byte[] data = Encoding.UTF8.GetBytes(jsonData);
+
+            await stream.WriteAsync(data, 0, data.Length, _lifetimeCts.Token);
+            await stream.FlushAsync(_lifetimeCts.Token);
+
+            Logger.Write("NETWORK", $"Sent packet (Type: {packet.Type})");
+            return true;
+        }
+
+        private async Task<Packet?> ReceiveResponseAsync(NetworkStream stream)
+        {
+            try
+            {
+                using var memoryStream = new MemoryStream();
+                byte[] buffer = new byte[4096];
+                int bytesRead;
+
+                while ((bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length, _lifetimeCts.Token)) > 0)
+                {
+                    await memoryStream.WriteAsync(buffer, 0, bytesRead, _lifetimeCts.Token);
+
+                    // Check for message terminator
+                    if (buffer[bytesRead - 1] == '\n')
+                    {
+                        break;
+                    }
+                }
+
+                if (memoryStream.Length == 0)
+                {
+                    Logger.Write("NETWORK", "Empty response received");
+                    return null;
+                }
 
                 string responseJson = Encoding.UTF8.GetString(memoryStream.ToArray()).Trim();
-                Logger.Write("JSON RESPONSE", "Response received successfully");
+                Logger.Write("NETWORK", $"Received: {responseJson}");
 
                 var response = JsonConvert.DeserializeObject<Packet>(responseJson);
                 if (response == null || !IsValidResponse(response))
                 {
-                    Logger.Write("JSON RESPONSE", "Invalid or null response from server");
+                    Logger.Write("NETWORK", "Invalid response format");
                     return null;
                 }
 
-                HandleLogin(response);
                 return response;
-            }
-            catch (IOException ex)
-            {
-                Logger.Write("READ ERROR", $"Connection error while reading: {ex.Message}");
-                Disconnect();
-                return null;
-            }
-            catch (OperationCanceledException)
-            {
-                Logger.Write("CANCELED EXCEPTION", "Server response timeout");
-                return null;
-            }
-        }
-
-        private async Task ReadStreamToCompletion(NetworkStream stream, byte[] buffer, MemoryStream memoryStream, CancellationToken token)
-        {
-            while (true)
-            {
-                int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length, token);
-                if (bytesRead == 0) break;
-
-                await memoryStream.WriteAsync(buffer.AsMemory(0, bytesRead), token);
-
-                if (buffer[bytesRead - 1] == '\n')
-                    break;
-            }
-        }
-
-        private async Task HandleRetry(int attempt, int maxRetries)
-        {
-            if (attempt < maxRetries)
-            {
-                Logger.Write("RETRY", $"Attempting to reconnect (Attempt {attempt + 1} of {maxRetries})");
-                await Task.Delay(1000 * (attempt + 1));
-            }
-        }
-
-        public void HandleLogin(Packet response)
-        {
-            if (Convert.ToInt32(response.Type) == 4 && response.Data["success"] == "true")
-            {
-                int userId = Convert.ToInt32(response.Data["userId"]);
-                string username = response.Data["username"];
-                string role = response.Data["role"];
-                bool success = Convert.ToBoolean(response.Data["success"]);
-
-                if (success)
-                {
-                    try
-                    {
-                        var userSession = new UserSession()
-                        {
-                            UserId = userId,
-                            Username = username,
-                            Role = role,
-                            LoginTime = DateTime.Now
-                        };
-                        
-                        CurrentUser.SetCurrentUser(userSession);
-
-                        Logger.Write("CURRENT USER", $"Current user set successfully");
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.Write("CURRENT USER", $"Error setting current user: {ex.Message}");
-                        MessageBox.Show("Error setting current user, Please contact support", "Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-        }
-
-        public bool HasConnection()
-        {
-            try
-            {
-                if (tcpClient?.Client != null && networkStream != null)
-                {
-                    // Check if connection is actually still valid
-                    if (!tcpClient.Connected)
-                    {
-                        Logger.Write("CONNECTION CHECK", "Connection detected as closed");
-                        Disconnect();
-                        return Connect();
-                    }
-                    return true;
-                }
-
-                Logger.Write("TCP & NETWORKSTREAM", "No active connection, attempting to connect...");
-                return Connect();
             }
             catch (Exception ex)
             {
-                Logger.Write("CONNECTION CHECK", $"Error checking connection: {ex.Message}");
-                Disconnect();
-                return Connect();
+                Logger.Write("NETWORK", $"Receive error: {ex.Message}");
+                throw;
             }
         }
 
         private bool IsValidResponse(Packet response)
         {
-            if (response == null) return false;
-
-            // Check if Data dictionary exists and has required keys
-            if (response.Data == null || !response.Data.ContainsKey("success") || !response.Data.ContainsKey("message"))
-            {
-                Logger.Write("SERVER RESPONSE", "Response missing required Data fields");
-                return false;
-            }
-
-            // Validate success value is a valid string
-            if (string.IsNullOrEmpty(response.Data["success"]))
-            {
-                Logger.Write("SERVER RESPONSE", "Response success value is empty");
-                return false;
-            }
-
-            // Validate message exists (can be empty but should exist)
-            if (!response.Data.ContainsKey("message"))
-            {
-                Logger.Write("SERVER RESPONSE", "Response missing message field");
-                return false;
-            }
-
-            // Check packet type is valid
-            if (!Enum.IsDefined(typeof(PacketType), response.Type))
-            {
-                Logger.Write("SERVER RESPONSE", $"Invalid packet type: {response.Type}");
-                return false;
-            }
-
-            Logger.Write("SERVER RESPONSE", "Response validation successful");
-            return true;
+            return response != null &&
+                   response.Data != null &&
+                   response.Data.ContainsKey("success") &&
+                   Enum.IsDefined(typeof(PacketType), response.Type);
         }
 
-        public void Disconnect()
+        private void HandleLogin(Packet response)
         {
-            try
+            if (response.Type == PacketType.LoginResponse &&
+                response.Data.TryGetValue("success", out var success) &&
+                success == "true")
             {
-                networkStream?.Close();
-                tcpClient?.Close();
+                try
+                {
+                    var userSession = new UserSession
+                    {
+                        UserId = Convert.ToInt32(response.Data["userId"]),
+                        Username = response.Data["username"],
+                        Role = response.Data["role"],
+                        LoginTime = DateTime.Now
+                    };
+
+                    CurrentUser.SetCurrentUser(userSession);
+                    Logger.Write("AUTH", $"User authenticated: {userSession.Username}");
+                }
+                catch (Exception ex)
+                {
+                    Logger.Write("AUTH", $"Error setting user session: {ex.Message}");
+                }
             }
-            catch (Exception ex)
+        }
+
+        public void Dispose()
+        {
+            _lifetimeCts.Cancel();
+
+            while (_connectionPool.TryTake(out var client))
             {
-                Logger.Write("TCP & NETWORKSTREAM", $"Error during disconnect: {ex.Message}");
+                client.Dispose();
             }
-            finally
-            {
-                networkStream = null;
-                tcpClient = null;
-            }
+
+            _poolSemaphore.Dispose();
+            _lifetimeCts.Dispose();
         }
     }
 }

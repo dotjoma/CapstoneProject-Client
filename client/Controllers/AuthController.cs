@@ -69,7 +69,6 @@ namespace client.Controllers
 
         public async Task<bool> Login(string username, string password)
         {
-            // Create audit record for login attempt
             var auditRecord = new AuditRecord
             {
                 Username = username,
@@ -87,19 +86,17 @@ namespace client.Controllers
                 return false;
             }
 
-            var loginPacket = new Packet
-            {
-                Type = PacketType.Login,
-                Data = new Dictionary<string, string>
-        {
-            { "username", username },
-            { "password", password }
-        }
-            };
-
             try
             {
-                var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(loginPacket));
+                var response = await Client.Instance.SendRequestAsync(new Packet
+                {
+                    Type = PacketType.Login,
+                    Data = new Dictionary<string, string>
+                    {
+                        { "username", username },
+                        { "password", password }
+                    }
+                });
 
                 if (response == null)
                 {
@@ -116,7 +113,6 @@ namespace client.Controllers
                 {
                     if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                     {
-                        // Successful login
                         auditRecord.Action = AuditActionType.Login;
                         auditRecord.Description = "Login successful";
                         auditRecord.NewValue = "Authenticated";
@@ -128,7 +124,6 @@ namespace client.Controllers
                     }
                     else
                     {
-                        // Failed login
                         string errorMessage = response.Data.ContainsKey("message")
                             ? response.Data["message"]
                             : "Unknown error occurred";
@@ -167,13 +162,110 @@ namespace client.Controllers
             }
         }
 
+        public async Task<bool> EncryptDecryptAuth(string password)
+        {
+            string username = CurrentUser.Current?.Username ?? "UnknownUser";
+
+            var auditRecord = new AuditRecord
+            {
+                Username = username,
+                Action = AuditActionType.BackupData,
+                EntityType = AuditEntityType.User,
+                EntityId = "Requesting",
+                Description = "Backup data attempt initiated"
+            };
+
+            if (!ValidateLogin(username, password))
+            {
+                auditRecord.Action = AuditActionType.BackupDataFailure;
+                auditRecord.Description = "Invalid credentials format";
+                _auditService.Log(auditRecord);
+                return false;
+            }
+
+            try
+            {
+                var response = await Client.Instance.SendRequestAsync(new Packet
+                {
+                    Type = PacketType.BackupDataAuth,
+                    Data = new Dictionary<string, string>
+                    {
+                        { "username", username },
+                        { "password", password }
+                    }
+                });
+
+                if (response == null)
+                {
+                    auditRecord.Action = AuditActionType.BackupDataFailure;
+                    auditRecord.Description = "No server response";
+                    _auditService.Log(auditRecord);
+
+                    MessageBox.Show("No response received from server", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                if (response.Data != null && response.Data.ContainsKey("success"))
+                {
+                    if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
+                    {
+                        auditRecord.Action = AuditActionType.BackupData;
+                        auditRecord.Description = "Backup data successful";
+                        auditRecord.NewValue = "Request Success";
+                        auditRecord.UserId = CurrentUser.Current!.UserId;
+                        auditRecord.EntityId = auditRecord.UserId.ToString();
+                        _auditService.Log(auditRecord);
+
+                        return true;
+                    }
+                    else
+                    {
+                        string errorMessage = response.Data.ContainsKey("message")
+                            ? response.Data["message"]
+                            : "Unknown error occurred";
+
+                        auditRecord.Action = AuditActionType.BackupDataFailure;
+                        auditRecord.Description = $"Backup data failed: {errorMessage}";
+                        auditRecord.NewValue = errorMessage;
+                        _auditService.Log(auditRecord);
+
+                        MessageBox.Show($"Backup data failed: {errorMessage}", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+                else
+                {
+                    auditRecord.Action = AuditActionType.BackupDataFailure;
+                    auditRecord.Description = "Invalid server response format";
+                    _auditService.Log(auditRecord);
+
+                    MessageBox.Show("Invalid response format from server", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                auditRecord.Action = AuditActionType.BackupDataFailure;
+                auditRecord.Description = $"Backup data exception: {ex.Message}";
+                auditRecord.NewValue = ex.ToString();
+                _auditService.Log(auditRecord);
+
+                MessageBox.Show($"Backup data error: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public async Task<bool> Register(string username, string password, string confirmPassword)
         {
             // Validating the fields.
             if (!ValidateRegistration(username, password, confirmPassword)) return false;
 
-            // Registration packet to send to the server.
-            var registerPacket = new Packet
+
+            var response = await Client.Instance.SendRequestAsync(new Packet
             {
                 Type = PacketType.Register,
                 Data = new Dictionary<string, string>
@@ -181,10 +273,7 @@ namespace client.Controllers
                     { "username", username },
                     { "password", password }
                 }
-            };
-
-            // Send packet to the server and wait for a response
-            var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(registerPacket));
+            });
 
             if (response == null)
             {

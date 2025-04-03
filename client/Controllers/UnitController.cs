@@ -5,6 +5,7 @@ using client.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -15,12 +16,10 @@ namespace client.Controllers
     {
         public async Task<bool> Get()
         {
-            var getUnitPacket = new Packet
+            var response = await Client.Instance.SendRequestAsync(new Packet
             {
                 Type = PacketType.GetUnit
-            };
-
-            var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(getUnitPacket));
+            });
 
             if (response == null)
             {
@@ -77,12 +76,11 @@ namespace client.Controllers
 
         public async Task<List<Unit>> GetAllUnits()
         {
-            var getAllUnitPacket = new Packet
+            var response = await Client.Instance.SendRequestAsync(new Packet
             {
                 Type = PacketType.GetUnit
-            };
+            });
 
-            var response = await Client.Instance.SendToServerAndWaitResponse(getAllUnitPacket);
             if (response == null)
             {
                 MessageBox.Show("No response received from server", "Error",
@@ -151,19 +149,17 @@ namespace client.Controllers
                 return false;
             }
 
-            var createUnitPacket = new Packet
-            {
-                Type = PacketType.CreateUnit,
-                Data = new Dictionary<string, string>
-                {
-                    { "unitName", unitName },
-                    { "unitDescription", unitDescription }
-                }
-            };
-
             try
             {
-                var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(createUnitPacket));
+                var response = await Client.Instance.SendRequestAsync(new Packet
+                {
+                    Type = PacketType.CreateUnit,
+                    Data = new Dictionary<string, string>
+                    {
+                        { "unitName", unitName },
+                        { "unitDescription", unitDescription }
+                    }
+                });
 
                 if (response == null)
                 {

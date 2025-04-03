@@ -3,12 +3,16 @@ using client.Models;
 using client.Network;
 using client.Services;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Xml.Linq;
 
 namespace client.Controllers
 {
@@ -37,23 +41,21 @@ namespace client.Controllers
                 return false;
             }
 
-            var createDiscountPacket = new Packet
-            {
-                Type = PacketType.CreateDiscount,
-                Data = new Dictionary<string, string>
-                {
-                    { "name", name},
-                    { "type", type.ToLower() },
-                    { "value", value.ToString() },
-                    { "vatExempt", vatExempt.ToString() },
-                    { "status", status.ToString() },
-                    { "categoryIds", JsonConvert.SerializeObject(categoryIds) }
-                }
-            };
-
             try
             {
-                var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(createDiscountPacket));
+                var response = await Client.Instance.SendRequestAsync(new Packet
+                {
+                    Type = PacketType.CreateDiscount,
+                    Data = new Dictionary<string, string>
+                    {
+                        { "name", name},
+                        { "type", type.ToLower() },
+                        { "value", value.ToString() },
+                        { "vatExempt", vatExempt.ToString() },
+                        { "status", status.ToString() },
+                        { "categoryIds", JsonConvert.SerializeObject(categoryIds) }
+                    }
+                });
 
                 if (response == null)
                 {
@@ -87,12 +89,11 @@ namespace client.Controllers
 
         public async Task<List<Discount>> GetAllDiscounts()
         {
-            var getAllDiscountPacket = new Packet
+            var response = await Client.Instance.SendRequestAsync(new Packet
             {
                 Type = PacketType.GetDiscount
-            };
+            });
 
-            var response = await Client.Instance.SendToServerAndWaitResponse(getAllDiscountPacket);
             if (response == null)
             {
                 MessageBox.Show("No response received from server", "Error",

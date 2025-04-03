@@ -19,6 +19,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Net.Sockets;
 
 namespace client.Controllers
 {
@@ -28,12 +29,6 @@ namespace client.Controllers
         {
             try
             {
-                var getProduct = new Packet()
-                {
-                    Type = PacketType.GetProduct,
-                    Data = new Dictionary<string, string>()
-                };
-
                 Logger.Write("GET PRODUCT", "Sending request to server");
 
                 var options = new JsonSerializerOptions
@@ -42,7 +37,11 @@ namespace client.Controllers
                     DefaultBufferSize = 104857600
                 };
 
-                var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(getProduct));
+                var response = await Client.Instance.SendRequestAsync(new Packet
+                {
+                    Type = PacketType.GetProduct,
+                    Data = new Dictionary<string, string>()
+                });
 
                 if (response?.Data != null &&
                     response.Data.ContainsKey("success") &&
@@ -86,12 +85,6 @@ namespace client.Controllers
         {
             try
             {
-                var getProductPacket = new Packet()
-                {
-                    Type = PacketType.GetProduct,
-                    Data = new Dictionary<string, string>()
-                };
-
                 Logger.Write("GET ALL PRODUCTS", "Sending request to server");
 
                 var options = new JsonSerializerOptions
@@ -100,7 +93,11 @@ namespace client.Controllers
                     DefaultBufferSize = 104857600
                 };
 
-                var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(getProductPacket));
+                var response = await Client.Instance.SendRequestAsync(new Packet
+                {
+                    Type = PacketType.GetProduct,
+                    Data = new Dictionary<string, string>()
+                });
 
                 if (response?.Data != null &&
                     response.Data.ContainsKey("success") &&
@@ -143,7 +140,7 @@ namespace client.Controllers
 
         public async Task<bool> Create(string name, string image, string price, int categoryId, int subcategoryId, int unitId, int isActive)
         {
-            var createProductPacket = new Packet
+            var response = await Client.Instance.SendRequestAsync(new Packet
             {
                 Type = PacketType.CreateProduct,
                 Data = new Dictionary<string, string>
@@ -156,9 +153,7 @@ namespace client.Controllers
                     { "unitId", unitId.ToString() },
                     { "isActive", isActive.ToString() }
                 }
-            };
-
-            var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(createProductPacket));
+            });
 
             if (response == null)
             {
@@ -171,8 +166,8 @@ namespace client.Controllers
             {
                 if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                 {
-                    MessageBox.Show("Product creation successful!", "Success",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Product creation successful!", "Success",
+                    //    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     return true;
                 }
@@ -204,8 +199,8 @@ namespace client.Controllers
         }
 
         public async Task<bool> Update(int productId, string name, string image, string price, int categoryId, int subcategoryId, int unitId, int isActive)
-        {
-            var editProductPacket = new Packet
+        { 
+            var response = await Client.Instance.SendRequestAsync(new Packet
             {
                 Type = PacketType.UpdateProduct,
                 Data = new Dictionary<string, string>
@@ -219,9 +214,7 @@ namespace client.Controllers
                     { "unitId", unitId.ToString() },
                     { "isActive", isActive.ToString() }
                 }
-            };
-
-            var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(editProductPacket));
+            });
 
             if (response == null)
             {
@@ -233,8 +226,8 @@ namespace client.Controllers
             if (response.Data != null && response.Data.TryGetValue("success", out string? success) &&
                 success.Equals("true", StringComparison.OrdinalIgnoreCase))
             {
-                MessageBox.Show("Product update successful!", "Success",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Product update successful!", "Success",
+                //    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
 
@@ -251,16 +244,14 @@ namespace client.Controllers
 
         public async Task<bool> Destroy(int productId)
         {
-            var deleteProduct = new Packet
+            var response = await Client.Instance.SendRequestAsync(new Packet
             {
                 Type = PacketType.DeleteProduct,
                 Data = new Dictionary<string, string>
                 {
                     { "productId", productId.ToString() }
                 }
-            };
-
-            var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(deleteProduct));
+            });
 
             if (response == null)
             {

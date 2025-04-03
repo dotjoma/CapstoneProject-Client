@@ -37,9 +37,7 @@
             btnSave = new Button();
             txtTitle = new Label();
             panel1 = new Panel();
-            pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // txtName
@@ -130,7 +128,7 @@
             txtTitle.AutoSize = true;
             txtTitle.Font = new Font("Verdana", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtTitle.ForeColor = Color.FromArgb(62, 39, 35);
-            txtTitle.Location = new Point(64, 23);
+            txtTitle.Location = new Point(171, 23);
             txtTitle.Name = "txtTitle";
             txtTitle.Size = new Size(235, 41);
             txtTitle.TabIndex = 0;
@@ -148,25 +146,12 @@
             panel1.Size = new Size(576, 75);
             panel1.TabIndex = 36;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Anchor = AnchorStyles.Left;
-            pictureBox1.Image = Properties.Resources.unit;
-            pictureBox1.Location = new Point(14, 16);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(46, 53);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 37;
-            pictureBox1.TabStop = false;
-            // 
             // NewUnit
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(576, 316);
-            Controls.Add(pictureBox1);
             Controls.Add(txtTitle);
             Controls.Add(rtbDescription);
             Controls.Add(label1);
@@ -181,7 +166,6 @@
             Text = "ELICIAS GARDEN FOOD PARK";
             Load += NewUnit_Load;
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -195,6 +179,5 @@
         private Button btnSave;
         private Label txtTitle;
         private Panel panel1;
-        private PictureBox pictureBox1;
     }
 }

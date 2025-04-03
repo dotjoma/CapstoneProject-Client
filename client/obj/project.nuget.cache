@@ -1,9 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "vCTtD2moXz0=",
+  "dgSpecHash": "WYbRbskQaSE=",
   "success": true,
   "projectFilePath": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\client.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\raymond balondo\\.nuget\\packages\\google.apis\\1.69.0\\google.apis.1.69.0.nupkg.sha512",
+    "C:\\Users\\raymond balondo\\.nuget\\packages\\google.apis.auth\\1.69.0\\google.apis.auth.1.69.0.nupkg.sha512",
+    "C:\\Users\\raymond balondo\\.nuget\\packages\\google.apis.core\\1.69.0\\google.apis.core.1.69.0.nupkg.sha512",
+    "C:\\Users\\raymond balondo\\.nuget\\packages\\google.apis.drive.v3\\1.69.0.3703\\google.apis.drive.v3.1.69.0.3703.nupkg.sha512",
     "C:\\Users\\raymond balondo\\.nuget\\packages\\guna.ui2.winforms\\2.0.4.6\\guna.ui2.winforms.2.0.4.6.nupkg.sha512",
     "C:\\Users\\raymond balondo\\.nuget\\packages\\harfbuzzsharp\\8.3.0.1\\harfbuzzsharp.8.3.0.1.nupkg.sha512",
     "C:\\Users\\raymond balondo\\.nuget\\packages\\harfbuzzsharp.nativeassets.macos\\8.3.0.1\\harfbuzzsharp.nativeassets.macos.8.3.0.1.nupkg.sha512",
@@ -21,7 +25,7 @@
     "C:\\Users\\raymond balondo\\.nuget\\packages\\skiasharp.views.desktop.common\\3.116.1\\skiasharp.views.desktop.common.3.116.1.nupkg.sha512",
     "C:\\Users\\raymond balondo\\.nuget\\packages\\skiasharp.views.windowsforms\\3.116.1\\skiasharp.views.windowsforms.3.116.1.nupkg.sha512",
     "C:\\Users\\raymond balondo\\.nuget\\packages\\system.codedom\\7.0.0\\system.codedom.7.0.0.nupkg.sha512",
-    "C:\\Users\\raymond balondo\\.nuget\\packages\\system.management\\7.0.0\\system.management.7.0.0.nupkg.sha512",
+    "C:\\Users\\raymond balondo\\.nuget\\packages\\system.management\\7.0.2\\system.management.7.0.2.nupkg.sha512",
     "C:\\Users\\raymond balondo\\.nuget\\packages\\winforms.datavisualization\\1.10.0\\winforms.datavisualization.1.10.0.nupkg.sha512"
   ],
   "logs": [

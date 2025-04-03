@@ -255,8 +255,8 @@ namespace client.Forms.ProductManagement
                             HideLoading();
                             await RefreshDisplay();
 
-                            MessageBox.Show("Product deleted successfully", "Success",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //MessageBox.Show("Product deleted successfully", "Success",
+                            //MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     catch (Exception ex)

@@ -35,9 +35,7 @@
             txtTitle = new Label();
             lblLabel = new Label();
             txtName = new TextBox();
-            pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -94,7 +92,7 @@
             txtTitle.AutoSize = true;
             txtTitle.Font = new Font("Verdana", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtTitle.ForeColor = Color.FromArgb(62, 39, 35);
-            txtTitle.Location = new Point(56, 17);
+            txtTitle.Location = new Point(12, 9);
             txtTitle.Name = "txtTitle";
             txtTitle.Size = new Size(89, 36);
             txtTitle.TabIndex = 0;
@@ -119,24 +117,12 @@
             txtName.Size = new Size(275, 36);
             txtName.TabIndex = 21;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Anchor = AnchorStyles.Left;
-            pictureBox1.Image = Properties.Resources.category;
-            pictureBox1.Location = new Point(10, 17);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(40, 40);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 22;
-            pictureBox1.TabStop = false;
-            // 
             // NewCategory
             // 
             AutoScaleDimensions = new SizeF(10F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(408, 218);
-            Controls.Add(pictureBox1);
             Controls.Add(txtTitle);
             Controls.Add(txtName);
             Controls.Add(lblLabel);
@@ -150,7 +136,6 @@
             TopMost = true;
             Load += NewCategory_Load;
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -163,6 +148,5 @@
         private TextBox txtName;
         private Button btnCancel;
         private Button btnSave;
-        private PictureBox pictureBox1;
     }
 }

@@ -5,6 +5,7 @@ using client.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace client.Controllers
     {
         public async Task<bool> Create(string name, int categoryId)
         {
-            var createSubCategoryPacket = new Packet
+            var response = await Client.Instance.SendRequestAsync(new Packet
             {
                 Type = PacketType.CreateSubCategory,
                 Data = new Dictionary<string, string>
@@ -24,9 +25,7 @@ namespace client.Controllers
                     { "name", name },
                     { "categoryId", categoryId.ToString() }
                 }
-            };
-
-            var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(createSubCategoryPacket));
+            });
 
             if (response == null)
             {
@@ -70,16 +69,15 @@ namespace client.Controllers
         {
             try
             {
-                var getSubCategoryPacket = new Packet
+                var response = await Client.Instance.SendRequestAsync(new Packet
                 {
                     Type = PacketType.GetSubCategory,
                     Data = new Dictionary<string, string>()
                     {
                         { "catId", selectedCategoryId.ToString() }
                     }
-                };
+                });
 
-                var response = await Client.Instance.SendToServerAndWaitResponse(getSubCategoryPacket);
                 if (response == null)
                 {
                     Logger.Write("GET SUBCATEGORY", "No response from server");
@@ -156,13 +154,12 @@ namespace client.Controllers
 
         public async Task<List<SubCategory>> GetAllSubcategory()
         {
-            var getSubCategoryPacket = new Packet
+            var response = await Client.Instance.SendRequestAsync(new Packet
             {
                 Type = PacketType.GetAllSubcategory,
                 Data = new Dictionary<string, string>()
-            };
+            });
 
-            var response = await Client.Instance.SendToServerAndWaitResponse(getSubCategoryPacket);
             if (response == null)
             {
                 MessageBox.Show("No response received from server", "Error",

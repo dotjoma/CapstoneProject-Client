@@ -355,7 +355,6 @@ namespace client.Forms.ProductManagement
             ShowLoading("Saving product...");
 
             string name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtName.Text.Trim().ToLower());
-            //string image = pbImage.Image != null ? ConvertImageToBase64(pbImage.Image) : "test";
 
             string image;
             if (pbImage.Image != null && pbImage.Image != pbImage.InitialImage)
@@ -472,12 +471,16 @@ namespace client.Forms.ProductManagement
                 ProductHome.Instance?.RefreshDisplay();
                 CleanForm();
                 Logger.Write("RESPONSE", $"Received response: {response}");
-                if (!(_selectedId > 0))
+                if (_selectedId == 0)
                 {
                     if (!(MessageBox.Show("Do you want to add more produt?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
                     {
                         this.Dispose();
                     }
+                }
+                else
+                {
+                    this.Dispose();
                 }
             }
         }

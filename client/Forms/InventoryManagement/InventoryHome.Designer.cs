@@ -45,7 +45,6 @@
             pictureBox2 = new PictureBox();
             textBox1 = new TextBox();
             btnRefresh = new PictureBox();
-            pictureBox1 = new PictureBox();
             label1 = new Label();
             panel1 = new Panel();
             btnDelete = new Button();
@@ -66,7 +65,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnRefresh).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInventory).BeginInit();
             SuspendLayout();
@@ -84,7 +82,6 @@
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(textBox1);
             panel2.Controls.Add(btnRefresh);
-            panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
@@ -221,25 +218,13 @@
             btnRefresh.TabIndex = 3;
             btnRefresh.TabStop = false;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Anchor = AnchorStyles.Left;
-            pictureBox1.Image = Properties.Resources.inventory_501;
-            pictureBox1.Location = new Point(14, 13);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(46, 53);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
-            // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Left;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(62, 39, 35);
-            label1.Location = new Point(66, 19);
+            label1.Location = new Point(14, 19);
             label1.Name = "label1";
             label1.Size = new Size(190, 41);
             label1.TabIndex = 0;
@@ -483,7 +468,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnRefresh).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvInventory).EndInit();
             ResumeLayout(false);
@@ -497,7 +481,6 @@
         private PictureBox pictureBox2;
         private TextBox textBox1;
         private PictureBox btnRefresh;
-        private PictureBox pictureBox1;
         private Label label1;
         private ComboBox comboBox2;
         private Label label3;

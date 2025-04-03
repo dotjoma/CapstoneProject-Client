@@ -1,0 +1,19 @@
+SAVE:
+mouse enter: btnConfirmPayment.BackColor = Color.FromArgb(109, 76, 65);
+miuse leave: btnConfirmPayment.BackColor = Color.FromArgb(141, 110, 99);
+
+LEAVE:
+mouse enter: btnCancel.BackColor = Color.FromArgb(141, 110, 99);
+mouse leave: btnCancel.BackColor = Color.FromArgb(161, 136, 127);
+
+
+default:
+bcolor: white
+selection bcolor: 245, 242, 237
+selection fcolor: 93, 64, 55
+
+alternating:
+bcolor: WhiteSmoke
+fcolor: 93, 64, 55
+selecyion fcolor: 93, 64, 55
+selection bcolor: 245, 242, 237

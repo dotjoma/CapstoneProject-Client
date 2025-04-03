@@ -38,11 +38,11 @@
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ApplyDiscount));
             panel1 = new Panel();
-            pictureBox1 = new PictureBox();
             label1 = new Label();
             panel2 = new Panel();
             btnSaveDraft = new Button();
             btnCancel = new Button();
+            btnConfirmPayment = new Button();
             dgvCartItem = new DataGridView();
             checkBoxColumn = new DataGridViewCheckBoxColumn();
             id = new DataGridViewTextBoxColumn();
@@ -50,9 +50,7 @@
             quantity = new DataGridViewTextBoxColumn();
             unitprice = new DataGridViewTextBoxColumn();
             totalPrice = new DataGridViewTextBoxColumn();
-            btnConfirmPayment = new Button();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCartItem).BeginInit();
             SuspendLayout();
@@ -60,7 +58,6 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(239, 235, 233);
-            panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -69,25 +66,13 @@
             panel1.Size = new Size(874, 60);
             panel1.TabIndex = 6;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Anchor = AnchorStyles.Left;
-            pictureBox1.Image = Properties.Resources.discount_501;
-            pictureBox1.Location = new Point(14, 4);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(53, 53);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 28;
-            pictureBox1.TabStop = false;
-            // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Left;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(62, 39, 35);
-            label1.Location = new Point(69, 11);
+            label1.Location = new Point(12, 10);
             label1.Name = "label1";
             label1.Size = new Size(269, 41);
             label1.TabIndex = 27;
@@ -142,6 +127,25 @@
             btnCancel.Click += btnCancel_Click;
             btnCancel.MouseEnter += btnCancel_MouseEnter;
             btnCancel.MouseLeave += btnCancel_MouseLeave;
+            // 
+            // btnConfirmPayment
+            // 
+            btnConfirmPayment.Anchor = AnchorStyles.Right;
+            btnConfirmPayment.BackColor = Color.FromArgb(141, 110, 99);
+            btnConfirmPayment.FlatAppearance.BorderColor = Color.Gray;
+            btnConfirmPayment.FlatAppearance.BorderSize = 0;
+            btnConfirmPayment.FlatStyle = FlatStyle.Flat;
+            btnConfirmPayment.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnConfirmPayment.ForeColor = Color.White;
+            btnConfirmPayment.Location = new Point(699, 11);
+            btnConfirmPayment.Name = "btnConfirmPayment";
+            btnConfirmPayment.Size = new Size(163, 43);
+            btnConfirmPayment.TabIndex = 2;
+            btnConfirmPayment.Text = "Apply Discount";
+            btnConfirmPayment.UseVisualStyleBackColor = false;
+            btnConfirmPayment.Click += btnConfirmPayment_Click;
+            btnConfirmPayment.MouseEnter += btnConfirmPayment_MouseEnter;
+            btnConfirmPayment.MouseLeave += btnConfirmPayment_MouseLeave;
             // 
             // dgvCartItem
             // 
@@ -268,25 +272,6 @@
             totalPrice.Name = "totalPrice";
             totalPrice.Width = 125;
             // 
-            // btnConfirmPayment
-            // 
-            btnConfirmPayment.Anchor = AnchorStyles.Right;
-            btnConfirmPayment.BackColor = Color.FromArgb(141, 110, 99);
-            btnConfirmPayment.FlatAppearance.BorderColor = Color.Gray;
-            btnConfirmPayment.FlatAppearance.BorderSize = 0;
-            btnConfirmPayment.FlatStyle = FlatStyle.Flat;
-            btnConfirmPayment.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnConfirmPayment.ForeColor = Color.White;
-            btnConfirmPayment.Location = new Point(699, 11);
-            btnConfirmPayment.Name = "btnConfirmPayment";
-            btnConfirmPayment.Size = new Size(163, 43);
-            btnConfirmPayment.TabIndex = 2;
-            btnConfirmPayment.Text = "Apply Discount";
-            btnConfirmPayment.UseVisualStyleBackColor = false;
-            btnConfirmPayment.Click += btnConfirmPayment_Click;
-            btnConfirmPayment.MouseEnter += btnConfirmPayment_MouseEnter;
-            btnConfirmPayment.MouseLeave += btnConfirmPayment_MouseLeave;
-            // 
             // ApplyDiscount
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -307,7 +292,6 @@
             KeyDown += ApplyDiscount_KeyDown;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvCartItem).EndInit();
             ResumeLayout(false);
@@ -315,7 +299,6 @@
 
         #endregion
         private Panel panel1;
-        private PictureBox pictureBox1;
         private Label label1;
         private Panel panel2;
         private DataGridView dgvCartItem;

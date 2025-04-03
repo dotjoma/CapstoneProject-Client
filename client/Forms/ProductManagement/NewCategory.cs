@@ -82,7 +82,7 @@ namespace client.Forms.POS.POSUserControl.ProductFoodCategory
                 if (response)
                 {
                     HideLoading();
-                    MessageBox.Show($"Category '{categoryName}' has been created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show($"Category '{categoryName}' has been created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Dispose();
 
                     bool getCategories = await _categoryController.Get();
@@ -104,7 +104,7 @@ namespace client.Forms.POS.POSUserControl.ProductFoodCategory
                     CurrentSubCategory.SetCurrentSubCategory(null); // This is to prevent the subcategory that show only the selected category previously.
 
                     HideLoading();
-                    MessageBox.Show($"Subcategory '{categoryName}' has been created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show($"Subcategory '{categoryName}' has been created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Dispose();
 
                     var getCategories = await _subCategoryController.GetAllSubcategory();

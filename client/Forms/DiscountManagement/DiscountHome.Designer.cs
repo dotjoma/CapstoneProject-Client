@@ -36,7 +36,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DiscountHome));
             panel2 = new Panel();
             btnRefreshh = new PictureBox();
-            pictureBox1 = new PictureBox();
             label1 = new Label();
             btnRefresh = new PictureBox();
             panel3 = new Panel();
@@ -54,7 +53,6 @@
             status = new DataGridViewTextBoxColumn();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnRefreshh).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnRefresh).BeginInit();
             panel3.SuspendLayout();
             panel1.SuspendLayout();
@@ -65,7 +63,6 @@
             // 
             panel2.BackColor = Color.FromArgb(239, 235, 233);
             panel2.Controls.Add(btnRefreshh);
-            panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
@@ -90,25 +87,13 @@
             btnRefreshh.MouseEnter += btnRefreshh_MouseEnter;
             btnRefreshh.MouseLeave += btnRefreshh_MouseLeave;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Anchor = AnchorStyles.Left;
-            pictureBox1.Image = Properties.Resources.Discount;
-            pictureBox1.Location = new Point(14, 12);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(46, 53);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
-            // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Left;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(98, 87, 87);
-            label1.Location = new Point(66, 17);
+            label1.Location = new Point(14, 19);
             label1.Name = "label1";
             label1.Size = new Size(190, 41);
             label1.TabIndex = 0;
@@ -360,7 +345,6 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)btnRefreshh).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnRefresh).EndInit();
             panel3.ResumeLayout(false);
             panel1.ResumeLayout(false);
@@ -371,7 +355,6 @@
         #endregion
 
         private Panel panel2;
-        private PictureBox pictureBox1;
         private Label label1;
         private PictureBox btnRefresh;
         private Panel panel3;

@@ -292,3 +292,11 @@ C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\obj\Debug\net8.0-windows
 C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\obj\Debug\net8.0-windows7.0\client.Forms.BestSelling.BestSellingHome.resources
 C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\obj\Debug\net8.0-windows7.0\client.Forms.SalesReport.SalesReportHome.resources
 C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\obj\Debug\net8.0-windows7.0\client.Forms.UserManagement.UserHome.resources
+C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\bin\Debug\net8.0-windows7.0\Google.Apis.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\bin\Debug\net8.0-windows7.0\Google.Apis.Auth.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\bin\Debug\net8.0-windows7.0\Google.Apis.Core.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\bin\Debug\net8.0-windows7.0\Google.Apis.Drive.v3.dll
+C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\obj\Debug\net8.0-windows7.0\client.Forms.BackupControl.BackupPanel.resources
+C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\obj\Debug\net8.0-windows7.0\client.Forms.BackupControl.SelectedDataForm.resources
+C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\obj\Debug\net8.0-windows7.0\client.Forms.BackupControl.RestoreBackupForm.resources
+C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\obj\Debug\net8.0-windows7.0\client.Forms.BackupControl.AuthForm.resources

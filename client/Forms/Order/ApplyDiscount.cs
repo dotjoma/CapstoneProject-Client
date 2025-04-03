@@ -104,7 +104,7 @@ namespace client.Forms.Order
                 return;
             }
 
-            using (var paymentFrm = new DiscountForm())
+            using (var paymentFrm = new DiscountForm(0))
             {
                 paymentFrm.ShowDialog();
             }

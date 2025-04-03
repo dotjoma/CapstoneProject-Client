@@ -59,8 +59,8 @@ namespace client.Controls.Products
 
             var pricePanel = new Panel
             {
-                Height = 25,
-                Dock = DockStyle.Top,
+                Height = 30,
+                Dock = DockStyle.Bottom,
                 BackColor = Color.FromArgb(232, 232, 232)
             };
 
@@ -99,30 +99,30 @@ namespace client.Controls.Products
                 picProductImage.Image = Properties.Resources.Add_Image;
             }
 
-            var bottomPanel = new Panel
+            var productPanel = new Panel
             {
-                Height = 40,
+                Height = 30,
                 BackColor = Color.FromArgb(232, 232, 232),
-                Dock = DockStyle.Bottom
+                Dock = DockStyle.Top
             };
 
             var lblProductName = new Label
             {
                 Text = product.productName,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
                 ForeColor = Color.Black,
                 AutoSize = false,
                 Dock = DockStyle.Fill,
                 TextAlign = ContentAlignment.MiddleCenter
             };
 
-            bottomPanel.Controls.Add(lblProductName);
+            productPanel.Controls.Add(lblProductName);
             pricePanel.Controls.Add(lblPrice);
             cardPanel.Controls.Add(pricePanel);
             cardPanel.Controls.Add(picProductImage);
-            cardPanel.Controls.Add(bottomPanel);
+            cardPanel.Controls.Add(productPanel);
 
-            bottomPanel.SendToBack();
+            productPanel.SendToBack();
             picProductImage.BringToFront();
             lblPrice.BringToFront();
             lblProductName.BringToFront();

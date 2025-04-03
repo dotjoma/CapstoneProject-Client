@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using client.Models;
 using client.Services;
 using System.Diagnostics;
+using System.Net.Sockets;
+using System.Xml.Linq;
 
 namespace client.Controllers
 {
@@ -19,15 +21,12 @@ namespace client.Controllers
         {
             try
             {
-                var generateNumbersPacket = new Packet
+                var response = await Client.Instance.SendRequestAsync(new Packet
                 {
                     Type = PacketType.GenerateTransactionNumbers,
                     Data = new Dictionary<string, string>()
-                };
+                });
 
-                Logger.Write("DEBUG", $"Sending request packet: Type={generateNumbersPacket.Type}");
-
-                var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(generateNumbersPacket));
                 Logger.Write("DEBUG", $"Raw response received: {JsonConvert.SerializeObject(response)}");
 
                 if (response == null)
@@ -139,7 +138,9 @@ namespace client.Controllers
                     { "changeAmount", payment.changeAmount.ToString() }
                 };
 
-                var packet = new Packet
+                Logger.Write("TRANSACTION", $"Sending transaction {trans.TransNo} to the server...");
+
+                var response = await Client.Instance.SendRequestAsync(new Packet
                 {
                     Type = PacketType.ProcessTransaction,
                     Data = new Dictionary<string, string>
@@ -148,11 +149,7 @@ namespace client.Controllers
                         { "order", orderProcessingData },
                         { "payment", JsonConvert.SerializeObject(paymentData) }
                     }
-                };
-
-                Logger.Write("TRANSACTION", $"Sending transaction {trans.TransNo} to the server...");
-
-                var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(packet));
+                });
 
                 if (response?.Success == true)
                 {
@@ -172,7 +169,7 @@ namespace client.Controllers
 
         public async Task<bool> SaveTransaction(string transNumber, string orderNumber)
         {
-            var packet = new Packet
+            var response = await Client.Instance.SendRequestAsync(new Packet
             {
                 Type = PacketType.SaveTransaction,
                 Data = new Dictionary<string, string>
@@ -180,9 +177,7 @@ namespace client.Controllers
                     { "transNumber", transNumber },
                     { "orderNumber", orderNumber }
                 }
-            };
-
-            var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(packet));
+            });
 
             if (response?.Data != null && response.Data.ContainsKey("success"))
             {
@@ -210,16 +205,14 @@ namespace client.Controllers
 
         public async Task<bool> RemoveTransaction(string transNumber)
         {
-            var removePacket = new Packet
+            var response = await Client.Instance.SendRequestAsync(new Packet
             {
                 Type = PacketType.RemoveTransaction,
                 Data = new Dictionary<string, string>
                 {
                     { "transNumber", transNumber }
                 }
-            };
-
-            var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(removePacket));
+            });
 
             if (response != null && response.Success)
             {
@@ -233,13 +226,11 @@ namespace client.Controllers
 
         public async Task<int> GetNextTransactionId()
         {
-            var packet = new Packet
+            var response = await Client.Instance.SendRequestAsync(new Packet
             {
                 Type = PacketType.GetNextTransactionId,
                 Data = new Dictionary<string, string>()
-            };
-
-            var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(packet));
+            });
 
             if (response?.Data != null && response.Data.ContainsKey("nextId"))
             {
@@ -258,16 +249,14 @@ namespace client.Controllers
 
         public async Task<int> GetNextOrderNumber()
         {
-            var packet = new Packet
+            var response = await Client.Instance.SendRequestAsync(new Packet
             {
                 Type = PacketType.GetNextOrderNumber,
                 Data = new Dictionary<string, string>
                 {
                     { "date", DateTime.Now.ToString("yyyy-MM-dd") }
                 }
-            };
-
-            var response = await Task.Run(() => Client.Instance.SendToServerAndWaitResponse(packet));
+            });
 
             if (response?.Data != null && response.Data.ContainsKey("nextOrderNumber"))
             {

@@ -122,8 +122,9 @@ namespace client.Forms
         private async void btnSignIn_Click(object sender, EventArgs e)
         {
             isSigningIn = true;
-            ShowLoading("Signing In...");
+            //ShowLoading("Signing In...");
             ToggleButton(false);
+            Cursor = Cursors.WaitCursor;
             await Task.Delay(1);
 
             //string username = txtUsername.Text.Trim();
@@ -172,6 +173,7 @@ namespace client.Forms
             }
             finally
             {
+                Cursor = Cursors.Default;
                 ToggleButton(true);
                 HideLoading();
                 isSigningIn = false;
@@ -241,48 +243,75 @@ namespace client.Forms
         {
             try
             {
-                await _productController.GetAllProducts();
+                // Start all requests in parallel
+                var productsTask = _productController.GetAllProducts();
+                var unitsTask = _unitController.GetAllUnits();
+                var categoriesTask = _categoryController.GetAllCategories();
+                var subCategoriesTask = _subCategoryController.GetAllSubcategory();
+                var discountsTask = _discountController.GetAllDiscounts();
+
+                // Wait for all to complete
+                await Task.WhenAll(productsTask, unitsTask, categoriesTask, subCategoriesTask, discountsTask);
+
+                // Process results
+                bool allSuccess = true;
+
+                // Products
                 if (CurrentProduct.AllProduct == null)
                 {
                     Logger.Write("MAIN MENU", "Failed to load products");
-                    return false;
+                    allSuccess = false;
                 }
-                Logger.Write("MAIN MENU", $"Successfully loaded {CurrentProduct.AllProduct.Count} products");
+                else
+                {
+                    Logger.Write("MAIN MENU", $"Successfully loaded {CurrentProduct.AllProduct.Count} products");
+                }
 
-                await _unitController.GetAllUnits();
+                // Units
                 if (CurrentUnit.AllUnit == null)
                 {
                     Logger.Write("MAIN MENU", "Failed to load units");
-                    return false;
+                    allSuccess = false;
                 }
-                Logger.Write("MAIN MENU", $"Successfully loaded {CurrentUnit.AllUnit.Count} units");
+                else
+                {
+                    Logger.Write("MAIN MENU", $"Successfully loaded {CurrentUnit.AllUnit.Count} units");
+                }
 
-
-                await _categoryController.GetAllCategories();
+                // Categories
                 if (CurrentCategory.AllCategories == null)
                 {
                     Logger.Write("MAIN MENU", "Failed to load categories");
-                    return false;
+                    allSuccess = false;
                 }
-                Logger.Write("MAIN MENU", $"Successfully loaded {CurrentCategory.AllCategories.Count} categories");
+                else
+                {
+                    Logger.Write("MAIN MENU", $"Successfully loaded {CurrentCategory.AllCategories.Count} categories");
+                }
 
-                await _subCategoryController.GetAllSubcategory();
+                // Subcategories
                 if (CurrentSubCategory.AllSubCategories == null)
                 {
                     Logger.Write("MAIN MENU", "Failed to load subcategories");
-                    return false;
+                    allSuccess = false;
                 }
-                Logger.Write("MAIN MENU", $"Successfully loaded {CurrentSubCategory.AllSubCategories.Count} subcategories");
+                else
+                {
+                    Logger.Write("MAIN MENU", $"Successfully loaded {CurrentSubCategory.AllSubCategories.Count} subcategories");
+                }
 
-                await _discountController.GetAllDiscounts();
+                // Discounts
                 if (CurrentDiscount.AllDiscount == null)
                 {
                     Logger.Write("MAIN MENU", "Failed to load discounts");
-                    return false;
+                    allSuccess = false;
                 }
-                Logger.Write("MAIN MENU", $"Successfully loaded {CurrentDiscount.AllDiscount.Count} discounts");
+                else
+                {
+                    Logger.Write("MAIN MENU", $"Successfully loaded {CurrentDiscount.AllDiscount.Count} discounts");
+                }
 
-                return true;
+                return allSuccess;
             }
             catch (Exception ex)
             {
@@ -293,8 +322,6 @@ namespace client.Forms
 
         private void ToggleButton(Boolean tog)
         {
-            txtUsername.Enabled = tog;
-            txtPassword.Enabled = tog;
             btnSignIn.Enabled = tog;
             cbRememberMe.Enabled = tog;
             btnCreateAccount.Enabled = tog;

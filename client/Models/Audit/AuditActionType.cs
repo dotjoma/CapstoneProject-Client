@@ -23,6 +23,8 @@ namespace client.Models.Audit
         PermissionChange,
         AccountLock,
         AccountUnlock,
-        PasswordReset
+        PasswordReset,
+        BackupData,
+        BackupDataFailure,
     }
 }

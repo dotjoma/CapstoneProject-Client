@@ -7,6 +7,18 @@
     <Compile Update="Forms\AuditTrail\AuditHome.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\BackupControl\AuthForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\BackupControl\BackupPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\BackupControl\RestoreBackupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\BackupControl\SelectedDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\BestSelling\BestSellingHome.cs">
       <SubType>Form</SubType>
     </Compile>

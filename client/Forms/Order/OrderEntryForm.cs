@@ -37,10 +37,9 @@ namespace client.Forms.Order
 
         public static OrderEntryForm? Instance { get; private set; }
 
-        private decimal subTotal = 0;
+        private decimal _subTotal = 0;
         private decimal totalAmount = 0;
         private string orderType = "Dine-In";
-        //private decimal discount = 0;
 
         private Button activeButton = new Button();
 
@@ -71,10 +70,67 @@ namespace client.Forms.Order
             PaymentForm.PostPaymentProcess += ManagePostPayment;
         }
 
+
+        decimal VATAmount = 0; // 12%
+        decimal saleWoVAT = 0;
+        decimal lessDiscount = 0; // PWD/Senior discount usually 20%
+        private decimal _discountAmount = 0;
+        private decimal _totalDue = 0;
         private void UpdateDiscount(decimal updatedDiscount)
         {
-            lblDiscount.Text = updatedDiscount.ToString("F2");
+            if (AppliedDiscount.DiscountType.ToString() == "Percentage")
+            {
+                // Reset all amounts
+                decimal vatableSales = 0m;
+                decimal vatAmount = 0m;
+                decimal discountAmount = 0m;
+
+                // 1. Calculate VATable amount (original amount without VAT)
+                vatableSales = _subTotal / 1.12m;
+
+                // 2. Calculate VAT amount (12% of VATable sales)
+                vatAmount = _subTotal - vatableSales;
+
+                // 3. Apply discount (20%) to VATable sales only
+                // Philippine law: discount applies to VAT-exclusive amount
+                discountAmount = vatableSales * updatedDiscount;
+
+                // 4. Calculate total due (VATable - discount + VAT)
+                // VAT is still payable even with discount
+                _totalDue = vatableSales - discountAmount;
+
+                // Update all amounts
+                saleWoVAT = vatableSales;
+                VATAmount = vatAmount;
+                lessDiscount = discountAmount;
+
+                // Update UI
+                lblSubTotal.Text = _subTotal.ToString("F2");
+                lblTotalDue.Text = _totalDue.ToString("F2");
+                lblVatable.Text = vatableSales.ToString("F2");
+                lblVatAmount.Text = vatAmount.ToString("F2");
+                lblDiscount.Text = discountAmount.ToString("F2");
+            }
         }
+
+        private void UpdateSubTotal()
+        {
+            decimal vatableSales = _subTotal / 1.12m;
+            decimal vat = _subTotal - vatableSales;
+            totalAmount = _subTotal;
+
+            VATAmount = vat;
+            saleWoVAT = vatableSales;
+            lessDiscount = saleWoVAT * _discountAmount;
+
+            lblSubTotal.Text = _subTotal.ToString("F2");
+            lblTotalDue.Text = _subTotal.ToString("F2");
+            lblVatable.Text = vatableSales.ToString("F2");
+            lblVatAmount.Text = VATAmount.ToString("F2");
+            lblDiscount.Text = _discountAmount.ToString("F2");
+            //lblTotal.Text = totalAmount.ToString("F2"); // visible: false
+        }
+
         private async void OrderEntryForm_Load(object sender, EventArgs e)
         {
             DataCache.ShouldRefreshCategories = true;
@@ -641,7 +697,7 @@ namespace client.Forms.Order
                 return;
             }
 
-            subTotal += product.productPrice;
+            _subTotal += product.productPrice;
             UpdateSubTotal();
 
             AddProductToCart(product);
@@ -788,7 +844,7 @@ namespace client.Forms.Order
                 {
                     lblQuantity.Text = $"Qty: {currentQuantity - 1}";
 
-                    subTotal -= product.productPrice;
+                    _subTotal -= product.productPrice;
                     CurrentCart.UpdateItemQuantity(product.productId, currentQuantity - 1);
                     UpdateSubTotal();
 
@@ -804,7 +860,7 @@ namespace client.Forms.Order
                 int currentQuantity = int.Parse(lblQuantity.Text.Replace("Qty: ", ""));
                 lblQuantity.Text = $"Qty: {currentQuantity + 1}";
 
-                subTotal += product.productPrice;
+                _subTotal += product.productPrice;
                 CurrentCart.UpdateItemQuantity(product.productId, currentQuantity + 1);
                 UpdateSubTotal();
 
@@ -843,7 +899,7 @@ namespace client.Forms.Order
                 if (quantityLabel != null)
                 {
                     int currentQuantity = int.Parse(quantityLabel.Text.Replace("Qty: ", ""));
-                    subTotal -= product.productPrice * currentQuantity;
+                    _subTotal -= product.productPrice * currentQuantity;
                 }
 
                 UpdateSubTotal();
@@ -862,18 +918,6 @@ namespace client.Forms.Order
             cartItem.Controls.Add(btnRemove);
 
             cartContainerPanel.Controls.Add(cartItem);
-        }
-
-        private void UpdateSubTotal()
-        {
-            decimal vatableSales = subTotal / 1.12m;
-            decimal vat = subTotal - vatableSales;
-            totalAmount = subTotal;
-
-            lblSubTotal.Text = subTotal.ToString("F2");
-            lblVatable.Text = vatableSales.ToString("F2");
-            lblVat.Text = vat.ToString("F2");
-            lblTotal.Text = totalAmount.ToString("F2");
         }
 
         private void btnBeverages_Click(object sender, EventArgs e)
@@ -950,6 +994,7 @@ namespace client.Forms.Order
                 if (IsTransactionActive())
                 {
                     ForceResetTransaction();
+                    Task.Delay(500);
                 }
 
                 Environment.Exit(0);
@@ -1028,7 +1073,8 @@ namespace client.Forms.Order
                 return;
             }
 
-            new ApplyDiscount().ShowDialog();
+            //new ApplyDiscount().ShowDialog(); // The last discount calculation is not correct.
+            new DiscountForm(_subTotal).ShowDialog();
         }
 
         private void txtSearchInput_TextChanged(object sender, EventArgs e)
@@ -1224,14 +1270,27 @@ namespace client.Forms.Order
 
         private void RefreshTransaction()
         {
-            subTotal = 0;
+            _subTotal = 0;
             totalAmount = 0;
-            lblOrderNo.Text = "";
-            RemoveActiveButton();
+            _totalDue = 0;
+            _discountAmount = 0;
+            VATAmount = 0;
+            saleWoVAT = 0;
+            lessDiscount = 0;
+
+            lblOrderNo.Text = string.Empty;
+            lblTransactionNo.Text = string.Empty;
+            lblSubTotal.Text = "0.00";
+            lblTotalDue.Text = "0.00";
+            lblVatable.Text = "0.00";
+            lblVatAmount.Text = "0.00";
+            lblDiscount.Text = "0.00";
+
             CurrentCart.ClearCart();
-            lblTransactionNo.Text = "";
             CurrentTransaction.Clear();
+
             cartContainerPanel.Controls.Clear();
+            RemoveActiveButton();
 
             UpdateSubTotal();
         }
