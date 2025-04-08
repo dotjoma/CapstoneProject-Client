@@ -7,6 +7,22 @@
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\inventorymanagement\\addinventoryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\inventorymanagement\\addinventoryitem.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\inventorymanagement\\addinventoryitem.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\backupcontrol\\backuppanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\backupcontrol\\backuppanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\inventorymanagement\\addinventoryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\inventorymanagement\\addinventoryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\backupcontrol\\authform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\backupcontrol\\authform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\order\\applydiscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\order\\applydiscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -29,22 +45,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\inventorymanagement\\addinventoryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\inventorymanagement\\addinventoryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\inventorymanagement\\addinventoryitem.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\inventorymanagement\\addinventoryitem.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\backupcontrol\\backuppanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\backupcontrol\\backuppanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\backupcontrol\\authform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\backupcontrol\\authform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\inventorymanagement\\inventoryhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -397,11 +397,114 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AddInventoryItem.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\InventoryManagement\\AddInventoryItem.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T04:44:58.261Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "AuthForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\AuthForm.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\BackupControl\\AuthForm.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\AuthForm.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\BackupControl\\AuthForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T14:32:52.698Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BackupPanel.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\BackupPanel.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\BackupControl\\BackupPanel.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\BackupPanel.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\BackupControl\\BackupPanel.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T11:18:12.298Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AddInventoryItem.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
+              "RelativeToolTip": "client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAuwC8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T12:22:51.801Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AddInventoryItem.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.Designer.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\AddInventoryItem.Designer.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.Designer.cs",
+              "RelativeToolTip": "client\\Forms\\InventoryManagement\\AddInventoryItem.Designer.cs",
+              "ViewState": "AgIAAB8CAAAAAAAAAAAYwDACAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T12:23:00.726Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ApplyDiscount.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\ApplyDiscount.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\Order\\ApplyDiscount.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\ApplyDiscount.cs",
+              "RelativeToolTip": "client\\Forms\\Order\\ApplyDiscount.cs",
+              "ViewState": "AgIAANEAAAAAAAAAAAAQwOAAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T12:53:31.951Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ApplyDiscount.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\ApplyDiscount.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\Order\\ApplyDiscount.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\ApplyDiscount.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\Order\\ApplyDiscount.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T11:57:02.627Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AddProduct.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\AddProduct.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\AddProduct.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\AddProduct.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\ProductManagement\\AddProduct.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T12:46:18.817Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "InventoryItem.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\InventoryItem.cs",
               "RelativeDocumentMoniker": "client\\Models\\InventoryItem.cs",
@@ -414,60 +517,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AddInventoryItem.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\InventoryManagement\\AddInventoryItem.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T02:32:28.165Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AddProduct.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\AddProduct.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\AddProduct.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\AddProduct.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\ProductManagement\\AddProduct.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T12:46:18.817Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ApplyDiscount.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\ApplyDiscount.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\Order\\ApplyDiscount.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\ApplyDiscount.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\Order\\ApplyDiscount.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T11:57:02.627Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ApplyDiscount.cs",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\ApplyDiscount.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\Order\\ApplyDiscount.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\ApplyDiscount.cs",
-              "RelativeToolTip": "client\\Forms\\Order\\ApplyDiscount.cs",
-              "ViewState": "AgIAANEAAAAAAAAAAAAQwOAAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T12:53:31.951Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "InventoryController.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\InventoryController.cs",
               "RelativeDocumentMoniker": "client\\Controllers\\InventoryController.cs",
@@ -480,33 +530,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AddInventoryItem.cs",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
-              "RelativeToolTip": "client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAAwC4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T12:22:51.801Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AddInventoryItem.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.Designer.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\AddInventoryItem.Designer.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.Designer.cs",
-              "RelativeToolTip": "client\\Forms\\InventoryManagement\\AddInventoryItem.Designer.cs",
-              "ViewState": "AgIAAC8CAAAAAAAAAAAYwEQCAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T12:23:00.726Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "ProductController.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "client\\Controllers\\ProductController.cs",
@@ -516,30 +540,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-27T04:14:10.704Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "BackupPanel.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\BackupPanel.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\BackupControl\\BackupPanel.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\BackupPanel.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\BackupControl\\BackupPanel.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T11:18:12.298Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "AuthForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\AuthForm.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\BackupControl\\AuthForm.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\AuthForm.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\BackupControl\\AuthForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T14:32:52.698Z",
-              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
