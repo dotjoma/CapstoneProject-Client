@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using client.Models.Audit;
 using System.Net.Sockets;
 using System.Net;
+using client.Helpers;
 
 namespace client.Controllers
 {
@@ -23,45 +24,39 @@ namespace client.Controllers
             Navigation.Instance.RedirectTo<Login>();
         }
 
-        public void Logout()
+        public async Task Logout()
         {
             try
             {
                 if (MessageBox.Show("Confirm your logout", "Logout",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                    == DialogResult.Yes)
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                    != DialogResult.Yes)
                 {
-                    _auditService.Log(new AuditRecord
-                    {
-                        UserId = CurrentUser.Current!.UserId,
-                        Username = CurrentUser.Current.Username,
-                        Action = AuditActionType.Logout,
-                        EntityType = AuditEntityType.User,
-                        EntityId = CurrentUser.Current.UserId.ToString(),
-                        Description = "User initiated logout",
-                        IPAddress = GetCurrentIP()
-                    });
+                    return;
+                }
 
-                    CurrentUser.Clear();
-                    Navigation.Instance.RedirectTo<Login>();
-                }
-                else
+                string? username = CurrentUser.Current?.Username;
+                int? userId = CurrentUser.Current?.UserId;
+
+                CurrentUser.Clear();
+
+                await _auditService.Log(new AuditRecord
                 {
-                    _auditService.Log(new AuditRecord
-                    {
-                        UserId = CurrentUser.Current!.UserId,
-                        Username = CurrentUser.Current.Username,
-                        Action = AuditActionType.SystemEvent,
-                        EntityType = AuditEntityType.User,
-                        EntityId = CurrentUser.Current.UserId.ToString(),
-                        Description = "User cancelled logout attempt",
-                        IPAddress = GetCurrentIP()
-                    });
-                }
+                    UserId = Convert.ToInt32(userId),
+                    Action = AuditActionType.Logout,
+                    Description = "User session terminated",
+                    OldValue = "Active session",
+                    NewValue = "Session ended",
+                    IPAddress = GetCurrentIP(),
+                    EntityType = AuditEntityType.User,
+                    EntityId = userId?.ToString()
+                });
+
+                Navigation.Instance.RedirectTo<Login>();
             }
             catch (Exception ex)
             {
-                File.AppendAllText("emergency.log", $"{DateTime.UtcNow} - Logout failed: {ex}\n");
+                Logger.Write("LOGOUT_ERROR", $"Logout failed: {ex.Message}");
                 CurrentUser.Clear();
                 Navigation.Instance.RedirectTo<Login>();
             }
@@ -69,20 +64,8 @@ namespace client.Controllers
 
         public async Task<bool> Login(string username, string password)
         {
-            var auditRecord = new AuditRecord
-            {
-                Username = username,
-                Action = AuditActionType.Login,
-                EntityType = AuditEntityType.User,
-                EntityId = "NotAuthenticated",
-                Description = "Login attempt initiated"
-            };
-
             if (!ValidateLogin(username, password))
             {
-                auditRecord.Action = AuditActionType.LoginFailure;
-                auditRecord.Description = "Invalid credentials format";
-                _auditService.Log(auditRecord);
                 return false;
             }
 
@@ -100,10 +83,6 @@ namespace client.Controllers
 
                 if (response == null)
                 {
-                    auditRecord.Action = AuditActionType.LoginFailure;
-                    auditRecord.Description = "No server response";
-                    _auditService.Log(auditRecord);
-
                     MessageBox.Show("No response received from server", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
@@ -113,12 +92,17 @@ namespace client.Controllers
                 {
                     if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                     {
-                        auditRecord.Action = AuditActionType.Login;
-                        auditRecord.Description = "Login successful";
-                        auditRecord.NewValue = "Authenticated";
-                        auditRecord.UserId = CurrentUser.Current!.UserId;
-                        auditRecord.EntityId = auditRecord.UserId.ToString();
-                        _auditService.Log(auditRecord);
+                        await _auditService.Log(new AuditRecord
+                        {
+                            UserId = CurrentUser.Current!.UserId,
+                            Action = AuditActionType.Login,
+                            Description = "Successful user login",
+                            OldValue = "Session inactive",
+                            NewValue = "Session established",
+                            IPAddress = GetCurrentIP(),
+                            EntityType = AuditEntityType.User,
+                            EntityId = CurrentUser.Current?.UserId.ToString()
+                        });
 
                         return true;
                     }
@@ -128,11 +112,6 @@ namespace client.Controllers
                             ? response.Data["message"]
                             : "Unknown error occurred";
 
-                        auditRecord.Action = AuditActionType.LoginFailure;
-                        auditRecord.Description = $"Login failed: {errorMessage}";
-                        auditRecord.NewValue = errorMessage;
-                        _auditService.Log(auditRecord);
-
                         MessageBox.Show($"Login failed: {errorMessage}", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
@@ -140,10 +119,6 @@ namespace client.Controllers
                 }
                 else
                 {
-                    auditRecord.Action = AuditActionType.LoginFailure;
-                    auditRecord.Description = "Invalid server response format";
-                    _auditService.Log(auditRecord);
-
                     MessageBox.Show("Invalid response format from server", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
@@ -151,11 +126,6 @@ namespace client.Controllers
             }
             catch (Exception ex)
             {
-                auditRecord.Action = AuditActionType.LoginFailure;
-                auditRecord.Description = $"Login exception: {ex.Message}";
-                auditRecord.NewValue = ex.ToString();
-                _auditService.Log(auditRecord);
-
                 MessageBox.Show($"Login error: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -166,20 +136,8 @@ namespace client.Controllers
         {
             string username = CurrentUser.Current?.Username ?? "UnknownUser";
 
-            var auditRecord = new AuditRecord
-            {
-                Username = username,
-                Action = AuditActionType.BackupData,
-                EntityType = AuditEntityType.User,
-                EntityId = "Requesting",
-                Description = "Backup data attempt initiated"
-            };
-
             if (!ValidateLogin(username, password))
             {
-                auditRecord.Action = AuditActionType.BackupDataFailure;
-                auditRecord.Description = "Invalid credentials format";
-                _auditService.Log(auditRecord);
                 return false;
             }
 
@@ -197,10 +155,6 @@ namespace client.Controllers
 
                 if (response == null)
                 {
-                    auditRecord.Action = AuditActionType.BackupDataFailure;
-                    auditRecord.Description = "No server response";
-                    _auditService.Log(auditRecord);
-
                     MessageBox.Show("No response received from server", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
@@ -210,13 +164,6 @@ namespace client.Controllers
                 {
                     if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                     {
-                        auditRecord.Action = AuditActionType.BackupData;
-                        auditRecord.Description = "Backup data successful";
-                        auditRecord.NewValue = "Request Success";
-                        auditRecord.UserId = CurrentUser.Current!.UserId;
-                        auditRecord.EntityId = auditRecord.UserId.ToString();
-                        _auditService.Log(auditRecord);
-
                         return true;
                     }
                     else
@@ -225,11 +172,6 @@ namespace client.Controllers
                             ? response.Data["message"]
                             : "Unknown error occurred";
 
-                        auditRecord.Action = AuditActionType.BackupDataFailure;
-                        auditRecord.Description = $"Backup data failed: {errorMessage}";
-                        auditRecord.NewValue = errorMessage;
-                        _auditService.Log(auditRecord);
-
                         MessageBox.Show($"Backup data failed: {errorMessage}", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
@@ -237,10 +179,6 @@ namespace client.Controllers
                 }
                 else
                 {
-                    auditRecord.Action = AuditActionType.BackupDataFailure;
-                    auditRecord.Description = "Invalid server response format";
-                    _auditService.Log(auditRecord);
-
                     MessageBox.Show("Invalid response format from server", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
@@ -248,11 +186,6 @@ namespace client.Controllers
             }
             catch (Exception ex)
             {
-                auditRecord.Action = AuditActionType.BackupDataFailure;
-                auditRecord.Description = $"Backup data exception: {ex.Message}";
-                auditRecord.NewValue = ex.ToString();
-                _auditService.Log(auditRecord);
-
                 MessageBox.Show($"Backup data error: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -261,7 +194,6 @@ namespace client.Controllers
 
         public async Task<bool> Register(string username, string password, string confirmPassword)
         {
-            // Validating the fields.
             if (!ValidateRegistration(username, password, confirmPassword)) return false;
 
 
@@ -282,7 +214,6 @@ namespace client.Controllers
                 return false;
             }
 
-            // Handle server response
             if (response.Data != null && response.Data.ContainsKey("success"))
             {
                 if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))

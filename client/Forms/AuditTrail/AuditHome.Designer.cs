@@ -54,8 +54,8 @@
             prevvalue = new DataGridViewTextBoxColumn();
             newvalue = new DataGridViewTextBoxColumn();
             ipaddress = new DataGridViewTextBoxColumn();
-            machineid = new DataGridViewTextBoxColumn();
-            sessionid = new DataGridViewTextBoxColumn();
+            entity = new DataGridViewTextBoxColumn();
+            entityid = new DataGridViewTextBoxColumn();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -248,6 +248,7 @@
             dgvAudit.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvAudit.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvAudit.BackgroundColor = Color.White;
+            dgvAudit.BorderStyle = BorderStyle.None;
             dgvAudit.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(121, 85, 72);
@@ -259,7 +260,7 @@
             dgvAudit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvAudit.ColumnHeadersHeight = 35;
             dgvAudit.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvAudit.Columns.AddRange(new DataGridViewColumn[] { date, username, action, description, prevvalue, newvalue, ipaddress, machineid, sessionid });
+            dgvAudit.Columns.AddRange(new DataGridViewColumn[] { date, username, action, description, prevvalue, newvalue, ipaddress, entity, entityid });
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = Color.White;
             dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -291,6 +292,7 @@
             dgvAudit.Size = new Size(1170, 549);
             dgvAudit.TabIndex = 6;
             dgvAudit.TabStop = false;
+            dgvAudit.CellContentClick += dgvAudit_CellContentClick;
             // 
             // date
             // 
@@ -324,60 +326,60 @@
             // 
             // description
             // 
-            description.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            description.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             description.FillWeight = 137.7169F;
             description.HeaderText = "Description";
-            description.MinimumWidth = 150;
+            description.MinimumWidth = 50;
             description.Name = "description";
             description.ReadOnly = true;
-            description.Width = 150;
             // 
             // prevvalue
             // 
             prevvalue.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             prevvalue.DefaultCellStyle = dataGridViewCellStyle3;
             prevvalue.FillWeight = 178.85527F;
             prevvalue.HeaderText = "Prev Value";
-            prevvalue.MinimumWidth = 100;
+            prevvalue.MinimumWidth = 180;
             prevvalue.Name = "prevvalue";
             prevvalue.ReadOnly = true;
-            prevvalue.Width = 141;
+            prevvalue.Width = 180;
             // 
             // newvalue
             // 
             newvalue.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             newvalue.HeaderText = "New Value";
-            newvalue.MinimumWidth = 140;
+            newvalue.MinimumWidth = 180;
             newvalue.Name = "newvalue";
             newvalue.ReadOnly = true;
-            newvalue.Width = 140;
+            newvalue.Width = 180;
             // 
             // ipaddress
             // 
-            ipaddress.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ipaddress.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             ipaddress.HeaderText = "IP Address";
-            ipaddress.MinimumWidth = 6;
+            ipaddress.MinimumWidth = 150;
             ipaddress.Name = "ipaddress";
             ipaddress.ReadOnly = true;
+            ipaddress.Width = 150;
             // 
-            // machineid
+            // entity
             // 
-            machineid.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            machineid.HeaderText = "Machine Id";
-            machineid.MinimumWidth = 150;
-            machineid.Name = "machineid";
-            machineid.ReadOnly = true;
-            machineid.Width = 150;
+            entity.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            entity.HeaderText = "Entity";
+            entity.MinimumWidth = 100;
+            entity.Name = "entity";
+            entity.ReadOnly = true;
+            entity.Width = 125;
             // 
-            // sessionid
+            // entityid
             // 
-            sessionid.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            sessionid.HeaderText = "Session Id";
-            sessionid.MinimumWidth = 100;
-            sessionid.Name = "sessionid";
-            sessionid.ReadOnly = true;
-            sessionid.Width = 125;
+            entityid.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            entityid.HeaderText = "Entity ID";
+            entityid.MinimumWidth = 80;
+            entityid.Name = "entityid";
+            entityid.ReadOnly = true;
+            entityid.Width = 80;
             // 
             // AuditHome
             // 
@@ -392,6 +394,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AuditHome";
             Load += AuditHome_Load;
+            Shown += AuditHome_Shown;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -425,7 +428,7 @@
         private DataGridViewTextBoxColumn prevvalue;
         private DataGridViewTextBoxColumn newvalue;
         private DataGridViewTextBoxColumn ipaddress;
-        private DataGridViewTextBoxColumn machineid;
-        private DataGridViewTextBoxColumn sessionid;
+        private DataGridViewTextBoxColumn entity;
+        private DataGridViewTextBoxColumn entityid;
     }
 }

@@ -18,6 +18,7 @@ namespace client.Forms.ProductManagement
     public partial class ProductHome : Form
     {
         ProductController _productController = new ProductController();
+
         public static ProductHome? Instance { get; private set; }
         private readonly DataLoadingService _dataLoadingService;
         private int _selectedId = 0;
@@ -208,16 +209,21 @@ namespace client.Forms.ProductManagement
         {
             if (_selectedId > 0)
             {
-                AddProduct product = new AddProduct(_selectedId);
-                product.StartPosition = FormStartPosition.Manual;
-                product.StartPosition = FormStartPosition.CenterParent;
-                product.ShowDialog(this);
+                EditProduct(_selectedId);
             }
             else
             {
                 MessageBox.Show("Please select a product to edit.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void EditProduct(int selectedId)
+        {
+            AddProduct product = new AddProduct(selectedId);
+            product.StartPosition = FormStartPosition.Manual;
+            product.StartPosition = FormStartPosition.CenterParent;
+            product.ShowDialog(this);
         }
 
         private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -232,49 +238,54 @@ namespace client.Forms.ProductManagement
             }
         }
 
-        private async void btnDelete_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
             if (_selectedId > 0)
             {
-                var confirmDelete = MessageBox.Show(
+                DeleteProduct(_selectedId);
+            }
+            else
+            {
+                MessageBox.Show("Please select a product to delete.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void DeleteProduct(int _selectedId)
+        {
+            var confirmDelete = MessageBox.Show(
                     "Are you sure you want to delete this product?",
                     "Warning",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning
                 );
 
-                if (confirmDelete == DialogResult.Yes)
+            if (confirmDelete == DialogResult.Yes)
+            {
+                try
                 {
-                    try
-                    {
-                        ShowLoading("Deleting product...");
+                    ShowLoading("Deleting product...");
 
-                        bool success = await _productController.Destroy(_selectedId);
-                        if (success)
-                        {
-                            HideLoading();
-                            await RefreshDisplay();
-
-                            //MessageBox.Show("Product deleted successfully", "Success",
-                            //MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-                    catch (Exception ex)
+                    bool success = await _productController.Destroy(_selectedId);
+                    if (success)
                     {
                         HideLoading();
-                        MessageBox.Show("Error deleting product: " + ex.Message, "Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    finally
-                    {
-                        HideLoading();
+                        await RefreshDisplay();
+
+                        //MessageBox.Show("Product deleted successfully", "Success",
+                        //MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Please select a product to delete.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    HideLoading();
+                    MessageBox.Show("Error deleting product: " + ex.Message, "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    HideLoading();
+                }
             }
         }
 
@@ -352,5 +363,38 @@ namespace client.Forms.ProductManagement
                 loadingPanel.Visible = false;
             }
         }
+
+        private void dgvProducts_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0)
+                {
+                    dgvProducts.ClearSelection();
+                    dgvProducts.Rows[e.RowIndex].Selected = true;
+
+                    cmsOptions.Show(Cursor.Position.X + 10, Cursor.Position.Y + 10);
+                }
+            }
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = dgvProducts.SelectedRows[0];
+
+            int selecteRowId = Convert.ToInt32(selectedRow.Cells["id"].Value);
+
+            EditProduct(selecteRowId);
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = dgvProducts.SelectedRows[0];
+
+            int selectedRowId = Convert.ToInt32(selectedRow.Cells["id"].Value);
+
+            DeleteProduct(selectedRowId);
+        }
+
     }
 }

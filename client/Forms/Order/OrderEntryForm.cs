@@ -80,31 +80,20 @@ namespace client.Forms.Order
         {
             if (AppliedDiscount.DiscountType.ToString() == "Percentage")
             {
-                // Reset all amounts
                 decimal vatableSales = 0m;
                 decimal vatAmount = 0m;
                 decimal discountAmount = 0m;
 
-                // 1. Calculate VATable amount (original amount without VAT)
                 vatableSales = _subTotal / 1.12m;
-
-                // 2. Calculate VAT amount (12% of VATable sales)
                 vatAmount = _subTotal - vatableSales;
-
-                // 3. Apply discount (20%) to VATable sales only
-                // Philippine law: discount applies to VAT-exclusive amount
                 discountAmount = vatableSales * updatedDiscount;
-
-                // 4. Calculate total due (VATable - discount + VAT)
-                // VAT is still payable even with discount
                 _totalDue = vatableSales - discountAmount;
 
-                // Update all amounts
                 saleWoVAT = vatableSales;
                 VATAmount = vatAmount;
                 lessDiscount = discountAmount;
+                _discountAmount = discountAmount;
 
-                // Update UI
                 lblSubTotal.Text = _subTotal.ToString("F2");
                 lblTotalDue.Text = _totalDue.ToString("F2");
                 lblVatable.Text = vatableSales.ToString("F2");
@@ -118,6 +107,7 @@ namespace client.Forms.Order
             decimal vatableSales = _subTotal / 1.12m;
             decimal vat = _subTotal - vatableSales;
             totalAmount = _subTotal;
+            _totalDue = _subTotal;
 
             VATAmount = vat;
             saleWoVAT = vatableSales;
@@ -128,7 +118,6 @@ namespace client.Forms.Order
             lblVatable.Text = vatableSales.ToString("F2");
             lblVatAmount.Text = VATAmount.ToString("F2");
             lblDiscount.Text = _discountAmount.ToString("F2");
-            //lblTotal.Text = totalAmount.ToString("F2"); // visible: false
         }
 
         private async void OrderEntryForm_Load(object sender, EventArgs e)
@@ -1038,9 +1027,9 @@ namespace client.Forms.Order
             CurrentCart.ClearCart();
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private async void btnLogout_Click(object sender, EventArgs e)
         {
-            _authController.Logout();
+            await _authController.Logout();
             CurrentCart.ClearCart();
         }
 
@@ -1186,7 +1175,7 @@ namespace client.Forms.Order
                 return;
             }
 
-            var paymentForm = new PaymentForm(totalAmount, orderType);
+            var paymentForm = new PaymentForm(_totalDue, orderType,_discountAmount);
             paymentForm.ShowDialog();
         }
 

@@ -26,5 +26,7 @@ namespace client.Models.Audit
         PasswordReset,
         BackupData,
         BackupDataFailure,
+        CreateBackup,
+        RestoreBackup
     }
 }

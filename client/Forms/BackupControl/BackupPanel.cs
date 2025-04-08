@@ -12,6 +12,9 @@ using System.IO.Compression;
 using System.Security.Cryptography;
 using client.Controllers;
 using client.Helpers;
+using client.Models.Audit;
+using client.Services.Auth;
+using client.Services;
 
 namespace client.Forms.BackupControl
 {
@@ -23,6 +26,8 @@ namespace client.Forms.BackupControl
         public List<string> SelectedTables { get; set; } = new List<string>();
 
         BackupController _backupController = new BackupController();
+
+        AuditService _auditService = new AuditService();
 
         public BackupPanel()
         {
@@ -66,7 +71,6 @@ namespace client.Forms.BackupControl
                 if (!(AuthStatus == "authenticated"))
                     return;
 
-                // UI Setup
                 panel4.Location = new Point(214, 221);
                 panel4.Visible = true;
                 progressBar.Value = 10;
@@ -128,7 +132,7 @@ namespace client.Forms.BackupControl
                 {
                     archive.CreateEntryFromFile(backupFilePath, backupFileName);
                 }
-                File.Delete(backupFilePath); // Remove temporary SQL file
+                File.Delete(backupFilePath);
 
                 progressBar.Value = 70;
                 lblDescription.Text = "Uploading to cloud storage...";
@@ -141,12 +145,11 @@ namespace client.Forms.BackupControl
 
                 progressBar.Value = 90;
 
-                // Clean up and show result
                 if (uploadSuccess)
                 {
                     progressBar.Value = 100;
                     lblDescription.Text = "Backup completed successfully!";
-                    await Task.Delay(500); // Let user see completion
+                    await Task.Delay(500);
 
                     MessageBox.Show($"Backup saved to:\n{zipPath}\n\n" +
                                   $"And uploaded to Google Drive",
@@ -161,6 +164,17 @@ namespace client.Forms.BackupControl
                                   MessageBoxButtons.OK,
                                   MessageBoxIcon.Warning);
                 }
+
+                await _auditService.Log(new AuditRecord
+                {
+                    UserId = CurrentUser.Current!.UserId,
+                    Action = AuditActionType.CreateBackup,
+                    Description = "Database backup completed successfully",
+                    OldValue = "No recent backup",
+                    NewValue = $"Backup created: {zipPath}",
+                    EntityType = AuditEntityType.Backup,
+                    EntityId = ""
+                });
             }
             catch (Exception ex)
             {

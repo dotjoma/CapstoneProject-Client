@@ -1,7 +1,10 @@
-﻿using client.Helpers;
+﻿using client.Forms.ProductManagement;
+using client.Helpers;
 using client.Models;
+using client.Models.Audit;
 using client.Network;
 using client.Services;
+using client.Services.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +12,13 @@ using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace client.Controllers
 {
     public class UnitController
     {
+        AuditService _auditService = new AuditService();
         public async Task<bool> Get()
         {
             var response = await Client.Instance.SendRequestAsync(new Packet
@@ -171,6 +176,18 @@ namespace client.Controllers
                 if (response.Data?.ContainsKey("success") == true && response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                 {
                     Logger.Write("CREATE UNIT", $"Unit '{unitName}' created successfully");
+
+                    await _auditService.Log(new AuditRecord
+                    {
+                        UserId = CurrentUser.Current!.UserId,
+                        Action = AuditActionType.Create,
+                        Description = "Unit created successfully",
+                        OldValue = "No unit existed",
+                        NewValue = $"Name: {unitName}",
+                        EntityType = AuditEntityType.Unit,
+                        EntityId = ""
+                    });
+
                     return true;
                 }
                 else

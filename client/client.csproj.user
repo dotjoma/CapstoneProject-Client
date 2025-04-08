@@ -31,6 +31,9 @@
     <Compile Update="Forms\DiscountManagement\DiscountHome.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\InventoryManagement\AddInventoryItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\InventoryManagement\InventoryHome.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -39,8 +39,12 @@ namespace client.Controls.Products
 
             foreach (var product in products)
             {
-                var productCard = CreateProductCard(product);
-                flowPanel.Controls.Add(productCard);
+                bool isProductActive = (product.isActive > 0) ? true : false;
+                if (isProductActive)
+                {
+                    var productCard = CreateProductCard(product);
+                    flowPanel.Controls.Add(productCard);
+                }
             }
 
             Controls.Add(flowPanel);

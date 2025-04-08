@@ -23,6 +23,7 @@ namespace client.Models.Audit
         public string WindowsSessionId { get; set; } = GetWindowsSessionId();
         public string WindowsUserSid { get; set; } = GetWindowsUserSid();
         public string? DeviceInfo { get; set; } = GetDeviceInfo();
+        public string? Status { get; set; }
 
         private static string GetDefaultIP()
         {
@@ -72,5 +73,7 @@ namespace client.Models.Audit
                    $"{Environment.OSVersion.VersionString} | " +
                    $"{(Environment.Is64BitOperatingSystem ? "x64" : "x86")}";
         }
+
+
     }
 }

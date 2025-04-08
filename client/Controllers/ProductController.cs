@@ -20,11 +20,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Net.Sockets;
+using client.Models.Audit;
+using Newtonsoft.Json.Linq;
 
 namespace client.Controllers
 {
     public class ProductController
     {
+        AuditService _auditService = new AuditService();
         public async Task<bool> Get()
         {
             try
@@ -169,6 +172,17 @@ namespace client.Controllers
                     //MessageBox.Show("Product creation successful!", "Success",
                     //    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    await _auditService.Log(new AuditRecord
+                    {
+                        UserId = CurrentUser.Current!.UserId,
+                        Action = AuditActionType.Create,
+                        Description = "Product created successfully",
+                        OldValue = "No product existed",
+                        NewValue = $"Name: {name}, Price: {price}",
+                        EntityType = AuditEntityType.Product,
+                        EntityId = ""
+                    });
+
                     return true;
                 }
                 else
@@ -198,8 +212,12 @@ namespace client.Controllers
             }
         }
 
-        public async Task<bool> Update(int productId, string name, string image, string price, int categoryId, int subcategoryId, int unitId, int isActive)
-        { 
+        public async Task<bool> Update(int productId, string name, string image, string price,
+            int categoryId, int subcategoryId, int unitId, int isActive)
+        {
+            var originalProduct = CurrentProduct.GetProductById(productId);
+            Logger.Write("PRODUCT_AUDIT_DEBUG", $"productImage: {originalProduct?.productImage} image: {image}");
+
             var response = await Client.Instance.SendRequestAsync(new Packet
             {
                 Type = PacketType.UpdateProduct,
@@ -226,12 +244,68 @@ namespace client.Controllers
             if (response.Data != null && response.Data.TryGetValue("success", out string? success) &&
                 success.Equals("true", StringComparison.OrdinalIgnoreCase))
             {
-                //MessageBox.Show("Product update successful!", "Success",
-                //    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var changes = new Dictionary<string, object>();
+                var oldValues = new Dictionary<string, object>();
+
+                if (originalProduct?.productName != name)
+                {
+                    oldValues.Add("Name", originalProduct!.productName!);
+                    changes.Add("Name", name);
+                }
+
+                if (originalProduct?.productImage != image)
+                {
+                    oldValues.Add("Image", "Old image");
+                    changes.Add("Image", "New image");
+                }
+
+                if (originalProduct?.productPrice.ToString() != price)
+                {
+                    oldValues.Add("Price", originalProduct!.productPrice);
+                    changes.Add("Price", price);
+                }
+
+                if (originalProduct?.categoryId != categoryId)
+                {
+                    oldValues.Add("CategoryId", originalProduct!.categoryId);
+                    changes.Add("CategoryId", categoryId);
+                }
+
+                if (originalProduct?.subcategoryId != subcategoryId)
+                {
+                    oldValues.Add("SubcategoryId", originalProduct!.subcategoryId);
+                    changes.Add("SubcategoryId", subcategoryId);
+                }
+
+                if (originalProduct?.unitId != unitId)
+                {
+                    oldValues.Add("UnitId", originalProduct!.unitId);
+                    changes.Add("UnitId", unitId);
+                }
+
+                if (originalProduct?.isActive != isActive)
+                {
+                    oldValues.Add("Status", originalProduct?.isActive == 1 ? "Active" : "Inactive");
+                    changes.Add("Status", isActive == 1 ? "Active" : "Inactive");
+                }
+
+                if (changes.Any())
+                {
+                    await _auditService.Log(new AuditRecord
+                    {
+                        UserId = CurrentUser.Current!.UserId,
+                        Action = AuditActionType.Update,
+                        Description = "Product updated successfully",
+                        OldValue = string.Join(" | ", oldValues.Select(x => $"{x.Key}: {x.Value}")),
+                        NewValue = string.Join(" | ", changes.Select(x => $"{x.Key}: {x.Value}")),
+                        EntityType = AuditEntityType.Product,
+                        EntityId = productId.ToString()
+                    });
+                }
+
                 return true;
             }
 
-            // Handle error message if provided
             string errorMessage = response.Data?.ContainsKey("message") == true
                 ? response.Data["message"]
                 : "Unknown error occurred while updating product";
@@ -263,6 +337,17 @@ namespace client.Controllers
             if (response.Data != null && response.Data.TryGetValue("success", out string? success) &&
                 success.Equals("true", StringComparison.OrdinalIgnoreCase))
             {
+                await _auditService.Log(new AuditRecord
+                {
+                    UserId = CurrentUser.Current!.UserId,
+                    Action = AuditActionType.Delete,
+                    Description = "Product deleted successfully",
+                    OldValue = "",
+                    NewValue = "PRODUCT_DELETED",
+                    EntityType = AuditEntityType.Product,
+                    EntityId = productId.ToString()
+                });
+
                 return true;
             }
 

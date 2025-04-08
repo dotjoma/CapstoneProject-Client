@@ -215,6 +215,7 @@
             dgvDiscount.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvDiscount.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDiscount.BackgroundColor = Color.White;
+            dgvDiscount.BorderStyle = BorderStyle.None;
             dgvDiscount.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(121, 85, 72);

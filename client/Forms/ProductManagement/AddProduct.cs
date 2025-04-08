@@ -139,7 +139,7 @@ namespace client.Forms.ProductManagement
                 }
             }
 
-            Image oldImage = pbImage.Image; // Store the old image
+            Image oldImage = pbImage.Image;
             Image? newImage = null;
 
             try

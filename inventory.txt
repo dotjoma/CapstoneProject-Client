@@ -1,0 +1,90 @@
+Add New Item
+Basic Information
+Item Name*
+[Text Input]
+
+SKU/Barcode*
+[Text Input] ▸ [Generate Automatically]
+
+Category*
+[Dropdown: Grocery, Produce, Dairy, etc.]
+
+Subcategory
+[Dropdown]
+
+Local Name (if different)
+[Text Input]
+
+Inventory Tracking (FIFO Requirements)
+Inventory Type*
+◉ Single Batch (no FIFO)
+◉ Batch/Lot Tracking (FIFO Enabled)
+
+Default Shelf Life (Days)
+[Number Input] (required if FIFO enabled)
+
+Storage Location
+[Dropdown: Main Warehouse, Cooler, Front Shelf, etc.]
+
+Purchasing & Supplier
+Primary Supplier*
+[Dropdown with "Add New Supplier" option]
+
+Supplier Item Code
+[Text Input]
+
+Lead Time (Days)
+[Number Input]
+
+Units & Measurements
+Purchase Unit Type*
+[Dropdown: Each, Case, Kg, Liter, etc.]
+
+Sale Unit Type*
+[Dropdown: Each, 100g, 250ml, etc.]
+
+Unit Conversion
+(e.g., "1 Case = 12 Each")
+[Number] [Dropdown] = [Number] [Dropdown]
+
+Pricing & Stock
+Cost Price* (per purchase unit)
+[Currency Input]
+
+Selling Price* (per sale unit)
+[Currency Input]
+
+Initial Stock*
+[Number Input] [Unit Label]
+
+Reorder Threshold
+[Number Input] "Alert when stock ≤ ___"
+
+Expiry Date (if FIFO enabled)
+[Date Picker] (or batch/lot field)
+
+Advanced (FIFO Batch Entry)
+(Appears if "Batch/Lot Tracking" selected)
+Batch/Lot Number
+[Text Input]
+
+Manufacture Date
+[Date Picker]
+
+Expiry Date
+[Date Picker]
+
+Received Quantity
+[Number Input]
+
+Received Cost (override default)
+[Currency Input]
+
+Form Notes:
+Fields marked with * are required.
+
+FIFO Mode dynamically shows/hides batch fields.
+
+Unit Conversion ensures consistency between purchase and sale units.
+
+Supplier Link allows cost history tracking per supplier.

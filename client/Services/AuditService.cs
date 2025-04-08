@@ -1,4 +1,6 @@
-﻿using client.Models.Audit;
+﻿using client.Controllers;
+using client.Helpers;
+using client.Models.Audit;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +11,7 @@ namespace client.Services
 {
     public interface IAuditService
     {
-        void Log(AuditRecord record);
+        Task Log(AuditRecord record);
         IEnumerable<AuditRecord> GetLogs(DateTime from, DateTime to);
         IEnumerable<AuditRecord> GetEntityLogs(AuditEntityType type, string entityId);
     }
@@ -22,6 +24,9 @@ namespace client.Services
         {
             WriteIndented = false
         };
+
+        AuditTrailController _auditTrailController = new AuditTrailController();
+
 
         public AuditService(string? logPath = null)
         {
@@ -57,21 +62,40 @@ namespace client.Services
             }
         }
 
-        public void Log(AuditRecord record)
+        public async Task Log(AuditRecord record)
         {
-            if (record == null) throw new ArgumentNullException(nameof(record));
-
-            lock (_fileLock)
+            if (record == null)
             {
-                try
+                Logger.Write("AUDIT_TRAIL_ERROR", "Audit record cannot be null");
+                throw new ArgumentNullException(nameof(record));
+            }
+
+            try
+            {
+                string json = JsonSerializer.Serialize(record, _jsonOptions);
+                await File.AppendAllTextAsync(_logPath, $"{json}{Environment.NewLine}");
+
+                Logger.Write("AUDIT_TRAIL_DEBUG", $"Local audit log written: {record.Action} for {record.Username}");
+
+                bool success = await _auditTrailController.SaveAudit(record);
+                if (!success)
                 {
-                    string json = JsonSerializer.Serialize(record, _jsonOptions);
-                    File.AppendAllText(_logPath, $"{json}{Environment.NewLine}");
+                    Logger.Write("AUDIT_TRAIL_WARNING", $"Database save failed for {record.Action} (User: {record.Username})");
                 }
-                catch (Exception ex)
-                {
-                    throw new InvalidOperationException($"Failed to write audit log: {ex.Message}", ex);
-                }
+            }
+            catch (JsonException jsonEx)
+            {
+                Logger.Write("AUDIT_TRAIL_ERROR", $"JSON serialization failed: {jsonEx.Message}");
+                throw;
+            }
+            catch (IOException ioEx)
+            {
+                Logger.Write("AUDIT_TRAIL_CRITICAL", $"File write failed: {ioEx.Message}");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Logger.Write("AUDIT_TRAIL_CRITICAL", $"Unexpected error: {ex.Message}");
             }
         }
 

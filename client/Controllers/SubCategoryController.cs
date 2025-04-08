@@ -1,7 +1,9 @@
 ﻿using client.Helpers;
 using client.Models;
+using client.Models.Audit;
 using client.Network;
 using client.Services;
+using client.Services.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +17,7 @@ namespace client.Controllers
 {
     public class SubCategoryController
     {
+        AuditService _auditService = new AuditService();
         public async Task<bool> Create(string name, int categoryId)
         {
             var response = await Client.Instance.SendRequestAsync(new Packet
@@ -40,6 +43,17 @@ namespace client.Controllers
                 if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                 {
                     Logger.Write("CREATE SUBCATEGORY", $"Sub-category '{name}' created successfully");
+
+                    await _auditService.Log(new AuditRecord
+                    {
+                        UserId = CurrentUser.Current!.UserId,
+                        Action = AuditActionType.Create,
+                        Description = "Subcategory created successfully",
+                        OldValue = "No subcategory existed",
+                        NewValue = $"Name: {name}",
+                        EntityType = AuditEntityType.Subcategory,
+                        EntityId = ""
+                    });
 
                     return true;
                 }

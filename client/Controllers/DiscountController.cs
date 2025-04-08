@@ -13,11 +13,14 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Xml.Linq;
+using client.Models.Audit;
+using client.Services.Auth;
 
 namespace client.Controllers
 {
     public class DiscountController
     {
+        AuditService _auditService = new AuditService();
         public async Task<bool> Create(string name, string type, decimal value, int vatExempt, int status, List<int> categoryIds)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -67,6 +70,18 @@ namespace client.Controllers
                 if (response.Data?.ContainsKey("success") == true && response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                 {
                     Logger.Write("CREATE DISCOUNT", $"Discount '{name}' created successfully");
+
+                    await _auditService.Log(new AuditRecord
+                    {
+                        UserId = CurrentUser.Current!.UserId,
+                        Action = AuditActionType.Create,
+                        Description = "Discount created successfully",
+                        OldValue = "No discount existed",
+                        NewValue = $"Name: {name}, Type: {type}, Value: {value}",
+                        EntityType = AuditEntityType.Discount,
+                        EntityId = ""
+                    });
+
                     return true;
                 }
                 else

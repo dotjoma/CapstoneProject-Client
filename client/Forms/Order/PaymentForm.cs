@@ -22,10 +22,11 @@ namespace client.Forms.Order
     {
         private readonly TransactionController _transactionController = new TransactionController();
 
-        private decimal _totalAmount = 0.00m;
-        private decimal _amountPaid = 0.00m;
-        private decimal _totalAmountPaid = 0.00m;
-        private decimal _totalChange = 0.00m;
+        private decimal _totalAmount = 0;
+        private decimal _amountPaid = 0;
+        private decimal _totalAmountPaid = 0;
+        private decimal _totalDiscount = 0;
+        private decimal _totalChange = 0;
         private string _referenceNumber = string.Empty;
 
         // Transaction Details.
@@ -48,7 +49,7 @@ namespace client.Forms.Order
         // Event
         public static event Action? OnSalesReportUpdated;
 
-        public PaymentForm(decimal _totalAmount, string _orderType)
+        public PaymentForm(decimal totalAmount, string orderType, decimal discount)
         {
             InitializeComponent();
 
@@ -75,8 +76,9 @@ namespace client.Forms.Order
             btnApply.Click += Numpad_Click;
             btnRemove.Click += Numpad_Click;
 
-            this._totalAmount = _totalAmount;
-            this._orderType = _orderType;
+            this._totalAmount = totalAmount;
+            this._orderType = orderType;
+            this._totalDiscount = discount;
         }
         private void PaymentForm_Load(object sender, EventArgs e)
         {
@@ -517,6 +519,8 @@ namespace client.Forms.Order
             {
                 dgvMop.Rows.Add(_paymentMethod, _amountPaid, _referenceNumber);
                 ProcessPayment();
+                txtAmountPaid.Clear();
+                txtAmountSent.Clear();
             }
         }
 
@@ -751,7 +755,7 @@ namespace client.Forms.Order
                 return false;
             }
 
-            if (_amountPaid <= 0)
+            if (_totalAmountPaid <= 0)
             {
                 errorMessage = "Invalid payment amount";
                 if (selectedPayment == "Cash")
@@ -807,6 +811,8 @@ namespace client.Forms.Order
                 var cartItems = CurrentCart.Items;
                 string notes = string.Empty;
                 string orderType = _orderType.Trim();
+                decimal discount = _totalDiscount;
+                decimal totalDue = _totalAmountPaid;
 
                 var transaction = new TransactionProcessing()
                 {
@@ -816,7 +822,7 @@ namespace client.Forms.Order
                     paymentMethod = _paymentMethod
                 };
 
-                var order = ProcessOrderHelper.CreateOrderProcessingList(cartItems, transNo, cashierId, notes, orderType);
+                var order = ProcessOrderHelper.CreateOrderProcessingList(cartItems, transNo, cashierId, notes, orderType, discount, totalDue);
 
                 var payment = new PaymentProcessing()
                 {
@@ -861,6 +867,11 @@ namespace client.Forms.Order
             {
                 HideLoading();
             }
+        }
+
+        private void btnCancelPayment_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

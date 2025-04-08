@@ -402,7 +402,6 @@
             // 
             // label2
             // 
-            label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.Black;
             label2.Location = new Point(4, 6);
@@ -424,14 +423,13 @@
             // 
             // label12
             // 
-            label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label12.ForeColor = Color.Black;
             label12.Location = new Point(4, 60);
             label12.Name = "label12";
-            label12.Size = new Size(121, 23);
+            label12.Size = new Size(201, 23);
             label12.TabIndex = 19;
-            label12.Text = "ORDER TYPE :";
+            label12.Text = "ORDER TYPE                 :";
             // 
             // lblOrderNo
             // 
@@ -457,14 +455,13 @@
             // 
             // label3
             // 
-            label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Black;
             label3.Location = new Point(4, 35);
             label3.Name = "label3";
-            label3.Size = new Size(108, 23);
+            label3.Size = new Size(207, 23);
             label3.TabIndex = 16;
-            label3.Text = "ORDER NO :";
+            label3.Text = "ORDER NO.                   :";
             // 
             // panel4
             // 
@@ -744,15 +741,13 @@
             btnPendingOrders.FlatAppearance.BorderColor = Color.Gray;
             btnPendingOrders.FlatAppearance.BorderSize = 2;
             btnPendingOrders.FlatStyle = FlatStyle.Flat;
-            btnPendingOrders.Image = Properties.Resources.pending_24;
             btnPendingOrders.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPendingOrders.Location = new Point(928, 8);
+            btnPendingOrders.Location = new Point(684, 8);
             btnPendingOrders.Name = "btnPendingOrders";
-            btnPendingOrders.Size = new Size(236, 50);
+            btnPendingOrders.Size = new Size(181, 50);
             btnPendingOrders.TabIndex = 15;
             btnPendingOrders.TabStop = false;
-            btnPendingOrders.Text = "Pending Orders - [F6]";
-            btnPendingOrders.TextAlign = ContentAlignment.MiddleRight;
+            btnPendingOrders.Text = "Pending Orders";
             btnPendingOrders.UseVisualStyleBackColor = false;
             // 
             // btnHoldOrder
@@ -761,15 +756,13 @@
             btnHoldOrder.FlatAppearance.BorderColor = Color.Gray;
             btnHoldOrder.FlatAppearance.BorderSize = 2;
             btnHoldOrder.FlatStyle = FlatStyle.Flat;
-            btnHoldOrder.Image = Properties.Resources.hold_24;
             btnHoldOrder.ImageAlign = ContentAlignment.MiddleLeft;
-            btnHoldOrder.Location = new Point(724, 8);
+            btnHoldOrder.Location = new Point(540, 8);
             btnHoldOrder.Name = "btnHoldOrder";
-            btnHoldOrder.Size = new Size(198, 50);
+            btnHoldOrder.Size = new Size(138, 50);
             btnHoldOrder.TabIndex = 14;
             btnHoldOrder.TabStop = false;
-            btnHoldOrder.Text = "Hold Order - [F5]";
-            btnHoldOrder.TextAlign = ContentAlignment.MiddleRight;
+            btnHoldOrder.Text = "Hold Order";
             btnHoldOrder.UseVisualStyleBackColor = false;
             // 
             // panel8
@@ -811,15 +804,13 @@
             btnCancelTransaction.FlatAppearance.BorderColor = Color.Gray;
             btnCancelTransaction.FlatAppearance.BorderSize = 2;
             btnCancelTransaction.FlatStyle = FlatStyle.Flat;
-            btnCancelTransaction.Image = Properties.Resources.cancel_24;
             btnCancelTransaction.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancelTransaction.Location = new Point(452, 6);
+            btnCancelTransaction.Location = new Point(348, 6);
             btnCancelTransaction.Name = "btnCancelTransaction";
-            btnCancelTransaction.Size = new Size(266, 54);
+            btnCancelTransaction.Size = new Size(186, 54);
             btnCancelTransaction.TabIndex = 4;
             btnCancelTransaction.TabStop = false;
-            btnCancelTransaction.Text = "Cancel Transaction - [F4]";
-            btnCancelTransaction.TextAlign = ContentAlignment.MiddleRight;
+            btnCancelTransaction.Text = "Cancel Transaction";
             btnCancelTransaction.UseVisualStyleBackColor = false;
             btnCancelTransaction.Click += btnCancelTransaction_Click;
             // 
@@ -830,15 +821,13 @@
             btnApplyDiscount.FlatAppearance.BorderColor = Color.Gray;
             btnApplyDiscount.FlatAppearance.BorderSize = 2;
             btnApplyDiscount.FlatStyle = FlatStyle.Flat;
-            btnApplyDiscount.Image = Properties.Resources.icons8_discount_24;
             btnApplyDiscount.ImageAlign = ContentAlignment.MiddleLeft;
-            btnApplyDiscount.Location = new Point(210, 6);
+            btnApplyDiscount.Location = new Point(163, 6);
             btnApplyDiscount.Name = "btnApplyDiscount";
-            btnApplyDiscount.Size = new Size(236, 54);
+            btnApplyDiscount.Size = new Size(179, 54);
             btnApplyDiscount.TabIndex = 3;
             btnApplyDiscount.TabStop = false;
-            btnApplyDiscount.Text = "Apply Discount - [F3]";
-            btnApplyDiscount.TextAlign = ContentAlignment.MiddleRight;
+            btnApplyDiscount.Text = "Apply Discount";
             btnApplyDiscount.UseVisualStyleBackColor = false;
             btnApplyDiscount.Click += btnApplyDiscount_Click;
             // 
@@ -849,15 +838,13 @@
             btnNewOrder.FlatAppearance.BorderColor = Color.Gray;
             btnNewOrder.FlatAppearance.BorderSize = 2;
             btnNewOrder.FlatStyle = FlatStyle.Flat;
-            btnNewOrder.Image = Properties.Resources.new_order_24;
             btnNewOrder.ImageAlign = ContentAlignment.MiddleLeft;
             btnNewOrder.Location = new Point(6, 6);
             btnNewOrder.Name = "btnNewOrder";
-            btnNewOrder.Size = new Size(198, 54);
+            btnNewOrder.Size = new Size(151, 54);
             btnNewOrder.TabIndex = 2;
             btnNewOrder.TabStop = false;
-            btnNewOrder.Text = "New Order - [F1]";
-            btnNewOrder.TextAlign = ContentAlignment.MiddleRight;
+            btnNewOrder.Text = "New Order";
             btnNewOrder.UseVisualStyleBackColor = false;
             btnNewOrder.Click += btnNewOrder_Click;
             // 

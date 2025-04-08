@@ -113,11 +113,11 @@ namespace client.Controllers
                     return false;
                 }
 
-                if (!ValidateBusinessRules(trans, order, payment, out string businessError))
-                {
-                    Logger.Write("VALIDATION", businessError);
-                    return false;
-                }
+                //if (!ValidateBusinessRules(trans, order, payment, out string businessError))
+                //{
+                //    Logger.Write("VALIDATION", businessError);
+                //    return false;
+                //}
 
                 var transactionData = new Dictionary<string, string>
                 {
@@ -357,6 +357,8 @@ namespace client.Controllers
             return true;
         }
 
+
+        // FIX THE BUG HERE!!!
         private bool ValidateBusinessRules(TransactionProcessing trans, List<OrderProcessing> orders, PaymentProcessing payment, out string errorMessage)
         {
             errorMessage = string.Empty;

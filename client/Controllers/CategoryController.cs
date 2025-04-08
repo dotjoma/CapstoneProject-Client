@@ -1,7 +1,9 @@
 ﻿using client.Forms.POS.POSUserControl;
+using client.Forms.POS.POSUserControl.ProductFoodCategory;
 using client.Forms.UserManagement;
 using client.Helpers;
 using client.Models;
+using client.Models.Audit;
 using client.Network;
 using client.Services;
 using client.Services.Auth;
@@ -20,6 +22,7 @@ namespace client.Controllers
 {
     public class CategoryController
     {
+        AuditService _auditService = new AuditService();
         public async Task<bool> Create(string name)
         {
             var response = await Client.Instance.SendRequestAsync(new Packet
@@ -44,6 +47,17 @@ namespace client.Controllers
                 if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                 {
                     Logger.Write("CREATE CATEGORY", $"Category '{name}' created successfully");
+
+                    await _auditService.Log(new AuditRecord
+                    {
+                        UserId = CurrentUser.Current!.UserId,
+                        Action = AuditActionType.Create,
+                        Description = "Category created successfully",
+                        OldValue = "No category existed",
+                        NewValue = $"New category: {name}",
+                        EntityType = AuditEntityType.Category,
+                        EntityId = ""
+                    });
 
                     return true;
                 }

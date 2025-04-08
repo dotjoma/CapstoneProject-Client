@@ -65,30 +65,30 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label7.Location = new Point(29, 218);
             label7.Name = "label7";
-            label7.Size = new Size(146, 28);
+            label7.Size = new Size(142, 28);
             label7.TabIndex = 24;
             label7.Text = "Sub-Category:";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label6.Location = new Point(29, 163);
             label6.Name = "label6";
-            label6.Size = new Size(103, 28);
+            label6.Size = new Size(99, 28);
             label6.TabIndex = 23;
             label6.Text = "Category:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label5.Location = new Point(29, 278);
             label5.Name = "label5";
-            label5.Size = new Size(57, 28);
+            label5.Size = new Size(55, 28);
             label5.TabIndex = 22;
             label5.Text = "Unit:";
             // 
@@ -145,20 +145,20 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label4.Location = new Point(29, 331);
             label4.Name = "label4";
-            label4.Size = new Size(64, 28);
+            label4.Size = new Size(61, 28);
             label4.TabIndex = 17;
             label4.Text = "Price:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(29, 110);
             label2.Name = "label2";
-            label2.Size = new Size(133, 28);
+            label2.Size = new Size(130, 28);
             label2.TabIndex = 16;
             label2.Text = "Menu Name:";
             // 
@@ -232,7 +232,7 @@
             // btnUploadImage
             // 
             btnUploadImage.FlatStyle = FlatStyle.Popup;
-            btnUploadImage.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnUploadImage.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnUploadImage.Location = new Point(498, 325);
             btnUploadImage.Margin = new Padding(3, 4, 3, 4);
             btnUploadImage.Name = "btnUploadImage";

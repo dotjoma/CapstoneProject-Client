@@ -16,5 +16,13 @@ namespace client.Forms.InventoryManagement
         {
             InitializeComponent();
         }
+
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            using (var addnewfrm = new AddInventoryItem())
+            {
+                addnewfrm.ShowDialog();
+            }
+        }
     }
 }

@@ -9,6 +9,10 @@ namespace client.Models.Audit
     public enum AuditEntityType
     {
         Product,
+        Category,
+        Subcategory,
+        Unit,
+        Discount,
         Inventory,
         Customer,
         Order,
@@ -21,6 +25,8 @@ namespace client.Models.Audit
         Invoice,
         Subscription,
         Plan,
-        Notification
+        Notification,
+        Backup,
+        Restore,
     }
 }

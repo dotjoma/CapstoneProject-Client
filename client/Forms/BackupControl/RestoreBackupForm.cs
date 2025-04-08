@@ -1,4 +1,7 @@
 ﻿using client.Controllers;
+using client.Models.Audit;
+using client.Services;
+using client.Services.Auth;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -208,6 +211,7 @@ namespace client.Forms.BackupControl
             this.Dispose();
         }
 
+        AuditService _auditService = new AuditService();
         private async void btnRestore_Click(object sender, EventArgs e)
         {
             var authform = new AuthForm(null!, this);
@@ -227,6 +231,16 @@ namespace client.Forms.BackupControl
             if (success)
             {
                 //MessageBox.Show("Database restored successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                await _auditService.Log(new AuditRecord
+                {
+                    UserId = CurrentUser.Current!.UserId,
+                    Action = AuditActionType.RestoreBackup,
+                    Description = "Database restoration completed successfully",
+                    OldValue = $"",
+                    NewValue = $"Restored from backup: {_selectedBackupFile}",
+                    EntityType = AuditEntityType.Restore,
+                    EntityId = ""
+                });
             }
 
             this.Dispose();

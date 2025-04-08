@@ -300,3 +300,4 @@ C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\obj\Debug\net8.0-windows
 C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\obj\Debug\net8.0-windows7.0\client.Forms.BackupControl.SelectedDataForm.resources
 C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\obj\Debug\net8.0-windows7.0\client.Forms.BackupControl.RestoreBackupForm.resources
 C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\obj\Debug\net8.0-windows7.0\client.Forms.BackupControl.AuthForm.resources
+C:\Users\raymond balondo\Desktop\CAPSTONE\client\client\obj\Debug\net8.0-windows7.0\client.Forms.InventoryManagement.AddInventoryItem.resources

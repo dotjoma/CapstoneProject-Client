@@ -108,9 +108,9 @@ namespace client.Forms
             CloseWindow();
         }
 
-        private void tsLogout_Click(object sender, EventArgs e)
+        private async void tsLogout_Click(object sender, EventArgs e)
         {
-            _authController.Logout();
+            await _authController.Logout();
         }
 
         private void tsSettings_Click(object sender, EventArgs e)
