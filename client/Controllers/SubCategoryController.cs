@@ -233,5 +233,125 @@ namespace client.Controllers
                 return new List<SubCategory>();
             }
         }
+
+        public async Task<bool> CreateInventorySubCategory(string name, int categoryId)
+        {
+            var response = await Client.Instance.SendRequestAsync(new Packet
+            {
+                Type = PacketType.CreateInventorySubcategory,
+                Data = new Dictionary<string, string>
+                {
+                    { "name", name },
+                    { "categoryId", categoryId.ToString() }
+                }
+            });
+
+            if (response == null)
+            {
+                MessageBox.Show("Failed to create sub-category. Server not responding.",
+                    "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (response.Data != null && response.Data.ContainsKey("success"))
+            {
+                if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
+                {
+                    Logger.Write("CREATE INVENTORY SUBCATEGORY", $"Sub-category '{name}' created successfully");
+
+                    await _auditService.Log(new AuditRecord
+                    {
+                        UserId = CurrentUser.Current!.UserId,
+                        Action = AuditActionType.Create,
+                        Description = "Sub-category created successfully",
+                        OldValue = "No subcategory existed",
+                        NewValue = $"Name: {name}, CategoryId: {categoryId}",
+                        EntityType = AuditEntityType.InventorySubCategory,
+                        EntityId = ""
+                    });
+
+                    return true;
+                }
+                else
+                {
+                    string errorMessage = response.Data.ContainsKey("message")
+                        ? response.Data["message"]
+                        : "Unknown error occurred while creating sub-category";
+
+                    Logger.Write("CREATE INVENTORY SUBCATEGORY", $"Server error: {errorMessage}");
+                    MessageBox.Show($"Failed to create sub-category: {errorMessage}", "Sub-category Creation Failed",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return false;
+                }
+            }
+            else
+            {
+                Logger.Write("CREATE INVENTORY SUBCATEGORY", "Invalid server response format");
+                MessageBox.Show("Server returned an invalid response format while creating sub-category.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public async Task<List<InventorySubCategory>> GetAllInventorySubcategory()
+        {
+            var response = await Client.Instance.SendRequestAsync(new Packet
+            {
+                Type = PacketType.GetAllInventorySubcategory,
+                Data = new Dictionary<string, string>()
+            });
+
+            if (response == null)
+            {
+                MessageBox.Show("No response received from server", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return new List<InventorySubCategory>();
+            }
+
+            if (response.Data != null && response.Data.ContainsKey("success"))
+            {
+                if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
+                {
+                    string subcategoriesJson = response.Data["subcategories"];
+
+                    List<InventorySubCategory>? subcategories = JsonSerializer.Deserialize<List<InventorySubCategory>>(
+                        subcategoriesJson,
+                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+                    );
+
+                    CurrentInventorySubCategory.SetInventorySubCategories(subcategories ?? new List<InventorySubCategory>());
+
+                    return subcategories ?? new List<InventorySubCategory>();
+                }
+                else
+                {
+                    string errorMessage = "Failed to retrieve subcategories: ";
+
+                    if (response.Data.ContainsKey("message"))
+                    {
+                        errorMessage += response.Data["message"];
+                    }
+                    else
+                    {
+                        errorMessage += "Unknown error occurred";
+                    }
+
+                    MessageBox.Show(errorMessage, "Subcategory Retrieve Failed",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return new List<InventorySubCategory>();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid response format from server", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return new List<InventorySubCategory>();
+            }
+        }
     }
 }

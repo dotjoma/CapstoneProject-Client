@@ -133,6 +133,7 @@
             cboCategory.Name = "cboCategory";
             cboCategory.Size = new Size(225, 31);
             cboCategory.TabIndex = 2;
+            cboCategory.SelectedIndexChanged += cboCategory_SelectedIndexChanged;
             // 
             // label5
             // 
@@ -327,6 +328,7 @@
             cboUnitType.Name = "cboUnitType";
             cboUnitType.Size = new Size(222, 31);
             cboUnitType.TabIndex = 8;
+            cboUnitType.SelectedIndexChanged += cboUnitType_SelectedIndexChanged;
             // 
             // cboUnitMeasure
             // 
@@ -338,6 +340,7 @@
             cboUnitMeasure.Name = "cboUnitMeasure";
             cboUnitMeasure.Size = new Size(292, 31);
             cboUnitMeasure.TabIndex = 9;
+            cboUnitMeasure.SelectedIndexChanged += cboUnitMeasure_SelectedIndexChanged;
             // 
             // label18
             // 
@@ -478,6 +481,7 @@
             cboSubcategory.Name = "cboSubcategory";
             cboSubcategory.Size = new Size(295, 31);
             cboSubcategory.TabIndex = 3;
+            cboSubcategory.SelectedIndexChanged += cboSubcategory_SelectedIndexChanged;
             // 
             // label13
             // 

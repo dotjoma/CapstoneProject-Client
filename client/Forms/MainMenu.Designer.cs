@@ -41,7 +41,6 @@
             manageReservationToolStripMenuItem = new ToolStripMenuItem();
             reservationCalendarToolStripMenuItem = new ToolStripMenuItem();
             administrationToolStripMenuItem = new ToolStripMenuItem();
-            userManagementToolStripMenuItem = new ToolStripMenuItem();
             categoryManagementToolStripMenuItem = new ToolStripMenuItem();
             discountManagementToolStripMenuItem = new ToolStripMenuItem();
             systemSettingsToolStripMenuItem = new ToolStripMenuItem();
@@ -104,21 +103,21 @@
             // tsSettings
             // 
             tsSettings.Name = "tsSettings";
-            tsSettings.Size = new Size(224, 26);
+            tsSettings.Size = new Size(167, 26);
             tsSettings.Text = "Settings";
             tsSettings.Click += tsSettings_Click;
             // 
             // tsLogout
             // 
             tsLogout.Name = "tsLogout";
-            tsLogout.Size = new Size(224, 26);
+            tsLogout.Size = new Size(167, 26);
             tsLogout.Text = "Logout";
             tsLogout.Click += tsLogout_Click;
             // 
             // tsExit
             // 
             tsExit.Name = "tsExit";
-            tsExit.Size = new Size(224, 26);
+            tsExit.Size = new Size(167, 26);
             tsExit.Text = "Exit";
             tsExit.Click += tsExit_Click;
             // 
@@ -156,17 +155,11 @@
             // 
             // administrationToolStripMenuItem
             // 
-            administrationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { userManagementToolStripMenuItem, categoryManagementToolStripMenuItem, discountManagementToolStripMenuItem, systemSettingsToolStripMenuItem, msBackupControlPanel });
+            administrationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { categoryManagementToolStripMenuItem, discountManagementToolStripMenuItem, systemSettingsToolStripMenuItem, msBackupControlPanel });
             administrationToolStripMenuItem.ForeColor = Color.Black;
             administrationToolStripMenuItem.Name = "administrationToolStripMenuItem";
             administrationToolStripMenuItem.Size = new Size(155, 26);
             administrationToolStripMenuItem.Text = "Administration";
-            // 
-            // userManagementToolStripMenuItem
-            // 
-            userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            userManagementToolStripMenuItem.Size = new Size(286, 26);
-            userManagementToolStripMenuItem.Text = "Manage Users";
             // 
             // categoryManagementToolStripMenuItem
             // 
@@ -490,7 +483,6 @@
         private ToolStripMenuItem manageReservationToolStripMenuItem;
         private ToolStripMenuItem reservationCalendarToolStripMenuItem;
         private ToolStripMenuItem administrationToolStripMenuItem;
-        private ToolStripMenuItem userManagementToolStripMenuItem;
         private ToolStripMenuItem systemSettingsToolStripMenuItem;
         private ToolStripMenuItem storeConfigurationToolStripMenuItem;
         private ToolStripMenuItem taxSettingsToolStripMenuItem;

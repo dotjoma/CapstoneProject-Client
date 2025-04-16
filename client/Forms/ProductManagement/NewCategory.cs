@@ -17,9 +17,9 @@ namespace client.Forms.POS.POSUserControl.ProductFoodCategory
 {
     public partial class NewCategory : Form
     {
-        private readonly UnitController _unitController;
-        private readonly CategoryController _categoryController;
-        private readonly SubCategoryController _subCategoryController;
+        private readonly UnitController _unitController = new UnitController();
+        private readonly CategoryController _categoryController = new CategoryController();
+        private readonly SubCategoryController _subCategoryController = new SubCategoryController();
 
         private int? selectedCategoryId = CurrentCategory.Current?.Id;
         private string title = string.Empty;
@@ -34,9 +34,6 @@ namespace client.Forms.POS.POSUserControl.ProductFoodCategory
             this.title = title;
             this.name = name;
             this.label = label;
-            _unitController = new UnitController();
-            _categoryController = new CategoryController();
-            _subCategoryController = new SubCategoryController();
 
             _parentForm = parent;
         }

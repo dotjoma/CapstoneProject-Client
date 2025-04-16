@@ -243,17 +243,26 @@ namespace client.Forms
         {
             try
             {
-                // Start all requests in parallel
                 var productsTask = _productController.GetAllProducts();
                 var unitsTask = _unitController.GetAllUnits();
                 var categoriesTask = _categoryController.GetAllCategories();
+                var inventoryCategoriesTask = _categoryController.GetAllInventoryCategories();
                 var subCategoriesTask = _subCategoryController.GetAllSubcategory();
                 var discountsTask = _discountController.GetAllDiscounts();
+                var unitTypesTask = _unitController.GetAllInventoryUnitTypes();
+                var unitMeasuresTask = _unitController.GetAllInventoryUnitMeasures();
 
-                // Wait for all to complete
-                await Task.WhenAll(productsTask, unitsTask, categoriesTask, subCategoriesTask, discountsTask);
+                await Task.WhenAll(
+                    productsTask, 
+                    unitsTask, 
+                    categoriesTask, 
+                    inventoryCategoriesTask, 
+                    subCategoriesTask, 
+                    discountsTask, 
+                    unitTypesTask,
+                    unitMeasuresTask
+                    );
 
-                // Process results
                 bool allSuccess = true;
 
                 // Products
@@ -289,6 +298,17 @@ namespace client.Forms
                     Logger.Write("MAIN MENU", $"Successfully loaded {CurrentCategory.AllCategories.Count} categories");
                 }
 
+                // Inventory Categories
+                if (CurrentInventoryCategory.AllInventoryCategories == null)
+                {
+                    Logger.Write("MAIN MENU", "Failed to load inventory categories");
+                    allSuccess = false;
+                }
+                else
+                {
+                    Logger.Write("MAIN MENU", $"Successfully loaded {CurrentInventoryCategory.AllInventoryCategories.Count} inventory categories");
+                }
+
                 // Subcategories
                 if (CurrentSubCategory.AllSubCategories == null)
                 {
@@ -309,6 +329,28 @@ namespace client.Forms
                 else
                 {
                     Logger.Write("MAIN MENU", $"Successfully loaded {CurrentDiscount.AllDiscount.Count} discounts");
+                }
+
+                // Inventory unit types
+                if (CurrentInventoryUnitType.AllUnitTypes == null)
+                {
+                    Logger.Write("MAIN MENU", "Failed to load inventory unit types");
+                    allSuccess = false;
+                }
+                else
+                {
+                    Logger.Write("MAIN MENU", $"Successfully loaded {CurrentInventoryUnitType.AllUnitTypes.Count} inventory unit types");
+                }
+
+                // Inventory unit measures
+                if (CurrentInventoryUnitMeasure.AllUnitMeasures == null)
+                {
+                    Logger.Write("MAIN MENU", "Failed to load inventory unit measures");
+                    allSuccess = false;
+                }
+                else
+                {
+                    Logger.Write("MAIN MENU", $"Successfully loaded {CurrentInventoryUnitMeasure.AllUnitMeasures.Count} inventory unit measures");
                 }
 
                 return allSuccess;

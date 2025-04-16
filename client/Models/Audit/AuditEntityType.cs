@@ -10,8 +10,12 @@ namespace client.Models.Audit
     {
         Product,
         Category,
+        InventoryCategory,
+        InventorySubCategory,
         Subcategory,
         Unit,
+        UnitType,
+        UnitMeasure,
         Discount,
         Inventory,
         Customer,

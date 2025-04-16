@@ -1027,9 +1027,9 @@ namespace client.Forms.Order
             CurrentCart.ClearCart();
         }
 
-        private async void btnLogout_Click(object sender, EventArgs e)
+        private void btnLogout_Click(object sender, EventArgs e)
         {
-            await _authController.Logout();
+            _authController.Logout();
             CurrentCart.ClearCart();
         }
 

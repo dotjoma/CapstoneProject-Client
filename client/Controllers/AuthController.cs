@@ -24,7 +24,7 @@ namespace client.Controllers
             Navigation.Instance.RedirectTo<Login>();
         }
 
-        public async Task Logout()
+        public void Logout()
         {
             try
             {
@@ -40,17 +40,18 @@ namespace client.Controllers
 
                 CurrentUser.Clear();
 
-                await _auditService.Log(new AuditRecord
-                {
-                    UserId = Convert.ToInt32(userId),
-                    Action = AuditActionType.Logout,
-                    Description = "User session terminated",
-                    OldValue = "Active session",
-                    NewValue = "Session ended",
-                    IPAddress = GetCurrentIP(),
-                    EntityType = AuditEntityType.User,
-                    EntityId = userId?.ToString()
-                });
+                // Nasa Authentication Logs dapat to!
+                //await _auditService.Log(new AuditRecord
+                //{
+                //    UserId = Convert.ToInt32(userId),
+                //    Action = AuditActionType.Logout,
+                //    Description = "User session terminated",
+                //    OldValue = "Active session",
+                //    NewValue = "Session ended",
+                //    IPAddress = GetCurrentIP(),
+                //    EntityType = AuditEntityType.User,
+                //    EntityId = userId?.ToString()
+                //});
 
                 Navigation.Instance.RedirectTo<Login>();
             }
@@ -92,17 +93,18 @@ namespace client.Controllers
                 {
                     if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                     {
-                        await _auditService.Log(new AuditRecord
-                        {
-                            UserId = CurrentUser.Current!.UserId,
-                            Action = AuditActionType.Login,
-                            Description = "Successful user login",
-                            OldValue = "Session inactive",
-                            NewValue = "Session established",
-                            IPAddress = GetCurrentIP(),
-                            EntityType = AuditEntityType.User,
-                            EntityId = CurrentUser.Current?.UserId.ToString()
-                        });
+                        // Nasa authentication logs dapat to!
+                        //await _auditService.Log(new AuditRecord
+                        //{
+                        //    UserId = CurrentUser.Current!.UserId,
+                        //    Action = AuditActionType.Login,
+                        //    Description = "Successful user login",
+                        //    OldValue = "Session inactive",
+                        //    NewValue = "Session established",
+                        //    IPAddress = GetCurrentIP(),
+                        //    EntityType = AuditEntityType.User,
+                        //    EntityId = CurrentUser.Current?.UserId.ToString()
+                        //});
 
                         return true;
                     }

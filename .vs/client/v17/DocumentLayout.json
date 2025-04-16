@@ -3,20 +3,188 @@
   "WorkspaceRootPath": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\inventorymanagement\\addinventoryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\controllers\\suppliercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\controllers\\suppliercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\network\\packettype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\network\\packettype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\controllers\\unitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\controllers\\unitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\models\\supplier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\models\\supplier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\inventorymanagement\\newsupplier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\inventorymanagement\\newsupplier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\inventorymanagement\\newsupplier.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\inventorymanagement\\newsupplier.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\inventorymanagement\\newsupplier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\inventorymanagement\\newsupplier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\inventorymanagement\\newunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\inventorymanagement\\newunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\productmanagement\\producthome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\productmanagement\\producthome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\productmanagement\\newunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\productmanagement\\newunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\productmanagement\\newcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\productmanagement\\newcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\productmanagement\\addproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\productmanagement\\addproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\inventorymanagement\\addinventoryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\inventorymanagement\\addinventoryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\inventorymanagement\\addinventoryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\inventorymanagement\\addinventoryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\inventorymanagement\\newunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\inventorymanagement\\newunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\services\\currentinventoryunitmeasure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\services\\currentinventoryunitmeasure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\services\\currentinventoryunittype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\services\\currentinventoryunittype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\models\\inventoryunitmeasure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\models\\inventoryunitmeasure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\models\\inventoryunittype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\models\\inventoryunittype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\models\\audit\\auditentitytype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\models\\audit\\auditentitytype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\productmanagement\\newcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\productmanagement\\newcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\inventorymanagement\\newinventorycategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\inventorymanagement\\newinventorycategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\inventorymanagement\\newinventorycategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\inventorymanagement\\newinventorycategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\services\\currentcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\services\\currentcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\models\\inventorysubcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\models\\inventorysubcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\services\\currentinventorysubcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\services\\currentinventorysubcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\controllers\\subcategorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\controllers\\subcategorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\productmanagement\\addproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\productmanagement\\addproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\inventorymanagement\\addinventoryitem.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\inventorymanagement\\addinventoryitem.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\backupcontrol\\backuppanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\backupcontrol\\backuppanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\controllers\\inventorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\controllers\\inventorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\inventorymanagement\\addinventoryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\inventorymanagement\\addinventoryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\services\\currentinventorycategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\services\\currentinventorycategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\order\\orderentryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\order\\orderentryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\services\\currentsubcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\services\\currentsubcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\models\\subcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\models\\subcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\order\\orderentryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\order\\orderentryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\inventorymanagement\\inventoryhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\inventorymanagement\\inventoryhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\order\\applydiscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\order\\applydiscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\productmanagement\\addproduct.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\productmanagement\\addproduct.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\mainmenu.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\mainmenu.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\backupcontrol\\backuppanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\backupcontrol\\backuppanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\backupcontrol\\authform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -27,28 +195,8 @@
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\order\\applydiscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\order\\applydiscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\order\\applydiscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\productmanagement\\addproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\productmanagement\\addproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\models\\inventoryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\models\\inventoryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\controllers\\inventorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\controllers\\inventorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\inventorymanagement\\inventoryhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\inventorymanagement\\inventoryhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\inventorymanagement\\inventoryhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -67,22 +215,6 @@
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\audittrail\\audithome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\order\\orderentryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\order\\orderentryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\productmanagement\\producthome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\productmanagement\\producthome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\productmanagement\\newunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\productmanagement\\newunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\productmanagement\\newcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\productmanagement\\newcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\order\\paymentform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\order\\paymentform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
@@ -93,14 +225,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\order\\discountform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\order\\discountform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\usermanagement\\userhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -151,36 +275,16 @@
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\productmanagement\\addproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\productmanagement\\addproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\controllers\\audittrailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\controllers\\audittrailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\audittrail\\audithome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\audittrail\\audithome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\controllers\\unitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\controllers\\unitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\models\\audit\\auditentitytype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\models\\audit\\auditentitytype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\controllers\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\controllers\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\controllers\\subcategorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\controllers\\subcategorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\controllers\\salesreportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -189,10 +293,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\controllers\\discountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\controllers\\discountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\models\\audit\\auditrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -225,22 +325,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\backupcontrol\\authform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\backupcontrol\\authform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\order\\orderentryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\order\\orderentryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\network\\packettype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\network\\packettype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\forms\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\salesreport\\salesreporthome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -281,10 +365,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\services\\currentcart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\services\\currentcart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\services\\currentcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\services\\currentcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\services\\currentunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -331,10 +411,6 @@
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\backupcontrol\\authform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\productmanagement\\newcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\productmanagement\\newcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\productmanagement\\newunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\productmanagement\\newunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -345,10 +421,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\usermanagement\\userhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\usermanagement\\userhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\mainmenu.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|solutionrelative:client\\forms\\mainmenu.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B802E39F-CA1A-45AD-BC01-B5DDDAAC1979}|client\\client.csproj|c:\\users\\raymond balondo\\desktop\\capstone\\client\\client\\forms\\bestselling\\bestsellinghome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -388,6 +460,10 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\forms\\pos\\posusercontrol\\foodcategory\\uc_beverages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\InventoryItem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:client\\Models\\InventoryItem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -397,11 +473,182 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Supplier.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\Supplier.cs",
+              "RelativeDocumentMoniker": "client\\Models\\Supplier.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\Supplier.cs",
+              "RelativeToolTip": "client\\Models\\Supplier.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T10:54:48.661Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "SupplierController.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\SupplierController.cs",
+              "RelativeDocumentMoniker": "client\\Controllers\\SupplierController.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\SupplierController.cs",
+              "RelativeToolTip": "client\\Controllers\\SupplierController.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwFMAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T10:54:22.363Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NewSupplier.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\NewSupplier.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\NewSupplier.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\NewSupplier.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\InventoryManagement\\NewSupplier.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T10:45:05.529Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UnitController.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\UnitController.cs",
+              "RelativeDocumentMoniker": "client\\Controllers\\UnitController.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\UnitController.cs",
+              "RelativeToolTip": "client\\Controllers\\UnitController.cs",
+              "ViewState": "AgIAAHYBAAAAAAAAAAAkwI8BAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T06:26:13.828Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PacketType.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Network\\PacketType.cs",
+              "RelativeDocumentMoniker": "client\\Network\\PacketType.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Network\\PacketType.cs",
+              "RelativeToolTip": "client\\Network\\PacketType.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAGoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T17:37:18.699Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "NewSupplier.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\NewSupplier.Designer.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\NewSupplier.Designer.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\NewSupplier.Designer.cs",
+              "RelativeToolTip": "client\\Forms\\InventoryManagement\\NewSupplier.Designer.cs",
+              "ViewState": "AgIAAP8AAAAAAAAAAAAYwP8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T10:44:50.745Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "NewSupplier.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\NewSupplier.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\NewSupplier.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\NewSupplier.cs",
+              "RelativeToolTip": "client\\Forms\\InventoryManagement\\NewSupplier.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAYwBEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T10:44:38.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "NewUnit.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\NewUnit.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\NewUnit.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\NewUnit.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\InventoryManagement\\NewUnit.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T05:50:38.737Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "NewCategory.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\NewCategory.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\NewCategory.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\NewCategory.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\ProductManagement\\NewCategory.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T12:46:23.786Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "NewUnit.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\NewUnit.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\NewUnit.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\NewUnit.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\ProductManagement\\NewUnit.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T12:46:25.657Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProductHome.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\ProductHome.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\ProductHome.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\ProductHome.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\ProductManagement\\ProductHome.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-06T10:25:23.901Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AddProduct.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\AddProduct.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\AddProduct.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\AddProduct.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\ProductManagement\\AddProduct.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T10:06:46.221Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AddInventoryItem.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
+              "RelativeToolTip": "client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
+              "ViewState": "AgIAAN4BAAAAAAAAAAAQwPEBAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T12:22:51.801Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "AddInventoryItem.cs [Design]",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
               "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
@@ -413,61 +660,430 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AuthForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\AuthForm.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\BackupControl\\AuthForm.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\AuthForm.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\BackupControl\\AuthForm.cs [Design]",
+              "DocumentIndex": 14,
+              "Title": "NewUnit.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\NewUnit.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\NewUnit.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\NewUnit.cs",
+              "RelativeToolTip": "client\\Forms\\InventoryManagement\\NewUnit.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAYwF8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T14:32:52.698Z",
+              "WhenOpened": "2025-04-11T05:51:19.314Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Login.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Login.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\Login.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Login.cs",
+              "RelativeToolTip": "client\\Forms\\Login.cs",
+              "ViewState": "AgIAAPEAAAAAAAAAAAA1wGQBAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T00:56:34.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Login.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Login.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\Login.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Login.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\Login.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T15:40:56.771Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 17,
+              "Title": "CurrentInventoryUnitMeasure.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\CurrentInventoryUnitMeasure.cs",
+              "RelativeDocumentMoniker": "client\\Services\\CurrentInventoryUnitMeasure.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\CurrentInventoryUnitMeasure.cs",
+              "RelativeToolTip": "client\\Services\\CurrentInventoryUnitMeasure.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T08:45:05.016Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "InventoryUnitMeasure.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\InventoryUnitMeasure.cs",
+              "RelativeDocumentMoniker": "client\\Models\\InventoryUnitMeasure.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\InventoryUnitMeasure.cs",
+              "RelativeToolTip": "client\\Models\\InventoryUnitMeasure.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T08:43:21.721Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "InventoryUnitType.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\InventoryUnitType.cs",
+              "RelativeDocumentMoniker": "client\\Models\\InventoryUnitType.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\InventoryUnitType.cs",
+              "RelativeToolTip": "client\\Models\\InventoryUnitType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T05:11:26.094Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "CurrentInventoryUnitType.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\CurrentInventoryUnitType.cs",
+              "RelativeDocumentMoniker": "client\\Services\\CurrentInventoryUnitType.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\CurrentInventoryUnitType.cs",
+              "RelativeToolTip": "client\\Services\\CurrentInventoryUnitType.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowCUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T05:13:25.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AuditEntityType.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\Audit\\AuditEntityType.cs",
+              "RelativeDocumentMoniker": "client\\Models\\Audit\\AuditEntityType.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\Audit\\AuditEntityType.cs",
+              "RelativeToolTip": "client\\Models\\Audit\\AuditEntityType.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAuwBEAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-04T16:25:04.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "NewCategory.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\NewCategory.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\NewCategory.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\NewCategory.cs",
+              "RelativeToolTip": "client\\Forms\\ProductManagement\\NewCategory.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAYwGgAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T10:28:36.6Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "NewInventoryCategory.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\NewInventoryCategory.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\NewInventoryCategory.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\NewInventoryCategory.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\InventoryManagement\\NewInventoryCategory.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T10:46:24.349Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "NewInventoryCategory.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\NewInventoryCategory.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\NewInventoryCategory.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\NewInventoryCategory.cs",
+              "RelativeToolTip": "client\\Forms\\InventoryManagement\\NewInventoryCategory.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABwAAABkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T10:57:49.779Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "CurrentCategory.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\CurrentCategory.cs",
+              "RelativeDocumentMoniker": "client\\Services\\CurrentCategory.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\CurrentCategory.cs",
+              "RelativeToolTip": "client\\Services\\CurrentCategory.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T22:54:08.695Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "InventorySubCategory.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\InventorySubCategory.cs",
+              "RelativeDocumentMoniker": "client\\Models\\InventorySubCategory.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\InventorySubCategory.cs",
+              "RelativeToolTip": "client\\Models\\InventorySubCategory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T11:23:35.141Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "CurrentInventorySubCategory.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\CurrentInventorySubCategory.cs",
+              "RelativeDocumentMoniker": "client\\Services\\CurrentInventorySubCategory.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\CurrentInventorySubCategory.cs",
+              "RelativeToolTip": "client\\Services\\CurrentInventorySubCategory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T11:23:01.212Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "SubCategoryController.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\SubCategoryController.cs",
+              "RelativeDocumentMoniker": "client\\Controllers\\SubCategoryController.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\SubCategoryController.cs",
+              "RelativeToolTip": "client\\Controllers\\SubCategoryController.cs",
+              "ViewState": "AgIAAAQBAAAAAAAAAAAgwKgAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T06:24:21.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "client\\Controllers\\CategoryController.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "client\\Controllers\\CategoryController.cs",
+              "ViewState": "AgIAAOIAAAAAAAAAAAAYwPIAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T17:35:56.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "AddProduct.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\AddProduct.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\AddProduct.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\AddProduct.cs",
+              "RelativeToolTip": "client\\Forms\\ProductManagement\\AddProduct.cs",
+              "ViewState": "AgIAADgCAAAAAAAAAAAQwEsCAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T04:07:48.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "AddInventoryItem.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.Designer.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\AddInventoryItem.Designer.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.Designer.cs",
+              "RelativeToolTip": "client\\Forms\\InventoryManagement\\AddInventoryItem.Designer.cs",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAYwIcAAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T12:23:00.726Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "InventoryController.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\InventoryController.cs",
+              "RelativeDocumentMoniker": "client\\Controllers\\InventoryController.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\InventoryController.cs",
+              "RelativeToolTip": "client\\Controllers\\InventoryController.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAgwBAAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T03:13:49.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "CurrentInventoryCategory.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\CurrentInventoryCategory.cs",
+              "RelativeDocumentMoniker": "client\\Services\\CurrentInventoryCategory.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\CurrentInventoryCategory.cs",
+              "RelativeToolTip": "client\\Services\\CurrentInventoryCategory.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAowCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T10:33:17.932Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "OrderEntryForm.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\OrderEntryForm.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\Order\\OrderEntryForm.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\OrderEntryForm.cs",
+              "RelativeToolTip": "client\\Forms\\Order\\OrderEntryForm.cs",
+              "ViewState": "AgIAAPcDAAAAAAAAAAAtwAgEAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T11:57:22.733Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "MainMenu.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\MainMenu.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\MainMenu.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\MainMenu.cs",
+              "RelativeToolTip": "client\\Forms\\MainMenu.cs",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAhwHIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T13:05:01.868Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "client\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "client\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAYwBoAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T11:24:39.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "CurrentSubCategory.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\CurrentSubCategory.cs",
+              "RelativeDocumentMoniker": "client\\Services\\CurrentSubCategory.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\CurrentSubCategory.cs",
+              "RelativeToolTip": "client\\Services\\CurrentSubCategory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T11:22:16.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "SubCategory.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\SubCategory.cs",
+              "RelativeDocumentMoniker": "client\\Models\\SubCategory.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\SubCategory.cs",
+              "RelativeToolTip": "client\\Models\\SubCategory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T11:23:17.305Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "OrderEntryForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\OrderEntryForm.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\Order\\OrderEntryForm.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\OrderEntryForm.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\Order\\OrderEntryForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-01T14:45:07.792Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "InventoryHome.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\InventoryHome.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\InventoryHome.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\InventoryHome.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\InventoryManagement\\InventoryHome.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T02:19:11.671Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "ApplyDiscount.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\ApplyDiscount.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\Order\\ApplyDiscount.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\ApplyDiscount.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\Order\\ApplyDiscount.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T11:57:02.627Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "AddProduct.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\AddProduct.Designer.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\AddProduct.Designer.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\AddProduct.Designer.cs",
+              "RelativeToolTip": "client\\Forms\\ProductManagement\\AddProduct.Designer.cs",
+              "ViewState": "AgIAAKgAAAAAAAAAAAAYwLkAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T10:06:39.76Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "MainMenu.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\MainMenu.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\MainMenu.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\MainMenu.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\MainMenu.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T06:49:41.461Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "MainMenu.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\MainMenu.Designer.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\MainMenu.Designer.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\MainMenu.Designer.cs",
+              "RelativeToolTip": "client\\Forms\\MainMenu.Designer.cs",
+              "ViewState": "AgIAAKgBAAAAAAAAAAAYwLkBAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:11:48.641Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
               "Title": "BackupPanel.cs [Design]",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\BackupPanel.cs",
               "RelativeDocumentMoniker": "client\\Forms\\BackupControl\\BackupPanel.cs",
               "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\BackupPanel.cs [Design]",
               "RelativeToolTip": "client\\Forms\\BackupControl\\BackupPanel.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T11:18:12.298Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-03-30T11:18:12.298Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AddInventoryItem.cs",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
-              "RelativeToolTip": "client\\Forms\\InventoryManagement\\AddInventoryItem.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAuwC8AAAAJAAAAAAAAAA==",
+              "DocumentIndex": 46,
+              "Title": "AuthForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\AuthForm.cs",
+              "RelativeDocumentMoniker": "client\\Forms\\BackupControl\\AuthForm.cs",
+              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\AuthForm.cs [Design]",
+              "RelativeToolTip": "client\\Forms\\BackupControl\\AuthForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T12:22:51.801Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-30T14:32:52.698Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AddInventoryItem.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.Designer.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\AddInventoryItem.Designer.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\AddInventoryItem.Designer.cs",
-              "RelativeToolTip": "client\\Forms\\InventoryManagement\\AddInventoryItem.Designer.cs",
-              "ViewState": "AgIAAB8CAAAAAAAAAAAYwDACAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T12:23:00.726Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 47,
               "Title": "ApplyDiscount.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\ApplyDiscount.cs",
               "RelativeDocumentMoniker": "client\\Forms\\Order\\ApplyDiscount.cs",
@@ -480,31 +1096,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ApplyDiscount.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\ApplyDiscount.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\Order\\ApplyDiscount.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\ApplyDiscount.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\Order\\ApplyDiscount.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T11:57:02.627Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AddProduct.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\AddProduct.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\AddProduct.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\AddProduct.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\ProductManagement\\AddProduct.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T12:46:18.817Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 116,
               "Title": "InventoryItem.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\InventoryItem.cs",
               "RelativeDocumentMoniker": "client\\Models\\InventoryItem.cs",
@@ -512,25 +1104,11 @@
               "RelativeToolTip": "client\\Models\\InventoryItem.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAzwBsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T04:08:28.213Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T04:08:28.213Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "InventoryController.cs",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\InventoryController.cs",
-              "RelativeDocumentMoniker": "client\\Controllers\\InventoryController.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\InventoryController.cs",
-              "RelativeToolTip": "client\\Controllers\\InventoryController.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAAAowA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T03:13:49.339Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 48,
               "Title": "ProductController.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "client\\Controllers\\ProductController.cs",
@@ -538,24 +1116,11 @@
               "RelativeToolTip": "client\\Controllers\\ProductController.cs",
               "ViewState": "AgIAAMIAAAAAAAAAAAAgwNQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T04:14:10.704Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-27T04:14:10.704Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "InventoryHome.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\InventoryHome.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\InventoryHome.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\InventoryHome.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\InventoryManagement\\InventoryHome.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T02:19:11.671Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 49,
               "Title": "InventoryHome.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\InventoryHome.cs",
               "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\InventoryHome.cs",
@@ -563,12 +1128,11 @@
               "RelativeToolTip": "client\\Forms\\InventoryManagement\\InventoryHome.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T13:05:47.262Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-26T13:05:47.262Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 50,
               "Title": "InventoryHome.Designer.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\InventoryManagement\\InventoryHome.Designer.cs",
               "RelativeDocumentMoniker": "client\\Forms\\InventoryManagement\\InventoryHome.Designer.cs",
@@ -581,91 +1145,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 51,
               "Title": "AddDiscount.cs [Design]",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\DiscountManagement\\AddDiscount.cs",
               "RelativeDocumentMoniker": "client\\Forms\\DiscountManagement\\AddDiscount.cs",
               "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\DiscountManagement\\AddDiscount.cs [Design]",
               "RelativeToolTip": "client\\Forms\\DiscountManagement\\AddDiscount.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T12:45:41.759Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-03-26T12:45:41.759Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 52,
               "Title": "AuditHome.cs [Design]",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\AuditTrail\\AuditHome.cs",
               "RelativeDocumentMoniker": "client\\Forms\\AuditTrail\\AuditHome.cs",
               "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\AuditTrail\\AuditHome.cs [Design]",
               "RelativeToolTip": "client\\Forms\\AuditTrail\\AuditHome.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T15:41:50.196Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-03-26T15:41:50.196Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "OrderEntryForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\OrderEntryForm.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\Order\\OrderEntryForm.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\OrderEntryForm.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\Order\\OrderEntryForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T14:45:07.792Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "ProductHome.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\ProductHome.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\ProductHome.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\ProductHome.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\ProductManagement\\ProductHome.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T10:25:23.901Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "NewUnit.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\NewUnit.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\NewUnit.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\NewUnit.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\ProductManagement\\NewUnit.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T12:46:25.657Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "NewCategory.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\NewCategory.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\NewCategory.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\NewCategory.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\ProductManagement\\NewCategory.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T12:46:23.786Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 53,
               "Title": "PaymentForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\PaymentForm.cs",
               "RelativeDocumentMoniker": "client\\Forms\\Order\\PaymentForm.cs",
               "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\PaymentForm.cs [Design]",
               "RelativeToolTip": "client\\Forms\\Order\\PaymentForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T04:39:53.632Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-04-03T04:39:53.632Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 54,
               "Title": "DiscountForm.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\DiscountForm.cs",
               "RelativeDocumentMoniker": "client\\Forms\\Order\\DiscountForm.cs",
@@ -678,44 +1191,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 55,
               "Title": "DiscountForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\DiscountForm.cs",
               "RelativeDocumentMoniker": "client\\Forms\\Order\\DiscountForm.cs",
               "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\DiscountForm.cs [Design]",
               "RelativeToolTip": "client\\Forms\\Order\\DiscountForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T07:55:11.069Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-03-27T07:55:11.069Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Login.cs",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Login.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\Login.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Login.cs",
-              "RelativeToolTip": "client\\Forms\\Login.cs",
-              "ViewState": "AgIAADUBAAAAAAAAAAAAAEUBAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T00:56:34.993Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Login.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Login.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\Login.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Login.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\Login.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T15:40:56.771Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 65,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\Product.cs",
               "RelativeDocumentMoniker": "client\\Models\\Product.cs",
@@ -727,7 +1214,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 64,
               "Title": "CardDisplay.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controls\\Products\\CardDisplay.cs",
               "RelativeDocumentMoniker": "client\\Controls\\Products\\CardDisplay.cs",
@@ -740,7 +1227,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 63,
               "Title": "ProductHome.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\ProductHome.cs",
               "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\ProductHome.cs",
@@ -752,7 +1239,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 62,
               "Title": "ProductHome.Designer.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\ProductHome.Designer.cs",
               "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\ProductHome.Designer.cs",
@@ -765,7 +1252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 67,
               "Title": "Payment.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\Payment.cs",
               "RelativeDocumentMoniker": "client\\Models\\Payment.cs",
@@ -777,19 +1264,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "AddProduct.cs",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\AddProduct.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\AddProduct.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\AddProduct.cs",
-              "RelativeToolTip": "client\\Forms\\ProductManagement\\AddProduct.cs",
-              "ViewState": "AgIAAB8BAAAAAAAAAAAYwE0BAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T04:07:48.761Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 68,
               "Title": "AuditTrailController.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\AuditTrailController.cs",
               "RelativeDocumentMoniker": "client\\Controllers\\AuditTrailController.cs",
@@ -801,19 +1276,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "client\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "client\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAYwGgAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T11:24:39.71Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 69,
               "Title": "AuditHome.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\AuditTrail\\AuditHome.cs",
               "RelativeDocumentMoniker": "client\\Forms\\AuditTrail\\AuditHome.cs",
@@ -825,31 +1288,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "UnitController.cs",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\UnitController.cs",
-              "RelativeDocumentMoniker": "client\\Controllers\\UnitController.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\UnitController.cs",
-              "RelativeToolTip": "client\\Controllers\\UnitController.cs",
-              "ViewState": "AgIAAIsAAAAAAAAAAAAYwKMAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T06:26:13.828Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "AuditEntityType.cs",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\Audit\\AuditEntityType.cs",
-              "RelativeDocumentMoniker": "client\\Models\\Audit\\AuditEntityType.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\Audit\\AuditEntityType.cs",
-              "RelativeToolTip": "client\\Models\\Audit\\AuditEntityType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA0AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T16:25:04.964Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 70,
               "Title": "TransactionController.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\TransactionController.cs",
               "RelativeDocumentMoniker": "client\\Controllers\\TransactionController.cs",
@@ -861,19 +1300,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "SubCategoryController.cs",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\SubCategoryController.cs",
-              "RelativeDocumentMoniker": "client\\Controllers\\SubCategoryController.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\SubCategoryController.cs",
-              "RelativeToolTip": "client\\Controllers\\SubCategoryController.cs",
-              "ViewState": "AgIAANQAAAAAAAAAAAAgwC4AAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T06:24:21.501Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 71,
               "Title": "SalesReportController.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\SalesReportController.cs",
               "RelativeDocumentMoniker": "client\\Controllers\\SalesReportController.cs",
@@ -885,7 +1312,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 72,
               "Title": "DiscountController.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\DiscountController.cs",
               "RelativeDocumentMoniker": "client\\Controllers\\DiscountController.cs",
@@ -897,19 +1324,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
-              "Title": "CategoryController.cs",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\CategoryController.cs",
-              "RelativeDocumentMoniker": "client\\Controllers\\CategoryController.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\CategoryController.cs",
-              "RelativeToolTip": "client\\Controllers\\CategoryController.cs",
-              "ViewState": "AgIAAL4AAAAAAAAAAAAgwDIAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T17:35:56.709Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 73,
               "Title": "AuditRecord.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\Audit\\AuditRecord.cs",
               "RelativeDocumentMoniker": "client\\Models\\Audit\\AuditRecord.cs",
@@ -921,7 +1336,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 74,
               "Title": "BackupController.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controllers\\BackupController.cs",
               "RelativeDocumentMoniker": "client\\Controllers\\BackupController.cs",
@@ -933,7 +1348,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 75,
               "Title": "RestoreBackupForm.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\RestoreBackupForm.cs",
               "RelativeDocumentMoniker": "client\\Forms\\BackupControl\\RestoreBackupForm.cs",
@@ -941,11 +1356,12 @@
               "RelativeToolTip": "client\\Forms\\BackupControl\\RestoreBackupForm.cs",
               "ViewState": "AgIAANUAAAAAAAAAAAAkwOkAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T11:15:32.909Z"
+              "WhenOpened": "2025-03-30T11:15:32.909Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 76,
               "Title": "BackupPanel.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\BackupPanel.cs",
               "RelativeDocumentMoniker": "client\\Forms\\BackupControl\\BackupPanel.cs",
@@ -957,7 +1373,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 77,
               "Title": "AuditActionType.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\Audit\\AuditActionType.cs",
               "RelativeDocumentMoniker": "client\\Models\\Audit\\AuditActionType.cs",
@@ -969,7 +1385,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 78,
               "Title": "AuditService.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\AuditService.cs",
               "RelativeDocumentMoniker": "client\\Services\\AuditService.cs",
@@ -981,7 +1397,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 79,
               "Title": "Audit.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\Audit\\Audit.cs",
               "RelativeDocumentMoniker": "client\\Models\\Audit\\Audit.cs",
@@ -993,7 +1409,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 80,
               "Title": "AuthForm.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\AuthForm.cs",
               "RelativeDocumentMoniker": "client\\Forms\\BackupControl\\AuthForm.cs",
@@ -1005,44 +1421,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
-              "Title": "OrderEntryForm.cs",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\OrderEntryForm.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\Order\\OrderEntryForm.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\OrderEntryForm.cs",
-              "RelativeToolTip": "client\\Forms\\Order\\OrderEntryForm.cs",
-              "ViewState": "AgIAAPcDAAAAAAAAAAAAwAcEAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T11:57:22.733Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 57,
-              "Title": "MainMenu.cs",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\MainMenu.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\MainMenu.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\MainMenu.cs",
-              "RelativeToolTip": "client\\Forms\\MainMenu.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAIAwwHAAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T13:05:01.868Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 58,
-              "Title": "PacketType.cs",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Network\\PacketType.cs",
-              "RelativeDocumentMoniker": "client\\Network\\PacketType.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Network\\PacketType.cs",
-              "RelativeToolTip": "client\\Network\\PacketType.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAjwFEAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T17:37:18.699Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 81,
               "Title": "SalesReportHome.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\SalesReport\\SalesReportHome.cs",
               "RelativeDocumentMoniker": "client\\Forms\\SalesReport\\SalesReportHome.cs",
@@ -1050,11 +1429,12 @@
               "RelativeToolTip": "client\\Forms\\SalesReport\\SalesReportHome.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T17:26:54.754Z"
+              "WhenOpened": "2025-03-27T17:26:54.754Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 82,
               "Title": "CurrentAudit.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\CurrentAudit.cs",
               "RelativeDocumentMoniker": "client\\Services\\CurrentAudit.cs",
@@ -1066,7 +1446,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 57,
               "Title": "SalesReportHome.cs [Design]",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\SalesReport\\SalesReportHome.cs",
               "RelativeDocumentMoniker": "client\\Forms\\SalesReport\\SalesReportHome.cs",
@@ -1077,7 +1457,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 56,
               "Title": "UserHome.cs [Design]",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\UserManagement\\UserHome.cs",
               "RelativeDocumentMoniker": "client\\Forms\\UserManagement\\UserHome.cs",
@@ -1088,7 +1468,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 58,
               "Title": "DiscountHome.cs [Design]",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\DiscountManagement\\DiscountHome.cs",
               "RelativeDocumentMoniker": "client\\Forms\\DiscountManagement\\DiscountHome.cs",
@@ -1099,7 +1479,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 59,
               "Title": "BestSellingHome.cs [Design]",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BestSelling\\BestSellingHome.cs",
               "RelativeDocumentMoniker": "client\\Forms\\BestSelling\\BestSellingHome.cs",
@@ -1110,7 +1490,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 60,
               "Title": "SelectedDataForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\SelectedDataForm.cs",
               "RelativeDocumentMoniker": "client\\Forms\\BackupControl\\SelectedDataForm.cs",
@@ -1121,7 +1501,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 61,
               "Title": "RestoreBackupForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\RestoreBackupForm.cs",
               "RelativeDocumentMoniker": "client\\Forms\\BackupControl\\RestoreBackupForm.cs",
@@ -1132,7 +1512,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 83,
               "Title": "Client.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Network\\Client.cs",
               "RelativeDocumentMoniker": "client\\Network\\Client.cs",
@@ -1144,7 +1524,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 84,
               "Title": "Packet.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Network\\Packet.cs",
               "RelativeDocumentMoniker": "client\\Network\\Packet.cs",
@@ -1156,7 +1536,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 85,
               "Title": "SalesReport.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\SalesReport.cs",
               "RelativeDocumentMoniker": "client\\Models\\SalesReport.cs",
@@ -1168,7 +1548,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 86,
               "Title": "ProcessOrderHelper.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Helpers\\ProcessOrderHelper.cs",
               "RelativeDocumentMoniker": "client\\Helpers\\ProcessOrderHelper.cs",
@@ -1180,7 +1560,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 87,
               "Title": "PaymentForm.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\PaymentForm.cs",
               "RelativeDocumentMoniker": "client\\Forms\\Order\\PaymentForm.cs",
@@ -1192,7 +1572,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 88,
               "Title": "OrderTransaction.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\OrderTransaction.cs",
               "RelativeDocumentMoniker": "client\\Models\\OrderTransaction.cs",
@@ -1204,7 +1584,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 89,
               "Title": "CurrentOrder.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\CurrentOrder.cs",
               "RelativeDocumentMoniker": "client\\Services\\CurrentOrder.cs",
@@ -1216,7 +1596,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 90,
               "Title": "CurrentCart.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\CurrentCart.cs",
               "RelativeDocumentMoniker": "client\\Services\\CurrentCart.cs",
@@ -1228,19 +1608,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 70,
-              "Title": "CurrentCategory.cs",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\CurrentCategory.cs",
-              "RelativeDocumentMoniker": "client\\Services\\CurrentCategory.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\CurrentCategory.cs",
-              "RelativeToolTip": "client\\Services\\CurrentCategory.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACYAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T22:54:08.695Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 91,
               "Title": "CurrentUnit.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\CurrentUnit.cs",
               "RelativeDocumentMoniker": "client\\Services\\CurrentUnit.cs",
@@ -1252,19 +1620,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 73,
+              "DocumentIndex": 93,
               "Title": "AuditHome.resx",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\AuditTrail\\AuditHome.resx",
               "RelativeDocumentMoniker": "client\\Forms\\AuditTrail\\AuditHome.resx",
               "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\AuditTrail\\AuditHome.resx",
               "RelativeToolTip": "client\\Forms\\AuditTrail\\AuditHome.resx",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2025-04-03T09:48:26.156Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-03T09:48:26.156Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 75,
+              "DocumentIndex": 95,
               "Title": "SalesReportHome.resx",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\SalesReport\\SalesReportHome.resx",
               "RelativeDocumentMoniker": "client\\Forms\\SalesReport\\SalesReportHome.resx",
@@ -1275,7 +1642,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 76,
+              "DocumentIndex": 96,
               "Title": "PaymentForm.Designer.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Order\\PaymentForm.Designer.cs",
               "RelativeDocumentMoniker": "client\\Forms\\Order\\PaymentForm.Designer.cs",
@@ -1283,12 +1650,11 @@
               "RelativeToolTip": "client\\Forms\\Order\\PaymentForm.Designer.cs",
               "ViewState": "AgIAABYCAAAAAAAAAAAYwCcCAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T04:39:43.847Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-03T04:39:43.847Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 92,
               "Title": "AuditHome.Designer.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\AuditTrail\\AuditHome.Designer.cs",
               "RelativeDocumentMoniker": "client\\Forms\\AuditTrail\\AuditHome.Designer.cs",
@@ -1296,12 +1662,11 @@
               "RelativeToolTip": "client\\Forms\\AuditTrail\\AuditHome.Designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T09:48:26.178Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-03T09:48:26.178Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 77,
+              "DocumentIndex": 97,
               "Title": "AppliedDiscount.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\AppliedDiscount.cs",
               "RelativeDocumentMoniker": "client\\Models\\AppliedDiscount.cs",
@@ -1313,7 +1678,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 79,
+              "DocumentIndex": 99,
               "Title": "BackupPanel.Designer.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\BackupPanel.Designer.cs",
               "RelativeDocumentMoniker": "client\\Forms\\BackupControl\\BackupPanel.Designer.cs",
@@ -1321,12 +1686,11 @@
               "RelativeToolTip": "client\\Forms\\BackupControl\\BackupPanel.Designer.cs",
               "ViewState": "AgIAAMQBAAAAAAAAAAAYwN0BAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T11:18:01.892Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-30T11:18:01.892Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 80,
+              "DocumentIndex": 100,
               "Title": "SelectedDataForm.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\SelectedDataForm.cs",
               "RelativeDocumentMoniker": "client\\Forms\\BackupControl\\SelectedDataForm.cs",
@@ -1338,7 +1702,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 81,
+              "DocumentIndex": 101,
               "Title": "AuthForm.Designer.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BackupControl\\AuthForm.Designer.cs",
               "RelativeDocumentMoniker": "client\\Forms\\BackupControl\\AuthForm.Designer.cs",
@@ -1346,12 +1710,11 @@
               "RelativeToolTip": "client\\Forms\\BackupControl\\AuthForm.Designer.cs",
               "ViewState": "AgIAAGYAAAAAAAAAAAAYwIMAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T14:30:08.941Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-30T14:30:08.941Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 83,
+              "DocumentIndex": 102,
               "Title": "NewUnit.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\NewUnit.cs",
               "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\NewUnit.cs",
@@ -1363,19 +1726,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 82,
-              "Title": "NewCategory.cs",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\NewCategory.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\ProductManagement\\NewCategory.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\ProductManagement\\NewCategory.cs",
-              "RelativeToolTip": "client\\Forms\\ProductManagement\\NewCategory.cs",
-              "ViewState": "AgIAAIoAAAAAAAAAAAAgwGoAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T10:28:36.6Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 74,
+              "DocumentIndex": 94,
               "Title": "SalesReportHome.Designer.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\SalesReport\\SalesReportHome.Designer.cs",
               "RelativeDocumentMoniker": "client\\Forms\\SalesReport\\SalesReportHome.Designer.cs",
@@ -1387,7 +1738,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 84,
+              "DocumentIndex": 103,
               "Title": "CurrentSalesReport.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\CurrentSalesReport.cs",
               "RelativeDocumentMoniker": "client\\Services\\CurrentSalesReport.cs",
@@ -1399,7 +1750,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 85,
+              "DocumentIndex": 104,
               "Title": "UserHome.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\UserManagement\\UserHome.cs",
               "RelativeDocumentMoniker": "client\\Forms\\UserManagement\\UserHome.cs",
@@ -1411,19 +1762,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 86,
-              "Title": "MainMenu.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\MainMenu.Designer.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\MainMenu.Designer.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\MainMenu.Designer.cs",
-              "RelativeToolTip": "client\\Forms\\MainMenu.Designer.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAnwBYAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T14:11:48.641Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 87,
+              "DocumentIndex": 105,
               "Title": "BestSellingHome.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\BestSelling\\BestSellingHome.cs",
               "RelativeDocumentMoniker": "client\\Forms\\BestSelling\\BestSellingHome.cs",
@@ -1435,7 +1774,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 90,
+              "DocumentIndex": 108,
               "Title": "CurrentDiscount.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Services\\CurrentDiscount.cs",
               "RelativeDocumentMoniker": "client\\Services\\CurrentDiscount.cs",
@@ -1447,7 +1786,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 91,
+              "DocumentIndex": 109,
               "Title": "Discount.cs",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Models\\Discount.cs",
               "RelativeDocumentMoniker": "client\\Models\\Discount.cs",
@@ -1459,7 +1798,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 92,
+              "DocumentIndex": 110,
               "Title": "Microsoft.Common.CurrentVersion.targets",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
@@ -1471,7 +1810,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 93,
+              "DocumentIndex": 111,
               "Title": "Microsoft.Common.CurrentVersion.targets",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
               "ToolTip": "E:\\Visual Studio 2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
@@ -1481,7 +1820,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 94,
+              "DocumentIndex": 112,
               "Title": "client.csproj.user",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\client.csproj.user",
               "RelativeDocumentMoniker": "client\\client.csproj.user",
@@ -1493,7 +1832,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 66,
               "Title": "CardDisplay.cs [Design]",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controls\\Products\\CardDisplay.cs",
               "RelativeDocumentMoniker": "client\\Controls\\Products\\CardDisplay.cs",
@@ -1504,22 +1843,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
-              "Title": "MainMenu.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\MainMenu.cs",
-              "RelativeDocumentMoniker": "client\\Forms\\MainMenu.cs",
-              "ToolTip": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\MainMenu.cs [Design]",
-              "RelativeToolTip": "client\\Forms\\MainMenu.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T14:12:01.265Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 78,
+              "DocumentIndex": 98,
               "Title": "Dashboard.cs [Design]",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Dashboard.cs",
               "RelativeDocumentMoniker": "client\\Forms\\Dashboard.cs",
@@ -1530,7 +1854,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 88,
+              "DocumentIndex": 106,
               "Title": "Manage.cs [Design]",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Controls\\Products\\Manage.cs",
               "RelativeDocumentMoniker": "client\\Controls\\Products\\Manage.cs",
@@ -1541,7 +1865,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 89,
+              "DocumentIndex": 107,
               "Title": "Register.cs [Design]",
               "DocumentMoniker": "C:\\Users\\raymond balondo\\Desktop\\CAPSTONE\\client\\client\\Forms\\Register.cs",
               "RelativeDocumentMoniker": "client\\Forms\\Register.cs",
@@ -1552,7 +1876,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 95,
+              "DocumentIndex": 113,
               "Title": "UC_MainCourse.cs [Design]",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Forms\\POS\\POSUserControl\\FoodCategory\\UC_MainCourse.cs",
               "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Forms\\POS\\POSUserControl\\FoodCategory\\UC_MainCourse.cs [Design]",
@@ -1561,7 +1885,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 96,
+              "DocumentIndex": 114,
               "Title": "UC_FastFood.cs [Design]",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Forms\\POS\\POSUserControl\\FoodCategory\\UC_FastFood.cs",
               "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Forms\\POS\\POSUserControl\\FoodCategory\\UC_FastFood.cs [Design]",
@@ -1570,7 +1894,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 97,
+              "DocumentIndex": 115,
               "Title": "UC_Beverages.cs [Design]",
               "DocumentMoniker": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Forms\\POS\\POSUserControl\\FoodCategory\\UC_Beverages.cs",
               "ToolTip": "E:\\Visual Studio 2022\\Projects\\CapstoneProject\\client\\client\\Forms\\POS\\POSUserControl\\FoodCategory\\UC_Beverages.cs [Design]",
