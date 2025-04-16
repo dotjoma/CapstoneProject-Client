@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2025 at 07:05 AM
+-- Generation Time: Apr 08, 2025 at 09:49 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -88,7 +88,7 @@ CREATE TABLE `user_sessions` (
 --
 
 INSERT INTO `user_sessions` (`id`, `user_id`, `session_token`, `created_at`, `expires_at`, `expired_at`, `last_activity`, `is_active`) VALUES
-(162, 2, 'f8e4e1bf-d1e8-41a5-a64a-0c17b96a3949', '2025-04-14 09:46:03', '2025-04-15 17:46:03', NULL, '2025-04-15 15:36:13', 1);
+(133, 2, '52ac21a8-1761-4be8-a7d2-8d3436ad7639', '2025-04-08 07:20:16', '2025-04-08 17:20:16', NULL, '2025-04-08 15:47:16', 1);
 
 --
 -- Indexes for dumped tables
@@ -134,7 +134,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_sessions`
 --
 ALTER TABLE `user_sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 
 --
 -- Constraints for dumped tables
