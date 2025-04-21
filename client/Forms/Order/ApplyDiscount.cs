@@ -50,6 +50,8 @@ namespace client.Forms.Order
                     $"{item.productPrice * item.Quantity:C}"
                 );
             }
+
+            dgvCartItem.ClearSelection();
         }
 
         private void ApplyDiscount_FormClosing(object sender, FormClosingEventArgs e)

@@ -16,6 +16,7 @@ namespace client.Models.Audit
         Unit,
         UnitType,
         UnitMeasure,
+        Supplier,
         Discount,
         Inventory,
         Customer,

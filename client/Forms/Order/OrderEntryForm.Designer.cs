@@ -132,7 +132,7 @@
             pnlHeader.Dock = DockStyle.Top;
             pnlHeader.Location = new Point(0, 0);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Size = new Size(1665, 34);
+            pnlHeader.Size = new Size(1444, 34);
             pnlHeader.TabIndex = 24;
             pnlHeader.MouseDown += pnlHeader_MouseDown;
             pnlHeader.MouseMove += pnlHeader_MouseMove;
@@ -146,7 +146,7 @@
             label13.ForeColor = Color.White;
             label13.Location = new Point(3, 5);
             label13.Name = "label13";
-            label13.Size = new Size(269, 25);
+            label13.Size = new Size(208, 20);
             label13.TabIndex = 20;
             label13.Text = "ELICIAS GARDEN FOOD PARK";
             // 
@@ -154,7 +154,7 @@
             // 
             btnClose.Anchor = AnchorStyles.Right;
             btnClose.Image = Properties.Resources.CloseWhite;
-            btnClose.Location = new Point(1633, 5);
+            btnClose.Location = new Point(1412, 5);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(24, 24);
             btnClose.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -184,7 +184,7 @@
             panel6.Dock = DockStyle.Bottom;
             panel6.Location = new Point(0, 778);
             panel6.Name = "panel6";
-            panel6.Size = new Size(1665, 34);
+            panel6.Size = new Size(1444, 34);
             panel6.TabIndex = 25;
             panel6.Paint += panel6_Paint;
             // 
@@ -196,7 +196,7 @@
             btnLogout.ForeColor = Color.White;
             btnLogout.Image = Properties.Resources.logout_24;
             btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLogout.Location = new Point(1193, 4);
+            btnLogout.Location = new Point(972, 4);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(100, 26);
             btnLogout.TabIndex = 19;
@@ -209,7 +209,7 @@
             // 
             btnHome.Anchor = AnchorStyles.Right;
             btnHome.Image = Properties.Resources.HomeRounded;
-            btnHome.Location = new Point(1155, 2);
+            btnHome.Location = new Point(934, 2);
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(30, 30);
             btnHome.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -224,7 +224,7 @@
             lblUser.ForeColor = Color.White;
             lblUser.Location = new Point(36, 9);
             lblUser.Name = "lblUser";
-            lblUser.Size = new Size(45, 20);
+            lblUser.Size = new Size(38, 16);
             lblUser.TabIndex = 17;
             lblUser.Text = "- - -";
             // 
@@ -243,7 +243,7 @@
             // 
             pictureBox1.Anchor = AnchorStyles.Right;
             pictureBox1.Image = Properties.Resources.CalendarColored;
-            pictureBox1.Location = new Point(1299, 2);
+            pictureBox1.Location = new Point(1078, 2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(30, 30);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -256,9 +256,9 @@
             lblDateTime.Anchor = AnchorStyles.Right;
             lblDateTime.AutoSize = true;
             lblDateTime.ForeColor = Color.White;
-            lblDateTime.Location = new Point(1329, 9);
+            lblDateTime.Location = new Point(1108, 9);
             lblDateTime.Name = "lblDateTime";
-            lblDateTime.Size = new Size(45, 20);
+            lblDateTime.Size = new Size(38, 16);
             lblDateTime.TabIndex = 14;
             lblDateTime.Text = "- - -";
             // 
@@ -270,7 +270,7 @@
             button3.ForeColor = Color.White;
             button3.Image = Properties.Resources.logout_24;
             button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(1947, -29);
+            button3.Location = new Point(1726, -29);
             button3.Name = "button3";
             button3.Size = new Size(85, 26);
             button3.TabIndex = 13;
@@ -282,7 +282,7 @@
             // 
             pictureBox3.Anchor = AnchorStyles.Right;
             pictureBox3.Image = Properties.Resources.HomeRounded;
-            pictureBox3.Location = new Point(2038, -31);
+            pictureBox3.Location = new Point(1817, -31);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(30, 30);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -296,7 +296,7 @@
             label5.ForeColor = Color.White;
             label5.Location = new Point(36, -24);
             label5.Name = "label5";
-            label5.Size = new Size(45, 20);
+            label5.Size = new Size(38, 16);
             label5.TabIndex = 11;
             label5.Text = "- - -";
             // 
@@ -315,7 +315,7 @@
             // 
             pictureBox5.Anchor = AnchorStyles.Right;
             pictureBox5.Image = Properties.Resources.CalendarColored;
-            pictureBox5.Location = new Point(2109, -31);
+            pictureBox5.Location = new Point(1888, -31);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(30, 30);
             pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -328,7 +328,7 @@
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
             button4.Image = Properties.Resources.CloseWhite;
-            button4.Location = new Point(2453, -31);
+            button4.Location = new Point(2232, -31);
             button4.Name = "button4";
             button4.Size = new Size(30, 30);
             button4.TabIndex = 8;
@@ -339,9 +339,9 @@
             label7.Anchor = AnchorStyles.Right;
             label7.AutoSize = true;
             label7.ForeColor = Color.White;
-            label7.Location = new Point(2139, -24);
+            label7.Location = new Point(1918, -24);
             label7.Name = "label7";
-            label7.Size = new Size(45, 20);
+            label7.Size = new Size(38, 16);
             label7.TabIndex = 5;
             label7.Text = "- - -";
             // 
@@ -351,7 +351,7 @@
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(panel4);
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(1225, 34);
+            panel1.Location = new Point(1004, 34);
             panel1.Name = "panel1";
             panel1.Size = new Size(440, 744);
             panel1.TabIndex = 35;
@@ -418,7 +418,7 @@
             lblOrderType.ForeColor = Color.Black;
             lblOrderType.Location = new Point(211, 58);
             lblOrderType.Name = "lblOrderType";
-            lblOrderType.Size = new Size(0, 25);
+            lblOrderType.Size = new Size(0, 20);
             lblOrderType.TabIndex = 20;
             // 
             // label12
@@ -439,7 +439,7 @@
             lblOrderNo.ForeColor = Color.Black;
             lblOrderNo.Location = new Point(211, 33);
             lblOrderNo.Name = "lblOrderNo";
-            lblOrderNo.Size = new Size(0, 25);
+            lblOrderNo.Size = new Size(0, 20);
             lblOrderNo.TabIndex = 18;
             // 
             // lblTransactionNo
@@ -450,7 +450,7 @@
             lblTransactionNo.ForeColor = Color.Black;
             lblTransactionNo.Location = new Point(211, 2);
             lblTransactionNo.Name = "lblTransactionNo";
-            lblTransactionNo.Size = new Size(0, 32);
+            lblTransactionNo.Size = new Size(0, 25);
             lblTransactionNo.TabIndex = 17;
             // 
             // label3
@@ -522,7 +522,7 @@
             label15.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label15.Location = new Point(4, 44);
             label15.Name = "label15";
-            label15.Size = new Size(113, 28);
+            label15.Size = new Size(90, 21);
             label15.TabIndex = 28;
             label15.Text = "TOTAL DUE";
             // 
@@ -557,7 +557,7 @@
             label11.ForeColor = Color.Black;
             label11.Location = new Point(4, 217);
             label11.Name = "label11";
-            label11.Size = new Size(69, 28);
+            label11.Size = new Size(56, 21);
             label11.TabIndex = 25;
             label11.Text = "TOTAL";
             label11.Visible = false;
@@ -579,7 +579,7 @@
             label8.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label8.Location = new Point(4, 133);
             label8.Name = "label8";
-            label8.Size = new Size(127, 28);
+            label8.Size = new Size(101, 21);
             label8.TabIndex = 23;
             label8.Text = "VAT Amount";
             // 
@@ -589,7 +589,7 @@
             label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label6.Location = new Point(4, 93);
             label6.Name = "label6";
-            label6.Size = new Size(135, 28);
+            label6.Size = new Size(108, 21);
             label6.TabIndex = 22;
             label6.Text = "VATable Sales";
             // 
@@ -599,7 +599,7 @@
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label4.Location = new Point(4, 172);
             label4.Name = "label4";
-            label4.Size = new Size(92, 28);
+            label4.Size = new Size(74, 21);
             label4.TabIndex = 21;
             label4.Text = "Discount";
             // 
@@ -617,7 +617,7 @@
             btnPayment.Size = new Size(430, 52);
             btnPayment.TabIndex = 20;
             btnPayment.TabStop = false;
-            btnPayment.Text = "PAYMENT - [F2]";
+            btnPayment.Text = "PAYMENT - [ENTER]";
             btnPayment.UseVisualStyleBackColor = false;
             btnPayment.Click += btnPayment_Click;
             // 
@@ -649,7 +649,7 @@
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(4, 11);
             label1.Name = "label1";
-            label1.Size = new Size(88, 28);
+            label1.Size = new Size(72, 21);
             label1.TabIndex = 17;
             label1.Text = "Subtotal";
             // 
@@ -661,7 +661,7 @@
             label10.ForeColor = Color.FromArgb(98, 87, 87);
             label10.Location = new Point(6, 373);
             label10.Name = "label10";
-            label10.Size = new Size(109, 41);
+            label10.Size = new Size(85, 32);
             label10.TabIndex = 12;
             label10.Text = "TOTAL";
             // 
@@ -676,7 +676,7 @@
             panel5.Controls.Add(label9);
             panel5.Location = new Point(6, 1);
             panel5.Name = "panel5";
-            panel5.Size = new Size(1214, 57);
+            panel5.Size = new Size(993, 57);
             panel5.TabIndex = 36;
             panel5.Paint += panel5_Paint;
             // 
@@ -695,7 +695,7 @@
             // 
             pictureBox6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox6.Image = Properties.Resources.Search;
-            pictureBox6.Location = new Point(1177, 13);
+            pictureBox6.Location = new Point(956, 13);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(26, 26);
             pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -717,10 +717,10 @@
             // 
             txtSearchInput.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtSearchInput.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSearchInput.Location = new Point(980, 13);
+            txtSearchInput.Location = new Point(759, 13);
             txtSearchInput.Name = "txtSearchInput";
             txtSearchInput.PlaceholderText = "Search Product(s)";
-            txtSearchInput.Size = new Size(188, 30);
+            txtSearchInput.Size = new Size(188, 26);
             txtSearchInput.TabIndex = 0;
             txtSearchInput.TextChanged += txtSearchInput_TextChanged;
             // 
@@ -771,7 +771,7 @@
             panel8.Dock = DockStyle.Top;
             panel8.Location = new Point(0, 34);
             panel8.Name = "panel8";
-            panel8.Size = new Size(1225, 68);
+            panel8.Size = new Size(1004, 68);
             panel8.TabIndex = 42;
             // 
             // panel3
@@ -780,7 +780,7 @@
             panel3.Dock = DockStyle.Bottom;
             panel3.Location = new Point(0, 702);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1225, 76);
+            panel3.Size = new Size(1004, 76);
             panel3.TabIndex = 49;
             // 
             // panel10
@@ -794,7 +794,7 @@
             panel10.Controls.Add(btnNewOrder);
             panel10.Location = new Point(6, 0);
             panel10.Name = "panel10";
-            panel10.Size = new Size(1214, 67);
+            panel10.Size = new Size(993, 67);
             panel10.TabIndex = 47;
             // 
             // btnCancelTransaction
@@ -872,7 +872,7 @@
             subCategoryPanel.Dock = DockStyle.Top;
             subCategoryPanel.Location = new Point(223, 102);
             subCategoryPanel.Name = "subCategoryPanel";
-            subCategoryPanel.Size = new Size(1002, 62);
+            subCategoryPanel.Size = new Size(781, 62);
             subCategoryPanel.TabIndex = 52;
             // 
             // subCategoriesPanel
@@ -881,7 +881,7 @@
             subCategoriesPanel.BackColor = Color.FromArgb(232, 232, 232);
             subCategoriesPanel.Location = new Point(0, 0);
             subCategoriesPanel.Name = "subCategoriesPanel";
-            subCategoriesPanel.Size = new Size(997, 55);
+            subCategoriesPanel.Size = new Size(776, 55);
             subCategoriesPanel.TabIndex = 0;
             // 
             // panel7
@@ -890,7 +890,7 @@
             panel7.Dock = DockStyle.Fill;
             panel7.Location = new Point(223, 164);
             panel7.Name = "panel7";
-            panel7.Size = new Size(1002, 538);
+            panel7.Size = new Size(781, 538);
             panel7.TabIndex = 53;
             // 
             // pnlContainer
@@ -898,15 +898,15 @@
             pnlContainer.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlContainer.Location = new Point(3, 7);
             pnlContainer.Name = "pnlContainer";
-            pnlContainer.Size = new Size(995, 523);
+            pnlContainer.Size = new Size(774, 523);
             pnlContainer.TabIndex = 49;
             // 
             // OrderEntryForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 18F);
+            AutoScaleDimensions = new SizeF(8F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1665, 812);
+            ClientSize = new Size(1444, 812);
             Controls.Add(panel7);
             Controls.Add(subCategoryPanel);
             Controls.Add(panel9);

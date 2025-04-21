@@ -1,4 +1,6 @@
-﻿using System;
+﻿using client.Controllers;
+using client.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,51 @@ namespace client.Forms.InventoryManagement
 {
     public partial class NewSupplier : Form
     {
-        public NewSupplier()
+        SupplierController _supplierController = new SupplierController();
+
+        private readonly AddInventoryItem _parentForm;
+
+        public NewSupplier(AddInventoryItem parent)
         {
             InitializeComponent();
+            this.ShowInTaskbar = false;
+            this._parentForm = parent;
+        }
+
+        private async void btnSave_Click(object sender, EventArgs e)
+        {
+            string supplierName = txtSupplierName.Text.Trim(); // required
+            string contactPerson = txtContactPerson.Text.Trim();
+            string phone = txtPhoneNumber.Text.Trim();
+            string email = txtEmailAddress.Text.Trim();
+            string address = rtbAddress.Text.Trim();
+            bool isActive = cbIsActive.Checked;
+
+            try
+            {
+                bool result = await _supplierController.CreateSupplier(supplierName, contactPerson, phone, email, address, isActive);
+                if (result)
+                {
+                    //MessageBox.Show("Supplier created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Dispose();
+                    var getSuppliers = await _supplierController.GetAllInventorySuppliers();
+                    if (getSuppliers.Any())
+                    {
+                        _parentForm.GetInventorySupplier();
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Logger.Write("CREATE SUPPLIER", $"Error: {ex.Message}");
+                MessageBox.Show($"Error: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

@@ -29,6 +29,7 @@ namespace client.Forms.InventoryManagement
         public NewInventoryCategory(string title, string label, string name, AddInventoryItem parent)
         {
             InitializeComponent();
+            this.ShowInTaskbar = false;
             this._title = title;
             this._name = name;
             this._label = label;

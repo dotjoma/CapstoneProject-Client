@@ -19,16 +19,18 @@ namespace client.Forms.InventoryManagement
     public partial class AddInventoryItem : Form
     {
         SubCategoryController _subCategoryController = new SubCategoryController();
-        UnitController _unitController = new UnitController();
+        InventoryController _inventoryController = new InventoryController();
 
         public AddInventoryItem()
         {
             InitializeComponent();
+            this.ShowInTaskbar = false;
         }
         private void AddInventoryItem_Load(object sender, EventArgs e)
         {
             LoadDatabase();
             InitializeComboboxes();
+            txtItemName.Focus();
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -41,14 +43,40 @@ namespace client.Forms.InventoryManagement
             this.Close();
         }
 
-        private void btnSaveAndNew_Click(object sender, EventArgs e)
+        private async void btnSaveAndNew_Click(object sender, EventArgs e)
         {
-
+            if (await SaveInventoryItem())
+            {
+                RefreshForm();
+                txtItemName.Focus();
+            }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+
+        private async void btnSave_Click(object sender, EventArgs e)
         {
-            SaveInventoryItem();
+            if (await SaveInventoryItem())
+            {
+                this.Dispose();
+            }
+        }
+        private void RefreshForm()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox textbox)
+                {
+                    textbox.Clear();
+                }
+                else if (control is ComboBox comboBox)
+                {
+                    comboBox.SelectedIndex = 0;
+                }
+                else if (control is DateTimePicker dtpicker)
+                {
+                    dtpicker.Value = DateTime.Now;
+                }
+            }
         }
 
         private bool ValidateInputs(out string errorMessage, out Control? errorControl)
@@ -155,6 +183,7 @@ namespace client.Forms.InventoryManagement
                 GetInventorySubCategory();
                 GetInventoryUnitType();
                 GetInventoryUnitMeasure();
+                GetInventorySupplier();
             }
             catch (Exception ex)
             {
@@ -163,43 +192,50 @@ namespace client.Forms.InventoryManagement
             }
         }
 
-        private void SaveInventoryItem()
+        private async Task<bool> SaveInventoryItem()
         {
             if (!ValidateInputs(out string errorMessage, out Control? errorControl))
             {
                 MessageBox.Show(errorMessage, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 errorControl?.Focus();
-                return;
+                return false;
             }
 
             string itemName = txtItemName.Text.Trim();
-            string? category = cboCategory.SelectedItem?.ToString();
-            string? subCategory = cboSubcategory.SelectedItem?.ToString();
+            int categoryId = CurrentInventoryCategory.Current?.Id ?? 0;
+            int subCategoryId = CurrentInventorySubCategory.Current?.scId ?? 0;
             string batchNumber = txtBatchNumber.Text.Trim();
-            DateTime purchaseDate = dtpPurchase.Value;
-            DateTime expirationDate = dtpExpiration.Value;
+            string purchaseDate = dtpPurchase.Value.ToString("yyyy-MM-dd");
+            string expirationDate = dtpExpiration.Value.ToString("yyyy-MM-dd");
             decimal batchQuantity = decimal.Parse(txtBatchQuantity.Text.Trim());
-            string? unitType = cboUnitType.SelectedItem?.ToString();
-            string? unitMeasure = cboUnitMeasure.SelectedItem?.ToString();
+            int unitTypeId = CurrentInventoryUnitType.Current?.Id ?? 0;
+            int unitMeasureId = CurrentInventoryUnitMeasure.Current?.Id ?? 0;
             decimal minStockLevel = decimal.Parse(txtMinimumStock.Text.Trim());
             decimal maxStockLevel = decimal.Parse(txtMaximumStock.Text.Trim());
             decimal reorderPoint = decimal.Parse(txtRestorePoint.Text.Trim());
-            int leadeTimeDays = int.Parse(txtLeadTime.Text.Trim());
+            int leadTimeDays = int.Parse(txtLeadTime.Text.Trim());
             int targetTurnoverDays = int.Parse(txtTargetTurnover.Text.Trim());
             decimal unitCost = decimal.Parse(txtUnitCost.Text.Trim());
-            string? supplier = cboSupplier.SelectedItem?.ToString();
+            int? supplierId = CurrentSupplier.Current?.Id;
             bool enableLowStockAlert = cbLowStockAlerts.Checked;
 
             try
             {
-                // TODO:
-                // implement the actual inserting of inventory items here.
+                bool result = await _inventoryController.CreateInventoryItem(
+                    itemName, categoryId, subCategoryId, batchNumber,
+                    purchaseDate, expirationDate, batchQuantity,
+                    unitTypeId, unitMeasureId, minStockLevel, maxStockLevel,
+                    reorderPoint, leadTimeDays, targetTurnoverDays,
+                    unitCost, supplierId, enableLowStockAlert);
+
+                return result;
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error adding new item: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Logger.Write("INVENTORY_EXCEPTION", $"Error adding new item: {ex.Message}");
+                return false;
             }
         }
 
@@ -483,22 +519,22 @@ namespace client.Forms.InventoryManagement
             cboUnitMeasure.Items.Clear();
             cboUnitMeasure.Items.Add("Select UnitMeasure");
 
-            var unitMeasures = CurrentInventoryUnitMeasure.AllUnitMeasures;
+            var suppliers = CurrentInventoryUnitMeasure.AllUnitMeasures;
 
-            if (unitMeasures != null && unitMeasures.Count > 0)
+            if (suppliers != null && suppliers.Count > 0)
             {
-                foreach (var um in unitMeasures)
+                foreach (var sup in suppliers)
                 {
-                    if (!string.IsNullOrEmpty(um.measureName))
+                    if (!string.IsNullOrEmpty(sup.measureName))
                     {
 
-                        if (!string.IsNullOrEmpty(um.measureSymbol))
+                        if (!string.IsNullOrEmpty(sup.measureSymbol))
                         {
-                            cboUnitMeasure.Items.Add($"{um.measureName} ({um.measureSymbol})");
+                            cboUnitMeasure.Items.Add($"{sup.measureName} ({sup.measureSymbol})");
                         }
                         else
                         {
-                            cboUnitMeasure.Items.Add($"{um.measureName}");
+                            cboUnitMeasure.Items.Add($"{sup.measureName}");
                         }
                     }
                     else
@@ -568,6 +604,138 @@ namespace client.Forms.InventoryManagement
             {
                 cboUnitMeasure.SelectedIndex = 0;
             }
+        }
+
+        public void GetInventorySupplier()
+        {
+            cboSupplier.Items.Clear();
+            cboSupplier.Items.Add("Select Supplier");
+
+            var suppliers = CurrentSupplier.AllSuppliers;
+
+            if (suppliers != null && suppliers.Count > 0)
+            {
+                foreach (var sup in suppliers)
+                {
+                    if (!string.IsNullOrEmpty(sup.SupplierName))
+                    {
+                        cboSupplier.Items.Add($"{sup.SupplierName}");
+                    }
+                    else
+                    {
+                        Logger.Write("SUPPLIER_WARNING", "Supplier name is null or empty, skipping.");
+                    }
+                }
+            }
+            else
+            {
+                Logger.Write("SUPPLIER_WARNING", "No suppliers found.");
+            }
+
+            cboSupplier.Items.Add("+ Add Supplier");
+            cboSupplier.SelectedIndex = 0;
+        }
+
+        private void cboSupplier_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboSupplier.SelectedIndex == 0)
+            {
+                CurrentSupplier.SetCurrentSupplier(null);
+                return;
+            }
+
+            if (cboSupplier.SelectedIndex == cboSupplier.Items.Count - 1)
+            {
+                using (var newsuppfrm = new NewSupplier(this))
+                {
+                    newsuppfrm.StartPosition = FormStartPosition.Manual;
+                    newsuppfrm.StartPosition = FormStartPosition.CenterParent;
+                    newsuppfrm.ShowDialog(this);
+                }
+
+                return;
+            }
+
+            if (cboSupplier.SelectedIndex > 0 &&
+                CurrentSupplier.AllSuppliers != null &&
+                (cboSupplier.SelectedIndex - 1) < CurrentSupplier.AllSuppliers.Count)
+            {
+                try
+                {
+                    var selectedSupplier = CurrentSupplier.AllSuppliers[cboSupplier.SelectedIndex - 1];
+
+                    if (selectedSupplier != null && selectedSupplier.Id > 0)
+                    {
+                        CurrentSupplier.SetCurrentSupplier(selectedSupplier);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid supplier selected", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        cboSupplier.SelectedIndex = 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error selecting supplier: " + ex.Message, "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    cboSupplier.SelectedIndex = 0;
+                }
+            }
+            else
+            {
+                cboSupplier.SelectedIndex = 0;
+            }
+        }
+
+        private void txtItemName_TextChanged(object sender, EventArgs e)
+        {
+            string itemName = txtItemName.Text.Trim();
+
+            if (!string.IsNullOrEmpty(itemName))
+            {
+                string itemCode = GenerateItemCode(itemName);
+                string code = GenerateRandomCode(5);
+                string batchNumber = $"{itemCode}-{code}-01";
+
+                txtBatchNumber.Text = batchNumber;
+            }
+            else
+            {
+                txtBatchNumber.Clear();
+            }
+        }
+
+        private string GenerateRandomCode(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            Random random = new Random();
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        private string GenerateItemCode(string itemName)
+        {
+            string itemCode = string.Empty;
+
+            if (!string.IsNullOrEmpty(itemName))
+            {
+                string[] words = itemName.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (var word in words.Take(5))
+                {
+                    itemCode += word.Substring(0, 1).ToUpper();
+                }
+            }
+
+            return itemCode;
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

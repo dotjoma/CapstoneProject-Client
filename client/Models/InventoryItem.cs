@@ -8,22 +8,20 @@ namespace client.Models
 {
     public class InventoryItem
     {
-        string? ItemName { get; set; }
-        string? Category {  get; set; }
-        string? Subcategory { get; set; }
-        string? BatchNumber { get; set; }
-        DateTime PurchaseDate { get; set; }
-        DateTime ExpirationDate { get; set; }
-        decimal BatchQuantity { get; set; }
-        string? UnitType { get; set; }
-        string? UnitMeasure {  get; set; }
-        decimal MinStockLevel { get; set; }
-        decimal MaxStockLevel { get; set; }
-        decimal ReorderPoint { get; set; }
-        int LeadTimeDays { get; set; }
-        int TargetTurnoverDays { get; set; }
-        decimal UnitCost { get; set; }
-        string? Supplier {  get; set; }
-        int EnableLowStockAlerts { get; set; }
+        public int ItemId { get; set; }
+        public string? ItemName { get; set; }
+        public string? Description { get; set; }
+        public string? CategoryName { get; set; }
+        public string? SubcategoryName { get; set; }
+        public string? UnitTypeName { get; set; }
+        public string? UnitMeasureName { get; set; }
+        public decimal MinStockLevel { get; set; }
+        public decimal MaxStockLevel { get; set; }
+        public decimal ReorderPoint { get; set; }
+        public int LeadTimeDays { get; set; }
+        public int TargetTurnoverDays { get; set; }
+        public decimal EnableLowStockAlerts { get; set; }
+
+        public List<InventoryBatch>? Batches { get; set; } = new List<InventoryBatch>();
     }
 }

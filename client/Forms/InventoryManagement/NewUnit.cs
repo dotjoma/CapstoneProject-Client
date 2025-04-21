@@ -24,6 +24,7 @@ namespace client.Forms.InventoryManagement
         public NewUnit(string title, string label, string name, AddInventoryItem parent)
         {
             InitializeComponent();
+            this.ShowInTaskbar = false;
             this._title = title;
             this._label = label;
             this._name = name;

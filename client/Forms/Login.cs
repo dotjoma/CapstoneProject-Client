@@ -1,6 +1,7 @@
 ﻿using client.Controllers;
 using client.Forms.Order;
 using client.Helpers;
+using client.Models;
 using client.Network;
 using client.Services;
 using client.Services.Auth;
@@ -27,6 +28,8 @@ namespace client.Forms
         private readonly CategoryController _categoryController = new CategoryController();
         private readonly SubCategoryController _subCategoryController = new SubCategoryController();
         private readonly DiscountController _discountController = new DiscountController();
+        private readonly SupplierController _supplierController = new SupplierController();
+        private readonly InventoryController _inventoryController = new InventoryController();
 
         private Point dragOffset;
         private bool isDragging = false;
@@ -38,6 +41,8 @@ namespace client.Forms
             InitializeComponent();
             InitializeLoadingControls();
             this.KeyPreview = true;
+
+            MainMenu.OnRefreshClicked += RefreshDatabase;
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -47,6 +52,11 @@ namespace client.Forms
             isPassHidden = true;
             txtPassword.PasswordChar = '●';
             txtPassword.UseSystemPasswordChar = false;
+        }
+
+        private async void RefreshDatabase()
+        {
+            await LoadDataBase();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -251,6 +261,8 @@ namespace client.Forms
                 var discountsTask = _discountController.GetAllDiscounts();
                 var unitTypesTask = _unitController.GetAllInventoryUnitTypes();
                 var unitMeasuresTask = _unitController.GetAllInventoryUnitMeasures();
+                var suppliersTask = _supplierController.GetAllInventorySuppliers();
+                var inventoryItemTask = _inventoryController.GetAllInventoryItems();
 
                 await Task.WhenAll(
                     productsTask, 
@@ -260,7 +272,9 @@ namespace client.Forms
                     subCategoriesTask, 
                     discountsTask, 
                     unitTypesTask,
-                    unitMeasuresTask
+                    unitMeasuresTask,
+                    suppliersTask,
+                    inventoryItemTask
                     );
 
                 bool allSuccess = true;
@@ -351,6 +365,28 @@ namespace client.Forms
                 else
                 {
                     Logger.Write("MAIN MENU", $"Successfully loaded {CurrentInventoryUnitMeasure.AllUnitMeasures.Count} inventory unit measures");
+                }
+
+                // Inventory suppliers
+                if (CurrentSupplier.AllSuppliers == null)
+                {
+                    Logger.Write("MAIN MENU", "Failed to load suppliers");
+                    allSuccess = false;
+                }
+                else
+                {
+                    Logger.Write("MAIN MENU", $"Successfully loaded {CurrentSupplier.AllSuppliers.Count} suppliers");
+                }
+
+                // Inventory items
+                if (CurrentInventoryItem.AllItems == null)
+                {
+                    Logger.Write("MAIN MENU", "Failed to load inventory items");
+                    allSuccess = false;
+                }
+                else
+                {
+                    Logger.Write("MAIN MENU", $"Successfully loaded {CurrentInventoryItem.AllItems.Count} inventory items");
                 }
 
                 return allSuccess;

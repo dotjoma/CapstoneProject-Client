@@ -104,6 +104,8 @@ namespace client.Forms.ProductManagement
                         status
                     );
                 }
+
+                dgvProducts.ClearSelection();
             }
             catch (Exception ex)
             {

@@ -1327,7 +1327,7 @@ namespace client.Forms.Order
                 case Keys.F1:
                     btnNewOrder.PerformClick();
                     break;
-                case Keys.F2:
+                case Keys.Enter:
                     btnPayment.PerformClick();
                     break;
                 case Keys.F3:

@@ -170,6 +170,7 @@ namespace client.Forms.SalesReport
                         }
                     }
 
+                    dgvOrders.ClearSelection();
                     HideLoading();
                     Logger.Write("SALES_REPORT_DEBUG", $"Successfully displayed {processedCount} sales reports");
                 }

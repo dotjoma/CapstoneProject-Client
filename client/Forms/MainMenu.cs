@@ -32,6 +32,7 @@ namespace client.Forms
     public partial class MainMenu : Form
     {
         private readonly AuthController _authController = new AuthController();
+        public static event Action? OnRefreshClicked;
 
         public MainMenu()
         {
@@ -100,7 +101,7 @@ namespace client.Forms
 
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Refresh();
+            OnRefreshClicked?.Invoke();
         }
 
         private void tsExit_Click(object sender, EventArgs e)
