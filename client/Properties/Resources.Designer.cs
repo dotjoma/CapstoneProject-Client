@@ -1003,6 +1003,26 @@ namespace client.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap next_16 {
+            get {
+                object obj = ResourceManager.GetObject("next-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap next_24 {
+            get {
+                object obj = ResourceManager.GetObject("next-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Normal_Screen {
             get {
                 object obj = ResourceManager.GetObject("Normal Screen", resourceCulture);
@@ -1066,6 +1086,16 @@ namespace client.Properties {
         internal static System.Drawing.Bitmap PlusBrown {
             get {
                 object obj = ResourceManager.GetObject("PlusBrown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap previous_16 {
+            get {
+                object obj = ResourceManager.GetObject("previous-16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

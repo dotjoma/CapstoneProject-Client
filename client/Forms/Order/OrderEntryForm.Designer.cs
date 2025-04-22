@@ -479,6 +479,7 @@
             panel13.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel13.BackColor = Color.FromArgb(232, 232, 232);
             panel13.Controls.Add(panel14);
+            panel13.Controls.Add(btnHoldOrder);
             panel13.Controls.Add(lblTotalDue);
             panel13.Controls.Add(label15);
             panel13.Controls.Add(lblSubTotal);
@@ -612,9 +613,9 @@
             btnPayment.FlatStyle = FlatStyle.Flat;
             btnPayment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnPayment.ForeColor = Color.Black;
-            btnPayment.Location = new Point(3, 271);
+            btnPayment.Location = new Point(7, 271);
             btnPayment.Name = "btnPayment";
-            btnPayment.Size = new Size(430, 52);
+            btnPayment.Size = new Size(208, 52);
             btnPayment.TabIndex = 20;
             btnPayment.TabStop = false;
             btnPayment.Text = "PAYMENT - [ENTER]";
@@ -742,7 +743,7 @@
             btnPendingOrders.FlatAppearance.BorderSize = 2;
             btnPendingOrders.FlatStyle = FlatStyle.Flat;
             btnPendingOrders.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPendingOrders.Location = new Point(684, 8);
+            btnPendingOrders.Location = new Point(540, 8);
             btnPendingOrders.Name = "btnPendingOrders";
             btnPendingOrders.Size = new Size(181, 50);
             btnPendingOrders.TabIndex = 15;
@@ -757,9 +758,9 @@
             btnHoldOrder.FlatAppearance.BorderSize = 2;
             btnHoldOrder.FlatStyle = FlatStyle.Flat;
             btnHoldOrder.ImageAlign = ContentAlignment.MiddleLeft;
-            btnHoldOrder.Location = new Point(540, 8);
+            btnHoldOrder.Location = new Point(221, 271);
             btnHoldOrder.Name = "btnHoldOrder";
-            btnHoldOrder.Size = new Size(138, 50);
+            btnHoldOrder.Size = new Size(208, 52);
             btnHoldOrder.TabIndex = 14;
             btnHoldOrder.TabStop = false;
             btnHoldOrder.Text = "Hold Order";
@@ -788,7 +789,6 @@
             panel10.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel10.BackColor = Color.FromArgb(232, 232, 232);
             panel10.Controls.Add(btnPendingOrders);
-            panel10.Controls.Add(btnHoldOrder);
             panel10.Controls.Add(btnCancelTransaction);
             panel10.Controls.Add(btnApplyDiscount);
             panel10.Controls.Add(btnNewOrder);

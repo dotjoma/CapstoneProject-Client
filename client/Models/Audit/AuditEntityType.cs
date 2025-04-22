@@ -19,6 +19,7 @@ namespace client.Models.Audit
         Supplier,
         Discount,
         Inventory,
+        Batch,
         Customer,
         Order,
         User,

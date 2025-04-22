@@ -19,6 +19,11 @@ namespace client.Forms.ProductManagement
     {
         ProductController _productController = new ProductController();
 
+        private System.Windows.Forms.Timer _typingTimer = new System.Windows.Forms.Timer();
+        private const int TypingDelay = 500;
+        private int _currentPage = 1;
+        private int _pageSize = 20;
+
         public static ProductHome? Instance { get; private set; }
         private readonly DataLoadingService _dataLoadingService;
         private int _selectedId = 0;
@@ -41,6 +46,14 @@ namespace client.Forms.ProductManagement
         {
             timer1.Start();
             DisplayProducts();
+            InitializeTimer();
+        }
+
+        private void InitializeTimer()
+        {
+            _typingTimer = new System.Windows.Forms.Timer();
+            _typingTimer.Interval = TypingDelay;
+            _typingTimer.Tick += TypingTimer_Tick;
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -73,7 +86,7 @@ namespace client.Forms.ProductManagement
             }
         }
 
-        public void DisplayProducts()
+        private void DisplayProducts()
         {
             try
             {
@@ -81,7 +94,21 @@ namespace client.Forms.ProductManagement
 
                 var products = CurrentProduct.AllProduct;
 
-                foreach (var product in products)
+                if (products == null || products.Count == 0)
+                    return;
+
+                int totalProducts = products.Count;
+                int totalPages = (int)Math.Ceiling((double)totalProducts / _pageSize);
+
+                if (_currentPage < 1) _currentPage = 1;
+                if (_currentPage > totalPages) _currentPage = totalPages;
+
+                var productsToShow = products
+                    .Skip((_currentPage - 1) * _pageSize)
+                    .Take(_pageSize)
+                    .ToList();
+
+                foreach (var product in productsToShow)
                 {
                     var category = CurrentCategory.GetCategoryById(product.categoryId);
                     var productCategory = category?.Name ?? "Unknown";
@@ -104,6 +131,18 @@ namespace client.Forms.ProductManagement
                         status
                     );
                 }
+
+                int start = ((_currentPage - 1) * _pageSize) + 1;
+                int end = start + productsToShow.Count - 1;
+                lblPageInfo.Text = $"Showing {start}-{end} of {totalProducts} products";
+
+                txtItemsPerPage.Text = _pageSize.ToString();
+                txtCurrentPage.Text = _currentPage.ToString();
+                lblTotalPage.Text = $"/{totalPages}";
+
+                btnPrev.Enabled = _currentPage > 1;
+                btnNext.Enabled = _currentPage < totalPages;
+                txtCurrentPage.Enabled = totalPages > 1;
 
                 dgvProducts.ClearSelection();
             }
@@ -398,5 +437,74 @@ namespace client.Forms.ProductManagement
             DeleteProduct(selectedRowId);
         }
 
+        private void TypingTimer_Tick(object? sender, EventArgs e)
+        {
+            _typingTimer.Stop();
+
+            if (string.IsNullOrEmpty(txtCurrentPage.Text))
+            {
+                return;
+            }
+
+            if (int.TryParse(txtCurrentPage.Text, out int pageNumber))
+            {
+
+                var products = CurrentProduct.AllProduct;
+
+                int totalPages = (int)Math.Ceiling((double)products.Count / _pageSize);
+
+                if (pageNumber > totalPages)
+                {
+                    _currentPage = totalPages;
+                }
+                else
+                {
+                    _currentPage = pageNumber;
+                }
+
+                DisplayProducts();
+            }
+            else
+            {
+                txtCurrentPage.Text = _currentPage.ToString();
+            }
+        }
+
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+            _currentPage--;
+            DisplayProducts();
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            _currentPage++;
+            DisplayProducts();
+        }
+
+        private void txtCurrentPage_TextChanged(object sender, EventArgs e)
+        {
+            _typingTimer.Stop();
+            _typingTimer.Start();   
+        }
+
+        private void txtItemsPerPage_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtItemsPerPage.Text))
+            {
+                return;
+            }
+
+            _pageSize = int.Parse(txtItemsPerPage.Text.Trim());
+
+            if (_pageSize > 100)
+            {
+                _pageSize = 100;
+                txtItemsPerPage.Text = "100";
+            }
+
+            _typingTimer.Stop();
+            _typingTimer.Start();
+        }
     }
 }

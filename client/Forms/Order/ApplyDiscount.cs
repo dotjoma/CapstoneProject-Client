@@ -233,26 +233,3 @@ namespace client.Forms.Order
         }
     }
 }
-
-//if (e.RowIndex >= 0 && dgvCartItem.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
-//{
-//    int productId = Convert.ToInt32(dgvCartItem.Rows[e.RowIndex].Cells[0].Value.ToString());
-//    string? productName = dgvCartItem.Rows[e.RowIndex].Cells[1].Value.ToString();
-//    int productQuantity = Convert.ToInt32(dgvCartItem.Rows[e.RowIndex].Cells[2].Value.ToString());
-//    decimal productTotalPrice = Convert.ToDecimal(dgvCartItem.Rows[e.RowIndex].Cells[3].Value.ToString());
-
-//    DataGridViewButtonCell buttonCell = (DataGridViewButtonCell)dgvCartItem.Rows[e.RowIndex].Cells[e.ColumnIndex];
-
-//    if (buttonCell.Value.ToString() == "Apply Discount")
-//    {
-//        buttonCell.Value = "Applied";
-//        AppliedDiscount.AddDiscount(productId, productTotalPrice);
-//    }
-//    else
-//    {
-//        buttonCell.Value = "Apply Discount";
-//        AppliedDiscount.RemoveDiscount(productId);
-//    }
-
-//    dgvCartItem.Refresh();
-//}

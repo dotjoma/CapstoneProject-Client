@@ -16,9 +16,9 @@ namespace client.Forms.InventoryManagement
     {
         SupplierController _supplierController = new SupplierController();
 
-        private readonly AddInventoryItem _parentForm;
+        private readonly Form _parentForm;
 
-        public NewSupplier(AddInventoryItem parent)
+        public NewSupplier(Form parent)
         {
             InitializeComponent();
             this.ShowInTaskbar = false;
@@ -44,7 +44,14 @@ namespace client.Forms.InventoryManagement
                     var getSuppliers = await _supplierController.GetAllInventorySuppliers();
                     if (getSuppliers.Any())
                     {
-                        _parentForm.GetInventorySupplier();
+                        if (_parentForm is AddInventoryItem addForm)
+                        {
+                            addForm.GetInventorySupplier();
+                        }
+                        else if (_parentForm is AddBatch abForm)
+                        {
+                            abForm.GetInventorySupplier();
+                        }
                     }
                 }
             }

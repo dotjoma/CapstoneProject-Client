@@ -698,7 +698,7 @@ namespace client.Forms.InventoryManagement
             {
                 string itemCode = GenerateItemCode(itemName);
                 string code = GenerateRandomCode(5);
-                string batchNumber = $"{itemCode}-{code}-01";
+                string batchNumber = $"{itemCode}-{code}-001";
 
                 txtBatchNumber.Text = batchNumber;
             }

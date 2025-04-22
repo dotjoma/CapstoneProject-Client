@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace client.Controllers
 {
@@ -181,6 +182,73 @@ namespace client.Controllers
                 MessageBox.Show("Invalid response format from server", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return new List<InventoryItem>();
+            }
+        }
+
+        public async Task<bool> CreateBatch(int itemId, string? batchNumber, string? purchaseDate,
+            string? expirationDate, decimal quantity, decimal unitCost, int? supplierId, bool isActive)
+        {
+            var response = await Client.Instance.SendRequestAsync(new Packet
+            {
+                Type = PacketType.CreateBatch,
+                Data = new Dictionary<string, string>
+                {
+                    { "itemId", itemId.ToString() },
+                    { "batchNumber", batchNumber ?? "" },
+                    { "purchaseDate", purchaseDate ?? "" },
+                    { "expirationDate", expirationDate ?? "" },
+                    { "quantity", quantity.ToString() },
+                    { "unitCost", unitCost.ToString() },
+                    { "supplierId", supplierId?.ToString() ?? "" },
+                    { "isActive", isActive.ToString().ToLower() }
+                }
+            });
+
+            if (response == null)
+            {
+                MessageBox.Show("Failed to create batch. Server not responding.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (response.Data != null && response.Data.ContainsKey("success"))
+            {
+                if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
+                {
+                    Logger.Write("CREATE BATCH", $"Batch '{batchNumber}' created successfully");
+
+                    await _auditService.Log(new AuditRecord
+                    {
+                        UserId = CurrentUser.Current!.UserId,
+                        Action = AuditActionType.Create,
+                        Description = "Batch created successfully",
+                        OldValue = "No batch existed",
+                        NewValue = $"New batch: {batchNumber}",
+                        EntityType = AuditEntityType.Batch,
+                        EntityId = ""
+                    });
+
+                    return true;
+                }
+                else
+                {
+                    string errorMessage = response.Data.ContainsKey("message")
+                        ? response.Data["message"]
+                        : "Unknown error occurred while creating batch";
+
+                    Logger.Write("CREATE BATCH", $"Server error: {errorMessage}");
+                    MessageBox.Show($"Failed to create batch: {errorMessage}", "Batch Creation Failed",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return false;
+                }
+            }
+            else
+            {
+                Logger.Write("CREATE BATCH", "Invalid server response format");
+                MessageBox.Show("Server returned an invalid response format while creating batch.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
     }
