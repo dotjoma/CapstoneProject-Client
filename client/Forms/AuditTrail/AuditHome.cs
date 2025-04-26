@@ -73,22 +73,6 @@ namespace client.Forms.AuditTrail
                     {
                         try
                         {
-                            Logger.Write("AUDIT_LOG_DEBUG", $"Processing log #{processedCount + 1}");
-
-                            // Debug log the raw values before processing
-                            Logger.Write("AUDIT_LOG_DEBUG",
-                                $"ID: {audit?.Id}, " +
-                                $"Date: {audit?.Date}, " +
-                                $"Name: {audit?.Name}, " +
-                                $"Action: {audit?.Action}, " +
-                                $"Description: {audit?.Description}, " +
-                                $"PrevValue: {audit?.PrevValue}, " +
-                                $"NewValue: {audit?.NewValue}, " +
-                                $"IP: {audit?.IpAddress}, " +
-                                $"Entity: {audit?.Entity}, " +
-                                $"EntityID: {audit?.EntityId}");
-
-                            // Safely handle DateTime formatting
                             string formattedDate = string.Empty;
                             if (audit != null && audit.Date != default)
                             {
@@ -110,13 +94,11 @@ namespace client.Forms.AuditTrail
                                 audit?.Description,
                                 audit?.PrevValue,
                                 audit?.NewValue,
-                                audit?.IpAddress,
                                 audit?.Entity,
                                 audit?.EntityId
                             );
 
                             processedCount++;
-                            Logger.Write("AUDIT_LOG_DEBUG", $"Successfully processed log #{processedCount}");
                         }
                         catch (Exception rowEx)
                         {
@@ -130,7 +112,6 @@ namespace client.Forms.AuditTrail
                     }
 
                     HideLoading();
-                    Logger.Write("AUDIT_LOG_DEBUG", $"Successfully displayed {processedCount} audit logs");
                 }
                 else
                 {
@@ -149,10 +130,6 @@ namespace client.Forms.AuditTrail
                 MessageBox.Show($"Error loading audit logs: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally
-            {
-                Logger.Write("AUDIT_LOG_DEBUG", "DisplayAuditLogs execution completed");
-            }
         }
 
         private void dgvAudit_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -162,17 +139,6 @@ namespace client.Forms.AuditTrail
 
         private void AuditHome_Shown(object sender, EventArgs e)
         {
-            //var auditLogsCount = CurrentAudit.AllAudits.Count;
-
-            //if (auditLogsCount > 0)
-            //{
-            //    DisplayAuditLogs();
-            //}
-            //else
-            //{
-            //    FetchAndDisplay();
-            //}
-
             FetchAndDisplay();
         }
 

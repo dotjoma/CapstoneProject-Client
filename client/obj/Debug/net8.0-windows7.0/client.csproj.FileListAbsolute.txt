@@ -288,6 +288,7 @@ E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-wi
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.InventoryManagement.NewInventoryCategory.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.InventoryManagement.NewSupplier.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.InventoryManagement.NewUnit.resources
+E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.InventoryManagement.ViewBatches.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.Login.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.MainMenu.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.Order.ApplyDiscount.resources
@@ -314,4 +315,4 @@ E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-wi
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.pdb
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.genruntimeconfig.cache
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\ref\client.dll
-E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.InventoryManagement.ViewBatches.resources
+E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.InventoryManagement.EditBatch.resources

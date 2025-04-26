@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
@@ -49,6 +50,7 @@
             btnClose = new Button();
             panel4 = new Panel();
             dgvBatches = new DataGridView();
+            id = new DataGridViewTextBoxColumn();
             batchnumber = new DataGridViewTextBoxColumn();
             purchasedate = new DataGridViewTextBoxColumn();
             expirydate = new DataGridViewTextBoxColumn();
@@ -57,7 +59,7 @@
             unitcost = new DataGridViewTextBoxColumn();
             supplier = new DataGridViewTextBoxColumn();
             status = new DataGridViewTextBoxColumn();
-            actions = new DataGridViewButtonColumn();
+            actions = new DataGridViewImageColumn();
             panel3 = new Panel();
             txtItemsPerPage = new TextBox();
             label3 = new Label();
@@ -66,12 +68,16 @@
             txtCurrentPage = new TextBox();
             lblPageInfo = new Label();
             lblTotalPage = new Label();
+            cmsOptions = new ContextMenuStrip(components);
+            cmsEdit = new ToolStripMenuItem();
+            cmsDelete = new ToolStripMenuItem();
             pnlHeader.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvBatches).BeginInit();
             panel3.SuspendLayout();
+            cmsOptions.SuspendLayout();
             SuspendLayout();
             // 
             // pnlHeader
@@ -84,7 +90,7 @@
             pnlHeader.Location = new Point(0, 0);
             pnlHeader.Margin = new Padding(3, 2, 3, 2);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Size = new Size(896, 34);
+            pnlHeader.Size = new Size(917, 34);
             pnlHeader.TabIndex = 63;
             // 
             // lblHeader
@@ -134,7 +140,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 34);
             panel1.Name = "panel1";
-            panel1.Size = new Size(896, 78);
+            panel1.Size = new Size(917, 78);
             panel1.TabIndex = 64;
             // 
             // lblDescription
@@ -145,9 +151,9 @@
             lblDescription.ForeColor = Color.Black;
             lblDescription.Location = new Point(12, 42);
             lblDescription.Name = "lblDescription";
-            lblDescription.Size = new Size(511, 21);
+            lblDescription.Size = new Size(270, 21);
             lblDescription.TabIndex = 4;
-            lblDescription.Text = "Category: Meat | Current Stock: 20/30 | Supplier: Manok at Baboy Supply";
+            lblDescription.Text = "Category: Meat | Current Stock: 20/30";
             // 
             // lblTitle
             // 
@@ -168,7 +174,7 @@
             panel2.Dock = DockStyle.Bottom;
             panel2.Location = new Point(0, 504);
             panel2.Name = "panel2";
-            panel2.Size = new Size(896, 45);
+            panel2.Size = new Size(917, 45);
             panel2.TabIndex = 65;
             // 
             // btnClose
@@ -192,7 +198,7 @@
             panel4.Dock = DockStyle.Fill;
             panel4.Location = new Point(0, 0);
             panel4.Name = "panel4";
-            panel4.Size = new Size(898, 551);
+            panel4.Size = new Size(919, 551);
             panel4.TabIndex = 68;
             // 
             // dgvBatches
@@ -221,7 +227,7 @@
             dgvBatches.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvBatches.ColumnHeadersHeight = 30;
             dgvBatches.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvBatches.Columns.AddRange(new DataGridViewColumn[] { batchnumber, purchasedate, expirydate, initialquantity, currentquantity, unitcost, supplier, status, actions });
+            dgvBatches.Columns.AddRange(new DataGridViewColumn[] { id, batchnumber, purchasedate, expirydate, initialquantity, currentquantity, unitcost, supplier, status, actions });
             dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = Color.White;
             dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -248,9 +254,19 @@
             dgvBatches.RowHeadersVisible = false;
             dgvBatches.RowHeadersWidth = 51;
             dgvBatches.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvBatches.Size = new Size(896, 351);
+            dgvBatches.Size = new Size(917, 351);
             dgvBatches.TabIndex = 69;
             dgvBatches.TabStop = false;
+            dgvBatches.CellContentClick += dgvBatches_CellContentClick;
+            // 
+            // id
+            // 
+            id.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            id.HeaderText = "ID";
+            id.MinimumWidth = 50;
+            id.Name = "id";
+            id.ReadOnly = true;
+            id.Width = 50;
             // 
             // batchnumber
             // 
@@ -348,7 +364,7 @@
             panel3.Controls.Add(lblTotalPage);
             panel3.Location = new Point(-10, 465);
             panel3.Name = "panel3";
-            panel3.Size = new Size(915, 39);
+            panel3.Size = new Size(935, 39);
             panel3.TabIndex = 68;
             // 
             // txtItemsPerPage
@@ -357,7 +373,7 @@
             txtItemsPerPage.Name = "txtItemsPerPage";
             txtItemsPerPage.Size = new Size(25, 23);
             txtItemsPerPage.TabIndex = 5;
-            txtItemsPerPage.Text = "200";
+            txtItemsPerPage.Text = "100";
             txtItemsPerPage.TextChanged += txtItemsPerPage_TextChanged;
             txtItemsPerPage.Enter += txtItemsPerPage_Enter;
             // 
@@ -377,7 +393,7 @@
             btnPrev.FlatAppearance.BorderColor = Color.LightGray;
             btnPrev.FlatStyle = FlatStyle.Flat;
             btnPrev.Image = Properties.Resources.previous_16;
-            btnPrev.Location = new Point(765, 7);
+            btnPrev.Location = new Point(355, 7);
             btnPrev.Name = "btnPrev";
             btnPrev.Size = new Size(28, 23);
             btnPrev.TabIndex = 3;
@@ -390,7 +406,7 @@
             btnNext.FlatAppearance.BorderColor = Color.LightGray;
             btnNext.FlatStyle = FlatStyle.Flat;
             btnNext.Image = Properties.Resources.next_24;
-            btnNext.Location = new Point(859, 7);
+            btnNext.Location = new Point(449, 7);
             btnNext.Name = "btnNext";
             btnNext.Size = new Size(28, 23);
             btnNext.TabIndex = 2;
@@ -400,7 +416,7 @@
             // txtCurrentPage
             // 
             txtCurrentPage.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            txtCurrentPage.Location = new Point(801, 7);
+            txtCurrentPage.Location = new Point(391, 7);
             txtCurrentPage.Name = "txtCurrentPage";
             txtCurrentPage.Size = new Size(25, 23);
             txtCurrentPage.TabIndex = 1;
@@ -422,24 +438,45 @@
             // 
             lblTotalPage.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblTotalPage.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTotalPage.Location = new Point(825, 5);
+            lblTotalPage.Location = new Point(415, 5);
             lblTotalPage.Name = "lblTotalPage";
             lblTotalPage.Size = new Size(36, 23);
             lblTotalPage.TabIndex = 6;
             lblTotalPage.Text = "/100";
             lblTotalPage.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // cmsOptions
+            // 
+            cmsOptions.Items.AddRange(new ToolStripItem[] { cmsEdit, cmsDelete });
+            cmsOptions.Name = "cmsActions";
+            cmsOptions.Size = new Size(108, 48);
+            // 
+            // cmsEdit
+            // 
+            cmsEdit.Name = "cmsEdit";
+            cmsEdit.Size = new Size(107, 22);
+            cmsEdit.Text = "Edit";
+            cmsEdit.Click += cmsEdit_Click;
+            // 
+            // cmsDelete
+            // 
+            cmsDelete.Name = "cmsDelete";
+            cmsDelete.Size = new Size(107, 22);
+            cmsDelete.Text = "Delete";
+            cmsDelete.Click += cmsDelete_Click;
+            // 
             // ViewBatches
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(898, 551);
+            ClientSize = new Size(919, 551);
             Controls.Add(panel4);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ViewBatches";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ViewBatches";
             Load += ViewBatches_Load;
+            KeyDown += ViewBatches_KeyDown;
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
             panel1.ResumeLayout(false);
@@ -449,6 +486,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvBatches).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            cmsOptions.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -470,6 +508,10 @@
         private TextBox txtCurrentPage;
         private Label lblPageInfo;
         private DataGridView dgvBatches;
+        private TextBox txtItemsPerPage;
+        private Label label3;
+        private Label lblTotalPage;
+        private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn batchnumber;
         private DataGridViewTextBoxColumn purchasedate;
         private DataGridViewTextBoxColumn expirydate;
@@ -478,9 +520,9 @@
         private DataGridViewTextBoxColumn unitcost;
         private DataGridViewTextBoxColumn supplier;
         private DataGridViewTextBoxColumn status;
-        private DataGridViewButtonColumn actions;
-        private TextBox txtItemsPerPage;
-        private Label label3;
-        private Label lblTotalPage;
+        private DataGridViewImageColumn actions;
+        private ContextMenuStrip cmsOptions;
+        private ToolStripMenuItem cmsEdit;
+        private ToolStripMenuItem cmsDelete;
     }
 }

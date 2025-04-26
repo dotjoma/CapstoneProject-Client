@@ -76,9 +76,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(10, 7);
             label1.Name = "label1";
-            label1.Size = new Size(113, 28);
+            label1.Size = new Size(90, 21);
             label1.TabIndex = 0;
             label1.Text = "TOTAL DUE";
             // 
@@ -89,10 +89,9 @@
             btnConfirmPayment.FlatStyle = FlatStyle.Flat;
             btnConfirmPayment.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnConfirmPayment.ForeColor = Color.White;
-            btnConfirmPayment.Location = new Point(12, 637);
-            btnConfirmPayment.Margin = new Padding(3, 4, 3, 4);
+            btnConfirmPayment.Location = new Point(10, 478);
             btnConfirmPayment.Name = "btnConfirmPayment";
-            btnConfirmPayment.Size = new Size(355, 55);
+            btnConfirmPayment.Size = new Size(311, 41);
             btnConfirmPayment.TabIndex = 0;
             btnConfirmPayment.Text = "CONFIRM PAYMENT - [ENTER]";
             btnConfirmPayment.UseVisualStyleBackColor = false;
@@ -133,8 +132,7 @@
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
             dgvMop.DefaultCellStyle = dataGridViewCellStyle4;
             dgvMop.EnableHeadersVisualStyles = false;
-            dgvMop.Location = new Point(12, 311);
-            dgvMop.Margin = new Padding(3, 4, 3, 4);
+            dgvMop.Location = new Point(10, 233);
             dgvMop.MultiSelect = false;
             dgvMop.Name = "dgvMop";
             dgvMop.ReadOnly = true;
@@ -150,7 +148,7 @@
             dgvMop.RowHeadersVisible = false;
             dgvMop.RowHeadersWidth = 51;
             dgvMop.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMop.Size = new Size(355, 202);
+            dgvMop.Size = new Size(311, 152);
             dgvMop.TabIndex = 5;
             dgvMop.TabStop = false;
             dgvMop.CellClick += dgvMop_CellClick;
@@ -192,37 +190,35 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(12, 219);
+            label2.Location = new Point(10, 164);
             label2.Name = "label2";
-            label2.Size = new Size(148, 25);
+            label2.Size = new Size(116, 20);
             label2.TabIndex = 6;
             label2.Text = "AMOUNT PAID:";
             // 
             // btnRemove
             // 
-            btnRemove.FlatAppearance.BorderColor = Color.Crimson;
+            btnRemove.FlatAppearance.BorderColor = Color.Black;
             btnRemove.FlatStyle = FlatStyle.Flat;
             btnRemove.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnRemove.Location = new Point(11, 521);
-            btnRemove.Margin = new Padding(3, 4, 3, 4);
+            btnRemove.Location = new Point(10, 391);
             btnRemove.Name = "btnRemove";
-            btnRemove.Size = new Size(356, 39);
+            btnRemove.Size = new Size(312, 29);
             btnRemove.TabIndex = 5;
-            btnRemove.Text = "REMOVE PAYMENT METHOD - [DELETE]";
+            btnRemove.Text = "REMOVE PAYMENT";
             btnRemove.UseVisualStyleBackColor = true;
             btnRemove.Click += btnRemove_Click;
             // 
             // btnApply
             // 
-            btnApply.FlatAppearance.BorderColor = Color.Green;
+            btnApply.FlatAppearance.BorderColor = Color.Black;
             btnApply.FlatStyle = FlatStyle.Flat;
             btnApply.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnApply.Location = new Point(402, 222);
-            btnApply.Margin = new Padding(3, 4, 3, 4);
+            btnApply.Location = new Point(352, 166);
             btnApply.Name = "btnApply";
-            btnApply.Size = new Size(355, 39);
+            btnApply.Size = new Size(311, 29);
             btnApply.TabIndex = 4;
-            btnApply.Text = "ADD NEW PAYMENT METHOD - [INSERT]";
+            btnApply.Text = "ADD PAYMENT";
             btnApply.UseVisualStyleBackColor = true;
             btnApply.Click += btnApply_Click;
             // 
@@ -230,9 +226,9 @@
             // 
             lblAmountPaid.BackColor = Color.FromArgb(232, 232, 232);
             lblAmountPaid.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAmountPaid.Location = new Point(12, 244);
+            lblAmountPaid.Location = new Point(10, 183);
             lblAmountPaid.Name = "lblAmountPaid";
-            lblAmountPaid.Size = new Size(355, 39);
+            lblAmountPaid.Size = new Size(311, 29);
             lblAmountPaid.TabIndex = 3;
             lblAmountPaid.Text = "0.00";
             lblAmountPaid.TextAlign = ContentAlignment.MiddleRight;
@@ -241,10 +237,9 @@
             // 
             paymentDetailsPanel.BackColor = Color.FromArgb(232, 232, 232);
             paymentDetailsPanel.BorderStyle = BorderStyle.FixedSingle;
-            paymentDetailsPanel.Location = new Point(399, 81);
-            paymentDetailsPanel.Margin = new Padding(3, 4, 3, 4);
+            paymentDetailsPanel.Location = new Point(349, 61);
             paymentDetailsPanel.Name = "paymentDetailsPanel";
-            paymentDetailsPanel.Size = new Size(355, 133);
+            paymentDetailsPanel.Size = new Size(311, 100);
             paymentDetailsPanel.TabIndex = 3;
             // 
             // cboPaymentMethod
@@ -255,10 +250,9 @@
             cboPaymentMethod.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cboPaymentMethod.FormattingEnabled = true;
             cboPaymentMethod.Items.AddRange(new object[] { "Cash", "Digital Payment" });
-            cboPaymentMethod.Location = new Point(399, 37);
-            cboPaymentMethod.Margin = new Padding(3, 4, 3, 4);
+            cboPaymentMethod.Location = new Point(349, 28);
             cboPaymentMethod.Name = "cboPaymentMethod";
-            cboPaymentMethod.Size = new Size(355, 36);
+            cboPaymentMethod.Size = new Size(311, 29);
             cboPaymentMethod.TabIndex = 2;
             cboPaymentMethod.SelectedIndexChanged += cboPaymentMethod_SelectedIndexChanged;
             // 
@@ -266,9 +260,9 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(399, 9);
+            label4.Location = new Point(349, 7);
             label4.Name = "label4";
-            label4.Size = new Size(194, 28);
+            label4.Size = new Size(156, 21);
             label4.TabIndex = 1;
             label4.Text = "PAYMENT METHOD:";
             // 
@@ -277,9 +271,9 @@
             lblAmountToPay.Anchor = AnchorStyles.None;
             lblAmountToPay.BackColor = Color.FromArgb(232, 232, 232);
             lblAmountToPay.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAmountToPay.Location = new Point(12, 37);
+            lblAmountToPay.Location = new Point(10, 28);
             lblAmountToPay.Name = "lblAmountToPay";
-            lblAmountToPay.Size = new Size(355, 39);
+            lblAmountToPay.Size = new Size(311, 29);
             lblAmountToPay.TabIndex = 1;
             lblAmountToPay.Text = "0.00";
             lblAmountToPay.TextAlign = ContentAlignment.MiddleRight;
@@ -288,9 +282,9 @@
             // 
             lblChange.BackColor = Color.FromArgb(232, 232, 232);
             lblChange.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblChange.Location = new Point(11, 175);
+            lblChange.Location = new Point(10, 131);
             lblChange.Name = "lblChange";
-            lblChange.Size = new Size(356, 39);
+            lblChange.Size = new Size(312, 29);
             lblChange.TabIndex = 4;
             lblChange.Text = "0.00";
             lblChange.TextAlign = ContentAlignment.MiddleRight;
@@ -299,9 +293,9 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(12, 150);
+            label6.Location = new Point(10, 112);
             label6.Name = "label6";
-            label6.Size = new Size(94, 25);
+            label6.Size = new Size(73, 20);
             label6.TabIndex = 3;
             label6.Text = "CHANGE:";
             // 
@@ -309,9 +303,9 @@
             // 
             lblBalance.BackColor = Color.FromArgb(232, 232, 232);
             lblBalance.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblBalance.Location = new Point(12, 106);
+            lblBalance.Location = new Point(10, 80);
             lblBalance.Name = "lblBalance";
-            lblBalance.Size = new Size(355, 39);
+            lblBalance.Size = new Size(311, 29);
             lblBalance.TabIndex = 2;
             lblBalance.Text = "0.00";
             lblBalance.TextAlign = ContentAlignment.MiddleRight;
@@ -320,9 +314,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(11, 81);
+            label3.Location = new Point(10, 61);
             label3.Name = "label3";
-            label3.Size = new Size(100, 25);
+            label3.Size = new Size(78, 20);
             label3.TabIndex = 1;
             label3.Text = "BALANCE:";
             // 
@@ -342,10 +336,9 @@
             numpadPanel.Controls.Add(btn9);
             numpadPanel.Controls.Add(btn8);
             numpadPanel.Controls.Add(btn7);
-            numpadPanel.Location = new Point(402, 311);
-            numpadPanel.Margin = new Padding(3, 4, 3, 4);
+            numpadPanel.Location = new Point(352, 233);
             numpadPanel.Name = "numpadPanel";
-            numpadPanel.Size = new Size(352, 444);
+            numpadPanel.Size = new Size(308, 333);
             numpadPanel.TabIndex = 1;
             // 
             // btnDelete
@@ -355,10 +348,9 @@
             btnDelete.FlatAppearance.BorderColor = Color.Gray;
             btnDelete.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDelete.Image = Properties.Resources.delete_24;
-            btnDelete.Location = new Point(236, 340);
-            btnDelete.Margin = new Padding(3, 4, 3, 4);
+            btnDelete.Location = new Point(206, 255);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(80, 93);
+            btnDelete.Size = new Size(70, 70);
             btnDelete.TabIndex = 11;
             btnDelete.TabStop = false;
             btnDelete.Tag = "delete";
@@ -371,10 +363,9 @@
             btnDot.CausesValidation = false;
             btnDot.FlatAppearance.BorderColor = Color.Gray;
             btnDot.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDot.Location = new Point(136, 340);
-            btnDot.Margin = new Padding(3, 4, 3, 4);
+            btnDot.Location = new Point(119, 255);
             btnDot.Name = "btnDot";
-            btnDot.Size = new Size(80, 93);
+            btnDot.Size = new Size(70, 70);
             btnDot.TabIndex = 10;
             btnDot.TabStop = false;
             btnDot.Text = ".";
@@ -386,10 +377,9 @@
             btn0.CausesValidation = false;
             btn0.FlatAppearance.BorderColor = Color.Gray;
             btn0.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn0.Location = new Point(37, 340);
-            btn0.Margin = new Padding(3, 4, 3, 4);
+            btn0.Location = new Point(32, 255);
             btn0.Name = "btn0";
-            btn0.Size = new Size(80, 93);
+            btn0.Size = new Size(70, 70);
             btn0.TabIndex = 9;
             btn0.TabStop = false;
             btn0.Text = "0";
@@ -402,10 +392,9 @@
             btn3.CausesValidation = false;
             btn3.FlatAppearance.BorderColor = Color.Gray;
             btn3.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn3.Location = new Point(236, 231);
-            btn3.Margin = new Padding(3, 4, 3, 4);
+            btn3.Location = new Point(206, 173);
             btn3.Name = "btn3";
-            btn3.Size = new Size(80, 93);
+            btn3.Size = new Size(70, 70);
             btn3.TabIndex = 8;
             btn3.TabStop = false;
             btn3.Text = "3";
@@ -417,10 +406,9 @@
             btn2.CausesValidation = false;
             btn2.FlatAppearance.BorderColor = Color.Gray;
             btn2.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn2.Location = new Point(136, 231);
-            btn2.Margin = new Padding(3, 4, 3, 4);
+            btn2.Location = new Point(119, 173);
             btn2.Name = "btn2";
-            btn2.Size = new Size(80, 93);
+            btn2.Size = new Size(70, 70);
             btn2.TabIndex = 7;
             btn2.TabStop = false;
             btn2.Text = "2";
@@ -432,10 +420,9 @@
             btn1.CausesValidation = false;
             btn1.FlatAppearance.BorderColor = Color.Gray;
             btn1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn1.Location = new Point(37, 231);
-            btn1.Margin = new Padding(3, 4, 3, 4);
+            btn1.Location = new Point(32, 173);
             btn1.Name = "btn1";
-            btn1.Size = new Size(80, 93);
+            btn1.Size = new Size(70, 70);
             btn1.TabIndex = 6;
             btn1.TabStop = false;
             btn1.Text = "1";
@@ -447,10 +434,9 @@
             btn6.CausesValidation = false;
             btn6.FlatAppearance.BorderColor = Color.Gray;
             btn6.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn6.Location = new Point(236, 121);
-            btn6.Margin = new Padding(3, 4, 3, 4);
+            btn6.Location = new Point(206, 91);
             btn6.Name = "btn6";
-            btn6.Size = new Size(80, 93);
+            btn6.Size = new Size(70, 70);
             btn6.TabIndex = 5;
             btn6.TabStop = false;
             btn6.Text = "6";
@@ -462,10 +448,9 @@
             btn5.CausesValidation = false;
             btn5.FlatAppearance.BorderColor = Color.Gray;
             btn5.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn5.Location = new Point(136, 121);
-            btn5.Margin = new Padding(3, 4, 3, 4);
+            btn5.Location = new Point(119, 91);
             btn5.Name = "btn5";
-            btn5.Size = new Size(80, 93);
+            btn5.Size = new Size(70, 70);
             btn5.TabIndex = 4;
             btn5.TabStop = false;
             btn5.Text = "5";
@@ -477,10 +462,9 @@
             btn4.CausesValidation = false;
             btn4.FlatAppearance.BorderColor = Color.Gray;
             btn4.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn4.Location = new Point(37, 121);
-            btn4.Margin = new Padding(3, 4, 3, 4);
+            btn4.Location = new Point(32, 91);
             btn4.Name = "btn4";
-            btn4.Size = new Size(80, 93);
+            btn4.Size = new Size(70, 70);
             btn4.TabIndex = 3;
             btn4.TabStop = false;
             btn4.Text = "4";
@@ -492,10 +476,9 @@
             btn9.CausesValidation = false;
             btn9.FlatAppearance.BorderColor = Color.Gray;
             btn9.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn9.Location = new Point(236, 12);
-            btn9.Margin = new Padding(3, 4, 3, 4);
+            btn9.Location = new Point(206, 9);
             btn9.Name = "btn9";
-            btn9.Size = new Size(80, 93);
+            btn9.Size = new Size(70, 70);
             btn9.TabIndex = 2;
             btn9.TabStop = false;
             btn9.Text = "9";
@@ -507,10 +490,9 @@
             btn8.CausesValidation = false;
             btn8.FlatAppearance.BorderColor = Color.Gray;
             btn8.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn8.Location = new Point(136, 12);
-            btn8.Margin = new Padding(3, 4, 3, 4);
+            btn8.Location = new Point(119, 9);
             btn8.Name = "btn8";
-            btn8.Size = new Size(80, 93);
+            btn8.Size = new Size(70, 70);
             btn8.TabIndex = 1;
             btn8.TabStop = false;
             btn8.Text = "8";
@@ -522,10 +504,9 @@
             btn7.CausesValidation = false;
             btn7.FlatAppearance.BorderColor = Color.Gray;
             btn7.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn7.Location = new Point(37, 12);
-            btn7.Margin = new Padding(3, 4, 3, 4);
+            btn7.Location = new Point(32, 9);
             btn7.Name = "btn7";
-            btn7.Size = new Size(80, 93);
+            btn7.Size = new Size(70, 70);
             btn7.TabIndex = 0;
             btn7.TabStop = false;
             btn7.Text = "7";
@@ -543,10 +524,9 @@
             btnCancelPayment.FlatStyle = FlatStyle.Flat;
             btnCancelPayment.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCancelPayment.ForeColor = Color.White;
-            btnCancelPayment.Location = new Point(12, 700);
-            btnCancelPayment.Margin = new Padding(3, 4, 3, 4);
+            btnCancelPayment.Location = new Point(10, 525);
             btnCancelPayment.Name = "btnCancelPayment";
-            btnCancelPayment.Size = new Size(355, 55);
+            btnCancelPayment.Size = new Size(311, 41);
             btnCancelPayment.TabIndex = 7;
             btnCancelPayment.Text = "CANCEL PAYMENT - [ESC]";
             btnCancelPayment.UseVisualStyleBackColor = false;
@@ -554,10 +534,10 @@
             // 
             // PaymentForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(769, 768);
+            ClientSize = new Size(673, 576);
             Controls.Add(btnCancelPayment);
             Controls.Add(label2);
             Controls.Add(btnRemove);
@@ -577,7 +557,6 @@
             Controls.Add(numpadPanel);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
             Name = "PaymentForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ELICIAS GARDEN FOOD PARK";

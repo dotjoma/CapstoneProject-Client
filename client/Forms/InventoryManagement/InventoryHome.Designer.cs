@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle23 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle24 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle32 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle33 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle25 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle26 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle27 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle28 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle29 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle30 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle31 = new DataGridViewCellStyle();
+            components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             panel2 = new Panel();
             comboBox2 = new ComboBox();
             label3 = new Label();
@@ -54,6 +55,9 @@
             label1 = new Label();
             panel1 = new Panel();
             dgvInventory = new DataGridView();
+            cmsOptions = new ContextMenuStrip(components);
+            cmsAdd = new ToolStripMenuItem();
+            cmsView = new ToolStripMenuItem();
             productName = new DataGridViewTextBoxColumn();
             category = new DataGridViewTextBoxColumn();
             unit = new DataGridViewTextBoxColumn();
@@ -65,14 +69,14 @@
             expirydate = new DataGridViewTextBoxColumn();
             stockstatus = new DataGridViewTextBoxColumn();
             suppliername = new DataGridViewTextBoxColumn();
-            actions = new DataGridViewButtonColumn();
-            viewbatch = new DataGridViewButtonColumn();
+            actions = new DataGridViewImageColumn();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnRefreshData).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnRefresh).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvInventory).BeginInit();
+            cmsOptions.SuspendLayout();
             SuspendLayout();
             // 
             // panel2
@@ -266,33 +270,33 @@
             dgvInventory.AllowUserToDeleteRows = false;
             dgvInventory.AllowUserToResizeColumns = false;
             dgvInventory.AllowUserToResizeRows = false;
-            dataGridViewCellStyle23.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle23.ForeColor = Color.FromArgb(93, 64, 55);
-            dataGridViewCellStyle23.SelectionBackColor = Color.FromArgb(245, 242, 237);
-            dataGridViewCellStyle23.SelectionForeColor = Color.FromArgb(93, 64, 55);
-            dgvInventory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle1.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(93, 64, 55);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(245, 242, 237);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(93, 64, 55);
+            dgvInventory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvInventory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvInventory.BackgroundColor = Color.White;
             dgvInventory.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle24.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle24.BackColor = Color.FromArgb(121, 85, 72);
-            dataGridViewCellStyle24.Font = new Font("Segoe UI Semibold", 9.2F, FontStyle.Bold);
-            dataGridViewCellStyle24.ForeColor = Color.White;
-            dataGridViewCellStyle24.SelectionBackColor = Color.FromArgb(121, 85, 72);
-            dataGridViewCellStyle24.SelectionForeColor = Color.White;
-            dataGridViewCellStyle24.WrapMode = DataGridViewTriState.True;
-            dgvInventory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(121, 85, 72);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9.2F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(121, 85, 72);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvInventory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvInventory.ColumnHeadersHeight = 30;
             dgvInventory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvInventory.Columns.AddRange(new DataGridViewColumn[] { productName, category, unit, stock, minstock, reorderlevel, batches, unitcost, expirydate, stockstatus, suppliername, actions, viewbatch });
-            dataGridViewCellStyle32.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle32.BackColor = Color.White;
-            dataGridViewCellStyle32.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle32.ForeColor = Color.FromArgb(93, 64, 55);
-            dataGridViewCellStyle32.SelectionBackColor = Color.FromArgb(245, 242, 237);
-            dataGridViewCellStyle32.SelectionForeColor = Color.FromArgb(93, 64, 55);
-            dataGridViewCellStyle32.WrapMode = DataGridViewTriState.False;
-            dgvInventory.DefaultCellStyle = dataGridViewCellStyle32;
+            dgvInventory.Columns.AddRange(new DataGridViewColumn[] { productName, category, unit, stock, minstock, reorderlevel, batches, unitcost, expirydate, stockstatus, suppliername, actions });
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = Color.White;
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle10.ForeColor = Color.FromArgb(93, 64, 55);
+            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(245, 242, 237);
+            dataGridViewCellStyle10.SelectionForeColor = Color.FromArgb(93, 64, 55);
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.False;
+            dgvInventory.DefaultCellStyle = dataGridViewCellStyle10;
             dgvInventory.Dock = DockStyle.Fill;
             dgvInventory.EnableHeadersVisualStyles = false;
             dgvInventory.GridColor = Color.White;
@@ -301,14 +305,14 @@
             dgvInventory.Name = "dgvInventory";
             dgvInventory.ReadOnly = true;
             dgvInventory.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle33.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle33.BackColor = SystemColors.Control;
-            dataGridViewCellStyle33.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle33.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle33.SelectionBackColor = Color.FromArgb(214, 192, 179);
-            dataGridViewCellStyle33.SelectionForeColor = Color.White;
-            dataGridViewCellStyle33.WrapMode = DataGridViewTriState.True;
-            dgvInventory.RowHeadersDefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = SystemColors.Control;
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle11.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(214, 192, 179);
+            dataGridViewCellStyle11.SelectionForeColor = Color.White;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
+            dgvInventory.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             dgvInventory.RowHeadersVisible = false;
             dgvInventory.RowHeadersWidth = 51;
             dgvInventory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -316,6 +320,26 @@
             dgvInventory.TabIndex = 5;
             dgvInventory.TabStop = false;
             dgvInventory.CellContentClick += dgvInventory_CellContentClick;
+            // 
+            // cmsOptions
+            // 
+            cmsOptions.Items.AddRange(new ToolStripItem[] { cmsAdd, cmsView });
+            cmsOptions.Name = "cmsOptions";
+            cmsOptions.Size = new Size(144, 48);
+            // 
+            // cmsAdd
+            // 
+            cmsAdd.Name = "cmsAdd";
+            cmsAdd.Size = new Size(143, 22);
+            cmsAdd.Text = "Add Batch";
+            cmsAdd.Click += cmsAdd_Click;
+            // 
+            // cmsView
+            // 
+            cmsView.Name = "cmsView";
+            cmsView.Size = new Size(143, 22);
+            cmsView.Text = "View Batches";
+            cmsView.Click += cmsView_Click;
             // 
             // productName
             // 
@@ -345,8 +369,8 @@
             // 
             // stock
             // 
-            dataGridViewCellStyle25.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            stock.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            stock.DefaultCellStyle = dataGridViewCellStyle3;
             stock.HeaderText = "Stock";
             stock.MinimumWidth = 60;
             stock.Name = "stock";
@@ -355,8 +379,8 @@
             // minstock
             // 
             minstock.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle26.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            minstock.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            minstock.DefaultCellStyle = dataGridViewCellStyle4;
             minstock.FillWeight = 137.7169F;
             minstock.HeaderText = "Min Stock";
             minstock.MinimumWidth = 100;
@@ -366,8 +390,8 @@
             // reorderlevel
             // 
             reorderlevel.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle27.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            reorderlevel.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            reorderlevel.DefaultCellStyle = dataGridViewCellStyle5;
             reorderlevel.FillWeight = 178.85527F;
             reorderlevel.HeaderText = "Reorder Level";
             reorderlevel.MinimumWidth = 100;
@@ -377,8 +401,8 @@
             // batches
             // 
             batches.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle28.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            batches.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            batches.DefaultCellStyle = dataGridViewCellStyle6;
             batches.FillWeight = 74.16836F;
             batches.HeaderText = "Batches";
             batches.MinimumWidth = 70;
@@ -389,8 +413,8 @@
             // 
             // unitcost
             // 
-            dataGridViewCellStyle29.Alignment = DataGridViewContentAlignment.MiddleRight;
-            unitcost.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleRight;
+            unitcost.DefaultCellStyle = dataGridViewCellStyle7;
             unitcost.HeaderText = "Unit Cost";
             unitcost.MinimumWidth = 75;
             unitcost.Name = "unitcost";
@@ -398,8 +422,8 @@
             // 
             // expirydate
             // 
-            dataGridViewCellStyle30.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            expirydate.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            expirydate.DefaultCellStyle = dataGridViewCellStyle8;
             expirydate.HeaderText = "Expiry";
             expirydate.MinimumWidth = 6;
             expirydate.Name = "expirydate";
@@ -407,8 +431,8 @@
             // 
             // stockstatus
             // 
-            dataGridViewCellStyle31.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            stockstatus.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            stockstatus.DefaultCellStyle = dataGridViewCellStyle9;
             stockstatus.HeaderText = "Stock Status";
             stockstatus.Name = "stockstatus";
             stockstatus.ReadOnly = true;
@@ -423,21 +447,11 @@
             // actions
             // 
             actions.HeaderText = "Actions";
-            actions.MinimumWidth = 80;
+            actions.MinimumWidth = 40;
             actions.Name = "actions";
             actions.ReadOnly = true;
             actions.Resizable = DataGridViewTriState.True;
             actions.SortMode = DataGridViewColumnSortMode.Automatic;
-            actions.Text = "Add Batch";
-            // 
-            // viewbatch
-            // 
-            viewbatch.HeaderText = "";
-            viewbatch.MinimumWidth = 80;
-            viewbatch.Name = "viewbatch";
-            viewbatch.ReadOnly = true;
-            viewbatch.Resizable = DataGridViewTriState.True;
-            viewbatch.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
             // InventoryHome
             // 
@@ -459,6 +473,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnRefresh).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvInventory).EndInit();
+            cmsOptions.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -479,6 +494,9 @@
         private Panel panel1;
         private Button btnAddNew;
         private DataGridView dgvInventory;
+        private ContextMenuStrip cmsOptions;
+        private ToolStripMenuItem cmsAdd;
+        private ToolStripMenuItem cmsView;
         private DataGridViewTextBoxColumn productName;
         private DataGridViewTextBoxColumn category;
         private DataGridViewTextBoxColumn unit;
@@ -490,7 +508,6 @@
         private DataGridViewTextBoxColumn expirydate;
         private DataGridViewTextBoxColumn stockstatus;
         private DataGridViewTextBoxColumn suppliername;
-        private DataGridViewButtonColumn actions;
-        private DataGridViewButtonColumn viewbatch;
+        private DataGridViewImageColumn actions;
     }
 }

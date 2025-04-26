@@ -53,7 +53,6 @@
             description = new DataGridViewTextBoxColumn();
             prevvalue = new DataGridViewTextBoxColumn();
             newvalue = new DataGridViewTextBoxColumn();
-            ipaddress = new DataGridViewTextBoxColumn();
             entity = new DataGridViewTextBoxColumn();
             entityid = new DataGridViewTextBoxColumn();
             panel2.SuspendLayout();
@@ -80,9 +79,8 @@
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
-            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1170, 79);
+            panel2.Size = new Size(1024, 59);
             panel2.TabIndex = 2;
             // 
             // comboBox2
@@ -92,10 +90,9 @@
             comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox2.FlatStyle = FlatStyle.System;
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(1660, 14);
-            comboBox2.Margin = new Padding(3, 4, 3, 4);
+            comboBox2.Location = new Point(1452, 10);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(148, 28);
+            comboBox2.Size = new Size(130, 23);
             comboBox2.TabIndex = 14;
             // 
             // label3
@@ -104,9 +101,9 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.FromArgb(93, 64, 55);
-            label3.Location = new Point(1579, 16);
+            label3.Location = new Point(1382, 12);
             label3.Name = "label3";
-            label3.Size = new Size(87, 25);
+            label3.Size = new Size(69, 20);
             label3.TabIndex = 13;
             label3.Text = "Filter by:";
             // 
@@ -114,10 +111,9 @@
             // 
             pictureBox3.Anchor = AnchorStyles.Right;
             pictureBox3.Image = Properties.Resources.Search;
-            pictureBox3.Location = new Point(1846, 12);
-            pictureBox3.Margin = new Padding(3, 4, 3, 4);
+            pictureBox3.Location = new Point(1615, 9);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(27, 32);
+            pictureBox3.Size = new Size(24, 24);
             pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox3.TabIndex = 12;
             pictureBox3.TabStop = false;
@@ -129,11 +125,10 @@
             textBox2.BorderStyle = BorderStyle.None;
             textBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox2.ForeColor = Color.FromArgb(93, 64, 55);
-            textBox2.Location = new Point(1880, 15);
-            textBox2.Margin = new Padding(3, 4, 3, 4);
+            textBox2.Location = new Point(1645, 11);
             textBox2.Name = "textBox2";
             textBox2.PlaceholderText = "Search Item(s)";
-            textBox2.Size = new Size(238, 27);
+            textBox2.Size = new Size(208, 22);
             textBox2.TabIndex = 11;
             // 
             // pictureBox4
@@ -141,10 +136,9 @@
             pictureBox4.Anchor = AnchorStyles.Right;
             pictureBox4.BackColor = Color.FromArgb(232, 232, 232);
             pictureBox4.Image = Properties.Resources.Refresh1;
-            pictureBox4.Location = new Point(1529, 12);
-            pictureBox4.Margin = new Padding(3, 4, 3, 4);
+            pictureBox4.Location = new Point(1338, 9);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(27, 32);
+            pictureBox4.Size = new Size(24, 24);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 10;
             pictureBox4.TabStop = false;
@@ -156,10 +150,9 @@
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FlatStyle = FlatStyle.System;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(2591, 2);
-            comboBox1.Margin = new Padding(3, 4, 3, 4);
+            comboBox1.Location = new Point(2267, 2);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(148, 28);
+            comboBox1.Size = new Size(130, 23);
             comboBox1.TabIndex = 9;
             // 
             // label2
@@ -168,9 +161,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(93, 64, 55);
-            label2.Location = new Point(2510, 3);
+            label2.Location = new Point(2196, 2);
             label2.Name = "label2";
-            label2.Size = new Size(87, 25);
+            label2.Size = new Size(69, 20);
             label2.TabIndex = 8;
             label2.Text = "Filter by:";
             // 
@@ -178,10 +171,9 @@
             // 
             pictureBox2.Anchor = AnchorStyles.Right;
             pictureBox2.Image = Properties.Resources.Search;
-            pictureBox2.Location = new Point(2777, 1);
-            pictureBox2.Margin = new Padding(3, 4, 3, 4);
+            pictureBox2.Location = new Point(2430, 1);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(27, 32);
+            pictureBox2.Size = new Size(24, 24);
             pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox2.TabIndex = 7;
             pictureBox2.TabStop = false;
@@ -193,11 +185,10 @@
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox1.ForeColor = Color.FromArgb(93, 64, 55);
-            textBox1.Location = new Point(2811, 2);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
+            textBox1.Location = new Point(2460, 2);
             textBox1.Name = "textBox1";
             textBox1.PlaceholderText = "Search Item(s)";
-            textBox1.Size = new Size(238, 27);
+            textBox1.Size = new Size(208, 22);
             textBox1.TabIndex = 6;
             // 
             // btnRefresh
@@ -205,10 +196,9 @@
             btnRefresh.Anchor = AnchorStyles.Right;
             btnRefresh.BackColor = Color.FromArgb(232, 232, 232);
             btnRefresh.Image = Properties.Resources.Refresh1;
-            btnRefresh.Location = new Point(2460, 1);
-            btnRefresh.Margin = new Padding(3, 4, 3, 4);
+            btnRefresh.Location = new Point(2152, 1);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(27, 32);
+            btnRefresh.Size = new Size(24, 24);
             btnRefresh.SizeMode = PictureBoxSizeMode.StretchImage;
             btnRefresh.TabIndex = 3;
             btnRefresh.TabStop = false;
@@ -219,9 +209,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(62, 39, 35);
-            label1.Location = new Point(12, 19);
+            label1.Location = new Point(10, 14);
             label1.Name = "label1";
-            label1.Size = new Size(193, 41);
+            label1.Size = new Size(154, 32);
             label1.TabIndex = 0;
             label1.Text = "AUDIT LOGS";
             // 
@@ -229,10 +219,9 @@
             // 
             panel1.BackColor = Color.FromArgb(239, 235, 233);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 628);
-            panel1.Margin = new Padding(3, 4, 3, 4);
+            panel1.Location = new Point(0, 471);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1170, 79);
+            panel1.Size = new Size(1024, 59);
             panel1.TabIndex = 4;
             // 
             // dgvAudit
@@ -260,7 +249,7 @@
             dgvAudit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvAudit.ColumnHeadersHeight = 35;
             dgvAudit.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvAudit.Columns.AddRange(new DataGridViewColumn[] { date, username, action, description, prevvalue, newvalue, ipaddress, entity, entityid });
+            dgvAudit.Columns.AddRange(new DataGridViewColumn[] { date, username, action, description, prevvalue, newvalue, entity, entityid });
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = Color.White;
             dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -272,8 +261,7 @@
             dgvAudit.Dock = DockStyle.Fill;
             dgvAudit.EnableHeadersVisualStyles = false;
             dgvAudit.GridColor = Color.White;
-            dgvAudit.Location = new Point(0, 79);
-            dgvAudit.Margin = new Padding(3, 4, 3, 4);
+            dgvAudit.Location = new Point(0, 59);
             dgvAudit.MultiSelect = false;
             dgvAudit.Name = "dgvAudit";
             dgvAudit.ReadOnly = true;
@@ -289,7 +277,7 @@
             dgvAudit.RowHeadersVisible = false;
             dgvAudit.RowHeadersWidth = 51;
             dgvAudit.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAudit.Size = new Size(1170, 549);
+            dgvAudit.Size = new Size(1024, 412);
             dgvAudit.TabIndex = 6;
             dgvAudit.TabStop = false;
             dgvAudit.CellContentClick += dgvAudit_CellContentClick;
@@ -354,15 +342,6 @@
             newvalue.ReadOnly = true;
             newvalue.Width = 180;
             // 
-            // ipaddress
-            // 
-            ipaddress.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            ipaddress.HeaderText = "IP Address";
-            ipaddress.MinimumWidth = 150;
-            ipaddress.Name = "ipaddress";
-            ipaddress.ReadOnly = true;
-            ipaddress.Width = 150;
-            // 
             // entity
             // 
             entity.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
@@ -383,13 +362,14 @@
             // 
             // AuditHome
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1170, 707);
+            ClientSize = new Size(1024, 530);
             Controls.Add(dgvAudit);
             Controls.Add(panel1);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "AuditHome";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AuditHome";
@@ -427,7 +407,6 @@
         private DataGridViewTextBoxColumn description;
         private DataGridViewTextBoxColumn prevvalue;
         private DataGridViewTextBoxColumn newvalue;
-        private DataGridViewTextBoxColumn ipaddress;
         private DataGridViewTextBoxColumn entity;
         private DataGridViewTextBoxColumn entityid;
     }

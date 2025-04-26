@@ -251,5 +251,273 @@ namespace client.Controllers
                 return false;
             }
         }
+
+        public async Task<bool> UpdateBatch(Dictionary<string, object> batchUpdateData)
+        {
+            var batchId = batchUpdateData["OldBatchId"]?.ToString() ?? "";
+            var itemId = batchUpdateData["OldItemId"]?.ToString() ?? "";
+            var oldBatchNumber = batchUpdateData["OldBatchNumber"]?.ToString() ?? "";
+            var newBatchNumber = batchUpdateData["NewBatchNumber"]?.ToString() ?? "";
+
+            var oldPurchaseDate = (DateTime)batchUpdateData["OldPurchaseDate"];
+            var newPurchaseDate = (DateTime)batchUpdateData["NewPurchaseDate"];
+
+            var oldExpirationDate = (DateTime)batchUpdateData["OldExpirationDate"];
+            var newExpirationDate = (DateTime)batchUpdateData["NewExpirationDate"];
+
+            var oldInitialQuantity = (decimal)batchUpdateData["OldInitialQuantity"];
+            var newInitialQuantity = (decimal)batchUpdateData["NewInitialQuantity"];
+
+            var oldCurrentQuantity = (decimal)batchUpdateData["OldCurrentQuantity"];
+            var newCurrentQuantity = (decimal)batchUpdateData["NewCurrentQuantity"];
+
+            var oldUnitCost = (decimal)batchUpdateData["OldUnitCost"];
+            var newUnitCost = (decimal)batchUpdateData["NewUnitCost"];
+
+            var oldSupplierId = batchUpdateData["OldSupplierId"]?.ToString() ?? "";
+            var newSupplierId = batchUpdateData["NewSupplierId"].ToString() ?? "";
+
+            var oldSupplierName = batchUpdateData["OldSupplierName"]?.ToString() ?? "";
+            var newSupplierName = batchUpdateData["NewSupplierName"]?.ToString() ?? "";
+
+            var newIsActive = (bool)batchUpdateData["NewIsActive"];
+
+            var response = await Client.Instance.SendRequestAsync(new Packet
+            {
+                Type = PacketType.UpdateBatch,
+                Data = new Dictionary<string, string>
+                {
+                    { "batchId", batchId },
+                    { "itemId", itemId },
+                    { "batchNumber", newBatchNumber },
+                    { "purchaseDate", newPurchaseDate.ToString("yyyy-MM-dd") },
+                    { "expirationDate", newExpirationDate.ToString("yyyy-MM-dd") },
+                    { "initialQuantity", newInitialQuantity.ToString() },
+                    { "currentQuantity", newCurrentQuantity.ToString() },
+                    { "unitCost", newUnitCost.ToString() },
+                    { "supplierId", newSupplierId },
+                    { "isActive", newIsActive.ToString().ToLower() }
+                }
+            });
+
+            if (response == null)
+            {
+                MessageBox.Show("Failed to update batch. Server not responding.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (response.Data != null && response.Data.ContainsKey("success"))
+            {
+                if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
+                {
+                    Logger.Write("UPDATE BATCH", $"Batch '{newBatchNumber}' updated successfully");
+
+                    var oldValues = new List<string>();
+                    var newValues = new List<string>();
+                    var descriptionChanges = new List<string>();
+
+                    if (oldPurchaseDate != newPurchaseDate)
+                    {
+                        oldValues.Add($"Purchase Date: {oldPurchaseDate:yyyy-MM-dd}");
+                        newValues.Add($"Purchase Date: {newPurchaseDate:yyyy-MM-dd}");
+                        descriptionChanges.Add("Purchase Date changed");
+                    }
+                    if (oldExpirationDate != newExpirationDate)
+                    {
+                        oldValues.Add($"Expiration Date: {oldExpirationDate:yyyy-MM-dd}");
+                        newValues.Add($"Expiration Date: {newExpirationDate:yyyy-MM-dd}");
+                        descriptionChanges.Add("Expiration Date changed");
+                    }
+                    if (oldInitialQuantity != newInitialQuantity)
+                    {
+                        oldValues.Add($"Initial Quantity: {oldInitialQuantity}");
+                        newValues.Add($"Initial Quantity: {newInitialQuantity}");
+                        descriptionChanges.Add("Initial Quantity changed");
+                    }
+                    if (oldCurrentQuantity != newCurrentQuantity)
+                    {
+                        oldValues.Add($"Current Quantity: {oldCurrentQuantity}");
+                        newValues.Add($"Current Quantity: {newCurrentQuantity}");
+                        descriptionChanges.Add("Current Quantity changed");
+                    }
+                    if (oldUnitCost != newUnitCost)
+                    {
+                        oldValues.Add($"Unit Cost: {oldUnitCost}");
+                        newValues.Add($"Unit Cost: {newUnitCost}");
+                        descriptionChanges.Add("Unit Cost changed");
+                    }
+                    if (oldSupplierName != newSupplierName)
+                    {
+                        oldValues.Add($"Supplier: {oldSupplierName}");
+                        newValues.Add($"Supplier: {newSupplierName}");
+                        descriptionChanges.Add("Supplier changed");
+                    }
+
+                    if (oldValues.Count == 0)
+                    {
+                        oldValues.Add("No changes");
+                        newValues.Add("No changes");
+                        descriptionChanges.Add("No fields changed");
+                    }
+
+                    await _auditService.Log(new AuditRecord
+                    {
+                        UserId = CurrentUser.Current!.UserId,
+                        Action = AuditActionType.Update,
+                        Description = $"Batch updated: {string.Join(", ", descriptionChanges)}",
+                        OldValue = string.Join(", ", oldValues),
+                        NewValue = string.Join(", ", newValues),
+                        EntityType = AuditEntityType.Batch,
+                        EntityId = batchId
+                    });
+
+                    return true;
+                }
+                else
+                {
+                    string errorMessage = response.Data.ContainsKey("message")
+                        ? response.Data["message"]
+                        : "Unknown error occurred while updating batch";
+
+                    Logger.Write("UPDATE BATCH", $"Server error: {errorMessage}");
+                    MessageBox.Show($"Failed to update batch: {errorMessage}", "Batch Update Failed",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            else
+            {
+                Logger.Write("UPDATE BATCH", "Invalid server response format");
+                MessageBox.Show("Server returned an invalid response format while updating batch.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public async Task<List<Dictionary<string, object>>> GetBatch(string? itemId)
+        {
+            var response = await Client.Instance.SendRequestAsync(new Packet
+            {
+                Type = PacketType.GetBatch,
+                Data = new Dictionary<string, string>
+                {
+                    { "itemId", itemId! }
+                }
+            });
+
+            if (response == null)
+            {
+                MessageBox.Show("No response received from server", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Logger.Write("RESPONSE", "No response received from server (GetBatch)");
+                return new List<Dictionary<string, object>>();
+            }
+
+            Logger.Write("GET BATCH", $"Response Data: {response.Data}");
+
+            if (response.Data != null && response.Data.ContainsKey("success"))
+            {
+                if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (response.Data.ContainsKey("batches"))
+                    {
+                        string batchesJson = response.Data["batches"];
+
+                        try
+                        {
+                            var rawBatches = JsonSerializer.Deserialize<List<Dictionary<string, JsonElement>>>(
+                                batchesJson,
+                                new JsonSerializerOptions
+                                {
+                                    PropertyNameCaseInsensitive = true
+                                }
+                            );
+
+                            var batches = new List<Dictionary<string, object>>();
+
+                            foreach (var rawBatch in rawBatches!)
+                            {
+                                var batch = new Dictionary<string, object>();
+
+                                foreach (var kvp in rawBatch)
+                                {
+                                    object value;
+
+                                    switch (kvp.Value.ValueKind)
+                                    {
+                                        case JsonValueKind.String:
+                                            value = kvp.Value.GetString()!;
+                                            break;
+                                        case JsonValueKind.Number:
+                                            if (kvp.Value.TryGetInt32(out int intValue))
+                                                value = intValue;
+                                            else if (kvp.Value.TryGetInt64(out long longValue))
+                                                value = longValue;
+                                            else if (kvp.Value.TryGetDouble(out double doubleValue))
+                                                value = doubleValue;
+                                            else
+                                                value = kvp.Value.ToString()!;
+                                            break;
+                                        case JsonValueKind.True:
+                                        case JsonValueKind.False:
+                                            value = kvp.Value.GetBoolean();
+                                            break;
+                                        case JsonValueKind.Null:
+                                            value = string.Empty;
+                                            break;
+                                        default:
+                                            value = kvp.Value.ToString()!;
+                                            break;
+                                    }
+
+                                    batch.Add(kvp.Key, value);
+                                }
+
+                                batches.Add(batch);
+                            }
+
+                            return batches;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Failed to parse batch data: {ex.Message}", "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Logger.Write("DESERIALIZATION ERROR", ex.Message);
+                            return new List<Dictionary<string, object>>();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No batch data found in the response.", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return new List<Dictionary<string, object>>();
+                    }
+                }
+                else
+                {
+                    string errorMessage = "Failed to retrieve batches: ";
+
+                    if (response.Data.ContainsKey("message"))
+                    {
+                        errorMessage += response.Data["message"];
+                    }
+                    else
+                    {
+                        errorMessage += "Unknown error occurred";
+                    }
+
+                    MessageBox.Show(errorMessage, "Batch Retrieve Failed",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return new List<Dictionary<string, object>>();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid response format from server", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return new List<Dictionary<string, object>>();
+            }
+        }
     }
 }

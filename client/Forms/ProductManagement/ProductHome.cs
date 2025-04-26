@@ -31,6 +31,7 @@ namespace client.Forms.ProductManagement
         public ProductHome()
         {
             InitializeComponent();
+            this.KeyPreview = true;
             Instance = this;
             dgvProducts.CellFormatting += dgvProducts_CellFormatting;
             //this.ShowInTaskbar = false;
@@ -47,6 +48,7 @@ namespace client.Forms.ProductManagement
             timer1.Start();
             DisplayProducts();
             InitializeTimer();
+            dgvProducts.Focus();
         }
 
         private void InitializeTimer()
@@ -485,7 +487,7 @@ namespace client.Forms.ProductManagement
         private void txtCurrentPage_TextChanged(object sender, EventArgs e)
         {
             _typingTimer.Stop();
-            _typingTimer.Start();   
+            _typingTimer.Start();
         }
 
         private void txtItemsPerPage_TextChanged(object sender, EventArgs e)
@@ -505,6 +507,18 @@ namespace client.Forms.ProductManagement
 
             _typingTimer.Stop();
             _typingTimer.Start();
+        }
+
+        private void ProductHome_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Left)
+            {
+                btnPrev.PerformClick();
+            }
+            else if(e.KeyCode == Keys.Right)
+            {
+                btnNext.PerformClick();
+            }
         }
     }
 }

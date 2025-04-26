@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddBatch));
             pnlHeader = new Panel();
-            label2 = new Label();
+            lblTitle = new Label();
             label1 = new Label();
             txtQuantity = new TextBox();
             dtpPurchase = new DateTimePicker();
@@ -55,7 +55,7 @@
             // pnlHeader
             // 
             pnlHeader.BackColor = Color.FromArgb(121, 85, 72);
-            pnlHeader.Controls.Add(label2);
+            pnlHeader.Controls.Add(lblTitle);
             pnlHeader.Controls.Add(label1);
             pnlHeader.Dock = DockStyle.Top;
             pnlHeader.Location = new Point(0, 0);
@@ -64,18 +64,18 @@
             pnlHeader.Size = new Size(429, 34);
             pnlHeader.TabIndex = 62;
             // 
-            // label2
+            // lblTitle
             // 
-            label2.Anchor = AnchorStyles.Left;
-            label2.AutoSize = true;
-            label2.BackColor = Color.FromArgb(121, 85, 72);
-            label2.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(12, 5);
-            label2.Name = "label2";
-            label2.Size = new Size(144, 25);
-            label2.TabIndex = 1;
-            label2.Text = "Add New Batch";
+            lblTitle.Anchor = AnchorStyles.Left;
+            lblTitle.AutoSize = true;
+            lblTitle.BackColor = Color.FromArgb(121, 85, 72);
+            lblTitle.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.Location = new Point(12, 5);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(144, 25);
+            lblTitle.TabIndex = 1;
+            lblTitle.Text = "Add New Batch";
             // 
             // label1
             // 
@@ -132,6 +132,7 @@
             dtExpiration.Name = "dtExpiration";
             dtExpiration.Size = new Size(231, 26);
             dtExpiration.TabIndex = 1;
+            dtExpiration.ValueChanged += dtExpiration_ValueChanged;
             // 
             // label4
             // 
@@ -284,6 +285,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddBatch";
             Load += AddBatch_Load;
+            KeyDown += AddBatch_KeyDown;
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
             panel3.ResumeLayout(false);
@@ -296,7 +298,7 @@
 
         private Panel pnlHeader;
         private Label label1;
-        private Label label2;
+        private Label lblTitle;
         private TextBox txtQuantity;
         private DateTimePicker dtpPurchase;
         private Label label16;

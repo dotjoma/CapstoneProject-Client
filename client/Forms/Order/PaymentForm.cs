@@ -441,6 +441,7 @@ namespace client.Forms.Order
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
         private void Numpad_Click(object? sender, EventArgs e)
         {
             if (sender is Button btn)

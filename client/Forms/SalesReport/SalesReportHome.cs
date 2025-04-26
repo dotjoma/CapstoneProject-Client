@@ -72,12 +72,10 @@ namespace client.Forms.SalesReport
         private void DisplaySalesReport()
         {
             ShowLoading("Displaying sales report, please wait...");
-            Logger.Write("SALES_REPORT_DEBUG", "Starting sales report display...");
 
             try
             {
                 var salesReport = CurrentSalesReport.AllSalesReports;
-                Logger.Write("SALES_REPORT_DEBUG", $"Retrieved sales reports. Count: {salesReport?.Count ?? 0}");
 
                 if (salesReport != null && salesReport.Any())
                 {
@@ -88,31 +86,9 @@ namespace client.Forms.SalesReport
                     {
                         try
                         {
-                            Logger.Write("SALES_REPORT_DEBUG", $"Processing report #{processedCount + 1}");
-
-                            // Debug log the raw values before processing
-                            Logger.Write("SALES_REPORT_DEBUG",
-                                $"Raw data - ID: {salesreport?.Id}, " +
-                                $"TransactionNo: {salesreport?.TransactionNo}, " +
-                                $"CashierFName: {salesreport?.CashierFName}, " +
-                                $"CashierLName: {salesreport?.CashierLName}, " +
-                                $"Price: {salesreport?.Price}, " +
-                                $"Quantity: {salesreport?.Quantity}, " +
-                                $"Discount: {salesreport?.Discount}, " +
-                                $"TotalPrice: {salesreport?.TotalPrice}, " +
-                                $"OrderTime: {salesreport?.OrderTime}, " +
-                                $"OrderDate: {salesreport?.OrderDate}");
-
                             string transNo = salesreport?.TransactionNo ?? string.Empty;
                             string cashierFullName = $"{CapitalizeFirstLetter(salesreport?.CashierFName)} {CapitalizeFirstLetter(salesreport?.CashierLName)}";
 
-                            // Debug log formatted values before adding to grid
-                            Logger.Write("SALES_REPORT_DEBUG",
-                                $"Formatted data - " +
-                                $"TransactionNo: {transNo}, " +
-                                $"CashierName: {cashierFullName}");
-
-                            // Safely handle DateTime formatting
                             string orderTime = string.Empty;
                             string orderDate = string.Empty;
 
@@ -156,7 +132,6 @@ namespace client.Forms.SalesReport
                             );
 
                             processedCount++;
-                            Logger.Write("SALES_REPORT_DEBUG", $"Successfully processed report #{processedCount}");
                         }
                         catch (Exception rowEx)
                         {
@@ -165,14 +140,12 @@ namespace client.Forms.SalesReport
                                 $"Error: {rowEx.Message}. " +
                                 $"StackTrace: {rowEx.StackTrace}");
 
-                            // Continue processing other rows even if one fails
                             continue;
                         }
                     }
 
                     dgvOrders.ClearSelection();
                     HideLoading();
-                    Logger.Write("SALES_REPORT_DEBUG", $"Successfully displayed {processedCount} sales reports");
                 }
                 else
                 {
@@ -190,10 +163,6 @@ namespace client.Forms.SalesReport
 
                 MessageBox.Show($"Error loading sales reports: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Logger.Write("SALES_REPORT_DEBUG", "DisplaySalesReport execution completed");
             }
         }
 

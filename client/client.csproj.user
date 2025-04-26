@@ -37,6 +37,9 @@
     <Compile Update="Forms\InventoryManagement\AddInventoryItem.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\InventoryManagement\EditBatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\InventoryManagement\InventoryHome.cs">
       <SubType>Form</SubType>
     </Compile>

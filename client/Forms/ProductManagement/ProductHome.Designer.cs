@@ -221,7 +221,7 @@
             txtItemsPerPage.Size = new Size(25, 23);
             txtItemsPerPage.TabIndex = 15;
             txtItemsPerPage.TabStop = false;
-            txtItemsPerPage.Text = "200";
+            txtItemsPerPage.Text = "100";
             txtItemsPerPage.TextChanged += txtItemsPerPage_TextChanged;
             // 
             // label3
@@ -236,11 +236,10 @@
             // 
             // btnPrev
             // 
-            btnPrev.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnPrev.FlatAppearance.BorderColor = Color.LightGray;
             btnPrev.FlatStyle = FlatStyle.Flat;
             btnPrev.Image = Properties.Resources.previous_16;
-            btnPrev.Location = new Point(893, 19);
+            btnPrev.Location = new Point(366, 19);
             btnPrev.Name = "btnPrev";
             btnPrev.Size = new Size(28, 23);
             btnPrev.TabIndex = 13;
@@ -249,11 +248,10 @@
             // 
             // btnNext
             // 
-            btnNext.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnNext.FlatAppearance.BorderColor = Color.LightGray;
             btnNext.FlatStyle = FlatStyle.Flat;
             btnNext.Image = Properties.Resources.next_24;
-            btnNext.Location = new Point(987, 19);
+            btnNext.Location = new Point(460, 19);
             btnNext.Name = "btnNext";
             btnNext.Size = new Size(28, 23);
             btnNext.TabIndex = 12;
@@ -262,8 +260,8 @@
             // 
             // txtCurrentPage
             // 
-            txtCurrentPage.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            txtCurrentPage.Location = new Point(929, 19);
+            txtCurrentPage.BorderStyle = BorderStyle.FixedSingle;
+            txtCurrentPage.Location = new Point(402, 19);
             txtCurrentPage.Name = "txtCurrentPage";
             txtCurrentPage.Size = new Size(25, 23);
             txtCurrentPage.TabIndex = 11;
@@ -283,9 +281,8 @@
             // 
             // lblTotalPage
             // 
-            lblTotalPage.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblTotalPage.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTotalPage.Location = new Point(953, 17);
+            lblTotalPage.Location = new Point(426, 17);
             lblTotalPage.Name = "lblTotalPage";
             lblTotalPage.Size = new Size(36, 23);
             lblTotalPage.TabIndex = 16;
@@ -304,7 +301,7 @@
             btnDelete.ForeColor = Color.Black;
             btnDelete.Image = Properties.Resources.Delete1;
             btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDelete.Location = new Point(458, 6);
+            btnDelete.Location = new Point(777, 6);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(86, 44);
             btnDelete.TabIndex = 9;
@@ -327,7 +324,7 @@
             btnEdit.ForeColor = Color.Black;
             btnEdit.Image = Properties.Resources.Edit1;
             btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEdit.Location = new Point(378, 6);
+            btnEdit.Location = new Point(697, 6);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(74, 44);
             btnEdit.TabIndex = 8;
@@ -527,6 +524,7 @@
             StartPosition = FormStartPosition.CenterParent;
             Text = "ProductHome";
             Load += ProductHome_Load;
+            KeyDown += ProductHome_KeyDown;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();

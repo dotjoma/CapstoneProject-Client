@@ -52,6 +52,10 @@ namespace client.Forms.InventoryManagement
                         {
                             abForm.GetInventorySupplier();
                         }
+                        else if(_parentForm is EditBatch ebForm)
+                        {
+                            ebForm.GetInventorySupplier();
+                        }
                     }
                 }
             }

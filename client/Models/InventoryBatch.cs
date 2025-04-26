@@ -15,6 +15,7 @@ namespace client.Models
         public decimal InitialQuantity { get; set; }
         public decimal CurrentQuantity { get; set; }
         public decimal UnitCost { get; set; }
+        public int SupplierId { get; set; }
         public string? SupplierName { get; set; }
         public string? Status { get; set; }
         public int IsActive { get; set; }

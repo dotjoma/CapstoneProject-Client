@@ -46,6 +46,7 @@
             btnUploadImage = new Button();
             cbIsActive = new CheckBox();
             txtPrice = new TextBox();
+            checkBox1 = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)pbImage).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -53,10 +54,9 @@
             // pbImage
             // 
             pbImage.BorderStyle = BorderStyle.FixedSingle;
-            pbImage.Location = new Point(498, 103);
-            pbImage.Margin = new Padding(3, 4, 3, 4);
+            pbImage.Location = new Point(436, 77);
             pbImage.Name = "pbImage";
-            pbImage.Size = new Size(212, 186);
+            pbImage.Size = new Size(186, 140);
             pbImage.SizeMode = PictureBoxSizeMode.StretchImage;
             pbImage.TabIndex = 12;
             pbImage.TabStop = false;
@@ -66,9 +66,9 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label7.Location = new Point(29, 218);
+            label7.Location = new Point(25, 164);
             label7.Name = "label7";
-            label7.Size = new Size(142, 28);
+            label7.Size = new Size(116, 21);
             label7.TabIndex = 24;
             label7.Text = "Sub-Category:";
             // 
@@ -76,9 +76,9 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label6.Location = new Point(29, 163);
+            label6.Location = new Point(25, 122);
             label6.Name = "label6";
-            label6.Size = new Size(99, 28);
+            label6.Size = new Size(82, 21);
             label6.TabIndex = 23;
             label6.Text = "Category:";
             // 
@@ -86,9 +86,9 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label5.Location = new Point(29, 278);
+            label5.Location = new Point(25, 208);
             label5.Name = "label5";
-            label5.Size = new Size(55, 28);
+            label5.Size = new Size(44, 21);
             label5.TabIndex = 22;
             label5.Text = "Unit:";
             // 
@@ -97,10 +97,9 @@
             cboSubCategory.DropDownStyle = ComboBoxStyle.DropDownList;
             cboSubCategory.Font = new Font("Segoe UI", 12F);
             cboSubCategory.FormattingEnabled = true;
-            cboSubCategory.Location = new Point(195, 214);
-            cboSubCategory.Margin = new Padding(3, 4, 3, 4);
+            cboSubCategory.Location = new Point(171, 160);
             cboSubCategory.Name = "cboSubCategory";
-            cboSubCategory.Size = new Size(276, 36);
+            cboSubCategory.Size = new Size(242, 29);
             cboSubCategory.TabIndex = 13;
             cboSubCategory.SelectedIndexChanged += cboSubCategory_SelectedIndexChanged;
             // 
@@ -110,10 +109,9 @@
             cboCategory.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCategory.Font = new Font("Segoe UI", 12F);
             cboCategory.FormattingEnabled = true;
-            cboCategory.Location = new Point(195, 159);
-            cboCategory.Margin = new Padding(3, 4, 3, 4);
+            cboCategory.Location = new Point(171, 119);
             cboCategory.Name = "cboCategory";
-            cboCategory.Size = new Size(276, 36);
+            cboCategory.Size = new Size(242, 29);
             cboCategory.TabIndex = 14;
             cboCategory.SelectedIndexChanged += cboCategory_SelectedIndexChanged;
             // 
@@ -122,11 +120,10 @@
             txtName.BackColor = Color.FromArgb(232, 232, 232);
             txtName.BorderStyle = BorderStyle.FixedSingle;
             txtName.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtName.Location = new Point(195, 103);
-            txtName.Margin = new Padding(3, 4, 3, 4);
+            txtName.Location = new Point(171, 77);
             txtName.Name = "txtName";
             txtName.PlaceholderText = "Enter menu name";
-            txtName.Size = new Size(276, 39);
+            txtName.Size = new Size(242, 33);
             txtName.TabIndex = 18;
             txtName.TabStop = false;
             // 
@@ -135,10 +132,9 @@
             cboUnit.DropDownStyle = ComboBoxStyle.DropDownList;
             cboUnit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cboUnit.FormattingEnabled = true;
-            cboUnit.Location = new Point(195, 274);
-            cboUnit.Margin = new Padding(3, 4, 3, 4);
+            cboUnit.Location = new Point(171, 206);
             cboUnit.Name = "cboUnit";
-            cboUnit.Size = new Size(276, 36);
+            cboUnit.Size = new Size(242, 29);
             cboUnit.TabIndex = 15;
             cboUnit.SelectedIndexChanged += cboUnit_SelectedIndexChanged;
             // 
@@ -146,9 +142,9 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label4.Location = new Point(29, 331);
+            label4.Location = new Point(25, 248);
             label4.Name = "label4";
-            label4.Size = new Size(61, 28);
+            label4.Size = new Size(50, 21);
             label4.TabIndex = 17;
             label4.Text = "Price:";
             // 
@@ -156,9 +152,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(29, 110);
+            label2.Location = new Point(25, 82);
             label2.Name = "label2";
-            label2.Size = new Size(130, 28);
+            label2.Size = new Size(103, 21);
             label2.TabIndex = 16;
             label2.Text = "Menu Name:";
             // 
@@ -167,9 +163,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(62, 39, 35);
-            label1.Location = new Point(278, 21);
+            label1.Location = new Point(243, 16);
             label1.Name = "label1";
-            label1.Size = new Size(182, 41);
+            label1.Size = new Size(146, 32);
             label1.TabIndex = 25;
             label1.Text = "ADD MENU";
             // 
@@ -179,10 +175,9 @@
             panel1.Controls.Add(btnCancel);
             panel1.Controls.Add(btnSave);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 435);
-            panel1.Margin = new Padding(3, 4, 3, 4);
+            panel1.Location = new Point(0, 357);
             panel1.Name = "panel1";
-            panel1.Size = new Size(739, 75);
+            panel1.Size = new Size(647, 56);
             panel1.TabIndex = 27;
             // 
             // btnCancel
@@ -195,10 +190,9 @@
             btnCancel.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCancel.ForeColor = Color.White;
             btnCancel.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancel.Location = new Point(370, 13);
-            btnCancel.Margin = new Padding(3, 4, 3, 4);
+            btnCancel.Location = new Point(324, 10);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(178, 49);
+            btnCancel.Size = new Size(156, 37);
             btnCancel.TabIndex = 23;
             btnCancel.TabStop = false;
             btnCancel.Text = "CANCEL";
@@ -217,10 +211,9 @@
             btnSave.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.White;
             btnSave.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSave.Location = new Point(555, 13);
-            btnSave.Margin = new Padding(3, 4, 3, 4);
+            btnSave.Location = new Point(486, 10);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(155, 49);
+            btnSave.Size = new Size(136, 37);
             btnSave.TabIndex = 22;
             btnSave.TabStop = false;
             btnSave.Text = "SAVE";
@@ -233,10 +226,9 @@
             // 
             btnUploadImage.FlatStyle = FlatStyle.Popup;
             btnUploadImage.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnUploadImage.Location = new Point(498, 325);
-            btnUploadImage.Margin = new Padding(3, 4, 3, 4);
+            btnUploadImage.Location = new Point(436, 244);
             btnUploadImage.Name = "btnUploadImage";
-            btnUploadImage.Size = new Size(213, 44);
+            btnUploadImage.Size = new Size(186, 33);
             btnUploadImage.TabIndex = 28;
             btnUploadImage.Text = "UPLOAD IMAGE";
             btnUploadImage.UseVisualStyleBackColor = true;
@@ -248,10 +240,9 @@
             cbIsActive.Checked = true;
             cbIsActive.CheckState = CheckState.Checked;
             cbIsActive.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cbIsActive.Location = new Point(195, 386);
-            cbIsActive.Margin = new Padding(3, 4, 3, 4);
+            cbIsActive.Location = new Point(171, 290);
             cbIsActive.Name = "cbIsActive";
-            cbIsActive.Size = new Size(98, 29);
+            cbIsActive.Size = new Size(79, 24);
             cbIsActive.TabIndex = 29;
             cbIsActive.Text = "isActive";
             cbIsActive.UseVisualStyleBackColor = true;
@@ -261,22 +252,33 @@
             txtPrice.BackColor = Color.FromArgb(232, 232, 232);
             txtPrice.BorderStyle = BorderStyle.FixedSingle;
             txtPrice.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPrice.Location = new Point(195, 325);
-            txtPrice.Margin = new Padding(3, 4, 3, 4);
+            txtPrice.Location = new Point(171, 244);
             txtPrice.Name = "txtPrice";
             txtPrice.PlaceholderText = "0.00";
-            txtPrice.Size = new Size(276, 39);
+            txtPrice.Size = new Size(242, 33);
             txtPrice.TabIndex = 30;
             txtPrice.TabStop = false;
             txtPrice.TextAlign = HorizontalAlignment.Right;
             txtPrice.KeyPress += txtPrice_KeyPress;
             // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            checkBox1.Location = new Point(171, 320);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(115, 24);
+            checkBox1.TabIndex = 31;
+            checkBox1.Text = "Discountable";
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
             // AddProduct
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(739, 510);
+            ClientSize = new Size(647, 413);
+            Controls.Add(checkBox1);
             Controls.Add(txtPrice);
             Controls.Add(cbIsActive);
             Controls.Add(btnUploadImage);
@@ -294,7 +296,6 @@
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
             Name = "AddProduct";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ELICIAS GARDEN FOOD PARK";
@@ -327,5 +328,6 @@
         private Button btnUploadImage;
         private CheckBox cbIsActive;
         private TextBox txtPrice;
+        private CheckBox checkBox1;
     }
 }

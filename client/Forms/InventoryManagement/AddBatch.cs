@@ -20,9 +20,11 @@ namespace client.Forms.InventoryManagement
 
         private readonly InventoryHome _parentForm;
         private InventoryItem _item;
+
         public AddBatch(InventoryItem item, InventoryHome parent)
         {
             InitializeComponent();
+            this.KeyPreview = true;
             this.ShowInTaskbar = false;
             this._parentForm = parent;
             this._item = item;
@@ -219,6 +221,31 @@ namespace client.Forms.InventoryManagement
             }
 
             return true;
+        }
+
+        private void dtExpiration_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtExpiration.Value < DateTime.Today)
+            {
+                MessageBox.Show("Expiration date cannot be in the past.",
+                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                dtExpiration.Value = DateTime.Today;
+
+                return;
+            }
+        }
+
+        private void AddBatch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                this.Dispose();
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                btnSave_Click(sender, e);
+            }
         }
     }
 }

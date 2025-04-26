@@ -17,9 +17,14 @@ namespace client.Forms.InventoryManagement
     public partial class InventoryHome : Form
     {
         private InventoryController _inventoryController = new InventoryController();
+        private InventoryItem _selectedItem = new InventoryItem();
+        private int _selectedItemId;
+
         public InventoryHome()
         {
             InitializeComponent();
+
+            EditBatch.RefreshInventory += RefreshInventory;
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)
@@ -65,8 +70,7 @@ namespace client.Forms.InventoryManagement
                         GetExpirationDates(item),
                         stockStatus,
                         GetSupplierNames(item),
-                        "Add Batch",
-                        "View Batches"
+                        Properties.Resources.menu_vertical_24
                     );
                 }
 
@@ -144,24 +148,19 @@ namespace client.Forms.InventoryManagement
 
             string? cellValue = dgvInventory[e.ColumnIndex, e.RowIndex].Value?.ToString();
 
-            var selectedItem = CurrentInventoryItem.AllItems[e.RowIndex];
+            _selectedItem = CurrentInventoryItem.AllItems[e.RowIndex];
+            _selectedItemId = _selectedItem.ItemId;
 
-            if (cellValue == "Add Batch")
+            if (dgvInventory.Columns[e.ColumnIndex] is DataGridViewImageColumn)
             {
-                using (var abfrm = new AddBatch(selectedItem, this))
+                var clickedImage = dgvInventory.Rows[e.RowIndex].Cells[e.ColumnIndex].Value as Image;
+
+                if (e.RowIndex >= 0)
                 {
-                    abfrm.StartPosition = FormStartPosition.Manual;
-                    abfrm.StartPosition = FormStartPosition.CenterParent;
-                    abfrm.ShowDialog(this);
-                }
-            }
-            else if (cellValue == "View Batches")
-            {
-                using (var vbfrm = new ViewBatches(selectedItem, this))
-                {
-                    vbfrm.StartPosition = FormStartPosition.Manual;
-                    vbfrm.StartPosition = FormStartPosition.CenterParent;
-                    vbfrm.ShowDialog(this);
+                    dgvInventory.ClearSelection();
+                    dgvInventory.Rows[e.RowIndex].Selected = true;
+
+                    cmsOptions.Show(Cursor.Position.X + 10, Cursor.Position.Y + 10);
                 }
             }
         }
@@ -169,6 +168,26 @@ namespace client.Forms.InventoryManagement
         private void btnRefreshData_Click(object sender, EventArgs e)
         {
             RefreshInventory();
+        }
+
+        private void cmsAdd_Click(object sender, EventArgs e)
+        {
+            using (var abfrm = new AddBatch(_selectedItem, this))
+            {
+                abfrm.StartPosition = FormStartPosition.Manual;
+                abfrm.StartPosition = FormStartPosition.CenterParent;
+                abfrm.ShowDialog(this);
+            }
+        }
+
+        private void cmsView_Click(object sender, EventArgs e)
+        {
+            using (var vbfrm = new ViewBatches(_selectedItem, _selectedItemId, this))
+            {
+                vbfrm.StartPosition = FormStartPosition.Manual;
+                vbfrm.StartPosition = FormStartPosition.CenterParent;
+                vbfrm.ShowDialog(this);
+            }
         }
     }
 }
