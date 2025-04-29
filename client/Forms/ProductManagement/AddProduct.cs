@@ -29,6 +29,7 @@ namespace client.Forms.ProductManagement
         public AddProduct(int selectedId)
         {
             InitializeComponent();
+            this.ShowInTaskbar = false;
             _selectedId = selectedId;
 
             this.KeyPreview = true;
@@ -48,6 +49,7 @@ namespace client.Forms.ProductManagement
             try
             {
                 InitializeComboboxes();
+                pbImage.Image = Properties.Resources.AddImage100x100_w;
                 Logger.Write("INIT COMBOBOXES DATA", "Comboboxes initialized successfully.");
 
                 if (_selectedId > 0)
@@ -383,6 +385,14 @@ namespace client.Forms.ProductManagement
                 return;
             }
 
+            if(RecipeBuilder.SelectedIngredients.Count == 0)
+            {
+                MessageBox.Show("No ingredients selected. Please add ingredients to the recipe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ToggleButton(true);
+                HideLoading();
+                return;
+            }
+
             try
             {
                 if (_selectedId > 0)
@@ -404,7 +414,14 @@ namespace client.Forms.ProductManagement
             {
                 ToggleButton(true);
                 HideLoading();
+                ResetRecipe();
             }
+        }
+
+        private void ResetRecipe()
+        {
+            dgvIngredients.Rows.Clear();
+            RecipeBuilder.SelectedIngredients.Clear();
         }
 
         private bool ValidateFormInputs(out int categoryId, out int subCategoryId, out int unitId)
@@ -887,6 +904,38 @@ namespace client.Forms.ProductManagement
         private void btnCancel_MouseLeave(object sender, EventArgs e)
         {
             btnCancel.BackColor = Color.FromArgb(161, 136, 127);
+        }
+
+        private void btnManageIngredients_Click(object sender, EventArgs e)
+        {
+            using(var addtoingredient = new AddIngredientToRecipe(this))
+            {
+                addtoingredient.StartPosition = FormStartPosition.Manual;
+                addtoingredient.StartPosition = FormStartPosition.CenterParent;
+                addtoingredient.ShowDialog(this);
+            }
+        }
+
+        public void DisplayIngredientsSummary()
+        {
+            if (RecipeBuilder.SelectedIngredients.Count == 0)
+            {
+                MessageBox.Show("No ingredients to save.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            dgvIngredients.Rows.Clear();
+
+            foreach (var entry in RecipeBuilder.SelectedIngredients)
+            {
+                var item = entry.Value.item;
+                var quantity = entry.Value.quantity;
+                var measureSymbol = entry.Value.measureSymbol;
+
+                dgvIngredients.Rows.Add($"• {item.ItemName} - {quantity}{measureSymbol}");
+            }
+
+            dgvIngredients.ClearSelection();
         }
     }
 }

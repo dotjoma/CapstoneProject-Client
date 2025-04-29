@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using client.Helpers;
 using client.Models;
 using client.Services.Auth;
+using Newtonsoft.Json.Linq;
 
 namespace client.Network
 {
@@ -290,7 +291,57 @@ namespace client.Network
                 }
 
                 string responseJson = Encoding.UTF8.GetString(memoryStream.ToArray()).Trim();
-                Logger.Write("NETWORK", $"Received: {responseJson}");
+
+                try
+                {
+                    var parsed = JObject.Parse(responseJson);
+
+                    if (parsed.TryGetValue("Data", out var dataToken) && dataToken is JObject dataObj)
+                    {
+                        if (dataObj.TryGetValue("products", out var productsToken))
+                        {
+                            JArray? productArray = productsToken.Type == JTokenType.String
+                                ? JArray.Parse(productsToken.ToString())
+                                : productsToken as JArray;
+
+                            if (productArray != null)
+                            {
+                                foreach (var product in productArray)
+                                {
+                                    if (product is JObject productObj)
+                                    {
+                                        productObj.Remove("productImage");
+                                    }
+                                }
+
+                                dataObj["products"] = productArray;
+                            }
+                        }
+
+                        var sanitized = new JObject(parsed);
+                        string sanitizedLog = sanitized.ToString(Formatting.None);
+
+                        Logger.Write("NETWORK", $"Received: {sanitizedLog}");
+                    }
+                    else
+                    {
+                        Logger.Write("NETWORK", $"Received (basic structure): {new JObject { ["Type"] = parsed["Type"] }}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    try
+                    {
+                        var minimalInfo = JObject.Parse(responseJson);
+                        minimalInfo.Remove("Data");
+                        Logger.Write("NETWORK", $"Received (minimal): {minimalInfo.ToString(Formatting.None)}");
+                    }
+                    catch
+                    {
+                        Logger.Write("NETWORK", "Received (raw data unavailable)");
+                    }
+                    Logger.Write("ERROR", $"Failed to process response: {ex.Message}");
+                }
 
                 var response = JsonConvert.DeserializeObject<Packet>(responseJson);
                 if (response == null || !IsValidResponse(response))

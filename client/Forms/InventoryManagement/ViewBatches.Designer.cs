@@ -50,16 +50,6 @@
             btnClose = new Button();
             panel4 = new Panel();
             dgvBatches = new DataGridView();
-            id = new DataGridViewTextBoxColumn();
-            batchnumber = new DataGridViewTextBoxColumn();
-            purchasedate = new DataGridViewTextBoxColumn();
-            expirydate = new DataGridViewTextBoxColumn();
-            initialquantity = new DataGridViewTextBoxColumn();
-            currentquantity = new DataGridViewTextBoxColumn();
-            unitcost = new DataGridViewTextBoxColumn();
-            supplier = new DataGridViewTextBoxColumn();
-            status = new DataGridViewTextBoxColumn();
-            actions = new DataGridViewImageColumn();
             panel3 = new Panel();
             txtItemsPerPage = new TextBox();
             label3 = new Label();
@@ -71,6 +61,16 @@
             cmsOptions = new ContextMenuStrip(components);
             cmsEdit = new ToolStripMenuItem();
             cmsDelete = new ToolStripMenuItem();
+            id = new DataGridViewTextBoxColumn();
+            batchnumber = new DataGridViewTextBoxColumn();
+            purchasedate = new DataGridViewTextBoxColumn();
+            expirydate = new DataGridViewTextBoxColumn();
+            initialquantity = new DataGridViewTextBoxColumn();
+            currentquantity = new DataGridViewTextBoxColumn();
+            unitcost = new DataGridViewTextBoxColumn();
+            supplier = new DataGridViewTextBoxColumn();
+            status = new DataGridViewTextBoxColumn();
+            actions = new DataGridViewImageColumn();
             pnlHeader.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -259,98 +259,6 @@
             dgvBatches.TabStop = false;
             dgvBatches.CellContentClick += dgvBatches_CellContentClick;
             // 
-            // id
-            // 
-            id.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            id.HeaderText = "ID";
-            id.MinimumWidth = 50;
-            id.Name = "id";
-            id.ReadOnly = true;
-            id.Width = 50;
-            // 
-            // batchnumber
-            // 
-            batchnumber.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            batchnumber.FillWeight = 115.0222F;
-            batchnumber.HeaderText = "Batch #";
-            batchnumber.MinimumWidth = 100;
-            batchnumber.Name = "batchnumber";
-            batchnumber.ReadOnly = true;
-            // 
-            // purchasedate
-            // 
-            purchasedate.HeaderText = "Purchase Date";
-            purchasedate.MinimumWidth = 100;
-            purchasedate.Name = "purchasedate";
-            purchasedate.ReadOnly = true;
-            // 
-            // expirydate
-            // 
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            expirydate.DefaultCellStyle = dataGridViewCellStyle3;
-            expirydate.HeaderText = "Expiry Date";
-            expirydate.MinimumWidth = 100;
-            expirydate.Name = "expirydate";
-            expirydate.ReadOnly = true;
-            // 
-            // initialquantity
-            // 
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            initialquantity.DefaultCellStyle = dataGridViewCellStyle4;
-            initialquantity.HeaderText = "Initial Qty";
-            initialquantity.MinimumWidth = 60;
-            initialquantity.Name = "initialquantity";
-            initialquantity.ReadOnly = true;
-            // 
-            // currentquantity
-            // 
-            currentquantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            currentquantity.DefaultCellStyle = dataGridViewCellStyle5;
-            currentquantity.FillWeight = 137.7169F;
-            currentquantity.HeaderText = "Current Qty";
-            currentquantity.MinimumWidth = 100;
-            currentquantity.Name = "currentquantity";
-            currentquantity.ReadOnly = true;
-            // 
-            // unitcost
-            // 
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleRight;
-            unitcost.DefaultCellStyle = dataGridViewCellStyle6;
-            unitcost.HeaderText = "Unit Cost";
-            unitcost.MinimumWidth = 75;
-            unitcost.Name = "unitcost";
-            unitcost.ReadOnly = true;
-            // 
-            // supplier
-            // 
-            supplier.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            supplier.DefaultCellStyle = dataGridViewCellStyle7;
-            supplier.FillWeight = 74.16836F;
-            supplier.HeaderText = "Supplier";
-            supplier.MinimumWidth = 150;
-            supplier.Name = "supplier";
-            supplier.ReadOnly = true;
-            supplier.Resizable = DataGridViewTriState.True;
-            // 
-            // status
-            // 
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            status.DefaultCellStyle = dataGridViewCellStyle8;
-            status.HeaderText = "Status";
-            status.Name = "status";
-            status.ReadOnly = true;
-            // 
-            // actions
-            // 
-            actions.HeaderText = "Actions";
-            actions.MinimumWidth = 40;
-            actions.Name = "actions";
-            actions.ReadOnly = true;
-            actions.Resizable = DataGridViewTriState.True;
-            actions.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
             // panel3
             // 
             panel3.BackColor = Color.White;
@@ -465,6 +373,98 @@
             cmsDelete.Text = "Delete";
             cmsDelete.Click += cmsDelete_Click;
             // 
+            // id
+            // 
+            id.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            id.HeaderText = "ID";
+            id.MinimumWidth = 50;
+            id.Name = "id";
+            id.ReadOnly = true;
+            id.Width = 50;
+            // 
+            // batchnumber
+            // 
+            batchnumber.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            batchnumber.FillWeight = 115.0222F;
+            batchnumber.HeaderText = "Batch #";
+            batchnumber.MinimumWidth = 100;
+            batchnumber.Name = "batchnumber";
+            batchnumber.ReadOnly = true;
+            // 
+            // purchasedate
+            // 
+            purchasedate.HeaderText = "Purchase Date";
+            purchasedate.MinimumWidth = 100;
+            purchasedate.Name = "purchasedate";
+            purchasedate.ReadOnly = true;
+            // 
+            // expirydate
+            // 
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            expirydate.DefaultCellStyle = dataGridViewCellStyle3;
+            expirydate.HeaderText = "Expiry Date";
+            expirydate.MinimumWidth = 100;
+            expirydate.Name = "expirydate";
+            expirydate.ReadOnly = true;
+            // 
+            // initialquantity
+            // 
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            initialquantity.DefaultCellStyle = dataGridViewCellStyle4;
+            initialquantity.HeaderText = "Initial Qty";
+            initialquantity.MinimumWidth = 60;
+            initialquantity.Name = "initialquantity";
+            initialquantity.ReadOnly = true;
+            // 
+            // currentquantity
+            // 
+            currentquantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            currentquantity.DefaultCellStyle = dataGridViewCellStyle5;
+            currentquantity.FillWeight = 137.7169F;
+            currentquantity.HeaderText = "Current Qty";
+            currentquantity.MinimumWidth = 100;
+            currentquantity.Name = "currentquantity";
+            currentquantity.ReadOnly = true;
+            // 
+            // unitcost
+            // 
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleRight;
+            unitcost.DefaultCellStyle = dataGridViewCellStyle6;
+            unitcost.HeaderText = "Unit Cost";
+            unitcost.MinimumWidth = 75;
+            unitcost.Name = "unitcost";
+            unitcost.ReadOnly = true;
+            // 
+            // supplier
+            // 
+            supplier.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            supplier.DefaultCellStyle = dataGridViewCellStyle7;
+            supplier.FillWeight = 74.16836F;
+            supplier.HeaderText = "Supplier";
+            supplier.MinimumWidth = 150;
+            supplier.Name = "supplier";
+            supplier.ReadOnly = true;
+            supplier.Resizable = DataGridViewTriState.True;
+            // 
+            // status
+            // 
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            status.DefaultCellStyle = dataGridViewCellStyle8;
+            status.HeaderText = "Status";
+            status.Name = "status";
+            status.ReadOnly = true;
+            // 
+            // actions
+            // 
+            actions.HeaderText = "Actions";
+            actions.MinimumWidth = 40;
+            actions.Name = "actions";
+            actions.ReadOnly = true;
+            actions.Resizable = DataGridViewTriState.True;
+            actions.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
             // ViewBatches
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -511,6 +511,9 @@
         private TextBox txtItemsPerPage;
         private Label label3;
         private Label lblTotalPage;
+        private ContextMenuStrip cmsOptions;
+        private ToolStripMenuItem cmsEdit;
+        private ToolStripMenuItem cmsDelete;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn batchnumber;
         private DataGridViewTextBoxColumn purchasedate;
@@ -521,8 +524,5 @@
         private DataGridViewTextBoxColumn supplier;
         private DataGridViewTextBoxColumn status;
         private DataGridViewImageColumn actions;
-        private ContextMenuStrip cmsOptions;
-        private ToolStripMenuItem cmsEdit;
-        private ToolStripMenuItem cmsDelete;
     }
 }

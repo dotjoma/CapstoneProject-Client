@@ -15,6 +15,7 @@ namespace client.Models
         public string? SubcategoryName { get; set; }
         public string? UnitTypeName { get; set; }
         public string? UnitMeasureName { get; set; }
+        public string? UnitMeasureSymbol { get; set; }
         public decimal MinStockLevel { get; set; }
         public decimal MaxStockLevel { get; set; }
         public decimal ReorderPoint { get; set; }

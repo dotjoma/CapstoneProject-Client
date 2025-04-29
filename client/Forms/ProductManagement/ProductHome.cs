@@ -130,7 +130,8 @@ namespace client.Forms.ProductManagement
                         product.productName,
                         productUnit,
                         product.productPrice,
-                        status
+                        status,
+                        Properties.Resources.menu_vertical_24
                     );
                 }
 
@@ -515,9 +516,29 @@ namespace client.Forms.ProductManagement
             {
                 btnPrev.PerformClick();
             }
-            else if(e.KeyCode == Keys.Right)
+            else if (e.KeyCode == Keys.Right)
             {
                 btnNext.PerformClick();
+            }
+        }
+
+        private void dgvProducts_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+
+            if (dgvProducts.Columns[e.ColumnIndex] is DataGridViewImageColumn)
+            {
+                var clickedImage = dgvProducts.Rows[e.RowIndex].Cells[e.ColumnIndex].Value as Image;
+
+                //_batchId = dgvProducts.Rows[e.RowIndex].Cells["id"].Value.ToString();
+
+                if (e.RowIndex >= 0)
+                {
+                    dgvProducts.ClearSelection();
+                    dgvProducts.Rows[e.RowIndex].Selected = true;
+
+                    cmsOptions.Show(Cursor.Position.X + 10, Cursor.Position.Y + 10);
+                }
             }
         }
     }

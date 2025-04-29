@@ -284,6 +284,7 @@ E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-wi
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.DiscountManagement.DiscountHome.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.InventoryManagement.AddBatch.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.InventoryManagement.AddInventoryItem.resources
+E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.InventoryManagement.EditBatch.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.InventoryManagement.InventoryHome.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.InventoryManagement.NewInventoryCategory.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.InventoryManagement.NewSupplier.resources
@@ -295,10 +296,12 @@ E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-wi
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.Order.DiscountForm.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.Order.OrderEntryForm.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.Order.PaymentForm.resources
+E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.ProductManagement.AddIngredientToRecipe.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.ProductManagement.AddProduct.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.POS.POSUserControl.ProductFoodCategory.NewCategory.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.ProductManagement.NewUnit.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.ProductManagement.ProductHome.resources
+E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.ProductManagement.SearchIngredients.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.Register.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.SalesReport.SalesReportHome.resources
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.UserManagement.UserHome.resources
@@ -315,4 +318,3 @@ E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-wi
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.pdb
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.genruntimeconfig.cache
 E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\ref\client.dll
-E:\Visual Studio 2022\Projects\CapstoneProject\client\client\obj\Debug\net8.0-windows7.0\client.Forms.InventoryManagement.EditBatch.resources

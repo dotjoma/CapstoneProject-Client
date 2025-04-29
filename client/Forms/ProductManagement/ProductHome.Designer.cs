@@ -58,6 +58,9 @@
             toolTip1 = new ToolTip(components);
             panel3 = new Panel();
             dgvProducts = new DataGridView();
+            cmsOptions = new ContextMenuStrip(components);
+            editToolStripMenuItem = new ToolStripMenuItem();
+            deleteToolStripMenuItem = new ToolStripMenuItem();
             id = new DataGridViewTextBoxColumn();
             productCategory = new DataGridViewTextBoxColumn();
             productSubcategory = new DataGridViewTextBoxColumn();
@@ -65,9 +68,7 @@
             productUnit = new DataGridViewTextBoxColumn();
             productPrice = new DataGridViewTextBoxColumn();
             productStatus = new DataGridViewImageColumn();
-            cmsOptions = new ContextMenuStrip(components);
-            editToolStripMenuItem = new ToolStripMenuItem();
-            deleteToolStripMenuItem = new ToolStripMenuItem();
+            actions = new DataGridViewImageColumn();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnRefresh).BeginInit();
@@ -377,7 +378,7 @@
             dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvProducts.ColumnHeadersHeight = 35;
             dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvProducts.Columns.AddRange(new DataGridViewColumn[] { id, productCategory, productSubcategory, productName, productUnit, productPrice, productStatus });
+            dgvProducts.Columns.AddRange(new DataGridViewColumn[] { id, productCategory, productSubcategory, productName, productUnit, productPrice, productStatus, actions });
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = Color.White;
             dataGridViewCellStyle5.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -409,7 +410,29 @@
             dgvProducts.TabIndex = 4;
             dgvProducts.TabStop = false;
             dgvProducts.CellClick += dgvProducts_CellClick;
+            dgvProducts.CellContentClick += dgvProducts_CellContentClick_1;
             dgvProducts.CellMouseClick += dgvProducts_CellMouseClick;
+            // 
+            // cmsOptions
+            // 
+            cmsOptions.ImageScalingSize = new Size(20, 20);
+            cmsOptions.Items.AddRange(new ToolStripItem[] { editToolStripMenuItem, deleteToolStripMenuItem });
+            cmsOptions.Name = "cmsOptions";
+            cmsOptions.Size = new Size(108, 48);
+            // 
+            // editToolStripMenuItem
+            // 
+            editToolStripMenuItem.Name = "editToolStripMenuItem";
+            editToolStripMenuItem.Size = new Size(107, 22);
+            editToolStripMenuItem.Text = "Edit";
+            editToolStripMenuItem.Click += editToolStripMenuItem_Click;
+            // 
+            // deleteToolStripMenuItem
+            // 
+            deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            deleteToolStripMenuItem.Size = new Size(107, 22);
+            deleteToolStripMenuItem.Text = "Delete";
+            deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
             // 
             // id
             // 
@@ -481,7 +504,7 @@
             dataGridViewCellStyle4.SelectionForeColor = Color.White;
             productStatus.DefaultCellStyle = dataGridViewCellStyle4;
             productStatus.FillWeight = 74.16836F;
-            productStatus.HeaderText = "Status";
+            productStatus.HeaderText = "isActive";
             productStatus.MinimumWidth = 80;
             productStatus.Name = "productStatus";
             productStatus.ReadOnly = true;
@@ -489,26 +512,16 @@
             productStatus.SortMode = DataGridViewColumnSortMode.Automatic;
             productStatus.Width = 80;
             // 
-            // cmsOptions
+            // actions
             // 
-            cmsOptions.ImageScalingSize = new Size(20, 20);
-            cmsOptions.Items.AddRange(new ToolStripItem[] { editToolStripMenuItem, deleteToolStripMenuItem });
-            cmsOptions.Name = "cmsOptions";
-            cmsOptions.Size = new Size(108, 48);
-            // 
-            // editToolStripMenuItem
-            // 
-            editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new Size(107, 22);
-            editToolStripMenuItem.Text = "Edit";
-            editToolStripMenuItem.Click += editToolStripMenuItem_Click;
-            // 
-            // deleteToolStripMenuItem
-            // 
-            deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new Size(107, 22);
-            deleteToolStripMenuItem.Text = "Delete";
-            deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
+            actions.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            actions.HeaderText = "Actions";
+            actions.MinimumWidth = 60;
+            actions.Name = "actions";
+            actions.ReadOnly = true;
+            actions.Resizable = DataGridViewTriState.True;
+            actions.SortMode = DataGridViewColumnSortMode.Automatic;
+            actions.Width = 60;
             // 
             // ProductHome
             // 
@@ -557,13 +570,6 @@
         private ToolStripMenuItem editToolStripMenuItem;
         private ToolStripMenuItem deleteToolStripMenuItem;
         private DataGridView dgvProducts;
-        private DataGridViewTextBoxColumn id;
-        private DataGridViewTextBoxColumn productCategory;
-        private DataGridViewTextBoxColumn productSubcategory;
-        private DataGridViewTextBoxColumn productName;
-        private DataGridViewTextBoxColumn productUnit;
-        private DataGridViewTextBoxColumn productPrice;
-        private DataGridViewImageColumn productStatus;
         private TextBox txtItemsPerPage;
         private Label label3;
         private Button btnPrev;
@@ -571,5 +577,13 @@
         private TextBox txtCurrentPage;
         private Label lblPageInfo;
         private Label lblTotalPage;
+        private DataGridViewTextBoxColumn id;
+        private DataGridViewTextBoxColumn productCategory;
+        private DataGridViewTextBoxColumn productSubcategory;
+        private DataGridViewTextBoxColumn productName;
+        private DataGridViewTextBoxColumn productUnit;
+        private DataGridViewTextBoxColumn productPrice;
+        private DataGridViewImageColumn productStatus;
+        private DataGridViewImageColumn actions;
     }
 }

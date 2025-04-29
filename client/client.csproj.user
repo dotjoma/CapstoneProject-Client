@@ -73,6 +73,9 @@
     <Compile Update="Forms\Order\PaymentForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\ProductManagement\AddIngredientToRecipe.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\ProductManagement\NewCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +86,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\ProductManagement\ProductHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ProductManagement\SearchIngredients.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Register.cs">

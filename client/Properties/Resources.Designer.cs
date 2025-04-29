@@ -1143,6 +1143,16 @@ namespace client.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap remove_red_24 {
+            get {
+                object obj = ResourceManager.GetObject("remove-red-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Restaurant_Menu {
             get {
                 object obj = ResourceManager.GetObject("Restaurant Menu", resourceCulture);
@@ -1276,6 +1286,16 @@ namespace client.Properties {
         internal static System.Drawing.Bitmap Toggle_Full_Screen {
             get {
                 object obj = ResourceManager.GetObject("Toggle Full Screen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap trash_red_20 {
+            get {
+                object obj = ResourceManager.GetObject("trash-red-20", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
