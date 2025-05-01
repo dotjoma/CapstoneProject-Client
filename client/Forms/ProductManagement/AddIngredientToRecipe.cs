@@ -256,8 +256,8 @@ namespace client.Forms.ProductManagement
 
             var item = CurrentInventoryItem.Current;
 
-            MessageBox.Show($"Selected: {item.ItemName} (ID: {item.ItemId}) MeasureSymbol: {item.UnitMeasureSymbol}", "Item Selected",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show($"Selected: {item.ItemName} (ID: {item.ItemId}) MeasureSymbol: {item.UnitMeasureSymbol}", "Item Selected",
+            //    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             if (RecipeBuilder.SelectedIngredients.TryGetValue(item.ItemId, out var existing))
             {
@@ -286,8 +286,8 @@ namespace client.Forms.ProductManagement
 
             ResetForm();
 
-            MessageBox.Show($"Added: {item.ItemName} x{quantity}", "Ingredient Added",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show($"Added: {item.ItemName} x{quantity}", "Ingredient Added",
+            //    MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void ResetForm()
@@ -302,6 +302,8 @@ namespace client.Forms.ProductManagement
 
             if (dgvIngredients.Columns[e.ColumnIndex] is DataGridViewImageColumn)
             {
+                dgvIngredients.ClearSelection();
+
                 var row = dgvIngredients.Rows[e.RowIndex];
                 string? ingredientName = row.Cells["ingredient"].Value?.ToString();
                 string? quantityText = row.Cells["quantity"].Value?.ToString();
