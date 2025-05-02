@@ -52,12 +52,66 @@ namespace client.Forms
             lblUser.Text = $"{char.ToUpper(username![0]) + username.Substring(1)} ({role})";
         }
 
+
         private void MainMenu_Shown(object? sender, EventArgs e)
         {
             if (CurrentUser.Current?.Role == "staff")
             {
                 this.Hide();
                 new OrderEntryForm().Show();
+            }
+            else if(CurrentUser.Current?.Role == "admin")
+            {
+                ShowExpiringInventory();
+            }
+        }
+        void ShowExpiringInventory()
+        {
+            var messageBuilder = new StringBuilder();
+            bool hasData = false;
+
+            foreach (var item in CurrentInventoryItem.AllItems)
+            {
+                if (item.Batches == null || item.Batches.Count == 0)
+                    continue;
+
+                int threshold = item.ExpiryWarningDays > 0 ? item.ExpiryWarningDays : 7;
+                var (expired, expiringSoon) = InventoryExpiryTracker.CheckExpirations(item.Batches, threshold);
+
+                if (expired.Count == 0 && expiringSoon.Count == 0)
+                    continue;
+
+                hasData = true;
+                messageBuilder.AppendLine($"📦 Item: {item.ItemName}");
+
+                if (expiringSoon.Count > 0)
+                {
+                    messageBuilder.AppendLine("  🔶 Expiring Soon:");
+                    foreach (var batch in expiringSoon)
+                    {
+                        messageBuilder.AppendLine($"    - Batch: {batch.BatchNumber}, Exp: {batch.ExpirationDate?.ToShortDateString()}, Qty: {batch.InitialQuantity}, Supplier: {batch.SupplierName}");
+                    }
+                }
+
+                if (expired.Count > 0)
+                {
+                    messageBuilder.AppendLine("  🔴 Expired:");
+                    foreach (var batch in expired)
+                    {
+                        messageBuilder.AppendLine($"    - Batch: {batch.BatchNumber}, Exp: {batch.ExpirationDate?.ToShortDateString()}, Qty: {batch.InitialQuantity}, Supplier: {batch.SupplierName}");
+                    }
+                }
+
+                messageBuilder.AppendLine();
+            }
+
+            if (!hasData)
+            {
+                MessageBox.Show("No expiring or expired inventory items found.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show(messageBuilder.ToString(), "Expiring & Expired Inventory", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

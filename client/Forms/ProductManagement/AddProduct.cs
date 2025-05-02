@@ -385,7 +385,7 @@ namespace client.Forms.ProductManagement
                 return;
             }
 
-            if(RecipeBuilder.SelectedIngredients.Count == 0)
+            if (RecipeBuilder.SelectedIngredients.Count == 0)
             {
                 MessageBox.Show("No ingredients selected. Please add ingredients to the recipe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ToggleButton(true);
@@ -402,7 +402,7 @@ namespace client.Forms.ProductManagement
                 }
                 else
                 {
-                    bool response = await _productController.Create(name, image, price, categoryId, subCategoryId, unitId, isActive);
+                    bool response = await _productController.Create(name, image, price, categoryId, subCategoryId, unitId, isActive, RecipeBuilder.SelectedIngredients);
                     HandleResponse(response);
                 }
             }
@@ -414,7 +414,6 @@ namespace client.Forms.ProductManagement
             {
                 ToggleButton(true);
                 HideLoading();
-                ResetRecipe();
             }
         }
 
@@ -522,6 +521,8 @@ namespace client.Forms.ProductManagement
             cboUnit.SelectedIndex = 0;
 
             pbImage.Image = Properties.Resources.AddImage100x100_w;
+
+            ResetRecipe();
         }
 
         public void GetCategory()
@@ -908,7 +909,7 @@ namespace client.Forms.ProductManagement
 
         private void btnManageIngredients_Click(object sender, EventArgs e)
         {
-            using(var addtoingredient = new AddIngredientToRecipe(this))
+            using (var addtoingredient = new AddIngredientToRecipe(this))
             {
                 addtoingredient.StartPosition = FormStartPosition.Manual;
                 addtoingredient.StartPosition = FormStartPosition.CenterParent;
@@ -936,6 +937,22 @@ namespace client.Forms.ProductManagement
             }
 
             dgvIngredients.ClearSelection();
+        }
+
+        private void btnRemoveIngredients_Click(object sender, EventArgs e)
+        {
+            if(dgvIngredients.Rows.Count > 0 || RecipeBuilder.SelectedIngredients.Count > 0)
+            {
+                if(MessageBox.Show("Are you sure you want to remove all ingredients?", "Remove Ingredients", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    dgvIngredients.Rows.Clear();
+                    RecipeBuilder.SelectedIngredients.Clear();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No ingredients to remove.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

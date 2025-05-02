@@ -148,9 +148,32 @@ namespace client.Forms.InventoryManagement
                     var currentQuantity = batch.ContainsKey("current_quantity") ? batch["current_quantity"] : 0;
                     var unitCost = batch.ContainsKey("unit_cost") ? batch["unit_cost"] : 0;
                     var supplierName = batch.ContainsKey("supplier_name") ? batch["supplier_name"]?.ToString() : "Unknown";
-                    var status = batch.ContainsKey("status") ? batch["status"]?.ToString() : "Unknown";
 
-                    Console.WriteLine($"Batch ID: {batchId}, Batch Number: {batchNumber}, Status: {status}");
+                    string status = "Unknown";
+
+                    if (batch.ContainsKey("expiration_date") && batch["expiration_date"] != null)
+                    {
+                        if (DateTime.TryParse(batch["expiration_date"].ToString(), out DateTime expDate))
+                        {
+                            var now = DateTime.Now;
+                            var daysUntilExpiry = (expDate - now).TotalDays;
+
+                            int warningThreshold = _item.ExpiryWarningDays;
+
+                            if (daysUntilExpiry < 0)
+                            {
+                                status = "Expired";
+                            }
+                            else if (daysUntilExpiry <= warningThreshold)
+                            {
+                                status = "Expiring Soon";
+                            }
+                            else
+                            {
+                                status = "Active";
+                            }
+                        }
+                    }
 
                     dgvBatches.Rows.Add(
                         batchId,
@@ -164,6 +187,24 @@ namespace client.Forms.InventoryManagement
                         status,
                         Properties.Resources.menu_vertical_24
                     );
+
+                    int rowIndex = dgvBatches.Rows.Count - 1;
+                    var row = dgvBatches.Rows[rowIndex];
+
+                    if (status == "Expired")
+                    {
+                        row.Cells["status"].Style.ForeColor = Color.Red;
+                        row.Cells["expirydate"].Style.ForeColor = Color.Red;
+                    }
+                    else if (status == "Expiring Soon")
+                    {
+                        row.Cells["status"].Style.ForeColor = Color.DarkOrange;
+                        row.Cells["expirydate"].Style.ForeColor = Color.DarkOrange;
+                    }
+                    else if (status == "Active")
+                    {
+                        row.Cells["status"].Style.ForeColor = Color.Black;
+                    }
                 }
 
                 int start = ((_currentPage - 1) * _pageSize) + 1;
@@ -226,6 +267,27 @@ namespace client.Forms.InventoryManagement
                     string purchaseDate = batch.PurchaseDate?.ToString("yyyy-MM-dd") ?? "Unknown";
                     string expiryDate = batch.ExpirationDate?.ToString("yyyy-MM-dd") ?? "Unknown";
 
+                    string status = "Unknown";
+                    if (batch.ExpirationDate != null)
+                    {
+                        var now = DateTime.Now;
+                        var daysUntilExpiry = (batch.ExpirationDate.Value - now).TotalDays;
+                        int threshold = _item.ExpiryWarningDays;
+
+                        if (daysUntilExpiry < 0)
+                        {
+                            status = "Expired";
+                        }
+                        else if (daysUntilExpiry <= threshold)
+                        {
+                            status = "Expiring Soon";
+                        }
+                        else
+                        {
+                            status = "Active";
+                        }
+                    }
+
                     dgvBatches.Rows.Add(
                         batch.BatchId,
                         batch.BatchNumber ?? "Unknown",
@@ -235,9 +297,27 @@ namespace client.Forms.InventoryManagement
                         batch.CurrentQuantity,
                         batch.UnitCost,
                         batch.SupplierName ?? "Unknown",
-                        batch.Status ?? "Unknown",
+                        status,
                         Properties.Resources.menu_vertical_24
                     );
+
+                    int rowIndex = dgvBatches.Rows.Count - 1;
+                    var row = dgvBatches.Rows[rowIndex];
+
+                    if (status == "Expired")
+                    {
+                        row.Cells["status"].Style.ForeColor = Color.Red;
+                        row.Cells["expirydate"].Style.ForeColor = Color.Red;
+                    }
+                    else if (status == "Expiring Soon")
+                    {
+                        row.Cells["status"].Style.ForeColor = Color.DarkOrange;
+                        row.Cells["expirydate"].Style.ForeColor = Color.DarkOrange;
+                    }
+                    else if (status == "Active")
+                    {
+                        row.Cells["status"].Style.ForeColor = Color.Black;
+                    }
                 }
 
                 int start = ((_currentPage - 1) * _pageSize) + 1;
@@ -412,6 +492,11 @@ namespace client.Forms.InventoryManagement
         }
 
         private void cmsDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
         {
 
         }

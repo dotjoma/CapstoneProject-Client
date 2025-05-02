@@ -117,6 +117,25 @@ namespace client.Controllers
                         {
                             CurrentProduct.SetProducts(products);
                             Logger.Write("GET ALL PRODUCTS", $"Successfully retrieved {products.Count} products");
+
+                            foreach (var product in products)
+                            {
+                                Logger.Write("GET ALL PRODUCTS", $"Product: {product.productName} (ID: {product.productId})");
+
+                                if (product.Ingredients != null && product.Ingredients.Count > 0)
+                                {
+                                    foreach (var ingredient in product.Ingredients)
+                                    {
+                                        Logger.Write("GET ALL PRODUCTS",
+                                            $"  - Ingredient: InventoryItemId={ingredient.InventoryItemId}, Quantity={ingredient.Quantity}, Measure={ingredient.MeasureSymbol}");
+                                    }
+                                }
+                                else
+                                {
+                                    Logger.Write("GET ALL PRODUCTS", "  - No ingredients found.");
+                                }
+                            }
+
                             return products;
                         }
                     }
@@ -141,8 +160,25 @@ namespace client.Controllers
             return new List<Product>();
         }
 
-        public async Task<bool> Create(string name, string image, string price, int categoryId, int subcategoryId, int unitId, int isActive)
+        public async Task<bool> Create(
+            string name,
+            string image,
+            string price,
+            int categoryId,
+            int subcategoryId,
+            int unitId,
+            int isActive,
+            Dictionary<int, (InventoryItem item, decimal quantity, string? measureSymbol)> selectedIngredients)
         {
+            var ingredientsList = selectedIngredients.Select(entry => new
+            {
+                InventoryItemId = entry.Key,
+                Quantity = entry.Value.quantity,
+                MeasureSymbol = entry.Value.measureSymbol
+            }).ToList();
+
+            string ingredientsJson = JsonSerializer.Serialize(ingredientsList);
+
             var response = await Client.Instance.SendRequestAsync(new Packet
             {
                 Type = PacketType.CreateProduct,
@@ -154,7 +190,8 @@ namespace client.Controllers
                     { "catId", categoryId.ToString()},
                     { "scId", subcategoryId.ToString() },
                     { "unitId", unitId.ToString() },
-                    { "isActive", isActive.ToString() }
+                    { "isActive", isActive.ToString() },
+                    { "ingredients", ingredientsJson }
                 }
             });
 
@@ -169,9 +206,6 @@ namespace client.Controllers
             {
                 if (response.Data["success"].Equals("true", StringComparison.OrdinalIgnoreCase))
                 {
-                    //MessageBox.Show("Product creation successful!", "Success",
-                    //    MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     await _auditService.Log(new AuditRecord
                     {
                         UserId = CurrentUser.Current!.UserId,

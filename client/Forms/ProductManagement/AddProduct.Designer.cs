@@ -62,6 +62,7 @@
             btnManageIngredients = new Button();
             label1 = new Label();
             label9 = new Label();
+            btnRemoveIngredients = new Button();
             ((System.ComponentModel.ISupportInitialize)pbImage).BeginInit();
             pnlHeader.SuspendLayout();
             panel3.SuspendLayout();
@@ -349,6 +350,7 @@
             // panel3
             // 
             panel3.BackColor = Color.White;
+            panel3.Controls.Add(btnRemoveIngredients);
             panel3.Controls.Add(dgvIngredients);
             panel3.Controls.Add(btnManageIngredients);
             panel3.Controls.Add(label1);
@@ -463,6 +465,21 @@
             label9.TabIndex = 71;
             label9.Text = "ADD MENU ITEM";
             // 
+            // btnRemoveIngredients
+            // 
+            btnRemoveIngredients.BackColor = Color.FromArgb(244, 67, 54);
+            btnRemoveIngredients.FlatAppearance.BorderSize = 0;
+            btnRemoveIngredients.FlatStyle = FlatStyle.Flat;
+            btnRemoveIngredients.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRemoveIngredients.ForeColor = Color.White;
+            btnRemoveIngredients.Location = new Point(193, 28);
+            btnRemoveIngredients.Name = "btnRemoveIngredients";
+            btnRemoveIngredients.Size = new Size(154, 30);
+            btnRemoveIngredients.TabIndex = 82;
+            btnRemoveIngredients.Text = "REMOVE INGREDIENTS";
+            btnRemoveIngredients.UseVisualStyleBackColor = false;
+            btnRemoveIngredients.Click += btnRemoveIngredients_Click;
+            // 
             // AddProduct
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -538,5 +555,6 @@
         private Label label9;
         private DataGridView dgvIngredients;
         private DataGridViewTextBoxColumn ingredient;
+        private Button btnRemoveIngredients;
     }
 }

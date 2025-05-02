@@ -20,17 +20,76 @@ namespace client.Forms.InventoryManagement
     {
         SubCategoryController _subCategoryController = new SubCategoryController();
         InventoryController _inventoryController = new InventoryController();
+        public static event Action? RefreshInventory;
 
-        public AddInventoryItem()
+        private Form _parent;
+        private InventoryItem _item;
+        private int _selectedItemId;
+
+        public AddInventoryItem(InventoryItem item, int selectedItemId, Form parent)
         {
             InitializeComponent();
             this.ShowInTaskbar = false;
+            this._parent = parent;
+            this._item = item;
+            this._selectedItemId = selectedItemId;
         }
         private void AddInventoryItem_Load(object sender, EventArgs e)
         {
             LoadDatabase();
             InitializeComboboxes();
             txtItemName.Focus();
+
+            if (IsUpdatingItem())
+            {
+                LoadProductForEditing();
+                lblTitle.Text = "Inventory Management - Edit Item";
+                lblPurchaseDate.Visible = false;
+                dtpPurchase.Visible = false;
+                lblExpirationDate.Visible = false;
+                dtpExpiration.Visible = false;
+                lblCurrentQuantity.Visible = true;
+                txtCurrentQuantity.Visible = true;
+                btnCancel.Visible = false;
+                btnSave.Text = "Cancel";
+                btnSaveAndNew.Text = "Update";
+            }
+        }
+
+        private bool IsUpdatingItem()
+        {
+            return _selectedItemId > 0;
+        }
+
+        private void LoadProductForEditing()
+        {
+            var item = _item;
+            txtItemName.Text = item.ItemName;
+            cboCategory.SelectedItem = item.CategoryName;
+            cboSubcategory.SelectedItem = item.SubcategoryName;
+
+            var activeBatch = item.Batches?.FirstOrDefault(b => b.IsActive == 1);
+
+            txtBatchNumber.Text = activeBatch?.BatchNumber;
+            if (activeBatch?.PurchaseDate != null)
+            {
+                dtpPurchase.Value = activeBatch.PurchaseDate.Value;
+            }
+            if (activeBatch?.ExpirationDate != null)
+            {
+                dtpPurchase.Value = activeBatch.ExpirationDate.Value;
+            }
+            txtBatchQuantity.Text = activeBatch?.InitialQuantity.ToString();
+            txtCurrentQuantity.Text = activeBatch?.CurrentQuantity.ToString();
+            cboUnitType.SelectedItem = item.UnitTypeName;
+            cboUnitMeasure.SelectedItem = item.UnitMeasureName;
+            txtMinimumStock.Text = item.MinStockLevel.ToString();
+            txtMaximumStock.Text = item.MaxStockLevel.ToString();
+            txtRestorePoint.Text = item.ReorderPoint.ToString();
+            txtLeadTime.Text = item.LeadTimeDays.ToString();
+            txtTargetTurnover.Text = item.TargetTurnoverDays.ToString();
+            txtUnitCost.Text = activeBatch?.UnitCost.ToString();
+            cboSupplier.SelectedItem = activeBatch?.SupplierName;
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -55,9 +114,16 @@ namespace client.Forms.InventoryManagement
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            if (await SaveInventoryItem())
+            if (IsUpdatingItem()) // make this cancel if updating.
             {
                 this.Dispose();
+            }
+            else
+            {
+                if (await SaveInventoryItem())
+                {
+                    this.Dispose();
+                }
             }
         }
         private void RefreshForm()
@@ -201,6 +267,7 @@ namespace client.Forms.InventoryManagement
                 return false;
             }
 
+            int itemId = _selectedItemId;
             string itemName = txtItemName.Text.Trim();
             int categoryId = CurrentInventoryCategory.Current?.Id ?? 0;
             int subCategoryId = CurrentInventorySubCategory.Current?.scId ?? 0;
@@ -208,6 +275,7 @@ namespace client.Forms.InventoryManagement
             string purchaseDate = dtpPurchase.Value.ToString("yyyy-MM-dd");
             string expirationDate = dtpExpiration.Value.ToString("yyyy-MM-dd");
             decimal batchQuantity = decimal.Parse(txtBatchQuantity.Text.Trim());
+            decimal currentQuantity = decimal.Parse(txtCurrentQuantity.Text.Trim());
             int unitTypeId = CurrentInventoryUnitType.Current?.Id ?? 0;
             int unitMeasureId = CurrentInventoryUnitMeasure.Current?.Id ?? 0;
             decimal minStockLevel = decimal.Parse(txtMinimumStock.Text.Trim());
@@ -221,12 +289,31 @@ namespace client.Forms.InventoryManagement
 
             try
             {
-                bool result = await _inventoryController.CreateInventoryItem(
-                    itemName, categoryId, subCategoryId, batchNumber,
-                    purchaseDate, expirationDate, batchQuantity,
-                    unitTypeId, unitMeasureId, minStockLevel, maxStockLevel,
-                    reorderPoint, leadTimeDays, targetTurnoverDays,
-                    unitCost, supplierId, enableLowStockAlert);
+                bool result;
+
+                if (IsUpdatingItem())
+                {
+                    result = await _inventoryController.UpdateInventoryItem(
+                        itemId, itemName, categoryId, subCategoryId, batchNumber,
+                        purchaseDate, expirationDate, batchQuantity, currentQuantity,
+                        unitTypeId, unitMeasureId, minStockLevel, maxStockLevel,
+                        reorderPoint, leadTimeDays, targetTurnoverDays,
+                        unitCost, supplierId, enableLowStockAlert);
+                }
+                else
+                {
+                    result = await _inventoryController.CreateInventoryItem(
+                        itemName, categoryId, subCategoryId, batchNumber,
+                        purchaseDate, expirationDate, batchQuantity,
+                        unitTypeId, unitMeasureId, minStockLevel, maxStockLevel,
+                        reorderPoint, leadTimeDays, targetTurnoverDays,
+                        unitCost, supplierId, enableLowStockAlert);
+                }
+
+                if (result)
+                {
+                    RefreshInventory?.Invoke();
+                }
 
                 return result;
             }
@@ -736,6 +823,46 @@ namespace client.Forms.InventoryManagement
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void txtBatchQuantity_Click(object sender, EventArgs e)
+        {
+            txtBatchQuantity.SelectionStart = txtBatchQuantity.Text.Length;
+        }
+
+        private void txtMinimumStock_Click(object sender, EventArgs e)
+        {
+            txtMinimumStock.SelectionStart = txtMinimumStock.Text.Length;
+        }
+
+        private void txtMaximumStock_Click(object sender, EventArgs e)
+        {
+            txtMaximumStock.SelectionStart = txtMaximumStock.Text.Length;
+        }
+
+        private void txtRestorePoint_Click(object sender, EventArgs e)
+        {
+            txtRestorePoint.SelectionStart = txtRestorePoint.Text.Length;
+        }
+
+        private void txtLeadTime_Click(object sender, EventArgs e)
+        {
+            txtLeadTime.SelectionStart = txtLeadTime.Text.Length;
+        }
+
+        private void txtTargetTurnover_Click(object sender, EventArgs e)
+        {
+            txtTargetTurnover.SelectionStart = txtTargetTurnover.Text.Length;
+        }
+
+        private void txtCurrentQuantity_Click(object sender, EventArgs e)
+        {
+            txtCurrentQuantity.SelectionStart = txtCurrentQuantity.Text.Length;
+        }
+
+        private void txtUnitCost_Click(object sender, EventArgs e)
+        {
+            txtUnitCost.SelectionStart = txtUnitCost.Text.Length;
         }
     }
 }

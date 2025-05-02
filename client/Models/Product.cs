@@ -19,5 +19,6 @@ namespace client.Models
         public int isVatable { get; set; }
         public int Quantity { get; set; }
         public Image? ProductImageObject { get; set; }
+        public List<ProductIngredient> Ingredients { get; set; } = new();
     }
 }

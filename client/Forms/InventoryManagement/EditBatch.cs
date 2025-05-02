@@ -37,6 +37,7 @@ namespace client.Forms.InventoryManagement
             string? supplierId, string? supplierName, string? status, Form parent)
         {
             InitializeComponent();
+            this.ShowInTaskbar = false;
             this.KeyPreview = true;
             this._parentForm = parent;
             this._batchId = batchId;

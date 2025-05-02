@@ -21,6 +21,7 @@ namespace client.Models
         public decimal ReorderPoint { get; set; }
         public int LeadTimeDays { get; set; }
         public int TargetTurnoverDays { get; set; }
+        public int ExpiryWarningDays { get; set; }
         public decimal EnableLowStockAlerts { get; set; }
 
         public List<InventoryBatch>? Batches { get; set; } = new List<InventoryBatch>();

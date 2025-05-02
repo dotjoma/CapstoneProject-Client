@@ -23,16 +23,17 @@ namespace client.Forms.InventoryManagement
         public InventoryHome()
         {
             InitializeComponent();
-
             EditBatch.RefreshInventory += RefreshInventory;
+            AddInventoryItem.RefreshInventory += RefreshInventory;
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            using (var addnewfrm = new AddInventoryItem())
+            using (var addnewfrm = new AddInventoryItem(_selectedItem, _selectedItemId, this))
             {
-                addnewfrm.ShowDialog();
+                addnewfrm.ShowDialog(this);
             }
+            _selectedItemId = 0;
         }
 
         private void InventoryHome_Load(object sender, EventArgs e)
@@ -70,7 +71,7 @@ namespace client.Forms.InventoryManagement
                         GetExpirationDates(item),
                         stockStatus,
                         GetSupplierNames(item),
-                        Properties.Resources.menu_vertical_24
+                        GetExpiryStatusIcon(item)
                     );
                 }
 
@@ -81,6 +82,24 @@ namespace client.Forms.InventoryManagement
                 MessageBox.Show($"Error loading inventory items: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private Image GetExpiryStatusIcon(InventoryItem item, int thresholdDays = 7)
+        {
+            var batches = item.Batches ?? new List<InventoryBatch>();
+            var (expired, expiringSoon) = InventoryExpiryTracker.CheckExpirations(batches, thresholdDays);
+
+            if (expired.Any())
+            {
+                return Properties.Resources._3dots_notif1;
+            }
+
+            if (expiringSoon.Any())
+            {
+                return Properties.Resources._3dots_notif1;
+            }
+
+            return Properties.Resources._3dots1;
         }
 
         public async void RefreshInventory()
@@ -160,10 +179,23 @@ namespace client.Forms.InventoryManagement
                     dgvInventory.ClearSelection();
                     dgvInventory.Rows[e.RowIndex].Selected = true;
 
+                    var (expired, expiringSoon) = InventoryExpiryTracker.CheckExpirations(
+                        _selectedItem.Batches ?? new List<InventoryBatch>(), 7);
+
+                    if (expired.Any() || expiringSoon.Any())
+                    {
+                        cmsView.Image = Properties.Resources.warning_24_red;
+                    }
+                    else
+                    {
+                        cmsView.Image = null;
+                    }
+
                     cmsOptions.Show(Cursor.Position.X + 10, Cursor.Position.Y + 10);
                 }
             }
         }
+
 
         private void btnRefreshData_Click(object sender, EventArgs e)
         {
@@ -188,6 +220,17 @@ namespace client.Forms.InventoryManagement
                 vbfrm.StartPosition = FormStartPosition.CenterParent;
                 vbfrm.ShowDialog(this);
             }
+        }
+
+        private void cmsEdit_Click(object sender, EventArgs e)
+        {
+            using (var abfrm = new AddInventoryItem(_selectedItem, _selectedItemId, this))
+            {
+                abfrm.StartPosition = FormStartPosition.Manual;
+                abfrm.StartPosition = FormStartPosition.CenterParent;
+                abfrm.ShowDialog(this);
+            }
+            _selectedItemId = 0;
         }
     }
 }

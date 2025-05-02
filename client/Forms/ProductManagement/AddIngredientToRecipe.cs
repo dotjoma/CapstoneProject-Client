@@ -256,12 +256,9 @@ namespace client.Forms.ProductManagement
 
             var item = CurrentInventoryItem.Current;
 
-            //MessageBox.Show($"Selected: {item.ItemName} (ID: {item.ItemId}) MeasureSymbol: {item.UnitMeasureSymbol}", "Item Selected",
-            //    MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             if (RecipeBuilder.SelectedIngredients.TryGetValue(item.ItemId, out var existing))
             {
-                RecipeBuilder.SelectedIngredients[item.ItemId] = (item, existing.quantity + quantity, item.UnitMeasureName);
+                RecipeBuilder.SelectedIngredients[item.ItemId] = (item, existing.quantity + quantity, item.UnitMeasureSymbol);
             }
             else
             {
@@ -285,9 +282,6 @@ namespace client.Forms.ProductManagement
             dgvIngredients.ClearSelection();
 
             ResetForm();
-
-            //MessageBox.Show($"Added: {item.ItemName} x{quantity}", "Ingredient Added",
-            //    MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void ResetForm()

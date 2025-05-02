@@ -28,79 +28,82 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            label2 = new Label();
+            lblTitle = new Label();
+            lblItemName = new Label();
             txtItemName = new TextBox();
-            label4 = new Label();
+            lblCategory = new Label();
             cboCategory = new ComboBox();
             label5 = new Label();
             label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
-            label9 = new Label();
+            lblQuantity = new Label();
+            lblMinStock = new Label();
+            lblUnitType = new Label();
             txtMaximumStock = new TextBox();
-            label10 = new Label();
+            lblMaxStock = new Label();
             label11 = new Label();
             label14 = new Label();
             txtBatchNumber = new TextBox();
             label15 = new Label();
-            label16 = new Label();
+            lblPurchaseDate = new Label();
             dtpPurchase = new DateTimePicker();
             dtpExpiration = new DateTimePicker();
-            label17 = new Label();
+            lblExpirationDate = new Label();
             txtBatchQuantity = new TextBox();
             txtMinimumStock = new TextBox();
             cboUnitType = new ComboBox();
             cboUnitMeasure = new ComboBox();
-            label18 = new Label();
+            lblMeasure = new Label();
             txtRestorePoint = new TextBox();
-            label19 = new Label();
+            lblReorder = new Label();
             txtLeadTime = new TextBox();
-            label20 = new Label();
+            lblLeadTime = new Label();
             txtTargetTurnover = new TextBox();
-            label21 = new Label();
-            label22 = new Label();
-            label23 = new Label();
+            lblTurnover = new Label();
+            lblCost = new Label();
+            lblSupplier = new Label();
             pnlHeader = new Panel();
             cboSubcategory = new ComboBox();
-            label13 = new Label();
+            lblSubcateogry = new Label();
             btnCancel = new Button();
             btnSave = new Button();
             btnSaveAndNew = new Button();
             panel2 = new Panel();
             panel3 = new Panel();
             panel4 = new Panel();
+            txtCurrentQuantity = new TextBox();
+            lblCurrentQuantity = new Label();
             panel5 = new Panel();
             cboSupplier = new ComboBox();
             txtUnitCost = new TextBox();
             cbLowStockAlerts = new CheckBox();
             pnlHeader.SuspendLayout();
+            panel4.SuspendLayout();
             panel5.SuspendLayout();
             SuspendLayout();
             // 
-            // label1
+            // lblTitle
             // 
-            label1.Anchor = AnchorStyles.Left;
-            label1.AutoSize = true;
-            label1.BackColor = Color.FromArgb(121, 85, 72);
-            label1.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(13, 6);
-            label1.Name = "label1";
-            label1.Size = new Size(358, 25);
-            label1.TabIndex = 0;
-            label1.Text = "Inventory Management - Add New Item";
+            lblTitle.Anchor = AnchorStyles.Left;
+            lblTitle.AutoSize = true;
+            lblTitle.BackColor = Color.FromArgb(121, 85, 72);
+            lblTitle.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.Location = new Point(13, 6);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(358, 25);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "Inventory Management - Add New Item";
             // 
-            // label2
+            // lblItemName
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.White;
-            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label2.Location = new Point(13, 82);
-            label2.Name = "label2";
-            label2.Size = new Size(98, 21);
-            label2.TabIndex = 17;
-            label2.Text = "Item Name*";
+            lblItemName.AutoSize = true;
+            lblItemName.BackColor = Color.White;
+            lblItemName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblItemName.Location = new Point(13, 82);
+            lblItemName.Name = "lblItemName";
+            lblItemName.Size = new Size(98, 21);
+            lblItemName.TabIndex = 17;
+            lblItemName.Text = "Item Name*";
             // 
             // txtItemName
             // 
@@ -114,16 +117,16 @@
             txtItemName.TabIndex = 0;
             txtItemName.TextChanged += txtItemName_TextChanged;
             // 
-            // label4
+            // lblCategory
             // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.White;
-            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label4.Location = new Point(312, 82);
-            label4.Name = "label4";
-            label4.Size = new Size(85, 21);
-            label4.TabIndex = 21;
-            label4.Text = "Category*";
+            lblCategory.AutoSize = true;
+            lblCategory.BackColor = Color.White;
+            lblCategory.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblCategory.Location = new Point(312, 82);
+            lblCategory.Name = "lblCategory";
+            lblCategory.Size = new Size(85, 21);
+            lblCategory.TabIndex = 21;
+            lblCategory.Text = "Category*";
             // 
             // cboCategory
             // 
@@ -160,38 +163,38 @@
             label6.TabIndex = 25;
             label6.Text = "Quantity && Inventory";
             // 
-            // label7
+            // lblQuantity
             // 
-            label7.AutoSize = true;
-            label7.BackColor = Color.White;
-            label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(13, 278);
-            label7.Name = "label7";
-            label7.Size = new Size(124, 21);
-            label7.TabIndex = 26;
-            label7.Text = "Batch Quantity*";
+            lblQuantity.AutoSize = true;
+            lblQuantity.BackColor = Color.White;
+            lblQuantity.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblQuantity.Location = new Point(13, 278);
+            lblQuantity.Name = "lblQuantity";
+            lblQuantity.Size = new Size(123, 21);
+            lblQuantity.TabIndex = 26;
+            lblQuantity.Text = "Initial Quantity*";
             // 
-            // label8
+            // lblMinStock
             // 
-            label8.AutoSize = true;
-            label8.BackColor = Color.White;
-            label8.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label8.Location = new Point(13, 332);
-            label8.Name = "label8";
-            label8.Size = new Size(168, 21);
-            label8.TabIndex = 28;
-            label8.Text = "Minimun Stock Level*";
+            lblMinStock.AutoSize = true;
+            lblMinStock.BackColor = Color.White;
+            lblMinStock.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblMinStock.Location = new Point(13, 332);
+            lblMinStock.Name = "lblMinStock";
+            lblMinStock.Size = new Size(168, 21);
+            lblMinStock.TabIndex = 28;
+            lblMinStock.Text = "Minimun Stock Level*";
             // 
-            // label9
+            // lblUnitType
             // 
-            label9.AutoSize = true;
-            label9.BackColor = Color.White;
-            label9.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(312, 278);
-            label9.Name = "label9";
-            label9.Size = new Size(86, 21);
-            label9.TabIndex = 30;
-            label9.Text = "Unit Type*";
+            lblUnitType.AutoSize = true;
+            lblUnitType.BackColor = Color.White;
+            lblUnitType.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblUnitType.Location = new Point(312, 278);
+            lblUnitType.Name = "lblUnitType";
+            lblUnitType.Size = new Size(86, 21);
+            lblUnitType.TabIndex = 30;
+            lblUnitType.Text = "Unit Type*";
             // 
             // txtMaximumStock
             // 
@@ -204,17 +207,18 @@
             txtMaximumStock.Size = new Size(195, 26);
             txtMaximumStock.TabIndex = 10;
             txtMaximumStock.TextAlign = HorizontalAlignment.Right;
+            txtMaximumStock.Click += txtMaximumStock_Click;
             // 
-            // label10
+            // lblMaxStock
             // 
-            label10.AutoSize = true;
-            label10.BackColor = Color.White;
-            label10.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(312, 332);
-            label10.Name = "label10";
-            label10.Size = new Size(176, 21);
-            label10.TabIndex = 32;
-            label10.Text = "Maximum Stock Level*";
+            lblMaxStock.AutoSize = true;
+            lblMaxStock.BackColor = Color.White;
+            lblMaxStock.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblMaxStock.Location = new Point(312, 332);
+            lblMaxStock.Name = "lblMaxStock";
+            lblMaxStock.Size = new Size(176, 21);
+            lblMaxStock.TabIndex = 32;
+            lblMaxStock.Text = "Maximum Stock Level*";
             // 
             // label11
             // 
@@ -261,16 +265,16 @@
             label15.TabIndex = 40;
             label15.Text = "Batch Number";
             // 
-            // label16
+            // lblPurchaseDate
             // 
-            label16.AutoSize = true;
-            label16.BackColor = Color.White;
-            label16.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label16.Location = new Point(312, 183);
-            label16.Name = "label16";
-            label16.Size = new Size(120, 21);
-            label16.TabIndex = 42;
-            label16.Text = "Purchase Date*";
+            lblPurchaseDate.AutoSize = true;
+            lblPurchaseDate.BackColor = Color.White;
+            lblPurchaseDate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblPurchaseDate.Location = new Point(312, 183);
+            lblPurchaseDate.Name = "lblPurchaseDate";
+            lblPurchaseDate.Size = new Size(120, 21);
+            lblPurchaseDate.TabIndex = 42;
+            lblPurchaseDate.Text = "Purchase Date*";
             // 
             // dtpPurchase
             // 
@@ -293,16 +297,16 @@
             dtpExpiration.Size = new Size(259, 26);
             dtpExpiration.TabIndex = 5;
             // 
-            // label17
+            // lblExpirationDate
             // 
-            label17.AutoSize = true;
-            label17.BackColor = Color.White;
-            label17.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label17.Location = new Point(551, 183);
-            label17.Name = "label17";
-            label17.Size = new Size(128, 21);
-            label17.TabIndex = 44;
-            label17.Text = "Expiration Date*";
+            lblExpirationDate.AutoSize = true;
+            lblExpirationDate.BackColor = Color.White;
+            lblExpirationDate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblExpirationDate.Location = new Point(551, 183);
+            lblExpirationDate.Name = "lblExpirationDate";
+            lblExpirationDate.Size = new Size(128, 21);
+            lblExpirationDate.TabIndex = 44;
+            lblExpirationDate.Text = "Expiration Date*";
             // 
             // txtBatchQuantity
             // 
@@ -315,6 +319,7 @@
             txtBatchQuantity.Size = new Size(259, 26);
             txtBatchQuantity.TabIndex = 6;
             txtBatchQuantity.TextAlign = HorizontalAlignment.Right;
+            txtBatchQuantity.Click += txtBatchQuantity_Click;
             // 
             // txtMinimumStock
             // 
@@ -327,6 +332,7 @@
             txtMinimumStock.Size = new Size(259, 26);
             txtMinimumStock.TabIndex = 9;
             txtMinimumStock.TextAlign = HorizontalAlignment.Right;
+            txtMinimumStock.Click += txtMinimumStock_Click;
             // 
             // cboUnitType
             // 
@@ -354,16 +360,16 @@
             cboUnitMeasure.TabIndex = 8;
             cboUnitMeasure.SelectedIndexChanged += cboUnitMeasure_SelectedIndexChanged;
             // 
-            // label18
+            // lblMeasure
             // 
-            label18.AutoSize = true;
-            label18.BackColor = Color.White;
-            label18.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label18.Location = new Point(551, 278);
-            label18.Name = "label18";
-            label18.Size = new Size(134, 21);
-            label18.TabIndex = 49;
-            label18.Text = "Unit of Measure*";
+            lblMeasure.AutoSize = true;
+            lblMeasure.BackColor = Color.White;
+            lblMeasure.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblMeasure.Location = new Point(551, 278);
+            lblMeasure.Name = "lblMeasure";
+            lblMeasure.Size = new Size(134, 21);
+            lblMeasure.TabIndex = 49;
+            lblMeasure.Text = "Unit of Measure*";
             // 
             // txtRestorePoint
             // 
@@ -376,17 +382,18 @@
             txtRestorePoint.Size = new Size(256, 26);
             txtRestorePoint.TabIndex = 11;
             txtRestorePoint.TextAlign = HorizontalAlignment.Right;
+            txtRestorePoint.Click += txtRestorePoint_Click;
             // 
-            // label19
+            // lblReorder
             // 
-            label19.AutoSize = true;
-            label19.BackColor = Color.White;
-            label19.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label19.Location = new Point(551, 332);
-            label19.Name = "label19";
-            label19.Size = new Size(118, 21);
-            label19.TabIndex = 51;
-            label19.Text = "Reorder Point*";
+            lblReorder.AutoSize = true;
+            lblReorder.BackColor = Color.White;
+            lblReorder.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblReorder.Location = new Point(551, 332);
+            lblReorder.Name = "lblReorder";
+            lblReorder.Size = new Size(118, 21);
+            lblReorder.TabIndex = 51;
+            lblReorder.Text = "Reorder Point*";
             // 
             // txtLeadTime
             // 
@@ -398,17 +405,19 @@
             txtLeadTime.PlaceholderText = "0";
             txtLeadTime.Size = new Size(259, 26);
             txtLeadTime.TabIndex = 12;
+            txtLeadTime.TextAlign = HorizontalAlignment.Right;
+            txtLeadTime.Click += txtLeadTime_Click;
             // 
-            // label20
+            // lblLeadTime
             // 
-            label20.AutoSize = true;
-            label20.BackColor = Color.White;
-            label20.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label20.Location = new Point(10, 386);
-            label20.Name = "label20";
-            label20.Size = new Size(139, 21);
-            label20.TabIndex = 53;
-            label20.Text = "Lead Time (days)*";
+            lblLeadTime.AutoSize = true;
+            lblLeadTime.BackColor = Color.White;
+            lblLeadTime.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblLeadTime.Location = new Point(10, 386);
+            lblLeadTime.Name = "lblLeadTime";
+            lblLeadTime.Size = new Size(139, 21);
+            lblLeadTime.TabIndex = 53;
+            lblLeadTime.Text = "Lead Time (days)*";
             // 
             // txtTargetTurnover
             // 
@@ -420,44 +429,46 @@
             txtTargetTurnover.PlaceholderText = "0";
             txtTargetTurnover.Size = new Size(197, 26);
             txtTargetTurnover.TabIndex = 13;
+            txtTargetTurnover.TextAlign = HorizontalAlignment.Right;
+            txtTargetTurnover.Click += txtTargetTurnover_Click;
             // 
-            // label21
+            // lblTurnover
             // 
-            label21.AutoSize = true;
-            label21.BackColor = Color.White;
-            label21.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label21.Location = new Point(312, 386);
-            label21.Name = "label21";
-            label21.Size = new Size(179, 21);
-            label21.TabIndex = 55;
-            label21.Text = "Target Turnover (days)*";
+            lblTurnover.AutoSize = true;
+            lblTurnover.BackColor = Color.White;
+            lblTurnover.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblTurnover.Location = new Point(312, 386);
+            lblTurnover.Name = "lblTurnover";
+            lblTurnover.Size = new Size(179, 21);
+            lblTurnover.TabIndex = 55;
+            lblTurnover.Text = "Target Turnover (days)*";
             // 
-            // label22
+            // lblCost
             // 
-            label22.AutoSize = true;
-            label22.BackColor = Color.White;
-            label22.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label22.Location = new Point(5, 31);
-            label22.Name = "label22";
-            label22.Size = new Size(84, 21);
-            label22.TabIndex = 57;
-            label22.Text = "Unit Cost*";
+            lblCost.AutoSize = true;
+            lblCost.BackColor = Color.White;
+            lblCost.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCost.Location = new Point(5, 31);
+            lblCost.Name = "lblCost";
+            lblCost.Size = new Size(84, 21);
+            lblCost.TabIndex = 57;
+            lblCost.Text = "Unit Cost*";
             // 
-            // label23
+            // lblSupplier
             // 
-            label23.AutoSize = true;
-            label23.BackColor = Color.White;
-            label23.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label23.Location = new Point(304, 31);
-            label23.Name = "label23";
-            label23.Size = new Size(71, 21);
-            label23.TabIndex = 59;
-            label23.Text = "Supplier";
+            lblSupplier.AutoSize = true;
+            lblSupplier.BackColor = Color.White;
+            lblSupplier.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSupplier.Location = new Point(304, 31);
+            lblSupplier.Name = "lblSupplier";
+            lblSupplier.Size = new Size(71, 21);
+            lblSupplier.TabIndex = 59;
+            lblSupplier.Text = "Supplier";
             // 
             // pnlHeader
             // 
             pnlHeader.BackColor = Color.FromArgb(121, 85, 72);
-            pnlHeader.Controls.Add(label1);
+            pnlHeader.Controls.Add(lblTitle);
             pnlHeader.Dock = DockStyle.Top;
             pnlHeader.Location = new Point(0, 0);
             pnlHeader.Margin = new Padding(3, 2, 3, 2);
@@ -478,16 +489,16 @@
             cboSubcategory.TabIndex = 2;
             cboSubcategory.SelectedIndexChanged += cboSubcategory_SelectedIndexChanged;
             // 
-            // label13
+            // lblSubcateogry
             // 
-            label13.AutoSize = true;
-            label13.BackColor = Color.White;
-            label13.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label13.Location = new Point(551, 82);
-            label13.Name = "label13";
-            label13.Size = new Size(111, 21);
-            label13.TabIndex = 62;
-            label13.Text = "Subcategory*";
+            lblSubcateogry.AutoSize = true;
+            lblSubcateogry.BackColor = Color.White;
+            lblSubcateogry.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblSubcateogry.Location = new Point(551, 82);
+            lblSubcateogry.Name = "lblSubcateogry";
+            lblSubcateogry.Size = new Size(111, 21);
+            lblSubcateogry.TabIndex = 62;
+            lblSubcateogry.Text = "Subcategory*";
             // 
             // btnCancel
             // 
@@ -568,19 +579,47 @@
             // panel4
             // 
             panel4.BackColor = Color.White;
+            panel4.Controls.Add(txtCurrentQuantity);
+            panel4.Controls.Add(lblCurrentQuantity);
             panel4.Location = new Point(8, 248);
             panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
             panel4.Size = new Size(806, 196);
             panel4.TabIndex = 64;
             // 
+            // txtCurrentQuantity
+            // 
+            txtCurrentQuantity.BackColor = Color.FromArgb(232, 232, 232);
+            txtCurrentQuantity.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtCurrentQuantity.Location = new Point(546, 164);
+            txtCurrentQuantity.Margin = new Padding(3, 2, 3, 2);
+            txtCurrentQuantity.Name = "txtCurrentQuantity";
+            txtCurrentQuantity.PlaceholderText = "0.00";
+            txtCurrentQuantity.Size = new Size(256, 26);
+            txtCurrentQuantity.TabIndex = 27;
+            txtCurrentQuantity.TextAlign = HorizontalAlignment.Right;
+            txtCurrentQuantity.Visible = false;
+            txtCurrentQuantity.Click += txtCurrentQuantity_Click;
+            // 
+            // lblCurrentQuantity
+            // 
+            lblCurrentQuantity.AutoSize = true;
+            lblCurrentQuantity.BackColor = Color.White;
+            lblCurrentQuantity.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCurrentQuantity.Location = new Point(546, 139);
+            lblCurrentQuantity.Name = "lblCurrentQuantity";
+            lblCurrentQuantity.Size = new Size(138, 21);
+            lblCurrentQuantity.TabIndex = 28;
+            lblCurrentQuantity.Text = "Current Quantity*";
+            lblCurrentQuantity.Visible = false;
+            // 
             // panel5
             // 
             panel5.BackColor = Color.White;
             panel5.Controls.Add(cboSupplier);
             panel5.Controls.Add(txtUnitCost);
-            panel5.Controls.Add(label22);
-            panel5.Controls.Add(label23);
+            panel5.Controls.Add(lblCost);
+            panel5.Controls.Add(lblSupplier);
             panel5.Location = new Point(8, 452);
             panel5.Margin = new Padding(3, 2, 3, 2);
             panel5.Name = "panel5";
@@ -611,6 +650,7 @@
             txtUnitCost.Size = new Size(259, 26);
             txtUnitCost.TabIndex = 14;
             txtUnitCost.TextAlign = HorizontalAlignment.Right;
+            txtUnitCost.Click += txtUnitCost_Click;
             // 
             // cbLowStockAlerts
             // 
@@ -638,37 +678,37 @@
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(cboSubcategory);
-            Controls.Add(label13);
+            Controls.Add(lblSubcateogry);
             Controls.Add(txtTargetTurnover);
-            Controls.Add(label21);
+            Controls.Add(lblTurnover);
             Controls.Add(txtLeadTime);
-            Controls.Add(label20);
+            Controls.Add(lblLeadTime);
             Controls.Add(txtRestorePoint);
-            Controls.Add(label19);
+            Controls.Add(lblReorder);
             Controls.Add(cboUnitMeasure);
-            Controls.Add(label18);
+            Controls.Add(lblMeasure);
             Controls.Add(cboUnitType);
             Controls.Add(txtMinimumStock);
             Controls.Add(txtBatchQuantity);
             Controls.Add(dtpExpiration);
-            Controls.Add(label17);
+            Controls.Add(lblExpirationDate);
             Controls.Add(dtpPurchase);
-            Controls.Add(label16);
+            Controls.Add(lblPurchaseDate);
             Controls.Add(txtBatchNumber);
             Controls.Add(label15);
             Controls.Add(label14);
             Controls.Add(label11);
             Controls.Add(txtMaximumStock);
-            Controls.Add(label10);
-            Controls.Add(label9);
-            Controls.Add(label8);
-            Controls.Add(label7);
+            Controls.Add(lblMaxStock);
+            Controls.Add(lblUnitType);
+            Controls.Add(lblMinStock);
+            Controls.Add(lblQuantity);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(cboCategory);
-            Controls.Add(label4);
+            Controls.Add(lblCategory);
             Controls.Add(txtItemName);
-            Controls.Add(label2);
+            Controls.Add(lblItemName);
             Controls.Add(pnlHeader);
             Controls.Add(panel2);
             Controls.Add(panel3);
@@ -682,6 +722,8 @@
             Load += AddInventoryItem_Load;
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             ResumeLayout(false);
@@ -690,42 +732,42 @@
 
         #endregion
 
-        private Label label1;
-        private Label label2;
+        private Label lblTitle;
+        private Label lblItemName;
         private TextBox txtItemName;
-        private Label label4;
+        private Label lblCategory;
         private ComboBox cboCategory;
         private Label label5;
         private Label label6;
-        private Label label7;
-        private Label label8;
-        private Label label9;
+        private Label lblQuantity;
+        private Label lblMinStock;
+        private Label lblUnitType;
         private TextBox txtMaximumStock;
-        private Label label10;
+        private Label lblMaxStock;
         private Label label11;
         private Label label14;
         private TextBox txtBatchNumber;
         private Label label15;
-        private Label label16;
+        private Label lblPurchaseDate;
         private DateTimePicker dtpPurchase;
         private DateTimePicker dtpExpiration;
-        private Label label17;
+        private Label lblExpirationDate;
         private TextBox txtBatchQuantity;
         private TextBox txtMinimumStock;
         private ComboBox cboUnitType;
         private ComboBox cboUnitMeasure;
-        private Label label18;
+        private Label lblMeasure;
         private TextBox txtRestorePoint;
-        private Label label19;
+        private Label lblReorder;
         private TextBox txtLeadTime;
-        private Label label20;
+        private Label lblLeadTime;
         private TextBox txtTargetTurnover;
-        private Label label21;
-        private Label label22;
-        private Label label23;
+        private Label lblTurnover;
+        private Label lblCost;
+        private Label lblSupplier;
         private Panel pnlHeader;
         private ComboBox cboSubcategory;
-        private Label label13;
+        private Label lblSubcateogry;
         private Button btnCancel;
         private Button btnSave;
         private Button btnSaveAndNew;
@@ -736,5 +778,7 @@
         private CheckBox cbLowStockAlerts;
         private TextBox txtUnitCost;
         private ComboBox cboSupplier;
+        private TextBox txtCurrentQuantity;
+        private Label lblCurrentQuantity;
     }
 }

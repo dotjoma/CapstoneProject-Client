@@ -50,6 +50,16 @@
             btnClose = new Button();
             panel4 = new Panel();
             dgvBatches = new DataGridView();
+            id = new DataGridViewTextBoxColumn();
+            batchnumber = new DataGridViewTextBoxColumn();
+            purchasedate = new DataGridViewTextBoxColumn();
+            expirydate = new DataGridViewTextBoxColumn();
+            initialquantity = new DataGridViewTextBoxColumn();
+            currentquantity = new DataGridViewTextBoxColumn();
+            unitcost = new DataGridViewTextBoxColumn();
+            supplier = new DataGridViewTextBoxColumn();
+            status = new DataGridViewTextBoxColumn();
+            actions = new DataGridViewImageColumn();
             panel3 = new Panel();
             txtItemsPerPage = new TextBox();
             label3 = new Label();
@@ -61,16 +71,6 @@
             cmsOptions = new ContextMenuStrip(components);
             cmsEdit = new ToolStripMenuItem();
             cmsDelete = new ToolStripMenuItem();
-            id = new DataGridViewTextBoxColumn();
-            batchnumber = new DataGridViewTextBoxColumn();
-            purchasedate = new DataGridViewTextBoxColumn();
-            expirydate = new DataGridViewTextBoxColumn();
-            initialquantity = new DataGridViewTextBoxColumn();
-            currentquantity = new DataGridViewTextBoxColumn();
-            unitcost = new DataGridViewTextBoxColumn();
-            supplier = new DataGridViewTextBoxColumn();
-            status = new DataGridViewTextBoxColumn();
-            actions = new DataGridViewImageColumn();
             pnlHeader.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -90,7 +90,7 @@
             pnlHeader.Location = new Point(0, 0);
             pnlHeader.Margin = new Padding(3, 2, 3, 2);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Size = new Size(917, 34);
+            pnlHeader.Size = new Size(962, 34);
             pnlHeader.TabIndex = 63;
             // 
             // lblHeader
@@ -140,7 +140,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 34);
             panel1.Name = "panel1";
-            panel1.Size = new Size(917, 78);
+            panel1.Size = new Size(962, 78);
             panel1.TabIndex = 64;
             // 
             // lblDescription
@@ -174,12 +174,12 @@
             panel2.Dock = DockStyle.Bottom;
             panel2.Location = new Point(0, 504);
             panel2.Name = "panel2";
-            panel2.Size = new Size(917, 45);
+            panel2.Size = new Size(962, 45);
             panel2.TabIndex = 65;
             // 
             // btnClose
             // 
-            btnClose.Location = new Point(781, 7);
+            btnClose.Location = new Point(854, 7);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(97, 31);
             btnClose.TabIndex = 0;
@@ -198,8 +198,9 @@
             panel4.Dock = DockStyle.Fill;
             panel4.Location = new Point(0, 0);
             panel4.Name = "panel4";
-            panel4.Size = new Size(919, 551);
+            panel4.Size = new Size(964, 551);
             panel4.TabIndex = 68;
+            panel4.Paint += panel4_Paint;
             // 
             // dgvBatches
             // 
@@ -254,124 +255,10 @@
             dgvBatches.RowHeadersVisible = false;
             dgvBatches.RowHeadersWidth = 51;
             dgvBatches.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvBatches.Size = new Size(917, 351);
+            dgvBatches.Size = new Size(962, 351);
             dgvBatches.TabIndex = 69;
             dgvBatches.TabStop = false;
             dgvBatches.CellContentClick += dgvBatches_CellContentClick;
-            // 
-            // panel3
-            // 
-            panel3.BackColor = Color.White;
-            panel3.BorderStyle = BorderStyle.FixedSingle;
-            panel3.Controls.Add(txtItemsPerPage);
-            panel3.Controls.Add(label3);
-            panel3.Controls.Add(btnPrev);
-            panel3.Controls.Add(btnNext);
-            panel3.Controls.Add(txtCurrentPage);
-            panel3.Controls.Add(lblPageInfo);
-            panel3.Controls.Add(lblTotalPage);
-            panel3.Location = new Point(-10, 465);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(935, 39);
-            panel3.TabIndex = 68;
-            // 
-            // txtItemsPerPage
-            // 
-            txtItemsPerPage.Location = new Point(121, 7);
-            txtItemsPerPage.Name = "txtItemsPerPage";
-            txtItemsPerPage.Size = new Size(25, 23);
-            txtItemsPerPage.TabIndex = 5;
-            txtItemsPerPage.Text = "100";
-            txtItemsPerPage.TextChanged += txtItemsPerPage_TextChanged;
-            txtItemsPerPage.Enter += txtItemsPerPage_Enter;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(12, 10);
-            label3.Name = "label3";
-            label3.Size = new Size(103, 17);
-            label3.TabIndex = 4;
-            label3.Text = "Items per page:";
-            // 
-            // btnPrev
-            // 
-            btnPrev.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnPrev.FlatAppearance.BorderColor = Color.LightGray;
-            btnPrev.FlatStyle = FlatStyle.Flat;
-            btnPrev.Image = Properties.Resources.previous_16;
-            btnPrev.Location = new Point(355, 7);
-            btnPrev.Name = "btnPrev";
-            btnPrev.Size = new Size(28, 23);
-            btnPrev.TabIndex = 3;
-            btnPrev.UseVisualStyleBackColor = true;
-            btnPrev.Click += btnPrev_Click;
-            // 
-            // btnNext
-            // 
-            btnNext.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnNext.FlatAppearance.BorderColor = Color.LightGray;
-            btnNext.FlatStyle = FlatStyle.Flat;
-            btnNext.Image = Properties.Resources.next_24;
-            btnNext.Location = new Point(449, 7);
-            btnNext.Name = "btnNext";
-            btnNext.Size = new Size(28, 23);
-            btnNext.TabIndex = 2;
-            btnNext.UseVisualStyleBackColor = true;
-            btnNext.Click += btnNext_Click;
-            // 
-            // txtCurrentPage
-            // 
-            txtCurrentPage.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            txtCurrentPage.Location = new Point(391, 7);
-            txtCurrentPage.Name = "txtCurrentPage";
-            txtCurrentPage.Size = new Size(25, 23);
-            txtCurrentPage.TabIndex = 1;
-            txtCurrentPage.Text = "100";
-            txtCurrentPage.TextChanged += txtCurrentPage_TextChanged;
-            txtCurrentPage.Enter += txtCurrentPage_Enter;
-            // 
-            // lblPageInfo
-            // 
-            lblPageInfo.AutoSize = true;
-            lblPageInfo.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPageInfo.Location = new Point(163, 10);
-            lblPageInfo.Name = "lblPageInfo";
-            lblPageInfo.Size = new Size(156, 17);
-            lblPageInfo.TabIndex = 0;
-            lblPageInfo.Text = "Showing 1-4 of 4 batches";
-            // 
-            // lblTotalPage
-            // 
-            lblTotalPage.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            lblTotalPage.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTotalPage.Location = new Point(415, 5);
-            lblTotalPage.Name = "lblTotalPage";
-            lblTotalPage.Size = new Size(36, 23);
-            lblTotalPage.TabIndex = 6;
-            lblTotalPage.Text = "/100";
-            lblTotalPage.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // cmsOptions
-            // 
-            cmsOptions.Items.AddRange(new ToolStripItem[] { cmsEdit, cmsDelete });
-            cmsOptions.Name = "cmsActions";
-            cmsOptions.Size = new Size(108, 48);
-            // 
-            // cmsEdit
-            // 
-            cmsEdit.Name = "cmsEdit";
-            cmsEdit.Size = new Size(107, 22);
-            cmsEdit.Text = "Edit";
-            cmsEdit.Click += cmsEdit_Click;
-            // 
-            // cmsDelete
-            // 
-            cmsDelete.Name = "cmsDelete";
-            cmsDelete.Size = new Size(107, 22);
-            cmsDelete.Text = "Delete";
-            cmsDelete.Click += cmsDelete_Click;
             // 
             // id
             // 
@@ -429,12 +316,14 @@
             // 
             // unitcost
             // 
+            unitcost.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleRight;
             unitcost.DefaultCellStyle = dataGridViewCellStyle6;
             unitcost.HeaderText = "Unit Cost";
-            unitcost.MinimumWidth = 75;
+            unitcost.MinimumWidth = 70;
             unitcost.Name = "unitcost";
             unitcost.ReadOnly = true;
+            unitcost.Width = 70;
             // 
             // supplier
             // 
@@ -450,9 +339,10 @@
             // 
             // status
             // 
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
             status.DefaultCellStyle = dataGridViewCellStyle8;
             status.HeaderText = "Status";
+            status.MinimumWidth = 120;
             status.Name = "status";
             status.ReadOnly = true;
             // 
@@ -465,11 +355,125 @@
             actions.Resizable = DataGridViewTriState.True;
             actions.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
+            // panel3
+            // 
+            panel3.BackColor = Color.White;
+            panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(txtItemsPerPage);
+            panel3.Controls.Add(label3);
+            panel3.Controls.Add(btnPrev);
+            panel3.Controls.Add(btnNext);
+            panel3.Controls.Add(txtCurrentPage);
+            panel3.Controls.Add(lblPageInfo);
+            panel3.Controls.Add(lblTotalPage);
+            panel3.Location = new Point(-10, 465);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(972, 39);
+            panel3.TabIndex = 68;
+            // 
+            // txtItemsPerPage
+            // 
+            txtItemsPerPage.Location = new Point(121, 7);
+            txtItemsPerPage.Name = "txtItemsPerPage";
+            txtItemsPerPage.Size = new Size(25, 23);
+            txtItemsPerPage.TabIndex = 5;
+            txtItemsPerPage.Text = "100";
+            txtItemsPerPage.TextChanged += txtItemsPerPage_TextChanged;
+            txtItemsPerPage.Enter += txtItemsPerPage_Enter;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(12, 10);
+            label3.Name = "label3";
+            label3.Size = new Size(103, 17);
+            label3.TabIndex = 4;
+            label3.Text = "Items per page:";
+            // 
+            // btnPrev
+            // 
+            btnPrev.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnPrev.FlatAppearance.BorderColor = Color.LightGray;
+            btnPrev.FlatStyle = FlatStyle.Flat;
+            btnPrev.Image = Properties.Resources.previous_16;
+            btnPrev.Location = new Point(392, 7);
+            btnPrev.Name = "btnPrev";
+            btnPrev.Size = new Size(28, 23);
+            btnPrev.TabIndex = 3;
+            btnPrev.UseVisualStyleBackColor = true;
+            btnPrev.Click += btnPrev_Click;
+            // 
+            // btnNext
+            // 
+            btnNext.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnNext.FlatAppearance.BorderColor = Color.LightGray;
+            btnNext.FlatStyle = FlatStyle.Flat;
+            btnNext.Image = Properties.Resources.next_24;
+            btnNext.Location = new Point(486, 7);
+            btnNext.Name = "btnNext";
+            btnNext.Size = new Size(28, 23);
+            btnNext.TabIndex = 2;
+            btnNext.UseVisualStyleBackColor = true;
+            btnNext.Click += btnNext_Click;
+            // 
+            // txtCurrentPage
+            // 
+            txtCurrentPage.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            txtCurrentPage.Location = new Point(428, 7);
+            txtCurrentPage.Name = "txtCurrentPage";
+            txtCurrentPage.Size = new Size(25, 23);
+            txtCurrentPage.TabIndex = 1;
+            txtCurrentPage.Text = "100";
+            txtCurrentPage.TextChanged += txtCurrentPage_TextChanged;
+            txtCurrentPage.Enter += txtCurrentPage_Enter;
+            // 
+            // lblPageInfo
+            // 
+            lblPageInfo.AutoSize = true;
+            lblPageInfo.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPageInfo.Location = new Point(163, 10);
+            lblPageInfo.Name = "lblPageInfo";
+            lblPageInfo.Size = new Size(156, 17);
+            lblPageInfo.TabIndex = 0;
+            lblPageInfo.Text = "Showing 1-4 of 4 batches";
+            // 
+            // lblTotalPage
+            // 
+            lblTotalPage.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblTotalPage.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTotalPage.Location = new Point(452, 5);
+            lblTotalPage.Name = "lblTotalPage";
+            lblTotalPage.Size = new Size(36, 23);
+            lblTotalPage.TabIndex = 6;
+            lblTotalPage.Text = "/100";
+            lblTotalPage.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // cmsOptions
+            // 
+            cmsOptions.Items.AddRange(new ToolStripItem[] { cmsEdit, cmsDelete });
+            cmsOptions.Name = "cmsActions";
+            cmsOptions.Size = new Size(108, 48);
+            // 
+            // cmsEdit
+            // 
+            cmsEdit.Name = "cmsEdit";
+            cmsEdit.Size = new Size(107, 22);
+            cmsEdit.Text = "Edit";
+            cmsEdit.Click += cmsEdit_Click;
+            // 
+            // cmsDelete
+            // 
+            cmsDelete.Name = "cmsDelete";
+            cmsDelete.Size = new Size(107, 22);
+            cmsDelete.Text = "Delete";
+            cmsDelete.Click += cmsDelete_Click;
+            // 
             // ViewBatches
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(919, 551);
+            ClientSize = new Size(964, 551);
             Controls.Add(panel4);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ViewBatches";
